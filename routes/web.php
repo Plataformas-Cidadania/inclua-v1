@@ -12,7 +12,19 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+//ROTA DE BOAS VINDAS
 Route::get('/', function () {
     return view('welcome');
 });
+
+//GRUPO DE ROTAS QUE PASSARÃO PELA AUTENTICAÇÃO
+Route::middleware(['auth'])->group(function () {
+
+});
+
+//DASH BOARD PADRÃO CRIADO PELO BREEZE
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
