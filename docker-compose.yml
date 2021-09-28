@@ -16,13 +16,15 @@ services:
     links:
       - db
   db:
-    image: "mysql:5.7"
-    environment:
-      - MYSQL_ROOT_PASSWORD=secret
-      - MYSQL_DATABASE=lara
-      - MYSQL_USER=raphael
-      - MYSQL_PASSWORD=secret
+    image: postgres:12.0-alpine
+    container_name: postgresql-inclua
+    restart: always
     volumes:
-      - ./data/:/var/lib/mysql
+      - ./data:/var/lib/postgresql/data
+      - ./backups:/backups
+    environment:
+      POSTGRES_DB: laravel
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123456
     ports:
-      - "3306:3306"
+      - 5438:5432
