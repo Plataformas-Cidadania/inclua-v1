@@ -1,6 +1,8 @@
 <?php
-
+namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Route;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,9 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 //ROTA DE BOAS VINDAS
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
 
 //GRUPO DE ROTAS QUE PASSARÃO PELA AUTENTICAÇÃO
 Route::middleware(['auth'])->group(function () {
@@ -28,3 +30,46 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+
+
+
+
+/*
+|-------------------------------------------------------------------------->
+| FRONT
+|-------------------------------------------------------------------------->
+*/
+Route::get('/', 'App\Http\Controllers\HomeController@index');
+
+
+$routes = [
+    ['Page', 'sobres', 'sobre'],
+    ['Video', 'videos', 'video'],
+];
+
+//ROTAS PADRÕES
+$routesSearch = [];
+
+foreach ($routes as $route) {
+    Route::get($route[1].'/', $route[0].'Controller@listing');
+    Route::get($route[2].'/{id}/{titulo}', $route[0].'Controller@details');
+}
+foreach ($routesSearch as $route) {
+    Route::get($route[1].'/{search}', $route[0].'Controller@listing');
+}
+
+#if(env('DYNAMIC_ROUTES')=='true'){
+    $modulos = \Illuminate\Support\Facades\DB::table('modulos')->select('slug')->get();
+
+    foreach ($modulos as $modulo) {
+        if(!empty($modulo->slug)){
+            Route::get($modulo->slug.'/', 'App\Http\Controllers\ModuloController@details');
+        }
+    }
+#}
+
+/*
+<--------------------------------------------------------------------------|
+| FRONT
+<--------------------------------------------------------------------------|
+*/
