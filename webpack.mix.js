@@ -60,3 +60,51 @@ mix.styles([
 ], 'public/css/leaflet.css')
 
     .sass('resources/sass/app.scss', 'public/css');
+
+
+//CMS///////////////////////////////////////////////////////////////////
+//css npm install less-loader less --save-dev --production=false
+mix.less('packages/cms/resources/assets/less/cms.less', 'public/assets-cms/css/cms.css');
+mix.styles('packages/cms/resources/assets/css/sb-admin.css', 'public/assets-cms/css/sb-admin.css');
+mix.styles('packages/cms/resources/assets/css/circle.css', 'public/assets-cms/css/circle.css');
+
+//App angular
+mix.scripts('packages/cms/resources/assets/js/cms.js', 'public/assets-cms/js/cms.js');
+
+mix.scripts('packages/cms/resources/assets/js/tiny.js', 'public/assets-cms/js/tiny.js');
+
+mix.scripts('packages/cms/resources/assets/js/utils.js', 'public/assets-cms/js/utils.js');
+
+//Directives
+mix.scripts('packages/cms/resources/assets/js/directives/initModel.js', 'public/assets-cms/js/directives/initModel.js');
+
+//Controllers
+
+//Webdoor
+mix.scripts('packages/cms/resources/assets/js/controllers/webdoorCtrl.js', 'public/assets-cms/js/controllers/webdoorCtrl.js');
+mix.scripts('packages/cms/resources/assets/js/controllers/alterarWebdoorCtrl.js', 'public/assets-cms/js/controllers/alterarWebdoorCtrl.js');
+
+//Modulos
+mix.scripts('packages/cms/resources/assets/js/controllers/moduloCtrl.js', 'public/assets-cms/js/controllers/moduloCtrl.js');
+mix.scripts('packages/cms/resources/assets/js/controllers/alterarModuloCtrl.js', 'public/assets-cms/js/controllers/alterarModuloCtrl.js');
+
+//Apoios
+//mix.scripts('packages/cms/resources/assets/js/controllers/apoioCtrl.js', 'public/assets-cms/js/controllers/apoioCtrl.js');
+//mix.scripts('packages/cms/resources/assets/js/controllers/alterarApoioCtrl.js', 'public/assets-cms/js/controllers/alterarApoioCtrl.js');
+
+//Items Modulos
+mix.scripts('packages/cms/resources/assets/js/controllers/itemCtrl.js', 'public/assets-cms/js/controllers/itemCtrl.js');
+mix.scripts('packages/cms/resources/assets/js/controllers/alterarItemCtrl.js', 'public/assets-cms/js/controllers/alterarItemCtrl.js');
+
+//CmsUsers
+mix.scripts('packages/cms/resources/assets/js/controllers/cmsUserCtrl.js', 'public/assets-cms/js/controllers/cmsUserCtrl.js');
+mix.scripts('packages/cms/resources/assets/js/controllers/alterarCmsUserCtrl.js', 'public/assets-cms/js/controllers/alterarCmsUserCtrl.js');
+
+//Text
+mix.scripts('packages/cms/resources/assets/js/controllers/textCtrl.js', 'public/assets-cms/js/controllers/textCtrl.js');
+mix.scripts('packages/cms/resources/assets/js/controllers/alterarTextCtrl.js', 'public/assets-cms/js/controllers/alterarTextCtrl.js');
+
+//Settings
+mix.scripts('packages/cms/resources/assets/js/controllers/alterarSettingCtrl.js', 'public/assets-cms/js/controllers/alterarSettingCtrl.js');
+
+//FIM CMS///////////////////////////////////////////////////////////////////
