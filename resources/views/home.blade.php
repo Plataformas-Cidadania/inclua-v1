@@ -106,11 +106,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <img src="img/p4.png" alt="" title="" width="100%">
+                    <img src="img/p4.png" alt="" title="" width="100%"  style="padding: 5rem">
                 </div>
                 <div class="col-md-8">
-                    <h2>“Amei! Me ajudou muito! Me fez enxergar questões que não via antes!” </h2>
-                    <h3>Maria lima</h3>
+                    <div style="padding: 8rem">
+                        <h2>“Amei! Me ajudou muito! Me fez enxergar questões que não via antes!” </h2>
+                        <h3>Maria lima</h3>
+                    </div>
                 </div>
             </div>
         </div>
