@@ -59,6 +59,7 @@
   --bs-body-color: #212529;
   --bs-body-bg: #f8fafc;
 }
+<<<<<<< HEAD
 
 *,
 *::before,
@@ -13307,6 +13308,8 @@ label, input, .btn-number {
 .clear-both {
   clear: both;
 }
+=======
+>>>>>>> efe97b3e16c85c52e3bba0c22cde9026f953a080
 
 .bg-lines {
   background-image: url("/img/lines.png");
