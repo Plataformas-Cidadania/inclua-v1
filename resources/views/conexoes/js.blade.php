@@ -124,40 +124,21 @@
     <script>
         app_url = "{{env('APP_URL')}}";
     </script>
-<script src="js/home.js" ></script>
+
 <script src="js/conf-owl-carousel.js"></script>
-{{--<script src="js/chart.js"></script>
-<script src="js/charts/mixed.js"></script>--}}
+
 
 <script src="https://cdn.jsdelivr.net/npm/prop-types@15.7.2/prop-types.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <script src="https://cdn.jsdelivr.net/npm/react-apexcharts@1.3.6/dist/react-apexcharts.iife.min.js"></script>
 
-<script src="js/components/charts/mixedChart.js"></script>
-<script src="js/components/charts/pieChart.js"></script>
-<script src="js/components/charts/charts.js"></script>
-<script src="js/components/charts/page/home.js"></script>
 
-<script src="js/components/home/next/api.js"></script>
-<script src="js/components/home/recentes/api.js"></script>
-<script src="js/components/forms/search.js"></script>
+
+
 
 
 @endif
 
-@if($rota=='indicadores')
-    <script src="https://cdn.jsdelivr.net/npm/prop-types@15.7.2/prop-types.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-    <script src="https://cdn.jsdelivr.net/npm/react-apexcharts@1.3.6/dist/react-apexcharts.iife.min.js"></script>
-
-<script src="js/components/charts/mixedChart.js"></script>
-<script src="js/components/charts/pieChart.js"></script>
-<script src="js/components/charts/charts.js"></script>
-<script src="js/components/charts/page/indicator.js"></script>
-@endif
-@if($rota=='pagina/depen')
-    <script src="js/components/pages/depen.js"></script>
-@endif
 
 
 @if($rota=='localidade/{id}')
@@ -334,149 +315,10 @@
     </script>
     <script src="js/components/user-area/osc.js"></script>
 @endif
-@if(
-    $rota=="area-user" ||
-    $rota=="dashboard-user" ||
-    $rota=="dados-arquivos" ||
-    $rota=="oscs-user" ||
-    $rota=="osc-user/{id}" ||
-    $rota=="objetivos-user" ||
-    $rota=="dados-arquivo/{id}" ||
-    $rota=="dados-user" ||
-    $rota=="trocar-senha" ||
-    $rota=="videos-privados" ||
-    $rota=="areas-atuacao-user" ||
-    $rota=="descricao-user" ||
-    $rota=="certificates-user" ||
-    $rota=="projetos-user" ||
-    $rota=="governancas-user" ||
-    $rota=="participacoes-user" ||
-    $rota=="recursos-user" ||
-    $rota=="selo-user"
-    )
-    <script>
-        id = localStorage.getItem('@App:id_osc');
-    </script>
-    <script src="js/components/user-area/headerUser.js"></script>
-    <script src="js/components/user-area/menu.js"></script>
-@endif
-@if($rota=="certificates-user")
-    <script src="js/components/user-area/formCertificate.js"></script>
-    <script src="js/components/user-area/formEditCertificate.js"></script>
-    <script src="js/components/user-area/certificates.js"></script>
-@endif
-@if($rota=="projetos-user")
-    <script src="js/components/user-area/formProjeto.js"></script>
-    <script src="js/components/user-area/formEditProjeto.js"></script>
-    <script src="js/components/user-area/formOscParceira.js"></script>
-    <script src="js/components/user-area/formProjetoFinanciador.js"></script>
-    <script src="js/components/user-area/formProjetoLocalizacao.js"></script>
-    <script src="js/components/user-area/formProjetoPublico.js"></script>
-    <script src="js/components/user-area/projetos.js"></script>
-@endif
-@if($rota=="governancas-user")
-    <script src="js/components/user-area/formGovernanca.js"></script>
-    <script src="js/components/user-area/formConselho.js"></script>
-    <script src="js/components/user-area/formEditGovernanca.js"></script>
-    <script src="js/components/user-area/formEditConselho.js"></script>
-    <script src="js/components/user-area/governancas.js"></script>
-@endif
-@if($rota=="participacoes-user")
-    <script src="js/components/user-area/formParticipacaoConselho.js"></script>
-    <script src="js/components/user-area/formParticipacaoConferencia.js"></script>
-    <script src="js/components/user-area/formParticipacaoOutro.js"></script>
-    <script src="js/components/user-area/formEditParticipacaoOutro.js"></script>
-    <script src="js/components/user-area/formEditParticipacaoConferencia.js"></script>
-    <script src="js/components/user-area/formEditParticipacaoConselho.js"></script>
-    <script src="js/components/user-area/participacoes.js"></script>
-@endif
-{{--@if($rota=="recursos-user")
-    <script src="js/components/user-area/formRecurso.js"></script>
-    <script src="js/components/user-area/recursos.js"></script>
-@endif--}}
-@if($rota=="recursos-user")
-    <script src="js/components/osc/tour.js"></script>
-    <script src="js/components/forms/recurso.js"></script>
-    <script src="js/components/user-area/recursos.js"></script>
-@endif
-@if($rota=="areas-atuacao-user")
-    <script src="js/components/user-area/formAtuacao.js"></script>
-    <script src="js/components/user-area/atuacoes.js"></script>
-@endif
 
-@if($rota=="area-user" || $rota=="dashboard-user" )
-    <script src="js/components/user-area/dashboard.js"></script>
-@endif
-@if($rota=="dados-user")
-    <script src="js/components/user-area/data.js"></script>
-@endif
-@if($rota=="trocar-senha")
-    <script src="js/components/user-area/trocar-senha.js"></script>
-@endif
-@if($rota=="descricao-user")
-    <script src="js/components/user-area/descricao.js"></script>
-@endif
 
-@if($rota=="selo-user")
-    <script src="js/components/user-area/seal.js"></script>
-@endif
-@if($rota=="selo-osc-user/{id_osc}")
-    <script>
-        id_osc = {{$id_osc}};
-        app_url = "{{env('APP_URL')}}";
-    </script>
-    <script src="js/components/user-area/seal.js"></script>
-@endif
-@if($rota=="dados-arquivos")
-    <script src="js/components/user-area/documents.js"></script>
-@endif
-@if($rota=="dados-arquivo/{id}")
-    <script>
-        id = {{$id}};
-    </script>
-    <script src="js/components/user-area/document.js"></script>
-@endif
-@if($rota=="oscs-user")
-    <script src="js/components/user-area/oscs.js"></script>
-@endif
-@if($rota=="objetivos-user")
-    <script src="js/components/osc/tour.js"></script>
-    <script src="js/components/user-area/objetivos.js"></script>
-@endif
-@if($rota=="register")
-    <script src="js/components/join/register.js"></script>
-@endif
 
-@if(
-    $rota=="area-user" || $rota=="dashboard-user" || $rota=="dados-user"  || $rota=="trocar-senha" || $rota=="oscs-user" || $rota=="osc-user/{id}" ||
-    $rota=="objetivos-user" || $rota=="selo-user" || $rota=="certificates-user" || $rota=="projetos-user" ||
-    $rota=="governancas-user" || $rota=="areas-atuacao-user" || $rota=="descricao-user" || $rota=="participacoes-user" ||
-    $rota=="recursos-user" || $rota=="logout-user" || $rota=="dados-arquivos" || $rota=="dados-arquivo/{id}" || $rota=="videos-privados"
-    //$rota=="update-data" || $rota=="update-descricao" || $rota=="get-data" ||
-    //$rota=="get-osc" ||  $rota=="list-users-oscs" ||  $rota=="save-logo-osc" || $rota=="get-logo-osc" || $rota=="update-osc" ||
-    //$rota=="list-users-certificates" || $rota=="remove-user-certificate/{id}" || $rota=="edit-user-certificate/{id}" ||
-    //$rota=="list-users-governancas" ||  $rota=="remove-user-governanca/{id}" || $rota=="edit-user-governanca/{id}" ||
-    //$rota=="list-users-conselhos" || $rota=="list-users-documents" || $rota=="detalhar-users-document/{id}" ||
-    //$rota=="list-private-videos" ||  $rota=="private-video/{id}" ||  $rota=="get-descricao"
-    )
-    <script>
-        $.ajax({
-            method: 'GET',
-            url: getBaseUrl2 + 'check-token',
-            headers: {
-                Authorization: 'Bearer '+localStorage.getItem('@App:token')
-            },
-            cache: false,
-            success: function (data) {
-                console.log(data);
-            }.bind(this),
-            error: function (xhr, status, err) {
-                console.log(err);
-                location.href = 'login';
-            }.bind(this)
-        });
-    </script>
-@endif
+
 
 <script>
     $('#ativarBox').click(function(){
