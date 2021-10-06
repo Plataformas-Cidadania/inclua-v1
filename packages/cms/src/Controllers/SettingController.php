@@ -15,7 +15,7 @@ class SettingController extends Controller
 
     public function __construct()
     {
-        $this->setting = new \App\Setting;
+        $this->setting = new \App\Models\Setting;
         $this->campos = [
             'imagem', 'email', 'titulo', 'rodape', 'cep', 'endereco', 'numero', 'complemento', 'bairro', 'cidade', 'estado', 'descricao_contato', 'telefone', 'telefone2', 'telefone3', 'facebook', 'youtube', 'pinterest', 'twitter', 'blog', 'instagram',
             'endereco_tutulo', 'endereco_tutulo2', 'cep2', 'endereco2', 'numero2', 'complemento2', 'bairro2', 'cidade2', 'estado2',

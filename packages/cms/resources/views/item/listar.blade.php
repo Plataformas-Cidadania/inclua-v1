@@ -1,45 +1,49 @@
 @extends('cms::layouts.app')
 
 @section('content')
-    {!! Html::script(config('app.url').'assets-cms/js/controllers/webdoorCtrl.js') !!}
+    {!! Html::script(config('app.url').'assets-cms/js/controllers/itemCtrl.js') !!}
 <script>
     $(function () {
         $('[data-toggle="popover"]').popover()
     })
 </script>
-    <div ng-controller="webdoorCtrl">
+    <div ng-controller="itemCtrl">
         <div class="box-padrao">
-            <h1><i class="fa fa-fw fa-newspaper-o"></i>&nbsp;Webdoors</h1>
-            <button class="btn btn-primary" ng-click="mostrarForm=!mostrarForm" ng-show="!mostrarForm">Novo Webdoor</button>
+            <h1><a href="javascript:history.back();"><i class="fa fa-arrow-circle-left"></i></a>&nbsp;Items</h1>
+            <button class="btn btn-primary" ng-click="mostrarForm=!mostrarForm" ng-show="!mostrarForm">Novo Item</button>
             <button class="btn btn-warning" ng-click="mostrarForm=!mostrarForm" ng-show="mostrarForm">Cancelar</button>
             <br><br>
             <div ng-show="mostrarForm">
                 <span class="texto-obrigatorio" ng-show="form.$invalid">* campos obrigatórios</span><br><br>
                 {!! Form::open(['name' =>'form']) !!}
                 <div class="container-thumb">
-                    <div class="box-thumb" name="fileDrop" ngf-dimensions="$width == 1980 && $height == 450" ngf-drag-over-class="'box-thumb-hover'" ngf-drop ngf-select ng-model="picFile"
+                    <div class="box-thumb" name="fileDrop" ngf-drag-over-class="'box-thumb-hover'" ngf-drop ngf-select ng-model="picFile"
                          ng-show="!picFile" accept="image/*" ngf-max-size="2MB">Solte uma imagem aqui!</div>
                     <img  ngf-thumbnail="picFile" class="thumb">
                 </div>
                 <br>
                 <span class="btn btn-primary btn-file" ng-show="!picFile">
-                    Escolher imagem <input  type="file" ngf-dimensions="$width == 1980 && $height == 450" ngf-select ng-model="picFile" name="file" accept="image/*" ngf-max-size="2MB" ngf-model-invalid="errorFile">
+                    Escolher imagem <input  type="file" ngf-select ng-model="picFile" name="file" accept="image/*" ngf-max-size="2MB" ngf-model-invalid="errorFile">
                 </span>
                 <button class="btn btn-danger" ng-click="picFile = null" ng-show="picFile" type="button">Remover Imagem</button>
                 <i ng-show="form.file.$error.maxSize || form.fileDrop.$error.maxSize" style="margin-left: 10px;">
                     Arquivo muito grande <% errorFile.size / 1000000|number:1 %>MB: máximo 2MB
                     <div class="btn btn-danger" ng-click="limparImagem()">Cancelar</div>
                 </i>
-                <i ng-show="form.file.$error.dimensions || form.fileDrop.$error.dimensions" style="margin-left: 10px;">
-                    Tamanho inválido! O tamanho deve ser de 1980x450
-                    <div class="btn btn-danger" ng-click="limparImagem()">Cancelar</div>
-                </i>
 
                 <br><br>
-                @include('cms::webdoor._form')
+
+                <span class="btn btn-primary btn-file" ng-show="!fileArquivo">
+                    Escolher Arquivo<input  type="file" ngf-select ng-model="fileArquivo" name="fileArquivo" accept="application/pdf,.zip,.rar,.doc,.docx,.xlsx,.xls" ngf-max-size="100MB" ngf-model-invalid="errorFile">
+                </span>
+                <a ng-show="fileArquivo"><% fileArquivo.name %></a>
+
+
+                <br><br>
+                @include('cms::item._form')
                 <div class="row">
                     <div class="col-md-1 col-lg-1 col-xs-3">
-                        <button class="btn btn-info" type="button" ng-click="inserir(picFile)" ng-disabled="form.$invalid">Salvar</button>
+                        <button class="btn btn-info" type="button" ng-click="inserir(picFile, fileArquivo)" ng-disabled="form.$invalid">Salvar</button>
                     </div>
                     <div class="col-md-2 col-lg-2 col-xs-6">
                         <span class="progress" ng-show="picFile.progress >= 0">
@@ -72,24 +76,24 @@
                         <input class="form-control" type="text" ng-model="dadoPesquisa" placeholder="Faça sua busca"/>
                     </div>
                     <br>
-                    <div><% mensagemWebdoorr %></div>
+                    <div><% mensagemItemr %></div>
                     <div ng-show="processandoListagem"><i class="fa fa-spinner fa-spin"></i> Processando...</div>
                     <h2 class="tabela_vazia" ng-show="!processandoListagem && totalItens==0">Nenhum registro encontrado!</h2>
                     <table ng-show="totalItens>0" class="table table-striped">
                         <thead>
                         <tr>
-                            <th ng-click="ordernarPor('id')" style="webdoorr:pointer;">
+                            <th ng-click="ordernarPor('id')" style="itemr:pointer;">
                                 Id
                                 <i ng-if="ordem=='id' && sentidoOrdem=='asc'" class="fa fa-angle-double-down"></i>
                                 <i ng-if="ordem=='id' && sentidoOrdem=='desc'" class="fa fa-angle-double-up"></i>
                             </th>
                             <th>Imagem</th>
-                            <th ng-click="ordernarPor('webdoor')" style="webdoorr:pointer;">
-                                Webdoor
-                                <i ng-if="ordem=='webdoor' && sentidoOrdem=='asc'" class="fa fa-angle-double-down"></i>
-                                <i ng-if="ordem=='webdoor' && sentidoOrdem=='desc'" class="fa fa-angle-double-up"></i>
+                            <th ng-click="ordernarPor('item')" style="itemr:pointer;">
+                                Item
+                                <i ng-if="ordem=='item' && sentidoOrdem=='asc'" class="fa fa-angle-double-down"></i>
+                                <i ng-if="ordem=='item' && sentidoOrdem=='desc'" class="fa fa-angle-double-up"></i>
                             </th>
-                            <th ng-click="ordernarPor('posicao')" style="webdoorr:pointer;">
+                            <th ng-click="ordernarPor('posicao')" style="itemr:pointer;">
                                 Posição
                                 <i ng-if="ordem=='posicao' && sentidoOrdem=='asc'" class="fa fa-angle-double-down"></i>
                                 <i ng-if="ordem=='posicao' && sentidoOrdem=='desc'" class="fa fa-angle-double-up"></i>
@@ -98,22 +102,22 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr ng-repeat="webdoor in webdoors">
-                            <td><% webdoor.id %></td>
-                            <td><img ng-show="webdoor.imagem" ng-src="/imagens/webdoors/xs-<% webdoor.imagem %>" width="60"></td>
-                            <td><a href="cms/webdoor/<% webdoor.id %>"><% webdoor.titulo %></a></td>
-                            <td><a href="cms/webdoor/<% webdoor.id %>"><% webdoor.posicao %></a></td>
+                        <tr ng-repeat="item in items">
+                            <td><% item.id %></td>
+                            <td><img ng-show="item.imagem" ng-src="imagens/items/xs-<% item.imagem %>" width="60"></td>
+                            <td><a href="cms/item/<% item.id %>"><% item.titulo %></a></td>
+                            <td><a href="cms/item/<% item.id %>"><% item.posicao %></a></td>
                             <td class="text-right">
                                 <div>
-                                    <a><i class="fa fa-arrow-circle-up fa-2x" title="Posição" ng-click="positionUp(webdoor.id);" style="cursor: pointer;" ng-hide="<% $first %>"></i></a>
+                                    <a><i class="fa fa-arrow-circle-up fa-2x" title="Posição" ng-click="positionUp(item.id);" style="cursor: pointer;" ng-hide="<% $first %>"></i></a>
                                     <a><i class="fa fa-minus-circle fa-2x" title="Posição"   ng-show="<% $first %>" style="color: #CCCCCC; margin-right: 5px;"></i></a>&nbsp;&nbsp;
 
-                                    <a><i class="fa fa-arrow-circle-down fa-2x" title="Posição" ng-click="positionDown(webdoor.id);"  style="cursor: pointer;" ng-hide="<% $last %>"></i></a>
-                                    <a><i class="fa fa-minus-circle fa-2x" title="Posição"   ng-show="<% $last %>" style="color: #CCCCCC; margin-right: 5px;"></i></a>
+                                    <a><i class="fa fa-arrow-circle-down fa-2x" title="Posição" ng-click="positionDown(item.id);"  style="cursor: pointer;" ng-hide="<% $last %>"></i></a>
+                                    <a><i class="fa fa-minus-circle fa-2x" title="Posição"   ng-show="<% $last %>" style="color: #CCCCCC; margin-right: 5px;"></i></a>&nbsp;&nbsp;
 
-                                    <a href="cms/webdoor/<% webdoor.id %>"><i class="fa fa-edit fa-2x" title="Editar"></i></a>&nbsp;&nbsp;
-                                    <a  ng-class="<% webdoor.status %> == 1 ? 'color-success' : 'color-success-inactive'"  style="cursor: pointer;"><i class="fa fa-check-circle fa-2x" aria-hidden="true" ng-click="status(webdoor.id);"></i></a>
-                                    <a><i data-toggle="modal" data-target="#modalExcluir" class="fa fa-remove fa-2x" ng-click="perguntaExcluir(webdoor.id, webdoor.titulo, webdoor.imagem)"></i></a>
+                                    <a href="cms/item/<% item.id %>"><i class="fa fa-edit fa-2x" title="Editar"></i></a>&nbsp;&nbsp;
+                                    <a  ng-class="<% item.status %> == 1 ? 'color-success' : 'color-success-inactive'"  style="cursor: pointer;"><i class="fa fa-check-circle fa-2x" aria-hidden="true" ng-click="status(item.id);"></i></a>
+                                    <a><i data-toggle="modal" data-target="#modalExcluir" class="fa fa-remove fa-2x" ng-click="perguntaExcluir(item.id, item.titulo, item.imagem)"></i></a>
                                 </div>
                             </td>
                         </tr>
@@ -157,7 +161,7 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-md-3">
-                                <img  ng-src="/imagens/webdoors/xs-<% imagemExcluir %>" width="100">
+                                <img  ng-src="imagens/items/xs-<% imagemExcluir %>" width="100">
                             </div>
                             <div class="col-md-9">
                                 <p><% tituloExcluir %></p>

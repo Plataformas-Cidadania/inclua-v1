@@ -1,4 +1,4 @@
-cmsApp.controller('alterarItemCtrl', ['$scope', '$http', 'Upload', '$timeout', function($scope, $http, Upload, $timeout){
+cmsApp.controller('alterarTipoCtrl', ['$scope', '$http', 'Upload', '$timeout', function($scope, $http, Upload, $timeout){
 
     $scope.processandoSalvar = false;
     
@@ -17,9 +17,9 @@ cmsApp.controller('alterarItemCtrl', ['$scope', '$http', 'Upload', '$timeout', f
 
         if(file==null && arquivo==null){
 
-            //console.log($scope.item);
-            $http.post("cms/alterar-item/"+$scope.id, {
-                'item': $scope.item,
+            //console.log($scope.tipo);
+            $http.post("cms/alterar-tipo/"+$scope.id, {
+                'tipo': $scope.tipo,
                 'removerImagem': $scope.removerImagem,
                 'removerArquivo': $scope.removerArquivo
             }).success(function (data){
@@ -36,7 +36,7 @@ cmsApp.controller('alterarItemCtrl', ['$scope', '$http', 'Upload', '$timeout', f
         }else{
 
             var data1 = {
-                item: $scope.item,
+                tipo: $scope.tipo,
                 'removerImagem': $scope.removerImagem,
                 'removerArquivo': $scope.removerArquivo
             };
@@ -49,7 +49,7 @@ cmsApp.controller('alterarItemCtrl', ['$scope', '$http', 'Upload', '$timeout', f
             }
 
             Upload.upload({
-                url: 'cms/alterar-item/'+$scope.id,
+                url: 'cms/alterar-tipo/'+$scope.id,
                 data: data1
             }).then(function (response) {
                 $timeout(function () {
@@ -59,7 +59,7 @@ cmsApp.controller('alterarItemCtrl', ['$scope', '$http', 'Upload', '$timeout', f
                 //$scope.fileArquivo = null;//limpa o file
                 $scope.mensagemSalvar =  "Gravado com sucesso!";
                 $scope.removerImagem = false;
-                $scope.imagemBD = '/imagens/items/'+response.data;
+                $scope.imagemBD = '/imagens/tipos/'+response.data;
                 $scope.processandoSalvar = false;
 
             }, function (response) {
@@ -91,7 +91,7 @@ cmsApp.controller('alterarItemCtrl', ['$scope', '$http', 'Upload', '$timeout', f
 
     $scope.carregaImagem  = function(img, arquivo) {
         if(img!=''){
-            $scope.imagemBD = 'imagens/items/xs-'+img;
+            $scope.imagemBD = 'imagens/tipos/xs-'+img;
             //console.log($scope.imagemBD);
         }
         if(arquivo!=''){

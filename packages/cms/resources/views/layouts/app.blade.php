@@ -75,9 +75,6 @@
                 <li class="active">
                     <a href="cms"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                 </li>
-                {{--<li>
-                    <a href="cms/idiomas"><i class="fa fa-fw fa-building"></i> Idiomas</a>
-                </li>--}}
                 <li>
                     <a href="cms/tipos"><i class="fa fa-cubes" aria-hidden="true"></i> Tipo</a>
                 </li>
@@ -85,95 +82,16 @@
                     <a href="cms/modulos"><i class="fa fa-fw fa-book"></i> Modulos</a>
                 </li>
                 <li>
-                    <a href="cms/mroscs"><i class="fa fa-fw fa-archive"></i> MROSC</a>
-                </li>
-                <li>
                     <a href="cms/webdoors"><i class="fa fa-fw fa-desktop"></i> Webdoor</a>
-                </li>
-<!--                <li>
-                    <a href="cms/noticias"><i class="fa fa-fw fa-newspaper-o"></i> Notícias</a>
-                </li>-->
-<!--                <li>
-                    <a href="cms/editais"><i class="fa fa-fw fa-file"></i> Editais</a>
-                </li>-->
-                <li>
-                    <a href="cms/videos"><i class="fa fa-fw fa-video-camera"></i> Vídeos</a>
-                </li>
-                <li>
-                    <a href="cms/links"><i class="fa fa-fw fa-link"></i> Links</a>
                 </li>
                 <li>
                     <a href="cms/texts"><i class="fa fa-fw fa-link"></i> Textos</a>
                 </li>
-                <li>
-                    <a href="cms/apoios"><i class="fa fa-fw fa-anchor"></i> Apoio</a>
-                </li>
-                <li>
-                    <a href="cms/teasers"><i class="fa fa-fw fa-anchor"></i> Teaser</a>
-                </li>
-                <li>
-                    <a href="cms/midias"><i class="fa fa-fw fa-anchor"></i> Mídias</a>
-                </li>
-                <li>
-                    <a href="cms/graficos"><i class="fa fa-fw fa-file-text-o"></i> Gráficos</a>
-                </li>
-
-<!--                <li>
-                    <a href="cms/publications"><i class="fa fa-fw fa-file-text-o"></i> Publicações</a>
-                </li>-->
-
-<!--                <li>
-                    <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-user"></i> Conteúdo <i class="fa fa-fw fa-caret-down"></i></a>
-                    <ul id="demo" class="collapse">
-                        <li>
-                            <a href="cms/midias"><i class="fa fa-cubes" aria-hidden="true"></i> Tipo mídias</a>
-                        </li>
-                        <li>
-                            <a href="cms/categorais"><i class="fa fa-fw fa-file-text-o"></i> Categorias</a>
-                        </li>
-                        <li>
-                            <a href="cms/posts"><i class="fa fa-fw fa-file-text-o"></i> Posts</a>
-                        </li>
-                    </ul>
-                </li>-->
-
-
                 {{--<li>
-                    <a href="cms/equipe/1"><i class="fa fa-fw fa-user"></i> Equipe</a>
+                    <a href="cms/apoios"><i class="fa fa-fw fa-anchor"></i> Apoio</a>
                 </li>--}}
-                <li>
-                    <a href="javascript:;" data-toggle="collapse" data-target="#demo1"><i class="fa fa-fw fa-user"></i> Equipe <i class="fa fa-fw fa-caret-down"></i></a>
-                    <ul id="demo1" class="collapse">
-                        {{--<li>
-                            <a href="cms/equipe/1">Descrição</a>
-                        </li>--}}
-                        <li>
-                            <a href="cms/integrantes">Integrantes</a>
-                        </li>
-                        <li>
-                            <a href="cms/versoes">Versões</a>
-                        </li>
-                    </ul>
-                </li>
 
-                <li>
-                    <a href="javascript:;" data-toggle="collapse" data-target="#demo-marca"><i
-                            class="fa fa-fw fa-arrows-v"></i> Marca <i class="fa fa-fw fa-caret-down"></i></a>
-                    <ul id="demo-marca" class="collapse">
-                        {{--<li>
-                            <a href="cms/quemsomos/8/marca">Descrição</a>
-                        </li>--}}
-                        <li>
-                            <a href="cms/directives">Diretivas</a>
-                        </li>
-                        <li>
-                            <a href="cms/artworks">Artes</a>
-                        </li>
-                        <li>
-                            <a href="cms/printings">Impressões</a>
-                        </li>
-                    </ul>
-                </li>
+
 
                 <li>
                     <a href="cms/usuarios"><i class="fa fa-fw fa-users"></i> Usuários</a>

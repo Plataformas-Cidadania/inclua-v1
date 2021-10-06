@@ -11,18 +11,18 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Intervention\Image\Facades\Image;
 
-class ModuloController extends Controller
+class TipoController extends Controller
 {
 
 
 
     public function __construct()
     {
-        $this->modulo = new \App\Models\Modulo;
+        $this->tipo = new \App\Models\Tipo;
         $this->campos = [
-            'imagem', 'titulo', 'descricao', 'arquivo', 'slug', 'tipo_id', 'show', 'cmsuser_id',
+            'imagem', 'titulo', 'arquivo', 'cmsuser_id',
         ];
-        $this->pathImagem = public_path().'/imagens/modulos';
+        $this->pathImagem = public_path().'/imagens/tipos';
         $this->sizesImagem = [
             'xs' => ['width' => 140, 'height' => 79],
             'sm' => ['width' => 480, 'height' => 270],
@@ -31,18 +31,17 @@ class ModuloController extends Controller
         ];
         $this->widthOriginal = true;
 
-        $this->pathArquivo = public_path().'/arquivos/modulos';
+        $this->pathArquivo = public_path().'/arquivos/tipos';
     }
 
     function index()
     {
 
-        $tipos = \App\Models\Tipo::pluck('titulo', 'id')->all();
-        $modulos = \App\Models\Modulo::all();
+        $tipos = \App\Models\Tipo::all();
         //$idiomas = \App\Idioma::lists('titulo', 'id')->all();
 
 
-        return view('cms::modulo.listar', ['modulos' => $modulos, 'tipos' => $tipos/*, 'idiomas' => $idiomas*/]);
+        return view('cms::tipo.listar', ['tipos' => $tipos/*, 'idiomas' => $idiomas*/]);
     }
 
     public function listar(Request $request)
@@ -54,14 +53,14 @@ class ModuloController extends Controller
 
         $campos = explode(", ", $request->campos);
 
-        $modulos = DB::table('modulos')
+        $tipos = DB::table('tipos')
             ->select($campos)
             ->where([
                 [$request->campoPesquisa, 'ilike', "%$request->dadoPesquisa%"],
             ])
             ->orderBy($request->ordem, $request->sentido)
             ->paginate($request->itensPorPagina);
-        return $modulos;
+        return $tipos;
     }
 
 
@@ -70,18 +69,13 @@ class ModuloController extends Controller
 
         $data = $request->all();
 
-        $data['modulo'] += ['cmsuser_id' => auth()->guard('cms')->user()->id];//adiciona id do usuario
-
+        $data['tipo'] += ['cmsuser_id' => auth()->guard('cms')->user()->id];//adiciona id do usuario
 
         //verifica se o index do campo existe no array e caso não exista inserir o campo com valor vazio.
         foreach($this->campos as $campo){
             if(!array_key_exists($campo, $data)){
-                $data['modulo'] += [$campo => ''];
+                $data['tipo'] += [$campo => ''];
             }
-        }
-
-        if(empty($data['modulo']['tipo_id'])){
-            $data['modulo']['tipo_id'] = 0;
         }
 
         $file = $request->file('file');
@@ -94,7 +88,7 @@ class ModuloController extends Controller
             $imagemCms = new ImagemCms();
             $successFile = $imagemCms->inserir($file, $this->pathImagem, $filename, $this->sizesImagem, $this->widthOriginal);
             if($successFile){
-                $data['modulo']['imagem'] = $filename;
+                $data['tipo']['imagem'] = $filename;
             }
         }
 
@@ -103,47 +97,46 @@ class ModuloController extends Controller
             $filenameArquivo = rand(1000,9999)."-".clean($arquivo->getClientOriginalName());
             $successArquivo = $arquivo->move($this->pathArquivo, $filenameArquivo);
             if($successArquivo){
-                $data['modulo']['arquivo'] = $filenameArquivo;
+                $data['tipo']['arquivo'] = $filenameArquivo;
             }
         }
 
 
         if($successFile && $successArquivo){
-            return $this->modulo->create($data['modulo']);
+            return $this->tipo->create($data['tipo']);
         }else{
             return "erro";
         }
 
 
-        return $this->modulo->create($data['modulo']);
+        return $this->tipo->create($data['tipo']);
 
     }
 
     public function detalhar($id)
     {
-        $tipos = \App\Models\Tipo::pluck('titulo', 'id')->all();
-        $modulo = $this->modulo->where([
+        $tipo = $this->tipo->where([
             ['id', '=', $id],
         ])->firstOrFail();
         //$idiomas = \App\Idioma::lists('titulo', 'id')->all();
 
-        return view('cms::modulo.detalhar', ['modulo' => $modulo, 'tipos' => $tipos/*, 'idiomas' => $idiomas*/]);
+        return view('cms::tipo.detalhar', ['tipo' => $tipo/*, 'idiomas' => $idiomas*/]);
     }
 
     /*public function alterar(Request $request, $id)
     {
         $data = $request->all();
-        $data['modulo'] += ['cmsuser_id' => auth()->guard('cms')->user()->id];//adiciona id do usuario
+        $data['tipo'] += ['cmsuser_id' => auth()->guard('cms')->user()->id];//adiciona id do usuario
 
         //verifica se o index do campo existe no array e caso não exista inserir o campo com valor vazio.
         foreach($this->campos as $campo){
             if(!array_key_exists($campo, $data)){
                 if($campo!='imagem'){
-                    $data['modulo'] += [$campo => ''];
+                    $data['tipo'] += [$campo => ''];
                 }
             }
         }
-        $modulo = $this->modulo->where([
+        $tipo = $this->tipo->where([
             ['id', '=', $id],
         ])->firstOrFail();
 
@@ -152,11 +145,11 @@ class ModuloController extends Controller
         if($file!=null){
             $filename = rand(1000,9999)."-".clean($file->getClientOriginalName());
             $imagemCms = new ImagemCms();
-            $success = $imagemCms->alterar($file, $this->pathImagem, $filename, $this->sizesImagem, $this->widthOriginal, $modulo);
+            $success = $imagemCms->alterar($file, $this->pathImagem, $filename, $this->sizesImagem, $this->widthOriginal, $tipo);
             if($success){
-                $data['modulo']['imagem'] = $filename;
-                $modulo->update($data['modulo']);
-                return $modulo->imagem;
+                $data['tipo']['imagem'] = $filename;
+                $tipo->update($data['tipo']);
+                return $tipo->imagem;
             }else{
                 return "erro";
             }
@@ -164,13 +157,13 @@ class ModuloController extends Controller
 
         //remover imagem
         if($data['removerImagem']){
-            $data['modulo']['imagem'] = '';
-            if(file_exists($this->pathImagem."/".$modulo->imagem)) {
-                unlink($this->pathImagem . "/" . $modulo->imagem);
+            $data['tipo']['imagem'] = '';
+            if(file_exists($this->pathImagem."/".$tipo->imagem)) {
+                unlink($this->pathImagem . "/" . $tipo->imagem);
             }
         }
 
-        $modulo->update($data['modulo']);
+        $tipo->update($data['tipo']);
         return "Gravado com sucesso";
     }*/
 
@@ -180,50 +173,48 @@ class ModuloController extends Controller
 
         //return $data;
 
-        $data['modulo'] += ['cmsuser_id' => auth()->guard('cms')->user()->id];//adiciona id do usuario
+        $data['tipo'] += ['cmsuser_id' => auth()->guard('cms')->user()->id];//adiciona id do usuario
 
         //verifica se o index do campo existe no array e caso não exista inserir o campo com valor vazio.
         foreach($this->campos as $campo){
             if(!array_key_exists($campo, $data)){
                 if($campo!='imagem' && $campo!='arquivo'){
-                    $data['modulo'] += [$campo => ''];
+                    $data['tipo'] += [$campo => ''];
                 }
             }
         }
-        $modulo = $this->modulo->where([
+        $tipo = $this->tipo->where([
             ['id', '=', $id],
         ])->firstOrFail();
 
-        if(empty($data['modulo']['tipo_id'])){
-            $data['modulo']['tipo_id'] = 0;
-        }
 
         $file = $request->file('file');
         $arquivo = $request->file('arquivo');
 
         //remover imagem
         if($data['removerImagem']){
-            $data['modulo']['imagem'] = '';
-            if(file_exists($this->pathImagem."/".$modulo->imagem)) {
-                unlink($this->pathImagem . "/" . $modulo->imagem);
+            $data['tipo']['imagem'] = '';
+            if(file_exists($this->pathImagem."/".$tipo->imagem)) {
+                unlink($this->pathImagem . "/" . $tipo->imagem);
             }
         }
 
 
         if($data['removerArquivo']){
-            $data['modulo']['arquivo'] = '';
-            if(file_exists($this->pathArquivo."/".$modulo->arquivo)) {
-                unlink($this->pathArquivo . "/" . $modulo->arquivo);
+            $data['tipo']['arquivo'] = '';
+            if(file_exists($this->pathArquivo."/".$tipo->arquivo)) {
+                unlink($this->pathArquivo . "/" . $tipo->arquivo);
             }
         }
+
 
         $successFile = true;
         if($file!=null){
             $filename = rand(1000,9999)."-".clean($file->getClientOriginalName());
             $imagemCms = new ImagemCms();
-            $successFile = $imagemCms->alterar($file, $this->pathImagem, $filename, $this->sizesImagem, $this->widthOriginal, $modulo);
+            $successFile = $imagemCms->alterar($file, $this->pathImagem, $filename, $this->sizesImagem, $this->widthOriginal, $tipo);
             if($successFile){
-                $data['modulo']['imagem'] = $filename;
+                $data['tipo']['imagem'] = $filename;
             }
         }
 
@@ -232,19 +223,19 @@ class ModuloController extends Controller
             $filenameArquivo = rand(1000,9999)."-".clean($arquivo->getClientOriginalName());
             $successArquivo = $arquivo->move($this->pathArquivo, $filenameArquivo);
             if($successArquivo){
-                $data['modulo']['arquivo'] = $filenameArquivo;
+                $data['tipo']['arquivo'] = $filenameArquivo;
             }
         }
 
         if($successFile && $successArquivo){
 
-            $modulo->update($data['modulo']);
-            return $modulo->imagem;
+            $tipo->update($data['tipo']);
+            return $tipo->imagem;
         }else{
             return "erro";
         }
 
-        //$modulo->update($data['modulo']);
+        //$tipo->update($data['tipo']);
         //return "Gravado com sucesso";
     }
 
@@ -252,33 +243,32 @@ class ModuloController extends Controller
     {
         //Auth::loginUsingId(2);
 
-        $modulo = $this->modulo->where([
+        $tipo = $this->tipo->where([
             ['id', '=', $id],
         ])->firstOrFail();
 
         //remover imagens
-        if(!empty($modulo->imagem)){
+        if(!empty($tipo->imagem)){
             //remover imagens
             $imagemCms = new ImagemCms();
-            $imagemCms->excluir($this->pathImagem, $this->sizesImagem, $modulo);
+            $imagemCms->excluir($this->pathImagem, $this->sizesImagem, $tipo);
         }
 
 
-        if(!empty($modulo->arquivo)) {
-            if (file_exists($this->pathArquivo . "/" . $modulo->arquivo)) {
-                unlink($this->pathArquivo . "/" . $modulo->arquivo);
+        if(!empty($tipo->arquivo)) {
+            if (file_exists($this->pathArquivo . "/" . $tipo->arquivo)) {
+                unlink($this->pathArquivo . "/" . $tipo->arquivo);
             }
         }
 
-        $modulo->delete();
+        $tipo->delete();
 
     }
-
     public function status($id)
     {
-        $tipo_atual = DB::table('modulos')->where('id', $id)->first();
+        $tipo_atual = DB::table('tipos')->where('id', $id)->first();
         $status = $tipo_atual->status == 0 ? 1 : 0;
-        DB::table('modulos')->where('id', $id)->update(['status' => $status]);
+        DB::table('tipos')->where('id', $id)->update(['status' => $status]);
 
     }
 

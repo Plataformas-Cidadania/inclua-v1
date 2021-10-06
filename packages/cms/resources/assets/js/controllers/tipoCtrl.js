@@ -1,41 +1,41 @@
-cmsApp.controller('textCtrl', ['$scope', '$http', 'Upload', '$timeout', function($scope, $http, Upload, $timeout){
-
-
-    $scope.texts = [];
+cmsApp.controller('tipoCtrl', ['$scope', '$http', 'Upload', '$timeout', function($scope, $http, Upload, $timeout){
+    
+    $scope.tipos = [];
     $scope.currentPage = 1;
     $scope.lastPage = 0;
     $scope.totalItens = 0;
     $scope.maxSize = 5;
     $scope.itensPerPage = 10;
     $scope.dadoPesquisa = '';
-    $scope.campos = "id, titulo, imagem";
+    $scope.campos = "id, titulo, imagem, status";
     $scope.campoPesquisa = "titulo";
     $scope.processandoListagem = false;
     $scope.processandoExcluir = false;
-    $scope.ordem = "id";
+    $scope.ordem = "titulo";
     $scope.sentidoOrdem = "asc";
     var $listar = false;//para impedir de carregar o conteúdo dos watchs no carregamento da página.
 
     $scope.$watch('currentPage', function(){
         if($listar){
-            listarTexts();
+            listarTipos();
         }
     });
     $scope.$watch('itensPerPage', function(){
         if($listar){
-            listarTexts();
+            listarTipos();
         }
     });
-    $scope.$watch('dadoText', function(){
+    $scope.$watch('dadoPesquisa', function(){
         if($listar){
-            listarTexts();
+            listarTipos();
         }
     });
 
-    var listarTexts = function(){
+
+    var listarTipos = function(){
         $scope.processandoListagem = true;
         $http({
-            url: 'cms/listar-texts',
+            url: 'cms/listar-tipos',
             method: 'GET',
             params: {
                 page: $scope.currentPage,
@@ -47,7 +47,7 @@ cmsApp.controller('textCtrl', ['$scope', '$http', 'Upload', '$timeout', function
                 sentido: $scope.sentidoOrdem
             }
         }).success(function(data, status, headers, config){
-            $scope.texts = data.data;
+            $scope.tipos = data.data;
             $scope.lastPage = data.last_page;
             $scope.totalItens = data.total;
             $scope.primeiroDaPagina = data.from;
@@ -61,26 +61,6 @@ cmsApp.controller('textCtrl', ['$scope', '$http', 'Upload', '$timeout', function
         });
     };
 
-    /*$scope.loadMore = function() {
-     $scope.currentPage +=1;
-     $http({
-     url: '/api/texts/'+$scope.itensPerPage,
-     method: 'GET',
-     params: {page:  $scope.currentPage}
-     }).success(function (data, status, headers, config) {
-     $scope.lastPage = data.last_page;
-     $scope.totalItens = data.total;
-
-     console.log("total: "+$scope.totalItens);
-     console.log("lastpage: "+$scope.lastPage);
-     console.log("currentpage: "+$scope.currentPage);
-
-     $scope.texts = data.data;
-
-     //$scope.texts = $scope.texts.concat(data.data);
-
-     });
-     };*/
 
 
     $scope.ordernarPor = function(ordem){
@@ -92,35 +72,33 @@ cmsApp.controller('textCtrl', ['$scope', '$http', 'Upload', '$timeout', function
             $scope.sentidoOrdem = "asc";
         }
 
-        listarTexts();
+        listarTipos();
     };
 
     $scope.validar = function(){
 
     };
+    
 
-
-    listarTexts();
+    listarTipos();
 
     //INSERIR/////////////////////////////
 
     $scope.tinymceOptions = tinymceOptions;
-
     $scope.mostrarForm = false;
-
     $scope.processandoInserir = false;
 
-    $scope.inserir = function (file){
+    $scope.inserir = function (file, arquivo){
 
         $scope.mensagemInserir = "";
 
-        if(file==null){
+        if(file==null && arquivo==null){
             $scope.processandoInserir = true;
 
-            //console.log($scope.text);
-            $http.post("cms/inserir-text", {text: $scope.text}).success(function (data){
-                 listarTexts();
-                 delete $scope.text;//limpa o form
+            //console.log($scope.tipo);
+            $http.post("cms/inserir-tipo", {tipo: $scope.tipo}).success(function (data){
+                 listarTipos();
+                 delete $scope.tipo;//limpa o form
                 $scope.mensagemInserir =  "Gravado com sucesso!";
                 $scope.processandoInserir = false;
              }).error(function(data){
@@ -128,27 +106,30 @@ cmsApp.controller('textCtrl', ['$scope', '$http', 'Upload', '$timeout', function
                 $scope.processandoInserir = false;
              });
         }else{
-            file.upload = Upload.upload({
-                url: 'cms/inserir-text',
-                data: {text: $scope.text, file: file},
-            });
 
-            file.upload.then(function (response) {
+
+            Upload.upload({
+                url: 'cms/inserir-tipo',
+                data: {tipo: $scope.tipo, file: file, arquivo: arquivo},
+            }).then(function (response) {
                 $timeout(function () {
-                    file.result = response.data;
+                    $scope.result = response.data;
                 });
-                delete $scope.text;//limpa o form
+                console.log(response.data);
+                delete $scope.tipo;//limpa o form
                 $scope.picFile = null;//limpa o file
-                listarTexts();
+                $scope.fileArquivo = null;//limpa o file
+                listarTipos();
                 $scope.mensagemInserir =  "Gravado com sucesso!";
             }, function (response) {
+                console.log(response.data);
                 if (response.status > 0){
                     $scope.errorMsg = response.status + ': ' + response.data;
                 }
             }, function (evt) {
                 //console.log(evt);
                 // Math.min is to fix IE which reports 200% sometimes
-                file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+                $scope.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
             });
         }
 
@@ -180,20 +161,43 @@ cmsApp.controller('textCtrl', ['$scope', '$http', 'Upload', '$timeout', function
     $scope.excluir = function(id){
         $scope.processandoExcluir = true;
         $http({
-            url: 'cms/excluir-text/'+id,
+            url: 'cms/excluir-tipo/'+id,
             method: 'GET'
         }).success(function(data, status, headers, config){
             console.log(data);
             $scope.processandoExcluir = false;
             $scope.excluido = true;
             $scope.mensagemExcluido = "Excluído com sucesso!";
-            listarTexts();
+            listarTipos();
         }).error(function(data){
             $scope.message = "Ocorreu um erro: "+data;
             $scope.processandoExcluir = false;
             $scope.mensagemExcluido = "Erro ao tentar excluir!";
         });
     };
+
+    $scope.status = function(id){
+        //console.log(id);
+        $scope.mensagemStatus = '';
+        $scope.idStatus = '';
+        $scope.processandoStatus = true;
+        $http({
+            url: 'cms/status-tipo/'+id,
+            method: 'GET'
+        }).success(function(data, status, headers, config){
+            //console.log(data);
+            $scope.processandoStatus = false;
+            //$scope.excluido = true;
+            $scope.mensagemStatus = 'color-success';
+            $scope.idStatus = id;
+            listarTipos();
+        }).error(function(data){
+            $scope.message = "Ocorreu um erro: "+data;
+            $scope.processandoStatus = false;
+            $scope.mensagemStatus = "Erro ao tentar status!";
+        });
+    };
     //////////////////////////////////
+
 
 }]);
