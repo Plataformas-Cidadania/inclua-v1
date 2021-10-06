@@ -91,7 +91,7 @@
             <div class="col-md-3 text-center">
                 <img src="img/p3.png" alt="" title="" width="70%">
             </div>
-            <div class="col-md-3 text-center">
+            <div class="col-md-2 text-center">
                 <h2>3</h2>
             </div>
             <div class="col-md-6">
@@ -106,7 +106,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <img src="img/p4.png" alt="" title="" width="70%">
+                    <img src="img/p4.png" alt="" title="" width="100%">
                 </div>
                 <div class="col-md-8">
                     <h2>“Amei! Me ajudou muito! Me fez enxergar questões que não via antes!” </h2>

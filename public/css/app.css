@@ -59,7 +59,6 @@
   --bs-body-color: #212529;
   --bs-body-bg: #f8fafc;
 }
-<<<<<<< HEAD
 
 *,
 *::before,
@@ -13278,8 +13277,8 @@ label, input, .btn-number {
 }
 
 .btn-icon {
-  width: 100px;
-  height: 100px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   background-color: #E6DACE;
   padding: 20px;
@@ -13308,8 +13307,6 @@ label, input, .btn-number {
 .clear-both {
   clear: both;
 }
-=======
->>>>>>> efe97b3e16c85c52e3bba0c22cde9026f953a080
 
 .bg-lines {
   background-image: url("/img/lines.png");
