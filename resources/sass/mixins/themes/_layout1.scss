@@ -235,3 +235,84 @@
 }
 
 
+/*Inclua*/
+.dorder-container{
+    border-left: solid 2px #707070;
+    padding: 0 0 0 5px;
+}
+.dorder-container-mai{
+    display: block;
+    min-height: 23px;
+    width: 100%;
+    background-color: $color-lgt;
+    cursor: pointer;
+}
+.dorder-container-mai:hover{
+    background-color: $color-lgt2;
+}
+.dorder-container-line{
+    background-color: #FFFFFF;
+    width: 55%;
+    float: right;
+    text-transform: uppercase;
+    padding-left: 20px;
+}
+.dorder-container-line h2{
+    font-weight: bold;
+    font-size: 18px;
+    float: left;
+}
+.dorder-container-box{
+    width: 20px;
+    height: 23px;
+    margin-left: 20px;
+    float: left;
+}
+.btn-icon{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: $color-lgt2;
+    padding: 20px;
+    margin: 20px;
+    float: left;
+}
+.btn-icon{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: $color-lgt2;
+    padding: 20px;
+    margin: 20px;
+    float: left;
+    border: solid 2px #FFFFFF;
+}
+.btn-icon-h2{
+    float: left;
+    line-height: 108px;
+    margin-top: 10px;
+    padding-left: 15px;
+}
+.clear-both{
+    clear: both;
+}
+.bg-lines{
+    background-image: url("/img/lines.png");
+    background-repeat: no-repeat;
+    background-position: left;
+}
+
+@media  only screen and (max-width : 768px) {
+    .btn-icon{
+        position: relative;
+        margin: 10px auto;
+        float: none;
+        top: 20px;
+    }
+    .btn-icon-h2{
+        text-align: center;
+        float: none;
+        padding-left: 0;
+    }
+}
+
