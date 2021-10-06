@@ -18,7 +18,7 @@ class WebdoorController extends Controller
 
     public function __construct()
     {
-        $this->webdoor = new \App\Webdoor;
+        $this->webdoor = new \App\Models\Webdoor;
         $this->campos = [
             'imagem', 'titulo', 'descricao', 'link', 'legenda', 'posicao', 'cmsuser_id',
         ];
@@ -35,7 +35,7 @@ class WebdoorController extends Controller
     function index()
     {
 
-        $webdoors = \App\Webdoor::all();
+        $webdoors = \App\Models\Webdoor::all();
 
         return view('cms::webdoor.listar', ['webdoors' => $webdoors]);
     }
