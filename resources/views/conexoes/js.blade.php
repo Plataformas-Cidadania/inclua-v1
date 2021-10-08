@@ -109,31 +109,14 @@
     get_location();
 </script>
 
-<script src="js/components/login/menuUsuario.js"></script>
-<script src="js/components/login/menuUsuarioMobile.js"></script>
 
-@if($rota=='detalhar/{id}/{title}' || $rota=='detalhar/{id}')
-    <script src="https://cdn.jsdelivr.net/npm/prop-types@15.7.2/prop-types.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-    <script src="https://cdn.jsdelivr.net/npm/react-apexcharts@1.3.6/dist/react-apexcharts.iife.min.js"></script>
-    <script src="js/components/charts/polarChart.js"></script>
-    <script src="js/components/osc/preenchimento.js"></script>
-    <script src="js/components/osc/selo.js"></script>
-@endif
 @if($rota=='/')
     <script>
         app_url = "{{env('APP_URL')}}";
     </script>
 
-<script src="js/conf-owl-carousel.js"></script>
-
-
-<script src="https://cdn.jsdelivr.net/npm/prop-types@15.7.2/prop-types.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-<script src="https://cdn.jsdelivr.net/npm/react-apexcharts@1.3.6/dist/react-apexcharts.iife.min.js"></script>
-
-
-
+    <script src="js/home.js" ></script>
+    <script src="js/conf-owl-carousel.js"></script>
 
 
 
@@ -141,40 +124,8 @@
 
 
 
-@if($rota=='localidade/{id}')
-    <script src="js/lib/apexcharts/prop-types.min.js"></script>
-    <script src="js/lib/apexcharts/apexcharts.js"></script>
-    <script src="js/lib/apexcharts/react-apexcharts.iife.min.js"></script>
-
-<script src="js/components/charts/mixedChart.js"></script>
-<script src="js/components/charts/columnChart.js"></script>
-<script src="js/components/charts/pieChart.js"></script>
-    <!--
-    <script src="js/components/charts/textCharts.js"></script>
-    <script src="js/components/charts/page/textChart.js"></script>-->
-<script src="js/components/localidade/perfil.js"></script>
-@endif
 
 
-@if($rota=='mapa' || $rota=='mapa/{origem}' || $rota=='mapa-busca-avancada')
-    <script src="js/components/forms/search.js"></script>
-    <script src="js/leaflet.js"></script>
-    <script src="js/components/maps/visualizarFiltros.js"></script>
-    <script src="js/components/maps/oscMap.js"></script>
-    <script src="js/components/maps/page/page.js"></script>
-@endif
-
-
-<script>
-    // Basic usage of $.animateScroll.
-    //$('#iniciodorodape a', '#acessibilidade a').animateScroll();
-
-    // $.animateScroll with options.
-    /*$('.link-to-menu').animateScroll({
-        speed: 800,
-        offset: 30
-    });*/
-</script>
 <script>
     $(document).ready(function(){
         var fonte = 15;
@@ -272,49 +223,7 @@
     <script src="js/leaflet.js"></script>
     <script src="js/components/maps/address.js"></script>
 @endif
-@if($rota=="filtro")
-    <script>
-        csrf_token = '<?php echo csrf_token(); ?>';
-    </script>
-    <script src="js/components/forms/range.js"></script>
-    <script src="js/components/forms/filter.js"></script>
-    <script src="js/components/forms/page/api.js"></script>
-    <script src="js/utils.js"></script>
-@endif
 
-@if($rota=="artigo/{id}/{titulo}")
-    <script src="js/components/forms/comment.js"></script>
-    <script src="js/utils.js"></script>
-@endif
-
-{{--@if($rota=="artigos" || $rota=="artigos/{id_segment}" || $rota=="artigos/{titulo}" || $rota=="artigos/{parameters}")--}}
-@if($rota=="posts/{midia_id}/{midia}")
-    <script src="js/components/posts/search.js"></script>
-    <script src="js/components/posts/filterCategories.js"></script>
-    <script src="js/components/posts/filterMembers.js"></script>
-    <script src="js/components/posts/filterArchives.js"></script>
-    <script src="js/components/posts/filters.js"></script>
-    <script src="js/components/posts/list.js"></script>
-    <script src="js/utils.js"></script>
-@endif
-
-{{--Área Restrita--}}
-@if($rota=="login/{carrinho}" || $rota=="login")
-    <script src="js/components/login/preRegister.js"></script>
-    <script src="js/components/login/forgetPassword.js"></script>
-    <script src="js/components/login/login.js"></script>
-@endif
-{{--@if($rota=="reset-password/{token}/{email}")--}}
-@if($rota=="redefinir-senha/{id_usuario}/{hash}")
-    <script src="js/components/login/resetPassword.js"></script>
-@endif
-@if($rota=="osc-user/{id}")
-    <script>
-        localStorage.setItem('@App:id_osc', {{$id}});
-        id = localStorage.getItem('@App:id_osc');
-    </script>
-    <script src="js/components/user-area/osc.js"></script>
-@endif
 
 
 

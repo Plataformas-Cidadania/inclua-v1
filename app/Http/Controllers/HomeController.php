@@ -16,10 +16,10 @@ class HomeController extends Controller
 
         //return view('home');
 
-        $webdoors = \App\Webdoor::orderBy('posicao')->where('status', 1)->get();
-        $text1 = \App\Text::where('slug', 'diagnostico')->first();
-        $text2 = \App\Text::where('slug', 'resultado')->first();
-        $text3 = \App\Text::where('slug', 'recursos')->first();
+        $webdoors = \App\Models\Webdoor::orderBy('posicao')->where('status', 1)->get();
+        $text1 = \App\Models\Text::where('slug', 'diagnostico')->first();
+        $text2 = \App\Models\Text::where('slug', 'resultado')->first();
+        $text3 = \App\Models\Text::where('slug', 'recursos')->first();
 
 
 
