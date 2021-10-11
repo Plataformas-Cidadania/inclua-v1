@@ -16,7 +16,7 @@ class ModuloController extends Controller{
     private $page;
 
     public function __construct(){
-        $this->obj = new \App\Modulo();
+        $this->obj = new \App\Models\Modulo();
         $this->page = 'page';
     }
 

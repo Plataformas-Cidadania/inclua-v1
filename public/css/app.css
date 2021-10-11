@@ -13314,6 +13314,15 @@ label, input, .btn-number {
   background-position: left;
 }
 
+.number-circle {
+  font-size: 30px;
+  line-height: 70px;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  margin: auto;
+}
+
 @media only screen and (max-width: 768px) {
   .btn-icon {
     position: relative;

@@ -50,7 +50,7 @@
                 <img src="img/p1.png" alt="" title="" width="70%">
             </div>
             <div class="col-md-3 text-center">
-                <h2>1</h2>
+                <h2 class="number-circle bg-lgt2">1</h2>
             </div>
             <div class="col-md-6">
                 <h3>Diagnóstico</h3>
@@ -68,7 +68,7 @@
 
         <div class="row">
             <div class="col-md-3 text-center">
-                <h2>2</h2>
+                <h2 class="number-circle bg-lgt2">2</h2>
             </div>
             <div class="col-md-6">
                 <h3>Diagnóstico</h3>
@@ -92,7 +92,7 @@
                 <img src="img/p3.png" alt="" title="" width="70%">
             </div>
             <div class="col-md-2 text-center">
-                <h2>3</h2>
+                <h2 class="number-circle bg-lgt2">3</h2>
             </div>
             <div class="col-md-6">
                 <h3>Diagnóstico</h3>

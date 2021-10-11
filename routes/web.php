@@ -41,6 +41,8 @@ require __DIR__.'/auth.php';
 */
 Route::get('/', 'App\Http\Controllers\HomeController@index');
 
+Route::get('contato', 'App\Http\Controllers\ContactController@email');
+Route::post('contact', 'App\Http\Controllers\ContactController@send');
 
 $routes = [
     ['Page', 'sobres', 'sobre'],
@@ -59,13 +61,13 @@ foreach ($routesSearch as $route) {
 }
 
 #if(env('DYNAMIC_ROUTES')=='true'){
-    /*$modulos = \Illuminate\Support\Facades\DB::table('modulos')->select('slug')->get();
+    $modulos = \Illuminate\Support\Facades\DB::table('modulos')->select('slug')->get();
 
     foreach ($modulos as $modulo) {
         if(!empty($modulo->slug)){
             Route::get($modulo->slug.'/', 'App\Http\Controllers\ModuloController@details');
         }
-    }*/
+    }
 #}
 
 /*
