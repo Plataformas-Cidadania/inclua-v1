@@ -60,6 +60,8 @@ foreach ($routesSearch as $route) {
     Route::get($route[1].'/{search}', $route[0].'Controller@listing');
 }
 
+
+
 if(env('DYNAMIC_ROUTES')=='true'){
     $modulos = \Illuminate\Support\Facades\DB::table('modulos')->select('slug')->get();
 
