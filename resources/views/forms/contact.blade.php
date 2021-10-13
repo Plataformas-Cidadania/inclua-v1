@@ -86,7 +86,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <strong>{{$resp}} Prezado usuário,</strong><br>
-                        <p>{!!$text->descricao!!}</p>
+                        <p>{!!$setting->descricao_contato!!}</p>
                     </div>
                     <div class="col-md-12">
                         <br>

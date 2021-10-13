@@ -17,13 +17,62 @@ class ModulosSeeder extends Seeder
         DB::table('modulos')->insert([
             'imagem' => '',
             'arquivo' => '',
-            'titulo' => 'O Inclua',
-            'descricao' => 'O diagnóstico visa identificar e avaliar riscos de desatenção, tratamento inadequado e exclusão de segmentos específicos do público atendido. Muitas vezes, esses riscos não são suficientemente bem conhecidos.',
+            'titulo' => 'Sobre',
+            'descricao' => 'Escreva uma descrição.',
             'slug' => 'sobre',
             'status' => 1,
-            'show' => 1,
+            'show' => 0,
             'tipo_id' => 1,
             'cmsuser_id' => 1,
         ]);
+
+        DB::table('modulos')->insert([
+            'imagem' => '',
+            'arquivo' => '',
+            'titulo' => 'Equipe',
+            'descricao' => 'Escreva uma descrição.',
+            'slug' => 'equipe',
+            'status' => 1,
+            'show' => 0,
+            'tipo_id' => 1,
+            'cmsuser_id' => 1,
+        ]);
+
+        DB::table('modulos')->insert([
+            'imagem' => '',
+            'arquivo' => '',
+            'titulo' => 'Mapa do site',
+            'descricao' => 'Escreva uma descrição.',
+            'slug' => 'mapa-do-site',
+            'status' => 1,
+            'show' => 0,
+            'tipo_id' => 1,
+            'cmsuser_id' => 1,
+        ]);
+
+        DB::table('modulos')->insert([
+            'imagem' => '',
+            'arquivo' => '',
+            'titulo' => 'Parceiros',
+            'descricao' => 'Escreva uma descrição.',
+            'slug' => 'parceiros',
+            'status' => 1,
+            'show' => 0,
+            'tipo_id' => 1,
+            'cmsuser_id' => 1,
+        ]);
+
+        DB::table('modulos')->insert([
+            'imagem' => '',
+            'arquivo' => '',
+            'titulo' => 'Links',
+            'descricao' => 'Escreva uma descrição.',
+            'slug' => 'links',
+            'status' => 1,
+            'show' => 0,
+            'tipo_id' => 1,
+            'cmsuser_id' => 1,
+        ]);
+
     }
 }

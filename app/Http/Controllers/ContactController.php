@@ -15,18 +15,10 @@ use Illuminate\Support\Facades\Route;
 class ContactController extends Controller{
 
     public function email(){
-        $text = \App\Models\Text::where('slug', 'contato')->first();
-        $expediente = \App\Models\Text::where('slug', 'contato-expediente')->first();
         $setting = \App\Models\Setting::first();
 
-        if(!empty($text) && !empty($expediente)){
-            return view('forms.contact', ['text' => $text, 'expediente' => $expediente, 'setting' => $setting]);
-        }
+        return view('forms.contact', ['setting' => $setting]);
 
-        return "<div style='color: #721c24; background-color: #f8d7da; border-color: #f5c6cb; padding: 10px; border-radius: 5px; text-align: center;'>
-                    Ops! Cadastre no CMS em texts o slug
-                    <strong>contato</strong> e <strong>contato-expediente</strong>
-                </div>";
 
     }
 
