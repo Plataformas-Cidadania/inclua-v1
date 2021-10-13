@@ -105,9 +105,9 @@
                     <div>
                         <br>
                         <div class="range-merker">
-                            <div class="range-merker-box"><div class="range-merker-box-item">1</div></div>
-                            <div class="range-merker-box"><div class="range-merker-box-item">2</div></div>
-                            <div class="range-merker-box"><div class="range-merker-box-item">3</div></div>
+                            <div class="range-merker-box"><div class="range-merker-box-item bg-pri">1</div></div>
+                            <div class="range-merker-box"><div class="range-merker-box-item bg-pri">2</div></div>
+                            <div class="range-merker-box"><div class="range-merker-box-item bg-pri">3</div></div>
                             <div class="range-merker-box"><div class="range-merker-box-item">4</div></div>
                             <div class="range-merker-box"><div class="range-merker-box-item">5</div></div>
                             <div class="range-merker-box"><div class="range-merker-box-item">6</div></div>
@@ -118,7 +118,7 @@
                         </div>
                         {{--<label for="customRange1" class="form-label">Bom</label>--}}
                         <br/>
-                        <input type="range" class="form-range range" id="customRange1" min="1" max="10" >
+                        <input type="range" class="form-range range" id="customRange1" min="1" max="10" value="3" >
                     </div>
                 </div>
                 <br/>

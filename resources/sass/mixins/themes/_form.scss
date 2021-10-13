@@ -385,13 +385,12 @@ label, input, .btn-number {
 .range-merker-box-item {
     width: 30px;
     height: 30px;
-    background-color: $color-lgt2 !important;
+    background-color: $color-lgt2;
     font-weight: bold;
     margin: auto;
     border-radius: 50%;
-    line-height: 25px;
+    line-height: 30px;
 }
-
 .range{
     padding: 0 55px;
 }
