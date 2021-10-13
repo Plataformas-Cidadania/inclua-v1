@@ -21,7 +21,6 @@ class CreateSettingsTable extends Migration
             $table->string('rodape')->nullable();
             $table->string('cep')->nullable();
             $table->string('endereco_titulo')->nullable();
-            $table->string('endereco_titulo2')->nullable();
             $table->string('endereco')->nullable();
             $table->string('numero')->nullable();
             $table->string('complemento')->nullable();
