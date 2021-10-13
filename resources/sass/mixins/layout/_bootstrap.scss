@@ -107,3 +107,20 @@ a:active {
     border: solid 1px #FFFFFF;
     background-color: #CCCCCC;
 }
+
+
+.form-check-input[type=radio] {
+    height: 30px!important;
+    width: 30px!important;
+    float: left!important;
+    cursor: pointer;
+}
+input + label {
+    margin-left: 8px!important;
+    margin-top: 11px!important;
+    font-size: 15px!important;
+}
+.form-check {
+    float: left!important;
+    margin-right: 20px!important;
+}
