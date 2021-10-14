@@ -13323,6 +13323,12 @@ label, input, .btn-number {
   float: left;
 }
 
+.dorder-container-line h1, .dorder-container-line .h1 {
+  font-weight: bold;
+  font-size: 18px !important;
+  float: left;
+}
+
 .dorder-container-box {
   width: 20px;
   height: 23px;

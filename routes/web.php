@@ -46,6 +46,7 @@ Route::post('contact', 'App\Http\Controllers\ContactController@send');
 
 Route::get('diagnostico', 'App\Http\Controllers\DiagnosticoController@completo');
 Route::get('recursos', 'App\Http\Controllers\RecursoController@listar');
+Route::get('contribua', 'App\Http\Controllers\ContribuaController@listar');
 
 $routes = [
     ['Page', 'sobres', 'sobre'],
