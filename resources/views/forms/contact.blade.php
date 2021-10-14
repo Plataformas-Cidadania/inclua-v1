@@ -34,54 +34,46 @@
     <br><br>
     <div class="container">
         <div class="row">
-            <div class="col-md-4">
-                <div class="col-md-12  bg-pri text-light" style="margin-top: -130px; z-index: 999999999; position: relative;">
-                    <br>
-                    <div>
-                        <div class="address fa-aling">
-                            <strong><i class="fas fa-map-marker-alt fa-2x"></i> Endereço</strong>
-                            <br><br>
+
+            <div class="col-md-6">
+                <div class="dorder-container">
+                    <address class="bg-lgt2 p-3">
+                        <div class="bg-lgt box-list-i text-center m-3 me-4" style="float: left;">
+                            <i class="fas fa-map-marker-alt fa-3x"></i>
                         </div>
-                        <address class="address">
-                            <div>
-                                <strong class="fa-aling">{{$setting->endereco_tutulo}}</strong><br>
-                                {{$setting->endereco}} {{$setting->numero}} - {{$setting->complemento}}
-                                {{$setting->bairro}} - {{$setting->cidade}} - {{$setting->estado}}<br>
-                                CEP.: {{$setting->cep}}<br>
-                                <abbr title="Phone"> <i class="fas fa-phone-alt"></i>{{$setting->telefone}}</abbr>
-                            </div>
-                        </address>
-                        <address class="address">
-                            <div>
-                                <strong class="fa-aling">{{$setting->endereco_tutulo2}}</strong><br>
-                                {{$setting->endereco2}} {{$setting->numero2}} - {{$setting->complemento2}}
-                                {{$setting->bairro2}} - {{$setting->cidade2}} - {{$setting->estado2}}<br>
-                                CEP.: {{$setting->cep2}}<br>
-                                <abbr title="Phone"> <i class="fas fa-phone-alt"></i>{{$setting->telefone2}}</abbr>
-                            </div>
-                        </address>
-                    </div>
-                    <div>
+                        <strong>{{$setting->endereco_titulo}}</strong>
                         <br>
-                        <p><i class="fas fa-envelope"></i> {{$setting->email}}</p>
-                        <br>
-                    </div>
-                    <?php /*?>
-                    <div>
-                        <div class=" fa-aling">
-                            <strong ><i class="fas fa-clock fa-2x"></i> {{$expediente->titulo}}</strong>
-                            <br><br>
+                        <div>
+                            {{$setting->endereco}} {{$setting->numero}} - {{$setting->complemento}}<br>
+                            {{$setting->bairro}} - {{$setting->cidade}} - {{$setting->estado}}<br>
+                            CEP.: {{$setting->cep}}<br>
+                            <i class="fas fa-envelope"></i> {{$setting->email}}
                         </div>
-                        <div class="address">
-                            <div>
-                                {!!$expediente->descricao!!}
-                            </div>
-                        </div>
-                    </div>
-                    <?php */?>
-                    <br><br>
+                    </address>
                 </div>
             </div>
+
+            <div class="col-md-6">
+                <div class="dorder-container">
+                    <address class="bg-lgt2 p-3">
+                        <div class="bg-lgt box-list-i text-center m-3 me-4" style="float: left;">
+                            <i class="fas fa-map-marker-alt fa-3x"></i>
+                        </div>
+                        <strong>{{$setting->endereco_titulo2}}</strong>
+                        <br>
+                        <div>
+                            {{$setting->endereco2}} {{$setting->numero2}} - {{$setting->complemento2}}<br>
+                            {{$setting->bairro2}} - {{$setting->cidade2}} - {{$setting->estado2}}<br>
+                            CEP.: {{$setting->cep2}}<br>
+                            <i class="fas fa-envelope"></i> {{$setting->email}}
+                        </div>
+                    </address>
+                </div>
+            </div>
+
+
+
+
             <div class="col-md-8">
                 <div class="row">
                     <div class="col-md-12">
