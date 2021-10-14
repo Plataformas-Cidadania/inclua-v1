@@ -209,7 +209,10 @@ class Contact extends React.Component{
 
                         <div className="clear-float"/>
 
-                        <button type="button" style={{display: this.state.button ? 'block' : 'none'}} className="btn btn-primary" onClick={this.contact}>Cadastrar</button>
+                        <div className="dorder-container">
+                            <button className="btn btn-theme bg-pri" type="button" style={{display: this.state.button ? 'block' : 'none'}} onClick={this.contact}>Enviar <i className="fas fa-angle-right"/></button>
+                        </div>
+                        
                         <br/>
 
                         <div style={{display: this.state.showMsg === 1 ? '' : 'none'}} className="text-success">{this.state.msg}</div>

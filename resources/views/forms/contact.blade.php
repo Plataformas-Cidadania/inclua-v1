@@ -34,8 +34,19 @@
     <br><br>
     <div class="container">
         <div class="row">
-
-            <div class="col-md-6">
+            <div class="col-md-7">
+                <div class="row">
+                    <div class="col-md-12">
+                        <strong>{{$resp}} Prezado usuário,</strong><br><br>
+                        <p>{!!$setting->descricao_contato!!}</p>
+                    </div>
+                    <div class="col-md-12">
+                        <br>
+                        <div id="contact"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5">
                 <div class="dorder-container">
                     <address class="bg-lgt2 p-3">
                         <div class="bg-lgt box-list-i text-center m-3 me-4" style="float: left;">
@@ -51,9 +62,6 @@
                         </div>
                     </address>
                 </div>
-            </div>
-
-            <div class="col-md-6">
                 <div class="dorder-container">
                     <address class="bg-lgt2 p-3">
                         <div class="bg-lgt box-list-i text-center m-3 me-4" style="float: left;">
@@ -69,23 +77,11 @@
                         </div>
                     </address>
                 </div>
-            </div>
-
-
-
-
-            <div class="col-md-8">
-                <div class="row">
-                    <div class="col-md-12">
-                        <strong>{{$resp}} Prezado usuário,</strong><br>
-                        <p>{!!$setting->descricao_contato!!}</p>
-                    </div>
-                    <div class="col-md-12">
-                        <br>
-                        <div id="contact"></div>
-                    </div>
+                <div>
+                    <img src="/img/bg-top.png" alt="" width="70%" class="float-end">
                 </div>
             </div>
+
         </div>
     </div>
     <br><br><br><br><br>

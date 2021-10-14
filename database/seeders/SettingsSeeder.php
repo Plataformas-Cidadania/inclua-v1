@@ -49,7 +49,7 @@ class SettingsSeeder extends Seeder
             'blog' => '',
 
             'titulo_contato' => 'Titulo contato',
-            'descricao_contato' => 'Descrição contato',
+            'descricao_contato' => 'Por favor, utilize o formulário abaixo ou envie um email para inclua@ipea.gov.br para entrar em contato com a nossa equipe. Informamos que os pedidos de dados são atendidos no prazo legal de até 20 dias úteis e que, por força da Lei 12.527, não disponibilizamos extrações de dados com informações referentes a CNPJ, logradouro, bairro, CEP, telefone ou e-mail das OSCs.',
 
             'cmsuser_id' => '1',
         ]);

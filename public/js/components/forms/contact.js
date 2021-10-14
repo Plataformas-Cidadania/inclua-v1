@@ -315,9 +315,14 @@ class Contact extends React.Component {
             ),
             React.createElement('div', { className: 'clear-float' }),
             React.createElement(
-                'button',
-                { type: 'button', style: { display: this.state.button ? 'block' : 'none' }, className: 'btn btn-primary', onClick: this.contact },
-                'Cadastrar'
+                'div',
+                { className: 'dorder-container' },
+                React.createElement(
+                    'button',
+                    { className: 'btn btn-theme bg-pri', type: 'button', style: { display: this.state.button ? 'block' : 'none' }, onClick: this.contact },
+                    'Enviar ',
+                    React.createElement('i', { className: 'fas fa-angle-right' })
+                )
             ),
             React.createElement('br', null),
             React.createElement(
