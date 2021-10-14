@@ -13,8 +13,8 @@
 <!-- ///// -->
 
 <h2>Endereço 1</h2>
-{!! Form::label('endereco_tutulo', 'Título') !!}<br>
-{!! Form::text('endereco_tutulo', null, ['class'=>"form-control width-grande <% validar(setting.endereco_tutulo) %>", 'ng-model'=>'setting.endereco_tutulo', 'ng-required'=>'true', 'init-model'=>'setting.endereco_tutulo']) !!}<br>
+{!! Form::label('endereco_titulo', 'Título') !!}<br>
+{!! Form::text('endereco_titulo', null, ['class'=>"form-control width-grande <% validar(setting.endereco_titulo) %>", 'ng-model'=>'setting.endereco_titulo', 'ng-required'=>'true', 'init-model'=>'setting.endereco_titulo']) !!}<br>
 
 <div class="row">
     <div class="col-md-5">
@@ -48,8 +48,8 @@
 <!-- ///// -->
 
 <h2>Endereço 2</h2>
-{!! Form::label('endereco_tutulo2', 'Título') !!}<br>
-{!! Form::text('endereco_tutulo2', null, ['class'=>"form-control width-grande <% validar(setting.endereco_tutulo2) %>", 'ng-model'=>'setting.endereco_tutulo2', 'ng-required'=>'true', 'init-model'=>'setting.endereco_tutulo2']) !!}<br>
+{!! Form::label('endereco_titulo2', 'Título') !!}<br>
+{!! Form::text('endereco_titulo2', null, ['class'=>"form-control width-grande <% validar(setting.endereco_titulo2) %>", 'ng-model'=>'setting.endereco_titulo2', 'ng-required'=>'true', 'init-model'=>'setting.endereco_titulo2']) !!}<br>
 
 <div class="row">
     <div class="col-md-5">
