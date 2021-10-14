@@ -2,6 +2,7 @@ label{
     font-size: 13px;
     margin-bottom: 0;
 }
+
 .input-icon input{
     padding-right: 40px;
 }
@@ -104,12 +105,12 @@ input[type=radio]:checked + label::after {
 .label-float label{
     pointer-events: none;
     position: absolute;
-    top: calc(50% - 28px);
-    left: 20px;
+    top: calc(50% - 34px);
+    left: 3px;
     transition: all .1s linear;
     -webkit-transition: all .1s linear;
     -moz-transition: all .1s linear;
-    background-color: white;
+    background-color: $color-lgt;
     padding: 5px;
     box-sizing: border-box;
     font-size: 14px;
@@ -129,10 +130,16 @@ input[type=radio]:checked + label::after {
 }
 .label-float input:focus + label,
 .label-float input:not(:placeholder-shown) + label{
-    font-size: 12px;
-    top: -18px;
-    color: #1A73E8;
+    font-size: 10px !important;
+    top: -29px;
+    color: #333333;
+    background-color: $color-lgt;
+    border: solid 1px $color-lgt2;
+    padding: 1px 5px;
+    border-radius: 3px 3px 0 0;
+    left: -8px;
 }
+
 .label-box-info{
     height: 20px;
     margin-bottom: 10px;
@@ -186,12 +193,12 @@ input[type=radio]:checked + label::after {
 .label-float-tx label{
     pointer-events: none;
     position: absolute;
-    top: calc(60% - 63px);
-    left: 5px;
+    top: calc(60% - 95px);
+    left: 10px;
     transition: all .1s linear;
     -webkit-transition: all .1s linear;
     -moz-transition: all .1s linear;
-    background-color: white;
+    background-color: $color-lgt;
     padding: 5px;
     box-sizing: border-box;
     font-size: 14px;
@@ -211,9 +218,14 @@ input[type=radio]:checked + label::after {
 }
 .label-float-tx textarea:focus + label,
 .label-float-tx textarea:not(:placeholder-shown) + label{
-    font-size: 12px;
-    top: -18px;
-    color: #1A73E8;
+    font-size: 10px !important;
+    top: -22px;
+    color: #333333;
+    background-color: $color-lgt;
+    border: solid 1px $color-lgt2;
+    padding: 1px 5px;
+    border-radius: 3px 3px 0 0;
+    left: 0px;
 }
 .label-box-info-tx{
     height: 20px;
@@ -416,7 +428,45 @@ label, input, .btn-number {
     top: 3px;
 }
 
+input{
+    background-color: $color-lgt !important;
+    border: solid 1px $color-lgt2 !important;
+    border-radius: 0 !important;
+    padding: 10px !important;
+}
 
+textarea{
+    background-color: $color-lgt !important;
+    border: solid 1px $color-lgt2 !important;
+    border-radius: 0 !important;
+    padding: 10px !important;
+}
+
+.select-form{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+.select-form li{
+    display: inline-block;
+    margin: 10px;
+    font-size: 12px;
+    background-color: $color-lgt;
+    cursor: pointer;
+}
+.select-form li:hover{
+    background-color: $color-lgt2 !important;
+}
+.select-form li svg{
+    margin-bottom: 5px;
+}
+
+.select-form li p{
+    margin: 0;
+    padding: 0;
+    line-height: 0;
+    margin-top: -38px;
+}
 
 @media  only screen and (max-width : 768px) {
     .range{

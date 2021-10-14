@@ -3,6 +3,7 @@ class Contact extends React.Component{
         super(props);
         this.state = {
             form: {
+                type: '',
                 name: '',
                 email: '',
                 cel: '',
@@ -18,11 +19,13 @@ class Contact extends React.Component{
                 mensagem: true,
             },
             showMsg: 0,
-            msg: ''
+            msg: '',
+            iconType: 0
         };
         this.handleInputChange = this.handleInputChange.bind(this);
         this.contact = this.contact.bind(this);
         this.validate = this.validate.bind(this);
+        this.selectType = this.selectType.bind(this);
     }
 
     componentDidMount(){
@@ -87,6 +90,33 @@ class Contact extends React.Component{
         return true;
     }
 
+    selectType(type){
+        let typeSelect = 0;
+        if(type===1){
+            typeSelect = "Dúvidas";
+        }
+        if(type===2){
+            typeSelect = "Problemas";
+        }
+        if(type===3){
+            typeSelect = "Sugestão";
+        }
+        if(type===4){
+            typeSelect = "Outros";
+        }
+
+        let formTipe = {
+            type: typeSelect,
+            name: this.state.form.name,
+            email: this.state.form.email,
+            cel: this.state.form.cel,
+            whatsapp:  this.state.form.whatsapp,
+            mensagem:  this.state.form.mensagem,
+        }
+
+        this.setState({form: formTipe, iconType: type});
+    }
+
     validateCel(cel){
         cel = cel.replace(/[^0-9]/g,'');
         let qtd = cel.length;
@@ -144,25 +174,33 @@ class Contact extends React.Component{
                     <form>
                         <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
                         <div>
-
-                            <select className="form-control" id="assunto">
-                                <option value="">Como podemos ajudar?</option>
-                                <option value="1">Cadastro Município-Estado</option>
-                                <option value="2">Cadastro Representante</option>
-                                <option value="3">Dúvidas</option>
-                                <option value="4">Inserção/Edição de dados</option>
-                                <option value="5">Pedidos de dados</option>
-                                <option value="6">Relatar Problemas</option>
-                                <option value="7">Sugestão</option>
-                                <option value="8">Outros</option>
-                            </select><br/>
+                            <p><strong>Como podemos ajudar?</strong></p>
+                            <ul className="select-form">
+                                <li className="box-list-i text-center" style={{backgroundColor: this.state.iconType === 1 ? '#E6DACE' : ''}} onClick={() => this.selectType(1)}>
+                                    <i className="fas fa-exclamation-circle fa-3x"/>
+                                    <p>Dúvidas</p>
+                                </li>
+                                <li className="box-list-i text-center" style={{backgroundColor: this.state.iconType === 2 ? '#E6DACE' : ''}} onClick={() => this.selectType(2)}>
+                                    <i className="fas fa-bug fa-3x"/>
+                                    <p>Problemas</p>
+                                </li>
+                                <li className="box-list-i text-center" style={{backgroundColor: this.state.iconType === 3 ? '#E6DACE' : ''}} onClick={() => this.selectType(3)}>
+                                    <i className="far fa-lightbulb fa-3x"/>
+                                    <p>Sugestão</p>
+                                </li>
+                                <li className="box-list-i text-center" style={{backgroundColor: this.state.iconType === 4 ? '#E6DACE' : ''}} onClick={() => this.selectType(4)}>
+                                    <i className="fas fa-boxes fa-3x"/>
+                                    <p>Outros</p>
+                                </li>
+                            </ul>
+                            <br/>
                         </div>
 
                         <div className="label-float">
                             <input className={"form-control form-g "+(this.state.requireds.name ? '' : 'invalid-field')} type="text" name="name" onChange={this.handleInputChange} placeholder=" " required={this.state.requireds.name ? '' : 'required'}/>
                             <label htmlFor="name">Nome</label>
                             <div className="label-box-info">
-                                <p style={{display: this.state.requireds.name ? 'none' : 'block'}}><i className="fas fa-exclamation-circle"></i> Digite o nome e sobre nome</p>
+                                <p style={{display: this.state.requireds.name ? 'none' : 'block'}}><i className="fas fa-exclamation-circle"/> Digite o nome e sobre nome</p>
                             </div>
                         </div>
 
@@ -170,7 +208,7 @@ class Contact extends React.Component{
                             <input className={"form-control form-g"+(this.state.requireds.email ? '' : 'invalid-field')} type="text" name="email" onChange={this.handleInputChange} value={this.state.form.email} placeholder=" " required={this.state.requireds.email ? '' : 'required'}/>
                             <label htmlFor="email">E-mail</label>
                             <div className="label-box-info">
-                                <p style={{display: this.state.requireds.email ? 'none' : 'block'}}><i className="fas fa-exclamation-circle"></i> Escolha um endereço de e-mail valido</p>
+                                <p style={{display: this.state.requireds.email ? 'none' : 'block'}}><i className="fas fa-exclamation-circle"/> Escolha um endereço de e-mail valido</p>
                             </div>
                         </div>
 
@@ -180,7 +218,7 @@ class Contact extends React.Component{
                                     <input className={"form-control form-g"} type="text" name="cel" onChange={this.handleInputChange} value={this.state.form.cel} placeholder=" " maxLength="15" required={this.state.requireds.cel ? '' : 'required'} />
                                     <label htmlFor="cel">Celular</label>
                                     <div className="label-box-info">
-                                        <p style={{display: this.state.requireds.name ? 'none' : 'block'}}><i className="fas fa-exclamation-circle"></i> Digite um número de celular</p>
+                                        <p style={{display: this.state.requireds.name ? 'none' : 'block'}}><i className="fas fa-exclamation-circle"/> Digite um número de celular</p>
                                     </div>
                                 </div>
                             </div>
@@ -212,7 +250,7 @@ class Contact extends React.Component{
                         <div className="dorder-container">
                             <button className="btn btn-theme bg-pri" type="button" style={{display: this.state.button ? 'block' : 'none'}} onClick={this.contact}>Enviar <i className="fas fa-angle-right"/></button>
                         </div>
-                        
+
                         <br/>
 
                         <div style={{display: this.state.showMsg === 1 ? '' : 'none'}} className="text-success">{this.state.msg}</div>

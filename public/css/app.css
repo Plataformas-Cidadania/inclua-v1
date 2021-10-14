@@ -12613,12 +12613,12 @@ input[type=radio]:checked + label::after {
 .label-float label {
   pointer-events: none;
   position: absolute;
-  top: calc(50% - 28px);
-  left: 20px;
+  top: calc(50% - 34px);
+  left: 3px;
   transition: all 0.1s linear;
   -webkit-transition: all 0.1s linear;
   -moz-transition: all 0.1s linear;
-  background-color: white;
+  background-color: #F5F1ED;
   padding: 5px;
   box-sizing: border-box;
   font-size: 14px;
@@ -12642,22 +12642,37 @@ input[type=radio]:checked + label::after {
 }
 
 .label-float input:not(:-moz-placeholder-shown) + label {
-  font-size: 12px;
-  top: -18px;
-  color: #1A73E8;
+  font-size: 10px !important;
+  top: -29px;
+  color: #333333;
+  background-color: #F5F1ED;
+  border: solid 1px #E6DACE;
+  padding: 1px 5px;
+  border-radius: 3px 3px 0 0;
+  left: -8px;
 }
 
 .label-float input:not(:-ms-input-placeholder) + label {
-  font-size: 12px;
-  top: -18px;
-  color: #1A73E8;
+  font-size: 10px !important;
+  top: -29px;
+  color: #333333;
+  background-color: #F5F1ED;
+  border: solid 1px #E6DACE;
+  padding: 1px 5px;
+  border-radius: 3px 3px 0 0;
+  left: -8px;
 }
 
 .label-float input:focus + label,
 .label-float input:not(:placeholder-shown) + label {
-  font-size: 12px;
-  top: -18px;
-  color: #1A73E8;
+  font-size: 10px !important;
+  top: -29px;
+  color: #333333;
+  background-color: #F5F1ED;
+  border: solid 1px #E6DACE;
+  padding: 1px 5px;
+  border-radius: 3px 3px 0 0;
+  left: -8px;
 }
 
 .label-box-info {
@@ -12718,12 +12733,12 @@ input[type=radio]:checked + label::after {
 .label-float-tx label {
   pointer-events: none;
   position: absolute;
-  top: calc(60% - 63px);
-  left: 5px;
+  top: calc(60% - 95px);
+  left: 10px;
   transition: all 0.1s linear;
   -webkit-transition: all 0.1s linear;
   -moz-transition: all 0.1s linear;
-  background-color: white;
+  background-color: #F5F1ED;
   padding: 5px;
   box-sizing: border-box;
   font-size: 14px;
@@ -12747,22 +12762,37 @@ input[type=radio]:checked + label::after {
 }
 
 .label-float-tx textarea:not(:-moz-placeholder-shown) + label {
-  font-size: 12px;
-  top: -18px;
-  color: #1A73E8;
+  font-size: 10px !important;
+  top: -22px;
+  color: #333333;
+  background-color: #F5F1ED;
+  border: solid 1px #E6DACE;
+  padding: 1px 5px;
+  border-radius: 3px 3px 0 0;
+  left: 0px;
 }
 
 .label-float-tx textarea:not(:-ms-input-placeholder) + label {
-  font-size: 12px;
-  top: -18px;
-  color: #1A73E8;
+  font-size: 10px !important;
+  top: -22px;
+  color: #333333;
+  background-color: #F5F1ED;
+  border: solid 1px #E6DACE;
+  padding: 1px 5px;
+  border-radius: 3px 3px 0 0;
+  left: 0px;
 }
 
 .label-float-tx textarea:focus + label,
 .label-float-tx textarea:not(:placeholder-shown) + label {
-  font-size: 12px;
-  top: -18px;
-  color: #1A73E8;
+  font-size: 10px !important;
+  top: -22px;
+  color: #333333;
+  background-color: #F5F1ED;
+  border: solid 1px #E6DACE;
+  padding: 1px 5px;
+  border-radius: 3px 3px 0 0;
+  left: 0px;
 }
 
 .label-box-info-tx {
@@ -12981,6 +13011,49 @@ label, input, .btn-number {
   position: relative;
   font-size: 19px;
   top: 3px;
+}
+
+input {
+  background-color: #F5F1ED !important;
+  border: solid 1px #E6DACE !important;
+  border-radius: 0 !important;
+  padding: 10px !important;
+}
+
+textarea {
+  background-color: #F5F1ED !important;
+  border: solid 1px #E6DACE !important;
+  border-radius: 0 !important;
+  padding: 10px !important;
+}
+
+.select-form {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.select-form li {
+  display: inline-block;
+  margin: 10px;
+  font-size: 12px;
+  background-color: #F5F1ED;
+  cursor: pointer;
+}
+
+.select-form li:hover {
+  background-color: #E6DACE !important;
+}
+
+.select-form li svg {
+  margin-bottom: 5px;
+}
+
+.select-form li p {
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+  margin-top: -38px;
 }
 
 @media only screen and (max-width: 768px) {

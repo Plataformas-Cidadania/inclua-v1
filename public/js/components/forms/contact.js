@@ -3,6 +3,7 @@ class Contact extends React.Component {
         super(props);
         this.state = {
             form: {
+                type: '',
                 name: '',
                 email: '',
                 cel: '',
@@ -18,11 +19,13 @@ class Contact extends React.Component {
                 mensagem: true
             },
             showMsg: 0,
-            msg: ''
+            msg: '',
+            iconType: 0
         };
         this.handleInputChange = this.handleInputChange.bind(this);
         this.contact = this.contact.bind(this);
         this.validate = this.validate.bind(this);
+        this.selectType = this.selectType.bind(this);
     }
 
     componentDidMount() {}
@@ -86,6 +89,33 @@ class Contact extends React.Component {
         return true;
     }
 
+    selectType(type) {
+        let typeSelect = 0;
+        if (type === 1) {
+            typeSelect = "Dúvidas";
+        }
+        if (type === 2) {
+            typeSelect = "Problemas";
+        }
+        if (type === 3) {
+            typeSelect = "Sugestão";
+        }
+        if (type === 4) {
+            typeSelect = "Outros";
+        }
+
+        let formTipe = {
+            type: typeSelect,
+            name: this.state.form.name,
+            email: this.state.form.email,
+            cel: this.state.form.cel,
+            whatsapp: this.state.form.whatsapp,
+            mensagem: this.state.form.mensagem
+        };
+
+        this.setState({ form: formTipe, iconType: type });
+    }
+
     validateCel(cel) {
         cel = cel.replace(/[^0-9]/g, '');
         let qtd = cel.length;
@@ -147,52 +177,56 @@ class Contact extends React.Component {
                 'div',
                 null,
                 React.createElement(
-                    'select',
-                    { className: 'form-control', id: 'assunto' },
+                    'p',
+                    null,
                     React.createElement(
-                        'option',
-                        { value: '' },
+                        'strong',
+                        null,
                         'Como podemos ajudar?'
+                    )
+                ),
+                React.createElement(
+                    'ul',
+                    { className: 'select-form' },
+                    React.createElement(
+                        'li',
+                        { className: 'box-list-i text-center', style: { backgroundColor: this.state.iconType === 1 ? '#E6DACE' : '' }, onClick: () => this.selectType(1) },
+                        React.createElement('i', { className: 'fas fa-exclamation-circle fa-3x' }),
+                        React.createElement(
+                            'p',
+                            null,
+                            'D\xFAvidas'
+                        )
                     ),
                     React.createElement(
-                        'option',
-                        { value: '1' },
-                        'Cadastro Munic\xEDpio-Estado'
+                        'li',
+                        { className: 'box-list-i text-center', style: { backgroundColor: this.state.iconType === 2 ? '#E6DACE' : '' }, onClick: () => this.selectType(2) },
+                        React.createElement('i', { className: 'fas fa-bug fa-3x' }),
+                        React.createElement(
+                            'p',
+                            null,
+                            'Problemas'
+                        )
                     ),
                     React.createElement(
-                        'option',
-                        { value: '2' },
-                        'Cadastro Representante'
+                        'li',
+                        { className: 'box-list-i text-center', style: { backgroundColor: this.state.iconType === 3 ? '#E6DACE' : '' }, onClick: () => this.selectType(3) },
+                        React.createElement('i', { className: 'far fa-lightbulb fa-3x' }),
+                        React.createElement(
+                            'p',
+                            null,
+                            'Sugest\xE3o'
+                        )
                     ),
                     React.createElement(
-                        'option',
-                        { value: '3' },
-                        'D\xFAvidas'
-                    ),
-                    React.createElement(
-                        'option',
-                        { value: '4' },
-                        'Inser\xE7\xE3o/Edi\xE7\xE3o de dados'
-                    ),
-                    React.createElement(
-                        'option',
-                        { value: '5' },
-                        'Pedidos de dados'
-                    ),
-                    React.createElement(
-                        'option',
-                        { value: '6' },
-                        'Relatar Problemas'
-                    ),
-                    React.createElement(
-                        'option',
-                        { value: '7' },
-                        'Sugest\xE3o'
-                    ),
-                    React.createElement(
-                        'option',
-                        { value: '8' },
-                        'Outros'
+                        'li',
+                        { className: 'box-list-i text-center', style: { backgroundColor: this.state.iconType === 4 ? '#E6DACE' : '' }, onClick: () => this.selectType(4) },
+                        React.createElement('i', { className: 'fas fa-boxes fa-3x' }),
+                        React.createElement(
+                            'p',
+                            null,
+                            'Outros'
+                        )
                     )
                 ),
                 React.createElement('br', null)
