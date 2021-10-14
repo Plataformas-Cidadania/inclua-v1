@@ -310,6 +310,31 @@
     height: 70px;
     margin: auto;
 }
+.nav-icons{
+    margin: 0 15px;
+}
+.nav-icons img{
+    margin: 15px;
+    z-index: 2;
+    position: relative;
+}
+
+.nav-icons hr{
+    border-bottom: solid 3px $color-lgt;
+    width: 350px;
+    position: relative;
+    top: -42px;
+    margin: auto;
+    opacity: 1;
+    z-index: 0;
+}
+.opacity-5{
+    opacity: 0.5 !important;
+}
+.box-items{
+    padding: 15px;
+    border-left: solid 8px $color-lgt2;
+}
 
 @media  only screen and (max-width : 768px) {
     .btn-icon{

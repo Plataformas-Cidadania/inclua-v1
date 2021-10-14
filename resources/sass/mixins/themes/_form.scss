@@ -370,3 +370,56 @@ label, input, .btn-number {
     position: relative;
     margin-left: 11px;
 }
+
+
+.range-merker {
+    display: flex;
+    justify-content: space-around;
+    flex-flow: row wrap;
+    align-items: stretch;
+}
+.range-merker-box {
+    flex-grow: 1;
+    text-align: center;
+}
+.range-merker-box-item {
+    width: 30px;
+    height: 30px;
+    background-color: $color-lgt2;
+    font-weight: bold;
+    margin: auto;
+    border-radius: 50%;
+    line-height: 30px;
+}
+.range{
+    padding: 0 55px;
+}
+
+.btn-theme{
+    text-transform: uppercase;
+    border: 0;
+    border-radius: 0;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 7px 32px;
+    transition: 0.5s ease-in;
+}
+.btn-theme:hover{
+    transform: scale(1.05);
+    transition: 0.5s ease-in;
+}
+.btn-theme svg{
+    float: right;
+    right: -15px;
+    position: relative;
+    font-size: 19px;
+    top: 3px;
+}
+
+
+
+@media  only screen and (max-width : 768px) {
+    .range{
+        padding: 0 20px!important;
+    }
+}

@@ -44,6 +44,8 @@ Route::get('/', 'App\Http\Controllers\HomeController@index');
 Route::get('contato', 'App\Http\Controllers\ContactController@email');
 Route::post('contact', 'App\Http\Controllers\ContactController@send');
 
+Route::get('diagnostico', 'App\Http\Controllers\DiagnosticoController@completo');
+
 $routes = [
     ['Page', 'sobres', 'sobre'],
     ['Video', 'videos', 'video'],
