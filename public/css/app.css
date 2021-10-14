@@ -13420,6 +13420,31 @@ label, input, .btn-number {
     padding-left: 0;
   }
 }
+.box-list-p p {
+  margin-bottom: 5px !important;
+  padding: 0;
+}
+
+.box-list-i {
+  border-radius: 50%;
+  width: 90px;
+  height: 90px;
+  line-height: 107px;
+}
+
+.box-list-cod {
+  width: 30%;
+  float: left;
+  min-height: 95px;
+}
+
+.box-list-title {
+  width: 70%;
+  float: right;
+  line-height: 19px;
+  min-height: 95px;
+}
+
 #chart {
   max-width: 100%;
   margin: 35px auto;
