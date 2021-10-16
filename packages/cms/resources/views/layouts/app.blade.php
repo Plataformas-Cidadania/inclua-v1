@@ -87,6 +87,9 @@
                 <li>
                     <a href="cms/texts"><i class="fa fa-fw fa-link"></i> Textos</a>
                 </li>
+                <li>
+                    <a href="cms/urls"><i class="fa fa-fw fa-link"></i> Urls</a>
+                </li>
                 {{--<li>
                     <a href="cms/apoios"><i class="fa fa-fw fa-anchor"></i> Apoio</a>
                 </li>--}}

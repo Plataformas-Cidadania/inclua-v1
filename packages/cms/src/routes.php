@@ -135,16 +135,16 @@ Route::group(['middleware' => 'cms'], function () {
         Route::get('/cms/excluir-publication/{id}', 'Cms\Controllers\PublicationController@excluir');
         Route::get('/cms/status-publication/{id}', 'Cms\Controllers\PublicationController@status');
 
-        //LINKS
-        Route::get('/cms/links', 'Cms\Controllers\LinkController@index');
-        Route::get('/cms/listar-links', 'Cms\Controllers\LinkController@listar');
-        Route::post('/cms/inserir-link', 'Cms\Controllers\LinkController@inserir');
-        Route::get('/cms/link/{id}', 'Cms\Controllers\LinkController@detalhar');
-        Route::post('/cms/alterar-link/{id}', 'Cms\Controllers\LinkController@alterar');
-        Route::get('/cms/excluir-link/{id}', 'Cms\Controllers\LinkController@excluir');
-        Route::get('/cms/status-link/{id}', 'Cms\Controllers\LinkController@status');
-        Route::get('/cms/positionUp-link/{id}', 'Cms\Controllers\LinkController@positionUp');
-        Route::get('/cms/positionDown-link/{id}', 'Cms\Controllers\LinkController@positionDown');
+        //URLS
+        Route::get('/cms/urls', 'Cms\Controllers\UrlController@index');
+        Route::get('/cms/listar-urls', 'Cms\Controllers\UrlController@listar');
+        Route::post('/cms/inserir-url', 'Cms\Controllers\UrlController@inserir');
+        Route::get('/cms/url/{id}', 'Cms\Controllers\UrlController@detalhar');
+        Route::post('/cms/alterar-url/{id}', 'Cms\Controllers\UrlController@alterar');
+        Route::get('/cms/excluir-url/{id}', 'Cms\Controllers\UrlController@excluir');
+        Route::get('/cms/status-url/{id}', 'Cms\Controllers\UrlController@status');
+        Route::get('/cms/positionUp-url/{id}', 'Cms\Controllers\UrlController@positionUp');
+        Route::get('/cms/positionDown-url/{id}', 'Cms\Controllers\UrlController@positionDown');
 
         //APOIOS
         Route::get('/cms/apoios', 'Cms\Controllers\ApoioController@index');
@@ -157,60 +157,6 @@ Route::group(['middleware' => 'cms'], function () {
         Route::get('/cms/positionUp-apoio/{id}', 'Cms\Controllers\ApoioController@positionUp');
         Route::get('/cms/positionDown-apoio/{id}', 'Cms\Controllers\ApoioController@positionDown');
 
-        //EQUIPES
-        Route::get('/cms/equipes', 'Cms\Controllers\EquipeController@index');
-        Route::get('/cms/listar-equipes', 'Cms\Controllers\EquipeController@listar');
-        Route::post('/cms/inserir-equipe', 'Cms\Controllers\EquipeController@inserir');
-        Route::get('/cms/equipe/{id}', 'Cms\Controllers\EquipeController@detalhar');
-        Route::post('/cms/alterar-equipe/{id}', 'Cms\Controllers\EquipeController@alterar');
-        Route::get('/cms/excluir-equipe/{id}', 'Cms\Controllers\EquipeController@excluir');
-
-        //INTEGRANTES
-        Route::get('/cms/integrantes', 'Cms\Controllers\IntegranteController@index');
-        Route::get('/cms/listar-integrantes', 'Cms\Controllers\IntegranteController@listar');
-        Route::post('/cms/inserir-integrante', 'Cms\Controllers\IntegranteController@inserir');
-        Route::get('/cms/integrante/{id}', 'Cms\Controllers\IntegranteController@detalhar');
-        Route::post('/cms/alterar-integrante/{id}', 'Cms\Controllers\IntegranteController@alterar');
-        Route::get('/cms/excluir-integrante/{id}', 'Cms\Controllers\IntegranteController@excluir');
-
-        //EDITAIS
-        Route::get('/cms/editais', 'Cms\Controllers\EditalController@index');
-        Route::get('/cms/listar-editais', 'Cms\Controllers\EditalController@listar');
-        Route::post('/cms/inserir-edital', 'Cms\Controllers\EditalController@inserir');
-        Route::get('/cms/edital/{id}', 'Cms\Controllers\EditalController@detalhar');
-        Route::post('/cms/alterar-edital/{id}', 'Cms\Controllers\EditalController@alterar');
-        Route::get('/cms/excluir-edital/{id}', 'Cms\Controllers\EditalController@excluir');
-
-        //GRAFICOS
-        Route::get('/cms/graficos', 'Cms\Controllers\GraficoController@index');
-        Route::get('/cms/listar-graficos', 'Cms\Controllers\GraficoController@listar');
-        Route::post('/cms/inserir-grafico', 'Cms\Controllers\GraficoController@inserir');
-        Route::get('/cms/grafico/{id}', 'Cms\Controllers\GraficoController@detalhar');
-        Route::post('/cms/alterar-grafico/{id}', 'Cms\Controllers\GraficoController@alterar');
-        Route::get('/cms/excluir-grafico/{id}', 'Cms\Controllers\GraficoController@excluir');
-        Route::get('/cms/status-grafico/{id}', 'Cms\Controllers\GraficoController@status');
-
-        //MROSCS
-        Route::get('/cms/mroscs', 'Cms\Controllers\MroscController@index');
-        Route::get('/cms/listar-mroscs', 'Cms\Controllers\MroscController@listar');
-        Route::post('/cms/inserir-mrosc', 'Cms\Controllers\MroscController@inserir');
-        Route::get('/cms/mrosc/{id}', 'Cms\Controllers\MroscController@detalhar');
-        Route::post('/cms/alterar-mrosc/{id}', 'Cms\Controllers\MroscController@alterar');
-        Route::get('/cms/excluir-mrosc/{id}', 'Cms\Controllers\MroscController@excluir');
-        Route::get('/cms/status-mrosc/{id}', 'Cms\Controllers\MroscController@status');
-        Route::get('/cms/positionUp-mrosc/{id}', 'Cms\Controllers\MroscController@positionUp');
-        Route::get('/cms/positionDown-mrosc/{id}', 'Cms\Controllers\MroscController@positionDown');
-
-        //VERSOES
-        Route::get('/cms/versoes', 'Cms\Controllers\VersaoController@index');
-        Route::get('/cms/listar-versoes', 'Cms\Controllers\VersaoController@listar');
-        Route::post('/cms/inserir-versao', 'Cms\Controllers\VersaoController@inserir');
-        Route::get('/cms/versao/{id}', 'Cms\Controllers\VersaoController@detalhar');
-        Route::post('/cms/alterar-versao/{id}', 'Cms\Controllers\VersaoController@alterar');
-        Route::get('/cms/excluir-versao/{id}', 'Cms\Controllers\VersaoController@excluir');
-        Route::get('/cms/status-versao/{id}', 'Cms\Controllers\VersaoController@status');
-        Route::get('/cms/positionUp-versao/{id}', 'Cms\Controllers\VersaoController@positionUp');
-        Route::get('/cms/positionDown-versao/{id}', 'Cms\Controllers\VersaoController@positionDown');
 
         //IDIOMAS
         Route::get('/cms/idiomas', 'Cms\Controllers\IdiomaController@index');
@@ -241,15 +187,6 @@ Route::group(['middleware' => 'cms'], function () {
         Route::post('/cms/alterar-perfil', 'Cms\Controllers\CmsUserController@alterarPerfil');
         Route::get('/cms/excluir-cmsuser/{id}', 'Cms\Controllers\CmsUserController@excluir');
 
-        //TEASERS
-        Route::get('/cms/teasers', 'Cms\Controllers\TeaserController@index');
-        Route::get('/cms/listar-teasers', 'Cms\Controllers\TeaserController@listar');
-        Route::post('/cms/inserir-teaser', 'Cms\Controllers\TeaserController@inserir');
-        Route::get('/cms/teaser/{id}', 'Cms\Controllers\TeaserController@detalhar');
-        Route::post('/cms/alterar-teaser/{id}', 'Cms\Controllers\TeaserController@alterar');
-        Route::get('/cms/excluir-teaser/{id}', 'Cms\Controllers\TeaserController@excluir');
-        Route::get('/cms/positionUp-teaser/{id}', 'Cms\Controllers\TeaserController@positionUp');
-        Route::get('/cms/positionDown-teaser/{id}', 'Cms\Controllers\TeaserController@positionDown');
 
         //TEXTS
         Route::get('/cms/texts', 'Cms\Controllers\TextController@index');
@@ -259,29 +196,6 @@ Route::group(['middleware' => 'cms'], function () {
         Route::post('/cms/alterar-text/{id}', 'Cms\Controllers\TextController@alterar');
         Route::get('/cms/excluir-text/{id}', 'Cms\Controllers\TextController@excluir');
 
-        //ARTWORKS
-        Route::get('/cms/artworks', 'Cms\Controllers\ArtworkController@index');
-        Route::get('/cms/listar-artworks', 'Cms\Controllers\ArtworkController@listar');
-        Route::post('/cms/inserir-artwork', 'Cms\Controllers\ArtworkController@inserir');
-        Route::get('/cms/artwork/{id}', 'Cms\Controllers\ArtworkController@detalhar');
-        Route::post('/cms/alterar-artwork/{id}', 'Cms\Controllers\ArtworkController@alterar');
-        Route::get('/cms/excluir-artwork/{id}', 'Cms\Controllers\ArtworkController@excluir');
-
-        //DIRECTIVES
-        Route::get('/cms/directives', 'Cms\Controllers\DirectiveController@index');
-        Route::get('/cms/listar-directives', 'Cms\Controllers\DirectiveController@listar');
-        Route::post('/cms/inserir-directive', 'Cms\Controllers\DirectiveController@inserir');
-        Route::get('/cms/directive/{id}', 'Cms\Controllers\DirectiveController@detalhar');
-        Route::post('/cms/alterar-directive/{id}', 'Cms\Controllers\DirectiveController@alterar');
-        Route::get('/cms/excluir-directive/{id}', 'Cms\Controllers\DirectiveController@excluir');
-
-        //PRINTINGS
-        Route::get('/cms/printings', 'Cms\Controllers\PrintingController@index');
-        Route::get('/cms/listar-printings', 'Cms\Controllers\PrintingController@listar');
-        Route::post('/cms/inserir-printing', 'Cms\Controllers\PrintingController@inserir');
-        Route::get('/cms/printing/{id}', 'Cms\Controllers\PrintingController@detalhar');
-        Route::post('/cms/alterar-printing/{id}', 'Cms\Controllers\PrintingController@alterar');
-        Route::get('/cms/excluir-printing/{id}', 'Cms\Controllers\PrintingController@excluir');
 
 
     });

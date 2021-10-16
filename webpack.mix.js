@@ -112,6 +112,10 @@ mix.scripts('packages/cms/resources/assets/js/controllers/alterarCmsUserCtrl.js'
 mix.scripts('packages/cms/resources/assets/js/controllers/textCtrl.js', 'public/assets-cms/js/controllers/textCtrl.js');
 mix.scripts('packages/cms/resources/assets/js/controllers/alterarTextCtrl.js', 'public/assets-cms/js/controllers/alterarTextCtrl.js');
 
+//Link
+mix.scripts('packages/cms/resources/assets/js/controllers/urlCtrl.js', 'public/assets-cms/js/controllers/urlCtrl.js');
+mix.scripts('packages/cms/resources/assets/js/controllers/alterarUrlCtrl.js', 'public/assets-cms/js/controllers/alterarUrlCtrl.js');
+
 //Settings
 mix.scripts('packages/cms/resources/assets/js/controllers/alterarSettingCtrl.js', 'public/assets-cms/js/controllers/alterarSettingCtrl.js');
 
