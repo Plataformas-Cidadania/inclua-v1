@@ -428,7 +428,7 @@ label, input, .btn-number {
     top: 3px;
 }
 
-input{
+input[type=text]{
     background-color: $color-lgt !important;
     border: solid 1px $color-lgt2 !important;
     border-radius: 0 !important;

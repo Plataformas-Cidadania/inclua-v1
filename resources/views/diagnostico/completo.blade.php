@@ -16,6 +16,28 @@
                         <h1>Diagnóstico</h1>
                         <p>Instruções: essa atividade dura aproximadamente de XX a XX minutos e deve ser realizada com bastante atenção de forma a retratar com a maior precisão possível a situação da oferta pública na qual você está envolvido. Caso prefira, você pode baixar o questionário, ler e reunir as informações necessárias para então voltar aqui e responder às perguntas.</p>
                         <br>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="dorder-container cursor">
+                                    <div class="bg-lgt2 p-3">
+                                        <h2 style="margin-top: 15px;">Completo</h2>
+                                        <i class="fas fa-angle-right fa-3x float-end" style="margin-top: -52px;"></i>
+                                    </div>
+                                </div>
+                                <br>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="dorder-container cursor">
+                                    <div class="bg-lgt2 p-3">
+                                        <h2 style="margin-top: 15px;">Parcial</h2>
+                                        <i class="fas fa-angle-right fa-3x float-end" style="margin-top: -52px;"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                        </div>
+                        <br>
+
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -145,3 +167,4 @@
     </div>
 
 @endsection
+
