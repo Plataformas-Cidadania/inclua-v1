@@ -89,6 +89,11 @@
                             @include('page.about.partner')
                         </div>
                     @endif
+                    @if($rota=="links")
+                        <div>
+                            @include('page.about.link')
+                        </div>
+                    @endif
 
 
 

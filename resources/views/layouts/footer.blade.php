@@ -49,32 +49,34 @@
                 <div class="row">
                     <div class="col-md-3">
                         <div>
-                            <h3>O Portal</h3>
+                            <h3>Sobre</h3>
                             <ul>
-
-                                <li><a href="">Teste</a></li>
-
+                                @foreach($mnPortal as $mn)
+                                    <li><a href="{{$mn->slug}}">{{$mn->titulo}}</a></li>
+                                @endforeach
+                                    <br><br>
                             </ul>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div>
-                            <h3>Dados</h3>
+                            <h3>Diagnóstico</h3>
                             <ul>
-
-                                    <li role="presentation"><a href="indicadores" accesskey="h" @if($rota=='/') class="corrente " @endif>Indicadores</a></li>
-                                    <li role="presentation"><a href="posts/1/analises" accesskey="h" @if($rota=='/') class="corrente " @endif>Análises</a></li>
+                                <li role="presentation"><a href="diagnostico" accesskey="h" @if($rota=='/') class="corrente " @endif>Completo</a></li>
+                                <li role="presentation"><a href="diagnostico" accesskey="h" @if($rota=='/') class="corrente " @endif>Parcial</a></li>
+                                <br><br>
                             </ul>
                         </div>
                     </div>
 
                     <div class="col-md-3">
                         <div>
-                            <h3>Biblioteca</h3>
+                            <h3>Recursos</h3>
                             <ul>
 
-                                <li><a href="editais">Editais</a></li>
-                                <li><a href="videos">Vídeos</a></li>
+                                <li><a href="recursos">Editais</a></li>
+                                <li><a href="recursos">Vídeos</a></li>
+                                <br><br>
                             </ul>
                         </div>
                     </div>
@@ -84,7 +86,8 @@
                             <div>
                                 <h3>Ajuda</h3>
                                 <ul>
-                                        <li role="presentation"><a href="contato" accesskey="a" @if($rota=='quem') class="contato" @endif>Fale conosco</a></li>
+                                    <li role="presentation"><a href="contato" accesskey="a" @if($rota=='quem') class="contato" @endif>Fale conosco</a></li>
+                                    <br><br>
                                 </ul>
                             </div>
                         </div>
