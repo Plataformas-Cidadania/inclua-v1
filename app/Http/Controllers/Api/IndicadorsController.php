@@ -11,41 +11,12 @@ use Exception;
 class IndicadorsController extends Controller
 {
 
-    /**
-     * Display a listing of the assets.
-     *
-     * @return Illuminate\View\View
-     */
-    public function index()
-    {
-        $indicadors = Indicador::paginate(25);
-
-        $data = $indicadors->transform(function ($indicador) {
-            return $this->transform($indicador);
-        });
-
-        return $this->successResponse(
-            'Indicadors were successfully retrieved.',
-            $data,
-            [
-                'links' => [
-                    'first' => $indicadors->url(1),
-                    'last' => $indicadors->url($indicadors->lastPage()),
-                    'prev' => $indicadors->previousPageUrl(),
-                    'next' => $indicadors->nextPageUrl(),
-                ],
-                'meta' =>
-                [
-                    'current_page' => $indicadors->currentPage(),
-                    'from' => $indicadors->firstItem(),
-                    'last_page' => $indicadors->lastPage(),
-                    'path' => $indicadors->resolveCurrentPath(),
-                    'per_page' => $indicadors->perPage(),
-                    'to' => $indicadors->lastItem(),
-                    'total' => $indicadors->total(),
-                ],
-            ]
-        );
+    public function getAll(){
+        $res = Indicador::all();
+        if (!$res) {
+            return response()->json(['Resposta' => 'Não existe nenhum indicador na Base de Dados!'], Response::HTTP_OK);
+        }
+        return $res;
     }
 
     /**
@@ -87,11 +58,10 @@ class IndicadorsController extends Controller
     public function show($id)
     {
         $indicador = Indicador::findOrFail($id);
-
-        return $this->successResponse(
-		    'Indicador was successfully retrieved.',
-		    $this->transform($indicador)
-		);
+        if (!$indicador) {
+            return response()->json(['Resposta' => 'Não existe este indicador na Base de Dados!'], Response::HTTP_OK);
+        }
+        return $indicador;
     }
 
     /**

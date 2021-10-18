@@ -26,10 +26,6 @@ class Dimensao extends Model
 	public $incrementing = false;
 	public $timestamps = false;
 
-	protected $casts = [
-		'id_dimensao' => 'int',
-		'nome' => 'character varying'
-	];
 
 	protected $fillable = [
 		'nome'

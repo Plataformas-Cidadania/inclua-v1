@@ -31,21 +31,17 @@ class Indicador extends Model
 	public $incrementing = false;
 	public $timestamps = false;
 
-	protected $casts = [
-		'id_indicador' => 'int',
-		'nome' => 'character varying',
-		'dimensao_id_dimensao' => 'int'
-	];
-
 	protected $fillable = [
 		'nome',
 		'descricao',
 		'dimensao_id_dimensao'
 	];
 
+	protected $with = ['dimensao'];
+
 	public function dimensao()
 	{
-		return $this->belongsTo(Dimensao::class, 'dimensao_id_dimensao');
+		return $this->hasOne('App\Models\Dimensao', 'id_dimensao','dimensao_id_dimensao');
 	}
 
 	public function pergunta()

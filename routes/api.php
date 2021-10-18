@@ -22,8 +22,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group([
     'prefix' => 'indicadors',
 ], function () {
-    Route::get('/', [App\Http\Controllers\Api\IndicadorsController::class, 'index'])
-         ->name('api.indicadors.indicador.index');
+    Route::get('/', [App\Http\Controllers\Api\IndicadorsController::class, 'getAll'])
+         ->name('api.indicadors.indicador.getAll');
     Route::get('/show/{indicador}',[App\Http\Controllers\Api\IndicadorsController::class, 'show'])
          ->name('api.indicadors.indicador.show');
     Route::post('/', [App\Http\Controllers\Api\IndicadorsController::class, 'store'])
