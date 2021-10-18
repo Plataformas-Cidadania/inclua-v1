@@ -54,6 +54,7 @@
                                 @foreach($mnPortal as $mn)
                                     <li><a href="{{$mn->slug}}">{{$mn->titulo}}</a></li>
                                 @endforeach
+                                    <br><br>
                             </ul>
                         </div>
                     </div>
@@ -63,6 +64,7 @@
                             <ul>
                                 <li role="presentation"><a href="diagnostico" accesskey="h" @if($rota=='/') class="corrente " @endif>Completo</a></li>
                                 <li role="presentation"><a href="diagnostico" accesskey="h" @if($rota=='/') class="corrente " @endif>Parcial</a></li>
+                                <br><br>
                             </ul>
                         </div>
                     </div>
@@ -74,6 +76,7 @@
 
                                 <li><a href="recursos">Editais</a></li>
                                 <li><a href="recursos">Vídeos</a></li>
+                                <br><br>
                             </ul>
                         </div>
                     </div>
@@ -83,7 +86,8 @@
                             <div>
                                 <h3>Ajuda</h3>
                                 <ul>
-                                        <li role="presentation"><a href="contato" accesskey="a" @if($rota=='quem') class="contato" @endif>Fale conosco</a></li>
+                                    <li role="presentation"><a href="contato" accesskey="a" @if($rota=='quem') class="contato" @endif>Fale conosco</a></li>
+                                    <br><br>
                                 </ul>
                             </div>
                         </div>
