@@ -87,18 +87,14 @@
 {{--CEl--}}
 <div class="header-cel text-center d-block d-sm-none" >
     <div class="row">
-        <div class="col-xs-2">
+        <div class="col-2">
             <i class="fas fa-bars fa-2x btn-cel menu-cel-icon"></i>
             <i class="fas fa-times fa-2x btn-cel menu-cel-hide"></i>
         </div>
-        <div class="col-xs-8">
+        <div class="col-8">
 
             <a href="/">
-                <picture>
-                    <source srcset="imagens/settings/{{$setting->imagem}}" media="(max-width: 468px)">
-                    <source srcset="imagens/settings/{{$setting->imagem}}" class="img-responsive">
-                    <img src="img/pre-img.gif" srcset="imagens/settings/{{$setting->imagem}}" alt="{{$setting->titulo}}" title="{{$setting->titulo}}" width="240" style="margin-left: 30px;">
-                </picture>
+                <h2 class="logo" style="float: left">INCLUA</h2>
             </a>
         </div>
         <div class="col-xs-2"></div>
@@ -108,23 +104,12 @@
 <div class="menu-cel hidden-lg hidden-md hidden-sm menu-cel-hide" style="display: none;" id="iniciodomenu">
     <ul>
         <br>
-        <li role="presentation"><a href="" @if($rota=='/') class="corrente" @endif>Início</a></li>
-        <li role="presentation"><a href="mapa" @if($rota=='mapa') class="corrente" @endif>Mapa</a></li>
-        <li role="presentation"><a href="sobre" @if($rota=='sobre') class="corrente" @endif>Sobre</a></li>
-
-        <li role="presentation"><a @if($rota=='quem') class="corrente" @endif>Dados</a></li>
-        <li role="presentation"><a href="base-dados" @if($rota=='quem') class="corrente" @endif>&nbsp;&nbsp;&nbsp;Base de Dados</a></li>
-        <li role="presentation"><a href="indicadores" @if($rota=='/') class="corrente " @endif>&nbsp;&nbsp;&nbsp;Indicadores</a></li>
-        <li role="presentation"><a href="posts/1/analises" @if($rota=='/') class="corrente " @endif>&nbsp;&nbsp;&nbsp;Análises</a></li>
-
-        <li role="presentation"><a @if($rota=='quem') class="corrente" @endif>Biblioteca</a></li>
-        <li role="presentation"><a href="posts/3/analises" @if($rota=='quem') class="corrente" @endif>&nbsp;&nbsp;&nbsp;Análises</a></li>
-        <li role="presentation"><a href="posts/2/noticias" @if($rota=='quem') class="corrente" @endif>&nbsp;&nbsp;&nbsp;Notícias</a></li>
-        <li role="presentation"><a href="editais" @if($rota=='quem') class="corrente" @endif>&nbsp;&nbsp;&nbsp;Editais</a></li>
-        <li role="presentation"><a href="videos" @if($rota=='quem') class="corrente" @endif>&nbsp;&nbsp;&nbsp;Vídeos</a></li>
-
-
-        <li role="presentation"><a href="glossario"  @if($rota=='contato') class="corrente" @endif>Ajuda</a></li>
+        <li role="presentation"><a href="" accesskey="h" @if($rota=='/') class="corrente" @endif>Início</a></li>
+        <li role="presentation"><a href="diagnostico" >Diagnóstico</a></li>
+        <li role="presentation"><a href="recursos" >Recursos</a></li>
+        <li role="presentation"><a href="contribua"  @if($rota=='sobre') class="corrente" @endif>Contribua</a></li>
+        <li role="presentation"><a href="sobre" accesskey="q" @if($rota=='sobre') class="corrente" @endif>Sobre</a></li>
+        <li role="presentation"><a href="contato" accesskey="c" @if($rota=='quem') class="contato" @endif>Contato</a></li>
     </ul>
 </div>
 <div class="box-menu menu-cel-hide" style="display: none;"></div>
