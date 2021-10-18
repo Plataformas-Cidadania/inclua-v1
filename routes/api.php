@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Api\Http\Controllers\Api\Api\IndicadorsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,4 +17,19 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::group([
+    'prefix' => 'indicadors',
+], function () {
+    Route::get('/', [App\Http\Controllers\Api\IndicadorsController::class, 'index'])
+         ->name('api.indicadors.indicador.index');
+    Route::get('/show/{indicador}',[App\Http\Controllers\Api\IndicadorsController::class, 'show'])
+         ->name('api.indicadors.indicador.show');
+    Route::post('/', [App\Http\Controllers\Api\IndicadorsController::class, 'store'])
+         ->name('api.indicadors.indicador.store');    
+    Route::put('indicador/{indicador}', [App\Http\Controllers\Api\IndicadorsController::class, 'update'])
+         ->name('api.indicadors.indicador.update');
+    Route::delete('/indicador/{indicador}',[App\Http\Controllers\Api\IndicadorsController::class, 'destroy'])
+         ->name('api.indicadors.indicador.destroy');
 });
