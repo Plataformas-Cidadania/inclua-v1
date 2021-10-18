@@ -139,14 +139,9 @@
             <div class="col-md-12">
                 <nav class="navbar navbar-light">
                     <a class="navbar-brand" href="#">
-                        <picture>
-                            <source srcset="imagens/settings/{{$setting->imagem}}" media="(max-width: 468px)">
-                            <source srcset="imagens/settings/{{$setting->imagem}}" class="img-responsive">
-                            <img src="img/pre-img.gif" srcset="imagens/settings/{{$setting->imagem}}" alt="{{$setting->titulo}}" title="{{$setting->titulo}}"  width="300">
-                        </picture>
+                        <h2 class="logo">INCLUA</h2>
                     </a>
                     <div>
-                        <br>
                         <div class="btn-group">
                             <ul id="menu-desk">
                                 <li role="presentation"><a href="" accesskey="h" @if($rota=='/') class="corrente" @endif>Início</a></li>
