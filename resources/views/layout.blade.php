@@ -2,6 +2,7 @@
 
 <?php
     $setting = DB::table('settings')->orderBy('id', 'desc')->first();
+    $mnPortal = DB::table('modulos')->where('tipo_id', 1)->where('status', 1)->orderBy('id')->get();
     $base_href = config('app.url');
     $barra = "";
 
