@@ -1,4 +1,4 @@
-class Contact extends React.Component{
+class Index extends React.Component{
     constructor(props){
         super(props);
         this.state = {
@@ -263,6 +263,6 @@ class Contact extends React.Component{
 }
 
 ReactDOM.render(
-    <Contact />,
-    document.getElementById('contact')
+    <Index />,
+    document.getElementById('diagnostico')
 );
