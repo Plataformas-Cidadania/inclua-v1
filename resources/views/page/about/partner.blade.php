@@ -1,6 +1,5 @@
 <?php
-    $partners = DB::table('apoios')->where('status', 1)->orderBy('id', 'desc')->paginate(23);
-    $modulo = ['apoio', 'apoios', 'Apoio', 'Apoios'];
+    $partners = DB::table('parceiros')->where('status', 1)->orderBy('id', 'desc')->paginate(23);
 ?>
 
     <div class="container">
@@ -11,10 +10,10 @@
                         <div class="items-img text-center">
                             <a href="{{$partner->url}}" target="_blank" data-toggle="modal" data-target="#myModal{{$key}}">
                                 <picture>
-                                    <source srcset="imagens/{{$modulo[1]}}/sm-{{$partner->imagem}}" media="(max-width: 468px)">
-                                    <source srcset="imagens/{{$modulo[1]}}/md-{{$partner->imagem}}" media="(max-width: 768px)">
-                                    <source srcset="imagens/{{$modulo[1]}}/lg-{{$partner->imagem}}" class="img-responsive">
-                                    <img src="img/pre-img.gif" data-src="imagens/{{$modulo[1]}}/lg-{{$partner->imagem}}" alt="Imagem sobre {{$partner->titulo}}" title="Imagem sobre {{$partner->titulo}}" width="100%" class="img-responsive lazyload">
+                                    <source srcset="imagens/parceiros/sm-{{$partner->imagem}}" media="(max-width: 468px)">
+                                    <source srcset="imagens/parceiros/md-{{$partner->imagem}}" media="(max-width: 768px)">
+                                    <source srcset="imagens/parceiros/lg-{{$partner->imagem}}" class="img-responsive">
+                                    <img src="img/pre-img.gif" data-src="imagens/parceiros/lg-{{$partner->imagem}}" alt="Imagem sobre {{$partner->titulo}}" title="Imagem sobre {{$partner->titulo}}" width="100%" class="img-responsive lazyload">
                                 </picture>
                             </a>
                         </div>
@@ -31,10 +30,10 @@
                                 <div class="modal-body">
                                     <div class="text-center">
                                         <picture>
-                                            <source srcset="imagens/{{$modulo[1]}}/sm-{{$partner->imagem}}" media="(max-width: 468px)">
-                                            <source srcset="imagens/{{$modulo[1]}}/md-{{$partner->imagem}}" media="(max-width: 768px)">
-                                            <source srcset="imagens/{{$modulo[1]}}/lg-{{$partner->imagem}}" class="img-responsive">
-                                            <img src="img/pre-img.gif" data-src="imagens/{{$modulo[1]}}/lg-{{$partner->imagem}}" alt="Imagem sobre {{$partner->titulo}}" title="Imagem sobre {{$partner->titulo}}" width="100%" class="img-responsive lazyload">
+                                            <source srcset="imagens/parceiros/sm-{{$partner->imagem}}" media="(max-width: 468px)">
+                                            <source srcset="imagens/parceiros/md-{{$partner->imagem}}" media="(max-width: 768px)">
+                                            <source srcset="imagens/parceiros/lg-{{$partner->imagem}}" class="img-responsive">
+                                            <img src="img/pre-img.gif" data-src="imagens/parceiros/lg-{{$partner->imagem}}" alt="Imagem sobre {{$partner->titulo}}" title="Imagem sobre {{$partner->titulo}}" width="100%" class="img-responsive lazyload">
                                         </picture>
                                     </div>
                                     {!!$partner->descricao!!}

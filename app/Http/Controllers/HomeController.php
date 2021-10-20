@@ -20,9 +20,7 @@ class HomeController extends Controller
         $text1 = \App\Models\Text::where('slug', 'diagnostico')->first();
         $text2 = \App\Models\Text::where('slug', 'resultado')->first();
         $text3 = \App\Models\Text::where('slug', 'recursos')->first();
-
-
-
+        $partners = \App\Models\Parceiro::orderBy('id')->get();
 
 
         return view('home', [
@@ -30,6 +28,7 @@ class HomeController extends Controller
             'text1' => $text1,
             'text2' => $text2,
             'text3' => $text3,
+            'partners' => $partners,
         ]);
 
 
