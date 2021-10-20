@@ -66,9 +66,12 @@
 </script>
 
 
+{{--React 16--}}
+{{--<script src="js/react/react.development.js" crossorigin></script>
+<script src="js/react/react-dom.development.js" crossorigin></script>--}}
 
-<script src="js/react/react.development.js" crossorigin></script>
-<script src="js/react/react-dom.development.js" crossorigin></script>
+<script src="js/react17/react.production.min.js" crossorigin></script>
+<script src="js/react17/react-dom.production.min.js" crossorigin></script>
 
 <script>
     function get_location() {
