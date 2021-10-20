@@ -24,6 +24,7 @@ class HomeController extends Controller
 
 
 
+
         return view('home', [
             'webdoors' => $webdoors,
             'text1' => $text1,
