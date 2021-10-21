@@ -18,7 +18,7 @@ class Controller extends BaseController
      * @param mix $data
      * @param array $meta
      *
-     * @return Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     protected function successResponse($message, $data, array $meta = [])
     {
@@ -35,7 +35,7 @@ class Controller extends BaseController
      *
      * @param mix $message
      *
-     * @return Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     protected function errorResponse($message)
     {

@@ -4,19 +4,30 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Api\Controller;
 use App\Models\Indicador;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Exception;
+use function MongoDB\BSON\toJSON;
+use function Webmozart\Assert\Tests\StaticAnalysis\string;
 
-class IndicadorsController extends Controller
+class IndicadoresController extends Controller
 {
 
     public function getAll(){
-        $res = Indicador::all();
-        if (!$res) {
-            return response()->json(['Resposta' => 'Não existe nenhum indicador na Base de Dados!'], Response::HTTP_OK);
+        {
+            $indicadores = Indicador::all();
+
+            $data = $indicadores->transform(function ($indicador) {
+                return $this->transform($indicador);
+            });
+
+            return $this->successResponse(
+                'Indicadores retornados com sucesso',
+                $data
+            );
         }
-        return $res;
+
     }
 
     /**
@@ -36,15 +47,13 @@ class IndicadorsController extends Controller
             }
 
             $data = $this->getData($request);
-            
             $indicador = Indicador::create($data);
-
             return $this->successResponse(
-			    'Indicador was successfully added.',
+			    'Indicador '.$indicador->id_indicador.' foi adicionado',
 			    $this->transform($indicador)
 			);
         } catch (Exception $exception) {
-            return $this->errorResponse('Unexpected error occurred while trying to process your request.');
+            return $this->errorResponse('Erro inesperado.'.$exception);
         }
     }
 
@@ -55,13 +64,21 @@ class IndicadorsController extends Controller
      *
      * @return Illuminate\Http\Response
      */
-    public function show($id)
+    public function get($id)
     {
-        $indicador = Indicador::findOrFail($id);
-        if (!$indicador) {
-            return response()->json(['Resposta' => 'Não existe este indicador na Base de Dados!'], Response::HTTP_OK);
+        try {
+            $indicador = Indicador::findOrFail($id);
+            return $this->successResponse(
+                'Indicador retornado com sucesso',
+                $this->transform($indicador)
+            );
+        }catch (Exception $exception) {
+            if ($exception instanceof ModelNotFoundException)
+                return $this->errorResponse('Not found');
+            return $this->errorResponse('Erro inesperado.'.$exception);
         }
-        return $indicador;
+
+
     }
 
     /**
@@ -74,6 +91,7 @@ class IndicadorsController extends Controller
      */
     public function update($id, Request $request)
     {
+
         try {
             $validator = $this->getValidator($request);
 
@@ -82,8 +100,9 @@ class IndicadorsController extends Controller
             }
 
             $data = $this->getData($request);
-            
-            $indicador = Indicador::findOrFail($id);
+
+            $indicador = Indicador::find($id);
+
             $indicador->update($data);
 
             return $this->successResponse(
@@ -91,7 +110,7 @@ class IndicadorsController extends Controller
 			    $this->transform($indicador)
 			);
         } catch (Exception $exception) {
-            return $this->errorResponse('Unexpected error occurred while trying to process your request.');
+            return $this->errorResponse('Unexpected error occurred while trying to process your request.'.$exception);
         }
     }
 
@@ -109,14 +128,16 @@ class IndicadorsController extends Controller
             $indicador->delete();
 
             return $this->successResponse(
-			    'Indicador was successfully deleted.',
+			    'Indicador deletado com sucesso',
 			    $this->transform($indicador)
 			);
         } catch (Exception $exception) {
-            return $this->errorResponse('Unexpected error occurred while trying to process your request.');
+            if ($exception instanceof ModelNotFoundException)
+                return $this->errorResponse('Not found');
+            return $this->errorResponse('Erro inesperado'.$exception);
         }
     }
-    
+
     /**
      * Gets a new validator instance with the defined rules.
      *
@@ -127,20 +148,20 @@ class IndicadorsController extends Controller
     protected function getValidator(Request $request)
     {
         $rules = [
-            'id_indicador' => 'string|min:1|nullable',
+            'id_indicador' => 'string|min:1',
             'nome' => 'string|min:1|nullable',
             'descricao' => 'string|min:1|nullable',
-            'dimensao_id_dimensao' => 'string|min:1|nullable', 
+            'dimensao_id_dimensao' => 'string|min:1|nullable',
         ];
 
         return Validator::make($request->all(), $rules);
     }
 
-    
+
     /**
      * Get the request's data from the request.
      *
-     * @param Illuminate\Http\Request\Request $request 
+     * @param Illuminate\Http\Request\Request $request
      * @return array
      */
     protected function getData(Request $request)
@@ -149,9 +170,9 @@ class IndicadorsController extends Controller
                 'id_indicador' => 'string|min:1|nullable',
             'nome' => 'string|min:1|nullable',
             'descricao' => 'string|min:1|nullable',
-            'dimensao_id_dimensao' => 'string|min:1|nullable', 
+            'dimensao_id_dimensao' => 'string|min:1|nullable',
         ];
-        
+
         $data = $request->validate($rules);
 
 

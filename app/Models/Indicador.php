@@ -11,12 +11,12 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Indicador
- * 
+ *
  * @property int $id_indicador
  * @property character varying|null $nome
  * @property string|null $descricao
  * @property int $dimensao_id_dimensao
- * 
+ *
  * @property Dimensao $dimensao
  * @property Collection|Perguntum[] $pergunta
  * @property Collection|RelIndRec[] $rel_ind_recs
@@ -28,7 +28,7 @@ class Indicador extends Model
 {
 	protected $table = 'indicador';
 	protected $primaryKey = 'id_indicador';
-	public $incrementing = false;
+	public $incrementing = true; // Marcar TRUE sempre que tiver um autoincrement na tabela
 	public $timestamps = false;
 
 	protected $fillable = [
