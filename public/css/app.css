@@ -12506,6 +12506,21 @@ figcaption {
   background-size: 40%;
 }
 
+.item-logo {
+  transition: 0.3s;
+  filter: grayscale(100%);
+  filter: gray;
+  /* IE */
+  margin-bottom: 30px;
+}
+
+.item-logo:hover {
+  transition: 0.3s;
+  filter: none;
+  /*IE */
+  transform: scale(1.1);
+}
+
 .btn-plus {
   color: #FBCB4A;
   text-decoration: underline;
