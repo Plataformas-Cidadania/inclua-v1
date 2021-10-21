@@ -5,39 +5,47 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Api\Controller;
 use App\Models\Indicador;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Database\Eloquent\RelationNotFoundException;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Exception;
-use function MongoDB\BSON\toJSON;
-use function Webmozart\Assert\Tests\StaticAnalysis\string;
+use App\Repository\IndicadorRepository;
 
-class IndicadoresController extends Controller
+class IndicadorController extends Controller
 {
+    private IndicadorRepository $indicadorRepository;
 
-    public function getAll(){
-        {
-            $indicadores = Indicador::all();
-
-            $data = $indicadores->transform(function ($indicador) {
-                return $this->transform($indicador);
-            });
-
-            return $this->successResponse(
-                'Indicadores retornados com sucesso',
-                $data
-            );
-        }
-
+    public function __construct(IndicadorRepository $indicadorRepository)
+    {
+        $this->indicadorRepository = $indicadorRepository;
     }
 
     /**
-     * Store a new indicador in the storage.
+     * Mostrar todos os indicatores.
      *
-     * @param Illuminate\Http\Request $request
+     * @param null
      *
-     * @return Illuminate\Http\Response
+     * @return JsonResponse
      */
-    public function store(Request $request)
+
+    public function getAll(): JsonResponse
+    {
+        $indicadores = $this->indicadorRepository->all();
+        return $this->successResponse(
+            'Indicadores retornados com sucesso',
+            $indicadores
+        );
+    }
+
+    /**
+     * Adicionar um novo indicador
+     *
+     * @param Request $request
+     *
+     * @return JsonResponse
+     */
+    public function store(Request $request): JsonResponse
     {
         try {
             $validator = $this->getValidator($request);
@@ -47,7 +55,7 @@ class IndicadoresController extends Controller
             }
 
             $data = $this->getData($request);
-            $indicador = Indicador::create($data);
+            $indicador = $this->indicadorRepository->create($data);
             return $this->successResponse(
 			    'Indicador '.$indicador->id_indicador.' foi adicionado',
 			    $this->transform($indicador)
@@ -58,38 +66,36 @@ class IndicadoresController extends Controller
     }
 
     /**
-     * Display the specified indicador.
+     * Obter um indicador especificado pelo id
      *
      * @param int $id
      *
-     * @return Illuminate\Http\Response
+     * @return JsonResponse
      */
-    public function get($id)
+    public function get($id): JsonResponse
     {
         try {
-            $indicador = Indicador::findOrFail($id);
+            $indicador = $this->indicadorRepository->findById($id);
             return $this->successResponse(
                 'Indicador retornado com sucesso',
-                $this->transform($indicador)
+                $indicador
             );
         }catch (Exception $exception) {
             if ($exception instanceof ModelNotFoundException)
                 return $this->errorResponse('Not found');
             return $this->errorResponse('Erro inesperado.'.$exception);
         }
-
-
     }
 
     /**
-     * Update the specified indicador in the storage.
+     * Atualizar um indicador especificado pelo id
      *
      * @param int $id
-     * @param Illuminate\Http\Request $request
+     * @param Request $request
      *
-     * @return Illuminate\Http\Response
+     * @return JsonResponse
      */
-    public function update($id, Request $request)
+    public function update($id, Request $request): JsonResponse
     {
 
         try {
@@ -101,34 +107,33 @@ class IndicadoresController extends Controller
 
             $data = $this->getData($request);
 
-            $indicador = Indicador::find($id);
-
-            $indicador->update($data);
+            $indicador = $this->indicadorRepository->update($id,$data);
 
             return $this->successResponse(
 			    'Indicador was successfully updated.',
 			    $this->transform($indicador)
 			);
         } catch (Exception $exception) {
-            return $this->errorResponse('Unexpected error occurred while trying to process your request.'.$exception);
+            if ($exception instanceof ModelNotFoundException)
+                return $this->errorResponse('Not found');
+            return $this->errorResponse('Unexpected error occurred while trying to process your request.'.$exception->getMessage());
         }
     }
 
     /**
-     * Remove the specified indicador from the storage.
+     * Remover um indicador da base de dados especificado pelo id
      *
      * @param int $id
      *
-     * @return Illuminate\Http\Response
+     * @return JsonResponse
      */
-    public function destroy($id)
+    public function destroy($id): JsonResponse
     {
         try {
-            $indicador = Indicador::findOrFail($id);
-            $indicador->delete();
+            $indicador = $this->indicadorRepository->deleteById($id);
 
             return $this->successResponse(
-			    'Indicador deletado com sucesso',
+			    'Indicador '.$id.' deletado com sucesso',
 			    $this->transform($indicador)
 			);
         } catch (Exception $exception) {
@@ -139,19 +144,19 @@ class IndicadoresController extends Controller
     }
 
     /**
-     * Gets a new validator instance with the defined rules.
+     * Cria uma instancia de validador com as regras definidas
      *
-     * @param Illuminate\Http\Request $request
+     * @param Request $request
      *
-     * @return Illuminate\Support\Facades\Validator
+     * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function getValidator(Request $request)
+    protected function getValidator(Request $request): \Illuminate\Contracts\Validation\Validator
     {
         $rules = [
             'id_indicador' => 'string|min:1',
             'nome' => 'string|min:1|nullable',
             'descricao' => 'string|min:1|nullable',
-            'dimensao_id_dimensao' => 'string|min:1|nullable',
+            'dimensao_id_dimensao' => 'int|min:1|nullable',
         ];
 
         return Validator::make($request->all(), $rules);
@@ -159,34 +164,31 @@ class IndicadoresController extends Controller
 
 
     /**
-     * Get the request's data from the request.
+     * Pegar e validar os dados da requisição
      *
-     * @param Illuminate\Http\Request\Request $request
+     * @param Request $request
      * @return array
      */
-    protected function getData(Request $request)
+    protected function getData(Request $request): array
     {
         $rules = [
-                'id_indicador' => 'string|min:1|nullable',
+            'id_indicador' => 'string|min:1|nullable',
             'nome' => 'string|min:1|nullable',
             'descricao' => 'string|min:1|nullable',
-            'dimensao_id_dimensao' => 'string|min:1|nullable',
+            'dimensao_id_dimensao' => 'int|min:1|nullable',
         ];
 
-        $data = $request->validate($rules);
-
-
-        return $data;
+        return $request->validate($rules);
     }
 
     /**
-     * Transform the giving indicador to public friendly array
+     * Transformar o indicador em um array
      *
-     * @param App\Models\Indicador $indicador
+     * @param Indicador $indicador
      *
      * @return array
      */
-    protected function transform(Indicador $indicador)
+    protected function transform(Indicador $indicador): array
     {
         return [
             'id_indicador' => $indicador->id_indicador,
