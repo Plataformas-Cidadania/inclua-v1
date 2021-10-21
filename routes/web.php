@@ -45,6 +45,7 @@ Route::get('contato', 'App\Http\Controllers\ContactController@email');
 Route::post('contact', 'App\Http\Controllers\ContactController@send');
 
 Route::get('diagnostico', 'App\Http\Controllers\DiagnosticoController@completo');
+Route::get('diagnostico-react', 'App\Http\Controllers\DiagnosticoController@completoReact');
 Route::get('recursos', 'App\Http\Controllers\RecursoController@listar');
 Route::get('contribua', 'App\Http\Controllers\ContribuaController@listar');
 
@@ -75,6 +76,10 @@ if(env('DYNAMIC_ROUTES')=='true'){
         }
     }
 }
+
+//Testes components-------------------------------------------------
+Route::get('/teste-dimensoes', [DiagnosticoController::class , 'testeDimensoes']);
+//------------------------------------------------------------------
 
 /*
 <--------------------------------------------------------------------------|

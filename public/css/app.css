@@ -13469,12 +13469,18 @@ textarea {
 
 .nav-icons {
   margin: 0 15px;
+  border: double 2px #FFFFFF;
 }
 
 .nav-icons img {
   margin: 15px;
   z-index: 2;
   position: relative;
+}
+
+.nav-icons-select {
+  border: double 3px #333 !important;
+  border-radius: 25px;
 }
 
 .nav-icons hr {
