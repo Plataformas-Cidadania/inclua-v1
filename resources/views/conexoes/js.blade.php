@@ -138,6 +138,11 @@
     <script src="js/components/diagnostico/header.js"></script>
     <script src="js/components/diagnostico/index.js"></script>
 @endif
+@if($rota=="/")
+    <script src="js/components/home/store.js"></script>
+    <script src="js/components/home/header.js"></script>
+    <script src="js/components/home/index.js"></script>
+@endif
 
 
 <script>

@@ -13463,6 +13463,15 @@ textarea {
   padding-left: 15px;
 }
 
+.btn-icon-hover {
+  float: inherit !important;
+  margin: auto !important;
+}
+
+.btn-icon-hover:hover {
+  background-color: #F5F1ED;
+}
+
 .clear-both {
   clear: both;
 }

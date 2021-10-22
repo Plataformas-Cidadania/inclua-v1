@@ -298,6 +298,14 @@
     margin-top: 10px;
     padding-left: 15px;
 }
+.btn-icon-hover{
+    float: inherit !important;
+    margin: auto !important;
+}
+.btn-icon-hover:hover{
+    background-color: $color-lgt;
+}
+
 .clear-both{
     clear: both;
 }
