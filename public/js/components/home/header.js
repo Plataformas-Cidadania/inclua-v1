@@ -45,6 +45,20 @@ const Header = () => {
       display: context.showMenuDiagnostico ? '' : 'none'
     }
   }, /*#__PURE__*/React.createElement("div", {
+    className: "container-fluid"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "p-3"
+  }, "\xA0"), /*#__PURE__*/React.createElement("div", {
+    className: "dorder-container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "bg-lgt dorder-container-mai"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "dorder-container-line"
+  }, /*#__PURE__*/React.createElement("h2", null, "Diagn\xF3stico"), /*#__PURE__*/React.createElement("div", {
+    className: "dorder-container-box bg-lgt"
+  })))), /*#__PURE__*/React.createElement("div", {
+    className: "p-3"
+  }, "\xA0")), /*#__PURE__*/React.createElement("div", {
     className: "col-md-12"
   }, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null)), /*#__PURE__*/React.createElement("div", {
     className: "col text-center cursor"

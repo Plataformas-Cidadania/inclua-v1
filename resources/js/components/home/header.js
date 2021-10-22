@@ -30,6 +30,20 @@ const Header = () => {
                 </div>
             </div>
             <div className="row" style={{display: context.showMenuDiagnostico ? '' : 'none'}}>
+                {/*////////////*/}
+                <div className="container-fluid">
+                    <div className="p-3">&nbsp;</div>
+                    <div className="dorder-container">
+                        <div className="bg-lgt dorder-container-mai">
+                            <div className="dorder-container-line">
+                                <h2>Diagnóstico</h2>
+                                <div className="dorder-container-box bg-lgt"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="p-3">&nbsp;</div>
+                </div>
+                {/*////////////*/}
                 <div className="col-md-12">
                     <br/><br/>
                 </div>
