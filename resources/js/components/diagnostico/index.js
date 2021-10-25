@@ -1,7 +1,6 @@
 const Diagnostico = () => {
 
     const { useContext } = React;
-
     const context = useContext(DiagnosticoContext);
 
     return (

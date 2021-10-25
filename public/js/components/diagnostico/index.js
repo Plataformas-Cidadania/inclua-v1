@@ -2,7 +2,6 @@ var Diagnostico = function Diagnostico() {
     var _React = React,
         useContext = _React.useContext;
 
-
     var context = useContext(DiagnosticoContext);
 
     return React.createElement(

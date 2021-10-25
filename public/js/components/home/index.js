@@ -1,8 +1,4 @@
 var Home = function Home() {
-
-    //const { useContext } = React;
-    //const context = useContext(HomeContext);
-
     return React.createElement(
         'div',
         null,

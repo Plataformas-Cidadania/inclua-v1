@@ -1,8 +1,4 @@
 const Home = () => {
-
-    //const { useContext } = React;
-    //const context = useContext(HomeContext);
-
     return (
         <div>
             <Header/>
