@@ -1,0 +1,33 @@
+[
+    {
+        "dimensao1": [
+            {
+                "info": {
+                    "id": 1,
+                    "titulo": "Participação social e representação...",
+                    "descricao": "Chama atenção para o conjunto de relações institucionais ...",
+                    "dimensao": 1
+                },
+                "indicadores": [
+                    {
+                        "id": 1,
+                        "titulo": "DIVISÃO DO TRABALHO, COORDENAÇÃO E CONFLITO INTERINSTITUCIONAL",
+                        "descricao": "Identifica e avalia o grau de maturidade da articulação institucional...",
+                        "perguntas":[
+                            {
+                                "id": 1,
+                                "titulo": "Caso o processo de implementação dessa oferta pública envolva...",
+                                "tipo": 1
+                            },
+                            {
+                                "id": 2,
+                                "titulo": "Caso o processo de implementação dessa oferta pública envolva...",
+                                "tipo": 1
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]
