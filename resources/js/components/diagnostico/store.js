@@ -28,6 +28,10 @@ const DiagnosticoProvider = ({children}) => {
         setIndicador(dimensao.indicadores[0]);
     }, [dimensao]);
 
+    useEffect(() => {
+        console.log(indicador);
+    }, [indicador]);
+
     const listDimensoes = async () => {
         try {
             //const result = await axios.get('teste-dimensoes');

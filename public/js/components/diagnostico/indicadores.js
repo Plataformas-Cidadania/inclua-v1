@@ -8,6 +8,12 @@ const Indicadores = () => {
   const [indicador, setIndicador] = useState(0);
   const [titulo, setTitulo] = useState(0);
   const [descricao, setDescricao] = useState(0);
+  const circleClosed = /*#__PURE__*/React.createElement("i", {
+    className: "fas fa-circle tx-pri"
+  });
+  const circleOpen = /*#__PURE__*/React.createElement("i", {
+    className: "far fa-circle tx-pri"
+  });
   useEffect(() => {
     setDimensao(context.dimensao.info.dimensao);
     setIndicador(context.indicador.indicador);
@@ -126,13 +132,55 @@ const Indicadores = () => {
     className: "col-6 col-6  d-grid gap-2 d-md-flex justify-content-start"
   }, /*#__PURE__*/React.createElement("div", {
     className: "nav-circle mt-2 "
-  }, /*#__PURE__*/React.createElement("i", {
-    className: "fas fa-circle tx-pri"
-  }), /*#__PURE__*/React.createElement("i", {
-    className: "far fa-circle tx-pri"
+  }, context.dimensao.indicadores.map((item, key) => {
+    if (item.indicador <= indicador) {
+      return /*#__PURE__*/React.createElement("svg", {
+        key: "circle" + key,
+        className: "svg-inline--fa fa-circle fa-w-16 tx-pri",
+        "aria-hidden": "true",
+        focusable: "false",
+        "data-prefix": "fas",
+        "data-icon": "circle",
+        role: "img",
+        xmlns: "http://www.w3.org/2000/svg",
+        viewBox: "0 0 512 512",
+        "data-fa-i2svg": "",
+        onClick: () => context.setIndicador(item)
+      }, /*#__PURE__*/React.createElement("path", {
+        fill: "currentColor",
+        d: "M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"
+      }));
+    } else {
+      return /*#__PURE__*/React.createElement("svg", {
+        key: "circle" + key,
+        className: "svg-inline--fa fa-circle fa-w-16 tx-pri",
+        "aria-hidden": "true",
+        focusable: "false",
+        "data-prefix": "far",
+        "data-icon": "circle",
+        role: "img",
+        xmlns: "http://www.w3.org/2000/svg",
+        viewBox: "0 0 512 512",
+        "data-fa-i2svg": "",
+        onClick: () => context.setIndicador(item)
+      }, /*#__PURE__*/React.createElement("path", {
+        fill: "currentColor",
+        d: "M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200z"
+      }));
+    }
   }))), /*#__PURE__*/React.createElement("div", {
     className: "col-6 col-6"
-  }, context.dimensao.indicadores.length > indicador ? /*#__PURE__*/React.createElement("div", {
+  }, context.dimensao.indicadores.length <= indicador ? /*#__PURE__*/React.createElement("div", {
+    className: "d-grid gap-2 d-md-flex justify-content-md-end"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "dorder-container"
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "btn btn-theme bg-pri",
+    type: "button",
+    onClick: () => context.setIndicador(context.dimensao.indicadores[indicador - 2])
+  }, /*#__PURE__*/React.createElement("i", {
+    className: "fas fa-angle-left"
+  }), " indicador ", dimensao, ".", indicador - 1))) : null, context.dimensao.indicadores.length > indicador ? /*#__PURE__*/React.createElement("div", {
     className: "d-grid gap-2 d-md-flex justify-content-md-end"
   }, /*#__PURE__*/React.createElement("div", {
     className: "dorder-container"

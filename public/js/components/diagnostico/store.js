@@ -29,6 +29,9 @@ const DiagnosticoProvider = ({
   useEffect(() => {
     setIndicador(dimensao.indicadores[0]);
   }, [dimensao]);
+  useEffect(() => {
+    console.log(indicador);
+  }, [indicador]);
 
   const listDimensoes = async () => {
     try {

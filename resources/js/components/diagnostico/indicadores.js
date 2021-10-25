@@ -7,6 +7,8 @@ const Indicadores = () => {
     const [indicador, setIndicador] = useState(0);
     const [titulo, setTitulo] = useState(0);
     const [descricao, setDescricao] = useState(0);
+    const circleClosed = <i className="fas fa-circle tx-pri"/>;
+    const circleOpen = <i className="far fa-circle tx-pri"/>;
 
     useEffect(() => {
         setDimensao(context.dimensao.info.dimensao);
@@ -115,11 +117,50 @@ const Indicadores = () => {
                     <div className="row mt-4 mb-4">
                         <div className="col-6 col-6  d-grid gap-2 d-md-flex justify-content-start">
                             <div className="nav-circle mt-2 ">
-                                <i className="fas fa-circle tx-pri"/>
-                                <i className="far fa-circle tx-pri"/>
+                                {
+                                    context.dimensao.indicadores.map((item, key) => {
+                                        if(item.indicador <= indicador){
+                                            return (
+                                                <svg key={"circle"+key} className="svg-inline--fa fa-circle fa-w-16 tx-pri"
+                                                     aria-hidden="true" focusable="false" data-prefix="fas"
+                                                     data-icon="circle" role="img" xmlns="http://www.w3.org/2000/svg"
+                                                     viewBox="0 0 512 512" data-fa-i2svg=""
+                                                     onClick={() => context.setIndicador(item)}>
+                                                    <path fill="currentColor"
+                                                          d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path>
+                                                </svg>
+                                            )
+                                        }else{
+                                            return (
+                                                <svg key={"circle"+key} className="svg-inline--fa fa-circle fa-w-16 tx-pri"
+                                                     aria-hidden="true" focusable="false" data-prefix="far"
+                                                     data-icon="circle" role="img" xmlns="http://www.w3.org/2000/svg"
+                                                     viewBox="0 0 512 512" data-fa-i2svg=""
+                                                     onClick={() => context.setIndicador(item)}>
+                                                    <path fill="currentColor"
+                                                          d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200z"></path>
+                                                </svg>
+                                            )
+                                        }
+                                    })
+                                }
+                                {/*<i className="fas fa-circle tx-pri"/>
+                                <i className="far fa-circle tx-pri"/>*/}
                             </div>
                         </div>
                         <div className="col-6 col-6">
+                            {
+                                context.dimensao.indicadores.length <= indicador ? (
+                                    <div className="d-grid gap-2 d-md-flex justify-content-md-end">
+                                        <div className="dorder-container">
+                                            <button className="btn btn-theme bg-pri" type="button"
+                                                    onClick={() => context.setIndicador(context.dimensao.indicadores[indicador-2])}>
+                                                <i className="fas fa-angle-left"/> indicador {dimensao}.{indicador-1}
+                                            </button>
+                                        </div>
+                                    </div>
+                                ) : null
+                            }
                             {
                                 context.dimensao.indicadores.length > indicador ? (
                                     <div className="d-grid gap-2 d-md-flex justify-content-md-end">
@@ -132,6 +173,7 @@ const Indicadores = () => {
                                     </div>
                                 ) : null
                             }
+
                         </div>
                     </div>
                 </div>
