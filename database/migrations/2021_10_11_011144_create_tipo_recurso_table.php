@@ -13,8 +13,8 @@ class CreateTipoRecursoTable extends Migration
      */
     public function up()
     {
-        Schema::create('tipo_recurso', function (Blueprint $table) {
-            $table->integer('id_tipo_recurso')->primary()->comment('identifica o tipo de recurso');
+        Schema::create('avaliacao.tipo_recurso', function (Blueprint $table) {
+            $table->increments('id_tipo_recurso')->primary()->comment('identifica o tipo de recurso');
             $table->string('nome', 50)->nullable()->comment('nome do tipo de recurso');
         });
     }
@@ -26,6 +26,6 @@ class CreateTipoRecursoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tipo_recurso');
+        Schema::dropIfExists('avaliacao.tipo_recurso');
     }
 }

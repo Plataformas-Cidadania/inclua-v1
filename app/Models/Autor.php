@@ -15,15 +15,15 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id_autor
  * @property character varying|null $nome
  * 
- * @property Collection|Autorium[] $autoria
+ * @property Collection|Autoria[] $autoria
  *
  * @package App\Models
  */
 class Autor extends Model
 {
-	protected $table = 'autor';
+	protected $table = 'avaliacao.autor';
 	protected $primaryKey = 'id_autor';
-	public $incrementing = false;
+
 	public $timestamps = false;
 
 	protected $casts = [
@@ -37,6 +37,6 @@ class Autor extends Model
 
 	public function autoria()
 	{
-		return $this->hasMany(Autorium::class, 'autor_id_autor');
+		return $this->hasMany(Autoria::class, 'id_autor');
 	}
 }

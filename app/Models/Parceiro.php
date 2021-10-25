@@ -23,7 +23,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Parceiro extends Model
 {
-	protected $table = 'parceiros';
+	protected $table = 'cms.parceiros';
 
 	protected $casts = [
 		'imagem' => 'character varying',

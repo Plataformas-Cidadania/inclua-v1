@@ -29,7 +29,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Webdoor extends Model
 {
-	protected $table = 'webdoors';
+	protected $table = 'cms.webdoors';
 
 	protected $casts = [
 		'imagem' => 'character varying',

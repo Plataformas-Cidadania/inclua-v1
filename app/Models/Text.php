@@ -26,7 +26,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Text extends Model
 {
-	protected $table = 'texts';
+	protected $table = 'cms.texts';
 
 	protected $casts = [
 		'imagem' => 'character varying',

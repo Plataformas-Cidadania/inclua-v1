@@ -9,38 +9,36 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Risco
+ * Class RelIndRec
  * 
- * @property int $id_risco
- * @property int|null $vl_alto
- * @property int|null $vl_baixo
  * @property int $id_indicador
- * 
+ * @property int $id_recurso
+ *
  * @property Indicador $indicador
+ * @property Recurso $recurso
  *
  * @package App\Models
  */
-class Risco extends Model
+class Indicacao extends Model
 {
-	protected $table = 'avaliacao.risco';
-	protected $primaryKey = 'id_risco';
+	protected $table = 'avaliacao.indicacao';
 	public $timestamps = false;
 
 	protected $casts = [
-		'id_risco' => 'int',
-		'vl_alto' => 'int',
-		'vl_baixo' => 'int',
-		'id_indicador' => 'int'
+		'id_indicador' => 'int',
+		'id_recurso' => 'int'
 	];
-
 	protected $fillable = [
-		'vl_alto',
-		'vl_baixo',
-		'id_indicador'
+		'id_indicador',
+		'id_recurso'
 	];
-
 	public function indicador()
 	{
 		return $this->belongsTo(Indicador::class, 'id_indicador');
+	}
+
+	public function recurso()
+	{
+		return $this->belongsTo(Recurso::class, 'id_recurso');
 	}
 }

@@ -18,8 +18,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $dimensao_id_dimensao
  * 
  * @property Dimensao $dimensao
- * @property Collection|Perguntum[] $pergunta
- * @property Collection|RelIndRec[] $rel_ind_recs
+ * @property Collection|Pergunta[] $pergunta
+ * @property Collection|Indicacao[] $rel_ind_recs
  * @property Collection|Risco[] $riscos
  *
  * @package App\Models
@@ -28,34 +28,33 @@ class Indicador extends Model
 {
 	protected $table = 'indicador';
 	protected $primaryKey = 'id_indicador';
-	public $incrementing = false;
 	public $timestamps = false;
 
 	protected $fillable = [
 		'nome',
 		'descricao',
-		'dimensao_id_dimensao'
+		'id_dimensao'
 	];
 
 	protected $with = ['dimensao'];
 
 	public function dimensao()
 	{
-		return $this->hasOne('App\Models\Dimensao', 'id_dimensao','dimensao_id_dimensao');
+		return $this->belongsTo(Dimensao::class, 'id_dimensao');
 	}
 
-	public function pergunta()
+	public function perguntas()
 	{
-		return $this->hasMany(Perguntum::class, 'indicador_id_indicador');
+		return $this->hasMany(Pergunta::class, 'id_indicador');
 	}
 
-	public function rel_ind_recs()
+	public function indicacoes()
 	{
-		return $this->hasMany(RelIndRec::class, 'indicador_id_indicador');
+		return $this->hasMany(Indicacao::class, 'id_indicador');
 	}
 
 	public function riscos()
 	{
-		return $this->hasMany(Risco::class, 'indicador_id_indicador');
+		return $this->hasMany(Risco::class, 'id_indicador');
 	}
 }

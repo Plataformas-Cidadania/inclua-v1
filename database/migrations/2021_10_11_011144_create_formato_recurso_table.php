@@ -13,9 +13,9 @@ class CreateFormatoRecursoTable extends Migration
      */
     public function up()
     {
-        Schema::create('formato_recurso', function (Blueprint $table) {
-            $table->integer('id_formato')->primary()->comment('Identifica o formato');
-            $table->string('nome', 50)->nullable()->comment('nome do formato');
+        Schema::create('avaliacao.formato_recurso', function (Blueprint $table) {
+            $table->increments('id_formato')->primary()->comment('Identifica o formato');
+            $table->string('nome', 50)->comment('nome do formato');
         });
     }
 
@@ -26,6 +26,6 @@ class CreateFormatoRecursoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('formato_recurso');
+        Schema::dropIfExists('avaliacao.formato_recurso');
     }
 }

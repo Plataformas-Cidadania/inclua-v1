@@ -13,15 +13,16 @@ class CreateLinkTable extends Migration
      */
     public function up()
     {
-        Schema::create('link', function (Blueprint $table) {
-            $table->integer('id_link')->comment('Identifica o link');
-            $table->text('uri')->nullable()->comment('contem o a uri de um conteúdo ');
-            $table->integer('recurso_id_recurso');
-            $table->integer('recurso_tipo_recurso_id_tipo_recurso');
-            $table->integer('recurso_formato_recurso_id_formato');
+        Schema::create('avaliacao.link', function (Blueprint $table) {
+            $table->increments('id_link')->primary()->comment('Identifica o link');
+            $table->text('uri')->comment('contem o a uri de um conteúdo ');
             $table->string('idioma', 50)->nullable();
+            $table->foreign('id_recurso')->references('id_recurso')
+                    ->on('avaliacao.recurso')
+                    ->onDelete('cascade');
 
-            $table->primary(['id_link', 'recurso_id_recurso', 'recurso_tipo_recurso_id_tipo_recurso', 'recurso_formato_recurso_id_formato']);
+
+            
         });
     }
 
@@ -32,6 +33,7 @@ class CreateLinkTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('link');
+        $table->dropForeign('recurso_link_id_recurso_foreign');
+        Schema::dropIfExists('avaliacao.link');
     }
 }

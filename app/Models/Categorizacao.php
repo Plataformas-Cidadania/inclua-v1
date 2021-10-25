@@ -9,34 +9,33 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Link
+ * Class RecursoCategorium
  * 
- * @property int $id_link
- * @property string|null $uri
+ * @property int $categoria_id_categoria
  * @property int $recurso_id_recurso
- * @property int $recurso_tipo_recurso_id_tipo_recurso
- * @property int $recurso_formato_recurso_id_formato
- * @property character varying|null $idioma
  * 
+ * @property Categoria $categoria
  * @property Recurso $recurso
  *
  * @package App\Models
  */
-class Link extends Model
+class Categorizacao extends Model
 {
-	protected $table = 'avaliacao.link';
+	protected $table = 'avaliacao.categorizacao';
 	public $timestamps = false;
 
 	protected $casts = [
-		'id_link' => 'int',
-		'id_recurso' => 'int',
-		'idioma' => 'character varying'
+		'id_categoria' => 'int',
+		'id_recurso' => 'int'
 	];
-
 	protected $fillable = [
-		'uri',
-		'idioma'
+		'id_categoria',
+		'id_recurso'
 	];
+	public function categoria()
+	{
+		return $this->belongsTo(Categoria::class, 'id_categoria');
+	}
 
 	public function recurso()
 	{

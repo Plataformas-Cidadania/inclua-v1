@@ -23,7 +23,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class FailedJob extends Model
 {
-	protected $table = 'failed_jobs';
+	protected $table = 'cms.failed_jobs';
 	public $timestamps = false;
 
 	protected $casts = [

@@ -28,7 +28,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Url extends Model
 {
-	protected $table = 'urls';
+	protected $table = 'cms.urls';
 
 	protected $casts = [
 		'imagem' => 'character varying',

@@ -13,9 +13,9 @@ class CreateAutorTable extends Migration
      */
     public function up()
     {
-        Schema::create('autor', function (Blueprint $table) {
-            $table->integer('id_autor')->primary()->comment('Identifica o autor');
-            $table->string('nome', 50)->nullable()->comment('Nome do autor');
+        Schema::create('avaliacao.autor', function (Blueprint $table) {
+            $table->increments('id_autor')->primary()->comment('Identifica o autor');
+            $table->string('nome', 50)->comment('Nome do autor');
         });
     }
 
@@ -26,6 +26,6 @@ class CreateAutorTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('autor');
+        Schema::dropIfExists('avaliacao.autor');
     }
 }

@@ -13,7 +13,7 @@ class CreateParceirosTable extends Migration
      */
     public function up()
     {
-        Schema::create('parceiros', function (Blueprint $table) {
+        Schema::create('cms.parceiros', function (Blueprint $table) {
             $table->id();
             $table->string('imagem');
             $table->string('titulo')->nullable();
@@ -30,6 +30,6 @@ class CreateParceirosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('parceiros');
+        Schema::dropIfExists('cms.parceiros');
     }
 }

@@ -23,7 +23,6 @@ class FormatoRecurso extends Model
 {
 	protected $table = 'formato_recurso';
 	protected $primaryKey = 'id_formato';
-	public $incrementing = false;
 	public $timestamps = false;
 
 	protected $casts = [
@@ -37,6 +36,6 @@ class FormatoRecurso extends Model
 
 	public function recursos()
 	{
-		return $this->hasMany(Recurso::class, 'formato_recurso_id_formato');
+		return $this->hasMany(Recurso::class, 'id_formato');
 	}
 }

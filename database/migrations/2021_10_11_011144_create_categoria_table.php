@@ -13,9 +13,9 @@ class CreateCategoriaTable extends Migration
      */
     public function up()
     {
-        Schema::create('categoria', function (Blueprint $table) {
-            $table->integer('id_categoria')->primary()->comment('Identifica a categoria');
-            $table->string('nome', 50)->nullable();
+        Schema::create('avaliacao.categoria', function (Blueprint $table) {
+            $table->increments('id_categoria')->primary()->comment('Identifica a categoria');
+            $table->string('nome', 50);
         });
     }
 
@@ -26,6 +26,6 @@ class CreateCategoriaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categoria');
+        Schema::dropIfExists('avaliacao.categoria');
     }
 }

@@ -13,7 +13,7 @@ class CreateWebdoorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('webdoors', function (Blueprint $table) {
+        Schema::create('cms.webdoors', function (Blueprint $table) {
             $table->id();
             $table->string('imagem');
             $table->string('titulo')->nullable();
@@ -35,6 +35,6 @@ class CreateWebdoorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('webdoors');
+        Schema::dropIfExists('cms.webdoors');
     }
 }

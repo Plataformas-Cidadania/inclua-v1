@@ -19,7 +19,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class PasswordReset extends Model
 {
-	protected $table = 'password_resets';
+	protected $table = 'cms.password_resets';
 	public $incrementing = false;
 	public $timestamps = false;
 

@@ -15,15 +15,14 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id_categoria
  * @property character varying|null $nome
  * 
- * @property Collection|RecursoCategorium[] $recurso_categoria
+ * @property Collection|RecursoCategoria[] $recurso_categoria
  *
  * @package App\Models
  */
-class Categorium extends Model
+class Categoria extends Model
 {
-	protected $table = 'categoria';
+	protected $table = 'avaliacao.categoria';
 	protected $primaryKey = 'id_categoria';
-	public $incrementing = false;
 	public $timestamps = false;
 
 	protected $casts = [
@@ -37,6 +36,6 @@ class Categorium extends Model
 
 	public function recurso_categoria()
 	{
-		return $this->hasMany(RecursoCategorium::class, 'categoria_id_categoria');
+		return $this->hasMany(RecursoCategoria::class, 'id_categoria');
 	}
 }

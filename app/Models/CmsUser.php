@@ -31,7 +31,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class CmsUser extends Model
 {
-	protected $table = 'cms_users';
+	protected $table = 'cms.cms_users';
 
 	protected $casts = [
 		'name' => 'character varying',

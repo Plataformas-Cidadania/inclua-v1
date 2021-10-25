@@ -21,9 +21,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Dimensao extends Model
 {
-	protected $table = 'dimensao';
+	protected $table = 'avaliacao.dimensao';
 	protected $primaryKey = 'id_dimensao';
-	public $incrementing = false;
 	public $timestamps = false;
 
 
@@ -33,6 +32,6 @@ class Dimensao extends Model
 
 	public function indicadors()
 	{
-		return $this->hasMany(Indicador::class, 'dimensao_id_dimensao');
+		return $this->hasMany(Indicador::class, 'id_dimensao');
 	}
 }

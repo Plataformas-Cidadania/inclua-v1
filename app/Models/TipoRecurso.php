@@ -21,9 +21,9 @@ use Illuminate\Database\Eloquent\Model;
  */
 class TipoRecurso extends Model
 {
-	protected $table = 'tipo_recurso';
+	protected $table = 'avaliacao.tipo_recurso';
 	protected $primaryKey = 'id_tipo_recurso';
-	public $incrementing = false;
+
 	public $timestamps = false;
 
 	protected $casts = [
@@ -37,6 +37,6 @@ class TipoRecurso extends Model
 
 	public function recursos()
 	{
-		return $this->hasMany(Recurso::class, 'tipo_recurso_id_tipo_recurso');
+		return $this->hasMany(Recurso::class, 'id_tipo_recurso');
 	}
 }

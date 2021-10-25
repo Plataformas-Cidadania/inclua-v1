@@ -13,7 +13,7 @@ class CreateTextsTable extends Migration
      */
     public function up()
     {
-        Schema::create('texts', function (Blueprint $table) {
+        Schema::create('cms.texts', function (Blueprint $table) {
             $table->id();
             $table->string('imagem');
             $table->string('titulo')->nullable();
@@ -32,6 +32,6 @@ class CreateTextsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('texts');
+        Schema::dropIfExists('cms.texts');
     }
 }
