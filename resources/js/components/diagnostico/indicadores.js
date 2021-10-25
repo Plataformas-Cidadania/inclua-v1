@@ -1,9 +1,25 @@
 const Indicadores = () => {
+
+    const context = React.useContext(DiagnosticoContext);
+    const {useState, useEffect} = React;
+
+    const [dimensao, setDimensao] = useState(0);
+    const [indicador, setIndicador] = useState(0);
+    const [titulo, setTitulo] = useState(0);
+    const [descricao, setDescricao] = useState(0);
+
+    useEffect(() => {
+        setDimensao(context.dimensao.info.dimensao);
+        setIndicador(context.indicador.indicador);
+        setTitulo(context.indicador.titulo);
+        setDescricao(context.indicador.descricao);
+    }, [context.dimensao, context.indicador]);
+
     return (
         <div className="container">
             <div className="row mt-3">
                 <div className="col-6 col-6">
-                    <h2>INDICADOR 2.1</h2>
+                    <h2>INDICADOR {dimensao}.{indicador}</h2>
                 </div>
                 <div className="col-6 col-6 d-grid gap-2 d-md-flex justify-content-end">
                     <div className="nav-circle">
@@ -15,10 +31,8 @@ const Indicadores = () => {
                     <hr style={{marginTop: '1px'}}/>
                 </div>
                 <div className="col-md-12 mt-3">
-                    <h3>DIVISÃO DO TRABALHO, COORDENAÇÃO E CONFLITO INTERINSTITUCIONAL</h3>
-                    <p>Identifica e avalia o grau de maturidade da articulação institucional, atenção a conflitos e
-                        disputas interorganizacionais, falhas de conexão, lacunas derivadas da divisão do trabalho entre
-                        as organizações e esforços de reorganização do arranjo institucional.</p>
+                    <h3>{titulo}</h3>
+                    <p>{descricao}</p>
                     <br/>
                 </div>
 
@@ -106,13 +120,18 @@ const Indicadores = () => {
                             </div>
                         </div>
                         <div className="col-6 col-6">
-                            <div className="d-grid gap-2 d-md-flex justify-content-md-end">
-                                <div className="dorder-container">
-                                    <button className="btn btn-theme bg-pri" type="button">
-                                        indicador 2.2 <i className="fas fa-angle-right"/>
-                                    </button>
-                                </div>
-                            </div>
+                            {
+                                context.dimensao.indicadores.length > indicador ? (
+                                    <div className="d-grid gap-2 d-md-flex justify-content-md-end">
+                                        <div className="dorder-container">
+                                            <button className="btn btn-theme bg-pri" type="button"
+                                                    onClick={() => context.setIndicador(context.dimensao.indicadores[indicador])}>
+                                                indicador {dimensao}.{indicador+1} <i className="fas fa-angle-right"/>
+                                            </button>
+                                        </div>
+                                    </div>
+                                ) : null
+                            }
                         </div>
                     </div>
                 </div>

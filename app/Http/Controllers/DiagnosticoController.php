@@ -37,7 +37,7 @@ class DiagnosticoController extends Controller{
     }
 
     public function testeDimensoes(){
-        $rows = DB::table('dimensao')->orderBy('id_dimensao')->get();
+        /*$rows = DB::table('dimensao')->orderBy('id_dimensao')->get();
         $dimensoes = [];
         foreach ($rows as $row) {
             array_push($dimensoes, [
@@ -55,6 +55,6 @@ class DiagnosticoController extends Controller{
                 "indicadores" => []
             ]);
         }
-        return $dimensoes;
+        return $dimensoes;*/
     }
 }

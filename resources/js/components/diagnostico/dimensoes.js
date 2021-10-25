@@ -12,21 +12,21 @@ const Dimensoes = () => {
                                 context.dimensoes.map((item, key) => {
                                     //let classe =  ? 'nav-icons-select' : '';
                                     let classe = "cursor ";
-                                    if(item.teaser.dimensao === context.dimensao) {
+                                    if(item.info.dimensao === context.dimensao.info.dimensao) {
                                         classe += "nav-icons-select ";
                                     }
                                     if(
-                                        !context.dimensoesRespondidas.includes(item.teaser.dimensao) &&
-                                        item.teaser.dimensao !== context.dimensao
+                                        !context.dimensoesRespondidas.includes(item.info.dimensao) &&
+                                        item.info.dimensao !== context.dimensao.info.dimensao
                                     ) {
                                         classe += "opacity-5";
                                     }
                                     return (
                                         <img key={"icone-dimensao-"+key}
-                                            src={"img/dimensao"+item.teaser.dimensao+".png"}
+                                            src={"img/dimensao"+item.info.dimensao+".png"}
                                             alt=""
                                             className={classe}
-                                            onClick={() => context.setDimensao(item.teaser.dimensao)}
+                                            onClick={() => context.setDimensao(item)}
                                         />
                                     )
                                 })
@@ -43,29 +43,20 @@ const Dimensoes = () => {
             </div>
 
             <div className="dorder-container" style={{marginLeft: '10px'}}>
-                {
-                    context.dimensoes.map((item) => {
-                        if(context.dimensao === item.teaser.dimensao){
-                            return (
-                                <div className="bg-pri">
-                                    <div className="container-fluid">
-                                        <div className="row">
-                                            <div className="col-md-3 text-center">
-                                                <img src="img/dimensao1-g.png" alt=""/>
-                                                <h2>DIMENSÃO {item.teaser.dimensao}</h2>
-                                            </div>
-                                            <div className="col-md-9">
-                                                <h2 className="mt-5">{item.teaser.titulo}</h2>
-                                                <p className="mb-5">{item.teaser.descricao}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            );
-                        }
-                    })
-                }
-
+                <div className="bg-pri">
+                    <div className="container-fluid">
+                        <div className="row">
+                            <div className="col-md-3 text-center">
+                                <img src={"img/dimensao"+context.dimensao.info.dimensao+"-g.png"} alt=""/>
+                                <h2>DIMENSÃO {context.dimensao.info.dimensao}</h2>
+                            </div>
+                            <div className="col-md-9">
+                                <h2 className="mt-5">{context.dimensao.info.titulo}</h2>
+                                <p className="mb-5">{context.dimensao.info.descricao}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <br/>
             <Indicadores/>

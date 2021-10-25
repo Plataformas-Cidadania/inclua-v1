@@ -1,30 +1,79 @@
 [
     {
-        "dimensao1": [
+        "info": {
+            "id": 1,
+            "titulo": "Participação social e representação...",
+            "descricao": "Chama atenção para o conjunto de relações institucionais ...",
+            "dimensao": 1
+        },
+        "indicadores": [
             {
-                "info": {
-                    "id": 1,
-                    "titulo": "Participação social e representação...",
-                    "descricao": "Chama atenção para o conjunto de relações institucionais ...",
-                    "dimensao": 1
-                },
-                "indicadores": [
+                "id": 1,
+                "indicador": 1,
+                "titulo": "DIVISÃO DO TRABALHO, COORDENAÇÃO E CONFLITO INTERINSTITUCIONAL",
+                "descricao": "Identifica e avalia o grau de maturidade da articulação institucional...",
+                "perguntas":[
                     {
                         "id": 1,
-                        "titulo": "DIVISÃO DO TRABALHO, COORDENAÇÃO E CONFLITO INTERINSTITUCIONAL",
-                        "descricao": "Identifica e avalia o grau de maturidade da articulação institucional...",
-                        "perguntas":[
-                            {
-                                "id": 1,
-                                "titulo": "Caso o processo de implementação dessa oferta pública envolva...",
-                                "tipo": 1
-                            },
-                            {
-                                "id": 2,
-                                "titulo": "Caso o processo de implementação dessa oferta pública envolva...",
-                                "tipo": 1
-                            }
-                        ]
+                        "pergunta": 1,
+                        "titulo": "Caso o processo de implementação dessa oferta pública envolva...",
+                        "tipo": 1
+                    },
+                    {
+                        "id": 2,
+                        "pergunta": 2,
+                        "titulo": "Caso o processo de implementação dessa oferta pública envolva...",
+                        "tipo": 1
+                    }
+                ]
+            },
+            {
+                "id": 2,
+                "indicador": 2,
+                "titulo": "----DIVISÃO DO TRABALHO, COORDENAÇÃO E CONFLITO INTERINSTITUCIONAL",
+                "descricao": "---Identifica e avalia o grau de maturidade da articulação institucional...",
+                "perguntas":[
+                    {
+                        "id": 3,
+                        "pergunta": 1,
+                        "titulo": "---Caso o processo de implementação dessa oferta pública envolva...",
+                        "tipo": 1
+                    },
+                    {
+                        "id": 4,
+                        "pergunta": 2,
+                        "titulo": "---Caso o processo de implementação dessa oferta pública envolva...",
+                        "tipo": 1
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "info": {
+            "id": 1,
+            "titulo": "Dimensão 2",
+            "descricao": "...",
+            "dimensao": 2
+        },
+        "indicadores": [
+            {
+                "id": 1,
+                "indicador": 1,
+                "titulo": "Indicador 1",
+                "descricao": "...",
+                "perguntas":[
+                    {
+                        "id": 1,
+                        "pergunta": 1,
+                        "titulo": "Pergunta 1",
+                        "tipo": 1
+                    },
+                    {
+                        "id": 2,
+                        "pergunta": 2,
+                        "titulo": "Pergunta 2",
+                        "tipo": 1
                     }
                 ]
             }

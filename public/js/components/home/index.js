@@ -1,13 +1,5 @@
-var Home = function Home() {
-    return React.createElement(
-        'div',
-        null,
-        React.createElement(Header, null)
-    );
+const Home = () => {
+  return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(Header, null));
 };
 
-ReactDOM.render(React.createElement(
-    HomeProvider,
-    null,
-    React.createElement(Home, null)
-), document.getElementById('home'));
+ReactDOM.render( /*#__PURE__*/React.createElement(HomeProvider, null, /*#__PURE__*/React.createElement(Home, null)), document.getElementById('home'));
