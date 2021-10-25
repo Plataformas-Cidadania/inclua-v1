@@ -51,3 +51,4 @@ const DiagnosticoProvider = ({children}) => {
         </DiagnosticoContext.Provider>
     );
 };
+

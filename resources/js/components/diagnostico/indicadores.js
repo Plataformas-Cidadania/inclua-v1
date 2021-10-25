@@ -139,3 +139,4 @@ const Indicadores = () => {
         </div>
     );
 };
+

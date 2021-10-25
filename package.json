@@ -10,13 +10,14 @@
         "production": "mix --production"
     },
     "devDependencies": {
-        "@babel/cli": "^7.8.4",
+        "@babel/cli": "^7.15.7",
         "@babel/preset-react": "^7.14.5",
         "@tailwindcss/forms": "^0.2.1",
         "alpinejs": "^2.7.3",
         "autoprefixer": "^10.1.0",
         "axios": "^0.21",
         "babel-cli": "^6.26.0",
+        "babel-core": "^7.0.0-bridge.0",
         "babel-preset-react": "^6.24.1",
         "laravel-mix": "^6.0.31",
         "less": "^4.1.2",
@@ -30,10 +31,10 @@
         "tailwindcss": "^2.0.2"
     },
     "dependencies": {
+        "@babel/core": "^7.15.8",
         "@fortawesome/fontawesome-free": "^5.15.4",
         "@types/react": "^17.0.31",
         "@types/react-dom": "^17.0.10",
-        "babel-core": "^6.26.3",
         "babel-loader": "^7.1.5",
         "babel-preset-react-app": "^3.1.2",
         "bootstrap": "^5.1.1",
