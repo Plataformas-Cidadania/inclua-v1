@@ -20,16 +20,16 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::group([
-    'prefix' => 'indicadors',
+    'prefix' => 'indicadores',
 ], function () {
-    Route::get('/', [App\Http\Controllers\Api\IndicadorsController::class, 'getAll'])
+    Route::get('/', [App\Http\Controllers\Api\IndicadorController::class, 'getAll'])
          ->name('api.indicadors.indicador.getAll');
-    Route::get('/show/{indicador}',[App\Http\Controllers\Api\IndicadorsController::class, 'show'])
-         ->name('api.indicadors.indicador.show');
-    Route::post('/', [App\Http\Controllers\Api\IndicadorsController::class, 'store'])
-         ->name('api.indicadors.indicador.store');    
-    Route::put('indicador/{indicador}', [App\Http\Controllers\Api\IndicadorsController::class, 'update'])
+    Route::get('/{indicador}',[App\Http\Controllers\Api\IndicadorController::class, 'get'])
+         ->name('api.indicadors.indicador.get');
+    Route::post('/', [App\Http\Controllers\Api\IndicadorController::class, 'store'])
+         ->name('api.indicadors.indicador.store');
+    Route::put('/{indicador}', [App\Http\Controllers\Api\IndicadorController::class, 'update'])
          ->name('api.indicadors.indicador.update');
-    Route::delete('/indicador/{indicador}',[App\Http\Controllers\Api\IndicadorsController::class, 'destroy'])
+    Route::delete('/{indicador}',[App\Http\Controllers\Api\IndicadorController::class, 'destroy'])
          ->name('api.indicadors.indicador.destroy');
 });

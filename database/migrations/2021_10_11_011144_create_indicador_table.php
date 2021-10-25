@@ -13,6 +13,7 @@ class CreateIndicadorTable extends Migration
      */
     public function up()
     {
+<<<<<<< HEAD
         Schema::create('avaliacao.indicador', function (Blueprint $table) {
             $table->increments('id_indicador')->primary();
             $table->string('nome', 50);
@@ -21,6 +22,13 @@ class CreateIndicadorTable extends Migration
                     ->on('avaliacao.dimensao')
                     ->onDelete('set null');
 
+=======
+        Schema::create('indicador', function (Blueprint $table) {
+            $table->increments('id_indicador');
+            $table->string('nome', 50)->nullable();
+            $table->text('descricao')->nullable();
+            $table->integer('dimensao_id_dimensao');
+>>>>>>> 8520836f2255373e5dcf9bb34cc6de2062522e1f
         });
     }
 
