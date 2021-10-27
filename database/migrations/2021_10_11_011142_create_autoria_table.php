@@ -14,6 +14,8 @@ class CreateAutoriaTable extends Migration
     public function up()
     {
         Schema::create('avaliacao.autoria', function (Blueprint $table) {
+            $table->integer('id_autor');
+            $table->integer('id_recurso');
             $table->foreign('id_autor')->references('id_autor')
                     ->on('avaliacao.autor')
                     ->onDelete('cascade');
@@ -32,8 +34,8 @@ class CreateAutoriaTable extends Migration
      */
     public function down()
     {
-        $table->dropForeign('autor_autoria_id_autor_foreign');
-        $table->dropForeign('recurso_autoria_id_recurso_foreign');
+        //$table->dropForeign('autor_autoria_id_autor_foreign');
+        //$table->dropForeign('recurso_autoria_id_recurso_foreign');
         Schema::dropIfExists('avaliacao.autoria');
     }
 }

@@ -23,7 +23,7 @@ class CreateWebdoorsTable extends Migration
             $table->integer('posicao')->default(0);
             $table->integer('status')->default(0);
             $table->integer('cmsuser_id')->unsigned();
-            $table->foreign('cmsuser_id')->references('id')->on('cms_users')->onDelete('restrict');
+            $table->foreign('cmsuser_id')->references('id')->on('cms.cms_users')->onDelete('restrict');
             $table->timestamps();
         });
     }
