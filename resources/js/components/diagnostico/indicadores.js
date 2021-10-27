@@ -59,6 +59,14 @@ const Indicadores = () => {
                 </div>
 
                 <div className="col-md-12">
+                    <Pergunta
+                        tipo="1"
+                        titulo="Caso o processo de implementação dessa oferta pública
+                            envolva mais de uma organização (ou múltiplas unidades de uma organização) responsável por
+                            etapas diferentes da produção do bem ou serviço, existem espaços e mecanismos para promover
+                            a coordenação e a articulação das ações entre essas organizações? [Por exemplo: reuniões
+                            periódicas, comitês gestores, instâncias de mediação, etc.] Marque uma opção abaixo."
+                    />
                     <div className="box-items bg-lgt">
                         <p className="mb-3"><strong>P1.1a</strong> Caso o processo de implementação dessa oferta pública
                             envolva mais de uma organização (ou múltiplas unidades de uma organização) responsável por
