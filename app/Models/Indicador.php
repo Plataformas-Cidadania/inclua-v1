@@ -26,7 +26,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Indicador extends Model
 {
-	protected $table = 'indicador';
+	protected $table = 'avaliacao.indicador';
 	protected $primaryKey = 'id_indicador';
 	public $timestamps = false;
 

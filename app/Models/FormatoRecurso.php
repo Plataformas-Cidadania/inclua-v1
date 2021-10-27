@@ -21,7 +21,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class FormatoRecurso extends Model
 {
-	protected $table = 'formato_recurso';
+	protected $table = 'avaliacao.formato_recurso';
 	protected $primaryKey = 'id_formato';
 	public $timestamps = false;
 
