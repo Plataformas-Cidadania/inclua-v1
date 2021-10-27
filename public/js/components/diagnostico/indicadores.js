@@ -64,7 +64,7 @@ const Indicadores = () => {
     className: "col-md-12"
   }, /*#__PURE__*/React.createElement(Pergunta, {
     tipo: "1",
-    titulo: "Caso o processo de implementa\xE7\xE3o dessa oferta p\xFAblica envolva mais de uma organiza\xE7\xE3o (ou m\xFAltiplas unidades de uma organiza\xE7\xE3o) respons\xE1vel por etapas diferentes da produ\xE7\xE3o do bem ou servi\xE7o, existem espa\xE7os e mecanismos para promover a coordena\xE7\xE3o e a articula\xE7\xE3o das a\xE7\xF5es entre essas organiza\xE7\xF5es? [Por exemplo: reuni\xF5es peri\xF3dicas, comit\xEAs gestores, inst\xE2ncias de media\xE7\xE3o, etc.] Marque uma op\xE7\xE3o abaixo."
+    titulo: "Caso o processo de implementa\xE7\xE3o dessa oferta p\xFAblica\r envolva mais de uma organiza\xE7\xE3o (ou m\xFAltiplas unidades de uma organiza\xE7\xE3o) respons\xE1vel por\r etapas diferentes da produ\xE7\xE3o do bem ou servi\xE7o, existem espa\xE7os e mecanismos para promover\r a coordena\xE7\xE3o e a articula\xE7\xE3o das a\xE7\xF5es entre essas organiza\xE7\xF5es? [Por exemplo: reuni\xF5es\r peri\xF3dicas, comit\xEAs gestores, inst\xE2ncias de media\xE7\xE3o, etc.] Marque uma op\xE7\xE3o abaixo."
   }), /*#__PURE__*/React.createElement("div", {
     className: "box-items bg-lgt"
   }, /*#__PURE__*/React.createElement("p", {
