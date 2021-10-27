@@ -1,5 +1,13 @@
 const Dimensoes = () => {
   const context = React.useContext(DiagnosticoContext);
+  let bgColor = {
+    1: 'bg-pri',
+    2: 'bg-sec',
+    3: 'bg-ter',
+    4: 'bg-qua',
+    5: 'bg-qui'
+  };
+  bgColor = bgColor[context.dimensao.info.dimensao];
   return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
     className: "container"
   }, /*#__PURE__*/React.createElement("div", {
@@ -33,7 +41,7 @@ const Dimensoes = () => {
       marginLeft: '10px'
     }
   }, /*#__PURE__*/React.createElement("div", {
-    className: "bg-pri"
+    className: bgColor
   }, /*#__PURE__*/React.createElement("div", {
     className: "container-fluid"
   }, /*#__PURE__*/React.createElement("div", {

@@ -17,6 +17,15 @@ const Indicadores = () => {
         setDescricao(context.indicador.descricao);
     }, [context.dimensao, context.indicador]);
 
+    let bgColor = {
+        1:'bg-pri',
+        2:'bg-sec',
+        3:'bg-ter',
+        4:'bg-qua',
+        5:'bg-qui',
+    };
+    bgColor = bgColor[context.dimensao.info.dimensao];
+
     return (
         <div className="container">
             <div className="row mt-3">
@@ -25,8 +34,19 @@ const Indicadores = () => {
                 </div>
                 <div className="col-6 col-6 d-grid gap-2 d-md-flex justify-content-end">
                     <div className="nav-circle">
-                        <i className="fas fa-circle tx-pri"/>
-                        <i className="far fa-circle tx-pri"/>
+                        {
+                            context.dimensao.indicadores.map((item, key) => {
+                                if(item.indicador === indicador){
+                                    return (
+                                        <div key={"circle-on"+key} onClick={() => context.setIndicador(item)} className={"cursor circle-icon " + bgColor}/>
+                                    )
+                                }else{
+                                    return (
+                                        <div key={"circle-off"+key} onClick={() => context.setIndicador(item)} className={"cursor circle-icon "}/>
+                                    )
+                                }
+                            })
+                        }
                     </div>
                 </div>
                 <div className="col-md-12">
@@ -75,13 +95,13 @@ const Indicadores = () => {
                             <br/>
                             <div className="range-merker">
                                 <div className="range-merker-box">
-                                    <div className="range-merker-box-item bg-pri">1</div>
+                                    <div className={"range-merker-box-item " + bgColor}>1</div>
                                 </div>
                                 <div className="range-merker-box">
-                                    <div className="range-merker-box-item bg-pri">2</div>
+                                    <div className={"range-merker-box-item " + bgColor}>2</div>
                                 </div>
                                 <div className="range-merker-box">
-                                    <div className="range-merker-box-item bg-pri">3</div>
+                                    <div className={"range-merker-box-item " + bgColor}>3</div>
                                 </div>
                                 <div className="range-merker-box">
                                     <div className="range-merker-box-item">4</div>
@@ -119,33 +139,17 @@ const Indicadores = () => {
                             <div className="nav-circle mt-2 ">
                                 {
                                     context.dimensao.indicadores.map((item, key) => {
-                                        if(item.indicador <= indicador){
+                                        if(item.indicador === indicador){
                                             return (
-                                                <svg key={"circle"+key} className="svg-inline--fa fa-circle fa-w-16 tx-pri"
-                                                     aria-hidden="true" focusable="false" data-prefix="fas"
-                                                     data-icon="circle" role="img" xmlns="http://www.w3.org/2000/svg"
-                                                     viewBox="0 0 512 512" data-fa-i2svg=""
-                                                     onClick={() => context.setIndicador(item)}>
-                                                    <path fill="currentColor"
-                                                          d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path>
-                                                </svg>
+                                                <div key={"circle-on"+key} onClick={() => context.setIndicador(item)} className={"cursor circle-icon " + bgColor}/>
                                             )
                                         }else{
                                             return (
-                                                <svg key={"circle"+key} className="svg-inline--fa fa-circle fa-w-16 tx-pri"
-                                                     aria-hidden="true" focusable="false" data-prefix="far"
-                                                     data-icon="circle" role="img" xmlns="http://www.w3.org/2000/svg"
-                                                     viewBox="0 0 512 512" data-fa-i2svg=""
-                                                     onClick={() => context.setIndicador(item)}>
-                                                    <path fill="currentColor"
-                                                          d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200z"></path>
-                                                </svg>
+                                                <div key={"circle-off"+key} onClick={() => context.setIndicador(item)} className={"cursor circle-icon "}/>
                                             )
                                         }
                                     })
                                 }
-                                {/*<i className="fas fa-circle tx-pri"/>
-                                <i className="far fa-circle tx-pri"/>*/}
                             </div>
                         </div>
                         <div className="col-6 col-6">
@@ -153,7 +157,7 @@ const Indicadores = () => {
                                 context.dimensao.indicadores.length <= indicador ? (
                                     <div className="d-grid gap-2 d-md-flex justify-content-md-end">
                                         <div className="dorder-container">
-                                            <button className="btn btn-theme bg-pri" type="button"
+                                            <button className={"btn btn-theme " + bgColor} type="button"
                                                     onClick={() => context.setIndicador(context.dimensao.indicadores[indicador-2])}>
                                                 <i className="fas fa-angle-left"/> indicador {dimensao}.{indicador-1}
                                             </button>
@@ -165,7 +169,7 @@ const Indicadores = () => {
                                 context.dimensao.indicadores.length > indicador ? (
                                     <div className="d-grid gap-2 d-md-flex justify-content-md-end">
                                         <div className="dorder-container">
-                                            <button className="btn btn-theme bg-pri" type="button"
+                                            <button className={"btn btn-theme " + bgColor} type="button"
                                                     onClick={() => context.setIndicador(context.dimensao.indicadores[indicador])}>
                                                 indicador {dimensao}.{indicador+1} <i className="fas fa-angle-right"/>
                                             </button>

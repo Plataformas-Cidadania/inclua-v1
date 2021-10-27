@@ -333,8 +333,9 @@
     position: relative;
 }
 .nav-icons-select{
-    border: double 3px #333 !important;
     border-radius: 25px;
+    box-shadow: 2px 2px 8px #9b9898;
+    transform: scale(1.1);
 }
 .nav-icons hr{
     border-bottom: solid 3px $color-lgt;
@@ -344,6 +345,14 @@
     margin: auto;
     opacity: 1;
     z-index: 0;
+}
+.circle-icon{
+    border: solid 1px #CCCCCC;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    margin: 3px;
+    display: inline-block;
 }
 .opacity-5{
     opacity: 0.5 !important;

@@ -20,6 +20,14 @@ const Indicadores = () => {
     setTitulo(context.indicador.titulo);
     setDescricao(context.indicador.descricao);
   }, [context.dimensao, context.indicador]);
+  let bgColor = {
+    1: 'bg-pri',
+    2: 'bg-sec',
+    3: 'bg-ter',
+    4: 'bg-qua',
+    5: 'bg-qui'
+  };
+  bgColor = bgColor[context.dimensao.info.dimensao];
   return /*#__PURE__*/React.createElement("div", {
     className: "container"
   }, /*#__PURE__*/React.createElement("div", {
@@ -30,10 +38,20 @@ const Indicadores = () => {
     className: "col-6 col-6 d-grid gap-2 d-md-flex justify-content-end"
   }, /*#__PURE__*/React.createElement("div", {
     className: "nav-circle"
-  }, /*#__PURE__*/React.createElement("i", {
-    className: "fas fa-circle tx-pri"
-  }), /*#__PURE__*/React.createElement("i", {
-    className: "far fa-circle tx-pri"
+  }, context.dimensao.indicadores.map((item, key) => {
+    if (item.indicador === indicador) {
+      return /*#__PURE__*/React.createElement("div", {
+        key: "circle-on" + key,
+        onClick: () => context.setIndicador(item),
+        className: "cursor circle-icon " + bgColor
+      });
+    } else {
+      return /*#__PURE__*/React.createElement("div", {
+        key: "circle-off" + key,
+        onClick: () => context.setIndicador(item),
+        className: "cursor circle-icon "
+      });
+    }
   }))), /*#__PURE__*/React.createElement("div", {
     className: "col-md-12"
   }, /*#__PURE__*/React.createElement("hr", {
@@ -80,15 +98,15 @@ const Indicadores = () => {
   }, /*#__PURE__*/React.createElement("div", {
     className: "range-merker-box"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "range-merker-box-item bg-pri"
+    className: "range-merker-box-item " + bgColor
   }, "1")), /*#__PURE__*/React.createElement("div", {
     className: "range-merker-box"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "range-merker-box-item bg-pri"
+    className: "range-merker-box-item " + bgColor
   }, "2")), /*#__PURE__*/React.createElement("div", {
     className: "range-merker-box"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "range-merker-box-item bg-pri"
+    className: "range-merker-box-item " + bgColor
   }, "3")), /*#__PURE__*/React.createElement("div", {
     className: "range-merker-box"
   }, /*#__PURE__*/React.createElement("div", {
@@ -133,40 +151,18 @@ const Indicadores = () => {
   }, /*#__PURE__*/React.createElement("div", {
     className: "nav-circle mt-2 "
   }, context.dimensao.indicadores.map((item, key) => {
-    if (item.indicador <= indicador) {
-      return /*#__PURE__*/React.createElement("svg", {
-        key: "circle" + key,
-        className: "svg-inline--fa fa-circle fa-w-16 tx-pri",
-        "aria-hidden": "true",
-        focusable: "false",
-        "data-prefix": "fas",
-        "data-icon": "circle",
-        role: "img",
-        xmlns: "http://www.w3.org/2000/svg",
-        viewBox: "0 0 512 512",
-        "data-fa-i2svg": "",
-        onClick: () => context.setIndicador(item)
-      }, /*#__PURE__*/React.createElement("path", {
-        fill: "currentColor",
-        d: "M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"
-      }));
+    if (item.indicador === indicador) {
+      return /*#__PURE__*/React.createElement("div", {
+        key: "circle-on" + key,
+        onClick: () => context.setIndicador(item),
+        className: "cursor circle-icon " + bgColor
+      });
     } else {
-      return /*#__PURE__*/React.createElement("svg", {
-        key: "circle" + key,
-        className: "svg-inline--fa fa-circle fa-w-16 tx-pri",
-        "aria-hidden": "true",
-        focusable: "false",
-        "data-prefix": "far",
-        "data-icon": "circle",
-        role: "img",
-        xmlns: "http://www.w3.org/2000/svg",
-        viewBox: "0 0 512 512",
-        "data-fa-i2svg": "",
-        onClick: () => context.setIndicador(item)
-      }, /*#__PURE__*/React.createElement("path", {
-        fill: "currentColor",
-        d: "M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200z"
-      }));
+      return /*#__PURE__*/React.createElement("div", {
+        key: "circle-off" + key,
+        onClick: () => context.setIndicador(item),
+        className: "cursor circle-icon "
+      });
     }
   }))), /*#__PURE__*/React.createElement("div", {
     className: "col-6 col-6"
@@ -175,7 +171,7 @@ const Indicadores = () => {
   }, /*#__PURE__*/React.createElement("div", {
     className: "dorder-container"
   }, /*#__PURE__*/React.createElement("button", {
-    className: "btn btn-theme bg-pri",
+    className: "btn btn-theme " + bgColor,
     type: "button",
     onClick: () => context.setIndicador(context.dimensao.indicadores[indicador - 2])
   }, /*#__PURE__*/React.createElement("i", {
@@ -185,7 +181,7 @@ const Indicadores = () => {
   }, /*#__PURE__*/React.createElement("div", {
     className: "dorder-container"
   }, /*#__PURE__*/React.createElement("button", {
-    className: "btn btn-theme bg-pri",
+    className: "btn btn-theme " + bgColor,
     type: "button",
     onClick: () => context.setIndicador(context.dimensao.indicadores[indicador])
   }, "indicador ", dimensao, ".", indicador + 1, " ", /*#__PURE__*/React.createElement("i", {

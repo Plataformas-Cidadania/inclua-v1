@@ -2,6 +2,16 @@ const Dimensoes = () => {
 
     const context = React.useContext(DiagnosticoContext);
 
+    let bgColor = {
+        1:'bg-pri',
+        2:'bg-sec',
+        3:'bg-ter',
+        4:'bg-qua',
+        5:'bg-qui',
+    };
+    bgColor = bgColor[context.dimensao.info.dimensao];
+
+
     return (
         <div>
             <div className="container">
@@ -43,7 +53,7 @@ const Dimensoes = () => {
             </div>
 
             <div className="dorder-container" style={{marginLeft: '10px'}}>
-                <div className="bg-pri">
+                <div className={bgColor}>
                     <div className="container-fluid">
                         <div className="row">
                             <div className="col-md-3 text-center">
