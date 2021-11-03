@@ -14,7 +14,7 @@ class CreateFormatoRecursoTable extends Migration
     public function up()
     {
         Schema::create('avaliacao.formato_recurso', function (Blueprint $table) {
-            $table->increments('id_formato')->comment('Identifica o formato');
+            $table->increments('id_formato')->primary()->comment('Identifica o formato');
             $table->string('nome', 50)->comment('nome do formato');
         });
     }

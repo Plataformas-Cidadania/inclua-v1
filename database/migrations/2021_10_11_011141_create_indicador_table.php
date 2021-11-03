@@ -14,10 +14,9 @@ class CreateIndicadorTable extends Migration
     public function up()
     {
         Schema::create('avaliacao.indicador', function (Blueprint $table) {
-            $table->increments('id_indicador');
+            $table->increments('id_indicador')->primary();
             $table->string('nome', 50);
             $table->text('descricao');
-            $table->integer('id_dimensao');
             $table->foreign('id_dimensao')->nullable()->references('id_dimensao')
                     ->on('avaliacao.dimensao')
                     ->onDelete('set null');
@@ -32,7 +31,7 @@ class CreateIndicadorTable extends Migration
      */
     public function down()
     {
-        //$table->dropForeign('dimensao_indicador_id_indicador_foreign');
+        $table->dropForeign('dimensao_indicador_id_indicador_foreign');
         Schema::dropIfExists('avaliacao.indicador');
     }
 }

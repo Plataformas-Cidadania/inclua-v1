@@ -14,7 +14,7 @@ class CreateTipoRecursoTable extends Migration
     public function up()
     {
         Schema::create('avaliacao.tipo_recurso', function (Blueprint $table) {
-            $table->increments('id_tipo_recurso')->comment('identifica o tipo de recurso');
+            $table->increments('id_tipo_recurso')->primary()->comment('identifica o tipo de recurso');
             $table->string('nome', 50)->nullable()->comment('nome do tipo de recurso');
         });
     }

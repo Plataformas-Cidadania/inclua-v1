@@ -22,7 +22,7 @@ class CreateUrlsTable extends Migration
             $table->integer('status')->default(1);
             $table->integer('posicao')->default(0);
             $table->integer('cmsuser_id')->unsigned();
-            $table->foreign('cmsuser_id')->references('id')->on('cms.cms_users')->onDelete('restrict');
+            $table->foreign('cmsuser_id')->references('id')->on('cms_users')->onDelete('restrict');
             $table->timestamps();
         });
     }

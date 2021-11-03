@@ -14,7 +14,7 @@ class CreateAutorTable extends Migration
     public function up()
     {
         Schema::create('avaliacao.autor', function (Blueprint $table) {
-            $table->increments('id_autor')->comment('Identifica o autor');
+            $table->increments('id_autor')->primary()->comment('Identifica o autor');
             $table->string('nome', 50)->comment('Nome do autor');
         });
     }

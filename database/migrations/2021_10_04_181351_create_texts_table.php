@@ -20,7 +20,7 @@ class CreateTextsTable extends Migration
             $table->text('descricao')->nullable();
             $table->string('slug')->nullable();
             $table->integer('cmsuser_id')->unsigned();
-            $table->foreign('cmsuser_id')->references('id')->on('cms.cms_users')->onDelete('restrict');
+            $table->foreign('cmsuser_id')->references('id')->on('cms_users')->onDelete('restrict');
             $table->timestamps();
         });
     }

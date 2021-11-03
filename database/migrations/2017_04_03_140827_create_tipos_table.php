@@ -19,7 +19,7 @@ class CreateTiposTable extends Migration
             $table->text('arquivo');
             $table->integer('status')->default(0);
             $table->integer('cmsuser_id')->unsigned();
-            $table->foreign('cmsuser_id')->references('id')->on('cms.cms_users')->onDelete('restrict');
+            $table->foreign('cmsuser_id')->references('id')->on('cms_users')->onDelete('restrict');
             $table->timestamps();
         });
     }

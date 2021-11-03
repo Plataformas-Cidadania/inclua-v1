@@ -14,10 +14,9 @@ class CreateRiscoTable extends Migration
     public function up()
     {
         Schema::create('avaliacao.risco', function (Blueprint $table) {
-            $table->increments('id_risco')->comment('Identifica o risco');
+            $table->increments('id_risco')->primary()->comment('Identifica o risco');
             $table->integer('vl_alto')->comment('valor limitrofe para considerar um alto risco');
             $table->integer('vl_baixo')->comment('valor limitrofe para considerar um baixo risco');
-            $table->integer('id_indicador');
             $table->foreign('id_indicador')->references('id_indicador')
                     ->on('avaliacao.indicador')
                     ->onDelete('cascade');
@@ -31,7 +30,7 @@ class CreateRiscoTable extends Migration
      */
     public function down()
     {
-        //$table->dropForeign('indicador_risco_id_indicador_foreign');
+        $table->dropForeign('indicador_risco_id_indicador_foreign');       
         Schema::dropIfExists('avaliacao.risco');
     }
 }
