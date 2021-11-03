@@ -11,10 +11,10 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Autor
- * 
+ *
  * @property int $id_autor
  * @property character varying|null $nome
- * 
+ *
  * @property Collection|Autoria[] $autoria
  *
  * @package App\Models
@@ -28,7 +28,7 @@ class Autor extends Model
 
 	protected $casts = [
 		'id_autor' => 'int',
-		'nome' => 'character varying'
+		'nome' => 'string'
 	];
 
 	protected $fillable = [
