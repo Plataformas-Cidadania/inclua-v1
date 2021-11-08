@@ -137,6 +137,7 @@
     <script src="js/components/diagnostico/pergunta/nota.js"></script>
     <script src="js/components/diagnostico/pergunta/range.js"></script>
     <script src="js/components/diagnostico/pergunta/index.js"></script>
+    <script src="js/components/diagnostico/perguntas.js"></script>
     <script src="js/components/diagnostico/indicadores.js"></script>
     <script src="js/components/diagnostico/dimensoes.js"></script>
     <script src="js/components/diagnostico/header.js"></script>
