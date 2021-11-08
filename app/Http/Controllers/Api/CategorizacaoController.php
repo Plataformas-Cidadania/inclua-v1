@@ -3,31 +3,29 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Api\Controller;
-use App\Models\Indicador;
+use App\Models\Categorizacao;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\Eloquent\RelationNotFoundException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Exception;
-use App\Repository\IndicadorRepository;
+use App\Repository\CategorizacaoRepository;
 
-class IndicadorController extends Controller
+class CategorizacaoController extends Controller
 {
-    private IndicadorRepository $repo;
+    private CategorizacaoRepository $repo;
     private $rules = [
-    'id_indicador' => 'string|min:1',
-    'nome' => 'string|min:1|nullable',
-    'descricao' => 'string|min:1|nullable',
-    'dimensao_id_dimensao' => 'int|min:1|nullable',
+    'id_categoria' => 'int|min:1',
+    'id_recurso' => 'int|min:1',
     ];
-    public function __construct(IndicadorRepository $repo)
+    public function __construct(CategorizacaoRepository $repo)
     {
         $this->repo = $repo;
     }
 
     /**
-     * Mostrar todos os Indicadores.
+     * Mostrar todos.
      *
      * @param null
      *
@@ -38,7 +36,7 @@ class IndicadorController extends Controller
     {
         $res = $this->repo->all();
         return $this->successResponse(
-            'Indicadores retornados com sucesso',
+            'Categorizacao retornadas com sucesso',
             $res
         );
     }
@@ -58,11 +56,12 @@ class IndicadorController extends Controller
             if ($validator->fails()) {
                 return $this->errorResponse($validator->errors()->all());
             }
-
             $data = $this->getData($request);
-            $res = $this->repo->create($data);
+
+            $res = $this->repo->createCompositeId($data);
+
             return $this->successResponse(
-			    ''.$res->id_indicador.' foi adicionado',
+			    ''.$res->id_categoria.','.$res->id_recurso.' foi adicionado',
 			    $this->transform($res)
 			);
         } catch (Exception $exception) {
@@ -73,14 +72,17 @@ class IndicadorController extends Controller
     /**
      * Obter especificado pelo id
      *
-     * @param int $id
+     * @param int $firstId
+     *
+     * @param int $secondId
      *
      * @return JsonResponse
      */
-    public function get($id): JsonResponse
+    public function get(int $firstId, int $secondId): JsonResponse
     {
         try {
-            $res = $this->repo->findById($id);
+
+            $res = $this->repo->findByCompositeId($firstId,$secondId);
             return $this->successResponse(
                 'Retornado com sucesso',
                 $res
@@ -88,63 +90,34 @@ class IndicadorController extends Controller
         }catch (Exception $exception) {
             if ($exception instanceof ModelNotFoundException)
                 return $this->errorResponse('Not found');
-            return $this->errorResponse('Erro inesperado.'.$exception);
+            return $this->errorResponse($exception);
         }
     }
 
-    /**
-     * Atualizar especificado pelo id
-     *
-     * @param int $id
-     * @param Request $request
-     *
-     * @return JsonResponse
-     */
-    public function update($id, Request $request): JsonResponse
-    {
-
-        try {
-            $validator = $this->getValidator($request);
-
-            if ($validator->fails()) {
-                return $this->errorResponse($validator->errors()->all());
-            }
-
-            $data = $this->getData($request);
-
-            $res = $this->repo->update($id,$data);
-
-            return $this->successResponse(
-			    'Atualizado com sucesso.',
-			    $this->transform($res)
-			);
-        } catch (Exception $exception) {
-            if ($exception instanceof ModelNotFoundException)
-                return $this->errorResponse('Not found');
-            return $this->errorResponse('Erro inesperado.'.$exception->getMessage());
-        }
-    }
 
     /**
      * Remover da base de dados especificado pelo id
      *
-     * @param int $id
+     * @param int $firstId
+     *
+     * @param int $secondId
+     *
      *
      * @return JsonResponse
      */
-    public function destroy($id): JsonResponse
+    public function destroy($firstId,$secondId): JsonResponse
     {
         try {
-            $res = $this->repo->deleteById($id);
+            $res = $this->repo->deleteByCompositeId($firstId,$secondId);
 
             return $this->successResponse(
-			    ''.$id.' deletado com sucesso',
+			    ''.$firstId.','.$secondId.' deletado com sucesso',
 			    $this->transform($res)
 			);
         } catch (Exception $exception) {
             if ($exception instanceof ModelNotFoundException)
                 return $this->errorResponse('Not found');
-            return $this->errorResponse('Erro inesperado'.$exception);
+            return $this->errorResponse($exception);
         }
     }
 
@@ -175,17 +148,15 @@ class IndicadorController extends Controller
     /**
      * Transformar em um array
      *
-     * @param Indicador $res
+     * @param Categorizacao $res
      *
      * @return array
      */
-    protected function transform(Indicador $res): array
+    protected function transform(Categorizacao $res): array
     {
         return [
-            'id_indicador' => $res->id_indicador,
-            'nome' => $res->nome,
-            'descricao' => $res->descricao,
-            'dimensao_id_dimensao' => $res->dimensao_id_dimensao,
+            'id_categoria' => $res->id_categoria,
+            'id_recurso' => $res->id_recurso
         ];
     }
 

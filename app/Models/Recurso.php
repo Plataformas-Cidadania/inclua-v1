@@ -11,14 +11,14 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Recurso
- * 
+ *
  * @property int $id_recurso
  * @property character varying|null $nome
  * @property timestamp without time zone|null $ultimo_acesso
  * @property character varying|null $esfera
  * @property int $id_tipo_recurso
  * @property int $id_formato
- * 
+ *
  * @property TipoRecurso $tipo_recurso
  * @property FormatoRecurso $formato_recurso
  * @property Collection|Link[] $links

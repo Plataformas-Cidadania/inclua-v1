@@ -3,31 +3,28 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Api\Controller;
-use App\Models\Indicador;
+use App\Models\FormatoRecurso;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\Eloquent\RelationNotFoundException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Exception;
-use App\Repository\IndicadorRepository;
+use App\Repository\FormatoRecursoRepository;
 
-class IndicadorController extends Controller
+class FormatoRecursoController extends Controller
 {
-    private IndicadorRepository $repo;
+    private FormatoRecursoRepository $repo;
     private $rules = [
-    'id_indicador' => 'string|min:1',
-    'nome' => 'string|min:1|nullable',
-    'descricao' => 'string|min:1|nullable',
-    'dimensao_id_dimensao' => 'int|min:1|nullable',
+        'nome' => 'string|min:1|nullable'
     ];
-    public function __construct(IndicadorRepository $repo)
+    public function __construct(FormatoRecursoRepository $repo)
     {
         $this->repo = $repo;
     }
 
     /**
-     * Mostrar todos os Indicadores.
+     * Mostrar todos.
      *
      * @param null
      *
@@ -38,7 +35,7 @@ class IndicadorController extends Controller
     {
         $res = $this->repo->all();
         return $this->successResponse(
-            'Indicadores retornados com sucesso',
+            'Formato de recurso retornado com sucesso',
             $res
         );
     }
@@ -62,7 +59,7 @@ class IndicadorController extends Controller
             $data = $this->getData($request);
             $res = $this->repo->create($data);
             return $this->successResponse(
-			    ''.$res->id_indicador.' foi adicionado',
+			    ' '.$res->id_formato.' foi adicionada',
 			    $this->transform($res)
 			);
         } catch (Exception $exception) {
@@ -148,6 +145,8 @@ class IndicadorController extends Controller
         }
     }
 
+
+
     /**
      * Cria uma instancia de validador com as regras definidas
      *
@@ -169,23 +168,22 @@ class IndicadorController extends Controller
      */
     protected function getData(Request $request): array
     {
+
         return $request->validate($this->rules);
     }
 
     /**
      * Transformar em um array
      *
-     * @param Indicador $res
+     * @param FormatoRecurso $model
      *
      * @return array
      */
-    protected function transform(Indicador $res): array
+    protected function transform(FormatoRecurso $model): array
     {
         return [
-            'id_indicador' => $res->id_indicador,
-            'nome' => $res->nome,
-            'descricao' => $res->descricao,
-            'dimensao_id_dimensao' => $res->dimensao_id_dimensao,
+            'id_formato' => $model->id_formato,
+            'nome' => $model->nome,
         ];
     }
 

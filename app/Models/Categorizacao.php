@@ -10,10 +10,10 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class RecursoCategorium
- * 
+ *
  * @property int $categoria_id_categoria
  * @property int $recurso_id_recurso
- * 
+ *
  * @property Categoria $categoria
  * @property Recurso $recurso
  *
@@ -21,10 +21,12 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Categorizacao extends Model
 {
-	protected $table = 'avaliacao.categorizacao';
+    public $incrementing = false;
+    protected $table = 'avaliacao.categorizacao';
 	public $timestamps = false;
 
-	protected $casts = [
+
+    protected $casts = [
 		'id_categoria' => 'int',
 		'id_recurso' => 'int'
 	];
@@ -41,4 +43,5 @@ class Categorizacao extends Model
 	{
 		return $this->belongsTo(Recurso::class, 'id_recurso');
 	}
+
 }

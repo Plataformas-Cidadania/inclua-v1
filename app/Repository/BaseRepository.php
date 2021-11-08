@@ -61,7 +61,6 @@ class BaseRepository
     public function create(array $payload): Model
     {
         $model = $this->model->create($payload);
-
         return $model->fresh();
     }
 
