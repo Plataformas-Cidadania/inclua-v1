@@ -31,12 +31,20 @@
                 <div class="row">
                     <div class="col-md-1">
                         <div class="text-center">
-                            <p>0<br>votos</p>
-                            <hr>
-                            <p>0<br>resp.</p>
-                            <hr>
-                            <p>0<br>views</p>
-                            <hr>
+                            <div class="row">
+                                <div class="col-4 col-md-12">
+                                    <p>0<br>votos</p>
+                                    <hr>
+                                </div>
+                                <div class="col-4 col-md-12">
+                                    <p>0<br>resp.</p>
+                                    <hr>
+                                </div>
+                                <div class="col-4 col-md-12">
+                                    <p>0<br>views</p>
+                                    <hr>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-11">

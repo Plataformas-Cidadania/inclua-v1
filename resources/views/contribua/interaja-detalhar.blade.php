@@ -45,7 +45,7 @@
                 </div>
                 <div>
                     <br>
-                    <p>5 resposta</p>
+                    <p>2 resposta</p>
 
 
                     <div class="row">
@@ -77,7 +77,7 @@
                                 <p>CONSEQUÊNCIA: Desarticulações (ou formas específicas de articulação) e disputas interinstitucionais podem repercutir em déficits de cobertura, lacunas de atenção ou repercussões negativas para o atendimento a segmentos específicos do público ou territórios atendidos</p>
                             </div>
                         </div>
-                        <div class="col-md-12"><hr></div>
+
                     </div>
 
                 </div>
