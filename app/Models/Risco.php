@@ -39,6 +39,8 @@ class Risco extends Model
 		'id_indicador'
 	];
 
+	protected $with = ['indicador'];
+
 	public function indicador()
 	{
 		return $this->belongsTo(Indicador::class, 'id_indicador');

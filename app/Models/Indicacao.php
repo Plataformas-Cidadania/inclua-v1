@@ -32,6 +32,9 @@ class Indicacao extends Model
 		'id_indicador',
 		'id_recurso'
 	];
+	
+	protected $with = ['indicador', 'recurso'];
+
 	public function indicador()
 	{
 		return $this->belongsTo(Indicador::class, 'id_indicador');

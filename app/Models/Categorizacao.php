@@ -32,6 +32,9 @@ class Categorizacao extends Model
 		'id_categoria',
 		'id_recurso'
 	];
+
+	protected $with = ['categoria', 'recurso'];
+
 	public function categoria()
 	{
 		return $this->belongsTo(Categoria::class, 'id_categoria');

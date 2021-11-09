@@ -46,6 +46,8 @@ class Pergunta extends Model
 		'vl_medio',
 		'vl_maximo'
 	];
+	
+	protected $with = ['indicador'];
 
 	public function indicador()
 	{

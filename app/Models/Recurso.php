@@ -46,6 +46,8 @@ class Recurso extends Model
 		'esfera'
 	];
 
+	protected $with = ['tipo_recurso', 'formato_recurso'];
+
 	public function tipo_recurso()
 	{
 		return $this->belongsTo(TipoRecurso::class, 'id_tipo_recurso');

@@ -37,6 +37,7 @@ class Link extends Model
 		'uri',
 		'idioma'
 	];
+	protected $with = ['recurso'];
 
 	public function recurso()
 	{

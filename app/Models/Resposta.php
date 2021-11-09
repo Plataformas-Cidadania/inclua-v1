@@ -37,6 +37,8 @@ class Resposta extends Model
 		'pontuacao',
 		'id_pergunta'
 	];
+	
+	protected $with = ['pergunta'];
 
 	public function pergunta()
 	{
