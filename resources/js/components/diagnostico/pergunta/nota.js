@@ -17,7 +17,7 @@ const Nota = (props) => {
             <p className="mb-3"><strong>P{context.dimensao.info.dimensao}.{context.indicador.indicador}{props.letra}</strong> {props.titulo}</p>
             <div>
                 <br/>
-                <div className="range-merker">
+                <div className="range-merker" style={{width: '113%', marginLeft: '-80px'}}>
                     <div className="range-merker-box">
                         <div className={"range-merker-box-item " + bgColor}>1</div>
                     </div>
@@ -33,25 +33,10 @@ const Nota = (props) => {
                     <div className="range-merker-box">
                         <div className="range-merker-box-item">5</div>
                     </div>
-                    <div className="range-merker-box">
-                        <div className="range-merker-box-item">6</div>
-                    </div>
-                    <div className="range-merker-box">
-                        <div className="range-merker-box-item">7</div>
-                    </div>
-                    <div className="range-merker-box">
-                        <div className="range-merker-box-item">8</div>
-                    </div>
-                    <div className="range-merker-box">
-                        <div className="range-merker-box-item">9</div>
-                    </div>
-                    <div className="range-merker-box">
-                        <div className="range-merker-box-item">10</div>
-                    </div>
                 </div>
                 {/*<label for="customRange1" className="form-label">Bom</label>*/}
                 <br/>
-                <input type="range" className="form-range range" id="customRange1" min="1" max="10" value="3"/>
+                <input type="range" className="form-range range" id="customRange1" min="1" max="5" defaultValue="2"/>
             </div>
         </div>
     );

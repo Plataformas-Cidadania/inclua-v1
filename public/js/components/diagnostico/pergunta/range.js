@@ -67,6 +67,6 @@ const Range = props => {
     id: "customRange1",
     min: "1",
     max: "10",
-    value: "3"
+    defaultValue: "3"
   })));
 };

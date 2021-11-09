@@ -54,7 +54,7 @@ const Range = (props) => {
                 </div>
                 {/*<label for="customRange1" className="form-label">Bom</label>*/}
                 <br/>
-                <input type="range" className="form-range range" id="customRange1" min="1" max="10" value="3"/>
+                <input type="range" className="form-range range" id="customRange1" min="1" max="10" defaultValue="3"/>
             </div>
         </div>
     );

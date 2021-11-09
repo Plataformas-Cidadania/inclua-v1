@@ -18,7 +18,11 @@ const Nota = props => {
   }, /*#__PURE__*/React.createElement("p", {
     className: "mb-3"
   }, /*#__PURE__*/React.createElement("strong", null, "P", context.dimensao.info.dimensao, ".", context.indicador.indicador, props.letra), " ", props.titulo), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
-    className: "range-merker"
+    className: "range-merker",
+    style: {
+      width: '113%',
+      marginLeft: '-80px'
+    }
   }, /*#__PURE__*/React.createElement("div", {
     className: "range-merker-box"
   }, /*#__PURE__*/React.createElement("div", {
@@ -39,32 +43,12 @@ const Nota = props => {
     className: "range-merker-box"
   }, /*#__PURE__*/React.createElement("div", {
     className: "range-merker-box-item"
-  }, "5")), /*#__PURE__*/React.createElement("div", {
-    className: "range-merker-box"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "range-merker-box-item"
-  }, "6")), /*#__PURE__*/React.createElement("div", {
-    className: "range-merker-box"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "range-merker-box-item"
-  }, "7")), /*#__PURE__*/React.createElement("div", {
-    className: "range-merker-box"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "range-merker-box-item"
-  }, "8")), /*#__PURE__*/React.createElement("div", {
-    className: "range-merker-box"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "range-merker-box-item"
-  }, "9")), /*#__PURE__*/React.createElement("div", {
-    className: "range-merker-box"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "range-merker-box-item"
-  }, "10"))), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("input", {
+  }, "5"))), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("input", {
     type: "range",
     className: "form-range range",
     id: "customRange1",
     min: "1",
-    max: "10",
-    value: "3"
+    max: "5",
+    defaultValue: "2"
   })));
 };
