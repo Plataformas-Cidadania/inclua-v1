@@ -19,13 +19,13 @@ const Nota = (props) => {
                 <br/>
                 <div className="range-merker" style={{width: '113%', marginLeft: '-80px'}}>
                     <div className="range-merker-box">
-                        <div className={"range-merker-box-item " + bgColor}>1</div>
+                        <div className={"range-merker-box-item "}>1</div>
                     </div>
                     <div className="range-merker-box">
                         <div className={"range-merker-box-item " + bgColor}>2</div>
                     </div>
                     <div className="range-merker-box">
-                        <div className={"range-merker-box-item " + bgColor}>3</div>
+                        <div className={"range-merker-box-item "}>3</div>
                     </div>
                     <div className="range-merker-box">
                         <div className="range-merker-box-item">4</div>

@@ -26,7 +26,7 @@ const Nota = props => {
   }, /*#__PURE__*/React.createElement("div", {
     className: "range-merker-box"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "range-merker-box-item " + bgColor
+    className: "range-merker-box-item "
   }, "1")), /*#__PURE__*/React.createElement("div", {
     className: "range-merker-box"
   }, /*#__PURE__*/React.createElement("div", {
@@ -34,7 +34,7 @@ const Nota = props => {
   }, "2")), /*#__PURE__*/React.createElement("div", {
     className: "range-merker-box"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "range-merker-box-item " + bgColor
+    className: "range-merker-box-item "
   }, "3")), /*#__PURE__*/React.createElement("div", {
     className: "range-merker-box"
   }, /*#__PURE__*/React.createElement("div", {
