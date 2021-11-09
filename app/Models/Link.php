@@ -10,14 +10,14 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Link
- * 
+ *
  * @property int $id_link
  * @property string|null $uri
  * @property int $recurso_id_recurso
  * @property int $recurso_tipo_recurso_id_tipo_recurso
  * @property int $recurso_formato_recurso_id_formato
  * @property character varying|null $idioma
- * 
+ *
  * @property Recurso $recurso
  *
  * @package App\Models

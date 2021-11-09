@@ -11,10 +11,10 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class FormatoRecurso
- * 
+ *
  * @property int $id_formato
  * @property character varying|null $nome
- * 
+ *
  * @property Collection|Recurso[] $recursos
  *
  * @package App\Models
@@ -27,7 +27,7 @@ class FormatoRecurso extends Model
 
 	protected $casts = [
 		'id_formato' => 'int',
-		'nome' => 'character varying'
+		'nome' => 'string'
 	];
 
 	protected $fillable = [

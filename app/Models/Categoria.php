@@ -11,10 +11,10 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Categorium
- * 
+ *
  * @property int $id_categoria
  * @property character varying|null $nome
- * 
+ *
  * @property Collection|RecursoCategoria[] $recurso_categoria
  *
  * @package App\Models
@@ -27,7 +27,7 @@ class Categoria extends Model
 
 	protected $casts = [
 		'id_categoria' => 'int',
-		'nome' => 'character varying'
+		'nome' => 'string'
 	];
 
 	protected $fillable = [

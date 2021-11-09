@@ -11,10 +11,10 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Dimensao
- * 
+ *
  * @property int $id_dimensao
  * @property character varying|null $nome
- * 
+ *
  * @property Collection|Indicador[] $indicadors
  *
  * @package App\Models

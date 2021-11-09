@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Perguntum
- * 
+ *
  * @property int $id_pergunta
  * @property character varying|null $nome
  * @property string|null $descricao
@@ -19,7 +19,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int|null $vl_minimo
  * @property int|null $vl_medio
  * @property int|null $vl_maximo
- * 
+ *
  * @property Indicador $indicador
  * @property Collection|Resposta[] $respostas
  *

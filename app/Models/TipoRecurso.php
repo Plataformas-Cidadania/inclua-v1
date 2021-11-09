@@ -11,10 +11,10 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class TipoRecurso
- * 
+ *
  * @property int $id_tipo_recurso
  * @property character varying|null $nome
- * 
+ *
  * @property Collection|Recurso[] $recursos
  *
  * @package App\Models

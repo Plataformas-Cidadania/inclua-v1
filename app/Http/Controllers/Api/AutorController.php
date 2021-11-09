@@ -14,11 +14,14 @@ use App\Repository\AutorRepository;
 
 class AutorController extends Controller
 {
-    private AutorRepository $autorRepository;
-
-    public function __construct(AutorRepository $autorRepository)
+    private AutorRepository $repo;
+    private  $rules = [
+        'id_autor' => 'string|min:1|nullable',
+        'nome' => 'string|min:1|nullable',
+    ];
+    public function __construct(AutorRepository $repo)
     {
-        $this->autorRepository = $autorRepository;
+        $this->repo = $repo;
     }
 
     /**
@@ -31,10 +34,10 @@ class AutorController extends Controller
 
     public function getAll(): JsonResponse
     {
-        $autores = $this->autorRepository->all();
+        $reses = $this->repo->all();
         return $this->successResponse(
             'Autores retornados com sucesso',
-            $autores
+            $reses
         );
     }
 
@@ -55,10 +58,10 @@ class AutorController extends Controller
             }
 
             $data = $this->getData($request);
-            $autor = $this->autorRepository->create($data);
+            $res = $this->repo->create($data);
             return $this->successResponse(
-			    'Autor '.$autor->id_autor.' foi adicionado',
-			    $this->transform($autor)
+			    'Autor '.$res->id_autor.' foi adicionado',
+			    $this->transform($res)
 			);
         } catch (Exception $exception) {
             return $this->errorResponse('Erro inesperado.'.$exception);
@@ -75,10 +78,10 @@ class AutorController extends Controller
     public function get($id): JsonResponse
     {
         try {
-            $autor = $this->autorRepository->findById($id);
+            $res = $this->repo->findById($id);
             return $this->successResponse(
                 'Autor retornado com sucesso',
-                $autor
+                $res
             );
         }catch (Exception $exception) {
             if ($exception instanceof ModelNotFoundException)
@@ -107,11 +110,11 @@ class AutorController extends Controller
 
             $data = $this->getData($request);
 
-            $autor = $this->autorRepository->update($id,$data);
+            $res = $this->repo->update($id,$data);
 
             return $this->successResponse(
 			    'Autor foi atualizado com sucesso.',
-			    $this->transform($autor)
+			    $this->transform($res)
 			);
         } catch (Exception $exception) {
             if ($exception instanceof ModelNotFoundException)
@@ -130,11 +133,11 @@ class AutorController extends Controller
     public function destroy($id): JsonResponse
     {
         try {
-            $autor = $this->autorRepository->deleteById($id);
+            $res = $this->repo->deleteById($id);
 
             return $this->successResponse(
 			    'Autor '.$id.' deletado com sucesso',
-			    $this->transform($autor)
+			    $this->transform($res)
 			);
         } catch (Exception $exception) {
             if ($exception instanceof ModelNotFoundException)
@@ -152,12 +155,7 @@ class AutorController extends Controller
      */
     protected function getValidator(Request $request): \Illuminate\Contracts\Validation\Validator
     {
-        $rules = [
-            'id_autor' => 'string|min:1',
-            'nome' => 'string|min:1|nullable',
-        ];
-
-        return Validator::make($request->all(), $rules);
+        return Validator::make($request->all(), $this->rules);
     }
 
 
@@ -169,26 +167,21 @@ class AutorController extends Controller
      */
     protected function getData(Request $request): array
     {
-        $rules = [
-            'id_autor' => 'string|min:1|nullable',
-            'nome' => 'string|min:1|nullable',
-        ];
-
-        return $request->validate($rules);
+        return $request->validate($this->rules);
     }
 
     /**
      * Transformar o autor em um array
      *
-     * @param Autor $autor
+     * @param Autor $res
      *
      * @return array
      */
-    protected function transform(Autor $autor): array
+    protected function transform(Autor $res): array
     {
         return [
-            'id_autor' => $autor->id_autor,
-            'nome' => $autor->nome,
+            'id_autor' => $res->id_autor,
+            'nome' => $res->nome,
         ];
     }
 
