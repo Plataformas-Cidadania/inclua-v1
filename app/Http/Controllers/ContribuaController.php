@@ -36,6 +36,18 @@ class ContribuaController extends Controller{
 
     }
 
+    public function interajaDetalhar(){
+
+        $rota = Route::getCurrentRoute()->uri();
+
+        $modulo = \App\Models\Modulo::first();
+
+        return view('contribua.interaja-detalhar', [
+            'page' => $modulo,
+        ]);
+
+    }
+
     public function compartilhe(){
 
         $rota = Route::getCurrentRoute()->uri();

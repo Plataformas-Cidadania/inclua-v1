@@ -12454,6 +12454,15 @@ figcaption {
   color: #FFFFFF;
 }
 
+.circle-user {
+  border-radius: 50%;
+  font-size: 35px;
+  width: 80px;
+  height: 80px;
+  font-weight: bold;
+  line-height: 80px;
+}
+
 /*/////////*/
 /*.thumbs {
     width: 100%;

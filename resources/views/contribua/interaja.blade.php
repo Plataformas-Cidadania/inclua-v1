@@ -42,9 +42,11 @@
                     <div class="col-md-11">
                         <div class="dorder-container" style="min-height: 225px">
                             <div class="m-3">
+                                <a href="interaja-detalhar">
                                 <h2>Indicador 1.1 - DIVISÃO DO TRABALHO, COORDENAÇÃO E CONFLITO INTERINSTITUCIONAL</h2>
                                 <p>CONSEQUÊNCIA: Desarticulações (ou formas específicas de articulação) e disputas interinstitucionais podem repercutir em déficits de cobertura, lacunas de atenção ou repercussões negativas para o atendimento a segmentos específicos do público ou territórios atendidos</p>
                                 <h5 class="float-end">criado 46 segundos atrás</h5>
+                                </a>
                             </div>
                         </div>
                     </div>

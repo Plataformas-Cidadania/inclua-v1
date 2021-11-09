@@ -57,6 +57,7 @@ Route::get('relate', 'App\Http\Controllers\ContribuaController@relate');*/
 
 Route::get('/contribua', [ContribuaController::class , 'listar']);
 Route::get('/interaja', [ContribuaController::class , 'interaja']);
+Route::get('/interaja-detalhar', [ContribuaController::class , 'interajaDetalhar']);
 Route::get('/compartilhe', [ContribuaController::class , 'compartilhe']);
 Route::get('/relate', [ContribuaController::class , 'relate']);
 
