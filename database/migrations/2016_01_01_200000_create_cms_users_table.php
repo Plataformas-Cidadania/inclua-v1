@@ -12,7 +12,7 @@ class CreateCmsusersTable extends Migration
      */
     public function up()
     {
-        Schema::create('cms_users', function (Blueprint $table) {
+        Schema::create('cms.cms_users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('email')->unique();
@@ -29,6 +29,6 @@ class CreateCmsusersTable extends Migration
      */
     public function down()
     {
-        Schema::drop('cmsusers');
+        Schema::drop('cms.cmsusers');
     }
 }

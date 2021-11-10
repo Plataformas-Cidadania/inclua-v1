@@ -13,7 +13,7 @@ class CreateModulosTable extends Migration
      */
     public function up()
     {
-        Schema::create('modulos', function (Blueprint $table) {
+        Schema::create('cms.modulos', function (Blueprint $table) {
             $table->id();
             $table->string('imagem')->nullable();
             $table->string('titulo')->nullable();
@@ -36,6 +36,6 @@ class CreateModulosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('modulos');
+        Schema::dropIfExists('cms.modulos');
     }
 }
