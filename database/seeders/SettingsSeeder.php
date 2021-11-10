@@ -16,22 +16,22 @@ class SettingsSeeder extends Seeder
     {
         DB::table('settings')->insert([
             'imagem' => '',
-            'email' => 'admin@cms',
+            'email' => 'inclua@ipea.gov.br',
             'titulo' => 'INCLUA',
             'rodape' => 'Todos direitos reservados <a href="https://www.ipea.gov.br"> Ipea</a>',
 
-            'endereco_titulo' => 'Ipea - Brasília',
-            'cep' => '70076-900',
-            'endereco' => 'SBS',
-            'numero' => 'Quadra 1 - Bloco J',
-            'complemento' => 'Ed. BNDES',
-            'bairro' => 'Brasília',
+            'endereco_titulo' => 'Ipea Brasília',
+            'cep' => '70390-025',
+            'endereco' => 'Setor de Edifícios Públicos Sul (SEPS), Centro Empresarial Brasília 50',
+            'numero' => 'Quadra 702/902 – Asa Sul – Conjunto C, Torre B.',
+            'complemento' => '',
+            'bairro' => '',
             'cidade' => 'Brasília',
             'estado' => 'DF',
-            'telefone' => '',
-            'telefone3' => '',
+            'telefone' => '(61) 2026-5557',
 
-            'endereco_titulo2' => 'Ipea - Rio de Janeiro',
+
+            'endereco_titulo2' => 'Ipea Rio de Janeiro',
             'cep2' => '20071-900',
             'endereco2' => 'Av. Presidente Vargas',
             'numero2' => 730,
@@ -39,7 +39,7 @@ class SettingsSeeder extends Seeder
             'bairro2' => 'Centro',
             'cidade2' => 'Rio de Janeiro',
             'estado2' => 'RJ',
-            'telefone2' => '',
+            'telefone2' => '(21) 3515-8500',
 
             'facebook' => 'https://www.facebook.com/ipeaonline',
             'youtube' => 'http://www.youtube.com/user/agenciaipea',
@@ -48,8 +48,10 @@ class SettingsSeeder extends Seeder
             'instagram' => '',
             'blog' => '',
 
+            'telefone3' => '',
+
             'titulo_contato' => 'Titulo contato',
-            'descricao_contato' => 'Por favor, utilize o formulário abaixo ou envie um email para inclua@ipea.gov.br para entrar em contato com a nossa equipe. Informamos que os pedidos de dados são atendidos no prazo legal de até 20 dias úteis e que, por força da Lei 12.527, não disponibilizamos extrações de dados com informações referentes a CNPJ, logradouro, bairro, CEP, telefone ou e-mail das OSCs.',
+            'descricao_contato' => 'Para entrar em contato com a equipe do INCLUA, utilize o formulário abaixo ou, se preferir, envie um e-mail para inclua@ipea.gov.br.',
 
             'cmsuser_id' => '1',
         ]);
