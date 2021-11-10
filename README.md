@@ -12,7 +12,7 @@ o presente Guia de Avaliação de Riscos de Reprodução de Desigualdades na Exe
 
 ### Equipe técnica envolvida no Projeto
 
-- **[Thiago Giannini Ramos](https://git)**
+- **[Thiago Giannini Ramos](https://github.com/gianninimail)**
 - **[Relison Galvão](https://git)**
 - **[Fabio Barreto](https://git)**
 - **[Bruno Passos](https://git)**
