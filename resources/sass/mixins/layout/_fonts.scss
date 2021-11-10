@@ -5,6 +5,9 @@ body {
     letter-spacing: 0.3px;
     color: $color-text;
 }
+h1, h2, h3, h4, h5{
+    font-family: 'Sora', sans-serif;
+}
 h1{
     font-size: 28px!important;
 }
@@ -34,4 +37,10 @@ p{
 time{
     font-size: 0.9rem;
     color: #949494;
+}
+.logo{
+    font-family: "Sora", sans-serif;
+    font-size: 55px;
+    margin-top: 18px;
+    margin-left: 26px;
 }

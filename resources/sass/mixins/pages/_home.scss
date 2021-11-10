@@ -63,3 +63,20 @@
     background-position: right;
     background-size: 40%;
 }
+.item-logo{
+    transition: .3s;
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    filter: gray; /* IE */
+    margin-bottom: 30px;
+}
+.item-logo:hover{
+    transition: .3s;
+    -webkit-filter: none;
+    filter: none; /*IE */
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    transform: scale(1.1);
+}

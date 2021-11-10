@@ -66,9 +66,18 @@
 </script>
 
 
+{{--React 16--}}
+{{--<script src="js/react/react.development.js" crossorigin></script>
+<script src="js/react/react-dom.development.js" crossorigin></script>--}}
 
-<script src="js/react/react.development.js" crossorigin></script>
-<script src="js/react/react-dom.development.js" crossorigin></script>
+@if(env('APP_ENV')==='local')
+<script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+@else
+<script src="js/react17/react.production.min.js" crossorigin></script>
+<script src="js/react17/react-dom.production.min.js" crossorigin></script>
+@endif
+<script src="js/axios.min.js"></script>
 
 <script>
     function get_location() {
@@ -122,8 +131,23 @@
 
 @endif
 
-
-
+@if($rota=="diagnostico-react")
+    <script src="js/components/diagnostico/store.js"></script>
+    <script src="js/components/diagnostico/pergunta/options.js"></script>
+    <script src="js/components/diagnostico/pergunta/nota.js"></script>
+    <script src="js/components/diagnostico/pergunta/range.js"></script>
+    <script src="js/components/diagnostico/pergunta/index.js"></script>
+    <script src="js/components/diagnostico/perguntas.js"></script>
+    <script src="js/components/diagnostico/indicadores.js"></script>
+    <script src="js/components/diagnostico/dimensoes.js"></script>
+    <script src="js/components/diagnostico/header.js"></script>
+    <script src="js/components/diagnostico/index.js"></script>
+@endif
+@if($rota=="/")
+    <script src="js/components/home/store.js"></script>
+    <script src="js/components/home/header.js"></script>
+    <script src="js/components/home/index.js"></script>
+@endif
 
 
 <script>

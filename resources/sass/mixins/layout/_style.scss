@@ -10,12 +10,19 @@ body{
 .bg-ter{
     background-color: $color-ter !important;
 }
+.bg-qua{
+    background-color: $color-qua !important;
+}
+.bg-qui{
+    background-color: $color-qui !important;
+}
 .bg-lgt{
     background-color: $color-lgt !important;
 }
 .bg-lgt2{
     background-color: $color-lgt2 !important;
 }
+
 .tx-pri{
     color: $color-pri !important;
 }
@@ -421,4 +428,12 @@ figcaption{
     margin: auto;
     padding-top: 7px;
     color: #FFFFFF;
+}
+.circle-user{
+    border-radius: 50%;
+    font-size: 35px;
+    width: 80px;
+    height: 80px;
+    font-weight: bold;
+    line-height: 80px;
 }

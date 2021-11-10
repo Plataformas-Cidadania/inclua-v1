@@ -10,7 +10,7 @@
     <div ng-controller="textCtrl">
         <div class="box-padrao">
             <h1><i class="fa fa-fw fa-desktop"></i>&nbsp;Texts</h1>
-            <button class="btn btn-primary" ng-click="mostrarForm=!mostrarForm" ng-show="!mostrarForm">Nova Text</button>
+            <button class="btn btn-primary" ng-click="mostrarForm=!mostrarForm" ng-show="!mostrarForm">Novo Texto</button>
             <button class="btn btn-warning" ng-click="mostrarForm=!mostrarForm" ng-show="mostrarForm">Cancelar</button>
             <br><br>
             <div ng-show="mostrarForm">

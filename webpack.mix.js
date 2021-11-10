@@ -119,4 +119,8 @@ mix.scripts('packages/cms/resources/assets/js/controllers/alterarUrlCtrl.js', 'p
 //Settings
 mix.scripts('packages/cms/resources/assets/js/controllers/alterarSettingCtrl.js', 'public/assets-cms/js/controllers/alterarSettingCtrl.js');
 
+//Parceiros
+mix.scripts('packages/cms/resources/assets/js/controllers/parceiroCtrl.js', 'public/assets-cms/js/controllers/parceiroCtrl.js');
+mix.scripts('packages/cms/resources/assets/js/controllers/alterarParceiroCtrl.js', 'public/assets-cms/js/controllers/alterarParceiroCtrl.js');
+
 //FIM CMS///////////////////////////////////////////////////////////////////

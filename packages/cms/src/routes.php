@@ -38,25 +38,6 @@ Route::group(['middleware' => 'cms'], function () {
         Route::get('/cms/positionUp-item/{id}', 'Cms\Controllers\ItemController@positionUp');
         Route::get('/cms/positionDown-item/{id}', 'Cms\Controllers\ItemController@positionDown');
 
-        //ITEMS MROSC
-        Route::get('/cms/items-mrosc/{mrosc_id}', 'Cms\Controllers\ItemMroscController@index');
-        Route::get('/cms/listar-items-mrosc', 'Cms\Controllers\ItemMroscController@listar');
-        Route::post('/cms/inserir-item-mrosc', 'Cms\Controllers\ItemMroscController@inserir');
-        Route::get('/cms/item-mrosc/{id}', 'Cms\Controllers\ItemMroscController@detalhar');
-        Route::post('/cms/alterar-item-mrosc/{id}', 'Cms\Controllers\ItemMroscController@alterar');
-        Route::get('/cms/excluir-item-mrosc/{id}', 'Cms\Controllers\ItemMroscController@excluir');
-        Route::get('/cms/status-item-mrosc/{id}', 'Cms\Controllers\ItemMroscController@status');
-
-        //ITEMS VERSAO
-        Route::get('/cms/items-versao/{versao_id}', 'Cms\Controllers\ItemVersaoController@index');
-        Route::get('/cms/listar-items-versao', 'Cms\Controllers\ItemVersaoController@listar');
-        Route::post('/cms/inserir-item-versao', 'Cms\Controllers\ItemVersaoController@inserir');
-        Route::get('/cms/item-versao/{id}', 'Cms\Controllers\ItemVersaoController@detalhar');
-        Route::post('/cms/alterar-item-versao/{id}', 'Cms\Controllers\ItemVersaoController@alterar');
-        Route::get('/cms/excluir-item-versao/{id}', 'Cms\Controllers\ItemVersaoController@excluir');
-        Route::get('/cms/status-item-versao/{id}', 'Cms\Controllers\ItemVersaoController@status');
-
-
         //Route::get('/cms/teste-excel', 'Cms\Controllers\SerieController@testeExcel');
         Route::get('/cms/teste-excel/{id}/{arquivo}', 'Cms\Controllers\SerieController@testeExcel');
 
@@ -146,16 +127,16 @@ Route::group(['middleware' => 'cms'], function () {
         Route::get('/cms/positionUp-url/{id}', 'Cms\Controllers\UrlController@positionUp');
         Route::get('/cms/positionDown-url/{id}', 'Cms\Controllers\UrlController@positionDown');
 
-        //APOIOS
-        Route::get('/cms/apoios', 'Cms\Controllers\ApoioController@index');
-        Route::get('/cms/listar-apoios', 'Cms\Controllers\ApoioController@listar');
-        Route::post('/cms/inserir-apoio', 'Cms\Controllers\ApoioController@inserir');
-        Route::get('/cms/apoio/{id}', 'Cms\Controllers\ApoioController@detalhar');
-        Route::post('/cms/alterar-apoio/{id}', 'Cms\Controllers\ApoioController@alterar');
-        Route::get('/cms/excluir-apoio/{id}', 'Cms\Controllers\ApoioController@excluir');
-        Route::get('/cms/status-apoio/{id}', 'Cms\Controllers\ApoioController@status');
-        Route::get('/cms/positionUp-apoio/{id}', 'Cms\Controllers\ApoioController@positionUp');
-        Route::get('/cms/positionDown-apoio/{id}', 'Cms\Controllers\ApoioController@positionDown');
+        //PARCEIROS
+        Route::get('/cms/parceiros', 'Cms\Controllers\ParceiroController@index');
+        Route::get('/cms/listar-parceiros', 'Cms\Controllers\ParceiroController@listar');
+        Route::post('/cms/inserir-parceiro', 'Cms\Controllers\ParceiroController@inserir');
+        Route::get('/cms/parceiro/{id}', 'Cms\Controllers\ParceiroController@detalhar');
+        Route::post('/cms/alterar-parceiro/{id}', 'Cms\Controllers\ParceiroController@alterar');
+        Route::get('/cms/excluir-parceiro/{id}', 'Cms\Controllers\ParceiroController@excluir');
+        Route::get('/cms/status-parceiro/{id}', 'Cms\Controllers\ParceiroController@status');
+        Route::get('/cms/positionUp-parceiro/{id}', 'Cms\Controllers\ParceiroController@positionUp');
+        Route::get('/cms/positionDown-parceiro/{id}', 'Cms\Controllers\ParceiroController@positionDown');
 
 
         //IDIOMAS

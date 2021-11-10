@@ -298,6 +298,14 @@
     margin-top: 10px;
     padding-left: 15px;
 }
+.btn-icon-hover{
+    float: inherit !important;
+    margin: auto !important;
+}
+.btn-icon-hover:hover{
+    background-color: $color-lgt;
+}
+
 .clear-both{
     clear: both;
 }
@@ -317,13 +325,18 @@
 }
 .nav-icons{
     margin: 0 15px;
+    border: double 2px #FFFFFF;
 }
 .nav-icons img{
     margin: 15px;
     z-index: 2;
     position: relative;
 }
-
+.nav-icons-select{
+    border-radius: 25px;
+    box-shadow: 2px 2px 8px #9b9898;
+    transform: scale(1.1);
+}
 .nav-icons hr{
     border-bottom: solid 3px $color-lgt;
     width: 350px;
@@ -332,6 +345,14 @@
     margin: auto;
     opacity: 1;
     z-index: 0;
+}
+.circle-icon{
+    border: solid 1px #CCCCCC;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    margin: 3px;
+    display: inline-block;
 }
 .opacity-5{
     opacity: 0.5 !important;

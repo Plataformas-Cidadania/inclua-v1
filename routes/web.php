@@ -45,8 +45,21 @@ Route::get('contato', 'App\Http\Controllers\ContactController@email');
 Route::post('contact', 'App\Http\Controllers\ContactController@send');
 
 Route::get('diagnostico', 'App\Http\Controllers\DiagnosticoController@completo');
+Route::get('diagnostico-react', 'App\Http\Controllers\DiagnosticoController@completoReact');
 Route::get('recursos', 'App\Http\Controllers\RecursoController@listar');
-Route::get('contribua', 'App\Http\Controllers\ContribuaController@listar');
+
+
+/*Route::get('contribua', 'App\Http\Controllers\ContribuaController@listar');
+Route::get('interaja', 'App\Http\Controllers\ContribuaController@interaja');
+Route::get('compartilhe', 'App\Http\Controllers\ContribuaController@compartilhe');
+Route::get('relate', 'App\Http\Controllers\ContribuaController@relate');*/
+
+
+Route::get('/contribua', [ContribuaController::class , 'listar']);
+Route::get('/interaja', [ContribuaController::class , 'interaja']);
+Route::get('/interaja-detalhar', [ContribuaController::class , 'interajaDetalhar']);
+Route::get('/compartilhe', [ContribuaController::class , 'compartilhe']);
+Route::get('/relate', [ContribuaController::class , 'relate']);
 
 $routes = [
     ['Page', 'sobres', 'sobre'],
@@ -75,6 +88,10 @@ if(env('DYNAMIC_ROUTES')=='true'){
         }
     }
 }
+
+//Testes components-------------------------------------------------
+Route::get('/teste-dimensoes', [DiagnosticoController::class , 'testeDimensoes']);
+//------------------------------------------------------------------
 
 /*
 <--------------------------------------------------------------------------|

@@ -4,7 +4,9 @@
 @section('content')
 
     <div class="p-3">&nbsp;</div>
-    <div class="container">
+    <div id="home">&nbsp;</div>
+    {{--<div class="container">
+        <div id="home">&nbsp;</div>
         <div class="row">
             <div class="col">
                 <div class="dorder-container">
@@ -21,7 +23,7 @@
                 <div class="dorder-container">
                     <div class="dorder-container-mai">
                         <div class="btn-icon">
-                            <img src="img/icon-biblioteca.png" alt="Diagnóstico" title="Diagnóstico" width="100%">
+                            <img src="img/icon-biblioteca.png" alt="Biblioteca" title="Biblioteca" width="100%">
                         </div>
                         <h2 class="btn-icon-h2">Biblioteca</h2>
                         <div class="clear-both"></div>
@@ -29,7 +31,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>--}}
 
     <div class="container-fluid">
         <div class="p-3">&nbsp;</div>
@@ -133,6 +135,21 @@
         </div>
         <div class="p-3">&nbsp;</div>
     </div>
+    <div class="container">
+        <div class="row">
+            @foreach($partners as $partner)
+                <div class="col-xs-6 col-sm-4 col-md-2 item-logo">
+                    <picture>
+                        <source data-src="/imagens/parceiros/md-{{$partner->imagem}}" media="(max-width: 468px)">
+                        <source data-src="/imagens/parceiros/md-{{$partner->imagem}}" media="(max-width: 768px)">
+                        <source data-src="/imagens/parceiros/md-{{$partner->imagem}}" class="img-responsive">
+                        <img src="/img/pre-img.gif" data-src="/imagens/parceiros/md-{{$partner->imagem}}" alt="Imagem sobre {{$partner->title}}" title="Imagem sobre {{$partner->title}}" width="100%" class="cliente-list-img-hover lazyload">
+                    </picture>
+                </div>
+            @endforeach
+        </div>
+    </div>
+    <br><br>
 
 <script>
 
