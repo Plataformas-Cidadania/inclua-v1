@@ -10,7 +10,7 @@
         <div class="dorder-container">
             <div class="bg-lgt dorder-container-mai">
                 <div class="dorder-container-line">
-                    <h1>Contribua</h1>
+                    <h1>Relate</h1>
                     <div class="dorder-container-box bg-lgt"></div>
                 </div>
             </div>
@@ -20,43 +20,65 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-12">
                 <div class="dorder-container">
-                    <div class="dorder-container-mai p-4 text-center">
-                        <i class="far fa-hand-point-up fa-3x"></i><br><br>
-                        <h2>Relate</h2>
-                        <p>Dissemine informações, proponha discussões, ajude quem necessita</p>
+                    <div class="dorder-container-mai p-4 ">
+                        <p>1 - CONSEQUÊNCIA: Desarticulações (ou formas específicas de articulação) e disputas interinstitucionais podem repercutir em déficits de cobertura, lacunas de atenção ou repercussões negativas para o atendimento a segmentos específicos do público ou territórios atendidos</p>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-3 text-center">
+                                <i class="far fa-frown fa-3x"></i><br>
+                                <p>Não gostei</p>
+                            </div>
+                            <div class="col-md-3 text-center">
+                                <i class="far fa-meh fa-3x"></i><br>
+                                <p>Indiferente</p>
+                            </div>
+                            <div class="col-md-3 text-center">
+                                <i class="far fa-smile fa-3x"></i><br>
+                                <p>Gostei</p>
+                            </div>
+                            <div class="col-md-3 text-center">
+                                <i class="far fa-heart fa-3x"></i><br>
+                                <p>Amei</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <br>
+                <div class="dorder-container">
+                    <div class="dorder-container-mai p-4 ">
+                        <p>1 - CONSEQUÊNCIA: Desarticulações (ou formas específicas de articulação) e disputas interinstitucionais podem repercutir em déficits de cobertura, lacunas de atenção ou repercussões negativas para o atendimento a segmentos específicos do público ou territórios atendidos</p>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-3 text-center">
+                                <i class="far fa-frown fa-3x"></i><br>
+                                <p>Não gostei</p>
+                            </div>
+                            <div class="col-md-3 text-center">
+                                <i class="far fa-meh fa-3x"></i><br>
+                                <p>Indiferente</p>
+                            </div>
+                            <div class="col-md-3 text-center">
+                                <i class="far fa-smile fa-3x"></i><br>
+                                <p>Gostei</p>
+                            </div>
+                            <div class="col-md-3 text-center">
+                                <i class="far fa-heart fa-3x"></i><br>
+                                <p>Amei</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
             </div>
-            <div class="col-md-4">
-                <div class="dorder-container">
-                    <div class="dorder-container-mai p-4 text-center">
-                        <i class="fas fa-share-alt fa-3x"></i><br><br>
-                        <h2>Compartilhe</h2>
-                        <p>Ajude a ampliar os recursos, compartilhe sua experiência.</p>
-                    </div>
+            <div class="col-md-12">
+                <div class="dorder-container justify-content-end">
+                    <button class="btn btn-theme bg-pri float-end" type="button" >Enviar <i class="fas fa-angle-right"></i></button>
                 </div>
+                <br>
+                <br>
             </div>
-            <div class="col-md-4">
-                <div class="dorder-container">
-                    <div class="dorder-container-mai p-4 text-center">
-                        <i class="fas fa-bullhorn fa-3x"></i><br><br>
-                        <h2>Relate</h2>
-                        <p>Como a INCLUA te ajudou? Conte-nos sua experiência</p>
-                    </div>
-                </div>
-            </div>
-            {{--<div class="col-md-3">
-                <div class="dorder-container">
-                    <div class="dorder-container-mai p-4 text-center">
-                        <i class="fas fa-users fa-3x"></i><br><br>
-                        <h2>Comunidade</h2>
-                        <p>Construa uma rede colaborativa visando o aperfeiçoamento mútuo</p>
-                    </div>
-                </div>
-            </div>--}}
-            <div class="col-md-12"><br><br></div>
         </div>
     </div>
 
