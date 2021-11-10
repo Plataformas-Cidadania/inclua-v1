@@ -15,9 +15,11 @@ class CreateRecursoCategoriaTable extends Migration
     {
         Schema::create('avaliacao.categorizacao', function (Blueprint $table) {
          
+        $table->integer('id_categoria'); 
         $table->foreign('id_categoria')->references('id_categoria')
             ->on('avaliacao.categoria')
             ->onDelete('cascade');
+        $table->integer('id_recurso'); 
         $table->foreign('id_recurso')->references('id_recurso')
             ->on('avaliacao.recurso')
             ->onDelete('cascade');
@@ -32,8 +34,9 @@ class CreateRecursoCategoriaTable extends Migration
      */
     public function down()
     {
-        $table->dropForeign('categoria_categorizacao_id_categoria_foreign');
-        $table->dropForeign('recurso_categorizacao_id_recurso_foreign');
+        Schema::table('avaliacao.categorizacao', function (Blueprint $table) {
+            $table->dropForeign(['id_categoria','id_recurso']);
+        });
         Schema::dropIfExists('avaliacao.categorizacao');
     }
 }

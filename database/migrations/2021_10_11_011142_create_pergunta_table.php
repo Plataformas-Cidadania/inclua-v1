@@ -20,6 +20,7 @@ class CreatePerguntaTable extends Migration
             $table->integer('vl_minimo')->nullable()->comment('Armazena o valor minimo que se pode ter na resposta da pergunta');
             $table->integer('vl_medio')->nullable()->comment('Armazena o valor medio que se pode ter na resposta da pergunta');
             $table->integer('vl_maximo')->nullable()->comment('Armazena o valor maximo que se pode ter na resposta da pergunta');
+            $table->integer('id_indicador');
             $table->foreign('id_indicador')->references('id_indicador')
                     ->on('avaliacao.indicador')
                     ->onDelete('cascade');
@@ -34,7 +35,9 @@ class CreatePerguntaTable extends Migration
      */
     public function down()
     {
-        $table->dropForeign('indicador_pergunta_id_indicador_foreign');
+        Schema::table('avaliacao.pergunta', function (Blueprint $table) {
+            $table->dropForeign(['id_indicador']);
+        });
         Schema::dropIfExists('avaliacao.pergunta');
     }
 }

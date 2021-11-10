@@ -14,9 +14,11 @@ class CreateRelIndRecTable extends Migration
     public function up()
     {
         Schema::create('avaliacao.indicacao', function (Blueprint $table) {
+        $table->integer('id_indicador');             
         $table->foreign('id_indicador')->references('id_indicador')
               ->on('avaliacao.indicador')
               ->onDelete('cascade');
+        $table->integer('id_recurso');             
         $table->foreign('id_recurso')->references('id_recurso')
               ->on('avaliacao.recurso')
               ->onDelete('cascade');
@@ -30,8 +32,9 @@ class CreateRelIndRecTable extends Migration
      */
     public function down()
     {
-        $table->dropForeign('indicador_indicacao_id_indicador_foreign');
-        $table->dropForeign('recurso_indicacao_id_recurso_foreign');
+        Schema::table('avaliacao.indicacao', function (Blueprint $table) {
+            $table->dropForeign(['id_indicador','id_recurso']);
+        });
         Schema::dropIfExists('avaliacao.indicacao');
     }
 }

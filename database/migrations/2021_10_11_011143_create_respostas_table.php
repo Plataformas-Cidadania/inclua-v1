@@ -16,10 +16,7 @@ class CreateRespostasTable extends Migration
         Schema::create('avaliacao.resposta', function (Blueprint $table) {
             $table->increments('id_resposta')->comment('Identifica a resposta');
             $table->integer('pontuacao');
-            $table->integer('pergunta_id_pergunta');
-
-            $table->integer('pergunta_indicador_id_indicador');
-
+            $table->integer('id_pergunta');
             $table->foreign('id_pergunta')->references('id_pergunta')
                     ->on('avaliacao.pergunta')
                     ->onDelete('cascade');
@@ -32,7 +29,9 @@ class CreateRespostasTable extends Migration
      */
     public function down()
     {
-        $table->dropForeign('pergunta_resposta_id_pergunta_foreign'); 
+        Schema::table('avaliacao.resposta', function (Blueprint $table) {
+            $table->dropForeign(['id_pergunta']);
+        });  
         Schema::dropIfExists('avaliacao.resposta');
     }
 }
