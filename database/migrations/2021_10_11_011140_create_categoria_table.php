@@ -14,7 +14,7 @@ class CreateCategoriaTable extends Migration
     public function up()
     {
         Schema::create('avaliacao.categoria', function (Blueprint $table) {
-            $table->increments('id_categoria')->primary()->comment('Identifica a categoria');
+            $table->increments('id_categoria')->comment('Identifica a categoria');
             $table->string('nome', 50);
         });
     }

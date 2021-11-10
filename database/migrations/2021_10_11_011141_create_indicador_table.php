@@ -14,7 +14,7 @@ class CreateIndicadorTable extends Migration
     public function up()
     {
         Schema::create('avaliacao.indicador', function (Blueprint $table) {
-            $table->increments('id_indicador')->primary();
+            $table->increments('id_indicador');
             $table->string('nome', 50);
             $table->text('descricao');
             $table->foreign('id_dimensao')->nullable()->references('id_dimensao')

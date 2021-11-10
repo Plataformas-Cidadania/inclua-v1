@@ -14,7 +14,7 @@ class CreateLinkTable extends Migration
     public function up()
     {
         Schema::create('avaliacao.link', function (Blueprint $table) {
-            $table->increments('id_link')->primary()->comment('Identifica o link');
+            $table->increments('id_link')->comment('Identifica o link');
             $table->text('uri')->comment('contem o a uri de um conteúdo ');
             $table->string('idioma', 50)->nullable();
             $table->foreign('id_recurso')->references('id_recurso')

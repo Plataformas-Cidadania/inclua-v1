@@ -14,7 +14,7 @@ class CreateRespostasTable extends Migration
     public function up()
     {
         Schema::create('avaliacao.resposta', function (Blueprint $table) {
-            $table->increments('id_resposta')->primary()->comment('Identifica a resposta');
+            $table->increments('id_resposta')->comment('Identifica a resposta');
             $table->integer('pontuacao');
             $table->integer('pergunta_id_pergunta');
 
