@@ -110,5 +110,42 @@ class ModulosSeeder extends Seeder
             'cmsuser_id' => 1,
         ]);
 
+        DB::table('modulos')->insert([
+            'imagem' => '',
+            'arquivo' => '',
+            'titulo' => 'Acessibilidade',
+            'descricao' => "
+            <p>Este portal segue as diretrizes do eMAG (Modelo de Acessibilidade em Governo Eletrônico), conforme as normas do Governo Federal, em obediência ao Decreto nº 5.296, de 2.12.2004.</p>
+            <p>O termo acessibilidade significa incluir a pessoa com deficiência na participação de atividades como o uso de produtos, serviços e informações. Alguns exemplos são os prédios com rampas de acesso para cadeira de rodas e banheiros adaptados para deficientes.</p>
+            <p>Na internet, acessibilidade refere-se principalmente às recomendações do WCAG (World Content Accessibility Guide) do W3C e, no caso do Governo Brasileiro, ao eMAG (Modelo de Acessibilidade em Governo Eletrônico). O eMAG está alinhado as recomendações internacionais, mas estabelece padrões de comportamento acessível para sítios governamentais.</p>
+            <p>Na parte superior do portal existe uma barra de acessibilidade onde se encontram atalhos de navegação padronizados e a opção para alterar o contraste. Essas ferramentas estão disponíveis em todas as páginas do portal.</p>
+            <ul>
+                <li>Alt + 1: Acessar conteúdo</li>
+                <li>Alt + 2: Acessar Menu principal</li>
+                <li>Alt + 3: Acessar busca</li>
+                <li>Alt + 4: Acessar rodapé</li>
+                <li>Alt + h: Home</li>
+                <li>Alt + q: Sobre o Mapa</li>
+                <li>Alt + c: Fale conosco</li>
+            </ul>
+            <strong>Dúvidas, Sugestões e Críticas:</strong>
+            <p>No caso de problemas com a acessibilidade do mapa, favor entrar em contato.</p>
+
+            <strong>Utilização dos Atalhos</strong>
+            <p>Esses atalhos valem para o navegador Chrome, mas existem algumas variações para outros navegadores:</p>
+            <ul>
+                <li>Quem prefere utilizar o Internet Explorer é preciso apertar o botão Enter do seu teclado após uma das combinações acima. Portanto, para chegar ao campo de busca interna é preciso pressionar Alt+3 e depois Enter.</li>
+                <li>No caso do Firefox, em vez de Alt + número, tecle simultaneamente Alt + Shift + número.</li>
+                <li>Sendo Firefox no Mac OS, em vez de Alt + Shift + número, tecle simultaneamente Ctrl + Alt + número</li>
+                <li>No Opera, as teclas são Shift + Escape + número. Ao teclar apenas Shift + Escape, o usuário encontrará uma janela com todas as alternativas de ACCESSKEY da página.</li>
+            </ul>
+            ",
+            'slug' => 'acessibilidade',
+            'status' => 1,
+            'show' => 0,
+            'tipo_id' => 0,
+            'cmsuser_id' => 1,
+        ]);
+
     }
 }
