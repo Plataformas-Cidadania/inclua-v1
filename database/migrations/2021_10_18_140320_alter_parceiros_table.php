@@ -16,8 +16,6 @@ class AlterParceirosTable extends Migration
         Schema::table('parceiros', function (Blueprint $table) {
             $table->integer('posicao')->default(0);
             $table->integer('status')->default(1);
-            $table->integer('cmsuser_id')->unsigned();
-            $table->foreign('cmsuser_id')->references('id')->on('cms_users')->onDelete('restrict');
         });
     }
 

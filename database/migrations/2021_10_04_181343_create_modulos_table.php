@@ -23,8 +23,6 @@ class CreateModulosTable extends Migration
             $table->integer('status')->default(0);
             $table->integer('show')->default(0);
             $table->integer('tipo_id')->unsigned();
-            $table->integer('cmsuser_id')->unsigned();
-            $table->foreign('cmsuser_id')->references('id')->on('cms_users')->onDelete('restrict');
             $table->timestamps();
         });
     }

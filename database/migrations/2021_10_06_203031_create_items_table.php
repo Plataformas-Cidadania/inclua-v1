@@ -22,9 +22,7 @@ class CreateItemsTable extends Migration
             $table->integer('posicao')->default(0);
             $table->integer('status')->default(0);
             $table->integer('modulo_id')->unsigned();
-            $table->foreign('modulo_id')->references('id')->on('modulos')->onDelete('cascade');
-            $table->integer('cmsuser_id')->unsigned();
-            $table->foreign('cmsuser_id')->references('id')->on('cms_users')->onDelete('restrict');
+            $table->foreign('modulo_id')->references('id')->on('cms.modulos')->onDelete('cascade');
             $table->timestamps();
         });
     }

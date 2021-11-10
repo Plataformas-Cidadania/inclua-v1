@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Setting
- * 
+ *
  * @property int $id
  * @property character varying $imagem
  * @property character varying $email
@@ -85,7 +85,6 @@ class Setting extends Model
 		'twitter' => 'character varying',
 		'instagram' => 'character varying',
 		'blog' => 'character varying',
-		'cmsuser_id' => 'int',
 		'created_at' => 'timestamp without time zone',
 		'updated_at' => 'timestamp without time zone'
 	];
@@ -121,7 +120,6 @@ class Setting extends Model
 		'pinterest',
 		'twitter',
 		'instagram',
-		'blog',
-		'cmsuser_id'
+		'blog'
 	];
 }

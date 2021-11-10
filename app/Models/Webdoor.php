@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Webdoor
- * 
+ *
  * @property int $id
  * @property character varying $imagem
  * @property character varying|null $titulo
@@ -22,7 +22,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $cmsuser_id
  * @property timestamp without time zone|null $created_at
  * @property timestamp without time zone|null $updated_at
- * 
+ *
  * @property CmsUser $cms_user
  *
  * @package App\Models
@@ -37,7 +37,6 @@ class Webdoor extends Model
 		'legenda' => 'character varying',
 		'posicao' => 'int',
 		'status' => 'int',
-		'cmsuser_id' => 'int',
 		'created_at' => 'timestamp without time zone',
 		'updated_at' => 'timestamp without time zone'
 	];
@@ -50,7 +49,6 @@ class Webdoor extends Model
 		'legenda',
 		'posicao',
 		'status',
-		'cmsuser_id'
 	];
 
 	public function cms_user()

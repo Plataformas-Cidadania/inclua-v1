@@ -46,7 +46,6 @@ class CreateSettingsTable extends Migration
             $table->string('twitter')->nullable()->nullable();
             $table->string('instagram');
             $table->string('blog')->nullable();
-            $table->integer('cmsuser_id')->unsigned();
             $table->timestamps();
         });
     }

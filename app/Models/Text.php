@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Text
- * 
+ *
  * @property int $id
  * @property character varying $imagem
  * @property character varying|null $titulo
@@ -19,7 +19,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $cmsuser_id
  * @property timestamp without time zone|null $created_at
  * @property timestamp without time zone|null $updated_at
- * 
+ *
  * @property CmsUser $cms_user
  *
  * @package App\Models
@@ -32,7 +32,6 @@ class Text extends Model
 		'imagem' => 'character varying',
 		'titulo' => 'character varying',
 		'slug' => 'character varying',
-		'cmsuser_id' => 'int',
 		'created_at' => 'timestamp without time zone',
 		'updated_at' => 'timestamp without time zone'
 	];
@@ -41,8 +40,7 @@ class Text extends Model
 		'imagem',
 		'titulo',
 		'descricao',
-		'slug',
-		'cmsuser_id'
+		'slug'
 	];
 
 	public function cms_user()

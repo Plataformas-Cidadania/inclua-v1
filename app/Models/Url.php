@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Url
- * 
+ *
  * @property int $id
  * @property character varying $imagem
  * @property character varying|null $titulo
@@ -21,7 +21,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $cmsuser_id
  * @property timestamp without time zone|null $created_at
  * @property timestamp without time zone|null $updated_at
- * 
+ *
  * @property CmsUser $cms_user
  *
  * @package App\Models
@@ -36,7 +36,6 @@ class Url extends Model
 		'url' => 'character varying',
 		'status' => 'int',
 		'posicao' => 'int',
-		'cmsuser_id' => 'int',
 		'created_at' => 'timestamp without time zone',
 		'updated_at' => 'timestamp without time zone'
 	];
@@ -47,8 +46,7 @@ class Url extends Model
 		'descricao',
 		'url',
 		'status',
-		'posicao',
-		'cmsuser_id'
+		'posicao'
 	];
 
 	public function cms_user()
