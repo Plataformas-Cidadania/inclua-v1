@@ -25,7 +25,7 @@ class ParceirosSeeder extends Seeder
         ]);
 
         DB::table('parceiros')->insert([
-            'imagem' => 'https://mulherescientistas.org/wp-content/uploads/2021/04/marca-principal-RBMC.png',
+            'imagem' => '',
             'titulo' => 'Rede Brasileira de Mulheres Cientistas',
             'descricao' => 'Somos mulheres cientistas brasileiras e, neste momento tão dramático, que afeta inclusive as nossas produções científicas, buscamos atuar em defesa das mulheres a partir de uma perspectiva que busca a atenção a algo praticamente ignorado no debate público: a condição das mulheres brasileiras na pandemia. Para isso criamos essa rede que nasceu a partir da Nossa Carta de Lançamento assinada por mais de 3000 cientistas brasileiras. Conheça aqui a nossa carta. E conheça as cientistas do nosso Comitê Executivo.',
             'url' => 'https://mulherescientistas.org/',
@@ -35,12 +35,22 @@ class ParceirosSeeder extends Seeder
         ]);
 
         DB::table('parceiros')->insert([
-            'imagem' => 'https://neburocracia.files.wordpress.com/2018/05/cropped-logo11.png',
-            'titulo' => 'Núcleo de Estudos da Burocracia NEB EAESP-FGV',
+            'imagem' => '',
+            'titulo' => 'Núcleo de Estudos da Burocracia (NEB) da Fundação Getulio Vargas (FGV)',
             'descricao' => 'O Núcleo de Estudos da Burocracia tem como objetivo avançar nas análises teóricas e empíricas da burocracia brasileira, considerando elementos como: estrutura burocrática, perfil dos burocratas, atuação e relacionamento da burocracia. Diversos trabalhos estão sendo desenvolvidos atualmente que tem como focos: Análise da burocracia de médio escalão, análise da burocracia de nível de rua, análise da interação entre burocracia e organizações sociais.',
             'url' => 'https://neburocracia.wordpress.com/',
             'status' => 1,
             'posicao' => 3,
+            'cmsuser_id' => 1,
+        ]);
+
+        DB::table('parceiros')->insert([
+            'imagem' => '',
+            'titulo' => 'Grupo de Estudos e Pesquisa Sobre Políticas, História, Educação e Relações Raciais e Gênero – Geppherg / UnB',
+            'descricao' => '',
+            'url' => 'http://neab.unb.br/',
+            'status' => 1,
+            'posicao' => 4,
             'cmsuser_id' => 1,
         ]);
     }

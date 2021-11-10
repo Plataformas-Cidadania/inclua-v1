@@ -3,3 +3,18 @@
     text-decoration: underline;
     font-size: 14px;
 }
+.btn-form{
+    margin: 0;
+    padding: 0;
+}
+.btn-form li{
+    margin: 1px;
+    padding: 10px 15px;
+    list-style: none;
+    background-color: $color-lgt;
+    display: inline-block;
+    cursor: pointer;
+}
+.btn-form li:hover{
+    background-color: $color-lgt2;
+}

@@ -57,88 +57,8 @@ const Indicadores = () => {
                     <p>{descricao}</p>
                     <br/>
                 </div>
-
                 <div className="col-md-12">
-                    <Pergunta
-                        tipo="1"
-                        titulo="Caso o processo de implementação dessa oferta pública
-                            envolva mais de uma organização (ou múltiplas unidades de uma organização) responsável por
-                            etapas diferentes da produção do bem ou serviço, existem espaços e mecanismos para promover
-                            a coordenação e a articulação das ações entre essas organizações? [Por exemplo: reuniões
-                            periódicas, comitês gestores, instâncias de mediação, etc.] Marque uma opção abaixo."
-                    />
-                    <div className="box-items bg-lgt">
-                        <p className="mb-3"><strong>P1.1a</strong> Caso o processo de implementação dessa oferta pública
-                            envolva mais de uma organização (ou múltiplas unidades de uma organização) responsável por
-                            etapas diferentes da produção do bem ou serviço, existem espaços e mecanismos para promover
-                            a coordenação e a articulação das ações entre essas organizações? [Por exemplo: reuniões
-                            periódicas, comitês gestores, instâncias de mediação, etc.] Marque uma opção abaixo.</p>
-                        <div className="form-check float-start">
-                            <input className="form-check-input" type="radio" name="flexRadioDefault"
-                                   id="flexRadioDefault1"/>
-                            <label className="form-check-label" htmlFor="flexRadioDefault1">
-                                Sim
-                            </label>
-                        </div>
-                        <div className="form-check  float-end">
-                            <input className="form-check-input" type="radio" name="flexRadioDefault"
-                                   id="flexRadioDefault2" checked/>
-                            <label className="form-check-label" htmlFor="flexRadioDefault2">
-                                Não
-                            </label>
-                        </div>
-                        <div className="clear-both">&nbsp;</div>
-                    </div>
-                    <br/>
-                </div>
-
-                <div className="col-md-12">
-                    <div className="box-items bg-lgt">
-                        <p><strong>P2.1a</strong> Caso o processo de implementação dessa oferta pública envolva mais de
-                            uma organização (ou múltiplas unidades de uma organização) responsável por etapas diferentes
-                            da produção do bem ou serviço, existem espaços e mecanismos para promover a coordenação e a
-                            articulação das ações entre essas organizações? [Por exemplo: reuniões periódicas, comitês
-                            gestores, instâncias de mediação, etc.] Marque uma opção abaixo.</p>
-                        <div>
-                            <br/>
-                            <div className="range-merker">
-                                <div className="range-merker-box">
-                                    <div className={"range-merker-box-item " + bgColor}>1</div>
-                                </div>
-                                <div className="range-merker-box">
-                                    <div className={"range-merker-box-item " + bgColor}>2</div>
-                                </div>
-                                <div className="range-merker-box">
-                                    <div className={"range-merker-box-item " + bgColor}>3</div>
-                                </div>
-                                <div className="range-merker-box">
-                                    <div className="range-merker-box-item">4</div>
-                                </div>
-                                <div className="range-merker-box">
-                                    <div className="range-merker-box-item">5</div>
-                                </div>
-                                <div className="range-merker-box">
-                                    <div className="range-merker-box-item">6</div>
-                                </div>
-                                <div className="range-merker-box">
-                                    <div className="range-merker-box-item">7</div>
-                                </div>
-                                <div className="range-merker-box">
-                                    <div className="range-merker-box-item">8</div>
-                                </div>
-                                <div className="range-merker-box">
-                                    <div className="range-merker-box-item">9</div>
-                                </div>
-                                <div className="range-merker-box">
-                                    <div className="range-merker-box-item">10</div>
-                                </div>
-                            </div>
-                            {/*<label for="customRange1" className="form-label">Bom</label>*/}
-                            <br/>
-                            <input type="range" className="form-range range" id="customRange1" min="1" max="10" value="3"/>
-                        </div>
-                    </div>
-                    <br/>
+                    <Perguntas bgColor={bgColor}/>
                 </div>
 
                 <div className="col-md-12">

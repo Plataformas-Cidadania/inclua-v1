@@ -12,7 +12,7 @@ const Options = (props) => {
 
     return (
         <div className="box-items bg-lgt">
-            <p className="mb-3"><strong>P{props.dimensao}.{props.indicador}{props.pergunta}</strong> {props.titulo}</p>
+            <p className="mb-3"><strong>P{context.dimensao.info.dimensao}.{context.indicador.indicador}{props.letra}</strong> {props.titulo}</p>
             <div className="form-check float-start">
                 <input className="form-check-input" type="radio" name="flexRadioDefault"
                        id="flexRadioDefault1" value="1" onChange={handleResposta}/>

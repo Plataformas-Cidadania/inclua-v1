@@ -15,7 +15,7 @@ const Options = props => {
     className: "box-items bg-lgt"
   }, /*#__PURE__*/React.createElement("p", {
     className: "mb-3"
-  }, /*#__PURE__*/React.createElement("strong", null, "P", props.dimensao, ".", props.indicador, props.pergunta), " ", props.titulo), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("strong", null, "P", context.dimensao.info.dimensao, ".", context.indicador.indicador, props.letra), " ", props.titulo), /*#__PURE__*/React.createElement("div", {
     className: "form-check float-start"
   }, /*#__PURE__*/React.createElement("input", {
     className: "form-check-input",

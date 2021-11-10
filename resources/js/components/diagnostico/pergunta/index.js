@@ -4,13 +4,13 @@ const Pergunta = (props) => {
     const {useState, useEffect} = React;
 
     const tipos = {
-        1: <Options />,
-        2: <Nota />,
-        3: <Range />,
+        1: <Options titulo={props.titulo} bgColor={props.bgColor} letra={props.letra}/>,
+        2: <Nota titulo={props.titulo}  bgColor={props.bgColor} letra={props.letra}/>,
+        3: <Range titulo={props.titulo}  bgColor={props.bgColor} letra={props.letra}/>,
     };
 
     return (
-        <div>
+        <div className="col-md-12 mt-3">
             {tipos[props.tipo]}
         </div>
     );
