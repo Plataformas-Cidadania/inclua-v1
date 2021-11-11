@@ -32,14 +32,10 @@ class CreateIndicadorTable extends Migration
      */
     public function down()
     {
-        //Schame::dropForeign('dimensao_indicador_id_indicador_foreign');
-        //Schema::table('avaliacao.indicador', function (Blueprint $table) {
-        //    $table->dropForeign('dimensao_indicador_id_indicador_foreign');
-        //});
         Schema::table('avaliacao.indicador', function (Blueprint $table) {
-            $table->dropForeign(['id_indicador']);
+            $table->dropForeign(['id_dimensao']);
         });
-        
+
         Schema::dropIfExists('avaliacao.indicador');
     }
 }

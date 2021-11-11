@@ -13,7 +13,7 @@ class AlterParceirosTable extends Migration
      */
     public function up()
     {
-        Schema::table('parceiros', function (Blueprint $table) {
+        Schema::table('cms.parceiros', function (Blueprint $table) {
             $table->integer('posicao')->default(0);
             $table->integer('status')->default(1);
         });
@@ -26,10 +26,7 @@ class AlterParceirosTable extends Migration
      */
     public function down()
     {
-        Schema::table('parceiros', function (Blueprint $table) {
-            $table->dropColumn('posicao');
-            $table->dropForeign('parceiros_cmsuser_id_foreign');
-            $table->dropColumn('cmsuser_id');
-        });
+        Schema::dropIfExists('cms.parceiros');
+
     }
 }

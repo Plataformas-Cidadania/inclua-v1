@@ -14,11 +14,11 @@ class CreateAutoriaTable extends Migration
     public function up()
     {
         Schema::create('avaliacao.autoria', function (Blueprint $table) {
-            $table->integer('id_autor'); 
+            $table->integer('id_autor');
             $table->foreign('id_autor')->references('id_autor')
                     ->on('avaliacao.autor')
                     ->onDelete('cascade');
-            $table->integer('id_recurso'); 
+            $table->integer('id_recurso');
             $table->foreign('id_recurso')->references('id_recurso')
                     ->on('avaliacao.recurso')
                     ->onDelete('cascade');
@@ -35,7 +35,8 @@ class CreateAutoriaTable extends Migration
     public function down()
     {
         Schema::table('avaliacao.autoria', function (Blueprint $table) {
-            $table->dropForeign(['id_recurso','id_autor']);
+            $table->dropForeign(['id_autor']);
+            $table->dropForeign(['id_recurso']);
         });
         Schema::dropIfExists('avaliacao.autoria');
     }
