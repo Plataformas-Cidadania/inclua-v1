@@ -1,4 +1,4 @@
-<?php $links = DB::table('urls')->where('status', 1)->orderBy('id', 'desc')->paginate(23);?>
+<?php $links = DB::table('cms.urls')->where('status', 1)->orderBy('id', 'desc')->paginate(23);?>
 
 <div class="row">
     @foreach($links as $key => $link)

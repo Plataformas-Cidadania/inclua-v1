@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Parceiro
- * 
+ *
  * @property int $id
  * @property character varying $imagem
  * @property character varying|null $titulo
