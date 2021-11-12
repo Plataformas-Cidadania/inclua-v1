@@ -14,7 +14,7 @@ class ParceirosSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('parceiros')->insert([
+        DB::table('cms.parceiros')->insert([
             'imagem' => '',
             'titulo' => 'ABPN - Associação Brasileira de Pesquisadores(as) Negros(as)',
             'descricao' => 'Atualmente a ABPN é um dos órgãos fundamentais da rede de instituições que atuam no combate ao racismo, ao preconceito e à discriminação racial, com vistas à formulação, à implementação, ao monitoramento e à avaliação das políticas públicas para uma sociedade justa e equânime.',

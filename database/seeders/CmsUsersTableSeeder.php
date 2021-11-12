@@ -14,7 +14,7 @@ class CmsUsersTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('cms_users')->insert([
+        DB::table('cms.cms_users')->insert([
             'name' => 'Admin',
             'email' => 'admin@cms',
             'password' => bcrypt('123456'),

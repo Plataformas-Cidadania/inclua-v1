@@ -14,7 +14,7 @@ class TextsSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('texts')->insert([
+        DB::table('cms.texts')->insert([
             'imagem' => '',
             'titulo' => 'Diagnóstico',
             'descricao' => 'O diagnóstico visa identificar e avaliar riscos de desatenção, tratamento inadequado e exclusão de segmentos específicos do público atendido. Muitas vezes, esses riscos não são suficientemente bem conhecidos.',

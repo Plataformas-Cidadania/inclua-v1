@@ -14,7 +14,7 @@ class SettingsSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('settings')->insert([
+        DB::table('cms.settings')->insert([
             'imagem' => '',
             'email' => 'inclua@ipea.gov.br',
             'titulo' => 'INCLUA',

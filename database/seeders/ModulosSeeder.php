@@ -14,7 +14,7 @@ class ModulosSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('modulos')->insert([
+        DB::table('cms.modulos')->insert([
             'imagem' => '',
             'arquivo' => '',
             'titulo' => 'O projeto Inclua',

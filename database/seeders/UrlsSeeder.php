@@ -14,7 +14,7 @@ class UrlsSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('urls')->insert([
+        DB::table('cms.urls')->insert([
             'imagem' => '',
             'titulo' => 'Retrato das Desigualdades de Gênero e Raça (IPEA)',
             'descricao' => '',
