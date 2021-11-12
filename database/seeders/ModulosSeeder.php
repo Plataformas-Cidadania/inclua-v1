@@ -30,10 +30,9 @@ class ModulosSeeder extends Seeder
             'status' => 1,
             'show' => 0,
             'tipo_id' => 1,
-            'cmsuser_id' => 1,
         ]);
 
-        DB::table('modulos')->insert([
+        DB::table('cms.modulos')->insert([
             'imagem' => '',
             'arquivo' => '',
             'titulo' => 'Equipe',
@@ -71,10 +70,9 @@ class ModulosSeeder extends Seeder
             'status' => 1,
             'show' => 0,
             'tipo_id' => 1,
-            'cmsuser_id' => 1,
         ]);
 
-        DB::table('modulos')->insert([
+        DB::table('cms.modulos')->insert([
             'imagem' => '',
             'arquivo' => '',
             'titulo' => 'Mapa do site',
@@ -83,10 +81,9 @@ class ModulosSeeder extends Seeder
             'status' => 1,
             'show' => 0,
             'tipo_id' => 1,
-            'cmsuser_id' => 1,
         ]);
 
-        DB::table('modulos')->insert([
+        DB::table('cms.modulos')->insert([
             'imagem' => '',
             'arquivo' => '',
             'titulo' => 'Parceiros',
@@ -95,10 +92,9 @@ class ModulosSeeder extends Seeder
             'status' => 1,
             'show' => 0,
             'tipo_id' => 1,
-            'cmsuser_id' => 1,
         ]);
 
-        DB::table('modulos')->insert([
+        DB::table('cms.modulos')->insert([
             'imagem' => '',
             'arquivo' => '',
             'titulo' => 'Links sugeridos',
@@ -107,10 +103,9 @@ class ModulosSeeder extends Seeder
             'status' => 1,
             'show' => 0,
             'tipo_id' => 1,
-            'cmsuser_id' => 1,
         ]);
 
-        DB::table('modulos')->insert([
+        DB::table('cms.modulos')->insert([
             'imagem' => '',
             'arquivo' => '',
             'titulo' => 'Acessibilidade',
@@ -144,7 +139,6 @@ class ModulosSeeder extends Seeder
             'status' => 1,
             'show' => 0,
             'tipo_id' => 0,
-            'cmsuser_id' => 1,
         ]);
 
     }

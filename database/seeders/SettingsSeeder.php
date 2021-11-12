@@ -53,7 +53,6 @@ class SettingsSeeder extends Seeder
             'titulo_contato' => 'Titulo contato',
             'descricao_contato' => 'Para entrar em contato com a equipe do INCLUA, utilize o formulário abaixo ou, se preferir, envie um e-mail para inclua@ipea.gov.br.',
 
-            'cmsuser_id' => '1',
         ]);
     }
 }

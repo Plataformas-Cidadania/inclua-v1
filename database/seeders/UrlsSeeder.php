@@ -21,47 +21,42 @@ class UrlsSeeder extends Seeder
             'url' => 'https://www.ipea.gov.br/retrato/',
             'status' => 1,
             'posicao' => 1,
-            'cmsuser_id' => 1,
         ]);
 
-        DB::table('urls')->insert([
+        DB::table('cms.urls')->insert([
             'imagem' => '',
             'titulo' => 'Igualdades Racial (IPEA)',
             'descricao' => '',
             'url' => 'https://www.ipea.gov.br/igualdaderacial/',
             'status' => 1,
             'posicao' => 2,
-            'cmsuser_id' => 1,
         ]);
 
-        DB::table('urls')->insert([
+        DB::table('cms.urls')->insert([
             'imagem' => '',
             'titulo' => 'Observatório das desigualdades (Fundação João Pinheiro)',
             'descricao' => '',
             'url' => 'http://observatoriodesigualdades.fjp.mg.gov.br/',
             'status' => 1,
             'posicao' => 3,
-            'cmsuser_id' => 1,
         ]);
 
-        DB::table('urls')->insert([
+        DB::table('cms.urls')->insert([
             'imagem' => '',
             'titulo' => 'Observatório das desigualdades (UFRN)',
             'descricao' => '',
             'url' => 'https://ccsa.ufrn.br/portal/?page_id=11940',
             'status' => 1,
             'posicao' => 3,
-            'cmsuser_id' => 1,
         ]);
 
-        DB::table('urls')->insert([
+        DB::table('cms.urls')->insert([
             'imagem' => '',
             'titulo' => 'Plataforma Brasileira pela Reforma do Sistema Político',
             'descricao' => '',
             'url' => 'https://reformapolitica.org.br/',
             'status' => 1,
             'posicao' => 3,
-            'cmsuser_id' => 1,
         ]);
 
 

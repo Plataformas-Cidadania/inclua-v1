@@ -19,23 +19,20 @@ class TextsSeeder extends Seeder
             'titulo' => 'Diagnóstico',
             'descricao' => 'O diagnóstico visa identificar e avaliar riscos de desatenção, tratamento inadequado e exclusão de segmentos específicos do público atendido. Muitas vezes, esses riscos não são suficientemente bem conhecidos.',
             'slug' => 'diagnostico',
-            'cmsuser_id' => '1',
         ]);
 
-        DB::table('texts')->insert([
+        DB::table('cms.texts')->insert([
             'imagem' => '',
             'titulo' => 'Resultado',
             'descricao' => 'Desarticulações (ou formas específicas de articulação) e disputas interinstitucionais podem repercutir em déficits de cobertura, lacunas de atenção ou repercussões',
             'slug' => 'resultado',
-            'cmsuser_id' => '1',
         ]);
 
-        DB::table('texts')->insert([
+        DB::table('cms.texts')->insert([
             'imagem' => '',
             'titulo' => 'Recursos',
             'descricao' => 'O diagnóstico visa identificar e avaliar riscos de desatenção, tratamento inadequado e exclusão de segmentos específicos do público atendido. Muitas vezes, esses riscos não são suficientemente bem conhecidos.',
             'slug' => 'recursos',
-            'cmsuser_id' => '1',
         ]);
     }
 }
