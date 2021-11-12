@@ -16,3 +16,5 @@ yarn-error.log
 /data
 composer.lock
 package-lock.json
+/docker-compose.yml
+/Dockerfile
