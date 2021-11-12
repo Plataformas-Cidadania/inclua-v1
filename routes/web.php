@@ -19,6 +19,16 @@ use Illuminate\Support\Facades\Route;
     return view('welcome');
 });*/
 
+Route::get('/api', function () {
+    return ["description: API de dados do Projeto Inclua.",
+        "version: 1.0.0",
+        "homepage: https://inclua.ipea.gov.br/",
+        "keywords: 'php', 'lumen', 'api', 'rest', 'server, 'http', 'json', 'mapaosc', 'ipea'",
+        "license: LGPL-3.0",
+        "authors: {Thiago Giannini Ramos, Fábio Barreto, Bruno Passos, Relison Galvão, Raphael Abreu}"
+    ];
+});
+
 //GRUPO DE ROTAS QUE PASSARÃO PELA AUTENTICAÇÃO
 Route::middleware(['auth'])->group(function () {
 
