@@ -1,6 +1,6 @@
 version: '3'
 services:
-  app:
+  app_inclua:
     build:
       context: ./
       dockerfile: Dockerfile
@@ -12,9 +12,9 @@ services:
     working_dir: /app
     command: bash -c 'php artisan migrate && php artisan serve --host 0.0.0.0'
     depends_on:
-      - db
+      - db_inclua
     links:
-      - db
+      - db_inclua
   db_inclua:
     image: postgres:12.0-alpine
     container_name: postgresql-inclua
