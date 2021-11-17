@@ -1,8 +1,8 @@
 <?php $rota = Route::getCurrentRoute()->uri();?>
 
 <?php
-    $setting = DB::table('settings')->orderBy('id', 'desc')->first();
-    $mnPortal = DB::table('modulos')->where('tipo_id', 1)->where('status', 1)->orderBy('id')->get();
+    $setting = DB::table('cms.settings')->orderBy('id', 'desc')->first();
+    $mnPortal = DB::table('cms.modulos')->where('tipo_id', 1)->where('status', 1)->orderBy('id')->get();
     $base_href = config('app.url');
     $barra = "";
 
