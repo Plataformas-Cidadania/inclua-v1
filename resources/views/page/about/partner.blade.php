@@ -1,5 +1,5 @@
 <?php
-    $partners = DB::table('parceiros')->where('status', 1)->orderBy('id', 'desc')->paginate(23);
+    $partners = DB::table('cms.parceiros')->where('status', 1)->orderBy('id', 'desc')->paginate(23);
 ?>
 
     <div class="container">
