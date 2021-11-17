@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Parceiro
- * 
+ *
  * @property int $id
  * @property character varying $imagem
  * @property character varying|null $titulo
@@ -25,13 +25,13 @@ class Parceiro extends Model
 {
 	protected $table = 'cms.parceiros';
 
-	protected $casts = [
+	/*protected $casts = [
 		'imagem' => 'character varying',
 		'titulo' => 'character varying',
 		'url' => 'character varying',
 		'created_at' => 'timestamp without time zone',
 		'updated_at' => 'timestamp without time zone'
-	];
+	];*/
 
 	protected $fillable = [
 		'imagem',
