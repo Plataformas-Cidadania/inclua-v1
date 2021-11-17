@@ -5,12 +5,12 @@ services:
       context: ./
       dockerfile: Dockerfile
     ports:
-      - "8001:8001"
+      - "8001:8000"
     volumes:
       - .:/app
     env_file: .env
     working_dir: /app
-    command: bash -c 'php artisan migrate && php artisan serve --host 0.0.0.0'
+    command: bash -c 'php artisan migrate && php artisan serve --host 0.0.0.0 --port 8000'
     depends_on:
       - db_inclua
     links:
