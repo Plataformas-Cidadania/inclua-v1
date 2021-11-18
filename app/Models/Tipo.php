@@ -12,8 +12,8 @@ use Illuminate\Database\Eloquent\Model;
  * Class Tipo
  *
  * @property int $id
- * @property character varying $imagem
- * @property character varying $titulo
+ * @property string $imagem
+ * @property string $titulo
  * @property string $arquivo
  * @property int $status
  * @property int $cmsuser_id
@@ -29,8 +29,8 @@ class Tipo extends Model
 	protected $table = 'cms.tipos';
 
 	protected $casts = [
-		'imagem' => 'character varying',
-		'titulo' => 'character varying',
+		'imagem' => 'string',
+		'titulo' => 'string',
 		'status' => 'int',
 		'created_at' => 'timestamp without time zone',
 		'updated_at' => 'timestamp without time zone'

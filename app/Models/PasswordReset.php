@@ -11,8 +11,8 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Class PasswordReset
  * 
- * @property character varying $email
- * @property character varying $token
+ * @property string $email
+ * @property string $token
  * @property timestamp without time zone|null $created_at
  *
  * @package App\Models
@@ -24,8 +24,8 @@ class PasswordReset extends Model
 	public $timestamps = false;
 
 	protected $casts = [
-		'email' => 'character varying',
-		'token' => 'character varying',
+		'email' => 'string',
+		'token' => 'string',
 		'created_at' => 'timestamp without time zone'
 	];
 

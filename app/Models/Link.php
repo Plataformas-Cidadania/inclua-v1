@@ -16,7 +16,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $recurso_id_recurso
  * @property int $recurso_tipo_recurso_id_tipo_recurso
  * @property int $recurso_formato_recurso_id_formato
- * @property character varying|null $idioma
+ * @property string|null $idioma
  *
  * @property Recurso $recurso
  *
@@ -30,7 +30,7 @@ class Link extends Model
 	protected $casts = [
 		'id_link' => 'int',
 		'id_recurso' => 'int',
-		'idioma' => 'character varying'
+		'idioma' => 'string'
 	];
 
 	protected $fillable = [

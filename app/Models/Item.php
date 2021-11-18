@@ -12,8 +12,8 @@ use Illuminate\Database\Eloquent\Model;
  * Class Item
  *
  * @property int $id
- * @property character varying $imagem
- * @property character varying $titulo
+ * @property string $imagem
+ * @property string $titulo
  * @property string $descricao
  * @property string $arquivo
  * @property int $posicao
@@ -33,8 +33,8 @@ class Item extends Model
 	protected $table = 'cms.items';
 
 	protected $casts = [
-		'imagem' => 'character varying',
-		'titulo' => 'character varying',
+		'imagem' => 'string',
+		'titulo' => 'string',
 		'posicao' => 'int',
 		'status' => 'int',
 		'modulo_id' => 'int',

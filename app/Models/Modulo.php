@@ -13,8 +13,8 @@ use Illuminate\Database\Eloquent\Model;
  * Class Modulo
  *
  * @property int $id
- * @property character varying|null $imagem
- * @property character varying|null $titulo
+ * @property string|null $imagem
+ * @property string|null $titulo
  * @property string|null $descricao
  * @property string|null $arquivo
  * @property string|null $slug
@@ -35,8 +35,8 @@ class Modulo extends Model
 	protected $table = 'cms.modulos';
 
 	protected $casts = [
-		'imagem' => 'character varying',
-		'titulo' => 'character varying',
+		'imagem' => 'string',
+		'titulo' => 'string',
 		'status' => 'int',
 		'show' => 'int',
 		'tipo_id' => 'int',

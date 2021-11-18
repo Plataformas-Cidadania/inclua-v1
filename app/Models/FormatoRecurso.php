@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  * Class FormatoRecurso
  *
  * @property int $id_formato
- * @property character varying|null $nome
+ * @property string|null $nome
  *
  * @property Collection|Recurso[] $recursos
  *

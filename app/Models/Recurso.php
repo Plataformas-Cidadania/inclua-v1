@@ -13,9 +13,9 @@ use Illuminate\Database\Eloquent\Model;
  * Class Recurso
  *
  * @property int $id_recurso
- * @property character varying|null $nome
+ * @property string|null $nome
  * @property timestamp without time zone|null $ultimo_acesso
- * @property character varying|null $esfera
+ * @property string|null $esfera
  * @property int $id_tipo_recurso
  * @property int $id_formato
  *
@@ -35,9 +35,9 @@ class Recurso extends Model
 
 	protected $casts = [
 		'id_recurso' => 'int',
-		'nome' => 'character varying',
+		'nome' => 'string',
 		'ultimo_acesso' => 'timestamp without time zone',
-		'esfera' => 'character varying'
+		'esfera' => 'string'
 	];
 
 	protected $fillable = [

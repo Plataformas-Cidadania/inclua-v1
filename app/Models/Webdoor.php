@@ -12,11 +12,11 @@ use Illuminate\Database\Eloquent\Model;
  * Class Webdoor
  *
  * @property int $id
- * @property character varying $imagem
- * @property character varying|null $titulo
+ * @property string $imagem
+ * @property string|null $titulo
  * @property string|null $descricao
  * @property string|null $link
- * @property character varying|null $legenda
+ * @property string|null $legenda
  * @property int $posicao
  * @property int $status
  * @property int $cmsuser_id
@@ -32,9 +32,9 @@ class Webdoor extends Model
 	protected $table = 'cms.webdoors';
 
 	protected $casts = [
-		'imagem' => 'character varying',
-		'titulo' => 'character varying',
-		'legenda' => 'character varying',
+		'imagem' => 'string',
+		'titulo' => 'string',
+		'legenda' => 'string',
 		'posicao' => 'int',
 		'status' => 'int',
 		'created_at' => 'timestamp without time zone',

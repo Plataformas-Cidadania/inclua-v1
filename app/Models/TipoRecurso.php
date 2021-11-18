@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  * Class TipoRecurso
  *
  * @property int $id_tipo_recurso
- * @property character varying|null $nome
+ * @property string|null $nome
  *
  * @property Collection|Recurso[] $recursos
  *
@@ -28,7 +28,7 @@ class TipoRecurso extends Model
 
 	protected $casts = [
 		'id_tipo_recurso' => 'int',
-		'nome' => 'character varying'
+		'nome' => 'string'
 	];
 
 	protected $fillable = [
