@@ -54,7 +54,7 @@ class ParceiroController extends Controller
 
         $campos = explode(", ", $request->campos);
 
-        $parceiros = DB::table('parceiros')
+        $parceiros = DB::table('cms.parceiros')
             ->select($campos)
             ->where([
                 [$request->campoPesquisa, 'ilike', "%$request->dadoPesquisa%"],

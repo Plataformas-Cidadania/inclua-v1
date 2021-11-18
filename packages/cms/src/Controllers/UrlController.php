@@ -54,7 +54,7 @@ class UrlController extends Controller
 
         $campos = explode(", ", $request->campos);
 
-        $urls = DB::table('urls')
+        $urls = DB::table('cms.urls')
             ->select($campos)
             ->where([
                 [$request->campoPesquisa, 'ilike', "%$request->dadoPesquisa%"],

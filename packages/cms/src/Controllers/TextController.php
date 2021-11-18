@@ -46,7 +46,7 @@ class TextController extends Controller
 
         $campos = explode(", ", $request->campos);
 
-        $texts = DB::table('texts')
+        $texts = DB::table('cms.texts')
             ->select($campos)
             ->where([
                 [$request->campoPesquisa, 'like', "%$request->dadoPesquisa%"],

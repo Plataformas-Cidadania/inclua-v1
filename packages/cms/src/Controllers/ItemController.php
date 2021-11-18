@@ -54,7 +54,7 @@ class ItemController extends Controller
 
         $campos = explode(", ", $request->campos);
 
-        $items = DB::table('items')
+        $items = DB::table('cms.items')
             ->select($campos)
             ->where([
                 [$request->campoPesquisa, 'ilike', "%$request->dadoPesquisa%"],

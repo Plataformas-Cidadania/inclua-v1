@@ -53,7 +53,7 @@ class TipoController extends Controller
 
         $campos = explode(", ", $request->campos);
 
-        $tipos = DB::table('tipos')
+        $tipos = DB::table('cms.tipos')
             ->select($campos)
             ->where([
                 [$request->campoPesquisa, 'ilike', "%$request->dadoPesquisa%"],
