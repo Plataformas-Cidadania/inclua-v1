@@ -45,8 +45,9 @@ class HomeController extends Controller
                 ->withInput();
         }
 
-        $dadosUsuario = ['email' => $request->get('email'), 'password' => $request->get('password')];
 
+        $dadosUsuario = ['email' => $request->get('email'), 'password' => $request->get('password')];
+        //dd($dadosUsuario);
         if(auth()->guard('cms')->attempt($dadosUsuario)){
             return redirect($this->appUrl.'cms');
         }else{
@@ -54,6 +55,8 @@ class HomeController extends Controller
                 ->withErrors(['errors'=>'Usuário ou senha inválidos'])
                 ->withInput();
         }
+
+
     }
 
     public function logout(){

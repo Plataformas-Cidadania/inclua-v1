@@ -17,7 +17,7 @@ class CmsUserController extends Controller
             'name', 'email', 'password', 'alterar_senha',
         ];
 
-    }   
+    }
 
 
     function index()
@@ -37,7 +37,7 @@ class CmsUserController extends Controller
 
         $campos = explode(", ", $request->campos);
 
-        $cmsusers = DB::table('cms_users')
+        $cmsusers = DB::table('cms.cms_users')
             ->select($campos)
             ->where([
                 [$request->campoPesquisa, 'ilike', "%$request->dadoPesquisa%"],
@@ -79,7 +79,7 @@ class CmsUserController extends Controller
     {
 
         $id = auth()->guard('cms')->user()->id;
-        
+
         $cmsuser = $this->cmsuser->where([
             ['id', '=', $id],
         ])->firstOrFail();
@@ -90,9 +90,9 @@ class CmsUserController extends Controller
     {
 
         $id = auth()->guard('cms')->user()->id;
-        
+
         $data = $request->all();
-       
+
         //verifica se o index do campo existe no array e caso não exista inserir o campo com valor vazio.
         foreach($this->campos as $campo){
             if(!array_key_exists($campo, $data)){
@@ -141,7 +141,7 @@ class CmsUserController extends Controller
             $data['cmsuser']['password'] = bcrypt($data['cmsuser']['password']);
         }else{
             unset($data['cmsuser']['password']);
-        }        
+        }
 
         $cmsuser->update($data['cmsuser']);
         return "Gravado com sucesso";
