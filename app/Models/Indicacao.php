@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class RelIndRec
- * 
+ *
  * @property int $id_indicador
  * @property int $id_recurso
  *
@@ -21,6 +21,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Indicacao extends Model
 {
+    public $incrementing = false;
 	protected $table = 'avaliacao.indicacao';
 	public $timestamps = false;
 
@@ -32,7 +33,7 @@ class Indicacao extends Model
 		'id_indicador',
 		'id_recurso'
 	];
-	
+
 	protected $with = ['indicador', 'recurso'];
 
 	public function indicador()

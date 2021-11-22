@@ -107,3 +107,32 @@ Route::group([
     Route::delete('/{id_categoria}/{id_recurso}',[App\Http\Controllers\Api\CategorizacaoController::class, 'destroy'])
         ->name('api.categorizacao.destroy');
 });
+
+Route::group([
+    'prefix' => 'recurso',
+], function () {
+    Route::get('/', [App\Http\Controllers\Api\RecursoController::class, 'getAll'])
+        ->name('api.recurso.getAll');
+    Route::get('/{recurso}',[App\Http\Controllers\Api\RecursoController::class, 'get'])
+        ->name('api.recurso.get');
+    Route::post('/', [App\Http\Controllers\Api\RecursoController::class, 'store'])
+        ->name('api.recurso.store');
+    Route::put('/{recurso}', [App\Http\Controllers\Api\RecursoController::class, 'update'])
+        ->name('api.recurso.update');
+    Route::delete('/{recurso}',[App\Http\Controllers\Api\RecursoController::class, 'destroy'])
+        ->name('api.recurso.destroy');
+});
+
+
+Route::group([
+    'prefix' => 'indicacao',
+], function () {
+    Route::get('/', [App\Http\Controllers\Api\IndicacaoController::class, 'getAll'])
+        ->name('api.indicacao.getAll');
+    Route::get('/{id_categoria}/{id_recurso}',[App\Http\Controllers\Api\IndicacaoController::class, 'get'])
+        ->name('api.indicacao.get');
+    Route::post('/', [App\Http\Controllers\Api\IndicacaoController::class, 'store'])
+        ->name('api.indicacao.store');
+    Route::delete('/{id_categoria}/{id_recurso}',[App\Http\Controllers\Api\IndicacaoController::class, 'destroy'])
+        ->name('api.indicacao.destroy');
+});

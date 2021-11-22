@@ -36,16 +36,20 @@ class Recurso extends Model
 	protected $casts = [
 		'id_recurso' => 'int',
 		'nome' => 'string',
-		'ultimo_acesso' => 'timestamp without time zone',
-		'esfera' => 'string'
+		'ultimo_acesso' => 'timestamp',
+		'esfera' => 'string',
+        'id_tipo_recurso' => 'int',
+        'id_formato' => 'int'
 	];
 
 	protected $fillable = [
 		'nome',
 		'ultimo_acesso',
-		'esfera'
+		'esfera',
+        'id_tipo_recurso',
+        'id_formato'
 	];
-
+    protected $primaryKey = 'id_recurso';
 	protected $with = ['tipo_recurso', 'formato_recurso'];
 
 	public function tipo_recurso()

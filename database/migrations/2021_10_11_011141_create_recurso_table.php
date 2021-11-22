@@ -18,11 +18,11 @@ class CreateRecursoTable extends Migration
             $table->string('nome', 50)->comment('nomde do recurso');
             $table->timestamp('ultimo_acesso')->comment('Data do último acesso');
             $table->string('esfera', 50)->comment('nome da área de atuação');
-            $table->integer('id_tipo_recurso')->nullable();
+            $table->integer('id_tipo_recurso');
             $table->foreign('id_tipo_recurso')->references('id_tipo_recurso')
                     ->on('avaliacao.tipo_recurso')
                     ->onDelete('set null');
-            $table->integer('id_formato')->nullable();
+            $table->integer('id_formato');
             $table->foreign('id_formato')->references('id_formato')
                     ->on('avaliacao.formato_recurso')
                     ->onDelete('set null');
