@@ -18,7 +18,7 @@ class RecursoController extends Controller
     private $rules = [
     'id_recurso' => 'int|min:1|',
         'nome' => 'string',
-        'ultimo_acesso' => 'string|min:1|nullable',
+        'ultimo_acesso' => 'date|nullable|date_format:Y-m-d H:i:s',
         'esfera' => 'string|min:1|nullable',
         'id_tipo_recurso' => 'int',
         'id_formato' => 'int',
