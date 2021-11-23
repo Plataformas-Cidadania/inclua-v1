@@ -4,9 +4,9 @@ const Pergunta = (props) => {
     const {useState, useEffect} = React;
 
     const tipos = {
-        1: <Options titulo={props.titulo} bgColor={props.bgColor} letra={props.letra}/>,
-        2: <Nota titulo={props.titulo}  bgColor={props.bgColor} letra={props.letra}/>,
-        3: <Range titulo={props.titulo}  bgColor={props.bgColor} letra={props.letra}/>,
+        1: <Options id={props.id} titulo={props.titulo} bgColor={props.bgColor} letra={props.letra}/>,
+        2: <Nota id={props.id} titulo={props.titulo}  bgColor={props.bgColor} letra={props.letra}/>,
+        3: <Range id={props.id}  titulo={props.titulo}  bgColor={props.bgColor} letra={props.letra}/>,
     };
 
     return (

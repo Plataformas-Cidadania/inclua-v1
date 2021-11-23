@@ -43,13 +43,41 @@ const DiagnosticoProvider = ({children}) => {
         }
     }
 
+    const verificarResposta = (idPergunta, value) => {
+        let pergunta = indicador.perguntas.filter(obj => obj.id === idPergunta);
+        return pergunta.resposta === value;
+    }
+
+    const setResposta = (idPergunta, value) => {
+        console.log('setResposta');
+        console.log(idPergunta, value);
+        let newDimensoes = dimensoes;
+        newDimensoes.forEach((d) => {
+            if(d.id === dimensao.id){
+                d.indicadores.forEach((i) => {
+                    if(i.id === indicador.id){
+                        i.perguntas.forEach((p) => {
+                            if(p.id === idPergunta){
+                                p.resposta = value;
+                            }
+                        });
+                    }
+                })
+            }
+        });
+        setDimensoes(newDimensoes);
+        console.log(newDimensoes);
+    }
+
     return (
         <DiagnosticoContext.Provider value={{
             tipo, setTipo,
             dimensao, setDimensao,
             dimensoes,
             dimensoesRespondidas, setDimensoesRespondidas,
-            indicador, setIndicador
+            indicador, setIndicador,
+            verificarResposta,
+            setResposta
         }}>
             {children}
         </DiagnosticoContext.Provider>

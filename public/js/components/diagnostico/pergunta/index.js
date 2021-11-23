@@ -6,16 +6,19 @@ const Pergunta = props => {
   } = React;
   const tipos = {
     1: /*#__PURE__*/React.createElement(Options, {
+      id: props.id,
       titulo: props.titulo,
       bgColor: props.bgColor,
       letra: props.letra
     }),
     2: /*#__PURE__*/React.createElement(Nota, {
+      id: props.id,
       titulo: props.titulo,
       bgColor: props.bgColor,
       letra: props.letra
     }),
     3: /*#__PURE__*/React.createElement(Range, {
+      id: props.id,
       titulo: props.titulo,
       bgColor: props.bgColor,
       letra: props.letra
