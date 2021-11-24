@@ -17,7 +17,7 @@ const Range = (props) => {
     }, [props.bgColor]);
 
     const handleResposta = (e) => {
-        setResposta(e.target.value);
+        context.setResposta(props.id, e.target.value);
     }
 
     return (

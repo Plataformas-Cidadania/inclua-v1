@@ -3,13 +3,18 @@ const Nota = (props) => {
     const context = React.useContext(DiagnosticoContext);
     const {useState, useEffect} = React;
     const [bgColor, setBgColor] = useState(null);
+    const [name, setName] = useState(null);
+
+    useEffect(() => {
+        setName(context.dimensao.info.dimensao+'_'+context.indicador.indicador+'_'+props.letra);
+    }, [context]);
 
     useEffect(() => {
         setBgColor(props.bgColor);
     }, [props.bgColor]);
 
     const handleResposta = (e) => {
-        setResposta(e.target.value);
+        context.setResposta(props.id, e.target.value);
     }
 
     return (

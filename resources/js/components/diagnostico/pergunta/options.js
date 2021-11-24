@@ -23,7 +23,7 @@ const Options = (props) => {
                        id={name+"_1"}
                        value="1"
                        onClick={handleResposta}
-                       checked={context.verificarResposta(props.id)}
+                       defaultChecked={context.verificarResposta(props.id, "1")}
                 />
                 <label className="form-check-label" htmlFor="flexRadioDefault1">
                     Sim
@@ -34,8 +34,9 @@ const Options = (props) => {
                        name={name}
                        id={name+"_2"}
                        value="2"
-                       checked={context.verificarResposta(props.id)}
-                       onClick={handleResposta}/>
+                       onClick={handleResposta}
+                       defaultChecked={context.verificarResposta(props.id, "2")}
+                />
                 <label className="form-check-label" htmlFor="flexRadioDefault2">
                     Não
                 </label>
