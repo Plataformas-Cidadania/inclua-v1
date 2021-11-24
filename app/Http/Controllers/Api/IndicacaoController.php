@@ -3,23 +3,23 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Api\Controller;
-use App\Models\Dimensao;
+use App\Models\Indicacao;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\Eloquent\RelationNotFoundException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Exception;
-use App\Repository\DimensaoRepository;
+use App\Repository\IndicacaoRepository;
 
-class DimensaoController extends Controller
+class IndicacaoController extends Controller
 {
-    private DimensaoRepository $repo;
+    private IndicacaoRepository $repo;
     private $rules = [
-        'nome' => 'string|min:1|nullable',
-        'descricao' => 'string|min:1|nullable'
+    'id_indicador' => 'int|min:1',
+    'id_recurso' => 'int|min:1',
     ];
-    public function __construct(DimensaoRepository $repo)
+    public function __construct(IndicacaoRepository $repo)
     {
         $this->repo = $repo;
     }
@@ -36,7 +36,7 @@ class DimensaoController extends Controller
     {
         $res = $this->repo->all();
         return $this->successResponse(
-            'Dimensões retornadas com sucesso',
+            'Indicacao retornadas com sucesso',
             $res
         );
     }
@@ -56,11 +56,12 @@ class DimensaoController extends Controller
             if ($validator->fails()) {
                 return $this->errorResponse($validator->errors()->all());
             }
-
             $data = $this->getData($request);
-            $res = $this->repo->create($data);
+
+            $res = $this->repo->createCompositeId($data);
+
             return $this->successResponse(
-			    'Dimensão '.$res->id_dimensao.' foi adicionada',
+			    ''.$res->id_indicador.','.$res->id_recurso.' foi adicionado',
 			    $this->transform($res)
 			);
         } catch (Exception $exception) {
@@ -71,14 +72,17 @@ class DimensaoController extends Controller
     /**
      * Obter especificado pelo id
      *
-     * @param int $id
+     * @param int $firstId
+     *
+     * @param int $secondId
      *
      * @return JsonResponse
      */
-    public function get($id): JsonResponse
+    public function get(int $firstId, int $secondId): JsonResponse
     {
         try {
-            $res = $this->repo->findById($id);
+
+            $res = $this->repo->findByCompositeId($firstId,$secondId);
             return $this->successResponse(
                 'Retornado com sucesso',
                 $res
@@ -86,67 +90,36 @@ class DimensaoController extends Controller
         }catch (Exception $exception) {
             if ($exception instanceof ModelNotFoundException)
                 return $this->errorResponse('Not found');
-            return $this->errorResponse('Erro inesperado.'.$exception);
+            return $this->errorResponse($exception);
         }
     }
 
-    /**
-     * Atualizar especificado pelo id
-     *
-     * @param int $id
-     * @param Request $request
-     *
-     * @return JsonResponse
-     */
-    public function update($id, Request $request): JsonResponse
-    {
-
-        try {
-            $validator = $this->getValidator($request);
-
-            if ($validator->fails()) {
-                return $this->errorResponse($validator->errors()->all());
-            }
-
-            $data = $this->getData($request);
-
-            $res = $this->repo->update($id,$data);
-
-            return $this->successResponse(
-			    'Atualizado com sucesso.',
-			    $this->transform($res)
-			);
-        } catch (Exception $exception) {
-            if ($exception instanceof ModelNotFoundException)
-                return $this->errorResponse('Not found');
-            return $this->errorResponse('Erro inesperado.'.$exception->getMessage());
-        }
-    }
 
     /**
      * Remover da base de dados especificado pelo id
      *
-     * @param int $id
+     * @param int $firstId
+     *
+     * @param int $secondId
+     *
      *
      * @return JsonResponse
      */
-    public function destroy($id): JsonResponse
+    public function destroy($firstId,$secondId): JsonResponse
     {
         try {
-            $res = $this->repo->deleteById($id);
+            $res = $this->repo->deleteByCompositeId($firstId,$secondId);
 
             return $this->successResponse(
-			    ''.$id.' deletado com sucesso',
+			    ''.$firstId.','.$secondId.' deletado com sucesso',
 			    $this->transform($res)
 			);
         } catch (Exception $exception) {
             if ($exception instanceof ModelNotFoundException)
                 return $this->errorResponse('Not found');
-            return $this->errorResponse('Erro inesperado'.$exception);
+            return $this->errorResponse($exception);
         }
     }
-
-
 
     /**
      * Cria uma instancia de validador com as regras definidas
@@ -169,23 +142,21 @@ class DimensaoController extends Controller
      */
     protected function getData(Request $request): array
     {
-
         return $request->validate($this->rules);
     }
 
     /**
      * Transformar em um array
      *
-     * @param Dimensao $model
+     * @param Indicacao $res
      *
      * @return array
      */
-    protected function transform(Dimensao $model): array
+    protected function transform(Indicacao $res): array
     {
         return [
-            'id_dimensao' => $model->id_dimensao,
-            'nome' => $model->nome,
-            'descricao' => $model->descricao
+            'id_indicador' => $res->id_indicador,
+            'id_recurso' => $res->id_recurso
         ];
     }
 

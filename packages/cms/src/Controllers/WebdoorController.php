@@ -49,7 +49,7 @@ class WebdoorController extends Controller
 
         $campos = explode(", ", $request->campos);
 
-        $webdoors = DB::table('webdoors')
+        $webdoors = DB::table('cms.webdoors')
             ->select($campos)
             ->where([
                 [$request->campoPesquisa, 'ilike', "%$request->dadoPesquisa%"],

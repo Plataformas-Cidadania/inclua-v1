@@ -12,10 +12,10 @@ use Illuminate\Database\Eloquent\Model;
  * Class Text
  *
  * @property int $id
- * @property character varying $imagem
- * @property character varying|null $titulo
+ * @property string $imagem
+ * @property string|null $titulo
  * @property string|null $descricao
- * @property character varying|null $slug
+ * @property string|null $slug
  * @property int $cmsuser_id
  * @property timestamp without time zone|null $created_at
  * @property timestamp without time zone|null $updated_at
@@ -29,9 +29,9 @@ class Text extends Model
 	protected $table = 'cms.texts';
 
 	protected $casts = [
-		'imagem' => 'character varying',
-		'titulo' => 'character varying',
-		'slug' => 'character varying',
+		'imagem' => 'string',
+		'titulo' => 'string',
+		'slug' => 'string',
 		'created_at' => 'timestamp without time zone',
 		'updated_at' => 'timestamp without time zone'
 	];

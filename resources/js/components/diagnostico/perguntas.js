@@ -14,6 +14,7 @@ const Perguntas = (props) => {
                             bgColor={props.bgColor}
                             dimensao={context.dimensao}
                             indicador={context.indicador.indicador}
+                            id={pergunta.id}
                             tipo={pergunta.tipo}
                             titulo={pergunta.titulo}
                         />

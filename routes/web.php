@@ -54,8 +54,8 @@ Route::get('/', 'App\Http\Controllers\HomeController@index');
 Route::get('contato', 'App\Http\Controllers\ContactController@email');
 Route::post('contact', 'App\Http\Controllers\ContactController@send');
 
-Route::get('diagnostico', 'App\Http\Controllers\DiagnosticoController@completo');
-Route::get('diagnostico-react', 'App\Http\Controllers\DiagnosticoController@completoReact');
+//Route::get('diagnostico', 'App\Http\Controllers\DiagnosticoController@completo');
+Route::get('diagnostico', 'App\Http\Controllers\DiagnosticoController@completoReact');
 Route::get('recursos', 'App\Http\Controllers\RecursoController@listar');
 
 
@@ -90,7 +90,7 @@ foreach ($routesSearch as $route) {
 
 
 if(env('DYNAMIC_ROUTES')=='true'){
-    $modulos = \Illuminate\Support\Facades\DB::table('modulos')->select('slug')->get();
+    $modulos = \Illuminate\Support\Facades\DB::table('cms.modulos')->select('slug')->get();
 
     foreach ($modulos as $modulo) {
         if(!empty($modulo->slug)){

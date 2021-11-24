@@ -12,10 +12,10 @@ use Illuminate\Database\Eloquent\Model;
  * Class Url
  *
  * @property int $id
- * @property character varying $imagem
- * @property character varying|null $titulo
+ * @property string $imagem
+ * @property string|null $titulo
  * @property string|null $descricao
- * @property character varying|null $url
+ * @property string|null $url
  * @property int $status
  * @property int $posicao
  * @property int $cmsuser_id
@@ -31,9 +31,9 @@ class Url extends Model
 	protected $table = 'cms.urls';
 
 	protected $casts = [
-		'imagem' => 'character varying',
-		'titulo' => 'character varying',
-		'url' => 'character varying',
+		'imagem' => 'string',
+		'titulo' => 'string',
+		'url' => 'string',
 		'status' => 'int',
 		'posicao' => 'int',
 		'created_at' => 'timestamp without time zone',

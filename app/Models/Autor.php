@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  * Class Autor
  *
  * @property int $id_autor
- * @property character varying|null $nome
+ * @property string|null $nome
  *
  * @property Collection|Autoria[] $autoria
  *

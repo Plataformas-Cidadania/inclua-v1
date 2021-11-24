@@ -9,12 +9,14 @@
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-6">
                         <div class="items-img text-center">
                             <a href="{{$partner->url}}" target="_blank" data-toggle="modal" data-target="#myModal{{$key}}">
-                                <picture>
-                                    <source srcset="imagens/parceiros/sm-{{$partner->imagem}}" media="(max-width: 468px)">
-                                    <source srcset="imagens/parceiros/md-{{$partner->imagem}}" media="(max-width: 768px)">
-                                    <source srcset="imagens/parceiros/lg-{{$partner->imagem}}" class="img-responsive">
-                                    <img src="img/pre-img.gif" data-src="imagens/parceiros/lg-{{$partner->imagem}}" alt="Imagem sobre {{$partner->titulo}}" title="Imagem sobre {{$partner->titulo}}" width="100%" class="img-responsive lazyload">
-                                </picture>
+                                <object data="img/sem-imagem.png" type="image/png">
+                                    <picture>
+                                        <source srcset="imagens/parceiros/sm-{{$partner->imagem}}" media="(max-width: 468px)">
+                                        <source srcset="imagens/parceiros/md-{{$partner->imagem}}" media="(max-width: 768px)">
+                                        <source srcset="imagens/parceiros/lg-{{$partner->imagem}}" class="img-responsive">
+                                        <img src="img/pre-img.gif" data-src="imagens/parceiros/lg-{{$partner->imagem}}" alt="Imagem sobre {{$partner->titulo}}" title="Imagem sobre {{$partner->titulo}}" width="100%" class="img-responsive lazyload">
+                                    </picture>
+                                </object>
                             </a>
                         </div>
                     </div>

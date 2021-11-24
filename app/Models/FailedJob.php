@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Model;
  * Class FailedJob
  * 
  * @property int $id
- * @property character varying $uuid
+ * @property string $uuid
  * @property string $connection
  * @property string $queue
  * @property string $payload
@@ -27,7 +27,7 @@ class FailedJob extends Model
 	public $timestamps = false;
 
 	protected $casts = [
-		'uuid' => 'character varying',
+		'uuid' => 'string',
 		'failed_at' => 'timestamp without time zone'
 	];
 

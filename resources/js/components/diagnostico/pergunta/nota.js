@@ -3,13 +3,26 @@ const Nota = (props) => {
     const context = React.useContext(DiagnosticoContext);
     const {useState, useEffect} = React;
     const [bgColor, setBgColor] = useState(null);
+    const notas = ['1', '2', '3', '4', '5'];
+    const [resposta, setResposta] = useState(0);
+
+    useEffect(() => {
+        setResposta(context.getResposta())
+    }, []);
 
     useEffect(() => {
         setBgColor(props.bgColor);
     }, [props.bgColor]);
 
     const handleResposta = (e) => {
-        setResposta(e.target.value);
+        console.log('handleResposta');
+        context.setResposta(props.id, e.target.value);
+        setResposta(e.target.value)
+    }
+
+    const clickResposta = (nota) => {
+        context.setResposta(props.id, nota);
+        setResposta(nota)
     }
 
     return (
@@ -18,25 +31,25 @@ const Nota = (props) => {
             <div>
                 <br/>
                 <div className="range-merker" style={{width: '113%', marginLeft: '-80px'}}>
-                    <div className="range-merker-box">
-                        <div className={"range-merker-box-item "}>1</div>
-                    </div>
-                    <div className="range-merker-box">
-                        <div className={"range-merker-box-item " + bgColor}>2</div>
-                    </div>
-                    <div className="range-merker-box">
-                        <div className={"range-merker-box-item "}>3</div>
-                    </div>
-                    <div className="range-merker-box">
-                        <div className="range-merker-box-item">4</div>
-                    </div>
-                    <div className="range-merker-box">
-                        <div className="range-merker-box-item">5</div>
-                    </div>
+                    {
+                        notas.map((nota) => {
+                            return(
+                                <div className="range-merker-box">
+                                    <div
+                                        className={"range-merker-box-item " + (resposta === nota ? bgColor : '')}
+                                        onClick={() => clickResposta(nota)}
+                                        style={{cursor: 'pointer'}}
+                                    >
+                                        {nota}
+                                    </div>
+                                </div>
+                            );
+                        })
+                    }
                 </div>
                 {/*<label for="customRange1" className="form-label">Bom</label>*/}
                 <br/>
-                <input type="range" className="form-range range" id="customRange1" min="1" max="5" defaultValue="2"/>
+                <input type="range" className="form-range range" id="customRange1" min="1" max="5" value={resposta} onChange={handleResposta}/>
             </div>
         </div>
     );

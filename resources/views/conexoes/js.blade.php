@@ -131,7 +131,7 @@
 
 @endif
 
-@if($rota=="diagnostico-react")
+@if($rota=="diagnostico")
     <script src="js/components/diagnostico/store.js"></script>
     <script src="js/components/diagnostico/pergunta/options.js"></script>
     <script src="js/components/diagnostico/pergunta/nota.js"></script>

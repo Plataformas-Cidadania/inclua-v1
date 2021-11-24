@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  * Class Categorium
  *
  * @property int $id_categoria
- * @property character varying|null $nome
+ * @property string|null $nome
  *
  * @property Collection|RecursoCategoria[] $recurso_categoria
  *

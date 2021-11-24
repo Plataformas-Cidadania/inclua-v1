@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  * Class Perguntum
  *
  * @property int $id_pergunta
- * @property character varying|null $nome
+ * @property string|null $nome
  * @property string|null $descricao
  * @property int $id_indicador
  * @property int|null $vl_minimo
@@ -28,15 +28,17 @@ use Illuminate\Database\Eloquent\Model;
 class Pergunta extends Model
 {
 	protected $table = 'avaliacao.pergunta';
+	protected $primaryKey = 'id_pergunta';
 	public $timestamps = false;
 
 	protected $casts = [
 		'id_pergunta' => 'int',
-		'nome' => 'character varying',
-		'id_indicador' => 'int',
+		'nome' => 'string',
+		'descricao' => 'string',
 		'vl_minimo' => 'int',
 		'vl_medio' => 'int',
-		'vl_maximo' => 'int'
+		'vl_maximo' => 'int',
+		'id_indicador' => 'int'
 	];
 
 	protected $fillable = [
@@ -44,7 +46,8 @@ class Pergunta extends Model
 		'descricao',
 		'vl_minimo',
 		'vl_medio',
-		'vl_maximo'
+		'vl_maximo',
+		'id_indicador'
 	];
 	
 	protected $with = ['indicador'];

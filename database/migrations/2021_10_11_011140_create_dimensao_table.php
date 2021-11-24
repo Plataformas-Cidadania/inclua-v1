@@ -16,6 +16,7 @@ class CreateDimensaoTable extends Migration
         Schema::create('avaliacao.dimensao', function (Blueprint $table) {
             $table->increments('id_dimensao')->comment('Identifica a dimensão');
             $table->string('nome', 50)->comment('Nome da dimensão');
+            $table->string('descricao', 50)->comment('Descrição da dimensão');
         });
     }
 

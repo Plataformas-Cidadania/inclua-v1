@@ -54,7 +54,7 @@ class ModuloController extends Controller
 
         $campos = explode(", ", $request->campos);
 
-        $modulos = DB::table('modulos')
+        $modulos = DB::table('cms.modulos')
             ->select($campos)
             ->where([
                 [$request->campoPesquisa, 'ilike', "%$request->dadoPesquisa%"],

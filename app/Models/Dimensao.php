@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  * Class Dimensao
  *
  * @property int $id_dimensao
- * @property character varying|null $nome
+ * @property string|null $nome
  *
  * @property Collection|Indicador[] $indicadors
  *
@@ -27,7 +27,8 @@ class Dimensao extends Model
 
 
 	protected $fillable = [
-		'nome'
+		'nome',
+		'descricao'
 	];
 
 	public function indicadors()

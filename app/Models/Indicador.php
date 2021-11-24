@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  * Class Indicador
  *
  * @property int $id_indicador
- * @property character varying|null $nome
+ * @property string|null $nome
  * @property string|null $descricao
  * @property int $dimensao_id_dimensao
  *

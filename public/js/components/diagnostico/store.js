@@ -44,6 +44,55 @@ const DiagnosticoProvider = ({
     }
   };
 
+  const verificarResposta = (idPergunta, value) => {
+    console.log('Verificar Resposta');
+    let pergunta = indicador.perguntas.filter(obj => obj.id === idPergunta);
+    console.log(idPergunta, pergunta.resposta, value, pergunta.resposta === value);
+    return pergunta.resposta === value;
+  };
+
+  const setResposta = (idPergunta, value) => {
+    console.log('setResposta');
+    console.log(idPergunta, value);
+    let newDimensoes = dimensoes;
+    newDimensoes.forEach(d => {
+      if (d.id === dimensao.id) {
+        d.indicadores.forEach(i => {
+          if (i.id === indicador.id) {
+            i.perguntas.forEach(p => {
+              if (p.id === idPergunta) {
+                p.resposta = value;
+              }
+            });
+          }
+        });
+      }
+    });
+    setDimensoes(newDimensoes);
+    console.log(newDimensoes);
+  };
+
+  const getResposta = idPergunta => {
+    console.log('getResposta');
+    console.log(idPergunta);
+    let resposta = null;
+    dimensoes.forEach(d => {
+      if (d.id === dimensao.id) {
+        d.indicadores.forEach(i => {
+          if (i.id === indicador.id) {
+            i.perguntas.forEach(p => {
+              if (p.id === idPergunta) {
+                resposta = p.resposta;
+              }
+            });
+          }
+        });
+      }
+    });
+    console.log(resposta);
+    return resposta;
+  };
+
   return /*#__PURE__*/React.createElement(DiagnosticoContext.Provider, {
     value: {
       tipo,
@@ -54,7 +103,10 @@ const DiagnosticoProvider = ({
       dimensoesRespondidas,
       setDimensoesRespondidas,
       indicador,
-      setIndicador
+      setIndicador,
+      verificarResposta,
+      setResposta,
+      getResposta
     }
   }, children);
 };

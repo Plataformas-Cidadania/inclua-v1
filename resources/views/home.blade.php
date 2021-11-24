@@ -139,12 +139,14 @@
         <div class="row">
             @foreach($partners as $partner)
                 <div class="col-xs-6 col-sm-4 col-md-2 item-logo">
-                    <picture>
-                        <source data-src="/imagens/parceiros/md-{{$partner->imagem}}" media="(max-width: 468px)">
-                        <source data-src="/imagens/parceiros/md-{{$partner->imagem}}" media="(max-width: 768px)">
-                        <source data-src="/imagens/parceiros/md-{{$partner->imagem}}" class="img-responsive">
-                        <img src="/img/pre-img.gif" data-src="/imagens/parceiros/md-{{$partner->imagem}}" alt="Imagem sobre {{$partner->title}}" title="Imagem sobre {{$partner->title}}" width="100%" class="cliente-list-img-hover lazyload">
-                    </picture>
+                    <object data="img/sem-imagem.png" type="image/png">
+                        <picture>
+                            <source data-src="/imagens/parceiros/md-{{$partner->imagem}}" media="(max-width: 468px)">
+                            <source data-src="/imagens/parceiros/md-{{$partner->imagem}}" media="(max-width: 768px)">
+                            <source data-src="/imagens/parceiros/md-{{$partner->imagem}}" class="img-responsive">
+                            <img src="/img/pre-img.gif" data-src="/imagens/parceiros/md-{{$partner->imagem}}" alt="Imagem sobre {{$partner->title}}" title="Imagem sobre {{$partner->title}}" width="100%" class="cliente-list-img-hover lazyload">
+                        </picture>
+                    </object>
                 </div>
             @endforeach
         </div>

@@ -12,37 +12,37 @@ use Illuminate\Database\Eloquent\Model;
  * Class Setting
  *
  * @property int $id
- * @property character varying $imagem
- * @property character varying $email
- * @property character varying $titulo
- * @property character varying $rodape
- * @property character varying $cep
- * @property character varying|null $endereco_titulo
- * @property character varying $endereco
- * @property character varying $numero
- * @property character varying|null $complemento
- * @property character varying $bairro
- * @property character varying $cidade
- * @property character varying $estado
- * @property character varying $titulo_contato
- * @property character varying $descricao_contato
- * @property character varying|null $endereco_titulo2
- * @property character varying|null $endereco2
- * @property character varying|null $numero2
- * @property character varying|null $complemento2
- * @property character varying|null $bairro2
- * @property character varying|null $cidade2
- * @property character varying|null $estado2
- * @property character varying|null $cep2
- * @property character varying $telefone
- * @property character varying|null $telefone2
- * @property character varying|null $telefone3
- * @property character varying $facebook
- * @property character varying $youtube
- * @property character varying $pinterest
- * @property character varying $twitter
- * @property character varying $instagram
- * @property character varying $blog
+ * @property string $imagem
+ * @property string $email
+ * @property string $titulo
+ * @property string $rodape
+ * @property string $cep
+ * @property string|null $endereco_titulo
+ * @property string $endereco
+ * @property string $numero
+ * @property string|null $complemento
+ * @property string $bairro
+ * @property string $cidade
+ * @property string $estado
+ * @property string $titulo_contato
+ * @property string $descricao_contato
+ * @property string|null $endereco_titulo2
+ * @property string|null $endereco2
+ * @property string|null $numero2
+ * @property string|null $complemento2
+ * @property string|null $bairro2
+ * @property string|null $cidade2
+ * @property string|null $estado2
+ * @property string|null $cep2
+ * @property string $telefone
+ * @property string|null $telefone2
+ * @property string|null $telefone3
+ * @property string $facebook
+ * @property string $youtube
+ * @property string $pinterest
+ * @property string $twitter
+ * @property string $instagram
+ * @property string $blog
  * @property int $cmsuser_id
  * @property timestamp without time zone|null $created_at
  * @property timestamp without time zone|null $updated_at
@@ -54,37 +54,37 @@ class Setting extends Model
 	protected $table = 'cms.settings';
 
 	protected $casts = [
-		'imagem' => 'character varying',
-		'email' => 'character varying',
-		'titulo' => 'character varying',
-		'rodape' => 'character varying',
-		'cep' => 'character varying',
-		'endereco_titulo' => 'character varying',
-		'endereco' => 'character varying',
-		'numero' => 'character varying',
-		'complemento' => 'character varying',
-		'bairro' => 'character varying',
-		'cidade' => 'character varying',
-		'estado' => 'character varying',
-		'titulo_contato' => 'character varying',
-		'descricao_contato' => 'character varying',
-		'endereco_titulo2' => 'character varying',
-		'endereco2' => 'character varying',
-		'numero2' => 'character varying',
-		'complemento2' => 'character varying',
-		'bairro2' => 'character varying',
-		'cidade2' => 'character varying',
-		'estado2' => 'character varying',
-		'cep2' => 'character varying',
-		'telefone' => 'character varying',
-		'telefone2' => 'character varying',
-		'telefone3' => 'character varying',
-		'facebook' => 'character varying',
-		'youtube' => 'character varying',
-		'pinterest' => 'character varying',
-		'twitter' => 'character varying',
-		'instagram' => 'character varying',
-		'blog' => 'character varying',
+		'imagem' => 'string',
+		'email' => 'string',
+		'titulo' => 'string',
+		'rodape' => 'string',
+		'cep' => 'string',
+		'endereco_titulo' => 'string',
+		'endereco' => 'string',
+		'numero' => 'string',
+		'complemento' => 'string',
+		'bairro' => 'string',
+		'cidade' => 'string',
+		'estado' => 'string',
+		'titulo_contato' => 'string',
+		'descricao_contato' => 'string',
+		'endereco_titulo2' => 'string',
+		'endereco2' => 'string',
+		'numero2' => 'string',
+		'complemento2' => 'string',
+		'bairro2' => 'string',
+		'cidade2' => 'string',
+		'estado2' => 'string',
+		'cep2' => 'string',
+		'telefone' => 'string',
+		'telefone2' => 'string',
+		'telefone3' => 'string',
+		'facebook' => 'string',
+		'youtube' => 'string',
+		'pinterest' => 'string',
+		'twitter' => 'string',
+		'instagram' => 'string',
+		'blog' => 'string',
 		'created_at' => 'timestamp without time zone',
 		'updated_at' => 'timestamp without time zone'
 	];

@@ -5,10 +5,13 @@ const Options = props => {
     useEffect
   } = React;
   const [naoSeAplica, setNaoSeAplica] = useState(false);
-  const [resposta, setResposta] = useState(null);
+  const [name, setName] = useState(null);
+  useEffect(() => {
+    setName(context.dimensao.info.dimensao + '_' + context.indicador.indicador + '_' + props.letra);
+  }, [context]);
 
   const handleResposta = e => {
-    setResposta(e.target.value);
+    context.setResposta(props.id, e.target.value);
   };
 
   return /*#__PURE__*/React.createElement("div", {
@@ -20,10 +23,11 @@ const Options = props => {
   }, /*#__PURE__*/React.createElement("input", {
     className: "form-check-input",
     type: "radio",
-    name: "flexRadioDefault",
-    id: "flexRadioDefault1",
+    name: name,
+    id: name + "_1",
     value: "1",
-    onChange: handleResposta
+    onClick: handleResposta,
+    defaultChecked: context.verificarResposta(props.id, "1")
   }), /*#__PURE__*/React.createElement("label", {
     className: "form-check-label",
     htmlFor: "flexRadioDefault1"
@@ -32,11 +36,11 @@ const Options = props => {
   }, /*#__PURE__*/React.createElement("input", {
     className: "form-check-input",
     type: "radio",
-    name: "flexRadioDefault",
-    id: "flexRadioDefault2",
+    name: name,
+    id: name + "_2",
     value: "2",
-    checked: true,
-    onChange: handleResposta
+    onClick: handleResposta,
+    defaultChecked: context.verificarResposta(props.id, "2")
   }), /*#__PURE__*/React.createElement("label", {
     className: "form-check-label",
     htmlFor: "flexRadioDefault2"

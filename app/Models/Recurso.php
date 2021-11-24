@@ -13,9 +13,9 @@ use Illuminate\Database\Eloquent\Model;
  * Class Recurso
  *
  * @property int $id_recurso
- * @property character varying|null $nome
+ * @property string|null $nome
  * @property timestamp without time zone|null $ultimo_acesso
- * @property character varying|null $esfera
+ * @property string|null $esfera
  * @property int $id_tipo_recurso
  * @property int $id_formato
  *
@@ -35,17 +35,21 @@ class Recurso extends Model
 
 	protected $casts = [
 		'id_recurso' => 'int',
-		'nome' => 'character varying',
-		'ultimo_acesso' => 'timestamp without time zone',
-		'esfera' => 'character varying'
+		'nome' => 'string',
+		'ultimo_acesso' => 'timestamp',
+		'esfera' => 'string',
+        'id_tipo_recurso' => 'int',
+        'id_formato' => 'int'
 	];
 
 	protected $fillable = [
 		'nome',
 		'ultimo_acesso',
-		'esfera'
+		'esfera',
+        'id_tipo_recurso',
+        'id_formato'
 	];
-
+    protected $primaryKey = 'id_recurso';
 	protected $with = ['tipo_recurso', 'formato_recurso'];
 
 	public function tipo_recurso()
