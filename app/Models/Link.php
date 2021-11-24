@@ -13,10 +13,8 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property int $id_link
  * @property string|null $uri
- * @property int $recurso_id_recurso
- * @property int $recurso_tipo_recurso_id_tipo_recurso
- * @property int $recurso_formato_recurso_id_formato
  * @property string|null $idioma
+ * @property int $id_recurso
  *
  * @property Recurso $recurso
  *
@@ -25,17 +23,20 @@ use Illuminate\Database\Eloquent\Model;
 class Link extends Model
 {
 	protected $table = 'avaliacao.link';
+	protected $primaryKey = 'id_link';
 	public $timestamps = false;
 
 	protected $casts = [
 		'id_link' => 'int',
-		'id_recurso' => 'int',
-		'idioma' => 'string'
+		'uri' => 'string',
+		'idioma' => 'string',
+		'id_recurso' => 'int'
 	];
 
 	protected $fillable = [
 		'uri',
-		'idioma'
+		'idioma',
+		'id_recurso'
 	];
 	protected $with = ['recurso'];
 

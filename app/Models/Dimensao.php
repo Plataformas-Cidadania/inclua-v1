@@ -27,7 +27,8 @@ class Dimensao extends Model
 
 
 	protected $fillable = [
-		'nome'
+		'nome',
+		'descricao'
 	];
 
 	public function indicadors()
