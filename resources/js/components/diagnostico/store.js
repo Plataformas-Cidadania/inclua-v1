@@ -71,6 +71,27 @@ const DiagnosticoProvider = ({children}) => {
         console.log(newDimensoes);
     }
 
+    const getResposta = (idPergunta) => {
+        console.log('getResposta');
+        console.log(idPergunta);
+        let resposta = null;
+        dimensoes.forEach((d) => {
+            if(d.id === dimensao.id){
+                d.indicadores.forEach((i) => {
+                    if(i.id === indicador.id){
+                        i.perguntas.forEach((p) => {
+                            if(p.id === idPergunta){
+                                resposta = p.resposta;
+                            }
+                        });
+                    }
+                })
+            }
+        });
+        console.log(resposta);
+        return resposta;
+    }
+
     return (
         <DiagnosticoContext.Provider value={{
             tipo, setTipo,
@@ -79,7 +100,8 @@ const DiagnosticoProvider = ({children}) => {
             dimensoesRespondidas, setDimensoesRespondidas,
             indicador, setIndicador,
             verificarResposta,
-            setResposta
+            setResposta,
+            getResposta
         }}>
             {children}
         </DiagnosticoContext.Provider>
