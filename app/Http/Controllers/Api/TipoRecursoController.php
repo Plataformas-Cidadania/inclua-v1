@@ -3,29 +3,29 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Api\Controller;
-use App\Models\Dimensao;
+use App\Models\TipoRecurso;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\Eloquent\RelationNotFoundException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Exception;
-use App\Repository\DimensaoRepository;
+use App\Repository\TipoRecursoRepository;
 
-class DimensaoController extends Controller
+class TipoRecursoController extends Controller
 {
-    private DimensaoRepository $repo;
+    private TipoRecursoRepository $repo;
     private $rules = [
-        'nome' => 'string|min:1|nullable',
-        'descricao' => 'string|min:1|nullable'
+    'id_tipo_recurso' => 'int|min:1|',
+        'nome' => 'string'
     ];
-    public function __construct(DimensaoRepository $repo)
+    public function __construct(TipoRecursoRepository $repo)
     {
         $this->repo = $repo;
     }
 
     /**
-     * Mostrar todos.
+     * Mostrar todos os Recursoes.
      *
      * @param null
      *
@@ -36,7 +36,7 @@ class DimensaoController extends Controller
     {
         $res = $this->repo->all();
         return $this->successResponse(
-            'Dimensões retornadas com sucesso',
+            'Recurso retornados com sucesso',
             $res
         );
     }
@@ -60,7 +60,7 @@ class DimensaoController extends Controller
             $data = $this->getData($request);
             $res = $this->repo->create($data);
             return $this->successResponse(
-			    'Dimensão '.$res->id_dimensao.' foi adicionada',
+			    ''.$res->id_tipo_recurso.' Tipo de Recurso foi adicionado',
 			    $this->transform($res)
 			);
         } catch (Exception $exception) {
@@ -146,8 +146,6 @@ class DimensaoController extends Controller
         }
     }
 
-
-
     /**
      * Cria uma instancia de validador com as regras definidas
      *
@@ -169,25 +167,21 @@ class DimensaoController extends Controller
      */
     protected function getData(Request $request): array
     {
-
         return $request->validate($this->rules);
     }
 
     /**
      * Transformar em um array
      *
-     * @param Dimensao $model
+     * @param Recurso $res
      *
      * @return array
      */
-    protected function transform(Dimensao $model): array
+    protected function transform(TipoRecurso $res): array
     {
         return [
-            'id_dimensao' => $model->id_dimensao,
-            'nome' => $model->nome,
-            'descricao' => $model->descricao
+            'id_tipo_recurso' => $res->id_tipo_recurso,
+            'nome' =>$res->nome
         ];
     }
-
-
 }

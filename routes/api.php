@@ -136,3 +136,48 @@ Route::group([
     Route::delete('/{id_categoria}/{id_recurso}',[App\Http\Controllers\Api\IndicacaoController::class, 'destroy'])
         ->name('api.indicacao.destroy');
 });
+
+Route::group([
+    'prefix' => 'link',
+], function () {
+    Route::get('/', [App\Http\Controllers\Api\LinkController::class, 'getAll'])
+        ->name('api.link.getAll');
+    Route::get('/{link}',[App\Http\Controllers\Api\LinkController::class, 'get'])
+        ->name('api.link.get');
+    Route::post('/', [App\Http\Controllers\Api\LinkController::class, 'store'])
+        ->name('api.link.store');
+    Route::put('/{link}', [App\Http\Controllers\Api\LinkController::class, 'update'])
+        ->name('api.link.update');
+    Route::delete('/{link}',[App\Http\Controllers\Api\LinkController::class, 'destroy'])
+        ->name('api.link.destroy');
+});
+
+Route::group([
+    'prefix' => 'tipo_recurso',
+], function () {
+    Route::get('/', [App\Http\Controllers\Api\TipoRecursoController::class, 'getAll'])
+        ->name('api.tipo_recurso.getAll');
+    Route::get('/{tipo_recurso}',[App\Http\Controllers\Api\TipoRecursoController::class, 'get'])
+        ->name('api.tipo_recurso.get');
+    Route::post('/', [App\Http\Controllers\Api\TipoRecursoController::class, 'store'])
+        ->name('api.tipo_recurso.store');
+    Route::put('/{tipo_recurso}', [App\Http\Controllers\Api\TipoRecursoController::class, 'update'])
+        ->name('api.tipo_recurso.update');
+    Route::delete('/{tipo_recurso}',[App\Http\Controllers\Api\TipoRecursoController::class, 'destroy'])
+        ->name('api.tipo_recurso.destroy');
+});
+
+Route::group([
+    'prefix' => 'pergunta',
+], function () {
+    Route::get('/', [App\Http\Controllers\Api\PerguntaController::class, 'getAll'])
+        ->name('api.pergunta.getAll');
+    Route::get('/{pergunta}',[App\Http\Controllers\Api\PerguntaController::class, 'get'])
+        ->name('api.pergunta.get');
+    Route::post('/', [App\Http\Controllers\Api\PerguntaController::class, 'store'])
+        ->name('api.pergunta.store');
+    Route::put('/{pergunta}', [App\Http\Controllers\Api\PerguntaController::class, 'update'])
+        ->name('api.pergunta.update');
+    Route::delete('/{pergunta}',[App\Http\Controllers\Api\PerguntaController::class, 'destroy'])
+        ->name('api.pergunta.destroy');
+});

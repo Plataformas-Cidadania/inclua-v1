@@ -3,29 +3,35 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Api\Controller;
-use App\Models\Dimensao;
+use App\Models\Pergunta;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\Eloquent\RelationNotFoundException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Exception;
-use App\Repository\DimensaoRepository;
+use App\Repository\PerguntaRepository;
 
-class DimensaoController extends Controller
+class PerguntaController extends Controller
 {
-    private DimensaoRepository $repo;
+
+    private PerguntaRepository $repo;
     private $rules = [
-        'nome' => 'string|min:1|nullable',
-        'descricao' => 'string|min:1|nullable'
+        'id_pergunta' => 'int|min:1',
+        'nome' => 'string|min:1',
+        'descricao' => 'string|min:1|nullable',
+        'vl_minimo' => 'int|min:1',
+        'vl_medio' => 'int|min:1',
+        'vl_maximo' => 'int|min:1',
+        'id_indicador' => 'int|min:1'
     ];
-    public function __construct(DimensaoRepository $repo)
+    public function __construct(PerguntaRepository $repo)
     {
         $this->repo = $repo;
     }
 
     /**
-     * Mostrar todos.
+     * Mostrar todos os Indicadores.
      *
      * @param null
      *
@@ -36,7 +42,7 @@ class DimensaoController extends Controller
     {
         $res = $this->repo->all();
         return $this->successResponse(
-            'Dimensões retornadas com sucesso',
+            'Perguntas retornadas com sucesso',
             $res
         );
     }
@@ -60,7 +66,7 @@ class DimensaoController extends Controller
             $data = $this->getData($request);
             $res = $this->repo->create($data);
             return $this->successResponse(
-			    'Dimensão '.$res->id_dimensao.' foi adicionada',
+			    ''.$res->id_pergunta.' foi adicionado',
 			    $this->transform($res)
 			);
         } catch (Exception $exception) {
@@ -92,15 +98,12 @@ class DimensaoController extends Controller
 
     /**
      * Atualizar especificado pelo id
-     *
-     * @param int $id
-     * @param Request $request
+     *Perguntaest
      *
      * @return JsonResponse
      */
     public function update($id, Request $request): JsonResponse
     {
-
         try {
             $validator = $this->getValidator($request);
 
@@ -146,8 +149,6 @@ class DimensaoController extends Controller
         }
     }
 
-
-
     /**
      * Cria uma instancia de validador com as regras definidas
      *
@@ -169,25 +170,32 @@ class DimensaoController extends Controller
      */
     protected function getData(Request $request): array
     {
-
         return $request->validate($this->rules);
     }
 
     /**
      * Transformar em um array
      *
-     * @param Dimensao $model
+     * @param Pergunta $res
      *
      * @return array
      */
-    protected function transform(Dimensao $model): array
+    protected function transform(Pergunta $res): array
     {
-        return [
-            'id_dimensao' => $model->id_dimensao,
-            'nome' => $model->nome,
-            'descricao' => $model->descricao
+          return [
+            'id_pergunta' => $res->id_pergunta,
+            'nome' => $res->nome,
+            'descricao' => $res->descricao,
+            'vl_minimo' => $res->vl_minimo,
+            'vl_medio' => $res->vl_medio,
+            'vl_maximo' => $res->vl_maximo,
+            'id_indicador' => $res->id_indicador
         ];
     }
 
+
+
+
+    
 
 }
