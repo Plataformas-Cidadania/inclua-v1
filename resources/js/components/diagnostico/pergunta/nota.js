@@ -15,7 +15,6 @@ const Nota = (props) => {
     }, [props.bgColor]);
 
     const handleResposta = (e) => {
-        console.log('handleResposta');
         context.setResposta(props.id, e.target.value);
         setResposta(e.target.value)
     }

@@ -5,9 +5,13 @@ const Range = props => {
     useEffect
   } = React;
   const [naoSeAplica, setNaoSeAplica] = useState(false);
-  const [resposta, setResposta] = useState(null);
   const [bgColor, setBgColor] = useState(null);
   const [name, setName] = useState(null);
+  const notas = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
+  const [resposta, setResposta] = useState(0);
+  useEffect(() => {
+    setResposta(context.getResposta());
+  }, []);
   useEffect(() => {
     setName(context.dimensao.info.dimensao + '_' + context.indicador.indicador + '_' + props.letra);
   }, [context]);
@@ -17,6 +21,12 @@ const Range = props => {
 
   const handleResposta = e => {
     context.setResposta(props.id, e.target.value);
+    setResposta(e.target.value);
+  };
+
+  const clickResposta = nota => {
+    context.setResposta(props.id, nota);
+    setResposta(nota);
   };
 
   return /*#__PURE__*/React.createElement("div", {
