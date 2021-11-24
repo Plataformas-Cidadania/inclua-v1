@@ -30,8 +30,8 @@ class Dimensao extends Model
 		'nome',
 		'descricao'
 	];
-
-	public function indicadors()
+    protected $with = ['indicadores'];
+	public function indicadores()
 	{
 		return $this->hasMany(Indicador::class, 'id_dimensao');
 	}

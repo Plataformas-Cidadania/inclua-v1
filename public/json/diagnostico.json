@@ -4,31 +4,31 @@
             "id": 1,
             "titulo": "Participação social e representação...",
             "descricao": "Chama atenção para o conjunto de relações institucionais ...",
-            "dimensao": 1
+            "numero": 1
         },
         "indicadores": [
             {
                 "id": 1,
-                "indicador": 1,
+                "numero": 1,
                 "titulo": "DIVISÃO DO TRABALHO, COORDENAÇÃO E CONFLITO INTERINSTITUCIONAL",
                 "descricao": "Identifica e avalia o grau de maturidade da articulação institucional...",
                 "perguntas":[
                     {
                         "id": 1,
-                        "pergunta": 1,
-                        "titulo": "Caso o processo de implementação dessa oferta pública envolva mais de uma organização (ou múltiplas unidades de uma organização) responsável por etapas diferentes da produção do bem ou serviço, existem espaços e mecanismos para promover a coordenação e a articulação das ações entre essas organizações? [Por exemplo: reuniões periódicas, comitês gestores, instâncias de mediação, etc.] Marque uma opção abaixo.",
+                        "letra": "a",
+                        "descricao": "Caso o processo de implementação dessa oferta pública envolva mais de uma organização (ou múltiplas unidades de uma organização) responsável por etapas diferentes da produção do bem ou serviço, existem espaços e mecanismos para promover a coordenação e a articulação das ações entre essas organizações? [Por exemplo: reuniões periódicas, comitês gestores, instâncias de mediação, etc.] Marque uma opção abaixo.",
                         "tipo": 1
                     },
                     {
                         "id": 2,
-                        "pergunta": 2,
-                        "titulo": "Caso o processo de implementação dessa oferta pública envolva....................................",
+                        "letra": "b",
+                        "descricao": "Caso o processo de implementação dessa oferta pública envolva....................................",
                         "tipo": 2
                     },
                     {
                         "id": 2,
-                        "pergunta": 2,
-                        "titulo": "Caso o processo de implementação dessa oferta pública envolva...",
+                        "letra": "c",
+                        "descricao": "Caso o processo de implementação dessa oferta pública envolva...",
                         "tipo": 3
                     }
                 ]
@@ -41,14 +41,14 @@
                 "perguntas":[
                     {
                         "id": 3,
-                        "pergunta": 1,
-                        "titulo": "---Caso o processo de implementação dessa oferta pública envolva...",
+                        "letra": "a",
+                        "descricao": "---Caso o processo de implementação dessa oferta pública envolva...",
                         "tipo": 1
                     },
                     {
                         "id": 4,
-                        "pergunta": 2,
-                        "titulo": "---Caso o processo de implementação dessa oferta pública envolva...",
+                        "letra": "b",
+                        "descricao": "---Caso o processo de implementação dessa oferta pública envolva...",
                         "tipo": 1
                     }
                 ]
@@ -60,25 +60,25 @@
             "id": 1,
             "titulo": "Dimensão 2",
             "descricao": "...",
-            "dimensao": 2
+            "numero": 2
         },
         "indicadores": [
             {
                 "id": 1,
-                "indicador": 1,
+                "numero": 1,
                 "titulo": "Indicador 1",
                 "descricao": "...",
                 "perguntas":[
                     {
                         "id": 1,
-                        "pergunta": 1,
-                        "titulo": "Pergunta 1",
+                        "letra": "a",
+                        "descricao": "Pergunta 1",
                         "tipo": 1
                     },
                     {
                         "id": 2,
-                        "pergunta": 2,
-                        "titulo": "Pergunta 2",
+                        "letra": "b",
+                        "descricao": "Pergunta 2",
                         "tipo": 1
                     }
                 ]

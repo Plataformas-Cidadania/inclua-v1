@@ -36,7 +36,7 @@ class Indicador extends Model
 		'id_dimensao'
 	];
 
-	protected $with = ['dimensao'];
+	protected $with = ['perguntas'];
 
 	public function dimensao()
 	{
