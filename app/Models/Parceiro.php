@@ -16,8 +16,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $titulo
  * @property string|null $descricao
  * @property string|null $url
- * @property timestamp without time zone|null $created_at
- * @property timestamp without time zone|null $updated_at
+ * @property timestamp $created_at
+ * @property timestamp $updated_at
  *
  * @package App\Models
  */

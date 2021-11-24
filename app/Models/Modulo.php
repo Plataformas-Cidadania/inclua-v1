@@ -22,8 +22,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $show
  * @property int $tipo_id
  * @property int $cmsuser_id
- * @property timestamp without time zone|null $created_at
- * @property timestamp without time zone|null $updated_at
+ * @property timestamp $created_at
+ * @property timestamp $updated_at
  *
  * @property CmsUser $cms_user
  * @property Collection|Item[] $items
