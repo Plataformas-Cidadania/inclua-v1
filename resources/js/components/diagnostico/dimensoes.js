@@ -9,7 +9,7 @@ const Dimensoes = () => {
         4:'bg-qua',
         5:'bg-qui',
     };
-    bgColor = bgColor[context.dimensao.info.dimensao];
+    bgColor = bgColor[context.dimensao.info.numero];
 
 
     return (
@@ -22,18 +22,18 @@ const Dimensoes = () => {
                                 context.dimensoes.map((item, key) => {
                                     //let classe =  ? 'nav-icons-select' : '';
                                     let classe = "cursor ";
-                                    if(item.info.dimensao === context.dimensao.info.dimensao) {
+                                    if(item.info.numero === context.dimensao.info.numero) {
                                         classe += "nav-icons-select ";
                                     }
                                     if(
-                                        !context.dimensoesRespondidas.includes(item.info.dimensao) &&
-                                        item.info.dimensao !== context.dimensao.info.dimensao
+                                        !context.dimensoesRespondidas.includes(item.info.numero) &&
+                                        item.info.numero !== context.dimensao.info.numero
                                     ) {
                                         classe += "opacity-5";
                                     }
                                     return (
                                         <img key={"icone-dimensao-"+key}
-                                            src={"img/dimensao"+item.info.dimensao+".png"}
+                                            src={"img/dimensao"+item.info.numero+".png"}
                                             alt=""
                                             className={classe}
                                             onClick={() => context.setDimensao(item)}
@@ -57,8 +57,8 @@ const Dimensoes = () => {
                     <div className="container-fluid">
                         <div className="row">
                             <div className="col-md-3 text-center">
-                                <img src={"img/dimensao"+context.dimensao.info.dimensao+"-g.png"} alt=""/>
-                                <h2>DIMENSÃO {context.dimensao.info.dimensao}</h2>
+                                <img src={"img/dimensao"+context.dimensao.info.numero+"-g.png"} alt=""/>
+                                <h2>DIMENSÃO {context.dimensao.info.numero}</h2>
                             </div>
                             <div className="col-md-9">
                                 <h2 className="mt-5">{context.dimensao.info.titulo}</h2>
