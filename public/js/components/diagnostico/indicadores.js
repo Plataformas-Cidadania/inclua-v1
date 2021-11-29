@@ -15,8 +15,8 @@ const Indicadores = () => {
     className: "far fa-circle tx-pri"
   });
   useEffect(() => {
-    setDimensao(context.dimensao.info.dimensao);
-    setIndicador(context.indicador.indicador);
+    setDimensao(context.dimensao.info.numero);
+    setIndicador(context.indicador.numero);
     setTitulo(context.indicador.titulo);
     setDescricao(context.indicador.descricao);
   }, [context.dimensao, context.indicador]);
@@ -27,7 +27,7 @@ const Indicadores = () => {
     4: 'bg-qua',
     5: 'bg-qui'
   };
-  bgColor = bgColor[context.dimensao.info.dimensao];
+  bgColor = bgColor[context.dimensao.info.numero];
   return /*#__PURE__*/React.createElement("div", {
     className: "container"
   }, /*#__PURE__*/React.createElement("div", {
@@ -39,7 +39,7 @@ const Indicadores = () => {
   }, /*#__PURE__*/React.createElement("div", {
     className: "nav-circle"
   }, context.dimensao.indicadores.map((item, key) => {
-    if (item.indicador === indicador) {
+    if (item.numero === indicador) {
       return /*#__PURE__*/React.createElement("div", {
         key: "circle-on" + key,
         onClick: () => context.setIndicador(item),
@@ -73,7 +73,7 @@ const Indicadores = () => {
   }, /*#__PURE__*/React.createElement("div", {
     className: "nav-circle mt-2 "
   }, context.dimensao.indicadores.map((item, key) => {
-    if (item.indicador === indicador) {
+    if (item.numero === indicador) {
       return /*#__PURE__*/React.createElement("div", {
         key: "circle-on" + key,
         onClick: () => context.setIndicador(item),

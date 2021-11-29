@@ -4,18 +4,19 @@ const Perguntas = props => {
     useState,
     useEffect
   } = React;
-  const letras = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o'];
   return /*#__PURE__*/React.createElement("div", {
     className: "row"
   }, context.indicador.perguntas.map((pergunta, key) => {
     return /*#__PURE__*/React.createElement(Pergunta, {
       key: 'pergunta' + key,
-      letra: letras[key],
+      letra: pergunta.letra,
       bgColor: props.bgColor,
       dimensao: context.dimensao,
-      indicador: context.indicador.indicador,
+      indicador: context.indicador.numero,
       id: pergunta.id,
-      tipo: pergunta.tipo,
+      minimo: pergunta.minimo,
+      medio: pergunta.medio,
+      maximo: pergunta.maximo,
       titulo: pergunta.titulo
     });
   }));

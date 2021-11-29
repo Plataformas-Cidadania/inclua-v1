@@ -1,0 +1,25 @@
+{
+    "total": 21875983,
+    "itens": [
+        {
+            "id": 1,
+            "pergunta": "DIVISÃO DO TRABALHO, COORDENAÇÃO E CONFLITO INTERINSTITUCIONAL",
+            "descricao": "Caso o processo de implementação dessa oferta pública envolva mais de uma organização (ou múltiplas unidades de uma organização) responsável por etapas diferentes da produção do bem ou serviço, existem espaços e mecanismos para promover a coordenação e a articulação das ações entre essas organizações? [Por exemplo: reuniões periódicas, comitês gestores, instâncias de mediação, etc.] Marque uma opção abaixo.",
+            "votos": 10,
+            "respostas": 20,
+            "visualizacoes": 30,
+            "data": 30
+        },
+        {
+            "id": 2,
+            "pergunta": "COORDENAÇÃO E CONFLITO INTERINSTITUCIONAL",
+            "descricao": "Responsável por etapas diferentes da produção do bem ou serviço, existem espaços e mecanismos para promover a coordenação e a articulação das ações entre essas organizações? [Por exemplo: reuniões periódicas, comitês gestores, instâncias de mediação, etc.] Marque uma opção abaixo.",
+            "votos": 5,
+            "respostas": 10,
+            "visualizacoes": 15,
+            "data": 30
+        }
+    ]
+}
+
+

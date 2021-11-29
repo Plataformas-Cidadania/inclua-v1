@@ -19,7 +19,8 @@
     </div>
 
     <div class="container">
-        <div class="row">
+        <div id="forum">&nbsp;</div>
+        {{--<div class="row">
             <div class="col-md-6">21.875.983 perguntas</div>
             <div class="col-md-6">
                 <div class="dorder-container justify-content-end">
@@ -66,7 +67,7 @@
             </div>
 
             <div class="col-md-12"><br><br></div>
-        </div>
+        </div>--}}
     </div>
 
 
