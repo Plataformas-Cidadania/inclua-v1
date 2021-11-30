@@ -7,7 +7,7 @@ const Dimensoes = () => {
     4: 'bg-qua',
     5: 'bg-qui'
   };
-  bgColor = bgColor[context.dimensao.info.dimensao];
+  bgColor = bgColor[context.dimensao.info.numero];
   return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
     className: "container"
   }, /*#__PURE__*/React.createElement("div", {
@@ -20,17 +20,17 @@ const Dimensoes = () => {
     //let classe =  ? 'nav-icons-select' : '';
     let classe = "cursor ";
 
-    if (item.info.dimensao === context.dimensao.info.dimensao) {
+    if (item.info.numero === context.dimensao.info.numero) {
       classe += "nav-icons-select ";
     }
 
-    if (!context.dimensoesRespondidas.includes(item.info.dimensao) && item.info.dimensao !== context.dimensao.info.dimensao) {
+    if (!context.dimensoesRespondidas.includes(item.info.numero) && item.info.numero !== context.dimensao.info.numero) {
       classe += "opacity-5";
     }
 
     return /*#__PURE__*/React.createElement("img", {
       key: "icone-dimensao-" + key,
-      src: "img/dimensao" + item.info.dimensao + ".png",
+      src: "img/dimensao" + item.info.numero + ".png",
       alt: "",
       className: classe,
       onClick: () => context.setDimensao(item)
@@ -49,9 +49,9 @@ const Dimensoes = () => {
   }, /*#__PURE__*/React.createElement("div", {
     className: "col-md-3 text-center"
   }, /*#__PURE__*/React.createElement("img", {
-    src: "img/dimensao" + context.dimensao.info.dimensao + "-g.png",
+    src: "img/dimensao" + context.dimensao.info.numero + "-g.png",
     alt: ""
-  }), /*#__PURE__*/React.createElement("h2", null, "DIMENS\xC3O ", context.dimensao.info.dimensao)), /*#__PURE__*/React.createElement("div", {
+  }), /*#__PURE__*/React.createElement("h2", null, "DIMENS\xC3O ", context.dimensao.info.numero)), /*#__PURE__*/React.createElement("div", {
     className: "col-md-9"
   }, /*#__PURE__*/React.createElement("h2", {
     className: "mt-5"

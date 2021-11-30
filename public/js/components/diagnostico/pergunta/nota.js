@@ -5,11 +5,21 @@ const Nota = props => {
     useEffect
   } = React;
   const [bgColor, setBgColor] = useState(null);
-  const notas = ['1', '2', '3', '4', '5'];
+  const [notas, setNotas] = useState([]);
   const [resposta, setResposta] = useState(0);
   useEffect(() => {
     setResposta(context.getResposta());
   }, []);
+  useEffect(() => {
+    let newNotas = [];
+    let start = props.minimo > 0 ? props.minimo : 1;
+
+    for (let i = start; i <= props.maximo; i++) {
+      newNotas.push(i);
+    }
+
+    setNotas(newNotas);
+  }, [props.minimo, props.medio, props.maximo]);
   useEffect(() => {
     setBgColor(props.bgColor);
   }, [props.bgColor]);
@@ -52,5 +62,18 @@ const Nota = props => {
     max: "5",
     value: resposta,
     onChange: handleResposta
-  })));
+  })), props.minimo === props.medio ? /*#__PURE__*/React.createElement("div", {
+    className: "form-check  float-end"
+  }, /*#__PURE__*/React.createElement("input", {
+    className: "form-check-input",
+    type: "radio",
+    name: name,
+    id: name + "_2",
+    value: props.minimo,
+    onClick: handleResposta,
+    defaultChecked: context.verificarResposta(props.id, "2")
+  }), /*#__PURE__*/React.createElement("label", {
+    className: "form-check-label",
+    htmlFor: "flexRadioDefault2"
+  }, "N\xE3o se aplica")) : null);
 };

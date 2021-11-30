@@ -3,12 +3,21 @@ const Nota = (props) => {
     const context = React.useContext(DiagnosticoContext);
     const {useState, useEffect} = React;
     const [bgColor, setBgColor] = useState(null);
-    const notas = ['1', '2', '3', '4', '5'];
+    const [notas, setNotas] = useState([]);
     const [resposta, setResposta] = useState(0);
 
     useEffect(() => {
         setResposta(context.getResposta())
     }, []);
+
+    useEffect(() => {
+        let newNotas = [];
+        let start = props.minimo > 0 ? props.minimo : 1;
+        for(let i = start; i <= props.maximo; i++){
+            newNotas.push(i);
+        }
+        setNotas(newNotas);
+    }, [props.minimo, props.medio, props.maximo]);
 
     useEffect(() => {
         setBgColor(props.bgColor);
@@ -50,6 +59,22 @@ const Nota = (props) => {
                 <br/>
                 <input type="range" className="form-range range" id="customRange1" min="1" max="5" value={resposta} onChange={handleResposta}/>
             </div>
+            {
+                (props.minimo === props.medio) ? (
+                    <div className="form-check  float-end">
+                        <input className="form-check-input" type="radio"
+                               name={name}
+                               id={name+"_2"}
+                               value={props.minimo}
+                               onClick={handleResposta}
+                               defaultChecked={context.verificarResposta(props.id, "2")}
+                        />
+                        <label className="form-check-label" htmlFor="flexRadioDefault2">
+                            Não se aplica
+                        </label>
+                    </div>
+                ) : null
+            }
         </div>
     );
 };

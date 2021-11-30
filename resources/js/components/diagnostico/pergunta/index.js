@@ -9,6 +9,7 @@ const Pergunta = (props) => {
     }, [props]);
 
     const getTipo = (minimo, medio, maximo) => {
+        console.log(props.letra, 'minimo', minimo, 'medio', medio, 'maximo', maximo);
         if(medio !== minimo && medio !== maximo){
             if(maximo > 5){
                 return 3;//Range
