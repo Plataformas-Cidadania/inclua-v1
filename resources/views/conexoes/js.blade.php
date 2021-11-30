@@ -148,6 +148,19 @@
     <script src="js/components/home/header.js"></script>
     <script src="js/components/home/index.js"></script>
 @endif
+@if($rota=="relate")
+    <script src="js/components/relate/pergunta.js"></script>
+    <script src="js/components/relate/index.js"></script>
+@endif
+@if($rota=="interaja")
+    <script src="js/components/forum/pergunta.js"></script>
+    <script src="js/components/forum/index.js"></script>
+@endif
+@if($rota=="recursos")
+    <script src="js/components/recursos/pergunta.js"></script>
+    <script src="js/components/recursos/index.js"></script>
+@endif
+
 
 
 <script>

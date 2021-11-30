@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Front;
 use Illuminate\Support\Facades\Route;
 
 
@@ -49,20 +49,20 @@ require __DIR__.'/auth.php';
 | FRONT
 |-------------------------------------------------------------------------->
 */
-Route::get('/', 'App\Http\Controllers\HomeController@index');
+Route::get('/', 'App\Http\Controllers\Front\HomeController@index');
 
-Route::get('contato', 'App\Http\Controllers\ContactController@email');
-Route::post('contact', 'App\Http\Controllers\ContactController@send');
+Route::get('contato', 'App\Http\Controllers\Front\ContactController@email');
+Route::post('contact', 'App\Http\Controllers\Front\ContactController@send');
 
-//Route::get('diagnostico', 'App\Http\Controllers\DiagnosticoController@completo');
-Route::get('diagnostico', 'App\Http\Controllers\DiagnosticoController@completoReact');
-Route::get('recursos', 'App\Http\Controllers\RecursoController@listar');
+//Route::get('diagnostico', 'App\Http\Controllers\Front\DiagnosticoController@completo');
+Route::get('diagnostico', 'App\Http\Controllers\Front\DiagnosticoController@completoReact');
+Route::get('recursos', 'App\Http\Controllers\Front\RecursoController@listar');
 
 
-/*Route::get('contribua', 'App\Http\Controllers\ContribuaController@listar');
-Route::get('interaja', 'App\Http\Controllers\ContribuaController@interaja');
-Route::get('compartilhe', 'App\Http\Controllers\ContribuaController@compartilhe');
-Route::get('relate', 'App\Http\Controllers\ContribuaController@relate');*/
+/*Route::get('contribua', 'App\Http\Controllers\Front\ContribuaController@listar');
+Route::get('interaja', 'App\Http\Controllers\Front\ContribuaController@interaja');
+Route::get('compartilhe', 'App\Http\Controllers\Front\ContribuaController@compartilhe');
+Route::get('relate', 'App\Http\Controllers\Front\ContribuaController@relate');*/
 
 
 Route::get('/contribua', [ContribuaController::class , 'listar']);
@@ -94,7 +94,7 @@ if(env('DYNAMIC_ROUTES')=='true'){
 
     foreach ($modulos as $modulo) {
         if(!empty($modulo->slug)){
-            Route::get($modulo->slug.'/', 'App\Http\Controllers\ModuloController@details');
+            Route::get($modulo->slug.'/', 'App\Http\Controllers\Front\ModuloController@details');
         }
     }
 }

@@ -181,3 +181,18 @@ Route::group([
     Route::delete('/{pergunta}',[App\Http\Controllers\Api\PerguntaController::class, 'destroy'])
         ->name('api.pergunta.destroy');
 });
+
+Route::group([
+    'prefix' => 'risco',
+], function () {
+    Route::get('/', [App\Http\Controllers\Api\RiscoController::class, 'getAll'])
+        ->name('api.risco.getAll');
+    Route::get('/{risco}',[App\Http\Controllers\Api\RiscoController::class, 'get'])
+        ->name('api.risco.get');
+    Route::post('/', [App\Http\Controllers\Api\RiscoController::class, 'store'])
+        ->name('api.risco.store');
+    Route::put('/{risco}', [App\Http\Controllers\Api\RiscoController::class, 'update'])
+        ->name('api.risco.update');
+    Route::delete('/{risco}',[App\Http\Controllers\Api\RiscoController::class, 'destroy'])
+        ->name('api.risco.destroy');
+});

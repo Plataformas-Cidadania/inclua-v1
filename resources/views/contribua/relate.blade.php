@@ -21,7 +21,10 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div class="dorder-container">
+
+                <div id="relate">&nbsp;</div>
+
+                {{--<div class="dorder-container">
                     <div class="dorder-container-mai p-4 ">
                         <p>1 - CONSEQUÊNCIA: Desarticulações (ou formas específicas de articulação) e disputas interinstitucionais podem repercutir em déficits de cobertura, lacunas de atenção ou repercussões negativas para o atendimento a segmentos específicos do público ou territórios atendidos</p>
                         <br>
@@ -69,7 +72,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>--}}
                 <br>
             </div>
             <div class="col-md-12">
