@@ -25,6 +25,7 @@
         <div class="box-list mt-4 mb-4">
             <div class="row">
 
+                <div id="recurso">&nbsp;</div>
                 {{----}}
                 <div class="col-md-4 ">
                     <div class="dorder-container">
