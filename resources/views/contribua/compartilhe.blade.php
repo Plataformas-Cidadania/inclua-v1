@@ -19,7 +19,8 @@
     </div>
 
     <div class="container">
-        <div class="row">
+        <div id="compartilhe"></div>
+        {{--<div class="row">
             <div class="col-md-7">
                 <p>Selecione os temas:</p>
 
@@ -84,7 +85,7 @@
                 <br>
                 <br>
             </div>
-        </div>
+        </div>--}}
     </div>
 
 
