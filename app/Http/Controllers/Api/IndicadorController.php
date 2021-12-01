@@ -16,10 +16,10 @@ class IndicadorController extends Controller
 {
     private IndicadorRepository $repo;
     private $rules = [
-    'id_indicador' => 'string|min:1',
-    'nome' => 'string|min:1|nullable',
-    'descricao' => 'string|min:1|nullable',
-    'dimensao_id_dimensao' => 'int|min:1|nullable',
+        'numero' => 'int|min:1',
+        'titulo' => 'string|min:1|nullable',
+        'descricao' => 'string|min:1|nullable',
+        'id_dimensao' => 'int|min:1|nullable',
     ];
     public function __construct(IndicadorRepository $repo)
     {
@@ -183,9 +183,10 @@ class IndicadorController extends Controller
     {
         return [
             'id_indicador' => $res->id_indicador,
-            'nome' => $res->nome,
+            'numero' => $res->numero,
+            'titulo' => $res->titulo,
             'descricao' => $res->descricao,
-            'dimensao_id_dimensao' => $res->dimensao_id_dimensao,
+            'id_dimensao' => $res->id_dimensao,
         ];
     }
 

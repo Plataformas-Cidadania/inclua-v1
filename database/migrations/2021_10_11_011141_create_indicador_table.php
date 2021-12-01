@@ -15,7 +15,9 @@ class CreateIndicadorTable extends Migration
     {
         Schema::create('avaliacao.indicador', function (Blueprint $table) {
             $table->increments('id_indicador');
-            $table->string('nome', 50);
+            $table->integer('numero')->comment('Numero único do indicador');
+            $table->unique('numero');
+            $table->string('titulo', 50);
             $table->text('descricao');
             $table->integer('id_dimensao')->nullable();
             $table->foreign('id_dimensao')->references('id_dimensao')

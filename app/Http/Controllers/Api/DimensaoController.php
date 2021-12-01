@@ -16,7 +16,8 @@ class DimensaoController extends Controller
 {
     private DimensaoRepository $repo;
     private $rules = [
-        'nome' => 'string|min:1|nullable',
+        'numero' => 'int|min:1',
+        'titulo' => 'string|min:1|nullable',
         'descricao' => 'string|min:1|nullable'
     ];
     public function __construct(DimensaoRepository $repo)
@@ -184,7 +185,8 @@ class DimensaoController extends Controller
     {
         return [
             'id_dimensao' => $model->id_dimensao,
-            'nome' => $model->nome,
+            'numero' => $model->numero,
+            'titulo' => $model->titulo,
             'descricao' => $model->descricao
         ];
     }
