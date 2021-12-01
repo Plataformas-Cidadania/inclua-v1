@@ -36,6 +36,24 @@ const Nota = (props) => {
     return (
         <div className="box-items bg-lgt">
             <p className="mb-3"><strong>P{context.dimensao.info.dimensao}.{context.indicador.indicador}{props.letra}</strong> {props.titulo}</p>
+
+            {
+                (props.minimo === 0) ? (
+                    <div className="form-check  float-end">
+                        <input className="form-check-input" type="radio"
+                               name={name}
+                               id={name+"_2"}
+                               value={props.minimo}
+                               onClick={handleResposta}
+                               defaultChecked={context.verificarResposta(props.id, "0")}
+                        />
+                        <label className="form-check-label" htmlFor="flexRadioDefault2">
+                            Não se aplica
+                        </label>
+                    </div>
+                ) : null
+            }
+
             <div>
                 <br/>
                 <div className="range-merker" style={{width: '113%', marginLeft: '-80px'}}>
@@ -59,22 +77,7 @@ const Nota = (props) => {
                 <br/>
                 <input type="range" className="form-range range" id="customRange1" min="1" max="5" value={resposta} onChange={handleResposta}/>
             </div>
-            {
-                (props.minimo === props.medio) ? (
-                    <div className="form-check  float-end">
-                        <input className="form-check-input" type="radio"
-                               name={name}
-                               id={name+"_2"}
-                               value={props.minimo}
-                               onClick={handleResposta}
-                               defaultChecked={context.verificarResposta(props.id, "2")}
-                        />
-                        <label className="form-check-label" htmlFor="flexRadioDefault2">
-                            Não se aplica
-                        </label>
-                    </div>
-                ) : null
-            }
+
         </div>
     );
 };

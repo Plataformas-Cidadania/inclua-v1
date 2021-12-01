@@ -38,7 +38,20 @@ const Nota = props => {
     className: "box-items bg-lgt"
   }, /*#__PURE__*/React.createElement("p", {
     className: "mb-3"
-  }, /*#__PURE__*/React.createElement("strong", null, "P", context.dimensao.info.dimensao, ".", context.indicador.indicador, props.letra), " ", props.titulo), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("strong", null, "P", context.dimensao.info.dimensao, ".", context.indicador.indicador, props.letra), " ", props.titulo), props.minimo === 0 ? /*#__PURE__*/React.createElement("div", {
+    className: "form-check  float-end"
+  }, /*#__PURE__*/React.createElement("input", {
+    className: "form-check-input",
+    type: "radio",
+    name: name,
+    id: name + "_2",
+    value: props.minimo,
+    onClick: handleResposta,
+    defaultChecked: context.verificarResposta(props.id, "0")
+  }), /*#__PURE__*/React.createElement("label", {
+    className: "form-check-label",
+    htmlFor: "flexRadioDefault2"
+  }, "N\xE3o se aplica")) : null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
     className: "range-merker",
     style: {
       width: '113%',
@@ -62,18 +75,5 @@ const Nota = props => {
     max: "5",
     value: resposta,
     onChange: handleResposta
-  })), props.minimo === props.medio ? /*#__PURE__*/React.createElement("div", {
-    className: "form-check  float-end"
-  }, /*#__PURE__*/React.createElement("input", {
-    className: "form-check-input",
-    type: "radio",
-    name: name,
-    id: name + "_2",
-    value: props.minimo,
-    onClick: handleResposta,
-    defaultChecked: context.verificarResposta(props.id, "2")
-  }), /*#__PURE__*/React.createElement("label", {
-    className: "form-check-label",
-    htmlFor: "flexRadioDefault2"
-  }, "N\xE3o se aplica")) : null);
+  })));
 };
