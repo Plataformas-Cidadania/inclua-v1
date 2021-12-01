@@ -15,7 +15,9 @@ class CreatePerguntaTable extends Migration
     {
         Schema::create('avaliacao.pergunta', function (Blueprint $table) {
             $table->increments('id_pergunta')->comment('Identifica a pergunta');
-            $table->string('nome', 50)->comment('Nome da pergunta');
+            $table->string('letra', 2)->comment('Letra a pergunta');
+            $table->unique('numero');
+            $table->string('titulo', 50)->comment('Nome da pergunta');
             $table->text('descricao')->comment('Descrição da pergunta');
             $table->integer('vl_minimo')->nullable()->comment('Armazena o valor minimo que se pode ter na resposta da pergunta');
             $table->integer('vl_medio')->nullable()->comment('Armazena o valor medio que se pode ter na resposta da pergunta');

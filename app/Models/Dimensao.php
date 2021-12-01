@@ -27,7 +27,8 @@ class Dimensao extends Model
 
 
 	protected $fillable = [
-		'nome',
+		'numero',
+		'titulo',
 		'descricao'
 	];
     protected $with = ['indicadores'];

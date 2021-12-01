@@ -160,6 +160,9 @@
     <script src="js/components/recursos/pergunta.js"></script>
     <script src="js/components/recursos/index.js"></script>
 @endif
+@if($rota=="compartilhe")
+    <script src="js/components/forms/compartilhe.js"></script>
+@endif
 
 
 
