@@ -31,7 +31,8 @@ class Indicador extends Model
 	public $timestamps = false;
 
 	protected $fillable = [
-		'nome',
+		'numero',
+		'titulo',
 		'descricao',
 		'id_dimensao'
 	];
