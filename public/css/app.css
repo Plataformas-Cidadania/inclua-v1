@@ -13113,6 +13113,13 @@ input[type=text] {
   padding: 10px !important;
 }
 
+select {
+  background-color: #F5F1ED !important;
+  border: solid 1px #E6DACE !important;
+  border-radius: 0 !important;
+  padding: 10px !important;
+}
+
 textarea {
   background-color: #F5F1ED !important;
   border: solid 1px #E6DACE !important;

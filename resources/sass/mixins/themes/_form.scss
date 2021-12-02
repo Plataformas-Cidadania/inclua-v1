@@ -434,6 +434,12 @@ input[type=text]{
     border-radius: 0 !important;
     padding: 10px !important;
 }
+select{
+    background-color: $color-lgt !important;
+    border: solid 1px $color-lgt2 !important;
+    border-radius: 0 !important;
+    padding: 10px !important;
+}
 
 textarea{
     background-color: $color-lgt !important;
