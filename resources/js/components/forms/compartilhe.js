@@ -31,6 +31,7 @@ class Compartilhe extends React.Component{
                 nome: '',
             },
             idiomaSelecionado: 0,
+            categoriasSelecionado: 0,
         };
         this.handleInputChange = this.handleInputChange.bind(this);
         this.compartilhe = this.compartilhe.bind(this);
@@ -39,6 +40,7 @@ class Compartilhe extends React.Component{
         this.getData = this.getData.bind(this);
         this.selectFormato = this.selectFormato.bind(this);
         this.selectIdioma = this.selectIdioma.bind(this);
+        this.selectCategorias = this.selectCategorias.bind(this);
 
     }
 
@@ -141,6 +143,10 @@ class Compartilhe extends React.Component{
         this.setState({idiomaSelecionado: id});
     }
 
+    selectCategorias(id){
+        this.setState({categoriasSelecionado: id});
+    }
+
     compartilhe(e){
         //console.log(this.validate());
         if(!this.validate()){
@@ -206,6 +212,15 @@ class Compartilhe extends React.Component{
             }.bind(this));
         }
 
+        let categorias = [];
+        if(this.state.formData.categorias){
+            categorias = this.state.formData.categorias.map(function(item, index){
+                return (
+                    <div className="btn btn-outline-primary m-2" key={'categorias_'+index} onClick={() => this.selectCategorias(item.id, item.nome)} style={{background: item.id===this.state.categoriasSelecionado.id ? '#E6DACE' : ''}}>{item.nome}</div>
+                );
+            }.bind(this));
+        }
+
 
 
         return (
@@ -215,7 +230,7 @@ class Compartilhe extends React.Component{
                 <div className="row">
                     <div className="col-md-7">
                         <p>Selecione os temas:</p>
-
+                            {categorias}
                         <p>Selecione as dimensões:</p>
                         <ul className="select-form">
                             {dimensoes}

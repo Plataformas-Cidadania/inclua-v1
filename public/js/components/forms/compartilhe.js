@@ -30,7 +30,8 @@ class Compartilhe extends React.Component {
         id: null,
         nome: ''
       },
-      idiomaSelecionado: 0
+      idiomaSelecionado: 0,
+      categoriasSelecionado: 0
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.compartilhe = this.compartilhe.bind(this);
@@ -39,6 +40,7 @@ class Compartilhe extends React.Component {
     this.getData = this.getData.bind(this);
     this.selectFormato = this.selectFormato.bind(this);
     this.selectIdioma = this.selectIdioma.bind(this);
+    this.selectCategorias = this.selectCategorias.bind(this);
   }
 
   componentDidMount() {
@@ -153,6 +155,12 @@ class Compartilhe extends React.Component {
     });
   }
 
+  selectCategorias(id) {
+    this.setState({
+      categoriasSelecionado: id
+    });
+  }
+
   compartilhe(e) {
     //console.log(this.validate());
     if (!this.validate()) {
@@ -240,6 +248,21 @@ class Compartilhe extends React.Component {
       }.bind(this));
     }
 
+    let categorias = [];
+
+    if (this.state.formData.categorias) {
+      categorias = this.state.formData.categorias.map(function (item, index) {
+        return /*#__PURE__*/React.createElement("div", {
+          className: "btn btn-outline-primary m-2",
+          key: 'categorias_' + index,
+          onClick: () => this.selectCategorias(item.id, item.nome),
+          style: {
+            background: item.id === this.state.categoriasSelecionado.id ? '#E6DACE' : ''
+          }
+        }, item.nome);
+      }.bind(this));
+    }
+
     return /*#__PURE__*/React.createElement("form", null, /*#__PURE__*/React.createElement("input", {
       type: "hidden",
       name: "_token",
@@ -248,7 +271,7 @@ class Compartilhe extends React.Component {
       className: "row"
     }, /*#__PURE__*/React.createElement("div", {
       className: "col-md-7"
-    }, /*#__PURE__*/React.createElement("p", null, "Selecione os temas:"), /*#__PURE__*/React.createElement("p", null, "Selecione as dimens\xF5es:"), /*#__PURE__*/React.createElement("ul", {
+    }, /*#__PURE__*/React.createElement("p", null, "Selecione os temas:"), categorias, /*#__PURE__*/React.createElement("p", null, "Selecione as dimens\xF5es:"), /*#__PURE__*/React.createElement("ul", {
       className: "select-form"
     }, dimensoes), /*#__PURE__*/React.createElement("p", null, "Indicador:"), /*#__PURE__*/React.createElement("select", {
       name: "select",
