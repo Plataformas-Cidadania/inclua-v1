@@ -216,7 +216,7 @@ class Compartilhe extends React.Component{
         if(this.state.formData.categorias){
             categorias = this.state.formData.categorias.map(function(item, index){
                 return (
-                    <div className="btn btn-outline-primary m-2" key={'categorias_'+index} onClick={() => this.selectCategorias(item.id, item.nome)} style={{background: item.id===this.state.categoriasSelecionado.id ? '#E6DACE' : ''}}>{item.nome}</div>
+                    <li  key={'categorias_'+index} onClick={() => this.selectCategorias(item.id, item.nome)} style={{background: item.id===this.state.categoriasSelecionado.id ? '#E6DACE' : ''}}>{item.nome}</li>
                 );
             }.bind(this));
         }
@@ -230,12 +230,14 @@ class Compartilhe extends React.Component{
                 <div className="row">
                     <div className="col-md-7">
                         <p>Selecione os temas:</p>
+                        <ul className="toggle">
                             {categorias}
-                        <p>Selecione as dimensões:</p>
+                        </ul>
+                        <p>Selecione a dimensão:</p>
                         <ul className="select-form">
                             {dimensoes}
                         </ul>
-                        <p>Indicador:</p>
+                        <p>Escolha um indicador:</p>
                         <select name="select" className="form-control">
                             <option value="0">Selecione</option>
                             <option value="valor2" selected>Valor 2</option>

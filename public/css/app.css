@@ -12574,6 +12574,26 @@ figcaption {
   background-color: #E6DACE;
 }
 
+.toggle {
+  margin: 0;
+  padding: 0;
+}
+
+.toggle li {
+  margin: 3px;
+  padding: 10px 15px;
+  list-style: none;
+  background-color: #F5F1ED;
+  border: solid 1px #E6DACE;
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 50px;
+}
+
+.toggle li:hover {
+  background-color: #E6DACE;
+}
+
 label {
   font-size: 13px;
   margin-bottom: 0;

@@ -252,8 +252,7 @@ class Compartilhe extends React.Component {
 
     if (this.state.formData.categorias) {
       categorias = this.state.formData.categorias.map(function (item, index) {
-        return /*#__PURE__*/React.createElement("div", {
-          className: "btn btn-outline-primary m-2",
+        return /*#__PURE__*/React.createElement("li", {
           key: 'categorias_' + index,
           onClick: () => this.selectCategorias(item.id, item.nome),
           style: {
@@ -271,9 +270,11 @@ class Compartilhe extends React.Component {
       className: "row"
     }, /*#__PURE__*/React.createElement("div", {
       className: "col-md-7"
-    }, /*#__PURE__*/React.createElement("p", null, "Selecione os temas:"), categorias, /*#__PURE__*/React.createElement("p", null, "Selecione as dimens\xF5es:"), /*#__PURE__*/React.createElement("ul", {
+    }, /*#__PURE__*/React.createElement("p", null, "Selecione os temas:"), /*#__PURE__*/React.createElement("ul", {
+      className: "toggle"
+    }, categorias), /*#__PURE__*/React.createElement("p", null, "Selecione a dimens\xE3o:"), /*#__PURE__*/React.createElement("ul", {
       className: "select-form"
-    }, dimensoes), /*#__PURE__*/React.createElement("p", null, "Indicador:"), /*#__PURE__*/React.createElement("select", {
+    }, dimensoes), /*#__PURE__*/React.createElement("p", null, "Escolha um indicador:"), /*#__PURE__*/React.createElement("select", {
       name: "select",
       className: "form-control"
     }, /*#__PURE__*/React.createElement("option", {
