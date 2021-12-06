@@ -26,7 +26,43 @@ const Pergunta = () => {
   };
   return /*#__PURE__*/React.createElement("div", {
     className: "row"
-  }, recursoMap.map((item, key) => {
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "rol-md-12"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "row"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "col-md-3"
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "col-md-6"
+  }, /*#__PURE__*/React.createElement("ul", {
+    className: "menu-small mb-2"
+  }, /*#__PURE__*/React.createElement("li", {
+    className: "cursor"
+  }, "Tema"), /*#__PURE__*/React.createElement("li", {
+    className: "cursor"
+  }, "Tipo"), /*#__PURE__*/React.createElement("li", {
+    className: "cursor"
+  }, "Palavra-chave"), /*#__PURE__*/React.createElement("li", {
+    className: "cursor"
+  }, "Classifica\xE7\xE3o")), /*#__PURE__*/React.createElement("div", {
+    className: "input-icon"
+  }, /*#__PURE__*/React.createElement("input", {
+    id: "ativarBox",
+    type: "text",
+    className: "form-control",
+    placeholder: "Busque um ...."
+  }), /*#__PURE__*/React.createElement("i", {
+    className: "fas fa-search"
+  })), /*#__PURE__*/React.createElement("ul", {
+    className: "box-search-itens box-busca"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "text-center"
+  }, /*#__PURE__*/React.createElement("img", {
+    src: "/img/load.gif",
+    alt: "",
+    width: "60",
+    className: "login-img"
+  }))), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null)))), recursoMap.map((item, key) => {
     return /*#__PURE__*/React.createElement("div", {
       className: "col-md-4",
       key: key
@@ -106,5 +142,36 @@ const Pergunta = () => {
         <br/>
     </div>*/
     ;
-  }));
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "col-md-12 text-center"
+  }, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("nav", {
+    "aria-label": "Page navigation example"
+  }, /*#__PURE__*/React.createElement("ul", {
+    className: "pagination"
+  }, /*#__PURE__*/React.createElement("li", {
+    className: "page-item"
+  }, /*#__PURE__*/React.createElement("a", {
+    className: "page-link",
+    href: "#"
+  }, "Previous")), /*#__PURE__*/React.createElement("li", {
+    className: "page-item"
+  }, /*#__PURE__*/React.createElement("a", {
+    className: "page-link",
+    href: "#"
+  }, "1")), /*#__PURE__*/React.createElement("li", {
+    className: "page-item"
+  }, /*#__PURE__*/React.createElement("a", {
+    className: "page-link",
+    href: "#"
+  }, "2")), /*#__PURE__*/React.createElement("li", {
+    className: "page-item"
+  }, /*#__PURE__*/React.createElement("a", {
+    className: "page-link",
+    href: "#"
+  }, "3")), /*#__PURE__*/React.createElement("li", {
+    className: "page-item"
+  }, /*#__PURE__*/React.createElement("a", {
+    className: "page-link",
+    href: "#"
+  }, "Next")))), /*#__PURE__*/React.createElement("br", null)));
 };

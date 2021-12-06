@@ -27,7 +27,7 @@
 
                 <div id="recurso">&nbsp;</div>
                 {{----}}
-                <div class="col-md-4 ">
+                {{--<div class="col-md-4 ">
                     <div class="dorder-container">
 
                         <div class="bg-lgt">
@@ -72,7 +72,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>--}}
                 {{----}}
 
             </div>

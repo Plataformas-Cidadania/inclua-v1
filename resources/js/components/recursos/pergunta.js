@@ -28,6 +28,35 @@ const Pergunta = () => {
 
     return (
         <div className="row">
+            <div className="rol-md-12">
+                <div className="row">
+                    <div className="col-md-3"/>
+                    <div className="col-md-6">
+                        <ul className="menu-small mb-2">
+                            <li className="cursor">Tema</li>
+                            <li className="cursor">Tipo</li>
+                            <li className="cursor">Palavra-chave</li>
+                            <li className="cursor">Classificação</li>
+                        </ul>
+                        <div className="input-icon">
+                            <input id="ativarBox" type="text" className="form-control" placeholder="Busque um ...."/>
+                            <i className="fas fa-search"/>
+                        </div>
+                        <ul className="box-search-itens box-busca">
+                            <div className="text-center">
+                                <img src="/img/load.gif" alt="" width="60" className="login-img" />
+                            </div>
+                            {/*<div style={{display: this.state.msg === '' ? '' : 'none'}}>
+                        {menuList}
+                    </div>
+                    <div style={{display: this.state.msg === '' ? 'none' : ''}} className="p-2 text-center">
+                        {this.state.msg}
+                    </div>*/}
+                        </ul>
+                        <br/><br/>
+                    </div>
+                </div>
+            </div>
             {
                 recursoMap.map((item, key) => {
                     return(
@@ -111,6 +140,21 @@ const Pergunta = () => {
                     );
                 })
             }
+
+            <div className="col-md-12 text-center">
+                <br/>
+                <nav aria-label="Page navigation example">
+                    <ul className="pagination">
+                        <li className="page-item"><a className="page-link" href="#">Previous</a></li>
+                        <li className="page-item"><a className="page-link" href="#">1</a></li>
+                        <li className="page-item"><a className="page-link" href="#">2</a></li>
+                        <li className="page-item"><a className="page-link" href="#">3</a></li>
+                        <li className="page-item"><a className="page-link" href="#">Next</a></li>
+                    </ul>
+                </nav>
+                <br/>
+            </div>
+
         </div>
     );
 };
