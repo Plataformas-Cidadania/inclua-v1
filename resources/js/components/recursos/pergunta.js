@@ -24,7 +24,16 @@ const Pergunta = () => {
         5:'fas fa-link',
     };
 
+    let menu = [
+        {id: 1, title: "Tema", txt: 'Busque por tema', rota: ''},
+        {id: 2, title: "Tipo", txt: 'Busque por tipo', rota: ''},
+        {id: 3, title: "Palavra-chave", txt: 'Busque por palavra-chave', rota: ''},
+        {id: 4, title: "Classificação", txt: 'Busque por Classificação', rota: ''},
+    ];
 
+    const btnSearch = (id, txt, rota) => {
+        console.log(id, txt, rota)
+    }
 
     return (
         <div className="row">
@@ -33,10 +42,14 @@ const Pergunta = () => {
                     <div className="col-md-3"/>
                     <div className="col-md-6">
                         <ul className="menu-small mb-2">
-                            <li className="cursor">Tema</li>
-                            <li className="cursor">Tipo</li>
-                            <li className="cursor">Palavra-chave</li>
-                            <li className="cursor">Classificação</li>
+                            {
+                                menu.map((item, key) => {
+                                    return (<li className="cursor"
+                                                key={'menu_'+key}
+                                                onClick={() => btnSearch(item.id, item.txt, item.rota)}
+                                    >{item.title}</li>);
+                                })
+                            }
                         </ul>
                         <div className="input-icon">
                             <input id="ativarBox" type="text" className="form-control" placeholder="Busque um ...."/>

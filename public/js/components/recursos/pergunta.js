@@ -24,6 +24,32 @@ const Pergunta = () => {
     4: 'far fa-file-video',
     5: 'fas fa-link'
   };
+  let menu = [{
+    id: 1,
+    title: "Tema",
+    txt: 'Busque por tema',
+    rota: ''
+  }, {
+    id: 2,
+    title: "Tipo",
+    txt: 'Busque por tipo',
+    rota: ''
+  }, {
+    id: 3,
+    title: "Palavra-chave",
+    txt: 'Busque por palavra-chave',
+    rota: ''
+  }, {
+    id: 4,
+    title: "Classificação",
+    txt: 'Busque por Classificação',
+    rota: ''
+  }];
+
+  const btnSearch = (id, txt, rota) => {
+    console.log(id, txt, rota);
+  };
+
   return /*#__PURE__*/React.createElement("div", {
     className: "row"
   }, /*#__PURE__*/React.createElement("div", {
@@ -36,15 +62,13 @@ const Pergunta = () => {
     className: "col-md-6"
   }, /*#__PURE__*/React.createElement("ul", {
     className: "menu-small mb-2"
-  }, /*#__PURE__*/React.createElement("li", {
-    className: "cursor"
-  }, "Tema"), /*#__PURE__*/React.createElement("li", {
-    className: "cursor"
-  }, "Tipo"), /*#__PURE__*/React.createElement("li", {
-    className: "cursor"
-  }, "Palavra-chave"), /*#__PURE__*/React.createElement("li", {
-    className: "cursor"
-  }, "Classifica\xE7\xE3o")), /*#__PURE__*/React.createElement("div", {
+  }, menu.map((item, key) => {
+    return /*#__PURE__*/React.createElement("li", {
+      className: "cursor",
+      key: 'menu_' + key,
+      onClick: () => btnSearch(item.id, item.txt, item.rota)
+    }, item.title);
+  })), /*#__PURE__*/React.createElement("div", {
     className: "input-icon"
   }, /*#__PURE__*/React.createElement("input", {
     id: "ativarBox",
