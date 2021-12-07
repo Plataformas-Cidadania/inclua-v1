@@ -20,8 +20,7 @@ class CreatePerguntaTable extends Migration
             $table->string('legenda', 200)->comment('Legenda a pergunta');
             $table->integer('vl_minimo')->nullable()->comment('Armazena o valor minimo que se pode ter na resposta da pergunta');
             $table->integer('vl_maximo')->nullable()->comment('Armazena o valor maximo que se pode ter na resposta da pergunta');
-            $table->integer('tipo')->comment('Tipo de pergunta');
-            $table->enum('tipo', ['1', '2', '3']);
+            $table->enum('tipo', [1, 2, 3])->comment('Tipo de pergunta');
             $table->boolean('nao_se_aplica')->comment('armazena se devemos adicionar marcação de nao se aplica na pergunta');
             $table->boolean('inverter')->comment('armazena se devemos ou nao inverter a pontuação da pergunta');
             $table->integer('id_indicador');
