@@ -49,13 +49,20 @@ class Pergunta extends Model
 		'vl_maximo',
 		'id_indicador'
 	];
-
+	protected $with = ['perguntas'];
 
 	public function indicador()
 	{
 		return $this->belongsTo(Indicador::class, 'id_indicador');
 	}
-
+	public function perguntas()
+	{
+		return $this->hasMany(Pergunta::class, 'id_ParguntaOrigen');
+	}
+	public function perguntaPai()
+	{
+		return $this->belongsTo(Pergunta::class, 'id_ParguntaOrigen');
+	}
 	public function respostas()
 	{
 		return $this->hasMany(Resposta::class, 'id_pergunta');
