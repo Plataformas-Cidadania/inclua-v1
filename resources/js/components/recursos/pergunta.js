@@ -9,8 +9,10 @@ const Pergunta = () => {
 
     const Recurso = async () => {
         try {
-            const result = await axios.get('json/recursos.json');
-            setRecursoMap(result.data)
+            //const result = await axios.get('json/recursos.json');
+            const result = await axios.get('api/recurso');
+            console.log(result.data.data);
+            setRecursoMap(result.data.data)
         } catch (error) {
             console.log(error);
         }
@@ -34,6 +36,8 @@ const Pergunta = () => {
     const btnSearch = (id, txt, rota) => {
         console.log(id, txt, rota)
     }
+
+
 
     return (
         <div className="row">
@@ -70,7 +74,8 @@ const Pergunta = () => {
                     </div>
                 </div>
             </div>
-            {
+           {
+
                 recursoMap.map((item, key) => {
                     return(
 
