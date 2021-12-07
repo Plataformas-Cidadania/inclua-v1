@@ -191,27 +191,21 @@ class APISeeder extends Seeder
             'ultimo_acesso' => Carbon::parse('2000-01-01'),
             'esfera' => 'Area de atuacao 1',
             'id_tipo_recurso' => 1,
-            'idioma' => 'PT-BR',
             'id_formato' => 1,
-            'autoria' => 'world health organization',
         ]);
         DB::table('avaliacao.recurso')->insert([
             'nome' => 'Recurso 2',
             'ultimo_acesso' => Carbon::parse('2000-01-01'),
             'esfera' => 'Area de atuacao 2',
             'id_tipo_recurso' => 1,
-            'idioma' => 'PT-BR',
             'id_formato' => 2,
-            'autoria' => 'world health organization',
         ]);
         DB::table('avaliacao.recurso')->insert([
             'nome' => 'Recurso 3',
             'ultimo_acesso' => Carbon::parse('2000-01-01'),
             'esfera' => 'Area de atuacao 2',
             'id_tipo_recurso' => 2,
-            'idioma' => 'PT-BR',
             'id_formato' => 1,
-            'autoria' => 'world health organization',
         ]);
         // CATEGORIZACAO
         DB::table('avaliacao.categorizacao')->insert([

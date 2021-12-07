@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Api\Controller;
+use App\Models\Autoria;
 use App\Models\Recurso;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\Eloquent\RelationNotFoundException;
@@ -43,6 +44,51 @@ class RecursoController extends Controller
             'Recurso retornados com sucesso',
             $res
         );
+    }
+
+    /**
+     * Obter uma lista de autores especificados por um id de recurso
+     *
+     * @param int $id_recurso
+     *
+     * @return JsonResponse
+     */
+    public function getAllAutoresPorIdRecurso($id_recurso): JsonResponse
+    {
+        try {
+            $res = $this->repo->getAllAutoresPorIdRecurso($id_recurso);
+            return $this->successResponse(
+                'Retornado com sucesso',
+                $res
+            );
+        }catch (Exception $exception) {
+            if ($exception instanceof ModelNotFoundException)
+                return $this->errorResponse('Not found');
+            return $this->errorResponse('Erro inesperado.'.$exception);
+        }
+    }
+
+
+    /**
+     * Obter uma lista de links especificados por um id de recurso
+     *
+     * @param int $id_recurso
+     *
+     * @return JsonResponse
+     */
+    public function getAllLinksPorIdRecurso($id_recurso): JsonResponse
+    {
+        try {
+            $res = $this->repo->getAllLinksPorIdRecurso($id_recurso);
+            return $this->successResponse(
+                'Retornado com sucesso',
+                $res
+            );
+        }catch (Exception $exception) {
+            if ($exception instanceof ModelNotFoundException)
+                return $this->errorResponse('Not found');
+            return $this->errorResponse('Erro inesperado.'.$exception);
+        }
     }
 
     /**

@@ -3,30 +3,29 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Api\Controller;
-use App\Models\Autor;
-use App\Models\Categorizacao;
+use App\Models\Autoria;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\Eloquent\RelationNotFoundException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Exception;
-use App\Repository\AutorRepository;
+use App\Repository\AutoriaRepository;
 
-class AutorController extends Controller
+class AutoriaController extends Controller
 {
-    private AutorRepository $repo;
-    private  $rules = [
-        'id_autor' => 'string|min:1|nullable',
-        'nome' => 'string|min:1|nullable',
+    private AutoriaRepository $repo;
+    private $rules = [
+    'id_autor' => 'int|min:1',
+    'id_recurso' => 'int|min:1',
     ];
-    public function __construct(AutorRepository $repo)
+    public function __construct(AutoriaRepository $repo)
     {
         $this->repo = $repo;
     }
 
     /**
-     * Mostrar todos os indicatores.
+     * Mostrar todos.
      *
      * @param null
      *
@@ -35,15 +34,15 @@ class AutorController extends Controller
 
     public function getAll(): JsonResponse
     {
-        $reses = $this->repo->all();
+        $res = $this->repo->all();
         return $this->successResponse(
-            'Autores retornados com sucesso',
-            $reses
+            'Autorias retornadas com sucesso',
+            $res
         );
     }
 
     /**
-     * Adicionar um novo autor
+     * Adicionar um novo
      *
      * @param Request $request
      *
@@ -57,11 +56,12 @@ class AutorController extends Controller
             if ($validator->fails()) {
                 return $this->errorResponse($validator->errors()->all());
             }
-
             $data = $this->getData($request);
-            $res = $this->repo->create($data);
+
+            $res = $this->repo->createCompositeId($data);
+
             return $this->successResponse(
-			    'Autor '.$res->id_autor.' foi adicionado',
+			    ''.$res->id_autor.','.$res->id_recurso.' foi adicionado',
 			    $this->transform($res)
 			);
         } catch (Exception $exception) {
@@ -70,80 +70,54 @@ class AutorController extends Controller
     }
 
     /**
-     * Obter um autor especificado pelo id
+     * Obter especificado pelo id
      *
-     * @param int $id
+     * @param int $firstId
+     *
+     * @param int $secondId
      *
      * @return JsonResponse
      */
-    public function get($id): JsonResponse
+    public function get(int $firstId, int $secondId): JsonResponse
     {
         try {
-            $res = $this->repo->findById($id);
+
+            $res = $this->repo->findByCompositeId($firstId,$secondId);
             return $this->successResponse(
-                'Autor retornado com sucesso',
+                'Retornado com sucesso',
                 $res
             );
         }catch (Exception $exception) {
             if ($exception instanceof ModelNotFoundException)
                 return $this->errorResponse('Not found');
-            return $this->errorResponse('Erro inesperado.'.$exception);
+            return $this->errorResponse($exception);
         }
     }
 
+
     /**
-     * Atualizar um autor especificado pelo id
+     * Remover da base de dados especificado pelo id
      *
-     * @param int $id
-     * @param Request $request
+     * @param int $firstId
+     *
+     * @param int $secondId
+     *
      *
      * @return JsonResponse
      */
-    public function update($id, Request $request): JsonResponse
+    public function destroy($firstId,$secondId): JsonResponse
     {
-
         try {
-            $validator = $this->getValidator($request);
-
-            if ($validator->fails()) {
-                return $this->errorResponse($validator->errors()->all());
-            }
-
-            $data = $this->getData($request);
-
-            $res = $this->repo->update($id,$data);
+            $res = $this->repo->deleteByCompositeId($firstId,$secondId);
 
             return $this->successResponse(
-			    'Autor foi atualizado com sucesso.',
+			    ''.$firstId.','.$secondId.' deletado com sucesso',
 			    $this->transform($res)
 			);
         } catch (Exception $exception) {
             if ($exception instanceof ModelNotFoundException)
                 return $this->errorResponse('Not found');
-            return $this->errorResponse('Erro inesperado.'.$exception->getMessage());
-        }
-    }
-
-    /**
-     * Remover um autor da base de dados especificado pelo id
-     *
-     * @param int $id
-     *
-     * @return JsonResponse
-     */
-    public function destroy($id): JsonResponse
-    {
-        try {
-            $res = $this->repo->deleteById($id);
-
-            return $this->successResponse(
-			    'Autor '.$id.' deletado com sucesso',
-			    $this->transform($res)
-			);
-        } catch (Exception $exception) {
-            if ($exception instanceof ModelNotFoundException)
-                return $this->errorResponse('Not found');
-            return $this->errorResponse('Erro inesperado'.$exception);
+            return $this->errorResponse($exception);
         }
     }
 
@@ -172,17 +146,17 @@ class AutorController extends Controller
     }
 
     /**
-     * Transformar o autor em um array
+     * Transformar em um array
      *
-     * @param Autor $res
+     * @param Autoria $res
      *
      * @return array
      */
-    protected function transform(Autor $res): array
+    protected function transform(Autoria $res): array
     {
         return [
             'id_autor' => $res->id_autor,
-            'nome' => $res->nome,
+            'id_recurso' => $res->id_recurso
         ];
     }
 

@@ -10,12 +10,12 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Autorium
- * 
+ *
  * @property int $id_autor
  * @property int $id_recurso
  * @property int $id_tipo_recurso
  * @property int $id_formato
- * 
+ *
  * @property Autor $autor
  * @property Recurso $recurso
  *
@@ -36,8 +36,8 @@ class Autoria extends Model
 		'id_autor',
 		'id_recurso'
 	];
-	
-	protected $with = ['autor', 'recurso'];
+
+	protected $with = ['autor'];
 
 	public function autor()
 	{

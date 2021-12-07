@@ -2,7 +2,6 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Api\Http\Controllers\Api\Api\IndicadorsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -109,6 +108,19 @@ Route::group([
 });
 
 Route::group([
+    'prefix' => 'autoria',
+], function () {
+    Route::get('/', [App\Http\Controllers\Api\AutoriaController::class, 'getAll'])
+        ->name('api.autoria.getAll');
+    Route::get('/{id_autor}/{id_recurso}',[App\Http\Controllers\Api\AutoriaController::class, 'get'])
+        ->name('api.autoria.get');
+    Route::post('/', [App\Http\Controllers\Api\AutoriaController::class, 'store'])
+        ->name('api.autoria.store');
+    Route::delete('/{id_autor}/{id_recurso}',[App\Http\Controllers\Api\AutoriaController::class, 'destroy'])
+        ->name('api.autoria.destroy');
+});
+
+Route::group([
     'prefix' => 'recurso',
 ], function () {
     Route::get('/', [App\Http\Controllers\Api\RecursoController::class, 'getAll'])
@@ -121,6 +133,10 @@ Route::group([
         ->name('api.recurso.update');
     Route::delete('/{recurso}',[App\Http\Controllers\Api\RecursoController::class, 'destroy'])
         ->name('api.recurso.destroy');
+    Route::get('autores/{recurso}',[App\Http\Controllers\Api\RecursoController::class, 'getAllAutoresPorIdRecurso'])
+        ->name('api.recurso.getAllAutoresPorIdRecurso');
+    Route::get('links/{recurso}',[App\Http\Controllers\Api\RecursoController::class, 'getAllLinksPorIdRecurso'])
+        ->name('api.recurso.getAllLinksPorIdRecurso');
 });
 
 
