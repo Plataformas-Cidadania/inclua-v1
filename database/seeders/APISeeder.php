@@ -17,86 +17,116 @@ class APISeeder extends Seeder
     {
         // DIMENSOES
         DB::table('avaliacao.dimensao')->insert([
-            'nome' => 'Participação social e representação',
-            //'descricao' => 'Chama atenção para o conjunto de relações institucionais ...'
+            'numero' => 1,
+            'titulo' => 'Participação social e representação',
+            'descricao' => 'Chama atenção para o conjunto de relações institucionais ...'
         ]);
         DB::table('avaliacao.dimensao')->insert([
-            'nome' => 'Dimensão 2',
-            //'descricao' => '....'
+            'numero' => 2,
+            'titulo' => 'Dimensão 2',
+            'descricao' => '....'
         ]);
         // INDICADORES
         DB::table('avaliacao.indicador')->insert([
-            'nome' => 'indc',
+            'numero' => 1,
+            'titulo' => 'indc',
             'descricao' => 'Identifica e avalia o grau de maturidade da articulação institucional...',
             'id_dimensao' => 1,
         ]);
 
         DB::table('avaliacao.indicador')->insert([
-            'nome' => 'indc',
+            'numero' => 2,
+            'titulo' => 'indc',
             'descricao' => 'Identifica o indicador 2',
             'id_dimensao' => 1,
         ]);
 
         DB::table('avaliacao.indicador')->insert([
-            'nome' => 'indc',
+            'numero' => 3,
+            'titulo' => 'indc',
             'descricao' => 'Identifica ...',
             'id_dimensao' => 2,
         ]);
 
         DB::table('avaliacao.indicador')->insert([
-            'nome' => 'indc',
+            'numero' => 4,
+            'titulo' => 'indc',
             'descricao' => 'Identifica mais um...',
             'id_dimensao' => 2,
         ]);
         // PERGUNTAS
         DB::table('avaliacao.pergunta')->insert([
-            'nome' => '....',
+            'letra' => 'a',
+            'titulo' => '....',
             'descricao' => 'Caso o processo de implementação dessa oferta pública envolva mais de uma organização (ou múltiplas unidades de uma organização) responsável por etapas diferentes da produção do bem ou serviço, existem espaços e mecanismos para promover a coordenação e a articulação das ações entre essas organizações? [Por exemplo: reuniões periódicas, comitês gestores, instâncias de mediação, etc.] Marque uma opção abaixo.',
+            'legenda' => 'Sendo 1: Discorda totalmente e 5: Concorda Totalmente',
             'vl_minimo' => 0,
-            'vl_medio' => 0,
             'vl_maximo' => 1,
+            'tipo'=> 1,
+            'nao_se_aplica'=> 0,
+            'inverter' => 0,
             'id_indicador' => 1,
         ]);
 
         DB::table('avaliacao.pergunta')->insert([
-            'nome' => '....',
+            'letra' => 'a',
+            'titulo' => '....',
             'descricao' => 'Busca saber sobre xxx',
+            'legenda' => 'Sendo 1: Discorda totalmente e 5: Concorda Totalmente',
             'vl_minimo' => 0,
-            'vl_medio' => 3,
             'vl_maximo' => 5,
+            'tipo'=> 1,
+            'nao_se_aplica'=> 0,
+            'inverter' => 0,
             'id_indicador' => 1,
         ]);
 
         DB::table('avaliacao.pergunta')->insert([
-            'nome' => '....',
+            'letra' => 'a',
+            'titulo' => '....',
             'descricao' => 'Busca saber sobre xxx',
+            'legenda' => 'Sendo 1: Discorda totalmente e 5: Concorda Totalmente',
             'vl_minimo' => 0,
-            'vl_medio' => 5,
             'vl_maximo' => 10,
+            'tipo'=> 1,
+            'nao_se_aplica'=> 0,
+            'inverter' => 0,
             'id_indicador' => 2,
         ]);
         DB::table('avaliacao.pergunta')->insert([
-            'nome' => '....',
+            'letra' => 'a',
+            'titulo' => '....',
             'descricao' => 'Busca saber sobre xxx',
+            'legenda' => 'Sendo 1: Discorda totalmente e 5: Concorda Totalmente',
             'vl_minimo' => 0,
-            'vl_medio' => 0,
             'vl_maximo' => 1,
+            'tipo'=> 1,
+            'nao_se_aplica'=> 0,
+            'inverter' => 0,
             'id_indicador' => 2,
         ]);
         DB::table('avaliacao.pergunta')->insert([
-            'nome' => '....',
+            'letra' => 'a',
+            'titulo' => '....',
             'descricao' => 'Busca saber sobre xxx',
+            'legenda' => 'Sendo 1: Discorda totalmente e 5: Concorda Totalmente',
             'vl_minimo' => 0,
-            'vl_medio' => 0,
             'vl_maximo' => 1,
+            'tipo'=> 1,
+            'nao_se_aplica'=> 0,
+            'inverter' => 0,
             'id_indicador' => 3,
         ]);
         DB::table('avaliacao.pergunta')->insert([
-            'nome' => '....',
+            'letra' => 'a',
+            'titulo' => '....',
             'descricao' => 'Busca saber sobre xxx',
+            'legenda' => 'Sendo 1: Discorda totalmente e 5: Concorda Totalmente',
             'vl_minimo' => 0,
-            'vl_medio' => 0,
             'vl_maximo' => 1,
+            'tipo'=> 1,
+            'nao_se_aplica'=> 0,
+            'inverter' => 0,
             'id_indicador' => 4,
         ]);
         // RISCOS
