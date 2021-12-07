@@ -16,16 +16,20 @@ class CreatePerguntaTable extends Migration
         Schema::create('avaliacao.pergunta', function (Blueprint $table) {
             $table->increments('id_pergunta')->comment('Identifica a pergunta');
             $table->string('letra', 2)->comment('Letra a pergunta');
+<<<<<<< HEAD
             $table->string('titulo', 50)->comment('Nome da pergunta');
+=======
+>>>>>>> 8fd58ba1e998755a39b4ef6d32414c18252d587c
             $table->text('descricao')->comment('Descrição da pergunta');
+            $table->string('legenda', 50)->comment('Legenda a pergunta');
             $table->integer('vl_minimo')->nullable()->comment('Armazena o valor minimo que se pode ter na resposta da pergunta');
-            $table->integer('vl_medio')->nullable()->comment('Armazena o valor medio que se pode ter na resposta da pergunta');
             $table->integer('vl_maximo')->nullable()->comment('Armazena o valor maximo que se pode ter na resposta da pergunta');
+            $table->integer('nao_se_aplica')->comment('armazena se devemos adicionar marcação de nao se aplica na pergunta');
+            $table->integer('inverter')->comment('armazena se devemos ou nao inverter a pontuação da pergunta');
             $table->integer('id_indicador');
             $table->foreign('id_indicador')->references('id_indicador')
                     ->on('avaliacao.indicador')
                     ->onDelete('cascade');
-
         });
     }
 

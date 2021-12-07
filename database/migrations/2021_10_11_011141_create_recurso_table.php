@@ -18,6 +18,7 @@ class CreateRecursoTable extends Migration
             $table->string('nome', 50)->comment('nomde do recurso');
             $table->timestamp('ultimo_acesso')->comment('Data do último acesso');
             $table->string('esfera', 50)->comment('nome da área de atuação');
+            $table->string('idioma',50)->comment('idioma do recurso');
             $table->integer('id_tipo_recurso')->nullable();
             $table->foreign('id_tipo_recurso')->references('id_tipo_recurso')
                     ->on('avaliacao.tipo_recurso')

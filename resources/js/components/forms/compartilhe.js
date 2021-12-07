@@ -3,20 +3,24 @@ class Compartilhe extends React.Component{
         super(props);
         this.state = {
             form: {
-                type: '',
-                name: '',
-                email: '',
-                cel: '',
-                whatsapp: '',
-                mensagem: '',
+                idioma: '',
+
+                id_recurso: '',
+                nome: '',
+                esfera: '',
+                id_tipo_recurso: '',
+                id_formato: '',
+
             },
             button: true,
             loading: false,
             requireds: {
-                name: true,
-                email: true,
-                cel: true,
-                mensagem: true,
+                id_recurso: '',
+                nome: '',
+                esfera: '',
+                id_tipo_recurso: '',
+                id_formato: '',
+                idioma: '',
             },
             showMsg: 0,
             msg: '',
@@ -36,7 +40,7 @@ class Compartilhe extends React.Component{
         this.handleInputChange = this.handleInputChange.bind(this);
         this.compartilhe = this.compartilhe.bind(this);
         this.validate = this.validate.bind(this);
-        this.selectType = this.selectType.bind(this);
+        this.selectDimensao = this.selectDimensao.bind(this);
         this.getData = this.getData.bind(this);
         this.selectFormato = this.selectFormato.bind(this);
         this.selectIdioma = this.selectIdioma.bind(this);
@@ -104,31 +108,19 @@ class Compartilhe extends React.Component{
         return valid;
     }
 
-    selectType(type){
-        let typeSelect = 0;
-        if(type===1){
-            typeSelect = "Dúvidas";
-        }
-        if(type===2){
-            typeSelect = "Problemas";
-        }
-        if(type===3){
-            typeSelect = "Sugestão";
-        }
-        if(type===4){
-            typeSelect = "Outros";
+    selectDimensao(type){
+        let formDimensao = {
+            id_dimensao: type,
+
+            /*id_recurso: '',
+            nome: '',
+            esfera: '',
+            id_tipo_recurso: '',
+            id_formato: '',
+            idioma: '',*/
         }
 
-        let formTipe = {
-            type: typeSelect,
-            name: this.state.form.name,
-            email: this.state.form.email,
-            cel: this.state.form.cel,
-            whatsapp:  this.state.form.whatsapp,
-            mensagem:  this.state.form.mensagem,
-        }
-
-        this.setState({form: formTipe, iconType: type});
+        this.setState({form: formDimensao, iconType: type});
     }
 
     selectFormato(id, nome){
@@ -136,7 +128,16 @@ class Compartilhe extends React.Component{
             id: id,
             nome: nome,
         };
-        this.setState({formatoSelecionado: formatoSelecionado});
+        let formIdioma = {
+            idioma: id,
+            /*name: this.state.form.name,
+            email: this.state.form.email,
+            cel: this.state.form.cel,
+            whatsapp:  this.state.form.whatsapp,
+            mensagem:  this.state.form.mensagem,*/
+        }
+
+        this.setState({formatoSelecionado: formatoSelecionado, form: formIdioma});
     }
 
     selectIdioma(id){
@@ -182,7 +183,7 @@ class Compartilhe extends React.Component{
         if(this.state.formData.dimensoes){
             dimensoes = this.state.formData.dimensoes.map(function(item, index){
                 return (
-                    <li style={{backgroundColor: this.state.iconType === 1 ? '#E6DACE' : ''}} onClick={() => this.selectType(item.id)} key={'dimensoes_'+item.id}>
+                    <li style={{backgroundColor: this.state.iconType === 1 ? '#E6DACE' : ''}} onClick={() => this.selectDimensao(item.id)} key={'dimensoes_'+item.id}>
                         <img src={"/img/dimensao" + item.id + ".png"} alt="" />
                     </li>
                 );

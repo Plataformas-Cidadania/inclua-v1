@@ -17,7 +17,16 @@ const Pergunta = () => {
     }
   };
 
-  return /*#__PURE__*/React.createElement("div", null, forumMap.map((item, key) => {
+  return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: "dorder-container float-end"
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "btn btn-theme bg-pri",
+    type: "button",
+    "data-bs-toggle": "modal",
+    "data-bs-target": "#exampleModal"
+  }, "Inserir pergunta ", /*#__PURE__*/React.createElement("i", {
+    className: "fas fa-angle-right"
+  }))), /*#__PURE__*/React.createElement("br", null), forumMap.map((item, key) => {
     return /*#__PURE__*/React.createElement("div", {
       className: "col-md-12",
       key: key
@@ -51,5 +60,36 @@ const Pergunta = () => {
     }, "criado 46 segundos atr\xE1s"))))), /*#__PURE__*/React.createElement("div", {
       className: "col-md-12"
     }, /*#__PURE__*/React.createElement("hr", null))));
-  }));
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "modal fade",
+    id: "exampleModal",
+    tabIndex: "-1",
+    "aria-labelledby": "exampleModalLabel",
+    "aria-hidden": "true"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "modal-dialog"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "modal-content"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "modal-header"
+  }, /*#__PURE__*/React.createElement("h5", {
+    className: "modal-title",
+    id: "exampleModalLabel"
+  }, "Modal title"), /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    className: "btn-close",
+    "data-bs-dismiss": "modal",
+    "aria-label": "Close"
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "modal-body"
+  }, "..."), /*#__PURE__*/React.createElement("div", {
+    className: "modal-footer"
+  }, /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    className: "btn btn-secondary",
+    "data-bs-dismiss": "modal"
+  }, "Close"), /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    className: "btn btn-primary"
+  }, "Save changes"))))));
 };
