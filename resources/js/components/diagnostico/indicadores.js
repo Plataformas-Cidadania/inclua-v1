@@ -11,7 +11,7 @@ const Indicadores = () => {
     const circleOpen = <i className="far fa-circle tx-pri"/>;
 
     useEffect(() => {
-        setDimensao(context.dimensao.info.numero);
+        setDimensao(context.dimensao.numero);
         setIndicador(context.indicador.numero);
         setTitulo(context.indicador.titulo);
         setDescricao(context.indicador.descricao);
@@ -24,7 +24,7 @@ const Indicadores = () => {
         4:'bg-qua',
         5:'bg-qui',
     };
-    bgColor = bgColor[context.dimensao.info.numero];
+    bgColor = bgColor[context.dimensao.numero];
 
     return (
         <div className="container">

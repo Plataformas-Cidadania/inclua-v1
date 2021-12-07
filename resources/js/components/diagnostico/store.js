@@ -34,11 +34,17 @@ const DiagnosticoProvider = ({children}) => {
 
     const listDimensoes = async () => {
         try {
-            //const result = await axios.get('teste-dimensoes');
-            const result = await axios.get('json/diagnostico.json');
-            setDimensoes(result.data)
-            setDimensao(result.data[0]);//pega a primeira dimensão
+            //const result = await axios.get('json/diagnostico.json');
+            const result = await axios.get('api/dimensao');
+            if(result.data.success){
+                const dimensoes = result.data.data
+                setDimensoes(dimensoes)
+                setDimensao(dimensoes[0]);//pega a primeira dimensão
+                return;
+            }
+            alert("Não foi possível carregar as dimensões");
         } catch (error) {
+            alert("Não foi possível carregar as dimensões");
             console.log(error);
         }
     }
