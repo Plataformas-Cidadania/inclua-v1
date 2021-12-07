@@ -57,11 +57,11 @@ class Pergunta extends Model
 	}
 	public function perguntas()
 	{
-		return $this->hasMany(Pergunta::class, 'id_ParguntaOrigen');
+		return $this->hasMany(Pergunta::class, 'id_perguntaPai');
 	}
 	public function perguntaPai()
 	{
-		return $this->belongsTo(Pergunta::class, 'id_ParguntaOrigen');
+		return $this->belongsTo(Pergunta::class, 'id_perguntaPai');
 	}
 	public function respostas()
 	{

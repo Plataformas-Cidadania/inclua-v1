@@ -57,7 +57,6 @@ class APISeeder extends Seeder
         // PERGUNTAS
         DB::table('avaliacao.pergunta')->insert([
             'letra' => 'a',
-            'titulo' => '....',
             'descricao' => 'Caso o processo de implementação dessa oferta pública envolva mais de uma organização (ou múltiplas unidades de uma organização) responsável por etapas diferentes da produção do bem ou serviço, existem espaços e mecanismos para promover a coordenação e a articulação das ações entre essas organizações? [Por exemplo: reuniões periódicas, comitês gestores, instâncias de mediação, etc.] Marque uma opção abaixo.',
             'legenda' => 'Sendo 1: Discorda totalmente e 5: Concorda Totalmente',
             'vl_minimo' => 0,
@@ -67,10 +66,21 @@ class APISeeder extends Seeder
             'inverter' => 0,
             'id_indicador' => 1,
         ]);
+        DB::table('avaliacao.pergunta')->insert([
+            'letra' => 'aa',
+            'descricao' => ' Pergunta filha de outa pergunta ',
+             'legenda' => 'Sendo 1: Discorda totalmente e 5: Concorda Totalmente',
+            'vl_minimo' => 0,
+            'vl_maximo' => 1,
+            'tipo'=> 1,
+            'nao_se_aplica'=> 0,
+            'inverter' => 0,
+            'id_indicador' => 1,
+            'id_perguntaPai' => 1,
+        ]);
 
         DB::table('avaliacao.pergunta')->insert([
             'letra' => 'a',
-            'titulo' => '....',
             'descricao' => 'Busca saber sobre xxx',
             'legenda' => 'Sendo 1: Discorda totalmente e 5: Concorda Totalmente',
             'vl_minimo' => 0,
@@ -83,7 +93,6 @@ class APISeeder extends Seeder
 
         DB::table('avaliacao.pergunta')->insert([
             'letra' => 'a',
-            'titulo' => '....',
             'descricao' => 'Busca saber sobre xxx',
             'legenda' => 'Sendo 1: Discorda totalmente e 5: Concorda Totalmente',
             'vl_minimo' => 0,
@@ -95,7 +104,6 @@ class APISeeder extends Seeder
         ]);
         DB::table('avaliacao.pergunta')->insert([
             'letra' => 'a',
-            'titulo' => '....',
             'descricao' => 'Busca saber sobre xxx',
             'legenda' => 'Sendo 1: Discorda totalmente e 5: Concorda Totalmente',
             'vl_minimo' => 0,
@@ -107,7 +115,6 @@ class APISeeder extends Seeder
         ]);
         DB::table('avaliacao.pergunta')->insert([
             'letra' => 'a',
-            'titulo' => '....',
             'descricao' => 'Busca saber sobre xxx',
             'legenda' => 'Sendo 1: Discorda totalmente e 5: Concorda Totalmente',
             'vl_minimo' => 0,
@@ -119,7 +126,6 @@ class APISeeder extends Seeder
         ]);
         DB::table('avaliacao.pergunta')->insert([
             'letra' => 'a',
-            'titulo' => '....',
             'descricao' => 'Busca saber sobre xxx',
             'legenda' => 'Sendo 1: Discorda totalmente e 5: Concorda Totalmente',
             'vl_minimo' => 0,
@@ -185,21 +191,27 @@ class APISeeder extends Seeder
             'ultimo_acesso' => Carbon::parse('2000-01-01'),
             'esfera' => 'Area de atuacao 1',
             'id_tipo_recurso' => 1,
+            'idioma' => 'PT-BR',
             'id_formato' => 1,
+            'autoria' => 'world health organization',
         ]);
         DB::table('avaliacao.recurso')->insert([
             'nome' => 'Recurso 2',
             'ultimo_acesso' => Carbon::parse('2000-01-01'),
             'esfera' => 'Area de atuacao 2',
             'id_tipo_recurso' => 1,
+            'idioma' => 'PT-BR',
             'id_formato' => 2,
+            'autoria' => 'world health organization',
         ]);
         DB::table('avaliacao.recurso')->insert([
             'nome' => 'Recurso 3',
             'ultimo_acesso' => Carbon::parse('2000-01-01'),
             'esfera' => 'Area de atuacao 2',
             'id_tipo_recurso' => 2,
+            'idioma' => 'PT-BR',
             'id_formato' => 1,
+            'autoria' => 'world health organization',
         ]);
         // CATEGORIZACAO
         DB::table('avaliacao.categorizacao')->insert([
