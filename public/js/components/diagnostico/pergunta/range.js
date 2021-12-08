@@ -45,8 +45,9 @@ const Range = props => {
     className: "mb-3"
   }, /*#__PURE__*/React.createElement("strong", null, "P", context.dimensao.dimensao, ".", context.indicador.indicador, props.letra), " ", props.descricao), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
     className: "range-merker"
-  }, range.map(item => {
+  }, range.map((item, key) => {
     return /*#__PURE__*/React.createElement("div", {
+      key: 'nota_' + props.letra + key,
       className: "range-merker-box"
     }, /*#__PURE__*/React.createElement("div", {
       className: "range-merker-box-item " + (resposta => item ? bgColor : ''),

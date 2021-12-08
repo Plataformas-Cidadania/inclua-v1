@@ -34,7 +34,8 @@ const Pergunta = props => {
       maximo: props.maximo,
       legenda: props.titulo,
       inverter: props.inverter,
-      naoSeAplica: props.naoSeAplica
+      naoSeAplica: props.naoSeAplica,
+      perguntas: props.perguntas
     }),
     "2": /*#__PURE__*/React.createElement(Nota, {
       id: props.id,
@@ -45,7 +46,8 @@ const Pergunta = props => {
       maximo: props.maximo,
       legenda: props.titulo,
       inverter: props.inverter,
-      naoSeAplica: props.naoSeAplica
+      naoSeAplica: props.naoSeAplica,
+      perguntas: props.perguntas
     }),
     "3": /*#__PURE__*/React.createElement(Range, {
       id: props.id,
@@ -56,7 +58,8 @@ const Pergunta = props => {
       maximo: props.maximo,
       legenda: props.titulo,
       inverter: props.inverter,
-      naoSeAplica: props.naoSeAplica
+      naoSeAplica: props.naoSeAplica,
+      perguntas: props.perguntas
     })
   };
   return /*#__PURE__*/React.createElement("div", {

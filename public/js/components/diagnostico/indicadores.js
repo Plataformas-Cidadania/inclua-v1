@@ -63,6 +63,7 @@ const Indicadores = () => {
   }, /*#__PURE__*/React.createElement("h3", null, titulo), /*#__PURE__*/React.createElement("p", null, descricao), /*#__PURE__*/React.createElement("br", null)), /*#__PURE__*/React.createElement("div", {
     className: "col-md-12"
   }, /*#__PURE__*/React.createElement(Perguntas, {
+    perguntas: context.indicador.perguntas,
     bgColor: bgColor
   })), /*#__PURE__*/React.createElement("div", {
     className: "col-md-12"
