@@ -1,7 +1,7 @@
 const Recurso = () => {
     return (
         <div>
-            <Pergunta/>
+            <Page/>
         </div>
     );
 };

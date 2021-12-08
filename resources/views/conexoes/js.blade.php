@@ -157,7 +157,7 @@
     <script src="js/components/forum/index.js"></script>
 @endif
 @if($rota=="recursos")
-    <script src="js/components/recursos/pergunta.js"></script>
+    <script src="js/components/recursos/page.js"></script>
     <script src="js/components/recursos/index.js"></script>
 @endif
 @if($rota=="compartilhe")
