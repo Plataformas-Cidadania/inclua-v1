@@ -5,14 +5,29 @@ const Page = () => {
   } = React;
   const [tipoMap, setTipoMap] = useState([]);
   const [formatoMap, setFormatoMap] = useState([]);
-  const [formAlterado, setFormAlterado] = useState(false);
   const [form, setForm] = useState({
     ultimo_acesso: '1992-02-10 13:21:37',
     id_tipo_recurso: 0,
     id_formato: 0
   });
+  let idiomaMap = [{
+    id: 1,
+    idioma: "PT-BR"
+  }, {
+    id: 2,
+    idioma: "EN"
+  }, {
+    id: 3,
+    idioma: "ES"
+  }];
   const [tipoSelected, setTipoSelected] = useState(0);
   const [formatoSelected, setFormatoSelected] = useState(0);
+  const [idiomaSelected, setIdiomaSelected] = useState(0);
+  const [notify, setNotify] = useState({
+    type: null,
+    text: null
+  });
+  console.log(notify);
   const [requireds, setRequireds] = useState({
     nome: true,
     esfera: true,
@@ -22,8 +37,7 @@ const Page = () => {
   });
   useEffect(() => {
     Tipo();
-    Formato(); //clickTipo(tipoSelected);
-    //clickFormato(formatoSelected);
+    Formato();
   }, []);
 
   const Tipo = async () => {
@@ -44,11 +58,27 @@ const Page = () => {
     }
   };
 
+  const handleNotify = notify => {
+    setNotify(notify);
+    setNotify({
+      type: null,
+      text: null
+    });
+  };
+
   const Insert = async () => {
     try {
       const result = await axios.post('api/recurso', form);
+      handleNotify({
+        type: 'success',
+        text: 'Recurso inserido, cadastre o links!'
+      });
     } catch (error) {
       console.log(error);
+      handleNotify({
+        type: 'error',
+        text: 'Recurso não foi inserido, tente novamente!'
+      });
     }
   };
 
@@ -70,6 +100,10 @@ const Page = () => {
     validate(newForm);
   };
 
+  const clickIdioma = id => {
+    setIdiomaSelected(id);
+  };
+
   const handleForm = event => {
     let {
       value,
@@ -80,7 +114,6 @@ const Page = () => {
     };
     setForm(newForm);
     validate(newForm);
-    console.log(event.target.value); //context.setResposta(props.id, e.target.value);
   };
 
   const validate = form => {
@@ -107,7 +140,7 @@ const Page = () => {
   }), /*#__PURE__*/React.createElement("div", {
     className: "row"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "rol-md-12"
+    className: "col-md-7"
   }, /*#__PURE__*/React.createElement("div", {
     className: "label-float"
   }, /*#__PURE__*/React.createElement("input", {
@@ -168,7 +201,7 @@ const Page = () => {
         background: item.id_formato === formatoSelected ? '#E6DACE' : ''
       }
     }, item.nome);
-  })), /*#__PURE__*/React.createElement("br", null)), /*#__PURE__*/React.createElement("div", {
+  })), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
     className: "col-md-12"
   }, /*#__PURE__*/React.createElement("div", {
     className: "dorder-container"
@@ -178,5 +211,31 @@ const Page = () => {
     onClick: Insert
   }, "Enviar ", /*#__PURE__*/React.createElement("i", {
     className: "fas fa-angle-right"
-  }))), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null))));
+  }))), /*#__PURE__*/React.createElement("div", null, notify.type), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null))), /*#__PURE__*/React.createElement("div", {
+    className: "col-md-5"
+  }, /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("strong", null, "Cadastrar links")), /*#__PURE__*/React.createElement("div", {
+    className: "label-float"
+  }, /*#__PURE__*/React.createElement("input", {
+    className: "form-control form-g ",
+    type: "text",
+    name: "nome",
+    id: "nome",
+    placeholder: " "
+  }), /*#__PURE__*/React.createElement("label", {
+    htmlFor: "nome"
+  }, "Link"), /*#__PURE__*/React.createElement("div", {
+    className: "label-box-info"
+  }, /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("i", {
+    className: "fas fa-exclamation-circle"
+  }), " Digite um link"))), /*#__PURE__*/React.createElement("ul", {
+    className: "toggle"
+  }, idiomaMap.map((item, key) => {
+    return /*#__PURE__*/React.createElement("li", {
+      key: 'idioma_' + key,
+      onClick: () => clickIdioma(item.idioma),
+      style: {
+        background: item.idioma === idiomaSelected ? '#E6DACE' : ''
+      }
+    }, item.idioma);
+  })))));
 };

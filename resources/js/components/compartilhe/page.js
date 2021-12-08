@@ -3,7 +3,6 @@ const Page = () => {
     const {useState, useEffect} = React;
     const [tipoMap, setTipoMap] = useState([]);
     const [formatoMap, setFormatoMap] = useState([]);
-    const [formAlterado, setFormAlterado] = useState(false);
 
     const [form, setForm] = useState({
         ultimo_acesso: '1992-02-10 13:21:37',
@@ -11,8 +10,19 @@ const Page = () => {
         id_formato: 0,
     });
 
+    let idiomaMap = [
+        {id: 1, idioma: "PT-BR"},
+        {id: 2, idioma: "EN"},
+        {id: 3, idioma: "ES"},
+    ];
+
     const [tipoSelected, setTipoSelected] = useState(0);
     const [formatoSelected, setFormatoSelected] = useState(0);
+    const [idiomaSelected, setIdiomaSelected] = useState(0);
+
+    const [notify, setNotify] = useState({type:null, text:null});
+
+    console.log(notify);
 
     const [requireds, setRequireds] = useState({
         nome: true,
@@ -22,13 +32,9 @@ const Page = () => {
         id_formato: true,
     });
 
-
-
     useEffect(() => {
         Tipo();
         Formato();
-        //clickTipo(tipoSelected);
-        //clickFormato(formatoSelected);
     }, []);
 
     const Tipo = async () => {
@@ -49,11 +55,19 @@ const Page = () => {
         }
     }
 
+    const handleNotify = (notify) =>{
+
+        setNotify(notify);
+        setNotify({type: null, text:null});
+    }
+
     const Insert = async () => {
         try {
             const result = await axios.post('api/recurso', form);
+            handleNotify({type: 'success', text: 'Recurso inserido, cadastre o links!'});
         } catch (error) {
             console.log(error);
+            handleNotify({type: 'error', text: 'Recurso não foi inserido, tente novamente!'});
         }
     }
 
@@ -77,6 +91,10 @@ const Page = () => {
         validate(newForm);
     }
 
+    const clickIdioma = (id) => {
+        setIdiomaSelected(id);
+    }
+
     const handleForm = (event) => {
         let { value, id } = event.target;
         let newForm = {
@@ -85,8 +103,6 @@ const Page = () => {
         }
         setForm(newForm);
         validate(newForm);
-        console.log(event.target.value);
-        //context.setResposta(props.id, e.target.value);
     }
 
     const validate = (form) => {
@@ -109,11 +125,13 @@ const Page = () => {
     }
 
 
+
+
     return (
         <form>
             <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
             <div className="row">
-                <div className="rol-md-12">
+                <div className="col-md-7">
                     <div className="label-float">
                         <input className={"form-control form-g "+(requireds.nome ? '' : 'invalid-field')} type="text" name="nome" id="nome"  placeholder=" " required={requireds.nome ? '' : 'required'} onChange={handleForm}/>
                         <label htmlFor="nome">Nome</label>
@@ -164,14 +182,45 @@ const Page = () => {
 
                     <br/>
 
+                    <div className="col-md-12">
+                        <div className="dorder-container">
+                            <button className="btn btn-theme bg-pri" type="button"  onClick={Insert} >Enviar <i className="fas fa-angle-right"/></button>
+                        </div>
+                        <div>{notify.type}</div>
+                        {/*<div style={{display: this.state.showMsg === 1 ? '' : 'none'}} className="text-success">{this.state.msg}</div>
+                    <div style={{display: this.state.showMsg === 2 ? '' : 'none'}} className="text-danger">{this.state.msg}</div>
+                    <div style={{display: this.state.loading ? 'block' : 'none'}}><i className="fa fa-spin fa-spinner"/>Processando</div>*/}
+                        <br/><br/>
+                    </div>
+
                 </div>
 
-                <div className="col-md-12">
-                    <div className="dorder-container">
-                        <button className="btn btn-theme bg-pri" type="button"  onClick={Insert} >Enviar <i className="fas fa-angle-right"/></button>
+                <div className="col-md-5">
+                    <p><strong>Cadastrar links</strong></p>
+                    <div className="label-float">
+                        <input className={"form-control form-g "} type="text" name="nome" id="nome"  placeholder=" " />
+                        <label htmlFor="nome">Link</label>
+                        <div className="label-box-info">
+                            <p><i className="fas fa-exclamation-circle"/> Digite um link</p>
+                        </div>
                     </div>
-                    <br/><br/>
+                    <ul className="toggle">
+                        {
+                            idiomaMap.map((item, key) => {
+                                return(
+                                    <li
+                                        key={'idioma_'+key}
+                                        onClick={() => clickIdioma(item.idioma)}
+                                        style={{background: item.idioma===idiomaSelected ? '#E6DACE' : ''}}>
+                                        {item.idioma}
+                                    </li>
+                                );
+                            })
+                        }
+                    </ul>
                 </div>
+
+
             </div>
 
         </form>
