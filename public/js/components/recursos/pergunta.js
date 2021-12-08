@@ -15,7 +15,7 @@ const Pergunta = () => {
       console.log(result.data.data);
       setRecursoMap(result.data.data);
     } catch (error) {
-      console.log(error);
+      alert('erro'); //console.log(error);
     }
   };
 
@@ -100,7 +100,7 @@ const Pergunta = () => {
       className: "bg-lgt2 text-center box-list-cod"
     }, /*#__PURE__*/React.createElement("h6", {
       className: "mt-4"
-    }, "C\xF3digo"), /*#__PURE__*/React.createElement("h2", null, item.id)), /*#__PURE__*/React.createElement("div", {
+    }, "C\xF3digo"), /*#__PURE__*/React.createElement("h2", null, item.id_recurso)), /*#__PURE__*/React.createElement("div", {
       className: "p-2 box-list-title"
     }, /*#__PURE__*/React.createElement("p", {
       className: "mt-2"
@@ -119,14 +119,16 @@ const Pergunta = () => {
     }, /*#__PURE__*/React.createElement("div", {
       className: "bg-lgt2 box-list-i"
     }, /*#__PURE__*/React.createElement("i", {
-      className: icon[item.file_tipo] + " fa-3x"
+      className: icon[item.id_formato] + " fa-3x"
     }))), /*#__PURE__*/React.createElement("div", {
       className: "col-4"
     }, "\xA0")), /*#__PURE__*/React.createElement("div", {
       className: "row"
     }, /*#__PURE__*/React.createElement("div", {
       className: "col-12 box-list-p"
-    }, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("strong", null, "Esfera:"), " ", /*#__PURE__*/React.createElement("span", null, item.esfera)), /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("strong", null, "Idioma:"), " ", /*#__PURE__*/React.createElement("span", null, item.idioma)), /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("strong", null, "Tipo:"), " ", /*#__PURE__*/React.createElement("span", null, item.tipo)), /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("strong", null, "Autoria:"), " ", /*#__PURE__*/React.createElement("span", null, item.autoria)), /*#__PURE__*/React.createElement("br", null)), /*#__PURE__*/React.createElement("div", {
+    }, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("strong", null, "Esfera:"), " ", /*#__PURE__*/React.createElement("span", null, item.esfera)), /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("strong", null, "Idioma:"), " ", /*#__PURE__*/React.createElement("span", null, item.idioma)), /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("strong", null, "Tipo:"), " ", /*#__PURE__*/React.createElement("span", null, item.tipo_recurso ? item.tipo_recurso.nome : '')), /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("strong", null, "Autoria:"), /*#__PURE__*/React.createElement("br", null), item.autoria.map((autoria, key) => {
+      return /*#__PURE__*/React.createElement("div", null, autoria.autor.nome);
+    })), /*#__PURE__*/React.createElement("br", null)), /*#__PURE__*/React.createElement("div", {
       className: "col-9"
     }, /*#__PURE__*/React.createElement("div", {
       className: "dorder-container"

@@ -14,7 +14,8 @@ const Pergunta = () => {
             console.log(result.data.data);
             setRecursoMap(result.data.data)
         } catch (error) {
-            console.log(error);
+            alert('erro');
+            //console.log(error);
         }
     }
 
@@ -85,7 +86,7 @@ const Pergunta = () => {
                             <div className="bg-lgt">
                                 <div className="bg-lgt2 text-center box-list-cod">
                                     <h6 className="mt-4">Código</h6>
-                                    <h2>{item.id}</h2>
+                                    <h2>{item.id_recurso}</h2>
                                 </div>
                                 <div className="p-2 box-list-title">
                                     <p className="mt-2">{item.nome}</p>
@@ -99,7 +100,7 @@ const Pergunta = () => {
                                     <div className="col-4"><img src="img/lines.png" alt="" width="90%"/></div>
                                     <div className="col-4 text-center">
                                         <div className="bg-lgt2 box-list-i">
-                                            <i className={icon[item.file_tipo]+" fa-3x"}/>
+                                            <i className={icon[item.id_formato]+" fa-3x"}/>
                                         </div>
 
                                     </div>
@@ -110,8 +111,18 @@ const Pergunta = () => {
                                         <br/>
                                             <p><strong>Esfera:</strong> <span>{item.esfera}</span></p>
                                             <p><strong>Idioma:</strong> <span>{item.idioma}</span></p>
-                                            <p><strong>Tipo:</strong> <span>{item.tipo}</span></p>
-                                            <p><strong>Autoria:</strong> <span>{item.autoria}</span></p>
+                                            <p><strong>Tipo:</strong> <span>{(item.tipo_recurso ? item.tipo_recurso.nome : '')}</span></p>
+                                            {/*<p><strong>Autoria:</strong> <span>{item.autoria}</span></p>*/}
+                                            <p>
+                                                <strong>Autoria:</strong><br/>
+                                            {
+                                                item.autoria.map((autoria, key) => {
+                                                    return (
+                                                        <div>{autoria.autor.nome}</div>
+                                                    );
+                                                })
+                                            }
+                                            </p>
                                             <br/>
                                     </div>
                                     <div className="col-9">
