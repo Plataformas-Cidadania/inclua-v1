@@ -37,8 +37,6 @@ const Pergunta = () => {
         console.log(id, txt, rota)
     }
 
-
-
     return (
         <div className="row">
             <div className="rol-md-12">
