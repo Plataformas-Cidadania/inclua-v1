@@ -5,7 +5,7 @@ const Pergunta = (props) => {
     const [tipo, setTipo] = useState(1);
 
     useEffect(() => {
-        setTipo(getTipo(props.minimo, props.medio, props.maximo));
+        setTipo(props.tipo);
     }, [props]);
 
     const getTipo = (minimo, medio, maximo) => {
@@ -26,8 +26,10 @@ const Pergunta = (props) => {
             bgColor={props.bgColor}
             letra={props.letra}
             minimo={props.minimo}
-            medio={props.medio}
             maximo={props.maximo}
+            legenda={pergunta.titulo}
+            inverter={pergunta.inverter}
+            naoSeAplica={pergunta.nao_se_aplica}
         />,
         2: <Nota
             id={props.id}
@@ -35,8 +37,10 @@ const Pergunta = (props) => {
             bgColor={props.bgColor}
             letra={props.letra}
             minimo={props.minimo}
-            medio={props.medio}
             maximo={props.maximo}
+            legenda={pergunta.titulo}
+            inverter={pergunta.inverter}
+            naoSeAplica={pergunta.nao_se_aplica}
         />,
         3: <Range
             id={props.id}
@@ -44,8 +48,10 @@ const Pergunta = (props) => {
             bgColor={props.bgColor}
             letra={props.letra}
             minimo={props.minimo}
-            medio={props.medio}
             maximo={props.maximo}
+            legenda={pergunta.titulo}
+            inverter={pergunta.inverter}
+            naoSeAplica={pergunta.nao_se_aplica}
         />,
     };
 

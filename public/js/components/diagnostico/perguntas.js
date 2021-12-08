@@ -15,9 +15,12 @@ const Perguntas = props => {
       indicador: context.indicador.numero,
       id: pergunta.id,
       minimo: pergunta.minimo,
-      medio: pergunta.medio,
       maximo: pergunta.maximo,
-      titulo: pergunta.titulo
+      titulo: pergunta.descricao,
+      legenda: pergunta.legenda,
+      inverter: pergunta.inverter,
+      naoSeAplica: pergunta.nao_se_aplica,
+      perguntas: pergunta.perguntas
     });
   }));
 };

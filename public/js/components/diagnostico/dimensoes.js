@@ -7,7 +7,7 @@ const Dimensoes = () => {
     4: 'bg-qua',
     5: 'bg-qui'
   };
-  bgColor = bgColor[context.dimensao.info.numero];
+  bgColor = bgColor[context.dimensao.numero];
   return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
     className: "container"
   }, /*#__PURE__*/React.createElement("div", {
@@ -20,17 +20,17 @@ const Dimensoes = () => {
     //let classe =  ? 'nav-icons-select' : '';
     let classe = "cursor ";
 
-    if (item.info.numero === context.dimensao.info.numero) {
+    if (item.numero === context.dimensao.numero) {
       classe += "nav-icons-select ";
     }
 
-    if (!context.dimensoesRespondidas.includes(item.info.numero) && item.info.numero !== context.dimensao.info.numero) {
+    if (!context.dimensoesRespondidas.includes(item.numero) && item.numero !== context.dimensao.numero) {
       classe += "opacity-5";
     }
 
     return /*#__PURE__*/React.createElement("img", {
       key: "icone-dimensao-" + key,
-      src: "img/dimensao" + item.info.numero + ".png",
+      src: "img/dimensao" + item.numero + ".png",
       alt: "",
       className: classe,
       onClick: () => context.setDimensao(item)
@@ -49,13 +49,13 @@ const Dimensoes = () => {
   }, /*#__PURE__*/React.createElement("div", {
     className: "col-md-3 text-center"
   }, /*#__PURE__*/React.createElement("img", {
-    src: "img/dimensao" + context.dimensao.info.numero + "-g.png",
+    src: "img/dimensao" + context.dimensao.numero + "-g.png",
     alt: ""
-  }), /*#__PURE__*/React.createElement("h2", null, "DIMENS\xC3O ", context.dimensao.info.numero)), /*#__PURE__*/React.createElement("div", {
+  }), /*#__PURE__*/React.createElement("h2", null, "DIMENS\xC3O ", context.dimensao.numero)), /*#__PURE__*/React.createElement("div", {
     className: "col-md-9"
   }, /*#__PURE__*/React.createElement("h2", {
     className: "mt-5"
-  }, context.dimensao.info.titulo), /*#__PURE__*/React.createElement("p", {
+  }, context.dimensao.titulo), /*#__PURE__*/React.createElement("p", {
     className: "mb-5"
-  }, context.dimensao.info.descricao)))))), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement(Indicadores, null));
+  }, context.dimensao.descricao)))))), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement(Indicadores, null));
 };

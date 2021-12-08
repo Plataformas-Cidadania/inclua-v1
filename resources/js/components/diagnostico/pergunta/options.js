@@ -3,7 +3,6 @@ const Options = (props) => {
     const context = React.useContext(DiagnosticoContext);
     const {useState, useEffect} = React;
 
-    const [naoSeAplica, setNaoSeAplica] = useState(false);
     const [name, setName] = useState(null);
 
     useEffect(() => {
@@ -18,7 +17,7 @@ const Options = (props) => {
         <div className="box-items bg-lgt">
             <p className="mb-3"><strong>P{context.dimensao.info.dimensao}.{context.indicador.indicador}{props.letra}</strong> {props.titulo}</p>
             {
-                (props.minimo === props.medio) ? (
+                (props.naoSeAplica === 1) ? (
                     <div className="form-check  float-end">
                         <input className="form-check-input" type="radio"
                                name={name}
