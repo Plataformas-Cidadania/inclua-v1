@@ -56,8 +56,9 @@ const Nota = props => {
       width: '113%',
       marginLeft: '-80px'
     }
-  }, notas.map(nota => {
+  }, notas.map((nota, key) => {
     return /*#__PURE__*/React.createElement("div", {
+      key: 'nota_' + props.letra + key,
       className: "range-merker-box"
     }, /*#__PURE__*/React.createElement("div", {
       className: "range-merker-box-item " + (resposta === nota ? bgColor : ''),

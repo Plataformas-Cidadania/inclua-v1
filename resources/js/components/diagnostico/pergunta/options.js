@@ -4,14 +4,18 @@ const Options = (props) => {
     const {useState, useEffect} = React;
 
     const [name, setName] = useState(null);
+    const [showSubPerguntas, setShowSubPerguntas] = useState(false);
 
     useEffect(() => {
         setName(context.dimensao.dimensao+'_'+context.indicador.indicador+'_'+props.letra);
     }, [context]);
 
     const handleResposta = (e) => {
+        console.log(e.target.value, props.maximo, e.target.value === props.maximo);
+        setShowSubPerguntas(parseInt(e.target.value) === parseInt(props.maximo));//clicando no sim que possui o valor máximo irá mostrar as subperguntas
         context.setResposta(props.id, e.target.value);
     }
+
 
     return (
         <div className="box-items bg-lgt">
@@ -57,6 +61,11 @@ const Options = (props) => {
                 </label>
             </div>
             <div className="clear-both">&nbsp;</div>
+            {
+                showSubPerguntas ? (
+                    <Perguntas perguntas={props.perguntas} bgColor={props.bgColor}/>
+                ) : null
+            }
         </div>
     );
 };

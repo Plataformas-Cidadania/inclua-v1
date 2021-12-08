@@ -49,9 +49,9 @@ const Range = (props) => {
                 <div className="range-merker">
 
                     {
-                        range.map((item) => {
+                        range.map((item, key) => {
                             return(
-                                <div className="range-merker-box">
+                                <div key={'nota_'+props.letra+key} className="range-merker-box">
                                     <div
                                         className={"range-merker-box-item " + (resposta => item ? bgColor : '')}
                                         onClick={() => clickResposta(item)}

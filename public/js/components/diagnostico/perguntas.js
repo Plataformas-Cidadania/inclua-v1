@@ -4,9 +4,15 @@ const Perguntas = props => {
     useState,
     useEffect
   } = React;
+  const [perguntas, setPerguntas] = useState([]);
+  useEffect(() => {
+    if (props.perguntas) {
+      setPerguntas(props.perguntas);
+    }
+  }, [props.perguntas]);
   return /*#__PURE__*/React.createElement("div", {
     className: "row"
-  }, context.indicador.perguntas.map((pergunta, key) => {
+  }, perguntas.map((pergunta, key) => {
     return /*#__PURE__*/React.createElement(Pergunta, {
       key: 'pergunta' + key,
       letra: pergunta.letra,

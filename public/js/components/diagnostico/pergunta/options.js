@@ -5,11 +5,15 @@ const Options = props => {
     useEffect
   } = React;
   const [name, setName] = useState(null);
+  const [showSubPerguntas, setShowSubPerguntas] = useState(false);
   useEffect(() => {
     setName(context.dimensao.dimensao + '_' + context.indicador.indicador + '_' + props.letra);
   }, [context]);
 
   const handleResposta = e => {
+    console.log(e.target.value, props.maximo, e.target.value === props.maximo);
+    setShowSubPerguntas(parseInt(e.target.value) === parseInt(props.maximo)); //clicando no sim que possui o valor máximo irá mostrar as subperguntas
+
     context.setResposta(props.id, e.target.value);
   };
 
@@ -58,5 +62,8 @@ const Options = props => {
     htmlFor: "flexRadioDefault2"
   }, "N\xE3o")), /*#__PURE__*/React.createElement("div", {
     className: "clear-both"
-  }, "\xA0"));
+  }, "\xA0"), showSubPerguntas ? /*#__PURE__*/React.createElement(Perguntas, {
+    perguntas: props.perguntas,
+    bgColor: props.bgColor
+  }) : null);
 };

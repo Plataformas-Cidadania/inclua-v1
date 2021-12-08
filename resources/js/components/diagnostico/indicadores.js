@@ -58,7 +58,7 @@ const Indicadores = () => {
                     <br/>
                 </div>
                 <div className="col-md-12">
-                    <Perguntas bgColor={bgColor}/>
+                    <Perguntas perguntas={context.indicador.perguntas} bgColor={bgColor}/>
                 </div>
 
                 <div className="col-md-12">

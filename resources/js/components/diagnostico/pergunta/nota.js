@@ -58,9 +58,9 @@ const Nota = (props) => {
                 <br/>
                 <div className="range-merker" style={{width: '113%', marginLeft: '-80px'}}>
                     {
-                        notas.map((nota) => {
+                        notas.map((nota, key) => {
                             return(
-                                <div className="range-merker-box">
+                                <div key={'nota_'+props.letra+key} className="range-merker-box">
                                     <div
                                         className={"range-merker-box-item " + (resposta === nota ? bgColor : '')}
                                         onClick={() => clickResposta(nota)}
