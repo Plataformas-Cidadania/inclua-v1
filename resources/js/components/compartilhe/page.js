@@ -3,6 +3,7 @@ const Page = () => {
     const {useState, useEffect} = React;
     const [tipoMap, setTipoMap] = useState([]);
     const [formatoMap, setFormatoMap] = useState([]);
+    const [formAlterado, setFormAlterado] = useState(false);
 
     const [form, setForm] = useState({
         ultimo_acesso: '1992-02-10 13:21:37',
@@ -10,8 +11,8 @@ const Page = () => {
         id_formato: 0,
     });
 
-    const [tipoSelected, setTipo] = useState(0);
-    const [formatoSelected, setFormato] = useState(0);
+    const [tipoSelected, setTipoSelected] = useState(0);
+    const [formatoSelected, setFormatoSelected] = useState(0);
 
     const [requireds, setRequireds] = useState({
         nome: true,
@@ -26,14 +27,9 @@ const Page = () => {
     useEffect(() => {
         Tipo();
         Formato();
-        clickTipo(tipoSelected);
-        clickFormato(formatoSelected);
+        //clickTipo(tipoSelected);
+        //clickFormato(formatoSelected);
     }, []);
-
-    useEffect(() => {
-        validate();
-    }, [form]);
-
 
     const Tipo = async () => {
         try {
@@ -62,22 +58,23 @@ const Page = () => {
     }
 
     const clickTipo = (id) => {
-        setTipo(id);
+        setTipoSelected(id);
         let newForm = {
             ...form,
             id_tipo_recurso: id
         }
         setForm(newForm);
+        validate(newForm);
     }
 
     const clickFormato = (id) => {
-        setFormato(id);
+        setFormatoSelected(id);
         let newForm = {
             ...form,
             id_formato: id
         }
         setForm(newForm);
-
+        validate(newForm);
     }
 
     const handleForm = (event) => {
@@ -87,12 +84,12 @@ const Page = () => {
             [id]: value
         }
         setForm(newForm);
-
+        validate(newForm);
         console.log(event.target.value);
         //context.setResposta(props.id, e.target.value);
     }
 
-    const validate = () => {
+    const validate = (form) => {
 
         let valid = true;
         let newRequireds = requireds;
@@ -171,7 +168,7 @@ const Page = () => {
 
                 <div className="col-md-12">
                     <div className="dorder-container">
-                        <button className="btn btn-theme bg-pri" type="button"  onClick={Insert} disabled={!validate}>Enviar <i className="fas fa-angle-right"/></button>
+                        <button className="btn btn-theme bg-pri" type="button"  onClick={Insert} >Enviar <i className="fas fa-angle-right"/></button>
                     </div>
                     <br/><br/>
                 </div>

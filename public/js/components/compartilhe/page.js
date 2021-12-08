@@ -5,13 +5,14 @@ const Page = () => {
   } = React;
   const [tipoMap, setTipoMap] = useState([]);
   const [formatoMap, setFormatoMap] = useState([]);
+  const [formAlterado, setFormAlterado] = useState(false);
   const [form, setForm] = useState({
     ultimo_acesso: '1992-02-10 13:21:37',
     id_tipo_recurso: 0,
     id_formato: 0
   });
-  const [tipoSelected, setTipo] = useState(0);
-  const [formatoSelected, setFormato] = useState(0);
+  const [tipoSelected, setTipoSelected] = useState(0);
+  const [formatoSelected, setFormatoSelected] = useState(0);
   const [requireds, setRequireds] = useState({
     nome: true,
     esfera: true,
@@ -21,13 +22,9 @@ const Page = () => {
   });
   useEffect(() => {
     Tipo();
-    Formato();
-    clickTipo(tipoSelected);
-    clickFormato(formatoSelected);
+    Formato(); //clickTipo(tipoSelected);
+    //clickFormato(formatoSelected);
   }, []);
-  useEffect(() => {
-    validate();
-  }, [form]);
 
   const Tipo = async () => {
     try {
@@ -56,19 +53,21 @@ const Page = () => {
   };
 
   const clickTipo = id => {
-    setTipo(id);
+    setTipoSelected(id);
     let newForm = { ...form,
       id_tipo_recurso: id
     };
     setForm(newForm);
+    validate(newForm);
   };
 
   const clickFormato = id => {
-    setFormato(id);
+    setFormatoSelected(id);
     let newForm = { ...form,
       id_formato: id
     };
     setForm(newForm);
+    validate(newForm);
   };
 
   const handleForm = event => {
@@ -80,10 +79,11 @@ const Page = () => {
       [id]: value
     };
     setForm(newForm);
+    validate(newForm);
     console.log(event.target.value); //context.setResposta(props.id, e.target.value);
   };
 
-  const validate = () => {
+  const validate = form => {
     let valid = true;
     let newRequireds = requireds;
 
@@ -175,8 +175,7 @@ const Page = () => {
   }, /*#__PURE__*/React.createElement("button", {
     className: "btn btn-theme bg-pri",
     type: "button",
-    onClick: Insert,
-    disabled: !validate
+    onClick: Insert
   }, "Enviar ", /*#__PURE__*/React.createElement("i", {
     className: "fas fa-angle-right"
   }))), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null))));
