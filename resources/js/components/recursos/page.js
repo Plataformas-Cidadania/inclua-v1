@@ -1,4 +1,4 @@
-const Pergunta = () => {
+const Page = () => {
 
     const {useState, useEffect} = React;
     const [recursoMap, setRecursoMap] = useState([]);
@@ -108,15 +108,22 @@ const Pergunta = () => {
                                     <div className="col-12 box-list-p">
                                         <br/>
                                             <p><strong>Esfera:</strong> <span>{item.esfera}</span></p>
-                                            <p><strong>Idioma:</strong> <span>{item.idioma}</span></p>
+                                            <p><strong>Idioma:</strong>
+                                                {
+                                                    item.links.map((link, key) => {
+                                                        return (
+                                                            <a href={link.uri} target="_blank"> {link.idioma},</a>
+                                                        );
+                                                    })
+                                                }
+                                            </p>
                                             <p><strong>Tipo:</strong> <span>{(item.tipo_recurso ? item.tipo_recurso.nome : '')}</span></p>
-                                            {/*<p><strong>Autoria:</strong> <span>{item.autoria}</span></p>*/}
                                             <p>
-                                                <strong>Autoria:</strong><br/>
+                                                <strong>Autoria:</strong>
                                             {
                                                 item.autoria.map((autoria, key) => {
                                                     return (
-                                                        <div>{autoria.autor.nome}</div>
+                                                        <span> {autoria.autor.nome},</span>
                                                     );
                                                 })
                                             }
@@ -129,40 +136,12 @@ const Pergunta = () => {
                                         </div>
                                     </div>
                                     <div className="col-3 d-flex justify-content-end">
-                                        <i className="far fa-copy fa-2x "/>
+                                        {/*<i className="far fa-copy fa-2x "/>*/}
                                     </div>
                                 </div>
                         </div>
                         <br/>
                     </div>
-
-                        /*<div>
-                            <div className="dorder-container"  key={key}>
-                                <div className="dorder-container-mai p-4 ">
-                                    <p>{key+1} - {item.descricao}</p>
-                                    <br/>
-                                    <div className="row">
-                                        <div className="col-md-3 text-center">
-                                            <i className="far fa-frown fa-3x"/><br/>
-                                            <p>Não gostei</p>
-                                        </div>
-                                        <div className="col-md-3 text-center">
-                                            <i className="far fa-meh fa-3x"/><br/>
-                                            <p>Indiferente</p>
-                                        </div>
-                                        <div className="col-md-3 text-center">
-                                            <i className="far fa-smile fa-3x"/><br/>
-                                            <p>Gostei</p>
-                                        </div>
-                                        <div className="col-md-3 text-center">
-                                            <i className="far fa-heart fa-3x"/><br/>
-                                            <p>Amei</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <br/>
-                        </div>*/
 
                     );
                 })

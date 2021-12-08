@@ -7,7 +7,7 @@ const Perguntas = props => {
   return /*#__PURE__*/React.createElement("div", {
     className: "row"
   }, context.indicador.perguntas.map((pergunta, key) => {
-    return /*#__PURE__*/React.createElement(Pergunta, {
+    return /*#__PURE__*/React.createElement(Page, {
       key: 'pergunta' + key,
       letra: pergunta.letra,
       bgColor: props.bgColor,

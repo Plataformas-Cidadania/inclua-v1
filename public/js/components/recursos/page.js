@@ -1,4 +1,4 @@
-const Pergunta = () => {
+const Page = () => {
   const {
     useState,
     useEffect
@@ -127,7 +127,10 @@ const Pergunta = () => {
     }, /*#__PURE__*/React.createElement("div", {
       className: "col-12 box-list-p"
     }, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("strong", null, "Esfera:"), " ", /*#__PURE__*/React.createElement("span", null, item.esfera)), /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("strong", null, "Idioma:"), item.links.map((link, key) => {
-      return /*#__PURE__*/React.createElement("span", null, " ", link.idioma, ",");
+      return /*#__PURE__*/React.createElement("a", {
+        href: link.uri,
+        target: "_blank"
+      }, " ", link.idioma, ",");
     })), /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("strong", null, "Tipo:"), " ", /*#__PURE__*/React.createElement("span", null, item.tipo_recurso ? item.tipo_recurso.nome : '')), /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("strong", null, "Autoria:"), item.autoria.map((autoria, key) => {
       return /*#__PURE__*/React.createElement("span", null, " ", autoria.autor.nome, ",");
     })), /*#__PURE__*/React.createElement("br", null)), /*#__PURE__*/React.createElement("div", {
@@ -141,37 +144,7 @@ const Pergunta = () => {
       className: "fas fa-angle-right"
     })))), /*#__PURE__*/React.createElement("div", {
       className: "col-3 d-flex justify-content-end"
-    }, /*#__PURE__*/React.createElement("i", {
-      className: "far fa-copy fa-2x "
-    })))), /*#__PURE__*/React.createElement("br", null))
-    /*<div>
-        <div className="dorder-container"  key={key}>
-            <div className="dorder-container-mai p-4 ">
-                <p>{key+1} - {item.descricao}</p>
-                <br/>
-                <div className="row">
-                    <div className="col-md-3 text-center">
-                        <i className="far fa-frown fa-3x"/><br/>
-                        <p>Não gostei</p>
-                    </div>
-                    <div className="col-md-3 text-center">
-                        <i className="far fa-meh fa-3x"/><br/>
-                        <p>Indiferente</p>
-                    </div>
-                    <div className="col-md-3 text-center">
-                        <i className="far fa-smile fa-3x"/><br/>
-                        <p>Gostei</p>
-                    </div>
-                    <div className="col-md-3 text-center">
-                        <i className="far fa-heart fa-3x"/><br/>
-                        <p>Amei</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <br/>
-    </div>*/
-    ;
+    }))), /*#__PURE__*/React.createElement("br", null));
   }), /*#__PURE__*/React.createElement("div", {
     className: "col-md-12 text-center"
   }, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("nav", {

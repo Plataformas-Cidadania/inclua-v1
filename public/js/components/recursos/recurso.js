@@ -1,14 +1,14 @@
-const Pergunta = () => {
+const Recurso = () => {
   const {
     useState,
     useEffect
   } = React;
   const [recursoMap, setRecursoMap] = useState([]);
   useEffect(() => {
-    Recurso();
+    RecursoAjax();
   }, []);
 
-  const Recurso = async () => {
+  const RecursoAjax = async () => {
     try {
       //const result = await axios.get('json/recursos.json');
       const result = await axios.get('api/recurso');
@@ -143,35 +143,7 @@ const Pergunta = () => {
       className: "col-3 d-flex justify-content-end"
     }, /*#__PURE__*/React.createElement("i", {
       className: "far fa-copy fa-2x "
-    })))), /*#__PURE__*/React.createElement("br", null))
-    /*<div>
-        <div className="dorder-container"  key={key}>
-            <div className="dorder-container-mai p-4 ">
-                <p>{key+1} - {item.descricao}</p>
-                <br/>
-                <div className="row">
-                    <div className="col-md-3 text-center">
-                        <i className="far fa-frown fa-3x"/><br/>
-                        <p>Não gostei</p>
-                    </div>
-                    <div className="col-md-3 text-center">
-                        <i className="far fa-meh fa-3x"/><br/>
-                        <p>Indiferente</p>
-                    </div>
-                    <div className="col-md-3 text-center">
-                        <i className="far fa-smile fa-3x"/><br/>
-                        <p>Gostei</p>
-                    </div>
-                    <div className="col-md-3 text-center">
-                        <i className="far fa-heart fa-3x"/><br/>
-                        <p>Amei</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <br/>
-    </div>*/
-    ;
+    })))), /*#__PURE__*/React.createElement("br", null));
   }), /*#__PURE__*/React.createElement("div", {
     className: "col-md-12 text-center"
   }, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("nav", {
