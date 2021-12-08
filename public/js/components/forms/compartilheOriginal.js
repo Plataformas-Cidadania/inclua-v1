@@ -1,4 +1,4 @@
-class Compartilhe extends React.Component {
+class Compartilhe2 extends React.Component {
   constructor(props) {
     super(props);
     this.state = {

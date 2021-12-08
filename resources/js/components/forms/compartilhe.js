@@ -3,11 +3,11 @@ class Compartilhe extends React.Component{
         super(props);
         this.state = {
             form: {
-                idioma: '',
-
-                id_recurso: '',
                 nome: '',
                 esfera: '',
+
+                idioma: '',
+                id_recurso: '',
                 id_tipo_recurso: '',
                 id_formato: '',
 
@@ -15,9 +15,10 @@ class Compartilhe extends React.Component{
             button: true,
             loading: false,
             requireds: {
-                id_recurso: '',
                 nome: '',
                 esfera: '',
+
+                id_recurso: '',
                 id_tipo_recurso: '',
                 id_formato: '',
                 idioma: '',
@@ -111,6 +112,8 @@ class Compartilhe extends React.Component{
     selectDimensao(type){
         let formDimensao = {
             id_dimensao: type,
+            nome: '',
+            esfera: '',
 
             /*id_recurso: '',
             nome: '',
@@ -126,10 +129,14 @@ class Compartilhe extends React.Component{
     selectFormato(id, nome){
         let formatoSelecionado = {
             id: id,
-            nome: nome,
+            nome: '',
+            esfera: '',
+
         };
         let formIdioma = {
             idioma: id,
+            nome: '',
+            esfera: '',
             /*name: this.state.form.name,
             email: this.state.form.email,
             cel: this.state.form.cel,
@@ -230,30 +237,33 @@ class Compartilhe extends React.Component{
 
                 <div className="row">
                     <div className="col-md-7">
-                        <p>Selecione os temas:</p>
+                        {/*<p>Selecione os temas:</p>
                         <ul className="toggle">
                             {categorias}
                         </ul>
                         <p>Selecione a dimensão:</p>
                         <ul className="select-form">
                             {dimensoes}
-                        </ul>
-                        <p>Escolha um indicador:</p>
-                        <select name="select" className="form-control">
-                            <option value="0">Selecione</option>
-                            <option value="valor2" selected>Valor 2</option>
-                            <option value="valor3">Valor 3</option>
-                        </select>
-                        <br/>
-                        <p>Idioma:</p>
-                        <ul className="btn-form">
-                            {idiomas}
-                        </ul>
-                    </div>
-                    <div className="col-md-1">&nbsp;</div>
-                    <div className="col-md-4">
+                        </ul>*/}
+
+                        <div className="label-float">
+                            <input className={"form-control form-g "+(this.state.requireds.nome ? '' : 'invalid-field')} type="text" name="nome" onChange={this.handleInputChange} placeholder=" " required={this.state.requireds.nome ? '' : 'required'}/>
+                            <label htmlFor="nome">Nome</label>
+                            <div className="label-box-info">
+                                <p style={{display: this.state.requireds.nome ? 'none' : 'block'}}><i className="fas fa-exclamation-circle"/> Digite o nome e sobre nome</p>
+                            </div>
+                        </div>
+
+                        <div className="label-float">
+                            <input className={"form-control form-g "+(this.state.requireds.esfera ? '' : 'invalid-field')} type="text" name="esfera" onChange={this.handleInputChange} placeholder=" " required={this.state.requireds.esfera ? '' : 'required'}/>
+                            <label htmlFor="esfera">Esfera</label>
+                            <div className="label-box-info">
+                                <p style={{display: this.state.requireds.esfera ? 'none' : 'block'}}><i className="fas fa-exclamation-circle"/> Digite o nome e sobre nome</p>
+                            </div>
+                        </div>
+
                         <p>Tipo de arquivo:</p>
-                        <ul className="btn-form text-center">
+                        <ul className="btn-form">
                             {formato_recurso}
                         </ul>
                         <br/>
@@ -265,6 +275,22 @@ class Compartilhe extends React.Component{
                                 </li>
                             </ul>
                         </div>
+
+                        {/*<p>Escolha um indicador:</p>
+                        <select name="select" className="form-control">
+                            <option value="0">Selecione</option>
+                            <option value="valor2" selected>Valor 2</option>
+                            <option value="valor3">Valor 3</option>
+                        </select>
+                        <br/>*/}
+                       {/* <p>Idioma:</p>
+                        <ul className="btn-form">
+                            {idiomas}
+                        </ul>*/}
+                    </div>
+                    <div className="col-md-1">&nbsp;</div>
+                    <div className="col-md-4">
+                        #
                     </div>
                 </div>
 
