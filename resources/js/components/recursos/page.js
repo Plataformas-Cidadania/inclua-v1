@@ -14,8 +14,8 @@ const Page = () => {
             console.log(result.data.data);
             setRecursoMap(result.data.data)
         } catch (error) {
-            alert('erro');
-            //console.log(error);
+            //alert('erro');
+            console.log(error);
         }
     }
 
@@ -107,37 +107,52 @@ const Page = () => {
                                 <div className="row">
                                     <div className="col-12 box-list-p">
                                         <br/>
-                                            <p><strong>Esfera:</strong> <span>{item.esfera}</span></p>
-                                            <p><strong>Idioma:</strong>
+                                            <p><strong>Esfera: </strong><span>{item.esfera}</span></p>
+                                            <p><strong>Idioma: </strong>
                                                 {
                                                     item.links.map((link, key) => {
                                                         return (
-                                                            <a href={link.uri} target="_blank"> {link.idioma},</a>
+                                                            <a href={link.uri} target="_blank" title={link.idioma}>
+                                                                {link.idioma}
+                                                                {item.links.length !== key+1 ? ', ' : ''}
+                                                            </a>
                                                         );
                                                     })
                                                 }
                                             </p>
-                                            <p><strong>Tipo:</strong> <span>{(item.tipo_recurso ? item.tipo_recurso.nome : '')}</span></p>
+                                            <p><strong>Tipo: </strong><span>{(item.tipo_recurso ? item.tipo_recurso.nome : '')}</span></p>
                                             <p>
-                                                <strong>Autoria:</strong>
+                                                <strong>Autoria: </strong>
                                             {
                                                 item.autoria.map((autoria, key) => {
                                                     return (
-                                                        <span> {autoria.autor.nome},</span>
+                                                        <span>
+                                                            {autoria.autor.nome}
+                                                            {item.autoria.length !== key+1 ? ', ' : ''}
+                                                        </span>
                                                     );
                                                 })
                                             }
                                             </p>
                                             <br/>
                                     </div>
-                                    <div className="col-9">
-                                        <div className="dorder-container">
-                                            <button className="btn btn-theme bg-pri" type="button">Acessar <i className="fas fa-angle-right"/></button>
-                                        </div>
-                                    </div>
-                                    <div className="col-3 d-flex justify-content-end">
-                                        {/*<i className="far fa-copy fa-2x "/>*/}
-                                    </div>
+
+                                    {
+                                        item.links.map((link, key) => {
+                                            return (
+                                                key===0 ?
+                                                    <div className="col-6">
+                                                        <div className="dorder-container">
+                                                            <a href={link.uri} className="btn btn-theme bg-pri" type="button">Acessar <i className="fas fa-angle-right"/></a>
+                                                        </div>
+                                                    </div>
+                                                :
+                                                    <div className="col-2 d-flex justify-content-end text-right mt-2">
+                                                        <a href={link.uri} target="_blank"> {link.idioma} <i className="fas fa-angle-right"/></a>
+                                                    </div>
+                                            );
+                                        })
+                                    }
                                 </div>
                         </div>
                         <br/>
