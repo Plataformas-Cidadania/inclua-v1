@@ -7,8 +7,7 @@ const Nota = props => {
   const [bgColor, setBgColor] = useState(null);
   const [notas, setNotas] = useState([]);
   const [resposta, setResposta] = useState(0);
-  useEffect(() => {
-    setResposta(context.getResposta());
+  useEffect(() => {//setResposta(context.getResposta())
   }, []);
   useEffect(() => {
     let newNotas = [];
@@ -38,7 +37,7 @@ const Nota = props => {
     className: "box-items bg-lgt"
   }, /*#__PURE__*/React.createElement("p", {
     className: "mb-3"
-  }, /*#__PURE__*/React.createElement("strong", null, "P", context.dimensao.info.dimensao, ".", context.indicador.indicador, props.letra), " ", props.titulo), props.minimo === 0 ? /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("strong", null, "P", context.dimensao.dimensao, ".", context.indicador.indicador, props.letra), " ", props.descricao), props.naoSeAplica ? /*#__PURE__*/React.createElement("div", {
     className: "form-check  float-end"
   }, /*#__PURE__*/React.createElement("input", {
     className: "form-check-input",

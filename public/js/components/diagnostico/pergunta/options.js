@@ -6,7 +6,7 @@ const Options = props => {
   } = React;
   const [name, setName] = useState(null);
   useEffect(() => {
-    setName(context.dimensao.info.dimensao + '_' + context.indicador.indicador + '_' + props.letra);
+    setName(context.dimensao.dimensao + '_' + context.indicador.indicador + '_' + props.letra);
   }, [context]);
 
   const handleResposta = e => {
@@ -17,7 +17,7 @@ const Options = props => {
     className: "box-items bg-lgt"
   }, /*#__PURE__*/React.createElement("p", {
     className: "mb-3"
-  }, /*#__PURE__*/React.createElement("strong", null, "P", context.dimensao.info.dimensao, ".", context.indicador.indicador, props.letra), " ", props.titulo), props.naoSeAplica === 1 ? /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("strong", null, "P", context.dimensao.dimensao, ".", context.indicador.indicador, props.letra), " ", props.descricao), props.naoSeAplica ? /*#__PURE__*/React.createElement("div", {
     className: "form-check  float-end"
   }, /*#__PURE__*/React.createElement("input", {
     className: "form-check-input",

@@ -7,6 +7,7 @@ const Pergunta = props => {
   const [tipo, setTipo] = useState(1);
   useEffect(() => {
     setTipo(props.tipo);
+    console.log('tipo pergunta', props.tipo);
   }, [props]);
 
   const getTipo = (minimo, medio, maximo) => {
@@ -24,38 +25,38 @@ const Pergunta = props => {
   };
 
   const tipos = {
-    1: /*#__PURE__*/React.createElement(Options, {
+    "1": /*#__PURE__*/React.createElement(Options, {
       id: props.id,
-      titulo: props.titulo,
+      descricao: props.descricao,
       bgColor: props.bgColor,
       letra: props.letra,
       minimo: props.minimo,
       maximo: props.maximo,
-      legenda: pergunta.titulo,
-      inverter: pergunta.inverter,
-      naoSeAplica: pergunta.nao_se_aplica
+      legenda: props.titulo,
+      inverter: props.inverter,
+      naoSeAplica: props.naoSeAplica
     }),
-    2: /*#__PURE__*/React.createElement(Nota, {
+    "2": /*#__PURE__*/React.createElement(Nota, {
       id: props.id,
-      titulo: props.titulo,
+      descricao: props.descricao,
       bgColor: props.bgColor,
       letra: props.letra,
       minimo: props.minimo,
       maximo: props.maximo,
-      legenda: pergunta.titulo,
-      inverter: pergunta.inverter,
-      naoSeAplica: pergunta.nao_se_aplica
+      legenda: props.titulo,
+      inverter: props.inverter,
+      naoSeAplica: props.naoSeAplica
     }),
-    3: /*#__PURE__*/React.createElement(Range, {
+    "3": /*#__PURE__*/React.createElement(Range, {
       id: props.id,
-      titulo: props.titulo,
+      descricao: props.descricao,
       bgColor: props.bgColor,
       letra: props.letra,
       minimo: props.minimo,
       maximo: props.maximo,
-      legenda: pergunta.titulo,
-      inverter: pergunta.inverter,
-      naoSeAplica: pergunta.nao_se_aplica
+      legenda: props.titulo,
+      inverter: props.inverter,
+      naoSeAplica: props.naoSeAplica
     })
   };
   return /*#__PURE__*/React.createElement("div", {
