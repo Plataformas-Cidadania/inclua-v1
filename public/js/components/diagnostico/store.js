@@ -15,6 +15,7 @@ const DiagnosticoProvider = ({
   });
   const [indicador, setIndicador] = useState(1);
   const [dimensoesRespondidas, setDimensoesRespondidas] = useState([]);
+  const [respostas, setRespostas] = useState([]);
   /*state = {
       tipo: null,
       dimensoes: [],
@@ -71,7 +72,7 @@ const DiagnosticoProvider = ({
           if (i.id === indicador.id) {
             i.perguntas.forEach(p => {
               if (p.id === idPergunta) {
-                p.resposta = value;
+                p.resposta = parseInt(value);
               }
             });
           }
@@ -80,6 +81,30 @@ const DiagnosticoProvider = ({
     });
     setDimensoes(newDimensoes);
     console.log(newDimensoes);
+    let newRespostas = respostas;
+    let existeResposta = false;
+
+    for (let i = 0; i < newRespostas.length; i++) {
+      if (newRespostas[i].id_pergunta === idPergunta) {
+        newRespostas[i].resposta = parseInt(value);
+        existeResposta = true;
+        break;
+      }
+    }
+
+    ;
+
+    if (!existeResposta) {
+      newRespostas.push({
+        id_dimensao: dimensao.id_dimensao,
+        id_indicador: indicador.id_indicador,
+        id_pergunta: idPergunta,
+        resposta: parseInt(value)
+      });
+    }
+
+    setRespostas(newRespostas);
+    console.log(newRespostas);
   };
 
   const getResposta = idPergunta => {
