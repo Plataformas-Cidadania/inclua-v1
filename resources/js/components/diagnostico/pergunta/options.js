@@ -6,7 +6,7 @@ const Options = (props) => {
     const [name, setName] = useState(null);
 
     useEffect(() => {
-        setName(context.dimensao.info.dimensao+'_'+context.indicador.indicador+'_'+props.letra);
+        setName(context.dimensao.dimensao+'_'+context.indicador.indicador+'_'+props.letra);
     }, [context]);
 
     const handleResposta = (e) => {
@@ -15,9 +15,9 @@ const Options = (props) => {
 
     return (
         <div className="box-items bg-lgt">
-            <p className="mb-3"><strong>P{context.dimensao.info.dimensao}.{context.indicador.indicador}{props.letra}</strong> {props.titulo}</p>
+            <p className="mb-3"><strong>P{context.dimensao.dimensao}.{context.indicador.indicador}{props.letra}</strong> {props.descricao}</p>
             {
-                (props.naoSeAplica === 1) ? (
+                (props.naoSeAplica) ? (
                     <div className="form-check  float-end">
                         <input className="form-check-input" type="radio"
                                name={name}

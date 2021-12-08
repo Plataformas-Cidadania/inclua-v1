@@ -55,6 +55,7 @@ const DiagnosticoProvider = ({
 
   const verificarResposta = (idPergunta, value) => {
     console.log('Verificar Resposta');
+    return false;
     let pergunta = indicador.perguntas.filter(obj => obj.id === idPergunta);
     console.log(idPergunta, pergunta.resposta, value, pergunta.resposta === value);
     return pergunta.resposta === value;

@@ -7,7 +7,7 @@ const Nota = (props) => {
     const [resposta, setResposta] = useState(0);
 
     useEffect(() => {
-        setResposta(context.getResposta())
+        //setResposta(context.getResposta())
     }, []);
 
     useEffect(() => {
@@ -35,10 +35,10 @@ const Nota = (props) => {
 
     return (
         <div className="box-items bg-lgt">
-            <p className="mb-3"><strong>P{context.dimensao.info.dimensao}.{context.indicador.indicador}{props.letra}</strong> {props.titulo}</p>
+            <p className="mb-3"><strong>P{context.dimensao.dimensao}.{context.indicador.indicador}{props.letra}</strong> {props.descricao}</p>
 
             {
-                (props.minimo === 0) ? (
+                (props.naoSeAplica) ? (
                     <div className="form-check  float-end">
                         <input className="form-check-input" type="radio"
                                name={name}

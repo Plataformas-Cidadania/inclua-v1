@@ -6,6 +6,7 @@ const Pergunta = (props) => {
 
     useEffect(() => {
         setTipo(props.tipo);
+        console.log('tipo pergunta', props.tipo);
     }, [props]);
 
     const getTipo = (minimo, medio, maximo) => {
@@ -20,38 +21,38 @@ const Pergunta = (props) => {
     }
 
     const tipos = {
-        1: <Options
+        "1": <Options
             id={props.id}
-            titulo={props.titulo}
+            descricao={props.descricao}
             bgColor={props.bgColor}
             letra={props.letra}
             minimo={props.minimo}
             maximo={props.maximo}
-            legenda={pergunta.titulo}
-            inverter={pergunta.inverter}
-            naoSeAplica={pergunta.nao_se_aplica}
+            legenda={props.titulo}
+            inverter={props.inverter}
+            naoSeAplica={props.naoSeAplica}
         />,
-        2: <Nota
+        "2": <Nota
             id={props.id}
-            titulo={props.titulo}
+            descricao={props.descricao}
             bgColor={props.bgColor}
             letra={props.letra}
             minimo={props.minimo}
             maximo={props.maximo}
-            legenda={pergunta.titulo}
-            inverter={pergunta.inverter}
-            naoSeAplica={pergunta.nao_se_aplica}
+            legenda={props.titulo}
+            inverter={props.inverter}
+            naoSeAplica={props.naoSeAplica}
         />,
-        3: <Range
+        "3": <Range
             id={props.id}
-            titulo={props.titulo}
+            descricao={props.descricao}
             bgColor={props.bgColor}
             letra={props.letra}
             minimo={props.minimo}
             maximo={props.maximo}
-            legenda={pergunta.titulo}
-            inverter={pergunta.inverter}
-            naoSeAplica={pergunta.nao_se_aplica}
+            legenda={props.titulo}
+            inverter={props.inverter}
+            naoSeAplica={props.naoSeAplica}
         />,
     };
 

@@ -23,7 +23,7 @@ const Range = props => {
     setRange(newRange);
   }, [props.minimo, props.medio, props.maximo]);
   useEffect(() => {
-    setName(context.dimensao.info.dimensao + '_' + context.indicador.indicador + '_' + props.letra);
+    setName(context.dimensao.dimensao + '_' + context.indicador.indicador + '_' + props.letra);
   }, [context]);
   useEffect(() => {
     setBgColor(props.bgColor);
@@ -43,7 +43,7 @@ const Range = props => {
     className: "box-items bg-lgt"
   }, /*#__PURE__*/React.createElement("p", {
     className: "mb-3"
-  }, /*#__PURE__*/React.createElement("strong", null, "P", context.dimensao.info.dimensao, ".", context.indicador.indicador, props.letra), " ", props.titulo), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("strong", null, "P", context.dimensao.dimensao, ".", context.indicador.indicador, props.letra), " ", props.descricao), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
     className: "range-merker"
   }, range.map(item => {
     return /*#__PURE__*/React.createElement("div", {

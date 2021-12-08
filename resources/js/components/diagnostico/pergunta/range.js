@@ -23,7 +23,7 @@ const Range = (props) => {
     }, [props.minimo, props.medio, props.maximo]);
 
     useEffect(() => {
-        setName(context.dimensao.info.dimensao+'_'+context.indicador.indicador+'_'+props.letra);
+        setName(context.dimensao.dimensao+'_'+context.indicador.indicador+'_'+props.letra);
     }, [context]);
 
     useEffect(() => {
@@ -42,7 +42,7 @@ const Range = (props) => {
 
     return (
         <div className="box-items bg-lgt">
-            <p className="mb-3"><strong>P{context.dimensao.info.dimensao}.{context.indicador.indicador}{props.letra}</strong> {props.titulo}</p>
+            <p className="mb-3"><strong>P{context.dimensao.dimensao}.{context.indicador.indicador}{props.letra}</strong> {props.descricao}</p>
 
             <div>
                 <br/>
