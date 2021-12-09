@@ -25,9 +25,9 @@ const Page = () => {
   const [idiomaSelected, setIdiomaSelected] = useState(0);
   const [notify, setNotify] = useState({
     type: null,
-    text: null
+    text: null,
+    spin: false
   });
-  console.log(notify);
   const [requireds, setRequireds] = useState({
     nome: true,
     esfera: true,
@@ -60,24 +60,29 @@ const Page = () => {
 
   const handleNotify = notify => {
     setNotify(notify);
-    setNotify({
-      type: null,
-      text: null
-    });
   };
 
   const Insert = async () => {
+    handleNotify({
+      type: null,
+      text: null,
+      spin: true
+    });
+    console.log('---', notify.spin);
+
     try {
       const result = await axios.post('api/recurso', form);
       handleNotify({
         type: 'success',
-        text: 'Recurso inserido, cadastre o links!'
+        text: 'Recurso inserido, cadastre o links!',
+        spin: false
       });
     } catch (error) {
       console.log(error);
       handleNotify({
-        type: 'error',
-        text: 'Recurso não foi inserido, tente novamente!'
+        type: 'danger',
+        text: 'Recurso não foi inserido, tente novamente!',
+        spin: false
       });
     }
   };
@@ -209,9 +214,20 @@ const Page = () => {
     className: "btn btn-theme bg-pri",
     type: "button",
     onClick: Insert
-  }, "Enviar ", /*#__PURE__*/React.createElement("i", {
+  }, /*#__PURE__*/React.createElement("i", {
+    className: "fas fa-spinner float-end fa-spin",
+    style: {
+      marginLeft: '10px',
+      display: notify.spin ? '' : 'none'
+    }
+  }), "Enviar ", /*#__PURE__*/React.createElement("i", {
     className: "fas fa-angle-right"
-  }))), /*#__PURE__*/React.createElement("div", null, notify.type), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null))), /*#__PURE__*/React.createElement("div", {
+  }))), /*#__PURE__*/React.createElement("br", null), notify.type ? /*#__PURE__*/React.createElement("div", {
+    className: "alert alert-" + notify.type + " d-flex align-items-center",
+    role: "alert"
+  }, /*#__PURE__*/React.createElement("i", {
+    className: "fas fa-exclamation-triangle bi flex-shrink-0 me-2"
+  }), /*#__PURE__*/React.createElement("div", null, notify.text)) : /*#__PURE__*/React.createElement("div", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null))), /*#__PURE__*/React.createElement("div", {
     className: "col-md-5"
   }, /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("strong", null, "Cadastrar links")), /*#__PURE__*/React.createElement("div", {
     className: "label-float"

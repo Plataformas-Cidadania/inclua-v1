@@ -20,9 +20,8 @@ const Page = () => {
     const [formatoSelected, setFormatoSelected] = useState(0);
     const [idiomaSelected, setIdiomaSelected] = useState(0);
 
-    const [notify, setNotify] = useState({type:null, text:null});
+    const [notify, setNotify] = useState({type:null, text:null, spin:false});
 
-    console.log(notify);
 
     const [requireds, setRequireds] = useState({
         nome: true,
@@ -56,18 +55,18 @@ const Page = () => {
     }
 
     const handleNotify = (notify) =>{
-
         setNotify(notify);
-        setNotify({type: null, text:null});
     }
 
     const Insert = async () => {
+        handleNotify({type: null, text: null, spin: true});
+        console.log('---', notify.spin);
         try {
             const result = await axios.post('api/recurso', form);
-            handleNotify({type: 'success', text: 'Recurso inserido, cadastre o links!'});
+            handleNotify({type: 'success', text: 'Recurso inserido, cadastre o links!', spin: false});
         } catch (error) {
             console.log(error);
-            handleNotify({type: 'error', text: 'Recurso não foi inserido, tente novamente!'});
+            handleNotify({type: 'danger', text: 'Recurso não foi inserido, tente novamente!', spin: false});
         }
     }
 
@@ -184,12 +183,21 @@ const Page = () => {
 
                     <div className="col-md-12">
                         <div className="dorder-container">
-                            <button className="btn btn-theme bg-pri" type="button"  onClick={Insert} >Enviar <i className="fas fa-angle-right"/></button>
+                            <button className="btn btn-theme bg-pri" type="button"  onClick={Insert} >
+                                <i className="fas fa-spinner float-end fa-spin" style={{marginLeft: '10px', display: notify.spin ? '' : 'none'}} />
+                                Enviar <i className="fas fa-angle-right"/>
+                            </button>
                         </div>
-                        <div>{notify.type}</div>
-                        {/*<div style={{display: this.state.showMsg === 1 ? '' : 'none'}} className="text-success">{this.state.msg}</div>
-                    <div style={{display: this.state.showMsg === 2 ? '' : 'none'}} className="text-danger">{this.state.msg}</div>
-                    <div style={{display: this.state.loading ? 'block' : 'none'}}><i className="fa fa-spin fa-spinner"/>Processando</div>*/}
+                        <br/>
+                        {
+                            notify.type ?
+                                <div className={"alert alert-"+notify.type+" d-flex align-items-center"} role="alert">
+                                    <i className="fas fa-exclamation-triangle bi flex-shrink-0 me-2"/>
+                                    <div>{notify.text}</div>
+                                </div>
+                                :
+                                <div></div>
+                        }
                         <br/><br/>
                     </div>
 
