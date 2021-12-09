@@ -226,6 +226,13 @@ const Page = () => {
                             })
                         }
                     </ul>
+                    <br/>
+                    <div className="dorder-container">
+                        <button className="btn btn-theme bg-pri" type="button"  onClick={Insert} >
+                            <i className="fas fa-spinner float-end fa-spin" style={{marginLeft: '10px', display: notify.spin ? '' : 'none'}} />
+                            Enviar <i className="fas fa-angle-right"/>
+                        </button>
+                    </div>
                 </div>
 
 

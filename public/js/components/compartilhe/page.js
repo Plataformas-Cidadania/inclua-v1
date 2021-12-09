@@ -253,5 +253,19 @@ const Page = () => {
         background: item.idioma === idiomaSelected ? '#E6DACE' : ''
       }
     }, item.idioma);
-  })))));
+  })), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
+    className: "dorder-container"
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "btn btn-theme bg-pri",
+    type: "button",
+    onClick: Insert
+  }, /*#__PURE__*/React.createElement("i", {
+    className: "fas fa-spinner float-end fa-spin",
+    style: {
+      marginLeft: '10px',
+      display: notify.spin ? '' : 'none'
+    }
+  }), "Enviar ", /*#__PURE__*/React.createElement("i", {
+    className: "fas fa-angle-right"
+  }))))));
 };
