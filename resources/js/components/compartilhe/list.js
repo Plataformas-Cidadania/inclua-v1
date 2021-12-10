@@ -5,7 +5,7 @@ const List = () => {
     const [varTrash, setVarTrash] = useState(0);
 
 
-    const [varIdRedurso = setIdRedurso] = useState(0);
+    const [idRedurso, setIdRecurso] = useState(0);
 
     useEffect(() => {
         listGet();
@@ -38,7 +38,7 @@ const List = () => {
     }
 
     const clickEdit = (id) => {
-        setIdRedurso(id);
+        setIdRecurso(id);
     }
 
     return (
@@ -117,11 +117,11 @@ const List = () => {
                     <div className="modal-dialog">
                         <div className="modal-content">
                             <div className="modal-header">
-                                <h5 className="modal-title" id="putModalLabel">Inserir - {varIdRedurso}</h5>
+                                <h5 className="modal-title" id="putModalLabel">Editar - {idRedurso}</h5>
                                 <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"/>
                             </div>
                             <div className="modal-body">
-                                <Edit id_recurso={varIdRedurso}/>
+                                <Edit id_recurso={idRedurso}/>
                             </div>
                             <div className="modal-footer">
                                 <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>

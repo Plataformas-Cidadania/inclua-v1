@@ -1,4 +1,4 @@
-const Link = () => {
+const Link = (props) => {
 
     const {useState, useEffect} = React;
     const [form, setForm] = useState({
@@ -21,9 +21,9 @@ const Link = () => {
         idioma: true,
     });
 
-    useEffect(() => {
+    /*useEffect(() => {
 
-    }, []);
+    }, []);*/
 
     const handleNotify = (notify) =>{
         setNotify(notify);
@@ -34,6 +34,7 @@ const Link = () => {
         try {
             const result = await axios.post('api/link', form);
             handleNotify({type: 'success', text: 'Link inserido!', spin: false});
+            props.setListLinks(props.listLinks+1);
         } catch (error) {
             console.log(error);
             handleNotify({type: 'danger', text: 'Link não foi inserido, tente novamente!', spin: false});
@@ -115,15 +116,11 @@ const Link = () => {
                             </button>
                         </div>
                         <br/>
-                        {
-                            notify.type ?
-                                <div className={"alert alert-"+notify.type+" d-flex align-items-center"} role="alert">
-                                    <i className="fas fa-exclamation-triangle bi flex-shrink-0 me-2"/>
-                                    <div>{notify.text}</div>
-                                </div>
-                                :
-                                <div></div>
-                        }
+                        <div className={"alert alert-"+notify.type+" d-flex align-items-center"} role="alert" style={{display: notify.type ? '' : 'none'}}>
+                            <i className="fas fa-exclamation-triangle bi flex-shrink-0 me-2"/>
+                            <div>{notify.text}</div>
+                        </div>
+
                         <br/><br/>
                     </div>
                 </div>

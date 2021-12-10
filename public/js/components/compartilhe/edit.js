@@ -5,14 +5,16 @@ const Edit = props => {
   } = React;
   const [tipoMap, setTipoMap] = useState([]);
   const [formatoMap, setFormatoMap] = useState([]);
-  const [formDetail, setDetail] = useState([]);
-  const [form, setForm] = useState({
-    ultimo_acesso: '1992-02-10 13:21:37',
-    id_tipo_recurso: 0,
-    id_formato: 0
-  });
-  const [tipoSelected, setTipoSelected] = useState(0);
-  const [formatoSelected, setFormatoSelected] = useState(0);
+  const [form, setForm] = useState([]);
+  /*const [form, setForm] = useState({
+      ultimo_acesso: '1992-02-10 13:21:37',
+      id_tipo_recurso: 0,
+      id_formato: 0,
+  });*/
+
+  /*const [tipoSelected, setTipoSelected] = useState(0);
+  const [formatoSelected, setFormatoSelected] = useState(0);*/
+
   const [notify, setNotify] = useState({
     type: null,
     text: null,
@@ -28,17 +30,24 @@ const Edit = props => {
   useEffect(() => {
     Tipo();
     Formato();
-    Detail();
   }, []);
+  useEffect(() => {
+    if (props.id_recurso > 0) {
+      Detail();
+    }
+  }, [props.id_recurso]);
 
   const Detail = async () => {
     console.log(props.id_recurso);
 
     try {
-      const result = await axios.get('api/recurso/' + props.id_recurso);
-      setDetail(result.data.data);
+      const result = await axios.get('api/recurso/' + props.id_recurso); //const detail = result.data.data;
+
+      setForm(result.data.data);
+      /*setFormatoSelected(detail.formato_recurso.id_formato);
+      setTipoSelected(detail.tipo_recurso.id_tipo_recurso);*/
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -64,16 +73,25 @@ const Edit = props => {
     setNotify(notify);
   };
 
-  const Insert = async () => {
+  const Update = async () => {
     handleNotify({
       type: null,
       text: null,
       spin: true
     });
     console.log('---', notify.spin);
+    const params = new URLSearchParams();
+    params.append('nome', form.nome);
+    params.append('esfera', form.esfera);
+    params.append('id_tipo_recurso', form.id_tipo_recurso);
+    params.append('id_formato', form.id_formato);
 
     try {
-      const result = await axios.post('api/recurso', form);
+      const result = await axios.put('api/recurso/' + form.id_recurso, params, {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      });
       handleNotify({
         type: 'success',
         text: 'Recurso inserido, cadastre o links!',
@@ -90,7 +108,7 @@ const Edit = props => {
   };
 
   const clickTipo = id => {
-    setTipoSelected(id);
+    //setTipoSelected(id);
     let newForm = { ...form,
       id_tipo_recurso: id
     };
@@ -99,7 +117,7 @@ const Edit = props => {
   };
 
   const clickFormato = id => {
-    setFormatoSelected(id);
+    //setFormatoSelected(id);
     let newForm = { ...form,
       id_formato: id
     };
@@ -156,7 +174,7 @@ const Edit = props => {
     id: "nome",
     placeholder: " ",
     required: requireds.nome ? '' : 'required',
-    defaultValue: formDetail.nome,
+    defaultValue: form.nome,
     onChange: handleForm
   }), /*#__PURE__*/React.createElement("label", {
     htmlFor: "nome"
@@ -178,7 +196,7 @@ const Edit = props => {
     placeholder: " ",
     required: requireds.esfera ? '' : 'required',
     onChange: handleForm,
-    defaultValue: formDetail.esfera
+    defaultValue: form.esfera
   }), /*#__PURE__*/React.createElement("label", {
     htmlFor: "esfera"
   }, "Esfera"), /*#__PURE__*/React.createElement("div", {
@@ -196,7 +214,7 @@ const Edit = props => {
       key: 'tipo_' + key,
       onClick: () => clickTipo(item.id_tipo_recurso),
       style: {
-        background: item.id_tipo_recurso === tipoSelected ? '#E6DACE' : ''
+        background: item.id_tipo_recurso === form.id_tipo_recurso ? '#E6DACE' : ''
       }
     }, item.nome);
   })), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("p", null, "Selecione um formato:"), /*#__PURE__*/React.createElement("ul", {
@@ -206,7 +224,7 @@ const Edit = props => {
       key: 'formato_' + key,
       onClick: () => clickFormato(item.id_formato),
       style: {
-        background: item.id_formato === formatoSelected ? '#E6DACE' : ''
+        background: item.id_formato === form.id_formato ? '#E6DACE' : ''
       }
     }, item.nome);
   })), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
@@ -216,7 +234,7 @@ const Edit = props => {
   }, /*#__PURE__*/React.createElement("button", {
     className: "btn btn-theme bg-pri",
     type: "button",
-    onClick: Insert
+    onClick: Update
   }, /*#__PURE__*/React.createElement("span", {
     style: {
       marginLeft: '10px',

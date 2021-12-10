@@ -5,7 +5,7 @@ const List = () => {
   } = React;
   const [listMap, setListMap] = useState([]);
   const [varTrash, setVarTrash] = useState(0);
-  const [varIdRedurso = setIdRedurso] = useState(0);
+  const [idRedurso, setIdRecurso] = useState(0);
   useEffect(() => {
     listGet();
   }, []);
@@ -36,7 +36,7 @@ const List = () => {
   };
 
   const clickEdit = id => {
-    setIdRedurso(id);
+    setIdRecurso(id);
   };
 
   return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
@@ -131,7 +131,7 @@ const List = () => {
   }, /*#__PURE__*/React.createElement("h5", {
     className: "modal-title",
     id: "putModalLabel"
-  }, "Inserir - ", varIdRedurso), /*#__PURE__*/React.createElement("button", {
+  }, "Editar - ", idRedurso), /*#__PURE__*/React.createElement("button", {
     type: "button",
     className: "btn-close",
     "data-bs-dismiss": "modal",
@@ -139,7 +139,7 @@ const List = () => {
   })), /*#__PURE__*/React.createElement("div", {
     className: "modal-body"
   }, /*#__PURE__*/React.createElement(Edit, {
-    id_recurso: varIdRedurso
+    id_recurso: idRedurso
   })), /*#__PURE__*/React.createElement("div", {
     className: "modal-footer"
   }, /*#__PURE__*/React.createElement("button", {

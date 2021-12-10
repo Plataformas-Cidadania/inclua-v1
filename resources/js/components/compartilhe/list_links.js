@@ -1,4 +1,4 @@
-const ListLinks = () => {
+const ListLinks = (props) => {
 
     const {useState, useEffect} = React;
     const [listMap, setListMap] = useState([]);
@@ -6,7 +6,7 @@ const ListLinks = () => {
 
     useEffect(() => {
         listGet();
-    }, []);
+    }, [props.listLinks]);
 
     const listGet = async () => {
         try {

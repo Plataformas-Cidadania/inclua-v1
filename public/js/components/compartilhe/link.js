@@ -1,4 +1,4 @@
-const Link = () => {
+const Link = props => {
   const {
     useState,
     useEffect
@@ -26,7 +26,8 @@ const Link = () => {
     uri: true,
     idioma: true
   });
-  useEffect(() => {}, []);
+  /*useEffect(() => {
+   }, []);*/
 
   const handleNotify = notify => {
     setNotify(notify);
@@ -46,6 +47,7 @@ const Link = () => {
         text: 'Link inserido!',
         spin: false
       });
+      props.setListLinks(props.listLinks + 1);
     } catch (error) {
       console.log(error);
       handleNotify({
@@ -150,10 +152,13 @@ const Link = () => {
     className: "fas fa-spinner float-end fa-spin"
   })), "Adicionar ", /*#__PURE__*/React.createElement("i", {
     className: "fas fa-angle-right"
-  }))), /*#__PURE__*/React.createElement("br", null), notify.type ? /*#__PURE__*/React.createElement("div", {
+  }))), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
     className: "alert alert-" + notify.type + " d-flex align-items-center",
-    role: "alert"
+    role: "alert",
+    style: {
+      display: notify.type ? '' : 'none'
+    }
   }, /*#__PURE__*/React.createElement("i", {
     className: "fas fa-exclamation-triangle bi flex-shrink-0 me-2"
-  }), /*#__PURE__*/React.createElement("div", null, notify.text)) : /*#__PURE__*/React.createElement("div", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null)))));
+  }), /*#__PURE__*/React.createElement("div", null, notify.text)), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null)))));
 };

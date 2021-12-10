@@ -1,4 +1,4 @@
-const ListLinks = () => {
+const ListLinks = props => {
   const {
     useState,
     useEffect
@@ -7,7 +7,7 @@ const ListLinks = () => {
   const [varTrash, setVarTrash] = useState(0);
   useEffect(() => {
     listGet();
-  }, []);
+  }, [props.listLinks]);
 
   const listGet = async () => {
     try {

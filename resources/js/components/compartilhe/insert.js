@@ -3,6 +3,7 @@ const Insert = () => {
     const {useState, useEffect} = React;
     const [tipoMap, setTipoMap] = useState([]);
     const [formatoMap, setFormatoMap] = useState([]);
+    const [listLinks, setListLinks] = useState(1);
 
     const [form, setForm] = useState({
         ultimo_acesso: '1992-02-10 13:21:37',
@@ -116,8 +117,6 @@ const Insert = () => {
     }
 
 
-
-
     return (
         <div>
             <form>
@@ -203,8 +202,8 @@ const Insert = () => {
 
             <div className="col-md-12" style={{display: notify.type === "success" ? '' : 'none'}}>
             {/*<div className="col-md-12">*/}
-                <ListLinks/>
-                <Link/>
+                <ListLinks listLinks={listLinks}/>
+                <Link listLinks={listLinks} setListLinks={setListLinks}/>
             </div>
         </div>
     );
