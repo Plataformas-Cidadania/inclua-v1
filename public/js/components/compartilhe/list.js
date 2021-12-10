@@ -5,9 +5,13 @@ const List = () => {
   } = React;
   const [listMap, setListMap] = useState([]);
   const [varTrash, setVarTrash] = useState(0);
+  const [varIdRedurso = setIdRedurso] = useState(0);
   useEffect(() => {
     listGet();
   }, []);
+  /*useEffect(() => {
+      setIdRedurso;
+  }, [varIdRedurso]);*/
 
   const listGet = async () => {
     try {
@@ -29,6 +33,10 @@ const List = () => {
 
   const clickTrash = id => {
     setVarTrash(id);
+  };
+
+  const clickEdit = id => {
+    setIdRedurso(id);
   };
 
   return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
@@ -60,7 +68,8 @@ const List = () => {
     }, /*#__PURE__*/React.createElement("span", {
       className: "cursor",
       "data-bs-toggle": "modal",
-      "data-bs-target": "#putModal"
+      "data-bs-target": "#putModal",
+      onClick: () => clickEdit(item.id_recurso)
     }, /*#__PURE__*/React.createElement("i", {
       className: "far fa-edit fa-2x"
     })), "\xA0", /*#__PURE__*/React.createElement("span", {
@@ -101,7 +110,7 @@ const List = () => {
     "aria-label": "Close"
   })), /*#__PURE__*/React.createElement("div", {
     className: "modal-body"
-  }, /*#__PURE__*/React.createElement(Page, null)), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement(Insert, null)), /*#__PURE__*/React.createElement("div", {
     className: "modal-footer"
   }, /*#__PURE__*/React.createElement("button", {
     type: "button",
@@ -122,15 +131,15 @@ const List = () => {
   }, /*#__PURE__*/React.createElement("h5", {
     className: "modal-title",
     id: "putModalLabel"
-  }, "Inserir"), /*#__PURE__*/React.createElement("button", {
+  }, "Inserir - ", varIdRedurso), /*#__PURE__*/React.createElement("button", {
     type: "button",
     className: "btn-close",
     "data-bs-dismiss": "modal",
     "aria-label": "Close"
   })), /*#__PURE__*/React.createElement("div", {
     className: "modal-body"
-  }, /*#__PURE__*/React.createElement(Put, {
-    id_recurso: 1
+  }, /*#__PURE__*/React.createElement(Edit, {
+    id_recurso: varIdRedurso
   })), /*#__PURE__*/React.createElement("div", {
     className: "modal-footer"
   }, /*#__PURE__*/React.createElement("button", {

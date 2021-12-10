@@ -1,4 +1,4 @@
-const Put = (props) => {
+const Insert = () => {
 
     const {useState, useEffect} = React;
     const [tipoMap, setTipoMap] = useState([]);
@@ -30,9 +30,7 @@ const Put = (props) => {
     useEffect(() => {
         Tipo();
         Formato();
-        console.log("props", props.id_recurso);
     }, []);
-
 
     const Tipo = async () => {
         try {

@@ -1,11 +1,10 @@
-const Put = props => {
+const Insert = () => {
   const {
     useState,
     useEffect
   } = React;
   const [tipoMap, setTipoMap] = useState([]);
   const [formatoMap, setFormatoMap] = useState([]);
-  const [formDetail, setDetail] = useState([]);
   const [form, setForm] = useState({
     ultimo_acesso: '1992-02-10 13:21:37',
     id_tipo_recurso: 0,
@@ -28,19 +27,7 @@ const Put = props => {
   useEffect(() => {
     Tipo();
     Formato();
-    Detail();
   }, []);
-
-  const Detail = async () => {
-    console.log(props.id_recurso);
-
-    try {
-      const result = await axios.get('api/recurso/' + props.id_recurso);
-      setDetail(result.data.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   const Tipo = async () => {
     try {
@@ -156,7 +143,6 @@ const Put = props => {
     id: "nome",
     placeholder: " ",
     required: requireds.nome ? '' : 'required',
-    defaultValue: formDetail.nome,
     onChange: handleForm
   }), /*#__PURE__*/React.createElement("label", {
     htmlFor: "nome"
@@ -177,8 +163,7 @@ const Put = props => {
     id: "esfera",
     placeholder: " ",
     required: requireds.esfera ? '' : 'required',
-    onChange: handleForm,
-    defaultValue: formDetail.esfera
+    onChange: handleForm
   }), /*#__PURE__*/React.createElement("label", {
     htmlFor: "esfera"
   }, "Esfera"), /*#__PURE__*/React.createElement("div", {

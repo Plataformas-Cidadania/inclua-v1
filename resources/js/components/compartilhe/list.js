@@ -4,9 +4,16 @@ const List = () => {
     const [listMap, setListMap] = useState([]);
     const [varTrash, setVarTrash] = useState(0);
 
+
+    const [varIdRedurso = setIdRedurso] = useState(0);
+
     useEffect(() => {
         listGet();
     }, []);
+
+    /*useEffect(() => {
+        setIdRedurso;
+    }, [varIdRedurso]);*/
 
     const listGet = async () => {
         try {
@@ -28,6 +35,10 @@ const List = () => {
 
     const clickTrash = (id) => {
         setVarTrash(id);
+    }
+
+    const clickEdit = (id) => {
+        setIdRedurso(id);
     }
 
     return (
@@ -60,7 +71,7 @@ const List = () => {
                                 </td>
                                 <td>
                                     <div style={{display: item.id_recurso===varTrash ? 'none' : ''}}>
-                                        <span className="cursor" data-bs-toggle="modal" data-bs-target="#putModal">
+                                        <span className="cursor" data-bs-toggle="modal" data-bs-target="#putModal" onClick={() => clickEdit(item.id_recurso)}>
                                             <i className="far fa-edit fa-2x" />
                                         </span>
                                          &nbsp;
@@ -90,7 +101,7 @@ const List = () => {
                                 <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"/>
                             </div>
                             <div className="modal-body">
-                                <Page/>
+                                <Insert/>
                             </div>
                             <div className="modal-footer">
                                 <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
@@ -106,11 +117,11 @@ const List = () => {
                     <div className="modal-dialog">
                         <div className="modal-content">
                             <div className="modal-header">
-                                <h5 className="modal-title" id="putModalLabel">Inserir</h5>
+                                <h5 className="modal-title" id="putModalLabel">Inserir - {varIdRedurso}</h5>
                                 <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"/>
                             </div>
                             <div className="modal-body">
-                                <Put id_recurso={1}/>
+                                <Edit id_recurso={varIdRedurso}/>
                             </div>
                             <div className="modal-footer">
                                 <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>

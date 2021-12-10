@@ -1,8 +1,9 @@
-const Page = () => {
+const Edit = (props) => {
 
     const {useState, useEffect} = React;
     const [tipoMap, setTipoMap] = useState([]);
     const [formatoMap, setFormatoMap] = useState([]);
+    const [formDetail, setDetail] = useState([]);
 
     const [form, setForm] = useState({
         ultimo_acesso: '1992-02-10 13:21:37',
@@ -30,7 +31,21 @@ const Page = () => {
     useEffect(() => {
         Tipo();
         Formato();
+        Detail();
     }, []);
+
+    const Detail = async () => {
+        console.log(props.id_recurso);
+        try {
+            const result = await axios.get('api/recurso/'+props.id_recurso);
+
+            setDetail(result.data.data)
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
 
     const Tipo = async () => {
         try {
@@ -121,18 +136,19 @@ const Page = () => {
     return (
         <div>
             <form>
+
                 <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
                 <div className="row">
                     <div className="col-md-12" style={{display: notify.type==='success' ? 'none' : ''}}>
                         <div className="label-float">
-                            <input className={"form-control form-g "+(requireds.nome ? '' : 'invalid-field')} type="text" name="nome" id="nome"  placeholder=" " required={requireds.nome ? '' : 'required'} onChange={handleForm}/>
+                            <input className={"form-control form-g "+(requireds.nome ? '' : 'invalid-field')} type="text" name="nome" id="nome"  placeholder=" " required={requireds.nome ? '' : 'required'} defaultValue={formDetail.nome} onChange={handleForm}/>
                             <label htmlFor="nome">Nome</label>
                             <div className="label-box-info">
                                 <p style={{display: requireds.nome ? 'none' : ''}}><i className="fas fa-exclamation-circle"/> Digite o nome e sobre nome</p>
                             </div>
                         </div>
                         <div className="label-float">
-                            <input className={"form-control form-g "+(requireds.esfera ? '' : 'invalid-field')} type="text" name="esfera" id="esfera"  placeholder=" " required={requireds.esfera ? '' : 'required'} onChange={handleForm}/>
+                            <input className={"form-control form-g "+(requireds.esfera ? '' : 'invalid-field')} type="text" name="esfera" id="esfera"  placeholder=" " required={requireds.esfera ? '' : 'required'} onChange={handleForm} defaultValue={formDetail.esfera}/>
                             <label htmlFor="esfera">Esfera</label>
                             <div className="label-box-info">
                                 <p style={{display: requireds.esfera ? 'none' : ''}}><i className="fas fa-exclamation-circle"/> Digite uma esfera</p>

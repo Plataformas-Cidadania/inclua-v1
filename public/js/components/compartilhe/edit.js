@@ -1,4 +1,4 @@
-const Put = props => {
+const Edit = props => {
   const {
     useState,
     useEffect
