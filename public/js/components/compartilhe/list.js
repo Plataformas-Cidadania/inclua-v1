@@ -129,7 +129,9 @@ const List = () => {
     "aria-label": "Close"
   })), /*#__PURE__*/React.createElement("div", {
     className: "modal-body"
-  }, /*#__PURE__*/React.createElement(Put, null)), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement(Put, {
+    id_recurso: 1
+  })), /*#__PURE__*/React.createElement("div", {
     className: "modal-footer"
   }, /*#__PURE__*/React.createElement("button", {
     type: "button",
