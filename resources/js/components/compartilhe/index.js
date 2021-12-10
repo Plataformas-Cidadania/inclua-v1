@@ -1,7 +1,7 @@
 const Compartilhe = () => {
     return (
         <div>
-            <Page/>
+            <List/>
         </div>
     );
 };

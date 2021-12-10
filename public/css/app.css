@@ -11338,6 +11338,10 @@ textarea.form-control-lg {
   cursor: pointer;
 }
 
+.cursor svg {
+  cursor: pointer;
+}
+
 .divOff {
   display: none;
 }
@@ -13475,7 +13479,6 @@ textarea {
   min-height: 23px;
   width: 100%;
   background-color: #F5F1ED;
-  cursor: pointer;
 }
 
 .dorder-container-mai:hover {

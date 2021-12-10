@@ -161,6 +161,10 @@
     <script src="js/components/recursos/index.js"></script>
 @endif
 @if($rota=="compartilhe")
+    <script src="js/components/compartilhe/put.js"></script>
+    <script src="js/components/compartilhe/list_links.js"></script>
+    <script src="js/components/compartilhe/link.js"></script>
+    <script src="js/components/compartilhe/list.js"></script>
     <script src="js/components/compartilhe/page.js"></script>
     <script src="js/components/compartilhe/index.js"></script>
     {{--<script src="js/components/forms/compartilhe.js"></script>--}}

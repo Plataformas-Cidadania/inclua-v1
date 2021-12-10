@@ -1,4 +1,4 @@
-const Page = () => {
+const Put = () => {
   const {
     useState,
     useEffect
