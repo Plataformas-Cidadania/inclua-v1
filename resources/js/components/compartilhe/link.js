@@ -31,10 +31,6 @@ const Link = (props) => {
         idioma: true,
     });
 
-    /*useEffect(() => {
-
-    }, []);*/
-
     const handleNotify = (notify) =>{
         setNotify(notify);
     }
@@ -45,6 +41,7 @@ const Link = (props) => {
             const result = await axios.post('api/link', form);
             handleNotify({type: 'success', text: 'Link inserido!', spin: false});
             props.setListLinks(props.listLinks+1);
+
         } catch (error) {
             console.log(error);
             handleNotify({type: 'danger', text: 'Link não foi inserido, tente novamente!', spin: false});

@@ -33,8 +33,6 @@ const Link = props => {
     uri: true,
     idioma: true
   });
-  /*useEffect(() => {
-   }, []);*/
 
   const handleNotify = notify => {
     setNotify(notify);
