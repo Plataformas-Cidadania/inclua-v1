@@ -6,12 +6,14 @@ const ListLinks = props => {
   const [listMap, setListMap] = useState([]);
   const [varTrash, setVarTrash] = useState(0);
   useEffect(() => {
-    listGet();
+    if (props.id_recurso) {
+      listGet();
+    }
   }, [props.listLinks]);
 
   const listGet = async () => {
     try {
-      const result = await axios.get('api/link');
+      const result = await axios.get('api/recurso/links/' + props.id_recurso);
       setListMap(result.data.data);
     } catch (error) {
       console.log(error);
@@ -35,14 +37,18 @@ const ListLinks = props => {
     className: "table table-hover"
   }, /*#__PURE__*/React.createElement("thead", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", {
     scope: "col"
-  }, "Uri"), /*#__PURE__*/React.createElement("th", {
+  }, "Link"), /*#__PURE__*/React.createElement("th", {
     scope: "col"
   }, "Idioma"), /*#__PURE__*/React.createElement("th", {
     scope: "col"
   }, "A\xE7\xF5es"))), /*#__PURE__*/React.createElement("tbody", null, listMap.map((item, key) => {
     return /*#__PURE__*/React.createElement("tr", {
       key: 'table_' + key
-    }, /*#__PURE__*/React.createElement("td", null, item.uri), /*#__PURE__*/React.createElement("td", null, item.idioma), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", {
+    }, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("a", {
+      href: item.uri
+    }, "Acessar link ", /*#__PURE__*/React.createElement("i", {
+      className: "fas fa-angle-right"
+    }))), /*#__PURE__*/React.createElement("td", null, item.idioma), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", {
       style: {
         display: item.id_link === varTrash ? 'none' : ''
       }

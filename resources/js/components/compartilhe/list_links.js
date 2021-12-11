@@ -5,12 +5,14 @@ const ListLinks = (props) => {
     const [varTrash, setVarTrash] = useState(0);
 
     useEffect(() => {
-        listGet();
+        if(props.id_recurso){
+            listGet();
+        }
     }, [props.listLinks]);
 
     const listGet = async () => {
         try {
-            const result = await axios.get('api/link');
+            const result = await axios.get('api/recurso/links/'+props.id_recurso);
             setListMap(result.data.data)
         } catch (error) {
             console.log(error);
@@ -35,7 +37,7 @@ const ListLinks = (props) => {
             <table className="table table-hover">
                 <thead>
                 <tr>
-                    <th scope="col">Uri</th>
+                    <th scope="col">Link</th>
                     <th scope="col">Idioma</th>
                     <th scope="col">Ações</th>
                 </tr>
@@ -45,7 +47,7 @@ const ListLinks = (props) => {
                     listMap.map((item, key) => {
                         return(
                             <tr key={'table_'+key}>
-                                <td>{item.uri}</td>
+                                <td><a href={item.uri}>Acessar link <i className="fas fa-angle-right"/></a></td>
                                 <td>{item.idioma}</td>
                                 <td>
                                     <div style={{display: item.id_link===varTrash ? 'none' : ''}}>
@@ -64,7 +66,6 @@ const ListLinks = (props) => {
                 }
                 </tbody>
             </table>
-
         </div>
     );
 };

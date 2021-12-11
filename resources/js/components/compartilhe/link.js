@@ -1,9 +1,19 @@
 const Link = (props) => {
 
+
     const {useState, useEffect} = React;
     const [form, setForm] = useState({
-        id_recurso: 1,
+        id_recurso: props.id_recurso,
+        idioma: null,
     });
+
+    useEffect(() => {
+        let newForm = {
+            ...form,
+            id_recurso: props.id_recurso,
+        }
+        setForm(newForm);
+    }, [props.id_recurso]);
 
     let idiomaMap = [
         {id: 1, idioma: "PT-BR"},
@@ -42,7 +52,6 @@ const Link = (props) => {
     }
 
     const clickIdioma = (idioma) => {
-        console.log(idioma);
         let newForm = {
             ...form,
             idioma: idioma
@@ -117,11 +126,11 @@ const Link = (props) => {
                         </div>
                         <br/>
                         <div className={"alert alert-"+notify.type+" d-flex align-items-center"} role="alert" style={{display: notify.type ? '' : 'none'}}>
-                            <i className="fas fa-exclamation-triangle bi flex-shrink-0 me-2"/>
+                            <span style={{display: notify.type ? '' : 'none'}}><i className="fas fa-exclamation-triangle bi flex-shrink-0 me-2"/></span>
                             <div>{notify.text}</div>
                         </div>
 
-                        <br/><br/>
+                        <br/>
                     </div>
                 </div>
 

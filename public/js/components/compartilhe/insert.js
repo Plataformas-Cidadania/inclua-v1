@@ -6,6 +6,7 @@ const Insert = () => {
   const [tipoMap, setTipoMap] = useState([]);
   const [formatoMap, setFormatoMap] = useState([]);
   const [listLinks, setListLinks] = useState(1);
+  const [id_recurso, setIdRecurso] = useState(0);
   const [form, setForm] = useState({
     ultimo_acesso: '1992-02-10 13:21:37',
     id_tipo_recurso: 0,
@@ -31,6 +32,7 @@ const Insert = () => {
   }, []);
 
   const Tipo = async () => {
+    //handleNotify({type: 'danger', text: null, spin: false});
     try {
       const result = await axios.get('api/tipo_recurso');
       setTipoMap(result.data.data);
@@ -58,10 +60,10 @@ const Insert = () => {
       text: null,
       spin: true
     });
-    console.log('---', notify.spin);
 
     try {
       const result = await axios.post('api/recurso', form);
+      setIdRecurso(result.data.data.id_recurso);
       handleNotify({
         type: 'success',
         text: 'Recurso inserido, cadastre o links!',
@@ -212,20 +214,29 @@ const Insert = () => {
     className: "fas fa-spinner float-end fa-spin"
   })), "Pr\xF3ximo ", /*#__PURE__*/React.createElement("i", {
     className: "fas fa-angle-right"
-  }))), /*#__PURE__*/React.createElement("br", null), notify.type ? /*#__PURE__*/React.createElement("div", {
+  }))), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
     className: "alert alert-" + notify.type + " d-flex align-items-center",
-    role: "alert"
+    role: "alert",
+    style: {
+      display: notify.type ? '' : 'none'
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      display: notify.type ? '' : 'none'
+    }
   }, /*#__PURE__*/React.createElement("i", {
     className: "fas fa-exclamation-triangle bi flex-shrink-0 me-2"
-  }), /*#__PURE__*/React.createElement("div", null, notify.text)) : /*#__PURE__*/React.createElement("div", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null))))), /*#__PURE__*/React.createElement("div", {
+  })), /*#__PURE__*/React.createElement("div", null, notify.text)))))), /*#__PURE__*/React.createElement("div", {
     className: "col-md-12",
     style: {
       display: notify.type === "success" ? '' : 'none'
     }
   }, /*#__PURE__*/React.createElement(ListLinks, {
-    listLinks: listLinks
+    listLinks: listLinks,
+    id_recurso: id_recurso
   }), /*#__PURE__*/React.createElement(Link, {
     listLinks: listLinks,
-    setListLinks: setListLinks
+    setListLinks: setListLinks,
+    id_recurso: id_recurso
   })));
 };

@@ -4,6 +4,7 @@ const Insert = () => {
     const [tipoMap, setTipoMap] = useState([]);
     const [formatoMap, setFormatoMap] = useState([]);
     const [listLinks, setListLinks] = useState(1);
+    const [id_recurso, setIdRecurso] = useState(0);
 
     const [form, setForm] = useState({
         ultimo_acesso: '1992-02-10 13:21:37',
@@ -34,6 +35,7 @@ const Insert = () => {
     }, []);
 
     const Tipo = async () => {
+        //handleNotify({type: 'danger', text: null, spin: false});
         try {
             const result = await axios.get('api/tipo_recurso');
             setTipoMap(result.data.data)
@@ -55,11 +57,12 @@ const Insert = () => {
         setNotify(notify);
     }
 
+
     const Insert = async () => {
         handleNotify({type: null, text: null, spin: true});
-        console.log('---', notify.spin);
         try {
             const result = await axios.post('api/recurso', form);
+            setIdRecurso(result.data.data.id_recurso)
             handleNotify({type: 'success', text: 'Recurso inserido, cadastre o links!', spin: false});
         } catch (error) {
             console.log(error);
@@ -181,29 +184,28 @@ const Insert = () => {
                                 </button>
                             </div>
                             <br/>
-                            {
-                                notify.type ?
-                                    <div className={"alert alert-"+notify.type+" d-flex align-items-center"} role="alert">
-                                        <i className="fas fa-exclamation-triangle bi flex-shrink-0 me-2"/>
-                                        <div>{notify.text}</div>
-                                    </div>
-                                    :
-                                    <div></div>
-                            }
-                            <br/><br/>
+
+                            <div className={"alert alert-"+notify.type+" d-flex align-items-center"} role="alert" style={{display: notify.type ? '' : 'none'}}>
+                                <span style={{display: notify.type ? '' : 'none'}}><i className="fas fa-exclamation-triangle bi flex-shrink-0 me-2" /></span>
+                                <div>{notify.text}</div>
+                            </div>
                         </div>
 
                     </div>
-
-
 
                 </div>
             </form>
 
             <div className="col-md-12" style={{display: notify.type === "success" ? '' : 'none'}}>
-            {/*<div className="col-md-12">*/}
-                <ListLinks listLinks={listLinks}/>
-                <Link listLinks={listLinks} setListLinks={setListLinks}/>
+                <ListLinks
+                    listLinks={listLinks}
+                    id_recurso={id_recurso}
+                />
+                <Link
+                    listLinks={listLinks}
+                    setListLinks={setListLinks}
+                    id_recurso={id_recurso}
+                />
             </div>
         </div>
     );

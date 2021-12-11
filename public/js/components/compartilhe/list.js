@@ -131,7 +131,7 @@ const List = () => {
   }, /*#__PURE__*/React.createElement("h5", {
     className: "modal-title",
     id: "putModalLabel"
-  }, "Editar - ", idRedurso), /*#__PURE__*/React.createElement("button", {
+  }, "Editar"), /*#__PURE__*/React.createElement("button", {
     type: "button",
     className: "btn-close",
     "data-bs-dismiss": "modal",

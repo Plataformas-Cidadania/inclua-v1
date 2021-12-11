@@ -6,6 +6,8 @@ const Edit = props => {
   const [tipoMap, setTipoMap] = useState([]);
   const [formatoMap, setFormatoMap] = useState([]);
   const [form, setForm] = useState([]);
+  const [listLinks, setListLinks] = useState(1); //const [id_recurso, setIdRecurso] = useState(0);
+
   /*const [form, setForm] = useState({
       ultimo_acesso: '1992-02-10 13:21:37',
       id_tipo_recurso: 0,
@@ -254,5 +256,12 @@ const Edit = props => {
     style: {
       display: notify.type === "success" ? '' : 'none'
     }
-  }, /*#__PURE__*/React.createElement(ListLinks, null), /*#__PURE__*/React.createElement(Link, null)));
+  }, /*#__PURE__*/React.createElement(ListLinks, {
+    listLinks: listLinks,
+    id_recurso: props.id_recurso
+  }), /*#__PURE__*/React.createElement(Link, {
+    listLinks: listLinks,
+    setListLinks: setListLinks,
+    id_recurso: props.id_recurso
+  })));
 };

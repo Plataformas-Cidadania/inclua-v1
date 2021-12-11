@@ -4,8 +4,15 @@ const Link = props => {
     useEffect
   } = React;
   const [form, setForm] = useState({
-    id_recurso: 1
+    id_recurso: props.id_recurso,
+    idioma: null
   });
+  useEffect(() => {
+    let newForm = { ...form,
+      id_recurso: props.id_recurso
+    };
+    setForm(newForm);
+  }, [props.id_recurso]);
   let idiomaMap = [{
     id: 1,
     idioma: "PT-BR"
@@ -59,7 +66,6 @@ const Link = props => {
   };
 
   const clickIdioma = idioma => {
-    console.log(idioma);
     let newForm = { ...form,
       idioma: idioma
     };
@@ -158,7 +164,11 @@ const Link = props => {
     style: {
       display: notify.type ? '' : 'none'
     }
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      display: notify.type ? '' : 'none'
+    }
   }, /*#__PURE__*/React.createElement("i", {
     className: "fas fa-exclamation-triangle bi flex-shrink-0 me-2"
-  }), /*#__PURE__*/React.createElement("div", null, notify.text)), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null)))));
+  })), /*#__PURE__*/React.createElement("div", null, notify.text)), /*#__PURE__*/React.createElement("br", null)))));
 };

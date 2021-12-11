@@ -4,6 +4,9 @@ const Edit = (props) => {
     const [tipoMap, setTipoMap] = useState([]);
     const [formatoMap, setFormatoMap] = useState([]);
     const [form, setForm] = useState([]);
+    const [listLinks, setListLinks] = useState(1);
+
+    //const [id_recurso, setIdRecurso] = useState(0);
 
     /*const [form, setForm] = useState({
         ultimo_acesso: '1992-02-10 13:21:37',
@@ -235,8 +238,15 @@ const Edit = (props) => {
 
             <div className="col-md-12" style={{display: notify.type === "success" ? '' : 'none'}}>
             {/*<div className="col-md-12">*/}
-                <ListLinks/>
-                <Link/>
+                <ListLinks
+                    listLinks={listLinks}
+                    id_recurso={props.id_recurso}
+                />
+                <Link
+                    listLinks={listLinks}
+                    setListLinks={setListLinks}
+                    id_recurso={props.id_recurso}
+                />
             </div>
         </div>
     );
