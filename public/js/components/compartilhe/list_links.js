@@ -45,7 +45,8 @@ const ListLinks = props => {
     return /*#__PURE__*/React.createElement("tr", {
       key: 'table_' + key
     }, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("a", {
-      href: item.uri
+      href: item.uri,
+      target: "_blank"
     }, "Acessar link ", /*#__PURE__*/React.createElement("i", {
       className: "fas fa-angle-right"
     }))), /*#__PURE__*/React.createElement("td", null, item.idioma), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", {

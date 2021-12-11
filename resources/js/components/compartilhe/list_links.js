@@ -47,7 +47,7 @@ const ListLinks = (props) => {
                     listMap.map((item, key) => {
                         return(
                             <tr key={'table_'+key}>
-                                <td><a href={item.uri}>Acessar link <i className="fas fa-angle-right"/></a></td>
+                                <td><a href={item.uri} target="_blank">Acessar link <i className="fas fa-angle-right"/></a></td>
                                 <td>{item.idioma}</td>
                                 <td>
                                     <div style={{display: item.id_link===varTrash ? 'none' : ''}}>
