@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRespostasTable extends Migration
+class CreateDiagnosticosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,9 @@ class CreateRespostasTable extends Migration
      */
     public function up()
     {
-        Schema::create('avaliacao.resposta', function (Blueprint $table) {
-            $table->increments('id_resposta')->comment('Identifica a resposta');
-            $table->integer('pontuacao');
-            $table->integer('id_pergunta');
-            $table->foreign('id_pergunta')->references('id_pergunta')
-                    ->on('avaliacao.pergunta')
-                    ->onDelete('cascade');
+        Schema::create('avaliacao.diagnostico', function (Blueprint $table) {
+            $table->uuid('id_diagnostico')->primary()->comment('Identifica a diagnostico');
+            $table->timestamps();
         });
     }
     /**
@@ -29,9 +25,9 @@ class CreateRespostasTable extends Migration
      */
     public function down()
     {
-        Schema::table('avaliacao.resposta', function (Blueprint $table) {
-            $table->dropForeign(['id_pergunta']);
-        });  
-        Schema::dropIfExists('avaliacao.resposta');
+        Schema::table('avaliacao.diagnostico', function (Blueprint $table) {
+            $table->dropForeign(['id_diagnostico']);
+        });
+        Schema::dropIfExists('avaliacao.diagnostico');
     }
 }

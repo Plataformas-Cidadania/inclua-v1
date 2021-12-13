@@ -17,8 +17,12 @@ class CreateRespostasTable extends Migration
             $table->increments('id_resposta')->comment('Identifica a resposta');
             $table->integer('pontuacao');
             $table->integer('id_pergunta');
+            $table->uuid('id_diagnostico');
             $table->foreign('id_pergunta')->references('id_pergunta')
                     ->on('avaliacao.pergunta')
+                    ->onDelete('cascade');
+            $table->foreign('id_diagnostico')->references('id_diagnostico')
+                    ->on('avaliacao.diagnostico')
                     ->onDelete('cascade');
         });
     }
@@ -31,7 +35,7 @@ class CreateRespostasTable extends Migration
     {
         Schema::table('avaliacao.resposta', function (Blueprint $table) {
             $table->dropForeign(['id_pergunta']);
-        });  
+        });
         Schema::dropIfExists('avaliacao.resposta');
     }
 }

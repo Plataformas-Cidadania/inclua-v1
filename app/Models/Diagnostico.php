@@ -12,28 +12,20 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Class Dimensao
  *
- * @property int $id_dimensao
- * @property string|null $nome
+ * @property int $id_diagnostico
  *
- * @property Collection|Indicador[] $indicadors
+ * @property Collection|Resposta[] $respostas
  *
  * @package App\Models
  */
-class Dimensao extends Model
+class Diagnostico extends Model
 {
-	protected $table = 'avaliacao.dimensao';
-	protected $primaryKey = 'id_dimensao';
-	public $timestamps = false;
+	protected $table = 'avaliacao.diagnostico';
+	protected $primaryKey = '$id_diagnostico';
 
-
-	protected $fillable = [
-		'numero',
-		'titulo',
-		'descricao'
-	];
-    protected $with = ['indicadores'];
+    protected $with = ['respostas'];
 	public function indicadores()
 	{
-		return $this->hasMany(Indicador::class, 'id_dimensao');
+		return $this->hasMany(Resposta::class, '$id_diagnostico');
 	}
 }
