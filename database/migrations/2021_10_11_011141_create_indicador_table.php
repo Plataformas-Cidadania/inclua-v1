@@ -19,6 +19,8 @@ class CreateIndicadorTable extends Migration
             $table->string('titulo', 200);
             $table->text('descricao');
             $table->integer('id_dimensao')->nullable();
+            $table->integer('vl_baixo')->comment('Valores maiores ou igual');
+            $table->integer('vl_alto')->comment('Valores menores ou igual');
             $table->foreign('id_dimensao')->references('id_dimensao')
                     ->on('avaliacao.dimensao')
                     ->onDelete('set null');

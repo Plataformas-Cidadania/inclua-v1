@@ -53,9 +53,4 @@ class Indicador extends Model
 	{
 		return $this->hasMany(Indicacao::class, 'id_indicador');
 	}
-
-	public function riscos()
-	{
-		return $this->hasMany(Risco::class, 'id_indicador');
-	}
 }
