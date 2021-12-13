@@ -44,8 +44,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $instagram
  * @property string $blog
  * @property int $cmsuser_id
- * @property timestamp without time zone|null $created_at
- * @property timestamp without time zone|null $updated_at
+ * @property timestamp $created_at
+ * @property timestamp $updated_at
  *
  * @package App\Models
  */

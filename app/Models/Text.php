@@ -17,8 +17,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $descricao
  * @property string|null $slug
  * @property int $cmsuser_id
- * @property timestamp without time zone|null $created_at
- * @property timestamp without time zone|null $updated_at
+ * @property timestamp $created_at
+ * @property timestamp $updated_at
  *
  * @property CmsUser $cms_user
  *

@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property int $id_recurso
  * @property string|null $nome
- * @property timestamp without time zone|null $ultimo_acesso
+ * @property timestamp  $ultimo_acesso
  * @property string|null $esfera
  * @property int $id_tipo_recurso
  * @property int $id_formato
