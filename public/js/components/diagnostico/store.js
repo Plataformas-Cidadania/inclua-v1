@@ -10,7 +10,6 @@ const DiagnosticoProvider = ({
   const [tipo, setTipo] = useState(null);
   const [dimensoes, setDimensoes] = useState([]);
   const [dimensao, setDimensao] = useState({
-    info: {},
     indicadores: []
   });
   const [indicador, setIndicador] = useState(1);
@@ -41,6 +40,7 @@ const DiagnosticoProvider = ({
 
       if (result.data.success) {
         const dimensoes = result.data.data;
+        console.log(JSON.stringify(dimensoes));
         setDimensoes(dimensoes);
         setDimensao(dimensoes[0]); //pega a primeira dimensão
 
@@ -134,6 +134,19 @@ const DiagnosticoProvider = ({
     return resposta;
   };
 
+  const validarRespostas = () => {
+    return true;
+  };
+
+  const enviarRespostas = () => {
+    if (!validarRespostas()) {
+      return false;
+    }
+
+    console.log(respostas);
+    localStorage.setItem('respostas_diagnostico_completo', JSON.stringify(respostas));
+  };
+
   return /*#__PURE__*/React.createElement(DiagnosticoContext.Provider, {
     value: {
       tipo,
@@ -147,7 +160,9 @@ const DiagnosticoProvider = ({
       setIndicador,
       verificarResposta,
       setResposta,
-      getResposta
+      getResposta,
+      validarRespostas,
+      enviarRespostas
     }
   }, children);
 };

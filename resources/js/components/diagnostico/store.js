@@ -7,7 +7,7 @@ const DiagnosticoProvider = ({children}) => {
 
     const [tipo, setTipo] = useState(null);
     const [dimensoes, setDimensoes] = useState([]);
-    const [dimensao, setDimensao] = useState({info:{}, indicadores:[]});
+    const [dimensao, setDimensao] = useState({indicadores:[]});
     const [indicador, setIndicador] = useState(1);
     const [dimensoesRespondidas, setDimensoesRespondidas] = useState([]);
     const [respostas, setRespostas] = useState([]);
@@ -39,6 +39,7 @@ const DiagnosticoProvider = ({children}) => {
             const result = await axios.get('api/dimensao');
             if(result.data.success){
                 const dimensoes = result.data.data
+                console.log(JSON.stringify(dimensoes));
                 setDimensoes(dimensoes)
                 setDimensao(dimensoes[0]);//pega a primeira dimensão
                 return;
@@ -94,6 +95,7 @@ const DiagnosticoProvider = ({children}) => {
             newRespostas.push({id_dimensao: dimensao.id_dimensao, id_indicador: indicador.id_indicador, id_pergunta: idPergunta, resposta: parseInt(value)});
         }
         setRespostas(newRespostas);
+
         console.log(newRespostas);
         console.log(JSON.stringify(newRespostas));
     }
@@ -119,6 +121,18 @@ const DiagnosticoProvider = ({children}) => {
         return resposta;
     }
 
+    const validarRespostas = () => {
+        return true
+    }
+
+    const enviarRespostas = () => {
+        if(!validarRespostas()){
+            return false;
+        }
+        console.log(respostas);
+        localStorage.setItem('respostas_diagnostico_completo', JSON.stringify(respostas));
+    }
+
     return (
         <DiagnosticoContext.Provider value={{
             tipo, setTipo,
@@ -128,7 +142,9 @@ const DiagnosticoProvider = ({children}) => {
             indicador, setIndicador,
             verificarResposta,
             setResposta,
-            getResposta
+            getResposta,
+            validarRespostas,
+            enviarRespostas
         }}>
             {children}
         </DiagnosticoContext.Provider>
