@@ -1,0 +1,52 @@
+{
+    "id": 1,
+    "dimensao": 1,
+    "nome": "Relações interinstitucionais e instrumentos de gestão inclusiva",
+    "risco": "Brasil",
+    "pontos": 21,
+    "indicadores": [
+        {
+            "id": 1,
+            "numero": 1,
+            "titulo": "DIVISÃO DO TRABALHO, COORDENAÇÃO E CONFLITO INTERINSTITUCIONAL",
+            "descricao": "Desarticulações (ou formas específicas de articulação) e disputas interinstitucionais podem repercutir em déficits de cobertura, lacunas de atenção ou repercussões negativas para o atendimento a segmentos específicos do público ou territórios atendidos",
+            "qtd_recursos": 48,
+            "risco": 48,
+            "pontos": 21,
+            "series": [
+                {
+                    "name": "Risco baixo",
+                    "data": [20]
+                }, {
+                    "name": "Risco moderado",
+                    "data": [40]
+                }, {
+                    "name": "Risco alto",
+                    "data": [40]
+                }
+            ],
+            "recursos": [
+                {
+                    "id": 1,
+                    "nome": "Padrões globais para serviços de saúde de qualidade para adolescentes",
+                    "esfera": "Brasil",
+                    "idioma": "Português",
+                    "file_tipo": 1,
+                    "tipo": "Manual and desigualdade",
+                    "autoria": "World Health Organization"
+                },
+                {
+                    "id": 2,
+                    "nome": "Padrões globais para serviços de saúde de qualidade para adolescentes",
+                    "esfera": "Brasil",
+                    "idioma": "Português",
+                    "file_tipo": 2,
+                    "tipo": "Manual and desigualdade",
+                    "autoria": "World Health Organization"
+                }
+            ]
+        }
+    ]
+}
+
+
