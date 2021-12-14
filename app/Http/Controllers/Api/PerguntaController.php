@@ -40,7 +40,8 @@ class PerguntaController extends Controller
 
     public function getAll(): JsonResponse
     {
-        $res = $this->repo->all();
+       // $res = $this->repo->all();
+        $res = $this->repo->getAll();
         return $this->successResponse(
             'Perguntas retornadas com sucesso',
             $res
