@@ -38,6 +38,7 @@ class Recurso extends Model
 		'nome' => 'string',
 		'ultimo_acesso' => 'timestamp',
 		'esfera' => 'string',
+		'status'=> 'int',
         'id_tipo_recurso' => 'int',
         'id_formato' => 'int'
 	];
@@ -46,6 +47,7 @@ class Recurso extends Model
 		'nome',
 		'ultimo_acesso',
 		'esfera',
+		'status',
         'id_tipo_recurso',
         'id_formato'
 	];

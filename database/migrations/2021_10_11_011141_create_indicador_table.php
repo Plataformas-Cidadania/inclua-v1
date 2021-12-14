@@ -18,6 +18,7 @@ class CreateIndicadorTable extends Migration
             $table->integer('numero')->comment('Numero do indicador');
             $table->string('titulo', 200);
             $table->text('descricao');
+            $table->text('consequencia');
             $table->integer('id_dimensao')->nullable();
             $table->integer('vl_baixo')->comment('Valores maiores ou igual');
             $table->integer('vl_alto')->comment('Valores menores ou igual');

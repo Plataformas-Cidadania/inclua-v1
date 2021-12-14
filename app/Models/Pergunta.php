@@ -38,7 +38,8 @@ class Pergunta extends Model
 		'vl_minimo' => 'int',
 		'vl_medio' => 'int',
 		'vl_maximo' => 'int',
-		'id_indicador' => 'int'
+		'id_indicador' => 'int',
+		'vl_subPergunta'=> 'int'
 	];
 
 	protected $fillable = [
@@ -47,6 +48,7 @@ class Pergunta extends Model
 		'vl_minimo',
 		'vl_medio',
 		'vl_maximo',
+		'vl_subPergunta',
 		'id_indicador'
 	];
 	protected $with = ['perguntas'];

@@ -19,6 +19,7 @@ class CreateRecursoTable extends Migration
             $table->timestamp('ultimo_acesso')->comment('Data do último acesso');
             $table->string('esfera', 50)->comment('nome da área de atuação');
             $table->integer('id_tipo_recurso')->nullable();
+            $table->integer('status')->comment('Representa se o recurso esta aprovado ou não');
             $table->foreign('id_tipo_recurso')->references('id_tipo_recurso')
                     ->on('avaliacao.tipo_recurso')
                     ->onDelete('set null');
