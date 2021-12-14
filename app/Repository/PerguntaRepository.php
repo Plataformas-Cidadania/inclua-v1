@@ -23,6 +23,6 @@ class PerguntaRepository extends BaseRepository
 
     public function getAll()
 	{
-		return $this->model->where('id_perguntaPai', 'IS NULL')->get();
+		return $this->model->whereNull('id_perguntaPai')->get();
 	}
 }
