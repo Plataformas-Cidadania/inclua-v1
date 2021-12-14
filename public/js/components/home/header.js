@@ -24,6 +24,8 @@ const Header = () => {
     className: "clear-both"
   })))), /*#__PURE__*/React.createElement("div", {
     className: "col"
+  }, /*#__PURE__*/React.createElement("a", {
+    href: "recursos"
   }, /*#__PURE__*/React.createElement("div", {
     className: "dorder-container"
   }, /*#__PURE__*/React.createElement("div", {
@@ -39,7 +41,7 @@ const Header = () => {
     className: "btn-icon-h2"
   }, "Biblioteca"), /*#__PURE__*/React.createElement("div", {
     className: "clear-both"
-  }))))), /*#__PURE__*/React.createElement("div", {
+  })))))), /*#__PURE__*/React.createElement("div", {
     className: "row",
     style: {
       display: context.showMenuDiagnostico ? '' : 'none'
@@ -125,7 +127,8 @@ const Header = () => {
     onClick: () => context.setShowMenuDiagnostico(!context.showMenuDiagnostico)
   }, " ", /*#__PURE__*/React.createElement("i", {
     className: "fas fa-angle-left"
-  }), " Voltar"), /*#__PURE__*/React.createElement("div", {
+  }), " Voltar"), /*#__PURE__*/React.createElement("a", {
+    href: "recursos",
     className: "float-end",
     style: {
       position: 'absolute',

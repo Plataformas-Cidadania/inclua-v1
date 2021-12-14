@@ -160,6 +160,15 @@
     <script src="js/components/recursos/page.js"></script>
     <script src="js/components/recursos/index.js"></script>
 @endif
+@if($rota=="resultado")
+    <script src="https://cdn.jsdelivr.net/npm/prop-types@15.7.2/prop-types.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="https://cdn.jsdelivr.net/npm/react-apexcharts@1.3.6/dist/react-apexcharts.iife.min.js"></script>
+    <script src="js/components/charts/barChart.js"></script>
+
+    <script src="js/components/resultado/page.js"></script>
+    <script src="js/components/resultado/index.js"></script>
+@endif
 @if($rota=="compartilhe")
     <script src="js/components/compartilhe/edit.js"></script>
     <script src="js/components/compartilhe/list_links.js"></script>
