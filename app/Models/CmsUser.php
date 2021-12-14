@@ -11,15 +11,15 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class CmsUser
- * 
+ *
  * @property int $id
  * @property string $name
  * @property string $email
  * @property string $password
  * @property string|null $remember_token
- * @property timestamp without time zone|null $created_at
- * @property timestamp without time zone|null $updated_at
- * 
+ * @property timestamp  $created_at
+ * @property timestamp  $updated_at
+ *
  * @property Collection|Url[] $urls
  * @property Collection|Text[] $texts
  * @property Collection|Webdoor[] $webdoors

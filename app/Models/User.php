@@ -10,21 +10,21 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class User
- * 
+ *
  * @property int $id
  * @property string $name
  * @property string $email
- * @property timestamp without time zone|null $email_verified_at
+ * @property timestamp  $email_verified_at
  * @property string $password
  * @property string|null $remember_token
- * @property timestamp without time zone|null $created_at
- * @property timestamp without time zone|null $updated_at
+ * @property timestamp $created_at
+ * @property timestamp $updated_at
  *
  * @package App\Models
  */
 class User extends Model
 {
-	protected $table = 'cms.users';
+	protected $table = 'avaliacao.users';
 
 	protected $casts = [
 		'name' => 'string',

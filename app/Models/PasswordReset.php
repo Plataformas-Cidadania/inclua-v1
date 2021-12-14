@@ -10,16 +10,16 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class PasswordReset
- * 
+ *
  * @property string $email
  * @property string $token
- * @property timestamp without time zone|null $created_at
+ * @property timestamp $created_at
  *
  * @package App\Models
  */
 class PasswordReset extends Model
 {
-	protected $table = 'cms.password_resets';
+	protected $table = 'avaliacao.password_resets';
 	public $incrementing = false;
 	public $timestamps = false;
 

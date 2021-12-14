@@ -10,12 +10,12 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Risco
- * 
+ *
  * @property int $id_risco
  * @property int|null $vl_alto
  * @property int|null $vl_baixo
  * @property int $id_indicador
- * 
+ *
  * @property Indicador $indicador
  *
  * @package App\Models
@@ -40,9 +40,4 @@ class Risco extends Model
 	];
 
 	protected $with = ['indicador'];
-
-	public function indicador()
-	{
-		return $this->belongsTo(Indicador::class, 'id_indicador');
-	}
 }

@@ -19,12 +19,16 @@ class APISeeder extends Seeder
         DB::table('avaliacao.dimensao')->insert([
             'numero' => 1,
             'titulo' => 'Participação social e representação',
-            'descricao' => 'Chama atenção para o conjunto de relações institucionais ...'
+            'descricao' => 'Chama atenção para o conjunto de relações institucionais ...',
+            'vl_baixo' => 43,
+            'vl_alto' => 23
         ]);
         DB::table('avaliacao.dimensao')->insert([
             'numero' => 2,
             'titulo' => 'Dimensão 2',
-            'descricao' => '....'
+            'descricao' => '....',
+            'vl_baixo' => 44,
+            'vl_alto' => 25
         ]);
         // INDICADORES
         DB::table('avaliacao.indicador')->insert([
@@ -32,6 +36,8 @@ class APISeeder extends Seeder
             'titulo' => 'indc',
             'descricao' => 'Identifica e avalia o grau de maturidade da articulação institucional...',
             'id_dimensao' => 1,
+            'vl_baixo' => 22,
+            'vl_alto' => 11
         ]);
 
         DB::table('avaliacao.indicador')->insert([
@@ -39,6 +45,8 @@ class APISeeder extends Seeder
             'titulo' => 'indc',
             'descricao' => 'Identifica o indicador 2',
             'id_dimensao' => 1,
+            'vl_baixo' => 22,
+            'vl_alto' => 11
         ]);
 
         DB::table('avaliacao.indicador')->insert([
@@ -46,6 +54,8 @@ class APISeeder extends Seeder
             'titulo' => 'indc',
             'descricao' => 'Identifica ...',
             'id_dimensao' => 2,
+            'vl_baixo' => 8,
+            'vl_alto' => 4
         ]);
 
         DB::table('avaliacao.indicador')->insert([
@@ -53,6 +63,8 @@ class APISeeder extends Seeder
             'titulo' => 'indc',
             'descricao' => 'Identifica mais um...',
             'id_dimensao' => 2,
+            'vl_baixo' => 8,
+            'vl_alto' => 4
         ]);
         // PERGUNTAS
         DB::table('avaliacao.pergunta')->insert([
