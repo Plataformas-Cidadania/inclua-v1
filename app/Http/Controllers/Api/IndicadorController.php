@@ -19,6 +19,7 @@ class IndicadorController extends Controller
         'numero' => 'int|min:1',
         'titulo' => 'string|min:1|nullable',
         'descricao' => 'string|min:1|nullable',
+        'consequencia'=> 'string|min:1|nullable',
         'id_dimensao' => 'int|min:1|nullable',
     ];
     public function __construct(IndicadorRepository $repo)
@@ -186,6 +187,7 @@ class IndicadorController extends Controller
             'numero' => $res->numero,
             'titulo' => $res->titulo,
             'descricao' => $res->descricao,
+            'consequencia'=> $res->consequencia,
             'id_dimensao' => $res->id_dimensao,
         ];
     }

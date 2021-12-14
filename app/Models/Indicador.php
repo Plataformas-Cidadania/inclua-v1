@@ -34,6 +34,9 @@ class Indicador extends Model
 		'numero',
 		'titulo',
 		'descricao',
+		'consequencia',
+		'vl_baixo',
+		'vl_alto',
 		'id_dimensao'
 	];
 

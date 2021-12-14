@@ -21,6 +21,7 @@ class RecursoController extends Controller
         'nome' => 'string',
         'ultimo_acesso' => 'date|nullable|date_format:Y-m-d H:i:s',
         'esfera' => 'string|min:1|nullable',
+        'status'=> 'int',
         'id_tipo_recurso' => 'int',
         'id_formato' => 'int',
     ];
@@ -234,6 +235,7 @@ class RecursoController extends Controller
             'nome' =>$res->nome,
             'ultimo_acesso' => $res->ultimo_acesso,
             'esfera' => $res->esfera,
+            'status'=> $res->status,
             'id_tipo_recurso' => $res->id_tipo_recurso,
             'id_formato' => $res->id_formato,
         ];

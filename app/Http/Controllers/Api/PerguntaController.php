@@ -189,6 +189,7 @@ class PerguntaController extends Controller
             'vl_minimo' => $res->vl_minimo,
             'vl_medio' => $res->vl_medio,
             'vl_maximo' => $res->vl_maximo,
+            'vl_subPergunta' => $res->vl_subPergunta,
             'id_indicador' => $res->id_indicador
         ];
     }
