@@ -23,6 +23,7 @@ class CreatePerguntaTable extends Migration
             $table->enum('tipo', [1, 2, 3])->comment('Tipo de pergunta');
             $table->boolean('nao_se_aplica')->comment('armazena se devemos adicionar marcação de nao se aplica na pergunta');
             $table->boolean('inverter')->comment('armazena se devemos ou nao inverter a pontuação da pergunta');
+            $table->integer('vl_subPergunta')->nullable()->comment('Valor para abertura de subPerguntas');
             $table->integer('id_perguntaPai')->nullable()->comment('Pergunta de origem');
             $table->foreign('id_perguntaPai')->references('id_pergunta')
                     ->on('avaliacao.pergunta')
