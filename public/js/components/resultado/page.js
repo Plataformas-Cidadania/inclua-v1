@@ -59,7 +59,7 @@ const Page = () => {
     className: "row"
   }, /*#__PURE__*/React.createElement("div", {
     className: "col-md-12"
-  }, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("h2", null, "Indicador 1.1 - DIVIS\xC3O DO TRABALHO, COORDENA\xC7\xC3O E CONFLITO INTERINSTITUCIONAL"), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("h2", null, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "Indicador 1.1 - DIVIS\xC3O DO TRABALHO, COORDENA\xC7\xC3O E CONFLITO INTERINSTITUCIONAL"), /*#__PURE__*/React.createElement("div", {
     className: "row"
   }, /*#__PURE__*/React.createElement("div", {
     className: "col-md-6"
@@ -89,7 +89,12 @@ const Page = () => {
     style: {
       fontSize: '40px'
     }
-  }, "21"), /*#__PURE__*/React.createElement("p", null, "pontos"))))))), "Indica\xE7\xF5es de Recursos para interven\xE7\xE3o", /*#__PURE__*/React.createElement("i", {
-    className: "fas fa-chevron-right"
-  }))))))));
+  }, "21"), /*#__PURE__*/React.createElement("p", null, "pontos"))))))), /*#__PURE__*/React.createElement("div", {
+    className: "col-md-12 text-right",
+    style: {
+      textAlign: 'right'
+    }
+  }, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("p", null, "Indica\xE7\xF5es de 48 recursos para interven\xE7\xE3o ", /*#__PURE__*/React.createElement("i", {
+    className: "fas fa-angle-right"
+  }))))))))));
 };

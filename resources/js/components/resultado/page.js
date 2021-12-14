@@ -35,11 +35,12 @@ const Page = () => {
                     <div className={bgColor}>
                         <div className="row">
                             <div className="col-md-2 text-center">
-                                <img src={"img/dimensao"+1+"-g.png"} alt="" width="100"/>
+                                <img src={"img/dimensao" + 1 + "-g.png"} alt="" width="100"/>
                                 <h2>DIMENSÃO </h2>
                             </div>
                             <div className="col-md-8">
-                                <h2 className="mt-5">Relações interinstitucionais e instrumentos de gestão inclusiva</h2>
+                                <h2 className="mt-5">Relações interinstitucionais e instrumentos de gestão
+                                    inclusiva</h2>
                                 <p className="mb-5">Veja abaixo os resultados por indicador:</p>
                             </div>
                             <div className="col-md-2 text-center">
@@ -56,12 +57,13 @@ const Page = () => {
             <div className="container">
                 <div className="row">
                     <div className="col-md-12">
-                        <br/>
-                        <h2>Indicador 1.1 - DIVISÃO DO TRABALHO, COORDENAÇÃO E CONFLITO INTERINSTITUCIONAL</h2>
+
+                        <h2><br/><br/>Indicador 1.1 - DIVISÃO DO TRABALHO, COORDENAÇÃO E CONFLITO INTERINSTITUCIONAL</h2>
 
                         <div className="row">
                             <div className="col-md-6">
-                                <BarChart id={'pie-chart'} series={[10, 20, 30, 80, 70, 60, 50, 40]} labels={[10, 20, 30, 80, 70, 60, 50, 40]}/>
+                                <BarChart id={'pie-chart'} series={[10, 20, 30, 80, 70, 60, 50, 40]}
+                                          labels={[10, 20, 30, 80, 70, 60, 50, 40]}/>
                             </div>
                             <div className="col-md-6">
                                 <div className="text-right">
@@ -69,7 +71,11 @@ const Page = () => {
                                     <div className="row">
                                         <div className="col-md-8">
                                             <br/>
-                                            <p><strong>CONSEQUÊNCIA:</strong> Desarticulações (ou formas específicas de articulação) e disputas interinstitucionais podem repercutir em déficits de cobertura, lacunas de atenção ou repercussões negativas para o atendimento a segmentos específicos do público ou territórios atendidos</p>
+                                            <p><strong>CONSEQUÊNCIA:</strong> Desarticulações (ou formas específicas de
+                                                articulação) e disputas interinstitucionais podem repercutir em déficits
+                                                de cobertura, lacunas de atenção ou repercussões negativas para o
+                                                atendimento a segmentos específicos do público ou territórios atendidos
+                                            </p>
                                             <br/> <br/>
                                         </div>
                                         <div className="col-md-4">
@@ -89,9 +95,13 @@ const Page = () => {
                                         </div>
 
                                     </div>
+                                    <div className="col-md-12 text-right" style={{textAlign: 'right'}}>
+                                        <br/>
+                                        <p>Indicações de 48 recursos para intervenção <i className="fas fa-angle-right"/></p>
 
-                                    Indicações de Recursos para intervenção
-                                    <i className="fas fa-chevron-right"/>
+                                    </div>
+
+
                                 </div>
                             </div>
                         </div>
