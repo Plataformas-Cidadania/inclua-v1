@@ -32,8 +32,9 @@ class Dimensao extends Model
 		'descricao'
 	];
     protected $with = ['indicadores'];
+
 	public function indicadores()
 	{
-		return $this->hasMany(Indicador::class, 'id_dimensao');
+        return $this->hasMany(Indicador::class, 'id_dimensao')->orderBy('numero');
 	}
 }
