@@ -177,6 +177,13 @@ Route::group(['middleware' => 'cms'], function () {
         Route::post('/cms/alterar-text/{id}', 'Cms\Controllers\TextController@alterar');
         Route::get('/cms/excluir-text/{id}', 'Cms\Controllers\TextController@excluir');
 
+        //Dimensão
+        Route::get('/cms/texts', 'Cms\Controllers\TextController@index');
+        //Route::get('/cms/listar-texts', 'Cms\Controllers\TextController@listar');
+        Route::get('/cms/text/{id}', 'Cms\Controllers\TextController@detalhar');
+        //Route::post('/cms/alterar-text/{id}', 'Cms\Controllers\TextController@alterar');
+        //Route::get('/cms/excluir-text/{id}', 'Cms\Controllers\TextController@excluir');
+
 
 
     });

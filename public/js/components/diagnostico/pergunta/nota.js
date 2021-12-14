@@ -7,8 +7,13 @@ const Nota = props => {
   const [bgColor, setBgColor] = useState(null);
   const [notas, setNotas] = useState([]);
   const [resposta, setResposta] = useState(0);
-  useEffect(() => {//setResposta(context.getResposta())
-  }, []);
+  useEffect(() => {
+    console.log('props.id', props.id);
+
+    if (props.id) {
+      setResposta(context.getResposta(props.id));
+    }
+  }, [props.id]);
   useEffect(() => {
     let newNotas = [];
     let start = props.minimo > 0 ? props.minimo : 1;
@@ -18,7 +23,7 @@ const Nota = props => {
     }
 
     setNotas(newNotas);
-  }, [props.minimo, props.medio, props.maximo]);
+  }, [props.minimo, props.maximo]);
   useEffect(() => {
     setBgColor(props.bgColor);
   }, [props.bgColor]);
@@ -73,7 +78,7 @@ const Nota = props => {
     id: "customRange1",
     min: "1",
     max: "5",
-    value: resposta,
+    value: resposta ? resposta : 0,
     onChange: handleResposta
   })));
 };

@@ -51,23 +51,26 @@ const DiagnosticoProvider = ({children}) => {
     }
 
     const verificarResposta = (idPergunta, value) => {
-        console.log('Verificar Resposta');
-        return false;
-        let pergunta = indicador.perguntas.filter(obj => obj.id === idPergunta);
-        console.log(idPergunta, pergunta.resposta, value, pergunta.resposta === value);
-        return pergunta.resposta === value;
+        console.log('Verificar Resposta', 'idPergunta', idPergunta);
+        //return false;
+        let pergunta = indicador.perguntas.filter(obj => obj.id_pergunta === idPergunta);
+        if(pergunta.length > 0){
+            console.log('resposta: '+pergunta[0].resposta, 'alternativa: '+value, 'marcado: '+pergunta[0].resposta === value);
+            return pergunta[0].resposta === value;
+        }
+        return false
     }
 
     const setResposta = (idPergunta, value) => {
         console.log('setResposta');
-        console.log(idPergunta, value);
+        console.log('id_dimensao: '+dimensao.id_dimensao, 'id_indicador: '+indicador.id_indicador, 'id_pergunta: '+idPergunta, 'resposta: '+value);
         let newDimensoes = dimensoes;
         newDimensoes.forEach((d) => {
-            if(d.id === dimensao.id){
+            if(d.id_dimensao === dimensao.id_dimensao){
                 d.indicadores.forEach((i) => {
-                    if(i.id === indicador.id){
+                    if(i.id_indicador === indicador.id_indicador){
                         i.perguntas.forEach((p) => {
-                            if(p.id === idPergunta){
+                            if(p.id_pergunta === idPergunta){
                                 p.resposta = parseInt(value);
                             }
                         });
@@ -92,18 +95,19 @@ const DiagnosticoProvider = ({children}) => {
         }
         setRespostas(newRespostas);
         console.log(newRespostas);
+        console.log(JSON.stringify(newRespostas));
     }
 
     const getResposta = (idPergunta) => {
         console.log('getResposta');
         console.log(idPergunta);
-        let resposta = null;
+        let resposta = 0;
         dimensoes.forEach((d) => {
-            if(d.id === dimensao.id){
+            if(d.id_dimensao === dimensao.id_dimensao){
                 d.indicadores.forEach((i) => {
-                    if(i.id === indicador.id){
+                    if(i.id_indicador === indicador.id_indicador){
                         i.perguntas.forEach((p) => {
-                            if(p.id === idPergunta){
+                            if(p.id_pergunta === idPergunta){
                                 resposta = p.resposta;
                             }
                         });
@@ -111,7 +115,7 @@ const DiagnosticoProvider = ({children}) => {
                 })
             }
         });
-        console.log(resposta);
+        console.log('resposta', resposta);
         return resposta;
     }
 

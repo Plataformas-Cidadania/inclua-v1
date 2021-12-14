@@ -7,8 +7,11 @@ const Nota = (props) => {
     const [resposta, setResposta] = useState(0);
 
     useEffect(() => {
-        //setResposta(context.getResposta())
-    }, []);
+        console.log('props.id', props.id);
+        if(props.id){
+            setResposta(context.getResposta(props.id));
+        }
+    }, [props.id]);
 
     useEffect(() => {
         let newNotas = [];
@@ -17,7 +20,7 @@ const Nota = (props) => {
             newNotas.push(i);
         }
         setNotas(newNotas);
-    }, [props.minimo, props.medio, props.maximo]);
+    }, [props.minimo, props.maximo]);
 
     useEffect(() => {
         setBgColor(props.bgColor);
@@ -75,7 +78,7 @@ const Nota = (props) => {
                 </div>
                 {/*<label for="customRange1" className="form-label">Bom</label>*/}
                 <br/>
-                <input type="range" className="form-range range" id="customRange1" min="1" max="5" value={resposta} onChange={handleResposta}/>
+                <input type="range" className="form-range range" id="customRange1" min="1" max="5" value={resposta ? resposta : 0} onChange={handleResposta}/>
             </div>
 
         </div>

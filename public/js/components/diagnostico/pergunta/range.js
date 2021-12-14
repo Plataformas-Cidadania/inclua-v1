@@ -10,8 +10,10 @@ const Range = props => {
   const [range, setRange] = useState([]);
   const [resposta, setResposta] = useState(0);
   useEffect(() => {
-    setResposta(context.getResposta());
-  }, []);
+    if (props.id) {
+      setResposta(context.getResposta());
+    }
+  }, [props.id]);
   useEffect(() => {
     let newRange = [];
     let start = props.minimo > 0 ? props.minimo : 1;
@@ -21,7 +23,7 @@ const Range = props => {
     }
 
     setRange(newRange);
-  }, [props.minimo, props.medio, props.maximo]);
+  }, [props.minimo, props.maximo]);
   useEffect(() => {
     setName(context.dimensao.dimensao + '_' + context.indicador.indicador + '_' + props.letra);
   }, [context]);
