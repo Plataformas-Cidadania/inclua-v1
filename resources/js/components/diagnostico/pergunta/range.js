@@ -3,7 +3,6 @@ const Range = (props) => {
     const context = React.useContext(DiagnosticoContext);
     const {useState, useEffect} = React;
 
-    const [naoSeAplica, setNaoSeAplica] = useState(false);
     const [bgColor, setBgColor] = useState(null);
     const [name, setName] = useState(null);
     const [range, setRange] = useState([]);
@@ -11,7 +10,7 @@ const Range = (props) => {
 
     useEffect(() => {
         if(props.id){
-            setResposta(context.getResposta())
+            setResposta(context.getResposta(props.id))
         }
     }, [props.id]);
 
@@ -46,16 +45,32 @@ const Range = (props) => {
         <div className="box-items bg-lgt">
             <p className="mb-3"><strong>P{context.dimensao.dimensao}.{context.indicador.indicador}{props.letra}</strong> {props.descricao}</p>
 
+            {
+                (props.naoSeAplica) ? (
+                    <div className="form-check  float-end">
+                        <input className="form-check-input" type="radio"
+                               name={name}
+                               id={name+"_2"}
+                               value={props.minimo}
+                               onClick={handleResposta}
+                               defaultChecked={context.verificarResposta(props.id, "0")}
+                        />
+                        <label className="form-check-label" htmlFor="flexRadioDefault2">
+                            Não se aplica
+                        </label>
+                    </div>
+                ) : null
+            }
+
             <div>
                 <br/>
                 <div className="range-merker">
-
                     {
                         range.map((item, key) => {
                             return(
                                 <div key={'nota_'+props.letra+key} className="range-merker-box">
                                     <div
-                                        className={"range-merker-box-item " + (resposta => item ? bgColor : '')}
+                                        className={"range-merker-box-item " + (resposta === item ? bgColor : '')}
                                         onClick={() => clickResposta(item)}
                                         style={{cursor: 'pointer'}}
                                     >
@@ -65,41 +80,17 @@ const Range = (props) => {
                             );
                         })
                     }
-
-                    {/*<div className="range-merker-box">
-                        <div className={"range-merker-box-item " + bgColor}>1</div>
-                    </div>
-                    <div className="range-merker-box">
-                        <div className={"range-merker-box-item " + bgColor}>2</div>
-                    </div>
-                    <div className="range-merker-box">
-                        <div className={"range-merker-box-item " + bgColor}>3</div>
-                    </div>
-                    <div className="range-merker-box">
-                        <div className="range-merker-box-item">4</div>
-                    </div>
-                    <div className="range-merker-box">
-                        <div className="range-merker-box-item">5</div>
-                    </div>
-                    <div className="range-merker-box">
-                        <div className="range-merker-box-item">6</div>
-                    </div>
-                    <div className="range-merker-box">
-                        <div className="range-merker-box-item">7</div>
-                    </div>
-                    <div className="range-merker-box">
-                        <div className="range-merker-box-item">8</div>
-                    </div>
-                    <div className="range-merker-box">
-                        <div className="range-merker-box-item">9</div>
-                    </div>
-                    <div className="range-merker-box">
-                        <div className="range-merker-box-item">10</div>
-                    </div>*/}
                 </div>
-                {/*<label for="customRange1" className="form-label">Bom</label>*/}
                 <br/>
-                <input type="range" className="form-range range" id="customRange1" min="1" max="10" defaultValue="3"/>
+                <input
+                    type="range"
+                    className="form-range range"
+                    id="customRange1"
+                    min={props.minimo}
+                    max={props.maximo}
+                    value={resposta ? resposta : 0}
+                    onChange={handleResposta}
+                />
             </div>
         </div>
     );

@@ -4,12 +4,11 @@ const Nota = props => {
     useState,
     useEffect
   } = React;
+  const [name, setName] = useState(null);
   const [bgColor, setBgColor] = useState(null);
   const [notas, setNotas] = useState([]);
   const [resposta, setResposta] = useState(0);
   useEffect(() => {
-    console.log('props.id', props.id);
-
     if (props.id) {
       setResposta(context.getResposta(props.id));
     }
@@ -24,6 +23,9 @@ const Nota = props => {
 
     setNotas(newNotas);
   }, [props.minimo, props.maximo]);
+  useEffect(() => {
+    setName(context.dimensao.dimensao + '_' + context.indicador.indicador + '_' + props.letra);
+  }, [context]);
   useEffect(() => {
     setBgColor(props.bgColor);
   }, [props.bgColor]);
@@ -63,7 +65,7 @@ const Nota = props => {
     }
   }, notas.map((nota, key) => {
     return /*#__PURE__*/React.createElement("div", {
-      key: 'nota_' + props.letra + key,
+      key: 'range_' + props.letra + key,
       className: "range-merker-box"
     }, /*#__PURE__*/React.createElement("div", {
       className: "range-merker-box-item " + (resposta === nota ? bgColor : ''),
@@ -76,8 +78,8 @@ const Nota = props => {
     type: "range",
     className: "form-range range",
     id: "customRange1",
-    min: "1",
-    max: "5",
+    min: props.minimo,
+    max: props.maximo,
     value: resposta ? resposta : 0,
     onChange: handleResposta
   })));

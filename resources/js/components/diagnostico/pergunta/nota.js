@@ -2,12 +2,12 @@ const Nota = (props) => {
 
     const context = React.useContext(DiagnosticoContext);
     const {useState, useEffect} = React;
+    const [name, setName] = useState(null);
     const [bgColor, setBgColor] = useState(null);
     const [notas, setNotas] = useState([]);
     const [resposta, setResposta] = useState(0);
 
     useEffect(() => {
-        console.log('props.id', props.id);
         if(props.id){
             setResposta(context.getResposta(props.id));
         }
@@ -21,6 +21,10 @@ const Nota = (props) => {
         }
         setNotas(newNotas);
     }, [props.minimo, props.maximo]);
+
+    useEffect(() => {
+        setName(context.dimensao.dimensao+'_'+context.indicador.indicador+'_'+props.letra);
+    }, [context]);
 
     useEffect(() => {
         setBgColor(props.bgColor);
@@ -63,7 +67,7 @@ const Nota = (props) => {
                     {
                         notas.map((nota, key) => {
                             return(
-                                <div key={'nota_'+props.letra+key} className="range-merker-box">
+                                <div key={'range_'+props.letra+key} className="range-merker-box">
                                     <div
                                         className={"range-merker-box-item " + (resposta === nota ? bgColor : '')}
                                         onClick={() => clickResposta(nota)}
@@ -78,7 +82,15 @@ const Nota = (props) => {
                 </div>
                 {/*<label for="customRange1" className="form-label">Bom</label>*/}
                 <br/>
-                <input type="range" className="form-range range" id="customRange1" min="1" max="5" value={resposta ? resposta : 0} onChange={handleResposta}/>
+                <input
+                    type="range"
+                    className="form-range range"
+                    id="customRange1"
+                    min={props.minimo}
+                    max={props.maximo}
+                    value={resposta ? resposta : 0}
+                    onChange={handleResposta}
+                />
             </div>
 
         </div>
