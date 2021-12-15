@@ -479,3 +479,27 @@ textarea{
         padding: 0 20px!important;
     }
 }
+
+.radio{
+    margin: 0;
+    padding: 0;
+}
+.radio li{
+    cursor: pointer;
+    display: inline-block;
+    list-style: none;
+    margin-right: 20px;
+}
+.radio li div{
+    height: 30px;
+    width: 30px;
+    border: solid 1px #CCCCCC;
+    border-radius: 50%;
+    display: inline-block;
+    list-style: none;
+    float: left;
+}
+.radio li p{
+    margin-left: 37px;
+    margin-top: 3px;
+}
