@@ -4,22 +4,6 @@ const Pergunta = (props) => {
     const {useState, useEffect} = React;
     const [tipo, setTipo] = useState(1);
 
-    useEffect(() => {
-        setTipo(props.tipo);
-        console.log('tipo pergunta', props.tipo);
-    }, [props]);
-
-    const getTipo = (minimo, medio, maximo) => {
-        console.log(props.letra, 'minimo', minimo, 'medio', medio, 'maximo', maximo);
-        if(medio !== minimo && medio !== maximo){
-            if(maximo > 5){
-                return 3;//Range
-            }
-            return 2;//Nota
-        }
-        return 1;//Options (Sim/Não)
-    }
-
     const tipos = {
         "1": <Options
             id={props.id}
@@ -61,7 +45,7 @@ const Pergunta = (props) => {
 
     return (
         <div className="col-md-12 mt-3">
-            {tipos[tipo]}
+            {tipos[props.tipo]}
         </div>
     );
 };

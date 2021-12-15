@@ -13,6 +13,7 @@ const Perguntas = props => {
   return /*#__PURE__*/React.createElement("div", {
     className: "row"
   }, perguntas.map((pergunta, key) => {
+    console.log(pergunta);
     return /*#__PURE__*/React.createElement(Pergunta, {
       key: 'pergunta' + key,
       letra: pergunta.letra,

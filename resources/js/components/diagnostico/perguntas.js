@@ -15,6 +15,7 @@ const Perguntas = (props) => {
         <div className="row">
             {
                 perguntas.map((pergunta, key) => {
+                    console.log(pergunta);
                     return (
                         <Pergunta key={'pergunta'+key}
                             letra={pergunta.letra}
