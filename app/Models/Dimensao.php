@@ -25,13 +25,15 @@ class Dimensao extends Model
 	protected $primaryKey = 'id_dimensao';
 	public $timestamps = false;
 
-
 	protected $fillable = [
 		'numero',
 		'titulo',
-		'descricao'
+		'descricao',
+		'vl_baixo',
+		'vl_alto'
 	];
     protected $with = ['indicadores'];
+	
 	public function indicadores()
 	{
 		return $this->hasMany(Indicador::class, 'id_dimensao');
