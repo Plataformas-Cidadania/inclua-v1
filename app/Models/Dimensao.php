@@ -36,6 +36,6 @@ class Dimensao extends Model
 	
 	public function indicadores()
 	{
-		return $this->hasMany(Indicador::class, 'id_dimensao');
+        return $this->hasMany(Indicador::class, 'id_dimensao')->orderBy('numero');
 	}
 }

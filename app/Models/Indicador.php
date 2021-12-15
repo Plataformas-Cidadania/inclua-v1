@@ -49,7 +49,7 @@ class Indicador extends Model
 
 	public function perguntas()
 	{
-		return $this->hasMany(Pergunta::class, 'id_indicador');
+		return $this->hasMany(Pergunta::class, 'id_indicador')->orderBy('letra');;
 	}
 
 	public function indicacoes()

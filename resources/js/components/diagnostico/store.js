@@ -52,13 +52,18 @@ const DiagnosticoProvider = ({children}) => {
     }
 
     const verificarResposta = (idPergunta, value) => {
+        console.log('---------------------------------------------------------');
         console.log('Verificar Resposta', 'idPergunta', idPergunta);
         //return false;
         let pergunta = indicador.perguntas.filter(obj => obj.id_pergunta === idPergunta);
+        console.log('pergunta', pergunta[0]);
         if(pergunta.length > 0){
-            console.log('resposta: '+pergunta[0].resposta, 'alternativa: '+value, 'marcado: '+pergunta[0].resposta === value);
+            console.log('resposta: ', pergunta[0].resposta, 'alternativa: ', value, 'marcado: ', pergunta[0].resposta === value);
+            console.log('=====================================================');
+
             return pergunta[0].resposta === value;
         }
+        console.log('=====================================================');
         return false
     }
 

@@ -1,7 +1,8 @@
 const Page = () => {
 
     const {useState, useEffect} = React;
-    const [resultadoMap, setResultadoMap] = useState([]);
+    const [resultado, setResultado] = useState([]);
+    const [groupRecurso, setGroupRecurso] = useState(null);
 
     useEffect(() => {
         Resultado();
@@ -9,13 +10,23 @@ const Page = () => {
 
     const Resultado = async () => {
         try {
-            const result = await axios.get('api/resultado');
-            console.log(result.data.data);
-            setResultadoMap(result.data.data)
+            const result = await axios.get('json/resultado.json');
+            //const result = await axios.get('api/resultado/{id_indicador}/{id_diagnostico}');
+            //setResultado(result.data.data)
+            console.log('----', result.data);
+            setResultado(result.data)
         } catch (error) {
             //alert('erro');
             console.log(error);
         }
+    }
+
+
+
+    const ClickRecurso = (key) => {
+        key = groupRecurso===key ? null : key;
+        //console.log(key);
+        setGroupRecurso(key);
     }
 
     let bgColor = {
@@ -25,7 +36,10 @@ const Page = () => {
         4:'bg-qua',
         5:'bg-qui',
     };
-    bgColor = bgColor[1];
+
+    bgColor = bgColor[resultado.id_dimensao];
+
+    console.log('----', resultado.indicadores);
 
     return (
         <div>
@@ -35,18 +49,18 @@ const Page = () => {
                     <div className={bgColor}>
                         <div className="row">
                             <div className="col-md-2 text-center">
-                                <img src={"img/dimensao" + 1 + "-g.png"} alt="" width="100"/>
-                                <h2>DIMENSÃO </h2>
+                                <img src={"img/dimensao" + resultado.id_dimensao + "-g.png"} alt="" width="100"/>
+                                <h2>DIMENSÃO {resultado.id_dimensao}</h2>
                             </div>
                             <div className="col-md-8">
-                                <h2 className="mt-5">Relações interinstitucionais e instrumentos de gestão
+                                <h2 className="mt-5">{resultado.nome}
                                     inclusiva</h2>
                                 <p className="mb-5">Veja abaixo os resultados por indicador:</p>
                             </div>
                             <div className="col-md-2 text-center">
                                 <br/>
-                                <p><strong>Risco Alto</strong></p>
-                                <h2 style={{fontSize: '40px'}}>21</h2>
+                                <p><strong>{resultado.risco}</strong></p>
+                                <h2 style={{fontSize: '40px'}}>{resultado.pontos}</h2>
                                 <p>pontos</p>
                             </div>
                         </div>
@@ -56,61 +70,72 @@ const Page = () => {
 
             <div className="container">
                 <div className="row">
-                    <div className="col-md-12">
 
-                        <h2><br/><br/>Indicador 1.1 - DIVISÃO DO TRABALHO, COORDENAÇÃO E CONFLITO INTERINSTITUCIONAL</h2>
-
-                        <div className="row">
-                            <div className="col-md-6">
-                                <BarChart id={'pie-chart'} series={[10, 20, 30, 80, 70, 60, 50, 40]}
-                                          labels={[10, 20, 30, 80, 70, 60, 50, 40]}/>
-                            </div>
-                            <div className="col-md-6">
-                                <div className="text-right">
-
+                    {
+                        resultado.indicadores ?
+                            resultado.indicadores.map((item, key) => {
+                                return (
+                                <div className="col-md-12" key={'indicadores_'+key}>
+                                    <h2><br/><br/>Indicador 1.1 - {item.titulo}</h2>
                                     <div className="row">
-                                        <div className="col-md-8">
-                                            <br/>
-                                            <p><strong>CONSEQUÊNCIA:</strong> Desarticulações (ou formas específicas de
-                                                articulação) e disputas interinstitucionais podem repercutir em déficits
-                                                de cobertura, lacunas de atenção ou repercussões negativas para o
-                                                atendimento a segmentos específicos do público ou territórios atendidos
-                                            </p>
-                                            <br/> <br/>
+                                        <div className="col-md-6">
+                                            <BarChart id={'bar-chart'+key} series={item.series}
+                                                      labels={[]}/>
                                         </div>
-                                        <div className="col-md-4">
-                                            <br/>
-                                            <div className={bgColor}>
-                                                <div className="container-fluid">
-                                                    <div className="row">
-                                                        <div className="col-md-12 text-center">
-                                                            <br/>
-                                                            <p><strong>Risco Alto</strong></p>
-                                                            <h2 style={{fontSize: '40px'}}>21</h2>
-                                                            <p>pontos</p>
+                                        <div className="col-md-6">
+                                            <div className="text-right">
+                                                <div className="row">
+                                                    <div className="col-md-8">
+                                                        <br/>
+                                                        <p><strong>CONSEQUÊNCIA:</strong> {item.descricao}
+                                                        </p>
+                                                        <br/> <br/>
+                                                    </div>
+                                                    <div className="col-md-4">
+                                                        <br/>
+                                                        <div className={bgColor}>
+                                                            <div className="container-fluid">
+                                                                <div className="row">
+                                                                    <div className="col-md-12 text-center">
+                                                                        <br/>
+                                                                        <p><strong>{item.risco}</strong></p>
+                                                                        <h2 style={{fontSize: '40px'}}>{item.pontos}</h2>
+                                                                        <p>pontos</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
+                                                </div>
+                                                <div className="col-md-12 text-right" style={{textAlign: 'right'}}>
+                                                    <br/>
+                                                    <p onClick={() => ClickRecurso(key)} className="cursor">Indicações de {item.recursos.length} recursos para intervenção <i className="fas fa-angle-right"/></p>
                                                 </div>
                                             </div>
                                         </div>
 
+                                        <div className="col-md-12" style={{display: groupRecurso===key ? '' : 'none'}}>
+                                            <br/><br/>
+                                            <h2>Recursos</h2>
+                                            <hr/>
+                                            <div>
+                                                {/*////////*/}
+                                                {/*////////*/}
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div className="col-md-12 text-right" style={{textAlign: 'right'}}>
-                                        <br/>
-                                        <p>Indicações de 48 recursos para intervenção <i className="fas fa-angle-right"/></p>
-
-                                    </div>
-
-
                                 </div>
-                            </div>
-                        </div>
+                                );
+                            })
+                            : null
+                    }
 
-                    </div>
+
+
+
                 </div>
             </div>
         </div>
 
     );
 };
-

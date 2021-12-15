@@ -3,16 +3,18 @@ class BarChart extends React.Component {
     super(props); //console.log(props);
 
     this.state = {
-      series: [{
-        name: 'Risco baixo',
-        data: [20]
+      series: props.series,
+
+      /*series: [{
+          name: 'Risco baixo',
+          data: [20]
       }, {
-        name: 'Risco moderado',
-        data: [40]
+          name: 'Risco moderado',
+          data: [40]
       }, {
-        name: 'Risco alto',
-        data: [40]
-      }],
+          name: 'Risco alto',
+          data: [40]
+      }],*/
       options: {
         chart: {
           type: 'bar',
