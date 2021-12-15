@@ -65,16 +65,13 @@ class RespostaController extends Controller
      *
      * @param int $id
      *
-     * @return JsonResponse
+     * @return
      */
-    public function getbyDiagnosticoId($id_diagnostico): JsonResponse
+    public function getbyDiagnosticoId($id_diagnostico)
     {
         try {
             $res = $this->repo->findByDiagnosticoId($id_diagnostico);
-            return $this->successResponse(
-                'Retornado com sucesso',
-                $res
-            );
+            return $res;
         }catch (Exception $exception) {
             if ($exception instanceof ModelNotFoundException)
                 return $this->errorResponse('Not found');

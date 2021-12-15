@@ -228,3 +228,10 @@ Route::group([
     Route::delete('/{resposta}',[App\Http\Controllers\Api\RespostaController::class, 'destroy'])
         ->name('api.resposta.destroy');
 });
+
+Route::group([
+    'prefix' => 'diagnostico',
+], function () {
+    Route::get('/{id_dimensao}/{id_diagnostico}',[App\Http\Controllers\Api\DiagnosticoController::class, 'calcularPontuacao'])
+        ->name('api.diagnostico.calcularPontuacao');
+});

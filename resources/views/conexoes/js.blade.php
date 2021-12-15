@@ -71,8 +71,10 @@
 <script src="js/react/react-dom.development.js" crossorigin></script>--}}
 
 @if(env('APP_ENV')==='local')
-<script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
-<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+{{--<script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>--}}
+<script src="js/react/react.development.js" crossorigin></script>
+<script src="js/react/react-dom.development.js" crossorigin></script>
 @else
 <script src="js/react17/react.production.min.js" crossorigin></script>
 <script src="js/react17/react-dom.production.min.js" crossorigin></script>
@@ -92,7 +94,7 @@
                 $.ajax({
                     url: "https://nominatim.openstreetmap.org/reverse?format=json&lat="+lat+"&lon="+lon,
                     success: function(data){
-                        console.log(data)
+                        //console.log(data)
                         if(data.address){
                             localStorage.setItem('city', data.address.city);
                             localStorage.setItem('state', data.address.state);

@@ -2,8 +2,12 @@
 
 namespace App\Repository;
 
+use App\Http\Controllers\Api\DiagnosticoController;
+use App\Http\Controllers\Api\PerguntaController;
+use App\Http\Controllers\Api\RespostaController;
 use App\Models\Diagnostico;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
 class DiagnosticoRepository extends BaseRepository
 {
@@ -26,6 +30,17 @@ class DiagnosticoRepository extends BaseRepository
     {
         $model = $this->model->create();
         return $model->fresh();
+    }
+
+    public function getRespostaPorDiagnostico($id)
+    {
+        $respostaRepo = (new RespostaRepository(app('App\Models\Resposta')));
+        try {
+            $resposta = (new RespostaController($respostaRepo))->getbyDiagnosticoId($id);
+            return $resposta;
+        } catch (Exception $exception) {
+            return $this->errorResponse($exception);
+        }
     }
 
 }
