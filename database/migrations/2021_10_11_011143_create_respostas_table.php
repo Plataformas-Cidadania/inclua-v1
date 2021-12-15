@@ -36,6 +36,9 @@ class CreateRespostasTable extends Migration
         Schema::table('avaliacao.resposta', function (Blueprint $table) {
             $table->dropForeign(['id_pergunta']);
         });
+        //Schema::table('avaliacao.diagnostico', function (Blueprint $table) {
+        //    $table->dropForeign(['id_diagnostico']);
+       // });
         Schema::dropIfExists('avaliacao.resposta');
     }
 }

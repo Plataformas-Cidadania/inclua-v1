@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Api\Controller;
+use App\Http\Controllers\Api\DiagnosticoController;
+use App\Repository\DiagnosticoRepository;
 use App\Models\Resposta;
 use App\Repository\RespostaRepository;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -16,38 +18,24 @@ class RespostaController extends Controller
 {
     private RespostaRepository $repo;
     private $rules = [
+        'id_pergunta' => 'int|min:1|',
+        'pontuacao' => 'string',
+        'id_diagnostico' => 'string'
     ];
     public function __construct(RespostaRepository $repo)
     {
         $this->repo = $repo;
     }
 
-    /**
-     * Adicionar um novo
-     *
-     * @param Request $request
-     *
-     * @return JsonResponse
-     */
-    public function store(Request $request): JsonResponse
+    public function getAll(): JsonResponse
     {
-        try {
-            $validator = $this->getValidator($request);
-
-            if ($validator->fails()) {
-                return $this->errorResponse($validator->errors()->all());
-            }
-
-            $data = $this->getData($request);
-            $res = $this->repo->create($data);
-            return $this->successResponse(
-			    'Resposta '.$res->id_dimensao.' foi adicionada',
-			    $this->transform($res)
-			);
-        } catch (Exception $exception) {
-            return $this->errorResponse('Erro inesperado.'.$exception);
-        }
+        $res = $this->repo->all();
+        return $this->successResponse(
+            'Recurso retornados com sucesso',
+            $res
+        );
     }
+
 
     /**
      * Adicionar vários respostas para um diagnóstico
@@ -56,23 +44,19 @@ class RespostaController extends Controller
      *
      * @return JsonResponse
      */
-    public function storeMany(Request $request): JsonResponse
+    public function insereRespostas(Request $request): JsonResponse
     {
+        $diagRepo = (new DiagnosticoRepository(app('App\Models\Diagnostico')));
         try {
-            $validator = $this->getValidator($request);
-
-            if ($validator->fails()) {
-                return $this->errorResponse($validator->errors()->all());
-            }
-
-            $data = $this->getData($request);
-            $res = $this->repo->create($data);
+            $data = $request->all();
+            $diagnostico_id = (new DiagnosticoController($diagRepo))->store();
+            $res = $this->repo->storeMany($diagnostico_id,$data);
             return $this->successResponse(
-                'Resposta '.$res->id_dimensao.' foi adicionada',
-                $this->transform($res)
+                'Respostas adicionadas',
+                json_encode(array($res,$diagnostico_id))
             );
         } catch (Exception $exception) {
-            return $this->errorResponse('Erro inesperado.'.$exception);
+            return $this->errorResponse($exception);
         }
     }
 
@@ -125,16 +109,16 @@ class RespostaController extends Controller
     /**
      * Transformar em um array
      *
-     * @param Dimensao $model
+     * @param Resposta $model
      *
      * @return array
      */
-    protected function transform(Dimensao $model): array
+    protected function transform(Resposta $model): array
     {
         return [
-            'id_resposta' => $model->id_diagnostico,
-            'pontuacao' => $model->id_diagnostico,
-            'id_pergunta' => $model->id_diagnostico,
+            'id_resposta' => $model->id_resposta,
+            'pontuacao' => $model->pontuacao,
+            'id_pergunta' => $model->id_pergunta,
             'id_diagnostico' => $model->id_diagnostico,
         ];
     }

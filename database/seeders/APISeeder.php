@@ -37,7 +37,8 @@ class APISeeder extends Seeder
             'descricao' => 'Identifica e avalia o grau de maturidade da articulação institucional...',
             'id_dimensao' => 1,
             'vl_baixo' => 22,
-            'vl_alto' => 11
+            'vl_alto' => 11,
+            'consequencia' => 'consequencia 1'
         ]);
 
         DB::table('avaliacao.indicador')->insert([
@@ -46,7 +47,8 @@ class APISeeder extends Seeder
             'descricao' => 'Identifica o indicador 2',
             'id_dimensao' => 1,
             'vl_baixo' => 22,
-            'vl_alto' => 11
+            'vl_alto' => 11,
+            'consequencia' => 'consequencia 1'
         ]);
 
         DB::table('avaliacao.indicador')->insert([
@@ -55,7 +57,8 @@ class APISeeder extends Seeder
             'descricao' => 'Identifica ...',
             'id_dimensao' => 2,
             'vl_baixo' => 8,
-            'vl_alto' => 4
+            'vl_alto' => 4,
+            'consequencia' => 'consequencia 1'
         ]);
 
         DB::table('avaliacao.indicador')->insert([
@@ -64,7 +67,8 @@ class APISeeder extends Seeder
             'descricao' => 'Identifica mais um...',
             'id_dimensao' => 2,
             'vl_baixo' => 8,
-            'vl_alto' => 4
+            'vl_alto' => 4,
+            'consequencia' => 'consequencia 1'
         ]);
         // PERGUNTAS
         DB::table('avaliacao.pergunta')->insert([
@@ -204,6 +208,7 @@ class APISeeder extends Seeder
             'esfera' => 'Area de atuacao 1',
             'id_tipo_recurso' => 1,
             'id_formato' => 1,
+            'status' => 1
         ]);
         DB::table('avaliacao.recurso')->insert([
             'nome' => 'Recurso 2',
@@ -211,6 +216,7 @@ class APISeeder extends Seeder
             'esfera' => 'Area de atuacao 2',
             'id_tipo_recurso' => 1,
             'id_formato' => 2,
+            'status' => 1
         ]);
         DB::table('avaliacao.recurso')->insert([
             'nome' => 'Recurso 3',
@@ -218,6 +224,7 @@ class APISeeder extends Seeder
             'esfera' => 'Area de atuacao 2',
             'id_tipo_recurso' => 2,
             'id_formato' => 1,
+            'status' => 1
         ]);
         // CATEGORIZACAO
         DB::table('avaliacao.categorizacao')->insert([

@@ -2,12 +2,13 @@
 
 namespace App\Repository;
 
-use App\Models\Categorizacao;
+
 use App\Models\Resposta;
 use Illuminate\Database\Eloquent\Model;
 
 class RespostaRepository extends BaseRepository
 {
+
     /**
      * @var Resposta
      */
@@ -23,23 +24,28 @@ class RespostaRepository extends BaseRepository
         $this->model = $model;
     }
 
-    public function findByDiagnosticoId($id_diagnostico): Model
+    public function findByDiagnosticoId($id_diagnostico)
     {
         $res = $this->model->where('id_diagnostico', $id_diagnostico)->get();
-        if (!$res) throw new \Illuminate\Database\Eloquent\ModelNotFoundException;
+        if (!$res || $res->isEmpty()) throw new \Illuminate\Database\Eloquent\ModelNotFoundException;
         else return $res;
     }
 
-    public function storeMany($id, array $respostas): Model
+    public function storeMany(string $id_diagnostico, array $respostas): Array
     {
+        $diagId = $this->model->where('id_diagnostico', $id_diagnostico)->get();
+        if (!$diagId) throw new \Illuminate\Database\Eloquent\ModelNotFoundException;
+
+        $resIds = [];
         foreach ($respostas as $resposta)
         {
-            $resposta->id_diagnostico = $id;
-            $this->create($resposta);
+            $data = [];
+            $data['id_pergunta'] = $resposta['id_pergunta'];
+            $data['pontuacao'] = $resposta['resposta'];
+            $data['id_diagnostico'] = $id_diagnostico;
+            array_push($resIds,$this->create($data)->getAttribute('id_resposta'));
         }
-
-//        $res = $this->model->where('id_diagnostico', $id_diagnostico)->get();
-//        if (!$res) throw new \Illuminate\Database\Eloquent\ModelNotFoundException;
-//        else return $res;
+        if (!$resIds) throw new \Illuminate\Database\Eloquent\ModelNotFoundException;
+        else return $resIds;
     }
 }

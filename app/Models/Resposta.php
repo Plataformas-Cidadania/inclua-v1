@@ -22,7 +22,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Resposta extends Model
 {
-	protected $table = 'avaliacao.respostas';
+	protected $table = 'avaliacao.resposta';
 	protected $primaryKey = 'id_resposta';
 
 	public $timestamps = false;
@@ -31,7 +31,7 @@ class Resposta extends Model
 		'id_resposta' => 'int',
 		'pontuacao' => 'int',
 		'id_pergunta' => 'int',
-		'id_diagnostico' => 'uuid'
+		'id_diagnostico' => 'string'
 	];
 
 	protected $fillable = [
@@ -41,7 +41,7 @@ class Resposta extends Model
 	];
 
 	protected $with = ['pergunta'];
-	public function perguntas()
+	public function pergunta()
 	{
 		return $this->belongsTo(Pergunta::class, 'id_pergunta');
 	}

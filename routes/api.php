@@ -212,3 +212,19 @@ Route::group([
     Route::delete('/{risco}',[App\Http\Controllers\Api\RiscoController::class, 'destroy'])
         ->name('api.risco.destroy');
 });
+
+
+Route::group([
+    'prefix' => 'resposta',
+], function () {
+    Route::get('/', [App\Http\Controllers\Api\RespostaController::class, 'getAll'])
+        ->name('api.resposta.getAll');
+    Route::get('/diagnostico/{id_diagnostico}',[App\Http\Controllers\Api\RespostaController::class, 'getbyDiagnosticoId'])
+        ->name('api.resposta.get');
+    Route::post('/', [App\Http\Controllers\Api\RespostaController::class, 'store'])
+        ->name('api.resposta.store');
+    Route::post('/insereRespostas', [App\Http\Controllers\Api\RespostaController::class, 'insereRespostas'])
+        ->name('api.resposta.store');
+    Route::delete('/{resposta}',[App\Http\Controllers\Api\RespostaController::class, 'destroy'])
+        ->name('api.resposta.destroy');
+});
