@@ -126,19 +126,20 @@ const Link = (props) => {
                     </ul>
                     <br/>
                     <div className="col-md-12">
-                        <div className="dorder-container">
+                        <div className="dorder-container float-start">
                             <button className="btn btn-theme bg-pri" type="button"  onClick={Insert} >
                                 <span style={{marginLeft: '10px', display: notify.spin ? '' : 'none'}}><i className="fas fa-spinner float-end fa-spin" /></span>
                                 Adicionar <i className="fas fa-angle-right"/>
                             </button>
                         </div>
-                        <br/>
-                        <div className={"alert alert-"+notify.type+" d-flex align-items-center"} role="alert" style={{display: notify.type ? '' : 'none'}}>
+
+                        <br/><br/>
+
+                        <div className={"alert alert-"+notify.type+" d-flex align-items-center"} role="alert" style={{display: notify.type ? '' : 'none', clear: 'both'}}>
                             <span style={{display: notify.type ? '' : 'none'}}><i className="fas fa-exclamation-triangle bi flex-shrink-0 me-2"/></span>
                             <div>{notify.text}</div>
                         </div>
 
-                        <br/>
                     </div>
                 </div>
 

@@ -151,7 +151,7 @@ const Link = props => {
   })), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
     className: "col-md-12"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "dorder-container"
+    className: "dorder-container float-start"
   }, /*#__PURE__*/React.createElement("button", {
     className: "btn btn-theme bg-pri",
     type: "button",
@@ -165,11 +165,12 @@ const Link = props => {
     className: "fas fa-spinner float-end fa-spin"
   })), "Adicionar ", /*#__PURE__*/React.createElement("i", {
     className: "fas fa-angle-right"
-  }))), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
+  }))), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
     className: "alert alert-" + notify.type + " d-flex align-items-center",
     role: "alert",
     style: {
-      display: notify.type ? '' : 'none'
+      display: notify.type ? '' : 'none',
+      clear: 'both'
     }
   }, /*#__PURE__*/React.createElement("span", {
     style: {
@@ -177,5 +178,5 @@ const Link = props => {
     }
   }, /*#__PURE__*/React.createElement("i", {
     className: "fas fa-exclamation-triangle bi flex-shrink-0 me-2"
-  })), /*#__PURE__*/React.createElement("div", null, notify.text)), /*#__PURE__*/React.createElement("br", null)))));
+  })), /*#__PURE__*/React.createElement("div", null, notify.text))))));
 };

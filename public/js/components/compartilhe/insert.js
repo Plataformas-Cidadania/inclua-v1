@@ -1,4 +1,5 @@
 const Insert = () => {
+  //const ListContext = React.createContext({});
   const {
     useState,
     useEffect
@@ -68,7 +69,17 @@ const Insert = () => {
         type: 'success',
         text: 'Recurso inserido, cadastre o links!',
         spin: false
-      });
+      }); //Limpar form
+
+      let newForm = { ...form,
+        nome: "",
+        esfera: "",
+        id_tipo_recurso: 0,
+        id_formato: 0
+      };
+      setForm(newForm);
+      setTipoSelected(null);
+      setFormatoSelected(null); ////
     } catch (error) {
       console.log(error);
       handleNotify({
@@ -146,7 +157,8 @@ const Insert = () => {
     id: "nome",
     placeholder: " ",
     required: requireds.nome ? '' : 'required',
-    onChange: handleForm
+    onChange: handleForm,
+    defaultValue: form.nome
   }), /*#__PURE__*/React.createElement("label", {
     htmlFor: "nome"
   }, "Nome"), /*#__PURE__*/React.createElement("div", {
@@ -166,7 +178,8 @@ const Insert = () => {
     id: "esfera",
     placeholder: " ",
     required: requireds.esfera ? '' : 'required',
-    onChange: handleForm
+    onChange: handleForm,
+    defaultValue: form.esfera
   }), /*#__PURE__*/React.createElement("label", {
     htmlFor: "esfera"
   }, "Esfera"), /*#__PURE__*/React.createElement("div", {
@@ -238,5 +251,25 @@ const Insert = () => {
     listLinks: listLinks,
     setListLinks: setListLinks,
     id_recurso: id_recurso
-  })));
+  })), /*#__PURE__*/React.createElement("hr", {
+    style: {
+      display: notify.type === "success" ? '' : 'none'
+    }
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "dorder-container float-end",
+    style: {
+      display: notify.type === "success" ? '' : 'none'
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "btn btn-theme bg-ter",
+    type: "button",
+    "data-bs-dismiss": "modal",
+    onClick: () => handleNotify({
+      type: null,
+      text: null,
+      spin: false
+    })
+  }, "Concluir ", /*#__PURE__*/React.createElement("i", {
+    className: "fas fa-angle-right"
+  }))));
 };
