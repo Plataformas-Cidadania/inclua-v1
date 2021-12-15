@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Api\Controller;
 use App\Models\Diagnostico;
 use App\Repository\DiagnosticoRepository;
+use App\Repository\DimensaoRepository;
+use App\Repository\RespostaRepository;
 use Faker\Provider\Uuid;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\Eloquent\RelationNotFoundException;
 use Illuminate\Http\JsonResponse;
@@ -36,6 +39,34 @@ class DiagnosticoController extends Controller
         try {
             $res = $this->repo->createDiagnostico();
             return $res->id_diagnostico;
+        } catch (Exception $exception) {
+            return $this->errorResponse($exception);
+        }
+    }
+
+    public function calcularPontuacao($id_dimensao,$id_diagnostico): String
+    {
+        try {
+            $res = $this->repo->getRespostaPorDiagnostico($id_diagnostico);
+
+            $indicador_com_perguntas = $res[0]->pergunta->indicador;
+            //dd($indicador_com_perguntas->perguntas);
+            // obter o somatorio de vl_minimo e vl_maximo para este indicador
+            $count_vl_minimo = 0;
+            $count_vl_maximo = 0;
+            foreach ($indicador_com_perguntas->perguntas as $pergunta){
+                $count_vl_minimo += $pergunta->vl_minimo;
+                $count_vl_maximo += $pergunta->vl_maximo;
+            }
+
+            //dd($count_vl_minimo,$count_vl_maximo);
+
+            // pegar dimensao e seus indicadores e conseguir o vl_alto e vl_baixo
+            $dimensao_das_respostas = $res[0]->pergunta->indicador->dimensao;
+            dd($dimensao_das_respostas);
+            //TODO
+
+
         } catch (Exception $exception) {
             return $this->errorResponse($exception);
         }
