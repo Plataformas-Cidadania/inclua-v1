@@ -1,4 +1,4 @@
-const Insert = () => {
+const Insert = (props) => {
 
     //const ListContext = React.createContext({});
 
@@ -106,6 +106,11 @@ const Insert = () => {
         validate(newForm);
     }
 
+    const ClickClear = () => {
+        props.listGet();
+        handleNotify({type: null, text: null, spin: false})
+    }
+
     const handleForm = (event) => {
         let { value, id } = event.target;
         let newForm = {
@@ -143,14 +148,14 @@ const Insert = () => {
                 <div className="row">
                     <div className="col-md-12" style={{display: notify.type==='success' ? 'none' : ''}}>
                         <div className="label-float">
-                            <input className={"form-control form-g "+(requireds.nome ? '' : 'invalid-field')} type="text" name="nome" id="nome"  placeholder=" " required={requireds.nome ? '' : 'required'} onChange={handleForm} defaultValue={form.nome}/>
+                            <input className={"form-control form-g "+(requireds.nome ? '' : 'invalid-field')} type="text" name="nome" id="nome"  placeholder=" " required={requireds.nome ? '' : 'required'} onChange={handleForm} value={form.nome}/>
                             <label htmlFor="nome">Nome</label>
                             <div className="label-box-info">
                                 <p style={{display: requireds.nome ? 'none' : ''}}><i className="fas fa-exclamation-circle"/> Digite o nome e sobre nome</p>
                             </div>
                         </div>
                         <div className="label-float">
-                            <input className={"form-control form-g "+(requireds.esfera ? '' : 'invalid-field')} type="text" name="esfera" id="esfera"  placeholder=" " required={requireds.esfera ? '' : 'required'} onChange={handleForm} defaultValue={form.esfera}/>
+                            <input className={"form-control form-g "+(requireds.esfera ? '' : 'invalid-field')} type="text" name="esfera" id="esfera"  placeholder=" " required={requireds.esfera ? '' : 'required'} onChange={handleForm} value={form.esfera}/>
                             <label htmlFor="esfera">Esfera</label>
                             <div className="label-box-info">
                                 <p style={{display: requireds.esfera ? 'none' : ''}}><i className="fas fa-exclamation-circle"/> Digite uma esfera</p>
@@ -227,7 +232,7 @@ const Insert = () => {
 
             <hr  style={{display: notify.type === "success" ? '' : 'none'}}/>
             <div className="dorder-container float-end" style={{display: notify.type === "success" ? '' : 'none'}}>
-                <button className="btn btn-theme bg-ter" type="button" data-bs-dismiss="modal" onClick={() => handleNotify({type: null, text: null, spin: false})}>
+                <button className="btn btn-theme bg-ter" type="button" data-bs-dismiss="modal" onClick={() => ClickClear()}>
                     Concluir <i className="fas fa-angle-right"/>
                 </button>
             </div>

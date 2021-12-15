@@ -1,4 +1,4 @@
-const Insert = () => {
+const Insert = props => {
   //const ListContext = React.createContext({});
   const {
     useState,
@@ -108,6 +108,15 @@ const Insert = () => {
     validate(newForm);
   };
 
+  const ClickClear = () => {
+    props.listGet();
+    handleNotify({
+      type: null,
+      text: null,
+      spin: false
+    });
+  };
+
   const handleForm = event => {
     let {
       value,
@@ -158,7 +167,7 @@ const Insert = () => {
     placeholder: " ",
     required: requireds.nome ? '' : 'required',
     onChange: handleForm,
-    defaultValue: form.nome
+    value: form.nome
   }), /*#__PURE__*/React.createElement("label", {
     htmlFor: "nome"
   }, "Nome"), /*#__PURE__*/React.createElement("div", {
@@ -179,7 +188,7 @@ const Insert = () => {
     placeholder: " ",
     required: requireds.esfera ? '' : 'required',
     onChange: handleForm,
-    defaultValue: form.esfera
+    value: form.esfera
   }), /*#__PURE__*/React.createElement("label", {
     htmlFor: "esfera"
   }, "Esfera"), /*#__PURE__*/React.createElement("div", {
@@ -264,11 +273,7 @@ const Insert = () => {
     className: "btn btn-theme bg-ter",
     type: "button",
     "data-bs-dismiss": "modal",
-    onClick: () => handleNotify({
-      type: null,
-      text: null,
-      spin: false
-    })
+    onClick: () => ClickClear()
   }, "Concluir ", /*#__PURE__*/React.createElement("i", {
     className: "fas fa-angle-right"
   }))));

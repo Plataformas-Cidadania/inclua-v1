@@ -108,7 +108,9 @@ const List = () => {
     "aria-label": "Close"
   })), /*#__PURE__*/React.createElement("div", {
     className: "modal-body"
-  }, /*#__PURE__*/React.createElement(Insert, null))))), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement(Insert, {
+    listGet: listGet
+  }))))), /*#__PURE__*/React.createElement("div", {
     className: "modal fade",
     id: "putModal",
     tabIndex: "-1",
