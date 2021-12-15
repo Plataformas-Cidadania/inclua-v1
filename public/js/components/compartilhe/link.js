@@ -5,7 +5,7 @@ const Link = props => {
   } = React;
   const [form, setForm] = useState({
     id_recurso: props.id_recurso,
-    idioma: null
+    idioma: ""
   });
   useEffect(() => {
     let newForm = { ...form,
@@ -52,9 +52,16 @@ const Link = props => {
         text: 'Link inserido!',
         spin: false
       });
-      props.setListLinks(props.listLinks + 1);
+      props.setListLinks(props.listLinks + 1); //Limpar form
+
+      let newForm = { ...form,
+        idioma: "",
+        uri: ""
+      };
+      setForm(newForm);
+      setIdiomaSelected(null); ////
     } catch (error) {
-      console.log(error);
+      //console.log(error);
       handleNotify({
         type: 'danger',
         text: 'Link não foi inserido, tente novamente!',
@@ -79,7 +86,8 @@ const Link = props => {
     } = event.target;
     let newForm = { ...form,
       [id]: value
-    };
+    }; //console.log('newForm', newForm);
+
     setForm(newForm);
     validate(newForm);
   };
@@ -89,7 +97,7 @@ const Link = props => {
     let newRequireds = requireds;
 
     for (let index in requireds) {
-      if (!form[index] || form[index] === '') {
+      if (!form[index] || form[index] === "") {
         requireds[index] = false;
         valid = false;
       } else {
@@ -118,7 +126,8 @@ const Link = props => {
     id: "uri",
     placeholder: " ",
     required: requireds.uri ? '' : 'required',
-    onChange: handleForm
+    onChange: handleForm,
+    value: form.uri
   }), /*#__PURE__*/React.createElement("label", {
     htmlFor: "uri"
   }, "Link"), /*#__PURE__*/React.createElement("div", {
@@ -129,7 +138,7 @@ const Link = props => {
     }
   }, /*#__PURE__*/React.createElement("i", {
     className: "fas fa-exclamation-circle"
-  }), " Digite o link e sobre uri"))), /*#__PURE__*/React.createElement("ul", {
+  }), " Digite o link"))), /*#__PURE__*/React.createElement("ul", {
     className: "toggle"
   }, idiomaMap.map((item, key) => {
     return /*#__PURE__*/React.createElement("li", {

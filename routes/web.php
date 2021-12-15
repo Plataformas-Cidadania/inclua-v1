@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers\Front;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Schema;
 
 
 /*
@@ -90,7 +90,7 @@ foreach ($routesSearch as $route) {
 
 
 
-if(env('DYNAMIC_ROUTES')=='true'){
+if(env('DYNAMIC_ROUTES')=='true' && Schema::hasTable('cms.modulos')){
     $modulos = \Illuminate\Support\Facades\DB::table('cms.modulos')->select('slug')->get();
 
     foreach ($modulos as $modulo) {

@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Models\Diagnostico;
+use Illuminate\Database\Eloquent\Model;
 
 class DiagnosticoRepository extends BaseRepository
 {
@@ -20,4 +21,11 @@ class DiagnosticoRepository extends BaseRepository
     {
         $this->model = $model;
     }
+
+    public function createDiagnostico(): Model
+    {
+        $model = $this->model->create();
+        return $model->fresh();
+    }
+
 }

@@ -4,7 +4,7 @@ const Link = (props) => {
     const {useState, useEffect} = React;
     const [form, setForm] = useState({
         id_recurso: props.id_recurso,
-        idioma: null,
+        idioma: "",
     });
 
     useEffect(() => {
@@ -42,8 +42,18 @@ const Link = (props) => {
             handleNotify({type: 'success', text: 'Link inserido!', spin: false});
             props.setListLinks(props.listLinks+1);
 
+            //Limpar form
+            let newForm = {
+                ...form,
+                idioma: "",
+                uri: "",
+            }
+            setForm(newForm);
+            setIdiomaSelected(null)
+            ////
+
         } catch (error) {
-            console.log(error);
+            //console.log(error);
             handleNotify({type: 'danger', text: 'Link não foi inserido, tente novamente!', spin: false});
         }
     }
@@ -64,6 +74,7 @@ const Link = (props) => {
             ...form,
             [id]: value
         }
+        //console.log('newForm', newForm);
         setForm(newForm);
         validate(newForm);
     }
@@ -74,7 +85,7 @@ const Link = (props) => {
         let newRequireds = requireds;
 
         for(let index in requireds){
-            if(!form[index] || form[index]===''){
+            if(!form[index] || form[index]===""){
                 requireds[index] = false;
                 valid = false;
             }else{
@@ -93,10 +104,10 @@ const Link = (props) => {
             <div className="row">
                 <div className="col-md-12">
                     <div className="label-float">
-                        <input className={"form-control form-g "+(requireds.uri ? '' : 'invalid-field')} type="text" name="uri" id="uri"  placeholder=" " required={requireds.uri ? '' : 'required'} onChange={handleForm}/>
+                        <input className={"form-control form-g "+(requireds.uri ? '' : 'invalid-field')} type="text" name="uri" id="uri"  placeholder=" " required={requireds.uri ? '' : 'required'} onChange={handleForm} value={form.uri}/>
                         <label htmlFor="uri">Link</label>
                         <div className="label-box-info">
-                            <p style={{display: requireds.uri ? 'none' : ''}}><i className="fas fa-exclamation-circle"/> Digite o link e sobre uri</p>
+                            <p style={{display: requireds.uri ? 'none' : ''}}><i className="fas fa-exclamation-circle"/> Digite o link</p>
                         </div>
                     </div>
                     <ul className="toggle">

@@ -25,9 +25,6 @@ class CreateDiagnosticosTable extends Migration
      */
     public function down()
     {
-        Schema::table('avaliacao.diagnostico', function (Blueprint $table) {
-            $table->dropForeign(['id_diagnostico']);
-        });
         Schema::dropIfExists('avaliacao.diagnostico');
     }
 }

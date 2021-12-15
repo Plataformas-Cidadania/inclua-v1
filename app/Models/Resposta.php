@@ -6,6 +6,7 @@
 
 namespace App\Models;
 
+use App\Traits\Uuids;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -22,16 +23,17 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Resposta extends Model
 {
-	protected $table = 'avaliacao.respostas';
+    use Uuids;
+	protected $table = 'avaliacao.resposta';
 	protected $primaryKey = 'id_resposta';
 
 	public $timestamps = false;
 
 	protected $casts = [
-		'id_resposta' => 'int',
+		'id_resposta' => 'string',
 		'pontuacao' => 'int',
 		'id_pergunta' => 'int',
-		'id_diagnostico' => 'uuid'
+		'id_diagnostico' => 'string'
 	];
 
 	protected $fillable = [
@@ -41,7 +43,7 @@ class Resposta extends Model
 	];
 
 	protected $with = ['pergunta'];
-	public function perguntas()
+	public function pergunta()
 	{
 		return $this->belongsTo(Pergunta::class, 'id_pergunta');
 	}

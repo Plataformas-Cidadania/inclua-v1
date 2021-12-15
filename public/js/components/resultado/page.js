@@ -12,7 +12,7 @@ const Page = () => {
 
   const Resultado = async () => {
     try {
-      const result = await axios.get('json/resultado.json'); //const result = await axios.get('api/resultado/{id_indicador}/{id_diagnostico}');
+      const result = await axios.get('json/resultado.json'); //const result = await axios.get("api/resultado/"+dimensao+"/{id_diagnostico}");
       //setResultado(result.data.data)
 
       console.log('----', result.data);

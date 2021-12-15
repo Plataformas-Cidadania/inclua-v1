@@ -14,7 +14,7 @@ class CreateRespostasTable extends Migration
     public function up()
     {
         Schema::create('avaliacao.resposta', function (Blueprint $table) {
-            $table->increments('id_resposta')->comment('Identifica a resposta');
+            $table->uuid('id_resposta')->primary()->comment('Identifica a resposta');
             $table->integer('pontuacao');
             $table->integer('id_pergunta');
             $table->uuid('id_diagnostico');
@@ -36,6 +36,9 @@ class CreateRespostasTable extends Migration
         Schema::table('avaliacao.resposta', function (Blueprint $table) {
             $table->dropForeign(['id_pergunta']);
         });
+        //Schema::table('avaliacao.diagnostico', function (Blueprint $table) {
+        //    $table->dropForeign(['id_diagnostico']);
+       // });
         Schema::dropIfExists('avaliacao.resposta');
     }
 }
