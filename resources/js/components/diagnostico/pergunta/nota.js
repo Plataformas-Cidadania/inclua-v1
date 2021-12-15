@@ -5,7 +5,9 @@ const Nota = (props) => {
     const [name, setName] = useState(null);
     const [bgColor, setBgColor] = useState(null);
     const [notas, setNotas] = useState([]);
+    const [valoresInvertidos, setValoresInvertidos] = useState([]);
     const [resposta, setResposta] = useState(0);
+    const [showSubPerguntas, setShowSubPerguntas] = useState(false);
 
     useEffect(() => {
         if(props.id){
@@ -15,11 +17,21 @@ const Nota = (props) => {
 
     useEffect(() => {
         let newNotas = [];
-        let start = props.minimo > 0 ? props.minimo : 1;
-        for(let i = start; i <= props.maximo; i++){
+        //let start = props.minimo > 0 ? props.minimo : 1;
+        for(let i = props.minimo; i <= props.maximo; i++){
             newNotas.push(i);
         }
         setNotas(newNotas);
+        console.log(props);
+        console.log('INVERTER', props.inverter);
+        if(props.inverter){
+            console.log('INVERTIDOS ..................');
+            let newValoresInvertidos = [];
+            for(let i = props.maximo; i <= props.minimo; i--){
+                newValoresInvertidos.push(i);
+            }
+            setValoresInvertidos(newValoresInvertidos);
+        }
     }, [props.minimo, props.maximo]);
 
     useEffect(() => {
@@ -31,18 +43,15 @@ const Nota = (props) => {
     }, [props.bgColor]);
 
     const handleResposta = (e) => {
+        console.log('handleResposta');
+        console.log(e.target.value, props.maximo, e.target.value === props.maximo);
+        setShowSubPerguntas(parseInt(e.target.value) === parseInt(props.maximo));//trocar props.maximo pelo campo de valor de ativação
         context.setResposta(props.id, e.target.value);
-        setResposta(e.target.value)
-    }
-
-    const clickResposta = (nota) => {
-        context.setResposta(props.id, nota);
-        setResposta(nota)
     }
 
     return (
         <div className="box-items bg-lgt">
-            <p className="mb-3"><strong>P{context.dimensao.dimensao}.{context.indicador.indicador}{props.letra}</strong> {props.descricao}</p>
+            <p className="mb-3"><strong>({props.id})P{context.dimensao.numero}.{context.indicador.numero}{props.letra}</strong> {props.descricao}</p>
 
             {
                 (props.naoSeAplica) ? (
@@ -50,9 +59,9 @@ const Nota = (props) => {
                         <input className="form-check-input" type="radio"
                                name={name}
                                id={name+"_2"}
-                               value={props.minimo}
+                               value={""}
                                onClick={handleResposta}
-                               defaultChecked={context.verificarResposta(props.id, "0")}
+                               defaultChecked={context.verificarResposta(props.id, "")}
                         />
                         <label className="form-check-label" htmlFor="flexRadioDefault2">
                             Não se aplica
@@ -66,33 +75,32 @@ const Nota = (props) => {
                 <div className="range-merker" style={{width: '113%', marginLeft: '-80px'}}>
                     {
                         notas.map((nota, key) => {
+                            let valor = props.invertido ? valoresInvertidos[key] : nota;
                             return(
-                                <div key={'range_'+props.letra+key} className="range-merker-box">
-                                    <div
-                                        className={"range-merker-box-item " + (resposta === nota ? bgColor : '')}
-                                        onClick={() => clickResposta(nota)}
-                                        style={{cursor: 'pointer'}}
-                                    >
+                                <div key={'P'+context.dimensao.numero+context.indicador.numero+props.letra} className="form-check  float-end">
+                                    <input className="form-check-input" type="radio"
+                                           name={'P'+context.dimensao.numero+context.indicador.numero+props.letra}
+                                           id={'P'+context.dimensao.numero+context.indicador.numero+props.letra+"_"+key}
+                                           value={valor}
+                                           onChange={handleResposta}
+                                           defaultChecked={context.verificarResposta(props.id, valor)}
+                                    />
+                                    <label className="form-check-label" htmlFor="flexRadioDefault2">
                                         {nota}
-                                    </div>
+                                    </label>
                                 </div>
+
                             );
                         })
                     }
                 </div>
-                {/*<label for="customRange1" className="form-label">Bom</label>*/}
-                <br/>
-                <input
-                    type="range"
-                    className="form-range range"
-                    id="customRange1"
-                    min={props.minimo}
-                    max={props.maximo}
-                    value={resposta ? resposta : 0}
-                    onChange={handleResposta}
-                />
             </div>
-
+            <div className="clear-both">&nbsp;</div>
+            {
+                showSubPerguntas ? (
+                    <Perguntas perguntas={props.perguntas} bgColor={props.bgColor}/>
+                ) : null
+            }
         </div>
     );
 };

@@ -44,7 +44,7 @@ const Range = props => {
     className: "box-items bg-lgt"
   }, /*#__PURE__*/React.createElement("p", {
     className: "mb-3"
-  }, /*#__PURE__*/React.createElement("strong", null, "P", context.dimensao.dimensao, ".", context.indicador.indicador, props.letra), " ", props.descricao), props.naoSeAplica ? /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("strong", null, "(", props.id, ")P", context.dimensao.dimensao, ".", context.indicador.indicador, props.letra), " ", props.descricao), props.naoSeAplica ? /*#__PURE__*/React.createElement("div", {
     className: "form-check  float-end"
   }, /*#__PURE__*/React.createElement("input", {
     className: "form-check-input",

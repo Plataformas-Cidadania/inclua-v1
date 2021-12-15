@@ -3,32 +3,27 @@ const Options = (props) => {
     const context = React.useContext(DiagnosticoContext);
     const {useState, useEffect} = React;
 
-    const [name, setName] = useState(null);
     const [showSubPerguntas, setShowSubPerguntas] = useState(false);
-
-    useEffect(() => {
-        setName(context.dimensao.dimensao+'_'+context.indicador.indicador+'_'+props.letra);
-    }, [context]);
 
     const handleResposta = (e) => {
         console.log(e.target.value, props.maximo, e.target.value === props.maximo);
-        setShowSubPerguntas(parseInt(e.target.value) === parseInt(props.maximo));//clicando no sim que possui o valor máximo irá mostrar as subperguntas
+        setShowSubPerguntas(parseInt(e.target.value) === parseInt(props.maximo));//trocar props.maximo pelo campo de valor de ativação
         context.setResposta(props.id, e.target.value);
     }
 
 
     return (
         <div className="box-items bg-lgt">
-            <p className="mb-3"><strong>P{context.dimensao.dimensao}.{context.indicador.indicador}{props.letra}</strong> {props.descricao}</p>
+            <p className="mb-3"><strong>({props.id})P{context.dimensao.numero}.{context.indicador.numero}{props.letra}</strong> {props.descricao}</p>
             {
                 (props.naoSeAplica) ? (
                     <div className="form-check  float-end">
                         <input className="form-check-input" type="radio"
-                               name={name}
-                               id={name+"_2"}
-                               value={props.minimo}
-                               onClick={handleResposta}
-                               defaultChecked={context.verificarResposta(props.id, props.minimo)}
+                               name={'P'+context.dimensao.numero+context.indicador.numero+props.letra}
+                               id={'P'+context.dimensao.numero+context.indicador.numero+props.letra+"_0"}
+                               value={''}
+                               onChange={handleResposta}
+                               defaultChecked={context.verificarResposta(props.id, '')}
                         />
                         <label className="form-check-label" htmlFor="flexRadioDefault2">
                             Não se aplica
@@ -38,11 +33,11 @@ const Options = (props) => {
             }
             <div className="form-check float-start">
                 <input className="form-check-input" type="radio"
-                       name={name}
-                       id={name+"_1"}
-                       value={props.maximo}
-                       onClick={handleResposta}
-                       defaultChecked={context.verificarResposta(props.id, "1")}
+                       name={'P'+context.dimensao.numero+context.indicador.numero+props.letra}
+                       id={'P'+context.dimensao.numero+context.indicador.numero+props.letra+"_1"}
+                       value={props.inverter ? props.minimo : props.maximo}
+                       onChange={handleResposta}
+                       defaultChecked={context.verificarResposta(props.id, props.inverter ? props.minimo : props.maximo)}
                 />
                 <label className="form-check-label" htmlFor="flexRadioDefault1">
                     Sim
@@ -50,11 +45,11 @@ const Options = (props) => {
             </div>
             <div className="form-check  float-end">
                 <input className="form-check-input" type="radio"
-                       name={name}
-                       id={name+"_2"}
-                       value={props.minimo}
-                       onClick={handleResposta}
-                       defaultChecked={context.verificarResposta(props.id, "2")}
+                       name={'P'+context.dimensao.numero+context.indicador.numero+props.letra}
+                       id={'P'+context.dimensao.numero+context.indicador.numero+props.letra+"_2"}
+                       value={props.inverter ? props.maximo : props.minimo}
+                       onChange={handleResposta}
+                       defaultChecked={context.verificarResposta(props.id, props.inverter ? props.maximo : props.minimo)}
                 />
                 <label className="form-check-label" htmlFor="flexRadioDefault2">
                     Não
