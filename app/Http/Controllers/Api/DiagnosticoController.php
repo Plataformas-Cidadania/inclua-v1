@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Api\Controller;
 use App\Models\Diagnostico;
 use App\Repository\DiagnosticoRepository;
+use Faker\Provider\Uuid;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\Eloquent\RelationNotFoundException;
 use Illuminate\Http\JsonResponse;
@@ -16,6 +17,7 @@ class DiagnosticoController extends Controller
 {
     private DiagnosticoRepository $repo;
     private $rules = [
+        'id_diagnostico' => 'string'
     ];
     public function __construct(DiagnosticoRepository $repo)
     {
@@ -27,25 +29,15 @@ class DiagnosticoController extends Controller
      *
      * @param Request $request
      *
-     * @return JsonResponse
+     * @return String
      */
-    public function store(Request $request): JsonResponse
+    public function store(): String
     {
         try {
-            $validator = $this->getValidator($request);
-
-            if ($validator->fails()) {
-                return $this->errorResponse($validator->errors()->all());
-            }
-
-            $data = $this->getData($request);
-            $res = $this->repo->create($data);
-            return $this->successResponse(
-			    'Diagnóstico '.$res->id_dimensao.' foi adicionada',
-			    $this->transform($res)
-			);
+            $res = $this->repo->createDiagnostico();
+            return $res->id_diagnostico;
         } catch (Exception $exception) {
-            return $this->errorResponse('Erro inesperado.'.$exception);
+            return $this->errorResponse($exception);
         }
     }
 
@@ -132,11 +124,11 @@ class DiagnosticoController extends Controller
     /**
      * Transformar em um array
      *
-     * @param Dimensao $model
+     * @param Diagnostico $model
      *
      * @return array
      */
-    protected function transform(Dimensao $model): array
+    protected function transform(Diagnostico $model): array
     {
         return [
             'id_diagnostico' => $model->id_diagnostico,
