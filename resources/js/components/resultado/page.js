@@ -2,6 +2,7 @@ const Page = () => {
 
     const {useState, useEffect} = React;
     const [resultado, setResultado] = useState([]);
+    const [groupRecurso, setGroupRecurso] = useState(null);
 
     useEffect(() => {
         Resultado();
@@ -18,6 +19,14 @@ const Page = () => {
             //alert('erro');
             console.log(error);
         }
+    }
+
+
+
+    const ClickRecurso = (key) => {
+        key = groupRecurso===key ? null : key;
+        //console.log(key);
+        setGroupRecurso(key);
     }
 
     let bgColor = {
@@ -70,8 +79,8 @@ const Page = () => {
                                     <h2><br/><br/>Indicador 1.1 - {item.titulo}</h2>
                                     <div className="row">
                                         <div className="col-md-6">
-                                            <BarChart id={'pie-chart'} series={[10, 20, 30, 80, 70, 60, 50, 40]}
-                                                      labels={[10]}/>
+                                            <BarChart id={'bar-chart'+key} series={item.series}
+                                                      labels={[]}/>
                                         </div>
                                         <div className="col-md-6">
                                             <div className="text-right">
@@ -100,8 +109,18 @@ const Page = () => {
                                                 </div>
                                                 <div className="col-md-12 text-right" style={{textAlign: 'right'}}>
                                                     <br/>
-                                                    <p>Indicações de {item.recursos.length} recursos para intervenção <i className="fas fa-angle-right"/></p>
+                                                    <p onClick={() => ClickRecurso(key)} className="cursor">Indicações de {item.recursos.length} recursos para intervenção <i className="fas fa-angle-right"/></p>
                                                 </div>
+                                            </div>
+                                        </div>
+
+                                        <div className="col-md-12" style={{display: groupRecurso===key ? '' : 'none'}}>
+                                            <br/><br/>
+                                            <h2>Recursos</h2>
+                                            <hr/>
+                                            <div>
+                                                {/*////////*/}
+                                                {/*////////*/}
                                             </div>
                                         </div>
                                     </div>

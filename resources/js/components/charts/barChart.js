@@ -4,7 +4,8 @@ class BarChart extends React.Component {
         //console.log(props);
         this.state = {
 
-            series: [{
+            series: props.series,
+            /*series: [{
                 name: 'Risco baixo',
                 data: [20]
             }, {
@@ -13,7 +14,7 @@ class BarChart extends React.Component {
             }, {
                 name: 'Risco alto',
                 data: [40]
-            }],
+            }],*/
             options: {
                 chart: {
                     type: 'bar',

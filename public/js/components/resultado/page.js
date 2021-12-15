@@ -4,6 +4,7 @@ const Page = () => {
     useEffect
   } = React;
   const [resultado, setResultado] = useState([]);
+  const [groupRecurso, setGroupRecurso] = useState(null);
   useEffect(() => {
     Resultado();
   }, []);
@@ -19,6 +20,12 @@ const Page = () => {
       //alert('erro');
       console.log(error);
     }
+  };
+
+  const ClickRecurso = key => {
+    key = groupRecurso === key ? null : key; //console.log(key);
+
+    setGroupRecurso(key);
   };
 
   let bgColor = {
@@ -69,9 +76,9 @@ const Page = () => {
     }, /*#__PURE__*/React.createElement("div", {
       className: "col-md-6"
     }, /*#__PURE__*/React.createElement(BarChart, {
-      id: 'pie-chart',
-      series: [10, 20, 30, 80, 70, 60, 50, 40],
-      labels: [10]
+      id: 'bar-chart' + key,
+      series: item.series,
+      labels: []
     })), /*#__PURE__*/React.createElement("div", {
       className: "col-md-6"
     }, /*#__PURE__*/React.createElement("div", {
@@ -99,8 +106,16 @@ const Page = () => {
       style: {
         textAlign: 'right'
       }
-    }, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("p", null, "Indica\xE7\xF5es de ", item.recursos.length, " recursos para interven\xE7\xE3o ", /*#__PURE__*/React.createElement("i", {
+    }, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("p", {
+      onClick: () => ClickRecurso(key),
+      className: "cursor"
+    }, "Indica\xE7\xF5es de ", item.recursos.length, " recursos para interven\xE7\xE3o ", /*#__PURE__*/React.createElement("i", {
       className: "fas fa-angle-right"
-    })))))));
+    }))))), /*#__PURE__*/React.createElement("div", {
+      className: "col-md-12",
+      style: {
+        display: groupRecurso === key ? '' : 'none'
+      }
+    }, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("h2", null, "Recursos"), /*#__PURE__*/React.createElement("hr", null), /*#__PURE__*/React.createElement("div", null))));
   }) : null)));
 };
