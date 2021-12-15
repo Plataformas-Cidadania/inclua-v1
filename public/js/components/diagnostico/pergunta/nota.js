@@ -63,9 +63,9 @@ const Nota = props => {
     type: "radio",
     name: name,
     id: name + "_2",
-    value: "",
+    value: 0,
     onClick: handleResposta,
-    defaultChecked: context.verificarResposta(props.id, "")
+    defaultChecked: context.verificarResposta(props.id, 0)
   }), /*#__PURE__*/React.createElement("label", {
     className: "form-check-label",
     htmlFor: "flexRadioDefault2"

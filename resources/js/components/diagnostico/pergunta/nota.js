@@ -59,9 +59,9 @@ const Nota = (props) => {
                         <input className="form-check-input" type="radio"
                                name={name}
                                id={name+"_2"}
-                               value={""}
+                               value={0}
                                onClick={handleResposta}
-                               defaultChecked={context.verificarResposta(props.id, "")}
+                               defaultChecked={context.verificarResposta(props.id, 0)}
                         />
                         <label className="form-check-label" htmlFor="flexRadioDefault2">
                             Não se aplica

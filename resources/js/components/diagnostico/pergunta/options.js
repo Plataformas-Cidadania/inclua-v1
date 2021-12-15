@@ -21,9 +21,9 @@ const Options = (props) => {
                         <input className="form-check-input" type="radio"
                                name={'P'+context.dimensao.numero+context.indicador.numero+props.letra}
                                id={'P'+context.dimensao.numero+context.indicador.numero+props.letra+"_0"}
-                               value={''}
+                               value={0}
                                onChange={handleResposta}
-                               defaultChecked={context.verificarResposta(props.id, '')}
+                               defaultChecked={context.verificarResposta(props.id, 0)}
                         />
                         <label className="form-check-label" htmlFor="flexRadioDefault2">
                             Não se aplica
