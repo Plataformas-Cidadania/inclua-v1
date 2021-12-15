@@ -10,10 +10,10 @@ const Nota = (props) => {
     const [showSubPerguntas, setShowSubPerguntas] = useState(false);
 
     useEffect(() => {
-        if(props.id){
-            setResposta(context.getResposta(props.id));
-        }
-    }, [props.id]);
+        console.log('======================',props);
+        setShowSubPerguntas(props.resposta === props.maximo);
+        setResposta(props.resposta);
+    },[props.resposta]);
 
     useEffect(() => {
         let newNotas = [];
@@ -22,12 +22,12 @@ const Nota = (props) => {
             newNotas.push(i);
         }
         setNotas(newNotas);
-        console.log(props);
-        console.log('INVERTER', props.inverter);
+        //console.log(props);
+        //console.log('INVERTER', props.inverter);
         if(props.inverter){
-            console.log('INVERTIDOS ..................');
+            //console.log('INVERTIDOS ..................');
             let newValoresInvertidos = [];
-            for(let i = props.maximo; i <= props.minimo; i--){
+            for(let i = props.maximo; i >= props.minimo; i--){
                 newValoresInvertidos.push(i);
             }
             setValoresInvertidos(newValoresInvertidos);
@@ -42,11 +42,11 @@ const Nota = (props) => {
         setBgColor(props.bgColor);
     }, [props.bgColor]);
 
-    const handleResposta = (e) => {
-        console.log('handleResposta');
-        console.log(e.target.value, props.maximo, e.target.value === props.maximo);
-        setShowSubPerguntas(parseInt(e.target.value) === parseInt(props.maximo));//trocar props.maximo pelo campo de valor de ativação
-        context.setResposta(props.id, e.target.value);
+    const selectResposta = (value) => {
+        //console.log('handleResposta', value, props.maximo, value === props.maximo);
+        setShowSubPerguntas(parseInt(value) === parseInt(props.maximo));//trocar props.maximo pelo campo de valor de ativação
+        context.setResposta(props.id, value);
+        setResposta(value);
     }
 
     return (
@@ -55,44 +55,28 @@ const Nota = (props) => {
 
             {
                 (props.naoSeAplica) ? (
-                    <div className="form-check  float-end">
-                        <input className="form-check-input" type="radio"
-                               name={name}
-                               id={name+"_2"}
-                               value={0}
-                               onClick={handleResposta}
-                               defaultChecked={context.verificarResposta(props.id, 0)}
-                        />
-                        <label className="form-check-label" htmlFor="flexRadioDefault2">
-                            Não se aplica
-                        </label>
-                    </div>
+                    <li onClick={() => selectResposta(null)}>
+                        <div className={resposta === null ? props.bgColor : ''}/><p>Não se aplica</p>
+                    </li>
                 ) : null
             }
 
             <div>
                 <br/>
                 <div className="range-merker" style={{width: '113%', marginLeft: '-80px'}}>
-                    {
-                        notas.map((nota, key) => {
-                            let valor = props.invertido ? valoresInvertidos[key] : nota;
-                            return(
-                                <div key={'P'+context.dimensao.numero+context.indicador.numero+props.letra+"_"+key} className="form-check  float-end">
-                                    <input className="form-check-input" type="radio"
-                                           name={'P'+context.dimensao.numero+context.indicador.numero+props.letra}
-                                           id={'P'+context.dimensao.numero+context.indicador.numero+props.letra+"_"+key}
-                                           value={valor}
-                                           onChange={handleResposta}
-                                           defaultChecked={context.verificarResposta(props.id, valor)}
-                                    />
-                                    <label className="form-check-label" htmlFor="flexRadioDefault2">
-                                        {nota}
-                                    </label>
-                                </div>
-
-                            );
-                        })
-                    }
+                    <ul className="radio">
+                        {
+                            notas.map((nota, key) => {
+                                let valor = props.inverter ? valoresInvertidos[key] : nota;
+                                console.log(resposta, valor);
+                                return(
+                                    <li key={'P'+context.dimensao.numero+context.indicador.numero+props.letra+"_"+key} onClick={() => selectResposta(valor)}>
+                                        <div  className={resposta ===  valor ? props.bgColor : ''}/><p>{nota}</p>
+                                    </li>
+                                );
+                            })
+                        }
+                    </ul>
                 </div>
             </div>
             <div className="clear-both">&nbsp;</div>

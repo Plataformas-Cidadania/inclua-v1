@@ -4,10 +4,13 @@ const Options = (props) => {
     const {useState, useEffect} = React;
 
     const [showSubPerguntas, setShowSubPerguntas] = useState(false);
+    const [resposta, setResposta] =useState(props.resposta);
 
     useEffect(() => {
-        setShowSubPerguntas(context.getResposta(props.id) === props.maximo);
-    },[props]);
+        console.log('======================',props);
+        setShowSubPerguntas(props.resposta === props.maximo);
+        setResposta(props.resposta);
+    },[props.resposta]);
 
     /*const handleResposta = (e) => {
         console.log('handleResposta', e.target.value, props.maximo, e.target.value === props.maximo);
@@ -15,55 +18,32 @@ const Options = (props) => {
         context.setResposta(props.id, e.target.value);
     }*/
 
-    const setResposta = (value) => {
-        console.log('handleResposta', value, props.maximo, value === props.maximo);
+    const selectResposta = (value) => {
+        //console.log('handleResposta', value, props.maximo, value === props.maximo);
         setShowSubPerguntas(parseInt(value) === parseInt(props.maximo));//trocar props.maximo pelo campo de valor de ativação
         context.setResposta(props.id, value);
+        setResposta(value);
     }
 
     return (
         <div className="box-items bg-lgt">
             <p className="mb-3"><strong>({props.id})P{context.dimensao.numero}.{context.indicador.numero}{props.letra}</strong> {props.descricao}</p>
-            {
-                (props.naoSeAplica) ? (
-                    <div className="form-check  float-end">
-                        <input className="form-check-input" type="radio"
-                               name={'P'+context.dimensao.numero+context.indicador.numero+props.letra}
-                               id={'P'+context.dimensao.numero+context.indicador.numero+props.letra+"_0"}
 
-                               onClick={() => setResposta(null)}
-                               defaultChecked={context.getResposta(props.id) === null}
-                        />
-                        <label className="form-check-label" htmlFor="flexRadioDefault2">
-                            Não se aplica
-                        </label>
-                    </div>
-                ) : null
-            }
-            <div className="form-check float-start">
-                <input className="form-check-input" type="radio"
-                       name={'P'+context.dimensao.numero+context.indicador.numero+props.letra}
-                       id={'P'+context.dimensao.numero+context.indicador.numero+props.letra+"_1"}
-                       onClick={() => setResposta(props.maximo)}
-                       defaultChecked={context.getResposta(props.id) === (props.inverter ? props.minimo : props.maximo)}
-                />
-                <label className="form-check-label" htmlFor={'P'+context.dimensao.numero+context.indicador.numero+props.letra+"_1"}>
-                    Sim
-                </label>
-            </div>
-            <div className="form-check float-start">
-                <input className="form-check-input" type="radio"
-                       name={'P'+context.dimensao.numero+context.indicador.numero+props.letra}
-                       id={'P'+context.dimensao.numero+context.indicador.numero+props.letra+"_2"}
-                       onClick={() => setResposta(props.minimo)}
-                       defaultChecked={context.getResposta(props.id) === (props.inverter ? props.maximo : props.minimo)}
-                />
-                <label className="form-check-label" htmlFor={'P'+context.dimensao.numero+context.indicador.numero+props.letra+"_2"}>
-                    Não
-                </label>
-            </div>
-            {JSON.stringify(context.dimensao.indicadores[0].perguntas[0])}
-            {JSON.stringify(context.dimensao.indicadores[1].perguntas[0])}
+            <ul className="radio">
+                {
+                    (props.naoSeAplica) ? (
+                        <li onClick={() => selectResposta(null)}>
+                            <div className={resposta === null ? props.bgColor : ''}/><p>Não se aplica</p>
+                        </li>
+                    ) : null
+                }
+                <li onClick={() => selectResposta(props.inverter ? props.minimo : props.maximo)}>
+                    <div  className={(resposta ===  (props.inverter ? props.minimo : props.maximo)) ? props.bgColor : ''}/><p>Sim</p>
+                </li>
+                <li onClick={() => selectResposta(props.inverter ? props.maximo : props.minimo)}>
+                    <div className={(resposta ===  (props.inverter ? props.maximo : props.minimo)) ? props.bgColor : ''}/><p>Não</p>
+                </li>
+            </ul>
             <div className="clear-both">&nbsp;</div>
             {
                 showSubPerguntas ? (

@@ -16,6 +16,7 @@ const Pergunta = props => {
       legenda: props.titulo,
       inverter: props.inverter,
       naoSeAplica: props.naoSeAplica,
+      resposta: props.resposta,
       perguntas: props.perguntas
     }),
     "2": /*#__PURE__*/React.createElement(Nota, {
@@ -28,6 +29,7 @@ const Pergunta = props => {
       legenda: props.titulo,
       inverter: props.inverter,
       naoSeAplica: props.naoSeAplica,
+      resposta: props.resposta,
       perguntas: props.perguntas
     }),
     "3": /*#__PURE__*/React.createElement(Range, {
@@ -40,6 +42,7 @@ const Pergunta = props => {
       legenda: props.titulo,
       inverter: props.inverter,
       naoSeAplica: props.naoSeAplica,
+      resposta: props.resposta,
       perguntas: props.perguntas
     })
   };

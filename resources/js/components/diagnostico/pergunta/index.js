@@ -15,6 +15,7 @@ const Pergunta = (props) => {
             legenda={props.titulo}
             inverter={props.inverter}
             naoSeAplica={props.naoSeAplica}
+            resposta={props.resposta}
             perguntas={props.perguntas}
         />,
         "2": <Nota
@@ -27,6 +28,7 @@ const Pergunta = (props) => {
             legenda={props.titulo}
             inverter={props.inverter}
             naoSeAplica={props.naoSeAplica}
+            resposta={props.resposta}
             perguntas={props.perguntas}
         />,
         "3": <Range
@@ -39,6 +41,7 @@ const Pergunta = (props) => {
             legenda={props.titulo}
             inverter={props.inverter}
             naoSeAplica={props.naoSeAplica}
+            resposta={props.resposta}
             perguntas={props.perguntas}
         />,
     };

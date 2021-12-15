@@ -94,7 +94,7 @@
                 $.ajax({
                     url: "https://nominatim.openstreetmap.org/reverse?format=json&lat="+lat+"&lon="+lon,
                     success: function(data){
-                        console.log(data)
+                        //console.log(data)
                         if(data.address){
                             localStorage.setItem('city', data.address.city);
                             localStorage.setItem('state', data.address.state);
