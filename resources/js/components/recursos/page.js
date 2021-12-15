@@ -19,13 +19,13 @@ const Page = () => {
         }
     }
 
-    let icon = {
+    /*let icon = {
         1:'far fa-file-pdf',
         2:'far fa-file-word',
         3:'far fa-file-image',
         4:'far fa-file-video',
         5:'fas fa-link',
-    };
+    };*/
 
     let menu = [
         {id: 1, title: "Tema", txt: 'Busque por tema', rota: ''},
@@ -73,8 +73,11 @@ const Page = () => {
                     </div>
                 </div>
             </div>
-           {
 
+            <Item propsData={recursoMap}/>
+
+
+           {/*{
                 recursoMap.map((item, key) => {
                     return(
 
@@ -160,7 +163,7 @@ const Page = () => {
 
                     );
                 })
-            }
+            }*/}
 
             <div className="col-md-12 text-center">
                 <br/>

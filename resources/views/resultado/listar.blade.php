@@ -15,10 +15,10 @@
                 </div>
             </div>
         </div>
-        <div class="p-3">&nbsp;</div>
+        <div>&nbsp;</div>
     </div>
 
-    <div id="resultado" class="mt-2 mb-4">&nbsp;</div>
+    <div id="resultado" class="mb-4">&nbsp;</div>
 
 @endsection
 
