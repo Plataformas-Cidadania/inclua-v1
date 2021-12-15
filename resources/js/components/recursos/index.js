@@ -1,8 +1,6 @@
 const Recurso = () => {
     return (
-        <div>
-            <Page/>
-        </div>
+        <Page/>
     );
 };
 

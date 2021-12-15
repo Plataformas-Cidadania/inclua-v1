@@ -158,6 +158,7 @@
 @endif
 @if($rota=="recursos")
     <script src="js/components/recursos/page.js"></script>
+    <script src="js/components/recursos/item.js"></script>
     <script src="js/components/recursos/index.js"></script>
 @endif
 @if($rota=="resultado")
@@ -166,6 +167,7 @@
     <script src="https://cdn.jsdelivr.net/npm/react-apexcharts@1.3.6/dist/react-apexcharts.iife.min.js"></script>
     <script src="js/components/charts/barChart.js"></script>
 
+    <script src="js/components/recursos/item.js"></script>
     <script src="js/components/resultado/page.js"></script>
     <script src="js/components/resultado/index.js"></script>
 @endif

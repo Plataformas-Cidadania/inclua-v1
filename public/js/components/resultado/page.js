@@ -5,6 +5,7 @@ const Page = () => {
   } = React;
   const [resultado, setResultado] = useState([]);
   const [groupRecurso, setGroupRecurso] = useState(null);
+  const [dimensao, setDimensao] = useState(1);
   useEffect(() => {
     Resultado();
   }, []);
@@ -28,16 +29,55 @@ const Page = () => {
     setGroupRecurso(key);
   };
 
+  const ClickDimensao = id => {
+    setDimensao(id);
+    console.log(id);
+  };
+
   let bgColor = {
     1: 'bg-pri',
     2: 'bg-sec',
     3: 'bg-ter',
     4: 'bg-qua',
     5: 'bg-qui'
-  };
-  bgColor = bgColor[resultado.id_dimensao];
+  }; //bgColor = bgColor[resultado.id_dimensao];
+
+  bgColor = bgColor[dimensao];
   console.log('----', resultado.indicadores);
   return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "row"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "col-md-12 text-center"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "text-center nav-icons"
+  }, /*#__PURE__*/React.createElement("img", {
+    src: "img/dimensao1.png",
+    alt: "",
+    onClick: () => ClickDimensao(1),
+    className: "cursor " + (dimensao === 1 ? "nav-icons-select" : "opacity-5")
+  }), /*#__PURE__*/React.createElement("img", {
+    src: "img/dimensao2.png",
+    alt: "",
+    onClick: () => ClickDimensao(2),
+    className: "cursor " + (dimensao === 2 ? "nav-icons-select" : "opacity-5")
+  }), /*#__PURE__*/React.createElement("img", {
+    src: "img/dimensao3.png",
+    alt: "",
+    onClick: () => ClickDimensao(3),
+    className: "cursor " + (dimensao === 3 ? "nav-icons-select" : "opacity-5")
+  }), /*#__PURE__*/React.createElement("img", {
+    src: "img/dimensao4.png",
+    alt: "",
+    onClick: () => ClickDimensao(4),
+    className: "cursor " + (dimensao === 4 ? "nav-icons-select" : "opacity-5")
+  }), /*#__PURE__*/React.createElement("img", {
+    src: "img/dimensao5.png",
+    alt: "",
+    onClick: () => ClickDimensao(5),
+    className: "cursor " + (dimensao === 5 ? "nav-icons-select" : "opacity-5")
+  }), /*#__PURE__*/React.createElement("hr", null))))), /*#__PURE__*/React.createElement("div", {
     className: "row"
   }, /*#__PURE__*/React.createElement("div", {
     className: "col-md-12"
@@ -48,10 +88,10 @@ const Page = () => {
   }, /*#__PURE__*/React.createElement("div", {
     className: "col-md-2 text-center"
   }, /*#__PURE__*/React.createElement("img", {
-    src: "img/dimensao" + resultado.id_dimensao + "-g.png",
+    src: "img/dimensao" + dimensao + "-g.png",
     alt: "",
     width: "100"
-  }), /*#__PURE__*/React.createElement("h2", null, "DIMENS\xC3O ", resultado.id_dimensao)), /*#__PURE__*/React.createElement("div", {
+  }), /*#__PURE__*/React.createElement("h2", null, "DIMENS\xC3O ", dimensao)), /*#__PURE__*/React.createElement("div", {
     className: "col-md-8"
   }, /*#__PURE__*/React.createElement("h2", {
     className: "mt-5"
