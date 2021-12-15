@@ -18,15 +18,17 @@ const Header = () => {
                     </div>
                 </div>
                 <div className="col">
-                    <div className="dorder-container">
-                        <div className="dorder-container-mai">
-                            <div className="btn-icon">
-                                <img src="img/icon-biblioteca.png" alt="Biblioteca" title="Biblioteca" width="100%"/>
+                    <a href="recursos">
+                        <div className="dorder-container">
+                            <div className="dorder-container-mai">
+                                <div className="btn-icon">
+                                    <img src="img/icon-biblioteca.png" alt="Biblioteca" title="Biblioteca" width="100%"/>
+                                </div>
+                                <h2 className="btn-icon-h2">Biblioteca</h2>
+                                <div className="clear-both"/>
                             </div>
-                            <h2 className="btn-icon-h2">Biblioteca</h2>
-                            <div className="clear-both"/>
                         </div>
-                    </div>
+                    </a>
                 </div>
             </div>
             <div className="row" style={{display: context.showMenuDiagnostico ? '' : 'none'}}>
@@ -81,7 +83,7 @@ const Header = () => {
 
                 <div>
                     <div className="float-start cursor" style={{position: 'absolute', left: '15px'}}  onClick={() => context.setShowMenuDiagnostico(!context.showMenuDiagnostico)}> <i className="fas fa-angle-left"/> Voltar</div>
-                    <div className="float-end" style={{position: 'absolute', right: '15px'}}>Biblioteca <i className="fas fa-angle-right"/></div>
+                    <a href="recursos" className="float-end" style={{position: 'absolute', right: '15px'}}>Biblioteca <i className="fas fa-angle-right"/></a>
                 </div>
             </div>
         </div>
