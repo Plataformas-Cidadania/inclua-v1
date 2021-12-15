@@ -43,6 +43,7 @@ const List = () => {
 
     return (
         <div>
+
             <div className="dorder-container float-end">
                 <button className="btn btn-theme bg-pri" type="button"  data-bs-toggle="modal" data-bs-target="#insertModal">
                     Adicionar <i className="fas fa-angle-right"/>

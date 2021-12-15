@@ -13,7 +13,11 @@ const Perguntas = props => {
   return /*#__PURE__*/React.createElement("div", {
     className: "row"
   }, perguntas.map((pergunta, key) => {
-    console.log(pergunta);
+    //console.log(pergunta);
+    if (!props.subperguntas && pergunta.id_perguntaPai > 0) {
+      return;
+    }
+
     return /*#__PURE__*/React.createElement(Pergunta, {
       key: 'pergunta' + key,
       letra: pergunta.letra,
@@ -29,6 +33,7 @@ const Perguntas = props => {
       inverter: pergunta.inverter,
       naoSeAplica: pergunta.nao_se_aplica,
       idPerguntaPai: pergunta.id_perguntaPai,
+      resposta: pergunta.resposta,
       perguntas: pergunta.perguntas
     });
   }));

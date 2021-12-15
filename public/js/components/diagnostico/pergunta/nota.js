@@ -11,10 +11,10 @@ const Nota = props => {
   const [resposta, setResposta] = useState(0);
   const [showSubPerguntas, setShowSubPerguntas] = useState(false);
   useEffect(() => {
-    if (props.id) {
-      setResposta(context.getResposta(props.id));
-    }
-  }, [props.id]);
+    console.log('======================', props);
+    setShowSubPerguntas(props.resposta === props.maximo);
+    setResposta(props.resposta);
+  }, [props.resposta]);
   useEffect(() => {
     let newNotas = []; //let start = props.minimo > 0 ? props.minimo : 1;
 
@@ -22,15 +22,14 @@ const Nota = props => {
       newNotas.push(i);
     }
 
-    setNotas(newNotas);
-    console.log(props);
-    console.log('INVERTER', props.inverter);
+    setNotas(newNotas); //console.log(props);
+    //console.log('INVERTER', props.inverter);
 
     if (props.inverter) {
-      console.log('INVERTIDOS ..................');
+      //console.log('INVERTIDOS ..................');
       let newValoresInvertidos = [];
 
-      for (let i = props.maximo; i <= props.minimo; i--) {
+      for (let i = props.maximo; i >= props.minimo; i--) {
         newValoresInvertidos.push(i);
       }
 
@@ -44,55 +43,40 @@ const Nota = props => {
     setBgColor(props.bgColor);
   }, [props.bgColor]);
 
-  const handleResposta = e => {
-    console.log('handleResposta');
-    console.log(e.target.value, props.maximo, e.target.value === props.maximo);
-    setShowSubPerguntas(parseInt(e.target.value) === parseInt(props.maximo)); //trocar props.maximo pelo campo de valor de ativação
+  const selectResposta = value => {
+    //console.log('handleResposta', value, props.maximo, value === props.maximo);
+    setShowSubPerguntas(parseInt(value) === parseInt(props.maximo)); //trocar props.maximo pelo campo de valor de ativação
 
-    context.setResposta(props.id, e.target.value);
+    context.setResposta(props.id, value);
+    setResposta(value);
   };
 
   return /*#__PURE__*/React.createElement("div", {
     className: "box-items bg-lgt"
   }, /*#__PURE__*/React.createElement("p", {
     className: "mb-3"
-  }, /*#__PURE__*/React.createElement("strong", null, "(", props.id, ")P", context.dimensao.numero, ".", context.indicador.numero, props.letra), " ", props.descricao), props.naoSeAplica ? /*#__PURE__*/React.createElement("div", {
-    className: "form-check  float-end"
-  }, /*#__PURE__*/React.createElement("input", {
-    className: "form-check-input",
-    type: "radio",
-    name: name,
-    id: name + "_2",
-    value: "",
-    onClick: handleResposta,
-    defaultChecked: context.verificarResposta(props.id, "")
-  }), /*#__PURE__*/React.createElement("label", {
-    className: "form-check-label",
-    htmlFor: "flexRadioDefault2"
-  }, "N\xE3o se aplica")) : null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("strong", null, "(", props.id, ")P", context.dimensao.numero, ".", context.indicador.numero, props.letra), " ", props.descricao), props.naoSeAplica ? /*#__PURE__*/React.createElement("li", {
+    onClick: () => selectResposta(null)
+  }, /*#__PURE__*/React.createElement("div", {
+    className: resposta === null ? props.bgColor : ''
+  }), /*#__PURE__*/React.createElement("p", null, "N\xE3o se aplica")) : null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
     className: "range-merker",
     style: {
       width: '113%',
       marginLeft: '-80px'
     }
+  }, /*#__PURE__*/React.createElement("ul", {
+    className: "radio"
   }, notas.map((nota, key) => {
-    let valor = props.invertido ? valoresInvertidos[key] : nota;
-    return /*#__PURE__*/React.createElement("div", {
-      key: 'P' + context.dimensao.numero + context.indicador.numero + props.letra,
-      className: "form-check  float-end"
-    }, /*#__PURE__*/React.createElement("input", {
-      className: "form-check-input",
-      type: "radio",
-      name: 'P' + context.dimensao.numero + context.indicador.numero + props.letra,
-      id: 'P' + context.dimensao.numero + context.indicador.numero + props.letra + "_" + key,
-      value: valor,
-      onChange: handleResposta,
-      defaultChecked: context.verificarResposta(props.id, valor)
-    }), /*#__PURE__*/React.createElement("label", {
-      className: "form-check-label",
-      htmlFor: "flexRadioDefault2"
-    }, nota));
-  }))), /*#__PURE__*/React.createElement("div", {
+    let valor = props.inverter ? valoresInvertidos[key] : nota;
+    console.log(resposta, valor);
+    return /*#__PURE__*/React.createElement("li", {
+      key: 'P' + context.dimensao.numero + context.indicador.numero + props.letra + "_" + key,
+      onClick: () => selectResposta(valor)
+    }, /*#__PURE__*/React.createElement("div", {
+      className: resposta === valor ? props.bgColor : ''
+    }), /*#__PURE__*/React.createElement("p", null, nota));
+  })))), /*#__PURE__*/React.createElement("div", {
     className: "clear-both"
   }, "\xA0"), showSubPerguntas ? /*#__PURE__*/React.createElement(Perguntas, {
     perguntas: props.perguntas,

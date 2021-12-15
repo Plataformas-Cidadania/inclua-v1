@@ -64,7 +64,8 @@ const Indicadores = () => {
     className: "col-md-12"
   }, /*#__PURE__*/React.createElement(Perguntas, {
     perguntas: context.indicador.perguntas,
-    bgColor: bgColor
+    bgColor: bgColor,
+    subperguntas: false
   })), /*#__PURE__*/React.createElement("div", {
     className: "col-md-12"
   }, /*#__PURE__*/React.createElement("div", {
