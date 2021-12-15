@@ -14,6 +14,11 @@ const Perguntas = props => {
     className: "row"
   }, perguntas.map((pergunta, key) => {
     console.log(pergunta);
+
+    if (!props.subperguntas && pergunta.id_perguntaPai > 0) {
+      return;
+    }
+
     return /*#__PURE__*/React.createElement(Pergunta, {
       key: 'pergunta' + key,
       letra: pergunta.letra,

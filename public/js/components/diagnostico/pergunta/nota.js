@@ -78,7 +78,7 @@ const Nota = props => {
   }, notas.map((nota, key) => {
     let valor = props.invertido ? valoresInvertidos[key] : nota;
     return /*#__PURE__*/React.createElement("div", {
-      key: 'P' + context.dimensao.numero + context.indicador.numero + props.letra,
+      key: 'P' + context.dimensao.numero + context.indicador.numero + props.letra + "_" + key,
       className: "form-check  float-end"
     }, /*#__PURE__*/React.createElement("input", {
       className: "form-check-input",

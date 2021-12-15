@@ -72,8 +72,7 @@ const DiagnosticoProvider = ({
   };
 
   const setResposta = (idPergunta, value) => {
-    console.log('setResposta');
-    console.log('id_dimensao: ' + dimensao.id_dimensao, 'id_indicador: ' + indicador.id_indicador, 'id_pergunta: ' + idPergunta, 'resposta: ' + value);
+    console.log('setResposta', 'id_dimensao: ' + dimensao.id_dimensao, 'id_indicador: ' + indicador.id_indicador, 'id_pergunta: ' + idPergunta, 'resposta: ' + value);
     let newDimensoes = dimensoes;
     newDimensoes.forEach(d => {
       if (d.id_dimensao === dimensao.id_dimensao) {
@@ -118,8 +117,8 @@ const DiagnosticoProvider = ({
   };
 
   const getResposta = idPergunta => {
-    console.log('getResposta');
-    console.log(idPergunta);
+    //console.log('getResposta');
+    //console.log(idPergunta);
     let resposta = 0;
     dimensoes.forEach(d => {
       if (d.id_dimensao === dimensao.id_dimensao) {
@@ -134,7 +133,7 @@ const DiagnosticoProvider = ({
         });
       }
     });
-    console.log('resposta', resposta);
+    console.log('getResposta', 'idPergunta:', 5, 'resposta', resposta);
     return resposta;
   };
 
