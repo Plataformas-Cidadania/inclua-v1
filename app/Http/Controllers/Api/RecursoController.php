@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Api\Controller;
-use App\Models\Autoria;
 use App\Models\Recurso;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Database\Eloquent\RelationNotFoundException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Validator;
 use Exception;
 use App\Repository\RecursoRepository;
@@ -45,6 +43,34 @@ class RecursoController extends Controller
             'Recurso retornados com sucesso',
             $res
         );
+    }
+
+    /**
+     * Mostrar todos os Recursoes com Paginação.
+     *
+     * @param null
+     *
+     * @return JsonResponse
+     */
+
+    public function getAllPaginado($nr_itens)
+    {
+        try {
+            return response()->json($this->repo->getAllPaginado($nr_itens), Response::HTTP_OK);
+        }
+        catch (\Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
+    public function getByIdIndicadorPaginado()
+    {
+        try {
+            return response()->json($this->repo->getByIdIndicadorPaginado(), Response::HTTP_OK);
+        }
+        catch (\Exception $e) {
+            return $e->getMessage();
+        }
     }
 
     /**
