@@ -125,6 +125,8 @@ Route::group([
 ], function () {
     Route::get('/', [App\Http\Controllers\Api\RecursoController::class, 'getAll'])
         ->name('api.recurso.getAll');
+    Route::get('/paginado', [App\Http\Controllers\Api\RecursoController::class, 'getAllPaginado'])
+        ->name('api.recurso.getAllPaginado');
     Route::get('/{recurso}',[App\Http\Controllers\Api\RecursoController::class, 'get'])
         ->name('api.recurso.get');
     Route::post('/', [App\Http\Controllers\Api\RecursoController::class, 'store'])

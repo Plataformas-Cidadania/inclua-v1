@@ -32,6 +32,11 @@ class RecursoRepository extends BaseRepository
         return Recurso::with('links','autoria')->get();
     }
 
+    public function getAllPaginado()
+    {
+        return Recurso::with('links','autoria')->paginate(10);
+    }
+
     /**
      * Obter uma lista de autores especificados por um id de recurso
      *
