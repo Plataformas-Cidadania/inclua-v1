@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Api\Controller;
 use App\Models\Diagnostico;
+use App\Models\Dimensao;
+use App\Models\Resposta;
 use App\Repository\DiagnosticoRepository;
 use App\Repository\DimensaoRepository;
 use App\Repository\RespostaRepository;
@@ -44,9 +46,10 @@ class DiagnosticoController extends Controller
         }
     }
 
-    public function calcularPontuacao($id_dimensao,$id_diagnostico): String
+    public function calcularPontuacao($id_dimensao,$id_diagnostico)
     {
         try {
+            /*
             $res = $this->repo->getRespostaPorDiagnostico($id_diagnostico);
 
             $indicador_com_perguntas = $res[0]->pergunta->indicador;
@@ -63,9 +66,70 @@ class DiagnosticoController extends Controller
 
             // pegar dimensao e seus indicadores e conseguir o vl_alto e vl_baixo
             $dimensao_das_respostas = $res[0]->pergunta->indicador->dimensao;
-            dd($dimensao_das_respostas);
+            //return $dimensao_das_respostas;
+            //dd($dimensao_das_respostas->indicadores);
             //TODO
 
+            */
+            //Teste
+            $dimensao = Dimensao::find($id_dimensao);
+            $indicadores = $dimensao->indicadores;
+
+            $vl_minimo = 0;
+            $vl_maximo = 0;
+
+            $vet_res_indicadores = [];
+            foreach ($indicadores as $indicador) {
+
+                $pontuacao_indicador = 0;
+                $perguntas = $indicador->perguntas;
+                foreach ($perguntas as $pergunta) {
+                    //echo ($pergunta->id_pergunta);
+                    $resposta = Resposta::where('id_pergunta', $pergunta->id_pergunta)->where('id_diagnostico', $id_diagnostico)->first();
+                    if (!is_null($resposta)) {
+                        $pontuacao_indicador += $resposta->pontuacao;
+                    }
+                }
+                //dd($pontuacao_indicador);
+                $risco='';
+                if ($pontuacao_indicador <= $indicador->vl_alto) {
+                    $risco = 'Risco alto';
+                }
+                elseif ($pontuacao_indicador >= $indicador->vl_baixo) {
+                    $risco = 'Risco baixo';
+                }
+                else {
+                    $risco = 'Moderado';
+                }
+                $item = [
+                    'numero'=> $indicador->numero,
+                    'titulo'=> $indicador->titulo,
+                    'descricao'=> $indicador->descricao,
+                    'consequencia'=> $indicador->consequencia,
+                    'qtd_recursos'=> 48,
+                    'risco'=> $risco,
+                    'pontos'=> $pontuacao_indicador,
+                    'series'=> [
+                        [
+                            'name'=> 'Risco baixo',
+                            'data'=> 20
+                        ],
+                        [
+                            'name' => 'Risco moderado',
+                            'data'=> 40
+                        ],
+                        [
+                            'name'=> 'Risco alto',
+                            'data'=> 40
+                        ]
+                    ],
+                    'recursos'=> ['***Idêntico ao de recursos que já esta pronto***']
+                ];
+                array_push($vet_res_indicadores, $item);
+            }
+
+            return ['indicadores' => $vet_res_indicadores];
+            dd($vet_res_indicadores);
 
         } catch (Exception $exception) {
             return $this->errorResponse($exception);
