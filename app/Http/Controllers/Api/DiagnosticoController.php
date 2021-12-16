@@ -99,9 +99,9 @@ class DiagnosticoController extends Controller
                 $rangeMedio = $indicador->vl_baixo - $indicador->vl_alto;
                 $rangeBaixo = $indicador->vl_baixo - $soma_maximo;
 
-                $percAlto = $rangeAlto * 100/range;
-                $percMedio = $rangeMedio * 100/range;
-                $percBaixo = $rangeBaixo * 100/range;
+                $percAlto = $rangeAlto * 100/$range;
+                $percMedio = $rangeMedio * 100/$range;
+                $percBaixo = $rangeBaixo * 100/$range;
 
                 //dd($pontuacao_indicador);
                 $risco='';
