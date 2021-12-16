@@ -12,8 +12,8 @@ const Page = () => {
 
   const Resultado = async () => {
     try {
-      const result = await axios.get('json/resultado.json'); //const result = await axios.get("api/resultado/"+dimensao+"/{id_diagnostico}");
-      //setResultado(result.data.data)
+      //const result = await axios.get('json/resultado.json');
+      const result = await axios.get("api/diagnostico/" + dimensao + "/b6d321b2-6cc4-44c8-ba3f-b531a3b6cb82"); //setResultado(result.data.data)
 
       console.log('----', result.data);
       setResultado(result.data);
@@ -32,6 +32,7 @@ const Page = () => {
   const ClickDimensao = id => {
     setDimensao(id);
     console.log(id);
+    Resultado();
   };
 
   let bgColor = {
@@ -95,7 +96,7 @@ const Page = () => {
     className: "col-md-8"
   }, /*#__PURE__*/React.createElement("h2", {
     className: "mt-5"
-  }, resultado.nome, "inclusiva"), /*#__PURE__*/React.createElement("p", {
+  }, resultado.titulo, "inclusiva"), /*#__PURE__*/React.createElement("p", {
     className: "mb-5"
   }, "Veja abaixo os resultados por indicador:")), /*#__PURE__*/React.createElement("div", {
     className: "col-md-2 text-center"
@@ -111,7 +112,7 @@ const Page = () => {
     return /*#__PURE__*/React.createElement("div", {
       className: "col-md-12",
       key: 'indicadores_' + key
-    }, /*#__PURE__*/React.createElement("h2", null, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "Indicador 1.1 - ", item.titulo), /*#__PURE__*/React.createElement("div", {
+    }, /*#__PURE__*/React.createElement("h2", null, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "Indicador ", item.numero, " - ", item.titulo), /*#__PURE__*/React.createElement("div", {
       className: "row"
     }, /*#__PURE__*/React.createElement("div", {
       className: "col-md-6"
@@ -152,10 +153,14 @@ const Page = () => {
     }, "Indica\xE7\xF5es de ", item.recursos.length, " recursos para interven\xE7\xE3o ", /*#__PURE__*/React.createElement("i", {
       className: "fas fa-angle-right"
     }))))), /*#__PURE__*/React.createElement("div", {
+      className: "col-md-12"
+    }, /*#__PURE__*/React.createElement("hr", null)), /*#__PURE__*/React.createElement("div", {
       className: "col-md-12",
       style: {
         display: groupRecurso === key ? '' : 'none'
       }
-    }, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("h2", null, "Recursos"), /*#__PURE__*/React.createElement("hr", null), /*#__PURE__*/React.createElement("div", null))));
+    }, /*#__PURE__*/React.createElement("h2", null, "Recursos"), /*#__PURE__*/React.createElement("hr", null), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(Item, {
+      propsData: item.recursos
+    })))));
   }) : null)));
 };

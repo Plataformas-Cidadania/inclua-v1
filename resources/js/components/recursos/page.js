@@ -2,6 +2,7 @@ const Page = () => {
 
     const {useState, useEffect} = React;
     const [recursoMap, setRecursoMap] = useState([]);
+    const [recursoMapPaginate, setRecursoMapPaginate] = useState([]);
 
     useEffect(() => {
         Recurso();
@@ -10,14 +11,17 @@ const Page = () => {
     const Recurso = async () => {
         try {
             //const result = await axios.get('json/recursos.json');
-            const result = await axios.get('api/recurso');
+            //const result = await axios.get('api/recurso');
+            const result = await axios.get('api/recurso/paginado/6');
             console.log(result.data.data);
-            setRecursoMap(result.data.data)
+            setRecursoMap(result.data.data);
+            setRecursoMapPaginate(result.data);
         } catch (error) {
             //alert('erro');
             console.log(error);
         }
     }
+
 
     /*let icon = {
         1:'far fa-file-pdf',
@@ -37,6 +41,98 @@ const Page = () => {
     const btnSearch = (id, txt, rota) => {
         console.log(id, txt, rota)
     }
+
+    /*///////////////*/
+    //MONTANDO A PAGINAÇÃO
+    let pagina = recursoMapPaginate;
+    let p = [];//armazena todas as paginas
+    let pages = [];//paginas q serão mostradas
+    //let n_paginas = Math.ceil(this.state.totalOscList/10);
+    let n_paginas = Math.ceil(10/10);
+    //console.log('pagina', pagina);
+    let qtdPages = 5;
+    for (let i=0; i < n_paginas; i++){
+        let active = recursoMapPaginate === i ? 'active' : '';
+        p[i] = (
+            <li className={"page-item "+active}>
+                {/*<a className="page-link" style={{cursor: 'pointer'}} onClick={()=>this.setPageOscList(i)}>*/}
+                <a className="page-link" style={{cursor: 'pointer'}} >
+                    {i + 1}
+                </a>
+            </li>);
+    }
+    if(n_paginas <= 10){
+        for (let i=0; i < qtdPages; i++){
+            let active = recursoMapPaginate === i ? 'active' : '';
+            pages.push(p[i]);
+        }
+    }else{
+        if(pagina<=5){
+            pages.push(p[0]);
+            pages.push(p[1]);
+            pages.push(p[2]);
+            pages.push(p[3]);
+            pages.push(p[4]);
+            pages.push(p[5]);
+            pages.push(p[6]);
+            pages.push(<li className="page-item "><a className="page-link" href="#">...</a></li>);
+            pages.push(p[n_paginas-1]);
+        }else if(pagina===n_paginas-1 || pagina===n_paginas-2){
+            pages.push(p[0]);
+            pages.push(<li className="page-item "><a className="page-link" href="#">...</a></li>);
+            pages.push(p[n_paginas-8]);
+            pages.push(p[n_paginas-7]);
+            pages.push(p[n_paginas-6]);
+            pages.push(p[n_paginas-5]);
+            pages.push(p[n_paginas-4]);
+            pages.push(p[n_paginas-3]);
+            pages.push(p[n_paginas-2]);
+            pages.push(p[n_paginas-1]);
+        }else{
+            pages.push(p[0]);
+            pages.push(<li className="page-item "><a className="page-link" href="#">...</a></li>);
+            if(parseInt(pagina)+4 < n_paginas-1){
+                pages.push(p[parseInt(pagina)-3]);
+                pages.push(p[parseInt(pagina)-2]);
+                pages.push(p[parseInt(pagina)-1]);
+                pages.push(p[pagina]);
+                pages.push(p[parseInt(pagina)+1])
+                pages.push(p[parseInt(pagina)+2])
+                pages.push(p[parseInt(pagina)+3])
+                pages.push(<li className="page-item "><a className="page-link" href="#">...</a></li>);
+            }else{
+                pages.push(p[n_paginas-8]);
+                pages.push(p[n_paginas-7]);
+                pages.push(p[n_paginas-6]);
+                pages.push(p[n_paginas-5]);
+                pages.push(p[n_paginas-4]);
+                pages.push(p[n_paginas-3]);
+                pages.push(p[n_paginas-2]);
+                pages.push(p[n_paginas-1]);
+            }
+            pages.push(p[n_paginas-1]);
+        }
+    }
+
+    let pagination = (
+        <ul className="pagination">
+           {/* <li className="page-item disabled" style={{display: this.state.pageOscList > 0 ? '' : 'none'}}>
+                <a className="page-link" href="#" tabIndex="-1">Anterior</a>
+            </li>
+            {pages}
+            <li className="page-item" style={{display: this.state.pageOscList < parseInt(this.state.totalOscList / 10) ? '' : 'none'}}>
+                <a className="page-link" href="#">Próximo</a>
+            </li>*/}
+            <li className="page-item disabled" >
+                <a className="page-link" href="#" tabIndex="-1">Anterior</a>
+            </li>
+            {pages}
+            <li className="page-item" >
+                <a className="page-link" href="#">Próximo</a>
+            </li>
+        </ul>
+    );
+    /*///////////////*/
 
     return (
         <div className="row">
@@ -70,6 +166,10 @@ const Page = () => {
                     </div>*/}
                         </ul>
                         <br/><br/>
+                    </div>
+
+                    <div className="col-md-12">
+                        <p style={{textAlign: 'right'}}>{recursoMapPaginate.total} recursos</p>
                     </div>
                 </div>
             </div>
@@ -165,7 +265,10 @@ const Page = () => {
                 })
             }*/}
 
-            <div className="col-md-12 text-center">
+
+            {pagination}
+
+            {/*<div className="col-md-12 text-center">
                 <br/>
                 <nav aria-label="Page navigation example">
                     <ul className="pagination">
@@ -177,7 +280,7 @@ const Page = () => {
                     </ul>
                 </nav>
                 <br/>
-            </div>
+            </div>*/}
 
         </div>
     );

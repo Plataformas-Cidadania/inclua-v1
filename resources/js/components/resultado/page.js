@@ -11,8 +11,8 @@ const Page = () => {
 
     const Resultado = async () => {
         try {
-            const result = await axios.get('json/resultado.json');
-            //const result = await axios.get("api/resultado/"+dimensao+"/{id_diagnostico}");
+            //const result = await axios.get('json/resultado.json');
+            const result = await axios.get("api/diagnostico/"+dimensao+"/b6d321b2-6cc4-44c8-ba3f-b531a3b6cb82");
             //setResultado(result.data.data)
             console.log('----', result.data);
             setResultado(result.data)
@@ -33,6 +33,7 @@ const Page = () => {
     const ClickDimensao = (id) => {
         setDimensao(id);
         console.log(id);
+        Resultado();
     }
 
     let bgColor = {
@@ -75,7 +76,7 @@ const Page = () => {
                                 <h2>DIMENSÃO {dimensao}</h2>
                             </div>
                             <div className="col-md-8">
-                                <h2 className="mt-5">{resultado.nome}
+                                <h2 className="mt-5">{resultado.titulo}
                                     inclusiva</h2>
                                 <p className="mb-5">Veja abaixo os resultados por indicador:</p>
                             </div>
@@ -98,11 +99,10 @@ const Page = () => {
                             resultado.indicadores.map((item, key) => {
                                 return (
                                 <div className="col-md-12" key={'indicadores_'+key}>
-                                    <h2><br/><br/>Indicador 1.1 - {item.titulo}</h2>
+                                    <h2><br/><br/>Indicador {item.numero} - {item.titulo}</h2>
                                     <div className="row">
                                         <div className="col-md-6">
-                                            <BarChart id={'bar-chart'+key} series={item.series}
-                                                      labels={[]}/>
+                                            <BarChart id={'bar-chart'+key} series={item.series} labels={[]}/>
                                         </div>
                                         <div className="col-md-6">
                                             <div className="text-right">
@@ -136,12 +136,16 @@ const Page = () => {
                                             </div>
                                         </div>
 
+                                        <div className="col-md-12">
+                                            <hr/>
+                                        </div>
+
+
                                         <div className="col-md-12" style={{display: groupRecurso===key ? '' : 'none'}}>
-                                            <br/><br/>
                                             <h2>Recursos</h2>
                                             <hr/>
                                             <div>
-                                                {/*<Item propsData={item.recursos}/>*/}
+                                                <Item propsData={item.recursos}/>
                                             </div>
                                         </div>
                                     </div>
@@ -150,9 +154,6 @@ const Page = () => {
                             })
                             : null
                     }
-
-
-
 
                 </div>
             </div>
