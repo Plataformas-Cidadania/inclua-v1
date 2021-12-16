@@ -7,6 +7,7 @@ const Insert = (props) => {
     const [formatoMap, setFormatoMap] = useState([]);
     const [listLinks, setListLinks] = useState(1);
     const [id_recurso, setIdRecurso] = useState(0);
+    const [varValid, setValid] = useState(false);
 
     const [form, setForm] = useState({
         ultimo_acesso: '1992-02-10 13:21:37',
@@ -137,6 +138,7 @@ const Insert = (props) => {
 
         setRequireds(newRequireds);
 
+        setValid(valid);
         return valid;
     }
 
@@ -199,7 +201,7 @@ const Insert = (props) => {
 
                         <div className="col-md-12">
                             <div className="dorder-container">
-                                <button className="btn btn-theme bg-pri" type="button"  onClick={Insert} >
+                                <button className="btn btn-theme bg-pri" type="button"  onClick={Insert}  disabled={varValid ? '' : 'disabled'}>
                                     <span style={{marginLeft: '10px', display: notify.spin ? '' : 'none'}}><i className="fas fa-spinner float-end fa-spin" /></span>
                                     Próximo <i className="fas fa-angle-right"/>
                                 </button>

@@ -29,6 +29,7 @@ const Link = props => {
     text: null,
     spin: false
   });
+  const [varValid, setValid] = useState(false);
   const [requireds, setRequireds] = useState({
     uri: true,
     idioma: true
@@ -115,6 +116,7 @@ const Link = props => {
 
     console.log(newRequireds);
     setRequireds(newRequireds);
+    setValid(valid);
     return valid;
   };
 
@@ -164,7 +166,8 @@ const Link = props => {
   }, /*#__PURE__*/React.createElement("button", {
     className: "btn btn-theme bg-pri",
     type: "button",
-    onClick: Insert
+    onClick: Insert,
+    disabled: varValid ? '' : 'disabled'
   }, /*#__PURE__*/React.createElement("span", {
     style: {
       marginLeft: '10px',

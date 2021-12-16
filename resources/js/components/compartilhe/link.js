@@ -25,6 +25,8 @@ const Link = (props) => {
 
     const [notify, setNotify] = useState({type:null, text:null, spin:false});
 
+    const [varValid, setValid] = useState(false);
+
 
     const [requireds, setRequireds] = useState({
         uri: true,
@@ -102,7 +104,7 @@ const Link = (props) => {
         console.log(newRequireds);
 
         setRequireds(newRequireds);
-
+        setValid(valid);
         return valid;
     }
 
@@ -135,7 +137,7 @@ const Link = (props) => {
                     <br/>
                     <div className="col-md-12">
                         <div className="dorder-container float-start">
-                            <button className="btn btn-theme bg-pri" type="button"  onClick={Insert} >
+                            <button className="btn btn-theme bg-pri" type="button"  onClick={Insert} disabled={varValid ? '' : 'disabled'}>
                                 <span style={{marginLeft: '10px', display: notify.spin ? '' : 'none'}}><i className="fas fa-spinner float-end fa-spin" /></span>
                                 Adicionar <i className="fas fa-angle-right"/>
                             </button>

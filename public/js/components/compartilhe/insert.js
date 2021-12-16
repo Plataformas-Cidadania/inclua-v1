@@ -8,6 +8,7 @@ const Insert = props => {
   const [formatoMap, setFormatoMap] = useState([]);
   const [listLinks, setListLinks] = useState(1);
   const [id_recurso, setIdRecurso] = useState(0);
+  const [varValid, setValid] = useState(false);
   const [form, setForm] = useState({
     ultimo_acesso: '1992-02-10 13:21:37',
     id_tipo_recurso: 0,
@@ -143,6 +144,7 @@ const Insert = props => {
     }
 
     setRequireds(newRequireds);
+    setValid(valid);
     return valid;
   };
 
@@ -226,7 +228,8 @@ const Insert = props => {
   }, /*#__PURE__*/React.createElement("button", {
     className: "btn btn-theme bg-pri",
     type: "button",
-    onClick: Insert
+    onClick: Insert,
+    disabled: varValid ? '' : 'disabled'
   }, /*#__PURE__*/React.createElement("span", {
     style: {
       marginLeft: '10px',
