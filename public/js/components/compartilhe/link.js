@@ -93,10 +93,14 @@ const Link = props => {
   };
 
   const validate = form => {
+    console.log(form);
     let valid = true;
     let newRequireds = requireds;
+    console.log(newRequireds);
 
     for (let index in requireds) {
+      console.log(index);
+
       if (!form[index] || form[index] === "") {
         requireds[index] = false;
         valid = false;
@@ -105,6 +109,7 @@ const Link = props => {
       }
     }
 
+    console.log(newRequireds);
     setRequireds(newRequireds);
     return valid;
   };

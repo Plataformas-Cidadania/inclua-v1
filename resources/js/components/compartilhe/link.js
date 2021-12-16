@@ -80,11 +80,13 @@ const Link = (props) => {
     }
 
     const validate = (form) => {
-
+        console.log(form);
         let valid = true;
         let newRequireds = requireds;
+        console.log(newRequireds);
 
         for(let index in requireds){
+            console.log(index);
             if(!form[index] || form[index]===""){
                 requireds[index] = false;
                 valid = false;
@@ -92,6 +94,8 @@ const Link = (props) => {
                 requireds[index] = true;
             }
         }
+
+        console.log(newRequireds);
 
         setRequireds(newRequireds);
 
