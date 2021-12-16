@@ -10,7 +10,7 @@ const Nota = (props) => {
     const [showSubPerguntas, setShowSubPerguntas] = useState(false);
 
     useEffect(() => {
-        console.log('======================',props);
+        //console.log('======================',props);
         setShowSubPerguntas(props.resposta === props.maximo);
         setResposta(props.resposta);
     },[props.resposta]);
@@ -68,7 +68,7 @@ const Nota = (props) => {
                         {
                             notas.map((nota, key) => {
                                 let valor = props.inverter ? valoresInvertidos[key] : nota;
-                                console.log(resposta, valor);
+                                //console.log(resposta, valor);
                                 return(
                                     <li key={'P'+context.dimensao.numero+context.indicador.numero+props.letra+"_"+key} onClick={() => selectResposta(valor)}>
                                         <div  className={resposta ===  valor ? props.bgColor : ''}/><p>{nota}</p>
