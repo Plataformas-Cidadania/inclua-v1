@@ -32,8 +32,8 @@ const Range = (props) => {
     }, [props.bgColor]);
 
     const handleResposta = (e) => {
-        context.setResposta(props.id, e.target.value);
-        setResposta(e.target.value)
+        context.setResposta(props.id, parseInt(e.target.value));
+        setResposta(parseInt(e.target.value));
     }
 
     const clickResposta = (nota) => {
@@ -47,18 +47,9 @@ const Range = (props) => {
 
             {
                 (props.naoSeAplica) ? (
-                    <div className="form-check  float-end">
-                        <input className="form-check-input" type="radio"
-                               name={name}
-                               id={name+"_2"}
-                               value={props.minimo}
-                               onClick={handleResposta}
-                               defaultChecked={context.verificarResposta(props.id, "0")}
-                        />
-                        <label className="form-check-label" htmlFor="flexRadioDefault2">
-                            Não se aplica
-                        </label>
-                    </div>
+                    <li onClick={() => selectResposta(null)}>
+                        <div className={resposta === null ? props.bgColor : ''}/><p>Não se aplica</p>
+                    </li>
                 ) : null
             }
 
@@ -85,7 +76,7 @@ const Range = (props) => {
                 <input
                     type="range"
                     className="form-range range"
-                    id="customRange1"
+                    id={'P'+context.dimensao.dimensao+context.indicador.indicador+props.letra}
                     min={props.minimo}
                     max={props.maximo}
                     value={resposta ? resposta : 0}
