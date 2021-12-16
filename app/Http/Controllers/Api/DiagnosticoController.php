@@ -22,7 +22,7 @@ class DiagnosticoController extends Controller
 {
     private DiagnosticoRepository $repo;
     private $rules = [
-        'id_diagnostico' => 'string'
+        'id_diagnostico' => 'T_STRING'
     ];
     public function __construct(DiagnosticoRepository $repo)
     {
@@ -74,22 +74,35 @@ class DiagnosticoController extends Controller
             //Teste
             $dimensao = Dimensao::find($id_dimensao);
             $indicadores = $dimensao->indicadores;
-
-            $vl_minimo = 0;
-            $vl_maximo = 0;
-
             $vet_res_indicadores = [];
-            foreach ($indicadores as $indicador) {
+            $pontuacao_dimensao = 0;
+            foreach ($indicadores as $indicador)
+            {
+                $soma_minimo = 0;
+                $soma_maximo = 0;
 
                 $pontuacao_indicador = 0;
                 $perguntas = $indicador->perguntas;
-                foreach ($perguntas as $pergunta) {
+                foreach ($perguntas as $pergunta)
+                {
                     //echo ($pergunta->id_pergunta);
                     $resposta = Resposta::where('id_pergunta', $pergunta->id_pergunta)->where('id_diagnostico', $id_diagnostico)->first();
                     if (!is_null($resposta)) {
                         $pontuacao_indicador += $resposta->pontuacao;
                     }
+                    $soma_maximo += $pergunta->vl_maximo;
+                    $soma_minimo += $pergunta->soma_minimo;
                 }
+                $pontuacao_dimensao += $pontuacao_indicador;
+                $range = $soma_maximo -$soma_minimo;
+                $rangeAlto = $indicador->vl_alto - $soma_minimo;
+                $rangeMedio = $indicador->vl_baixo - $indicador->vl_alto;
+                $rangeBaixo = $indicador->vl_baixo - $soma_maximo;
+
+                $percAlto = $rangeAlto*100/range;
+                $percMedio = $rangeMedio*100/range;
+                $percBaixo = $rangeBaixo*100/range;
+
                 //dd($pontuacao_indicador);
                 $risco='';
                 if ($pontuacao_indicador <= $indicador->vl_alto) {
@@ -106,35 +119,59 @@ class DiagnosticoController extends Controller
                     'titulo'=> $indicador->titulo,
                     'descricao'=> $indicador->descricao,
                     'consequencia'=> $indicador->consequencia,
-                    'qtd_recursos'=> 48,
+                    'qtd_recursos'=> $indicador->recursos->count(),
                     'risco'=> $risco,
                     'pontos'=> $pontuacao_indicador,
                     'series'=> [
                         [
                             'name'=> 'Risco baixo',
-                            'data'=> 20
+                            'data'=> $percBaixo
                         ],
                         [
                             'name' => 'Risco moderado',
-                            'data'=> 40
+                            'data'=> $percMedio
                         ],
                         [
                             'name'=> 'Risco alto',
-                            'data'=> 40
+                            'data'=> $percAlto
                         ]
                     ],
-                    'recursos'=> ['***Idêntico ao de recursos que já esta pronto***']
+                    'recursos' => $indicador->recursos;
                 ];
                 array_push($vet_res_indicadores, $item);
             }
 
-            return ['indicadores' => $vet_res_indicadores];
-            dd($vet_res_indicadores);
+            //return ['indicadores' => $vet_res_indicadores];
+            //dd($vet_res_indicadores);
+            $risco='';
+            if ($pontuacao_dimensao <= $dimensao->vl_alto) {
+                $risco = 'Risco alto';
+            }
+            elseif ($pontuacao_dimensao >= $dimensao->vl_baixo) {
+                $risco = 'Risco baixo';
+            }
+            else {
+                $risco = 'Moderado';
+            }
+            $vet_dimensao = [
+                'id_dimensao' => $id_dimensao,
+                'id_diagnostico' => $id_diagnostico,
+                'titulo' => $dimensao->titulo,
 
+                'risco' => $risco,
+                'pontos' => $pontuacao_dimensao,
+                'indicadores' => $vet_res_indicadores
+            ];
+            return $vet_dimensao;
         } catch (Exception $exception) {
             return $this->errorResponse($exception);
         }
     }
+
+  
+
+
+
 
     /**
      * Obter especificado pelo id
