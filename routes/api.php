@@ -163,7 +163,7 @@ Route::group([
     Route::get('/paginado/{nr_itens}', [App\Http\Controllers\Api\RecursoController::class, 'getAllPaginado'])
         ->name('api.recurso.getAllPaginado');
 
-    Route::get('/paginado', [App\Http\Controllers\Api\RecursoController::class, 'getByIdIndicadorPaginado'])
+    Route::get('/indicador/{id_indicador}/paginado/{nr_itens}', [App\Http\Controllers\Api\RecursoController::class, 'getByIdIndicadorPaginado'])
         ->name('api.recurso.getByIdIndicadorPaginado');
 
     Route::get('/{recurso}',[App\Http\Controllers\Api\RecursoController::class, 'get'])

@@ -52,8 +52,8 @@ class Indicador extends Model
 		return $this->hasMany(Pergunta::class, 'id_indicador')->orderBy('letra');;
 	}
 
-	public function indicacoes()
+	public function recursos()
 	{
-		return $this->hasMany(Indicacao::class, 'id_indicador');
+		return $this->belongsToMany(Recurso::class, 'avaliacao.indicacao', 'id_indicador', 'id_recurso');
 	}
 }

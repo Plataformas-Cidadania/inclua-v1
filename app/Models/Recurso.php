@@ -79,8 +79,9 @@ class Recurso extends Model
 		return $this->hasMany(Categorizacao::class, 'id_recurso');
 	}
 
-	public function indicacao()
+	public function indicadores()
 	{
-		return $this->hasMany(Indicacao::class, 'id_recurso');
+		return $this->belongsToMany(Indicador::class, 'avaliacao.indicacao', 'id_recurso', 'id_indicador');
 	}
+
 }

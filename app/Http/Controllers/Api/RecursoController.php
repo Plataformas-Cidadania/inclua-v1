@@ -63,10 +63,10 @@ class RecursoController extends Controller
         }
     }
 
-    public function getByIdIndicadorPaginado()
+    public function getByIdIndicadorPaginado($id_indicador, $nr_itens)
     {
         try {
-            return response()->json($this->repo->getByIdIndicadorPaginado(), Response::HTTP_OK);
+            return response()->json($this->repo->getByIdIndicadorPaginado($id_indicador, $nr_itens), Response::HTTP_OK);
         }
         catch (\Exception $e) {
             return $e->getMessage();
