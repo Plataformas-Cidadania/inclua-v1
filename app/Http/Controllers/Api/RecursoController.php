@@ -53,10 +53,20 @@ class RecursoController extends Controller
      * @return JsonResponse
      */
 
-    public function getAllPaginado()
+    public function getAllPaginado($nr_itens)
     {
         try {
-            return response()->json($this->repo->getAllPaginado(), Response::HTTP_OK);
+            return response()->json($this->repo->getAllPaginado($nr_itens), Response::HTTP_OK);
+        }
+        catch (\Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
+    public function getByIdIndicadorPaginado()
+    {
+        try {
+            return response()->json($this->repo->getByIdIndicadorPaginado(), Response::HTTP_OK);
         }
         catch (\Exception $e) {
             return $e->getMessage();

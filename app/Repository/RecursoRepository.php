@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Models\Autoria;
+use App\Models\Indicador;
 use App\Models\Link;
 use App\Models\Recurso;
 use Illuminate\Database\Eloquent\Collection;
@@ -32,9 +33,9 @@ class RecursoRepository extends BaseRepository
         return Recurso::with('links','autoria')->get();
     }
 
-    public function getAllPaginado()
+    public function getAllPaginado($nr_itens)
     {
-        return Recurso::with('links','autoria')->paginate(10);
+        return Recurso::with('links','autoria')->paginate($nr_itens);
     }
 
     /**
@@ -51,6 +52,7 @@ class RecursoRepository extends BaseRepository
         if (!$res || $res->isEmpty()) throw new \Illuminate\Database\Eloquent\ModelNotFoundException;
         else return $res;
     }
+
     /**
      * Obter uma lista de links especificados por um id de recurso
      *
@@ -63,5 +65,19 @@ class RecursoRepository extends BaseRepository
         $res = Link::where('id_recurso', '=', $id_recurso)->get();
         if (!$res || $res->isEmpty()) throw new \Illuminate\Database\Eloquent\ModelNotFoundException;
         else return $res;
+    }
+
+    /**
+     * Obter uma lista paginada de recursos pelo ID do Indicador
+     *
+     * @param int $id_indicador
+     *
+     * @return JsonResponse
+     */
+    public function getByIdIndicadorPaginado($id_indicador)
+    {
+        $indicador = Indicador::find($id_indicador);
+
+        return Recurso::with('links','autoria')->paginate(12);
     }
 }
