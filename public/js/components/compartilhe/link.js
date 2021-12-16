@@ -107,6 +107,10 @@ const Link = props => {
       } else {
         requireds[index] = true;
       }
+
+      console.log('form', form[index]);
+      console.log('requireds', requireds[index]);
+      console.log('valid', valid);
     }
 
     console.log(newRequireds);
