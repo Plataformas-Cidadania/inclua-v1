@@ -136,7 +136,7 @@ class DiagnosticoController extends Controller
                             'data'=> $percAlto
                         ]
                     ],
-                    'recursos' => $indicador->recursos;
+                    'recursos' => $indicador->recursos,
                 ];
                 array_push($vet_res_indicadores, $item);
             }
