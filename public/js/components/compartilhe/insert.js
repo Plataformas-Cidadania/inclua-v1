@@ -1,4 +1,5 @@
-const Insert = () => {
+const Insert = props => {
+  //const ListContext = React.createContext({});
   const {
     useState,
     useEffect
@@ -7,6 +8,7 @@ const Insert = () => {
   const [formatoMap, setFormatoMap] = useState([]);
   const [listLinks, setListLinks] = useState(1);
   const [id_recurso, setIdRecurso] = useState(0);
+  const [varValid, setValid] = useState(false);
   const [form, setForm] = useState({
     ultimo_acesso: '1992-02-10 13:21:37',
     id_tipo_recurso: 0,
@@ -68,7 +70,17 @@ const Insert = () => {
         type: 'success',
         text: 'Recurso inserido, cadastre o links!',
         spin: false
-      });
+      }); //Limpar form
+
+      let newForm = { ...form,
+        nome: "",
+        esfera: "",
+        id_tipo_recurso: 0,
+        id_formato: 0
+      };
+      setForm(newForm);
+      setTipoSelected(null);
+      setFormatoSelected(null); ////
     } catch (error) {
       console.log(error);
       handleNotify({
@@ -97,6 +109,15 @@ const Insert = () => {
     validate(newForm);
   };
 
+  const ClickClear = () => {
+    props.listGet();
+    handleNotify({
+      type: null,
+      text: null,
+      spin: false
+    });
+  };
+
   const handleForm = event => {
     let {
       value,
@@ -123,6 +144,7 @@ const Insert = () => {
     }
 
     setRequireds(newRequireds);
+    setValid(valid);
     return valid;
   };
 
@@ -146,7 +168,8 @@ const Insert = () => {
     id: "nome",
     placeholder: " ",
     required: requireds.nome ? '' : 'required',
-    onChange: handleForm
+    onChange: handleForm,
+    value: form.nome
   }), /*#__PURE__*/React.createElement("label", {
     htmlFor: "nome"
   }, "Nome"), /*#__PURE__*/React.createElement("div", {
@@ -166,7 +189,8 @@ const Insert = () => {
     id: "esfera",
     placeholder: " ",
     required: requireds.esfera ? '' : 'required',
-    onChange: handleForm
+    onChange: handleForm,
+    value: form.esfera
   }), /*#__PURE__*/React.createElement("label", {
     htmlFor: "esfera"
   }, "Esfera"), /*#__PURE__*/React.createElement("div", {
@@ -204,7 +228,8 @@ const Insert = () => {
   }, /*#__PURE__*/React.createElement("button", {
     className: "btn btn-theme bg-pri",
     type: "button",
-    onClick: Insert
+    onClick: Insert,
+    disabled: varValid ? '' : 'disabled'
   }, /*#__PURE__*/React.createElement("span", {
     style: {
       marginLeft: '10px',
@@ -238,5 +263,21 @@ const Insert = () => {
     listLinks: listLinks,
     setListLinks: setListLinks,
     id_recurso: id_recurso
-  })));
+  })), /*#__PURE__*/React.createElement("hr", {
+    style: {
+      display: notify.type === "success" ? '' : 'none'
+    }
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "dorder-container float-end",
+    style: {
+      display: notify.type === "success" ? '' : 'none'
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "btn btn-theme bg-ter",
+    type: "button",
+    "data-bs-dismiss": "modal",
+    onClick: () => ClickClear()
+  }, "Concluir ", /*#__PURE__*/React.createElement("i", {
+    className: "fas fa-angle-right"
+  }))));
 };

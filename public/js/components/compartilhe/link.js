@@ -29,6 +29,7 @@ const Link = props => {
     text: null,
     spin: false
   });
+  const [varValid, setValid] = useState(false);
   const [requireds, setRequireds] = useState({
     uri: true,
     idioma: true
@@ -71,12 +72,12 @@ const Link = props => {
   };
 
   const clickIdioma = idioma => {
+    setIdiomaSelected(idioma);
     let newForm = { ...form,
       idioma: idioma
     };
     setForm(newForm);
     validate(newForm);
-    setIdiomaSelected(idioma);
   };
 
   const handleForm = event => {
@@ -93,19 +94,29 @@ const Link = props => {
   };
 
   const validate = form => {
+    console.log(form);
     let valid = true;
     let newRequireds = requireds;
+    console.log(newRequireds);
 
     for (let index in requireds) {
+      console.log(index);
+
       if (!form[index] || form[index] === "") {
         requireds[index] = false;
         valid = false;
       } else {
         requireds[index] = true;
       }
+
+      console.log('form', form[index]);
+      console.log('requireds', requireds[index]);
+      console.log('valid', valid);
     }
 
+    console.log(newRequireds);
     setRequireds(newRequireds);
+    setValid(valid);
     return valid;
   };
 
@@ -151,11 +162,12 @@ const Link = props => {
   })), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
     className: "col-md-12"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "dorder-container"
+    className: "dorder-container float-start"
   }, /*#__PURE__*/React.createElement("button", {
     className: "btn btn-theme bg-pri",
     type: "button",
-    onClick: Insert
+    onClick: Insert,
+    disabled: varValid ? '' : 'disabled'
   }, /*#__PURE__*/React.createElement("span", {
     style: {
       marginLeft: '10px',
@@ -165,11 +177,12 @@ const Link = props => {
     className: "fas fa-spinner float-end fa-spin"
   })), "Adicionar ", /*#__PURE__*/React.createElement("i", {
     className: "fas fa-angle-right"
-  }))), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
+  }))), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
     className: "alert alert-" + notify.type + " d-flex align-items-center",
     role: "alert",
     style: {
-      display: notify.type ? '' : 'none'
+      display: notify.type ? '' : 'none',
+      clear: 'both'
     }
   }, /*#__PURE__*/React.createElement("span", {
     style: {
@@ -177,5 +190,5 @@ const Link = props => {
     }
   }, /*#__PURE__*/React.createElement("i", {
     className: "fas fa-exclamation-triangle bi flex-shrink-0 me-2"
-  })), /*#__PURE__*/React.createElement("div", null, notify.text)), /*#__PURE__*/React.createElement("br", null)))));
+  })), /*#__PURE__*/React.createElement("div", null, notify.text))))));
 };

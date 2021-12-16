@@ -1,10 +1,13 @@
-const Insert = () => {
+const Insert = (props) => {
+
+    //const ListContext = React.createContext({});
 
     const {useState, useEffect} = React;
     const [tipoMap, setTipoMap] = useState([]);
     const [formatoMap, setFormatoMap] = useState([]);
     const [listLinks, setListLinks] = useState(1);
     const [id_recurso, setIdRecurso] = useState(0);
+    const [varValid, setValid] = useState(false);
 
     const [form, setForm] = useState({
         ultimo_acesso: '1992-02-10 13:21:37',
@@ -64,6 +67,20 @@ const Insert = () => {
             const result = await axios.post('api/recurso', form);
             setIdRecurso(result.data.data.id_recurso)
             handleNotify({type: 'success', text: 'Recurso inserido, cadastre o links!', spin: false});
+
+            //Limpar form
+            let newForm = {
+                ...form,
+                nome: "",
+                esfera: "",
+                id_tipo_recurso: 0,
+                id_formato: 0,
+            }
+            setForm(newForm);
+            setTipoSelected(null)
+            setFormatoSelected(null)
+            ////
+
         } catch (error) {
             console.log(error);
             handleNotify({type: 'danger', text: 'Recurso não foi inserido, tente novamente!', spin: false});
@@ -88,6 +105,11 @@ const Insert = () => {
         }
         setForm(newForm);
         validate(newForm);
+    }
+
+    const ClickClear = () => {
+        props.listGet();
+        handleNotify({type: null, text: null, spin: false})
     }
 
     const handleForm = (event) => {
@@ -116,6 +138,7 @@ const Insert = () => {
 
         setRequireds(newRequireds);
 
+        setValid(valid);
         return valid;
     }
 
@@ -127,14 +150,14 @@ const Insert = () => {
                 <div className="row">
                     <div className="col-md-12" style={{display: notify.type==='success' ? 'none' : ''}}>
                         <div className="label-float">
-                            <input className={"form-control form-g "+(requireds.nome ? '' : 'invalid-field')} type="text" name="nome" id="nome"  placeholder=" " required={requireds.nome ? '' : 'required'} onChange={handleForm}/>
+                            <input className={"form-control form-g "+(requireds.nome ? '' : 'invalid-field')} type="text" name="nome" id="nome"  placeholder=" " required={requireds.nome ? '' : 'required'} onChange={handleForm} value={form.nome}/>
                             <label htmlFor="nome">Nome</label>
                             <div className="label-box-info">
                                 <p style={{display: requireds.nome ? 'none' : ''}}><i className="fas fa-exclamation-circle"/> Digite o nome e sobre nome</p>
                             </div>
                         </div>
                         <div className="label-float">
-                            <input className={"form-control form-g "+(requireds.esfera ? '' : 'invalid-field')} type="text" name="esfera" id="esfera"  placeholder=" " required={requireds.esfera ? '' : 'required'} onChange={handleForm}/>
+                            <input className={"form-control form-g "+(requireds.esfera ? '' : 'invalid-field')} type="text" name="esfera" id="esfera"  placeholder=" " required={requireds.esfera ? '' : 'required'} onChange={handleForm} value={form.esfera}/>
                             <label htmlFor="esfera">Esfera</label>
                             <div className="label-box-info">
                                 <p style={{display: requireds.esfera ? 'none' : ''}}><i className="fas fa-exclamation-circle"/> Digite uma esfera</p>
@@ -178,11 +201,12 @@ const Insert = () => {
 
                         <div className="col-md-12">
                             <div className="dorder-container">
-                                <button className="btn btn-theme bg-pri" type="button"  onClick={Insert} >
+                                <button className="btn btn-theme bg-pri" type="button"  onClick={Insert}  disabled={varValid ? '' : 'disabled'}>
                                     <span style={{marginLeft: '10px', display: notify.spin ? '' : 'none'}}><i className="fas fa-spinner float-end fa-spin" /></span>
                                     Próximo <i className="fas fa-angle-right"/>
                                 </button>
                             </div>
+
                             <br/>
 
                             <div className={"alert alert-"+notify.type+" d-flex align-items-center"} role="alert" style={{display: notify.type ? '' : 'none'}}>
@@ -206,6 +230,13 @@ const Insert = () => {
                     setListLinks={setListLinks}
                     id_recurso={id_recurso}
                 />
+            </div>
+
+            <hr  style={{display: notify.type === "success" ? '' : 'none'}}/>
+            <div className="dorder-container float-end" style={{display: notify.type === "success" ? '' : 'none'}}>
+                <button className="btn btn-theme bg-ter" type="button" data-bs-dismiss="modal" onClick={() => ClickClear()}>
+                    Concluir <i className="fas fa-angle-right"/>
+                </button>
             </div>
         </div>
     );

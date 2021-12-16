@@ -19,7 +19,7 @@ const DiagnosticoProvider = ({
       tipo: null,
       dimensoes: [],
   }
-   setState({tipo: 1}, function(){
+    setState({tipo: 1}, function(){
       console.log(this.state.tipo);
   })*/
 
