@@ -59,13 +59,13 @@ const Link = (props) => {
     }
 
     const clickIdioma = (idioma) => {
+        setIdiomaSelected(idioma);
         let newForm = {
             ...form,
             idioma: idioma
         }
         setForm(newForm);
         validate(newForm);
-        setIdiomaSelected(idioma);
     }
 
     const handleForm = (event) => {
