@@ -11,9 +11,8 @@ const Item = props => {
   return /*#__PURE__*/React.createElement("div", {
     className: "row"
   }, propsData.map((item, key) => {
-    console.log('+++', item.links);
     return /*#__PURE__*/React.createElement("div", {
-      className: "col-md-4",
+      className: "col-md-4 col-sm-6 col-xs-12",
       key: key
     }, /*#__PURE__*/React.createElement("div", {
       className: "dorder-container"

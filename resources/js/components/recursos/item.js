@@ -12,16 +12,12 @@ const Item = (props) => {
 
     console.log('***props: ', propsData);
 
-
     return (
         <div className={"row"}>
             {
-
                 propsData.map((item, key) => {
-                    console.log('+++', item.links);
                     return(
-
-                        <div className="col-md-4"  key={key}>
+                        <div className="col-md-4 col-sm-6 col-xs-12"  key={key}>
                             <div className="dorder-container">
 
                                 <div className="bg-lgt">
