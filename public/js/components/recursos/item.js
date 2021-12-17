@@ -11,6 +11,7 @@ const Item = props => {
   return /*#__PURE__*/React.createElement("div", {
     className: "row"
   }, propsData.map((item, key) => {
+    console.log('+++', item.links);
     return /*#__PURE__*/React.createElement("div", {
       className: "col-md-4",
       key: key
@@ -48,15 +49,15 @@ const Item = props => {
       className: "row"
     }, /*#__PURE__*/React.createElement("div", {
       className: "col-12 box-list-p"
-    }, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("strong", null, "Esfera: "), /*#__PURE__*/React.createElement("span", null, item.esfera)), /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("strong", null, "Idioma: "), item.links.map((link, key) => {
+    }, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("strong", null, "Esfera: "), /*#__PURE__*/React.createElement("span", null, item.esfera)), /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("strong", null, "Idioma: "), item.links !== undefined ? item.links.map((link, key) => {
       return /*#__PURE__*/React.createElement("a", {
         href: link.uri,
         target: "_blank",
         title: link.idioma
       }, link.idioma, item.links.length !== key + 1 ? ', ' : '');
-    })), /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("strong", null, "Tipo: "), /*#__PURE__*/React.createElement("span", null, item.tipo_recurso ? item.tipo_recurso.nome : '')), /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("strong", null, "Autoria: "), item.autoria.map((autoria, key) => {
+    }) : null), /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("strong", null, "Tipo: "), /*#__PURE__*/React.createElement("span", null, item.tipo_recurso ? item.tipo_recurso.nome : '')), /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("strong", null, "Autoria: "), item.autoria !== undefined ? item.autoria.map((autoria, key) => {
       return /*#__PURE__*/React.createElement("span", null, autoria.autor.nome, item.autoria.length !== key + 1 ? ', ' : '');
-    })), /*#__PURE__*/React.createElement("br", null)), item.links.map((link, key) => {
+    }) : null), /*#__PURE__*/React.createElement("br", null)), item.links !== undefined ? item.links.map((link, key) => {
       return key === 0 ? /*#__PURE__*/React.createElement("div", {
         className: "col-6"
       }, /*#__PURE__*/React.createElement("div", {
@@ -75,6 +76,6 @@ const Item = props => {
       }, " ", link.idioma, " ", /*#__PURE__*/React.createElement("i", {
         className: "fas fa-angle-right"
       })));
-    }))), /*#__PURE__*/React.createElement("br", null));
+    }) : null)), /*#__PURE__*/React.createElement("br", null));
   }));
 };

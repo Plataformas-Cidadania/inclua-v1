@@ -74,10 +74,11 @@ class RecursoRepository extends BaseRepository
      *
      * @return JsonResponse
      */
-    public function getByIdIndicadorPaginado($id_indicador)
+    public function getByIdIndicadorPaginado($id_indicador, $nr_itens)
     {
         $indicador = Indicador::find($id_indicador);
+        return $indicador->recursos;
 
-        return Recurso::with('links','autoria')->paginate(12);
+        //return Recurso::with('links','autoria')->paginate($nr_itens);
     }
 }

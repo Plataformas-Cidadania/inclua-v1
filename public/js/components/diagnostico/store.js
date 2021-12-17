@@ -61,7 +61,7 @@ const DiagnosticoProvider = ({
       if(pergunta.length > 0){
           //console.log('resposta: ', pergunta[0].resposta, 'alternativa: ', value, 'marcado: ', pergunta[0].resposta === value);
           //console.log('=====================================================');
-           return pergunta[0].resposta === value;
+            return pergunta[0].resposta === value;
       }
       //console.log('=====================================================');
       return false

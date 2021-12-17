@@ -2,17 +2,11 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Api\Controller;
 use App\Models\Diagnostico;
 use App\Models\Dimensao;
 use App\Models\Resposta;
 use App\Repository\DiagnosticoRepository;
-use App\Repository\DimensaoRepository;
-use App\Repository\RespostaRepository;
-use Faker\Provider\Uuid;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Database\Eloquent\RelationNotFoundException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -94,14 +88,14 @@ class DiagnosticoController extends Controller
                     $soma_minimo += $pergunta->soma_minimo;
                 }
                 $pontuacao_dimensao += $pontuacao_indicador;
-                $range = $soma_maximo -$soma_minimo;
+                $range = $soma_maximo - $soma_minimo;
                 $rangeAlto = $indicador->vl_alto - $soma_minimo;
                 $rangeMedio = $indicador->vl_baixo - $indicador->vl_alto;
                 $rangeBaixo = $indicador->vl_baixo - $soma_maximo;
 
-                $percAlto = $rangeAlto*100/range;
-                $percMedio = $rangeMedio*100/range;
-                $percBaixo = $rangeBaixo*100/range;
+                $percAlto = $rangeAlto * 100/$range;
+                $percMedio = $rangeMedio * 100/$range;
+                $percBaixo = $rangeBaixo * 100/$range;
 
                 //dd($pontuacao_indicador);
                 $risco='';
@@ -168,7 +162,7 @@ class DiagnosticoController extends Controller
         }
     }
 
-  
+
 
 
 

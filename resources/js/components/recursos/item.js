@@ -18,6 +18,7 @@ const Item = (props) => {
             {
 
                 propsData.map((item, key) => {
+                    console.log('+++', item.links);
                     return(
 
                         <div className="col-md-4"  key={key}>
@@ -52,48 +53,52 @@ const Item = (props) => {
                                         <p><strong>Esfera: </strong><span>{item.esfera}</span></p>
                                         <p><strong>Idioma: </strong>
                                             {
-                                                item.links.map((link, key) => {
-                                                    return (
-                                                        <a href={link.uri} target="_blank" title={link.idioma}>
-                                                            {link.idioma}
-                                                            {item.links.length !== key+1 ? ', ' : ''}
-                                                        </a>
-                                                    );
-                                                })
+                                                item.links !== undefined ?
+                                                    item.links.map((link, key) => {
+                                                        return (
+                                                            <a href={link.uri} target="_blank" title={link.idioma}>
+                                                                {link.idioma}
+                                                                {item.links.length !== key+1 ? ', ' : ''}
+                                                            </a>
+                                                        );
+                                                    })
+                                                    : null
                                             }
                                         </p>
                                         <p><strong>Tipo: </strong><span>{(item.tipo_recurso ? item.tipo_recurso.nome : '')}</span></p>
                                         <p>
                                             <strong>Autoria: </strong>
                                             {
-                                                item.autoria.map((autoria, key) => {
+                                                item.autoria !== undefined ? item.autoria.map((autoria, key) => {
                                                     return (
                                                         <span>
                                                             {autoria.autor.nome}
                                                             {item.autoria.length !== key+1 ? ', ' : ''}
                                                         </span>
                                                     );
-                                                })
+                                                }) : null
                                             }
                                         </p>
                                         <br/>
                                     </div>
 
                                     {
-                                        item.links.map((link, key) => {
-                                            return (
-                                                key===0 ?
-                                                    <div className="col-6">
-                                                        <div className="dorder-container">
-                                                            <a href={link.uri} className="btn btn-theme bg-pri" type="button">Acessar <i className="fas fa-angle-right"/></a>
+                                        item.links !== undefined ?
+                                            item.links.map((link, key) => {
+                                                return (
+                                                    key===0 ?
+                                                        <div className="col-6">
+                                                            <div className="dorder-container">
+                                                                <a href={link.uri} className="btn btn-theme bg-pri" type="button">Acessar <i className="fas fa-angle-right"/></a>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    :
-                                                    <div className="col-2 d-flex justify-content-end text-right mt-2">
-                                                        <a href={link.uri} target="_blank"> {link.idioma} <i className="fas fa-angle-right"/></a>
-                                                    </div>
-                                            );
-                                        })
+                                                        :
+                                                        <div className="col-2 d-flex justify-content-end text-right mt-2">
+                                                            <a href={link.uri} target="_blank"> {link.idioma} <i className="fas fa-angle-right"/></a>
+                                                        </div>
+                                                );
+                                            })
+                                        : null
                                     }
                                 </div>
                             </div>
