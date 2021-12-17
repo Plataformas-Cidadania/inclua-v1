@@ -2,12 +2,14 @@ const Header = () => {
 
     const context = React.useContext(HomeContext);
 
+    console.log(localStorage.getItem('id_diagnostico_completo'));
+
 
     return (
         <div className="container">
             <div className="row">
                 <div className="col" onClick={() => context.setShowMenuDiagnostico(!context.showMenuDiagnostico)}>
-                    <div className="dorder-container">
+                    <div className="dorder-container cursor">
                         <div className="dorder-container-mai">
                             <div className="btn-icon">
                                 <img src="img/icon-diagnostico.png" alt="Diagnóstico" title="Diagnóstico" width="100%"/>
@@ -62,11 +64,17 @@ const Header = () => {
                     </div>
                     <p className="mt-2">Parcial</p>
                 </div>
-                <div className="col text-center  opacity-5" >
-                    <div className="btn-icon btn-icon-hover" style={{top: 0}}>
-                        <img src="img/icon-analise.png" alt="Resultado" title="Resultado" width="75%"/>
-                    </div>
-                    <p className="mt-2">Resultado</p>
+                <div className={"col text-center " + (localStorage.getItem('id_diagnostico_completo') ? '' : 'opacity-5')} >
+                    <a
+                        href={(localStorage.getItem('id_diagnostico_completo') ? 'resultado' : '#')}
+                       style={{cursor: (localStorage.getItem('id_diagnostico_completo') ? 'pointer' : 'auto')}}
+                    >
+                        <div className="btn-icon btn-icon-hover" style={{top: 0}}>
+                            <img src="img/icon-analise.png" alt="Resultado" title="Resultado" width="75%"/>
+                        </div>
+                        <p className="mt-2">Resultado</p>
+                    </a>
+
                 </div>
                 {/*<div className="col text-center  opacity-5" >
                     <div className="btn-icon btn-icon-hover">
@@ -74,11 +82,16 @@ const Header = () => {
                     </div>
                     <p className="mt-2">Análise</p>
                 </div>*/}
-                <div className="col text-center  opacity-5" >
-                    <div className="btn-icon btn-icon-hover" style={{top: 0}}>
-                        <img src="img/icon-recurso.png" alt="Recursos" title="Recursos" width="75%"/>
-                    </div>
-                    <p className="mt-2">Recursos</p>
+                <div className={"col text-center " + (localStorage.getItem('id_diagnostico_completo') ? '' : 'opacity-5')}>
+                    <a
+                        href={(localStorage.getItem('id_diagnostico_completo') ? 'resultado' : '#')}
+                        style={{cursor: (localStorage.getItem('id_diagnostico_completo') ? 'pointer' : 'auto')}}
+                    >
+                        <div className="btn-icon btn-icon-hover" style={{top: 0}}>
+                            <img src="img/icon-recurso.png" alt="Recursos" title="Recursos" width="75%"/>
+                        </div>
+                        <p className="mt-2">Recursos</p>
+                    </a>
                 </div>
 
                 <div>
