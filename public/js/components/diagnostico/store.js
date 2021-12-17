@@ -19,7 +19,7 @@ const DiagnosticoProvider = ({
       tipo: null,
       dimensoes: [],
   }
-    setState({tipo: 1}, function(){
+   setState({tipo: 1}, function(){
       console.log(this.state.tipo);
   })*/
 
@@ -61,7 +61,7 @@ const DiagnosticoProvider = ({
       if(pergunta.length > 0){
           //console.log('resposta: ', pergunta[0].resposta, 'alternativa: ', value, 'marcado: ', pergunta[0].resposta === value);
           //console.log('=====================================================');
-            return pergunta[0].resposta === value;
+           return pergunta[0].resposta === value;
       }
       //console.log('=====================================================');
       return false
@@ -176,8 +176,9 @@ const DiagnosticoProvider = ({
       });
 
       if (result.data.success) {
-        const ids = JSON.parse(result.data.data);
-        localStorage.setItem('id_diagnostico_completo', ids[1]);
+        //const ids = JSON.parse(result.data.data)
+        //localStorage.setItem('id_diagnostico_completo', ids[1]);
+        localStorage.setItem('id_diagnostico_completo', result.data.data);
         location.href = 'resultado';
         return;
       }
