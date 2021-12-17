@@ -119,15 +119,15 @@ class DiagnosticoController extends Controller
                     'series'=> [
                         [
                             'name'=> 'Risco baixo',
-                            'data'=> $percBaixo
+                            'data'=> [$percBaixo]
                         ],
                         [
                             'name' => 'Risco moderado',
-                            'data'=> $percMedio
+                            'data'=> [$percMedio]
                         ],
                         [
                             'name'=> 'Risco alto',
-                            'data'=> $percAlto
+                            'data'=> [$percAlto]
                         ]
                     ],
                     'recursos' => $indicador->recursos,
