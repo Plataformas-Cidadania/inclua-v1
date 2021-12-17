@@ -73,9 +73,11 @@
                         <div>
                             <h3>Recursos</h3>
                             <ul>
-
-                                <li><a href="recursos">Editais</a></li>
-                                <li><a href="recursos">Vídeos</a></li>
+                                <li><a href="recursos">Dimansão 1</a></li>
+                                <li><a href="recursos">Dimansão 2</a></li>
+                                <li><a href="recursos">Dimansão 3</a></li>
+                                <li><a href="recursos">Dimansão 4</a></li>
+                                <li><a href="recursos">Dimansão 5</a></li>
                                 <br><br>
                             </ul>
                         </div>

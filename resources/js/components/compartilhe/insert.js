@@ -13,6 +13,7 @@ const Insert = (props) => {
         ultimo_acesso: '1992-02-10 13:21:37',
         id_tipo_recurso: 0,
         id_formato: 0,
+        status: 0,
     });
 
 
