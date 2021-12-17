@@ -53,7 +53,7 @@ class RespostaController extends Controller
             $res = $this->repo->storeMany($diagnostico_id,$data);
             return $this->successResponse(
                 'Respostas adicionadas',
-                json_encode(array($res,$diagnostico_id))
+                $res
             );
         } catch (Exception $exception) {
             return $this->errorResponse($exception);

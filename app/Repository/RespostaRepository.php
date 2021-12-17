@@ -31,21 +31,19 @@ class RespostaRepository extends BaseRepository
         else return $res;
     }
 
-    public function storeMany(string $id_diagnostico, array $respostas): Array
+    public function storeMany(string $id_diagnostico, array $respostas)
     {
         $diagId = $this->model->where('id_diagnostico', $id_diagnostico)->get();
         if (!$diagId) throw new \Illuminate\Database\Eloquent\ModelNotFoundException;
 
-        $resIds = [];
         foreach ($respostas as $resposta)
         {
             $data = [];
             $data['id_pergunta'] = $resposta['id_pergunta'];
             $data['pontuacao'] = $resposta['resposta'];
             $data['id_diagnostico'] = $id_diagnostico;
-            array_push($resIds,$this->create($data)->getAttribute('id_resposta'));
+            $this->create($data);
         }
-        if (!$resIds) throw new \Illuminate\Database\Eloquent\ModelNotFoundException;
-        else return $resIds;
+        return $id_diagnostico;
     }
 }

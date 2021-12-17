@@ -17,7 +17,7 @@ class  CreateDimensaoTable extends Migration
             $table->increments('id_dimensao')->comment('Identifica a dimensão');
             $table->integer('numero')->comment('Numero único da dimensão');
             $table->unique('numero');
-            $table->string('titulo', 200)->comment('Titulo da dimensão');
+            $table->string('titulo', 500)->comment('Titulo da dimensão');
             $table->text('descricao')->comment('Descrição da dimensão');
             $table->integer('vl_baixo')->comment('Valores maiores ou igual');
             $table->integer('vl_alto')->comment('Valores menores ou igual');
