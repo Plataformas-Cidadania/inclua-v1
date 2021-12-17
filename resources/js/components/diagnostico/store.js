@@ -41,6 +41,7 @@ const DiagnosticoProvider = ({children}) => {
                 const dimensoes = setRespostasFromStorage(result.data.data);
                 console.log(dimensoes);
                 setDimensoes(dimensoes)
+                setIdsDimensoes(dimensoes)
                 setDimensao(dimensoes[0]);//pega a primeira dimensão
                 return;
             }
@@ -66,6 +67,14 @@ const DiagnosticoProvider = ({children}) => {
         //console.log('=====================================================');
         return false
     }*/
+
+    const setIdsDimensoes = (dimensoes) => {
+        let idsDimensoes = [];
+        dimensoes.forEach((d) => {
+            idsDimensoes.push(d.id_dimensao);
+        });
+        localStorage.setItem('ids_dimensoes', JSON.stringify(idsDimensoes));
+    }
 
     const setResposta = (idPergunta, value) => {
         //console.log('setResposta', 'id_dimensao: '+dimensao.id_dimensao, 'id_indicador: '+indicador.id_indicador, 'id_pergunta: '+idPergunta, 'resposta: '+value);
