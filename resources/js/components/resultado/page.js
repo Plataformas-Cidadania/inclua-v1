@@ -7,33 +7,25 @@ const Page = () => {
 
     useEffect(() => {
         Resultado();
-    }, []);
+    }, [dimensao]);
 
     const Resultado = async () => {
         try {
             //const result = await axios.get('json/resultado.json');
             const result = await axios.get("api/diagnostico/"+dimensao+"/b6d321b2-6cc4-44c8-ba3f-b531a3b6cb82");
-            //setResultado(result.data.data)
-            console.log('----', result.data);
             setResultado(result.data)
         } catch (error) {
-            //alert('erro');
             console.log(error);
         }
     }
 
-
-
     const ClickRecurso = (key) => {
         key = groupRecurso===key ? null : key;
-        //console.log(key);
         setGroupRecurso(key);
     }
 
     const ClickDimensao = (id) => {
         setDimensao(id);
-        console.log(id);
-        Resultado();
     }
 
     let bgColor = {
