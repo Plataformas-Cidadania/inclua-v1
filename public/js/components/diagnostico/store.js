@@ -176,8 +176,9 @@ const DiagnosticoProvider = ({
       });
 
       if (result.data.success) {
-        const ids = JSON.parse(result.data.data);
-        localStorage.setItem('id_diagnostico_completo', ids[1]);
+        //const ids = JSON.parse(result.data.data)
+        //localStorage.setItem('id_diagnostico_completo', ids[1]);
+        localStorage.setItem('id_diagnostico_completo', result.data.data);
         location.href = 'resultado';
         return;
       }
