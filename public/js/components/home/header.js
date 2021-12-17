@@ -1,5 +1,6 @@
 const Header = () => {
   const context = React.useContext(HomeContext);
+  console.log(localStorage.getItem('id_diagnostico_completo'));
   return /*#__PURE__*/React.createElement("div", {
     className: "container"
   }, /*#__PURE__*/React.createElement("div", {
@@ -8,7 +9,7 @@ const Header = () => {
     className: "col",
     onClick: () => context.setShowMenuDiagnostico(!context.showMenuDiagnostico)
   }, /*#__PURE__*/React.createElement("div", {
-    className: "dorder-container"
+    className: "dorder-container cursor"
   }, /*#__PURE__*/React.createElement("div", {
     className: "dorder-container-mai"
   }, /*#__PURE__*/React.createElement("div", {
@@ -91,7 +92,12 @@ const Header = () => {
   })), /*#__PURE__*/React.createElement("p", {
     className: "mt-2"
   }, "Parcial")), /*#__PURE__*/React.createElement("div", {
-    className: "col text-center  opacity-5"
+    className: "col text-center " + (localStorage.getItem('id_diagnostico_completo') ? '' : 'opacity-5')
+  }, /*#__PURE__*/React.createElement("a", {
+    href: localStorage.getItem('id_diagnostico_completo') ? 'resultado' : '#',
+    style: {
+      cursor: localStorage.getItem('id_diagnostico_completo') ? 'pointer' : 'auto'
+    }
   }, /*#__PURE__*/React.createElement("div", {
     className: "btn-icon btn-icon-hover",
     style: {
@@ -104,8 +110,13 @@ const Header = () => {
     width: "75%"
   })), /*#__PURE__*/React.createElement("p", {
     className: "mt-2"
-  }, "Resultado")), /*#__PURE__*/React.createElement("div", {
-    className: "col text-center  opacity-5"
+  }, "Resultado"))), /*#__PURE__*/React.createElement("div", {
+    className: "col text-center " + (localStorage.getItem('id_diagnostico_completo') ? '' : 'opacity-5')
+  }, /*#__PURE__*/React.createElement("a", {
+    href: localStorage.getItem('id_diagnostico_completo') ? 'resultado' : '#',
+    style: {
+      cursor: localStorage.getItem('id_diagnostico_completo') ? 'pointer' : 'auto'
+    }
   }, /*#__PURE__*/React.createElement("div", {
     className: "btn-icon btn-icon-hover",
     style: {
@@ -118,7 +129,7 @@ const Header = () => {
     width: "75%"
   })), /*#__PURE__*/React.createElement("p", {
     className: "mt-2"
-  }, "Recursos")), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+  }, "Recursos"))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
     className: "float-start cursor",
     style: {
       position: 'absolute',
