@@ -39,7 +39,7 @@ const DiagnosticoProvider = ({children}) => {
             const result = await axios.get('api/dimensao');
             if(result.data.success){
                 const dimensoes = setRespostasFromStorage(result.data.data);
-                //console.log(JSON.stringify(dimensoes));
+                console.log(dimensoes);
                 setDimensoes(dimensoes)
                 setDimensao(dimensoes[0]);//pega a primeira dimensão
                 return;
@@ -132,6 +132,7 @@ const DiagnosticoProvider = ({children}) => {
 
     const validarRespostas = () => {
         let valid = true;
+        console.log(respostas);
         dimensoes.forEach((d) => {
             if(d.id_dimensao === dimensao.id_dimensao){
                 d.indicadores.forEach((i) => {
@@ -148,15 +149,38 @@ const DiagnosticoProvider = ({children}) => {
         return valid;
     }
 
-    const enviarRespostas = () => {
+    const enviarRespostas = async () => {
         if(!validarRespostas()){
+            alert("Responda a todas as perguntas");
             return false;
         }
         localStorage.setItem('respostas_diagnostico_completo', JSON.stringify(respostas));
+        try {
+            const jsonRespostas = JSON.stringify(respostas);
+            const result = await axios.post('api/resposta/insereRespostas', jsonRespostas, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            if(result.data.success){
+                const ids = JSON.parse(result.data.data)
+                localStorage.setItem('id_diagnostico_completo', ids[1]);
+                location.href = 'resultado';
+                return;
+            }
+            alert("Não foi possível gravar as respostas");
+            console.log(result.data.message);
+        } catch (error) {
+            alert("Não foi possível carregar as dimensões");
+            console.log(error);
+        }
     }
 
     const setRespostasFromStorage = (dimensoes) => {
         const respostas = JSON.parse(localStorage.getItem('respostas_diagnostico_completo'));
+        if(!respostas){
+            return dimensoes;
+        }
         setRespostas(respostas);
         //console.log(respostas);
         dimensoes.forEach((d) => {
