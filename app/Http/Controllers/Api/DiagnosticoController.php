@@ -43,28 +43,6 @@ class DiagnosticoController extends Controller
     public function calcularPontuacao($id_dimensao,$id_diagnostico)
     {
         try {
-            /*
-            $res = $this->repo->getRespostaPorDiagnostico($id_diagnostico);
-
-            $indicador_com_perguntas = $res[0]->pergunta->indicador;
-            //dd($indicador_com_perguntas->perguntas);
-            // obter o somatorio de vl_minimo e vl_maximo para este indicador
-            $count_vl_minimo = 0;
-            $count_vl_maximo = 0;
-            foreach ($indicador_com_perguntas->perguntas as $pergunta){
-                $count_vl_minimo += $pergunta->vl_minimo;
-                $count_vl_maximo += $pergunta->vl_maximo;
-            }
-
-            //dd($count_vl_minimo,$count_vl_maximo);
-
-            // pegar dimensao e seus indicadores e conseguir o vl_alto e vl_baixo
-            $dimensao_das_respostas = $res[0]->pergunta->indicador->dimensao;
-            //return $dimensao_das_respostas;
-            //dd($dimensao_das_respostas->indicadores);
-            //TODO
-
-            */
             //Teste
             $dimensao = Dimensao::find($id_dimensao);
             $indicadores = $dimensao->indicadores;
@@ -79,7 +57,6 @@ class DiagnosticoController extends Controller
                 $perguntas = $indicador->perguntas;
                 foreach ($perguntas as $pergunta)
                 {
-                    //echo ($pergunta->id_pergunta);
                     $resposta = Resposta::where('id_pergunta', $pergunta->id_pergunta)->where('id_diagnostico', $id_diagnostico)->first();
                     if (!is_null($resposta)) {
                         $pontuacao_indicador += $resposta->pontuacao;
@@ -97,7 +74,6 @@ class DiagnosticoController extends Controller
                 $percMedio = $rangeMedio * 100/$range;
                 $percBaixo = $rangeBaixo * 100/$range;
 
-                //dd($pontuacao_indicador);
                 $risco='';
                 if ($pontuacao_indicador <= $indicador->vl_alto) {
                     $risco = 'Risco alto';
@@ -135,8 +111,6 @@ class DiagnosticoController extends Controller
                 array_push($vet_res_indicadores, $item);
             }
 
-            //return ['indicadores' => $vet_res_indicadores];
-            //dd($vet_res_indicadores);
             $risco='';
             if ($pontuacao_dimensao <= $dimensao->vl_alto) {
                 $risco = 'Risco alto';
