@@ -22,6 +22,7 @@ class ModuloController extends Controller{
     }
 
     public function details(){
+        //return "teste";
 
         $rota = Route::getCurrentRoute()->uri();
 
