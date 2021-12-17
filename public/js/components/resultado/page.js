@@ -13,8 +13,7 @@ const Page = () => {
   const Resultado = async () => {
     try {
       //const result = await axios.get('json/resultado.json');
-      console.log('id_diagnostico_completo: ', localStorage.getItem('id_diagnostico_completo'));
-      const result = await axios.get("api/diagnostico/" + dimensao + "/b6d321b2-6cc4-44c8-ba3f-b531a3b6cb82");
+      const result = await axios.get("api/diagnostico/" + dimensao + "/" + localStorage.getItem('id_diagnostico_completo'));
       setResultado(result.data);
     } catch (error) {
       console.log(error);
