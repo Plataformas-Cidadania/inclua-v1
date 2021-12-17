@@ -4,7 +4,7 @@ const Page = () => {
     const [recursos, setRecursos] = useState([]);
     const [total, setTotal] = useState(0);
     const [page, setPage] = useState(0);
-    const [perPage, setPerpage] = useState(2);
+    const [perPage, setPerpage] = useState(12);
 
     const menu = [
         {id: 1, title: "Tema", txt: 'Busque por tema', rota: ''},
@@ -23,8 +23,6 @@ const Page = () => {
 
     const Recurso = async () => {
         try {
-            //const result = await axios.get('json/recursos.json');
-            //const result = await axios.get('api/recurso');
             const result = await axios.get('api/recurso/paginado/'+perPage, {
                 params: {
                     page:page+1
@@ -34,7 +32,6 @@ const Page = () => {
             setRecursos(result.data.data);
             setTotal(result.data.total)
         } catch (error) {
-            //alert('erro');
             console.log(error);
         }
     }
