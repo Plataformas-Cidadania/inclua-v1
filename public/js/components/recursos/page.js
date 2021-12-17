@@ -5,33 +5,10 @@ const Page = () => {
   } = React;
   const [recursoMap, setRecursoMap] = useState([]);
   const [recursoMapPaginate, setRecursoMapPaginate] = useState([]);
-  useEffect(() => {
-    Recurso();
-  }, []);
-
-  const Recurso = async () => {
-    try {
-      //const result = await axios.get('json/recursos.json');
-      //const result = await axios.get('api/recurso');
-      const result = await axios.get('api/recurso/paginado/6');
-      console.log(result.data.data);
-      setRecursoMap(result.data.data);
-      setRecursoMapPaginate(result.data);
-    } catch (error) {
-      //alert('erro');
-      console.log(error);
-    }
-  };
-  /*let icon = {
-      1:'far fa-file-pdf',
-      2:'far fa-file-word',
-      3:'far fa-file-image',
-      4:'far fa-file-video',
-      5:'fas fa-link',
-  };*/
-
-
-  let menu = [{
+  const [page, setPage] = useState(1);
+  const [perPage, setPerpage] = useState(2);
+  const [pagination, setPagination] = useState(null);
+  const menu = [{
     id: 1,
     title: "Tema",
     txt: 'Busque por tema',
@@ -52,97 +29,95 @@ const Page = () => {
     txt: 'Busque por Classificação',
     rota: ''
   }];
+  useEffect(() => {
+    Recurso();
+    paginate();
+  }, []);
+
+  const Recurso = async () => {
+    try {
+      //const result = await axios.get('json/recursos.json');
+      //const result = await axios.get('api/recurso');
+      const result = await axios.get('api/recurso/paginado/' + perPage, {
+        params: {
+          page: 1
+        }
+      });
+      console.log(result.data.data);
+      setRecursoMap(result.data.data);
+      setRecursoMapPaginate(result.data);
+    } catch (error) {
+      //alert('erro');
+      console.log(error);
+    }
+  };
+  /*let icon = {
+      1:'far fa-file-pdf',
+      2:'far fa-file-word',
+      3:'far fa-file-image',
+      4:'far fa-file-video',
+      5:'fas fa-link',
+  };*/
+
 
   const btnSearch = (id, txt, rota) => {
     console.log(id, txt, rota);
   };
-  /*///////////////*/
-  //MONTANDO A PAGINAÇÃO
 
+  const paginate = () => {
+    /*///////////////*/
+    //MONTANDO A PAGINAÇÃO
+    let pagina = recursoMapPaginate;
+    let p = []; //armazena todas as paginas
 
-  let pagina = recursoMapPaginate;
-  let p = []; //armazena todas as paginas
+    let pages = []; //paginas q serão mostradas
+    //let n_paginas = Math.ceil(this.state.totalOscList/10);
 
-  let pages = []; //paginas q serão mostradas
-  //let n_paginas = Math.ceil(this.state.totalOscList/10);
+    let n_paginas = Math.ceil(10 / 10); //console.log('pagina', pagina);
 
-  let n_paginas = Math.ceil(10 / 10); //console.log('pagina', pagina);
+    let qtdPages = 5;
 
-  let qtdPages = 5;
-
-  for (let i = 0; i < n_paginas; i++) {
-    let active = recursoMapPaginate === i ? 'active' : '';
-    p[i] = /*#__PURE__*/React.createElement("li", {
-      className: "page-item " + active
-    }, /*#__PURE__*/React.createElement("a", {
-      className: "page-link",
-      style: {
-        cursor: 'pointer'
-      }
-    }, i + 1));
-  }
-
-  if (n_paginas <= 10) {
-    for (let i = 0; i < qtdPages; i++) {
+    for (let i = 0; i < n_paginas; i++) {
       let active = recursoMapPaginate === i ? 'active' : '';
-      pages.push(p[i]);
+      p[i] = /*#__PURE__*/React.createElement("li", {
+        className: "page-item " + active
+      }, /*#__PURE__*/React.createElement("a", {
+        className: "page-link",
+        style: {
+          cursor: 'pointer'
+        }
+      }, i + 1));
     }
-  } else {
-    if (pagina <= 5) {
-      pages.push(p[0]);
-      pages.push(p[1]);
-      pages.push(p[2]);
-      pages.push(p[3]);
-      pages.push(p[4]);
-      pages.push(p[5]);
-      pages.push(p[6]);
-      pages.push( /*#__PURE__*/React.createElement("li", {
-        className: "page-item "
-      }, /*#__PURE__*/React.createElement("a", {
-        className: "page-link",
-        href: "#"
-      }, "...")));
-      pages.push(p[n_paginas - 1]);
-    } else if (pagina === n_paginas - 1 || pagina === n_paginas - 2) {
-      pages.push(p[0]);
-      pages.push( /*#__PURE__*/React.createElement("li", {
-        className: "page-item "
-      }, /*#__PURE__*/React.createElement("a", {
-        className: "page-link",
-        href: "#"
-      }, "...")));
-      pages.push(p[n_paginas - 8]);
-      pages.push(p[n_paginas - 7]);
-      pages.push(p[n_paginas - 6]);
-      pages.push(p[n_paginas - 5]);
-      pages.push(p[n_paginas - 4]);
-      pages.push(p[n_paginas - 3]);
-      pages.push(p[n_paginas - 2]);
-      pages.push(p[n_paginas - 1]);
-    } else {
-      pages.push(p[0]);
-      pages.push( /*#__PURE__*/React.createElement("li", {
-        className: "page-item "
-      }, /*#__PURE__*/React.createElement("a", {
-        className: "page-link",
-        href: "#"
-      }, "...")));
 
-      if (parseInt(pagina) + 4 < n_paginas - 1) {
-        pages.push(p[parseInt(pagina) - 3]);
-        pages.push(p[parseInt(pagina) - 2]);
-        pages.push(p[parseInt(pagina) - 1]);
-        pages.push(p[pagina]);
-        pages.push(p[parseInt(pagina) + 1]);
-        pages.push(p[parseInt(pagina) + 2]);
-        pages.push(p[parseInt(pagina) + 3]);
+    if (n_paginas <= 10) {
+      for (let i = 0; i < qtdPages; i++) {
+        let active = recursoMapPaginate === i ? 'active' : '';
+        pages.push(p[i]);
+      }
+    } else {
+      if (pagina <= 5) {
+        pages.push(p[0]);
+        pages.push(p[1]);
+        pages.push(p[2]);
+        pages.push(p[3]);
+        pages.push(p[4]);
+        pages.push(p[5]);
+        pages.push(p[6]);
         pages.push( /*#__PURE__*/React.createElement("li", {
           className: "page-item "
         }, /*#__PURE__*/React.createElement("a", {
           className: "page-link",
           href: "#"
         }, "...")));
-      } else {
+        pages.push(p[n_paginas - 1]);
+      } else if (pagina === n_paginas - 1 || pagina === n_paginas - 2) {
+        pages.push(p[0]);
+        pages.push( /*#__PURE__*/React.createElement("li", {
+          className: "page-item "
+        }, /*#__PURE__*/React.createElement("a", {
+          className: "page-link",
+          href: "#"
+        }, "...")));
         pages.push(p[n_paginas - 8]);
         pages.push(p[n_paginas - 7]);
         pages.push(p[n_paginas - 6]);
@@ -151,27 +126,60 @@ const Page = () => {
         pages.push(p[n_paginas - 3]);
         pages.push(p[n_paginas - 2]);
         pages.push(p[n_paginas - 1]);
+      } else {
+        pages.push(p[0]);
+        pages.push( /*#__PURE__*/React.createElement("li", {
+          className: "page-item "
+        }, /*#__PURE__*/React.createElement("a", {
+          className: "page-link",
+          href: "#"
+        }, "...")));
+
+        if (parseInt(pagina) + 4 < n_paginas - 1) {
+          pages.push(p[parseInt(pagina) - 3]);
+          pages.push(p[parseInt(pagina) - 2]);
+          pages.push(p[parseInt(pagina) - 1]);
+          pages.push(p[pagina]);
+          pages.push(p[parseInt(pagina) + 1]);
+          pages.push(p[parseInt(pagina) + 2]);
+          pages.push(p[parseInt(pagina) + 3]);
+          pages.push( /*#__PURE__*/React.createElement("li", {
+            className: "page-item "
+          }, /*#__PURE__*/React.createElement("a", {
+            className: "page-link",
+            href: "#"
+          }, "...")));
+        } else {
+          pages.push(p[n_paginas - 8]);
+          pages.push(p[n_paginas - 7]);
+          pages.push(p[n_paginas - 6]);
+          pages.push(p[n_paginas - 5]);
+          pages.push(p[n_paginas - 4]);
+          pages.push(p[n_paginas - 3]);
+          pages.push(p[n_paginas - 2]);
+          pages.push(p[n_paginas - 1]);
+        }
+
+        pages.push(p[n_paginas - 1]);
       }
-
-      pages.push(p[n_paginas - 1]);
     }
-  }
 
-  let pagination = /*#__PURE__*/React.createElement("ul", {
-    className: "pagination"
-  }, /*#__PURE__*/React.createElement("li", {
-    className: "page-item disabled"
-  }, /*#__PURE__*/React.createElement("a", {
-    className: "page-link",
-    href: "#",
-    tabIndex: "-1"
-  }, "Anterior")), pages, /*#__PURE__*/React.createElement("li", {
-    className: "page-item"
-  }, /*#__PURE__*/React.createElement("a", {
-    className: "page-link",
-    href: "#"
-  }, "Pr\xF3ximo")));
-  /*///////////////*/
+    setPagination( /*#__PURE__*/React.createElement("ul", {
+      className: "pagination"
+    }, /*#__PURE__*/React.createElement("li", {
+      className: "page-item disabled"
+    }, /*#__PURE__*/React.createElement("a", {
+      className: "page-link",
+      href: "#",
+      tabIndex: "-1"
+    }, "Anterior")), pages, /*#__PURE__*/React.createElement("li", {
+      className: "page-item"
+    }, /*#__PURE__*/React.createElement("a", {
+      className: "page-link",
+      href: "#"
+    }, "Pr\xF3ximo"))));
+    /*///////////////*/
+  };
 
   return /*#__PURE__*/React.createElement("div", {
     className: "row"
