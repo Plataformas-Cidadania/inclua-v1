@@ -28,7 +28,7 @@ const Page = () => {
                     page:1
                 }
             });
-            console.log(result.data.data);
+            console.log('data', result.data);
             setRecursoMap(result.data.data);
             setRecursoMapPaginate(result.data);
         } catch (error) {
@@ -56,10 +56,12 @@ const Page = () => {
         /*///////////////*/
         //MONTANDO A PAGINAÇÃO
         let pagina = recursoMapPaginate;
+
+        console.log('recursoMapPaginate', recursoMapPaginate);
         let p = [];//armazena todas as paginas
         let pages = [];//paginas q serão mostradas
         //let n_paginas = Math.ceil(this.state.totalOscList/10);
-        let n_paginas = Math.ceil(10/10);
+        let n_paginas = Math.ceil(recursoMapPaginate.per_page/10);
         //console.log('pagina', pagina);
         let qtdPages = 5;
         for (let i=0; i < n_paginas; i++){
