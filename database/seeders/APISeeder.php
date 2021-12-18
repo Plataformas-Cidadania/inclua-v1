@@ -29,7 +29,8 @@ class APISeeder extends Seeder
             'descricao' => 'Aponta para a existência e operação de mecanismos de participação social e para a representação institucional de pontos de vistas e experiências de segmentos específicos do público nos processos de implementação, seja via organizações governamentais, não-governamentais, ou por meio do envolvimento direto de pessoas e grupos historicamente em desvantagem nos processos institucionais de decisão, definição de metas, estratégias, etc.',
             'vl_baixo' => 44,
             'vl_alto' => 25
-        ]);/*
+        ]);
+        /*
         DB::table('avaliacao.dimensao')->insert([
             'numero' => 3,
             'titulo' => 'Comunicação, acesso à informação e mobilização',
@@ -50,7 +51,7 @@ class APISeeder extends Seeder
             'descricao' => 'Chama atenção para os processos de monitoramento da execução e avaliação dos resultados e efeitos da política, serviço ou programa em questão. O foco é na produção e uso (retroalimentação) de informações sobre o atendimento a públicos específicos e sobre os efeitos (não-pretendidos) derivados do envolvimento com as ofertas públicas, considerando também os esforços de incorporação de pontos de vistas e experiência de grupos historicamente em desvantagem na produção e análise dos dados.',
             'vl_baixo' => 62,
             'vl_alto' => 36
-        ]);/*
+        ]);*/
 
         // INDICADORES
         DB::table('avaliacao.indicador')->insert([
@@ -70,7 +71,7 @@ class APISeeder extends Seeder
             'vl_baixo' => 22,
             'vl_alto' => 11,
             'consequencia' => ' A ausência (ou incipiência) de instrumentos de gestão afirmativa e inclusiva contribuem para a invisibilização de desigualdades e reforço a posturas passivas frente às desigualdades sociais já existentes.'
-        ]);
+        ]); /*
         DB::table('avaliacao.indicador')->insert([
             'numero' => 1,
             'titulo' => 'REPRESENTAÇÃO INSTITUCIONAL',
@@ -169,7 +170,7 @@ class APISeeder extends Seeder
             'vl_baixo' => 19,
             'vl_alto' => 10,
             'consequencia' => 'A ausência de envolvimento de usuários, especialmente de segmentos específicos e desfavorecidos do público atendido, nos esforços de monitoramento e avaliação prejudicam a compreensão de suas experiências com o programa/serviço e contribuem para a invisbilização e manutenção de formas de desatenção e exclusão.'
-        ]);
+        ]);*/
 
         // PERGUNTAS
 
