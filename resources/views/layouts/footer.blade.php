@@ -73,11 +73,11 @@
                         <div>
                             <h3>Recursos</h3>
                             <ul>
-                                <li><a href="recursos">Dimansão 1</a></li>
-                                <li><a href="recursos">Dimansão 2</a></li>
-                                <li><a href="recursos">Dimansão 3</a></li>
-                                <li><a href="recursos">Dimansão 4</a></li>
-                                <li><a href="recursos">Dimansão 5</a></li>
+                                <li><a href="recursos">Dimensão 1</a></li>
+                                <li><a href="recursos">Dimensão 2</a></li>
+                                <li><a href="recursos">Dimensão 3</a></li>
+                                <li><a href="recursos">Dimensão 4</a></li>
+                                <li><a href="recursos">Dimensão 5</a></li>
                                 <br><br>
                             </ul>
                         </div>
