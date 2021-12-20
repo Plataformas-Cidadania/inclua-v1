@@ -1,6 +1,5 @@
 const Header = () => {
-  const context = React.useContext(HomeContext);
-  console.log(localStorage.getItem('id_diagnostico_completo'));
+  const context = React.useContext(HomeContext); //console.log(localStorage.getItem('id_diagnostico_completo'));
 
   const ClicklocalStorage = key => {
     localStorage.removeItem('id_diagnostico_completo');
@@ -72,6 +71,8 @@ const Header = () => {
     className: "col-md-12"
   }, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null)), /*#__PURE__*/React.createElement("div", {
     className: "col text-center cursor"
+  }, /*#__PURE__*/React.createElement("a", {
+    href: "diagnostico"
   }, /*#__PURE__*/React.createElement("div", {
     className: "btn-icon btn-icon-hover",
     style: {
@@ -84,8 +85,10 @@ const Header = () => {
     width: "75%"
   })), /*#__PURE__*/React.createElement("p", {
     className: "mt-2"
-  }, "Completo")), /*#__PURE__*/React.createElement("div", {
+  }, "Completo"))), /*#__PURE__*/React.createElement("div", {
     className: "col text-center cursor"
+  }, /*#__PURE__*/React.createElement("a", {
+    href: "diagnostico"
   }, /*#__PURE__*/React.createElement("div", {
     className: "btn-icon btn-icon-hover",
     style: {
@@ -98,7 +101,7 @@ const Header = () => {
     width: "75%"
   })), /*#__PURE__*/React.createElement("p", {
     className: "mt-2"
-  }, "Parcial")), /*#__PURE__*/React.createElement("div", {
+  }, "Parcial"))), /*#__PURE__*/React.createElement("div", {
     className: "col text-center " + (localStorage.getItem('id_diagnostico_completo') ? '' : 'opacity-5')
   }, /*#__PURE__*/React.createElement("a", {
     href: localStorage.getItem('id_diagnostico_completo') ? 'resultado' : '#',
