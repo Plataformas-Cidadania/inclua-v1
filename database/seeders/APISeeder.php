@@ -122,61 +122,64 @@ class APISeeder extends Seeder
             'consequencia' => 'A dificuldade de compreensão das informações fornecidas ao público prejudica o acesso, o engajamento e o usufruto das ofertas por parte de segmentos específicos, especialmente, aqueles estruturalmente desfavorecidos.'
         ]);
         /*
-        // Para dimensão 4
-        DB::table('avaliacao.indicador')->insert([
-            'numero' => 1,
-            'titulo' => 'EXIGÊNCIAS SOBRE OS USUÁRIOS',
-            'descricao' => 'Identifica e avalia esforços de identificação de exigências excessivas, desnecessárias ou imprevistas impostas pela oferta pública sobre o cidadão, em relação à informação e documentação, deslocamento, ônus financeiro, e necessidade de envolvimento de terceiros, seja para o acesso ou manutenção do status de beneficiário.',
-            'id_dimensao' => 4,
-            'vl_baixo' => 37,
-            'vl_alto' => 21,
-            'consequencia' => 'Um elevado nível de exigências e imposição de custos (i.e. informação, tempo e dinheiro) podem levar à exclusão de cidadãos em situação de vulnerabilidade.'
-        ]);
-        DB::table('avaliacao.indicador')->insert([
-            'numero' => 2,
-            'titulo' => 'NORMAS E INSTRUMENTOS QUE REGULAM A RELAÇÃO COM OS PÚBLICOS',
-            'descricao' => 'Identifica e avalia esforços de reflexão e revisão de atos normativos e outros instrumentos em relação a suas formas (potencialmente problemáticas) de definição e tratamento dos públicos, classificação identitária ou abordagens a seus modos de vida.',
-            'id_dimensao' => 4,
-            'vl_baixo' => 19,
-            'vl_alto' => 10,
-            'consequencia' => 'Instrumentos insensíveis à especificidade dos públicos podem provocar violência simbólica, interiorização de leituras inferiorizantes e invisibilização de públicos, territórios, culturas e modos de vida.'
-        ]);
-        DB::table('avaliacao.indicador')->insert([
-            'numero' => 3,
-            'titulo' => 'COMPORTAMENTOS E PRÁTICAS DOS AGENTES PÚBLICOS',
-            'descricao' => 'Identifica e avalia o grau de sensibilidade, aceitação, formação e compromisso dos agentes de implementação local com objetivos de inclusão e equidade; esforços de reconhecimento e explicitação dos sistemas de crenças e valores dos agentes locais, das suas práticas informais e do processamento de divergência de entendimento; além do grau de atenção aos efeitos simbólicos da interação entre usuários e agentes locais.',
-            'id_dimensao' => 4,
-            'vl_baixo' => 30,
-            'vl_alto' => 17,
-            'consequencia' => 'O desconhecimento e opacidade dos critérios, comportamentos e práticas informais adotados por agentes locais podem inibir ações voltadas para a efetivação de prescrições formais envolvendo a inclusão e a atenção diferenciada a segmentos específicos do público atendido.'
-        ]);
-        DB::table('avaliacao.indicador')->insert([
-            'numero' => 1,
-            'titulo' => 'SISTEMAS DE MONITORAMENTO E ACOMPANHAMENTO',
-            'descricao' => 'Identifica e avalia esforços gerais de monitoramento da implementação e esforços específicos de identificação e compreensão da diversidade de segmentos dentro do público atendido, de alinhamento das ferramentas de monitoramento com as características dos públicos e de acompanhamento dos casos limiares (ditos “não normais”); além disso, procura identificar se há esforços no sentido de utilização dos dados de monitoramento em análises de riscos de desatenção.',
-            'id_dimensao' => 5,
-            'vl_baixo' => 22,
-            'vl_alto' => 12,
-            'consequencia' => 'A ausência de monitoramento, com foco explícito na experiência de segmentos específicos, pode contribuir para a invisibilização das experiências desses grupos, ocultando possíveis situações de exclusão e desatenção.'
-        ]);
-        DB::table('avaliacao.indicador')->insert([
-            'numero' => 2,
-            'titulo' => 'AVALIAÇÃO DE EFEITOS NÃO-PRETENDIDOS SOBRE OS USUÁRIOS',
-            'descricao' => 'Identifica e avalia esforços de avaliação de efeitos negativos associados à estigmatização (auto imagem e hetero imagem), à exposição e intrusão na privacidade dos atendidos, aos custos psicológicos e emocionais de envolvimento com o programa, assim como outros custos não pretendidos e ações no sentido de processar e mitigar esses efeitos.',
-            'id_dimensao' => 5,
-            'vl_baixo' => 22,
-            'vl_alto' => 12,
-            'consequencia' => 'A ausência de identificação e processamento dos possíveis efeitos negativos derivados do envolvimento com o programa pode contribuir para a invisibilização e inação em relação a efeitos não-pretendidos, prejudicando a efetiva inclusão de grupos desfavorecidos.'
-        ]);
-        DB::table('avaliacao.indicador')->insert([
-            'numero' => 3,
-            'titulo' => 'ENVOLVIMENTO DOS DESTINATÁRIOS',
-            'descricao' => 'Identifica e avalia esforços de inclusão de segmentos específicos, em especial aqueles tradicionalmente desfavorecidos, no monitoramento e avaliação do programa / serviço, abertura a críticas e reclamações, grau de incorporação da perspectiva dos usuários sobre a qualidade do atendimento e sobre a revisão de procedimentos.',
-            'id_dimensao' => 5,
-            'vl_baixo' => 19,
-            'vl_alto' => 10,
-            'consequencia' => 'A ausência de envolvimento de usuários, especialmente de segmentos específicos e desfavorecidos do público atendido, nos esforços de monitoramento e avaliação prejudicam a compreensão de suas experiências com o programa/serviço e contribuem para a invisbilização e manutenção de formas de desatenção e exclusão.'
-        ]);*/
+                // Para dimensão 4
+                DB::table('avaliacao.indicador')->insert([
+                    'numero' => 1,
+                    'titulo' => 'EXIGÊNCIAS SOBRE OS USUÁRIOS',
+                    'descricao' => 'Identifica e avalia esforços de identificação de exigências excessivas, desnecessárias ou imprevistas impostas pela oferta pública sobre o cidadão, em relação à informação e documentação, deslocamento, ônus financeiro, e necessidade de envolvimento de terceiros, seja para o acesso ou manutenção do status de beneficiário.',
+                    'id_dimensao' => 4,
+                    'vl_baixo' => 37,
+                    'vl_alto' => 21,
+                    'consequencia' => 'Um elevado nível de exigências e imposição de custos (i.e. informação, tempo e dinheiro) podem levar à exclusão de cidadãos em situação de vulnerabilidade.'
+                ]);
+                DB::table('avaliacao.indicador')->insert([
+                    'numero' => 2,
+                    'titulo' => 'NORMAS E INSTRUMENTOS QUE REGULAM A RELAÇÃO COM OS PÚBLICOS',
+                    'descricao' => 'Identifica e avalia esforços de reflexão e revisão de atos normativos e outros instrumentos em relação a suas formas (potencialmente problemáticas) de definição e tratamento dos públicos, classificação identitária ou abordagens a seus modos de vida.',
+                    'id_dimensao' => 4,
+                    'vl_baixo' => 19,
+                    'vl_alto' => 10,
+                    'consequencia' => 'Instrumentos insensíveis à especificidade dos públicos podem provocar violência simbólica, interiorização de leituras inferiorizantes e invisibilização de públicos, territórios, culturas e modos de vida.'
+                ]);
+                DB::table('avaliacao.indicador')->insert([
+                    'numero' => 3,
+                    'titulo' => 'COMPORTAMENTOS E PRÁTICAS DOS AGENTES PÚBLICOS',
+                    'descricao' => 'Identifica e avalia o grau de sensibilidade, aceitação, formação e compromisso dos agentes de implementação local com objetivos de inclusão e equidade; esforços de reconhecimento e explicitação dos sistemas de crenças e valores dos agentes locais, das suas práticas informais e do processamento de divergência de entendimento; além do grau de atenção aos efeitos simbólicos da interação entre usuários e agentes locais.',
+                    'id_dimensao' => 4,
+                    'vl_baixo' => 30,
+                    'vl_alto' => 17,
+                    'consequencia' => 'O desconhecimento e opacidade dos critérios, comportamentos e práticas informais adotados por agentes locais podem inibir ações voltadas para a efetivação de prescrições formais envolvendo a inclusão e a atenção diferenciada a segmentos específicos do público atendido.'
+                ]);
+
+
+                // PARA DIMENSÂO 5
+                DB::table('avaliacao.indicador')->insert([
+                    'numero' => 1,
+                    'titulo' => 'SISTEMAS DE MONITORAMENTO E ACOMPANHAMENTO',
+                    'descricao' => 'Identifica e avalia esforços gerais de monitoramento da implementação e esforços específicos de identificação e compreensão da diversidade de segmentos dentro do público atendido, de alinhamento das ferramentas de monitoramento com as características dos públicos e de acompanhamento dos casos limiares (ditos “não normais”); além disso, procura identificar se há esforços no sentido de utilização dos dados de monitoramento em análises de riscos de desatenção.',
+                    'id_dimensao' => 5,
+                    'vl_baixo' => 22,
+                    'vl_alto' => 12,
+                    'consequencia' => 'A ausência de monitoramento, com foco explícito na experiência de segmentos específicos, pode contribuir para a invisibilização das experiências desses grupos, ocultando possíveis situações de exclusão e desatenção.'
+                ]);
+                DB::table('avaliacao.indicador')->insert([
+                    'numero' => 2,
+                    'titulo' => 'AVALIAÇÃO DE EFEITOS NÃO-PRETENDIDOS SOBRE OS USUÁRIOS',
+                    'descricao' => 'Identifica e avalia esforços de avaliação de efeitos negativos associados à estigmatização (auto imagem e hetero imagem), à exposição e intrusão na privacidade dos atendidos, aos custos psicológicos e emocionais de envolvimento com o programa, assim como outros custos não pretendidos e ações no sentido de processar e mitigar esses efeitos.',
+                    'id_dimensao' => 5,
+                    'vl_baixo' => 22,
+                    'vl_alto' => 12,
+                    'consequencia' => 'A ausência de identificação e processamento dos possíveis efeitos negativos derivados do envolvimento com o programa pode contribuir para a invisibilização e inação em relação a efeitos não-pretendidos, prejudicando a efetiva inclusão de grupos desfavorecidos.'
+                ]);
+                DB::table('avaliacao.indicador')->insert([
+                    'numero' => 3,
+                    'titulo' => 'ENVOLVIMENTO DOS DESTINATÁRIOS',
+                    'descricao' => 'Identifica e avalia esforços de inclusão de segmentos específicos, em especial aqueles tradicionalmente desfavorecidos, no monitoramento e avaliação do programa / serviço, abertura a críticas e reclamações, grau de incorporação da perspectiva dos usuários sobre a qualidade do atendimento e sobre a revisão de procedimentos.',
+                    'id_dimensao' => 5,
+                    'vl_baixo' => 19,
+                    'vl_alto' => 10,
+                    'consequencia' => 'A ausência de envolvimento de usuários, especialmente de segmentos específicos e desfavorecidos do público atendido, nos esforços de monitoramento e avaliação prejudicam a compreensão de suas experiências com o programa/serviço e contribuem para a invisbilização e manutenção de formas de desatenção e exclusão.'
+                ]);*/
 
         // PERGUNTAS
 
@@ -429,7 +432,98 @@ class APISeeder extends Seeder
             'id_indicador' => 4,
         ]);
 
+        // PERGUNTAS PARA INDICADOR 5 ( Dimensão 3 indicador 1)
+        DB::table('avaliacao.pergunta')->insert([
+            'letra' => 'a',
+            'descricao' => 'A estratégia geral de comunicação e divulgação das ofertas é adequada para atingir populações em situação de vulnerabilidade. Como você avalia essa afirmação? Marque uma opção abaixo.',
+            'legenda' => 'Sendo 1: Discordo totalmente e 5: Concordo totalmente',
+            'vl_minimo' => 1,
+            'vl_maximo' => 5,
+            'tipo'=> 2,
+            'nao_se_aplica'=> false,
+            'inverter' => false,
+            'id_indicador' => 5,
+        ]);
+        DB::table('avaliacao.pergunta')->insert([
+            'letra' => 'b',
+            'descricao' => 'Existem estratégias efetivas de comunicação, divulgação, ou campanhas focalizadas em públicos específicos, em especial, aqueles tradicionalmente desfavorecidos. Como você avalia essa afirmação? Marque uma opção abaixo.',
+            'legenda' => 'Sendo 1: Discordo totalmente e 5: Concordo totalmente',
+            'vl_minimo' => 1,
+            'vl_maximo' => 5,
+            'tipo'=> 2,
+            'nao_se_aplica'=> false,
+            'inverter' => false,
+            'id_indicador' => 5,
+        ]);
+        // PERGUNTAS PARA INDICADOR 6 ( Dimensão 3 indicador 2)
+        DB::table('avaliacao.pergunta')->insert([
+            'letra' => 'a',
+            'descricao' => 'Considerando os distintos modos por meio dos quais informações relevantes sobre as ofertas podem ser acessadas (ex.: site internet; WhatsApp, Twitter e outros aplicativos; central telefone; balcão/agência; grande imprensa; inserção em outras mídias; material de divulgação; manual; FAQ ; campanhas; parcerias com outras organizações; outros), pode-se dizer que a amplitude de modos de disponibilização de informação é adequada ao contexto da oferta e seu público. Como você avalia essa afirmação? Marque uma opção abaixo.',
+            'legenda' => 'Sendo 1: Discordo totalmente e 5: Concordo totalmente',
+            'vl_minimo' => 1,
+            'vl_maximo' => 5,
+            'tipo'=> 2,
+            'nao_se_aplica'=> false,
+            'inverter' => false,
+            'id_indicador' => 6,
+        ]);
+        DB::table('avaliacao.pergunta')->insert([
+            'letra' => 'b',
+            'descricao' => 'Existem estratégias eficazes de disponibilização de informação relevante focalizadas em públicos vulneráveis ou desfavorecidos (ex.: peças/instrumentos específicos, parcerias com ONGs, equipe de abordagem especializada, etc...). Como você avalia essa afirmação? Marque uma opção abaixo.',
+            'legenda' => 'Sendo 1: Discordo totalmente e 5: Concordo totalmente',
+            'vl_minimo' => 1,
+            'vl_maximo' => 5,
+            'tipo'=> 2,
+            'nao_se_aplica'=> false,
+            'inverter' => false,
+            'id_indicador' => 6,
+        ]);
 
+        // PERGUNTAS PARA INDICADOR 7 ( Dimensão 3 indicador 3)
+        DB::table('avaliacao.pergunta')->insert([
+            'letra' => 'a',
+            'descricao' => 'As informações relativas a critérios de elegibilidade, natureza dos benefícios e procedimentos para obtenção de acesso estão expressas em linguagem simples e acessível. Como você avalia essa afirmação? Marque uma opção abaixo.',
+            'legenda' => 'Sendo 1: Discordo totalmente e 5: Concordo totalmente',
+            'vl_minimo' => 1,
+            'vl_maximo' => 5,
+            'tipo'=> 2,
+            'nao_se_aplica'=> false,
+            'inverter' => false,
+            'id_indicador' => 7,
+        ]);
+        DB::table('avaliacao.pergunta')->insert([
+            'letra' => 'b',
+            'descricao' => 'Os principais documentos voltados para os beneficiários/usuários – como material de divulgação, formulários de cadastramento, plataformas online, cartas/e-mails e notificações, etc. – foram submetidos a testes, diagnósticos ou avaliações de linguagem simples. Como você avalia essa afirmação? Marque uma opção abaixo.',
+            'legenda' => 'Sendo 1: Discordo totalmente e 5: Concordo totalmente',
+            'vl_minimo' => 1,
+            'vl_maximo' => 5,
+            'tipo'=> 2,
+            'nao_se_aplica'=> false,
+            'inverter' => false,
+            'id_indicador' => 7,
+        ]);
+        DB::table('avaliacao.pergunta')->insert([
+            'letra' => 'c',
+            'descricao' => 'São feitos esforços de adaptação da linguagem e mobilização de formas de comunicação diferenciadas para atendimento a grupos específicos ou segmentos vulneráveis. Como você avalia essa afirmação? Marque uma opção abaixo.',
+            'legenda' => 'Sendo 1: Discordo totalmente e 5: Concordo totalmente',
+            'vl_minimo' => 1,
+            'vl_maximo' => 5,
+            'tipo'=> 2,
+            'nao_se_aplica'=> false,
+            'inverter' => false,
+            'id_indicador' => 7,
+        ]);
+        DB::table('avaliacao.pergunta')->insert([
+            'letra' => 'x',
+            'descricao' => 'De forma geral, como você avalia a contribuição das estratégias de comunicação, de disponibilização de informações e a linguagem adotadas para facilitar o acesso e a inclusão de segmentos específicos do público atendido (em especial aqueles tradicionalmente vulnerabilizados)? Dê uma nota de zero a dez em relação ao nível de adaptação e adequação da comunicação para esses segmentos.',
+            'legenda' => 'Sendo 1: Baixíssima adaptação e 10: Altíssima adaptação',
+            'vl_minimo' => 1,
+            'vl_maximo' => 10,
+            'tipo'=> 3,
+            'nao_se_aplica'=> false,
+            'inverter' => false,
+            'id_indicador' => 7,
+        ]);
 
 
 
