@@ -1,4 +1,3 @@
-
 const Paginate = (props) => {
 
     const {useState, useEffect} = React;
