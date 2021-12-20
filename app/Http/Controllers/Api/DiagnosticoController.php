@@ -73,7 +73,7 @@ class DiagnosticoController extends Controller
                 $percAlto = $rangeAlto * 100/$range;
                 $percMedio = $rangeMedio * 100/$range;
                 $percBaixo = $rangeBaixo * 100/$range;
-  
+                
                 $risco='';
                 if ($pontuacao_indicador <= $indicador->vl_alto) {
                     $risco = 'Risco alto';
