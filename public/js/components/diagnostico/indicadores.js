@@ -98,17 +98,7 @@ const Indicadores = () => {
     }
   }))), /*#__PURE__*/React.createElement("div", {
     className: "col-8 col-8"
-  }, context.dimensao.indicadores.length <= indicador ? /*#__PURE__*/React.createElement("div", {
-    className: "d-grid gap-2 d-md-flex justify-content-md-end float-end"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "dorder-container"
-  }, /*#__PURE__*/React.createElement("button", {
-    className: "btn btn-theme " + bgColor,
-    type: "button",
-    onClick: () => context.setIndicador(context.dimensao.indicadores[indicador - 2])
-  }, /*#__PURE__*/React.createElement("i", {
-    className: "fas fa-angle-left"
-  }), " indicador ", dimensao, ".", indicador - 1))) : null, context.dimensao.indicadores.length > indicador ? /*#__PURE__*/React.createElement("div", {
     className: "d-grid gap-2 d-md-flex justify-content-md-end float-end ms-2"
   }, /*#__PURE__*/React.createElement("div", {
     className: "dorder-container"
@@ -120,7 +110,17 @@ const Indicadores = () => {
     onClick: () => context.setDimensao(context.dimensao + 1)
   }, "dimens\xE3o ", dimensao + 1, " ", /*#__PURE__*/React.createElement("i", {
     className: "fas fa-angle-right"
-  })))) : null, context.dimensao.indicadores.length > indicador ? /*#__PURE__*/React.createElement("div", {
+  })))), context.dimensao.indicadores.length <= indicador ? /*#__PURE__*/React.createElement("div", {
+    className: "d-grid gap-2 d-md-flex justify-content-md-end float-end"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "dorder-container"
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "btn btn-theme " + bgColor,
+    type: "button",
+    onClick: () => context.setIndicador(context.dimensao.indicadores[indicador - 2])
+  }, /*#__PURE__*/React.createElement("i", {
+    className: "fas fa-angle-left"
+  }), " indicador ", dimensao, ".", indicador - 1))) : null, context.dimensao.indicadores.length > indicador ? /*#__PURE__*/React.createElement("div", {
     className: "d-grid gap-2 d-md-flex justify-content-md-end float-end"
   }, /*#__PURE__*/React.createElement("div", {
     className: "dorder-container"
