@@ -1,5 +1,5 @@
-cmsApp.controller('tipoCtrl', ['$scope', '$http', 'Upload', '$timeout', function($scope, $http, Upload, $timeout){
-    
+cmsApp.controller('dimensaoCtrl', ['$scope', '$http', 'Upload', '$timeout', function($scope, $http, Upload, $timeout){
+
     $scope.tipos = [];
     $scope.currentPage = 1;
     $scope.lastPage = 0;
@@ -7,11 +7,11 @@ cmsApp.controller('tipoCtrl', ['$scope', '$http', 'Upload', '$timeout', function
     $scope.maxSize = 5;
     $scope.itensPerPage = 10;
     $scope.dadoPesquisa = '';
-    $scope.campos = "id, titulo, imagem, status";
+    $scope.campos = "id_dimensao, numero, titulo";
     $scope.campoPesquisa = "titulo";
     $scope.processandoListagem = false;
     $scope.processandoExcluir = false;
-    $scope.ordem = "titulo";
+    $scope.ordem = "numero";
     $scope.sentidoOrdem = "asc";
     var $listar = false;//para impedir de carregar o conteúdo dos watchs no carregamento da página.
 
@@ -35,7 +35,7 @@ cmsApp.controller('tipoCtrl', ['$scope', '$http', 'Upload', '$timeout', function
     var listarTipos = function(){
         $scope.processandoListagem = true;
         $http({
-            url: 'cms/listar-tipos',
+            url: 'api/dimensao',
             method: 'GET',
             params: {
                 page: $scope.currentPage,
@@ -78,7 +78,7 @@ cmsApp.controller('tipoCtrl', ['$scope', '$http', 'Upload', '$timeout', function
     $scope.validar = function(){
 
     };
-    
+
 
     listarTipos();
 
