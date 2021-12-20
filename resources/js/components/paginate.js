@@ -116,3 +116,4 @@ const Paginate = (props) => {
 
     return pagination;
 };
+
