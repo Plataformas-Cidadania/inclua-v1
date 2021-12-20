@@ -23,7 +23,7 @@ class APISeeder extends Seeder
             'vl_baixo' => 43,
             'vl_alto' => 23
         ]);
-        /* DB::table('avaliacao.dimensao')->insert([
+         DB::table('avaliacao.dimensao')->insert([
              'numero' => 2,
              'titulo' => 'Participação social e representação institucional',
              'descricao' => 'Aponta para a existência e operação de mecanismos de participação social e para a representação institucional de pontos de vistas e experiências de segmentos específicos do público nos processos de implementação, seja via organizações governamentais, não-governamentais, ou por meio do envolvimento direto de pessoas e grupos historicamente em desvantagem nos processos institucionais de decisão, definição de metas, estratégias, etc.',
@@ -31,29 +31,30 @@ class APISeeder extends Seeder
              'vl_alto' => 25
          ]);
 
-         DB::table('avaliacao.dimensao')->insert([
-             'numero' => 3,
-             'titulo' => 'Comunicação, acesso à informação e mobilização',
-             'descricao' => 'Coloca em questão os processos de comunicação, divulgação e acesso à informação, visando a mobilização das usuárias do programa/serviço. O foco privilegia os esforços de comunicação e disponibilização de informação relevante para segmentos historicamente em desvantagem, por meio de linguagem adequada e adaptada, reduzindo custos de aprendizado e ampliando as possibilidades de engajamento do público a ser atendido.',
-             'vl_baixo' => 34,
-             'vl_alto' => 20
-         ]);
-         DB::table('avaliacao.dimensao')->insert([
-             'numero' => 4,
-             'titulo' => 'Coloca em questão os processos de comunicação, divulgação e acesso à informação, visando a mobilização das usuárias do programa/serviço. O foco privilegia os esforços de comunicação e disponibilização de informação relevante para segmentos historicamente em desvantagem, por meio de linguagem adequada e adaptada, reduzindo custos de aprendizado e ampliando as possibilidades de engajamento do público a ser atendido.',
-             'descricao' => 'Chama atenção para os momentos e experiências de interação entre as usuárias e os serviços / programas. O foco aqui se dá sobre as exigências (documentação, custos de deslocamento, condutas, etc.) que são impostas sobre as usuárias para o envolvimento com a oferta pública, sobre as normas e instrumentos que medeiam a relação entre o público e os serviços, e sobre os comportamentos e as práticas das agentes públicas frente às atendidas (sensibilidade, compromisso, valores e julgamentos morais).',
-             'vl_baixo' => 84,
-             'vl_alto' => 50
-         ]);
-         DB::table('avaliacao.dimensao')->insert([
-             'numero' => 5,
-             'titulo' => 'Monitoramento, avaliação e retroalimentação',
-             'descricao' => 'Chama atenção para os processos de monitoramento da execução e avaliação dos resultados e efeitos da política, serviço ou programa em questão. O foco é na produção e uso (retroalimentação) de informações sobre o atendimento a públicos específicos e sobre os efeitos (não-pretendidos) derivados do envolvimento com as ofertas públicas, considerando também os esforços de incorporação de pontos de vistas e experiência de grupos historicamente em desvantagem na produção e análise dos dados.',
-             'vl_baixo' => 62,
-             'vl_alto' => 36
-         ]);*/
+        DB::table('avaliacao.dimensao')->insert([
+            'numero' => 3,
+            'titulo' => 'Comunicação, acesso à informação e mobilização',
+            'descricao' => 'Coloca em questão os processos de comunicação, divulgação e acesso à informação, visando a mobilização das usuárias do programa/serviço. O foco privilegia os esforços de comunicação e disponibilização de informação relevante para segmentos historicamente em desvantagem, por meio de linguagem adequada e adaptada, reduzindo custos de aprendizado e ampliando as possibilidades de engajamento do público a ser atendido.',
+            'vl_baixo' => 34,
+            'vl_alto' => 20
+        ]);/*
+        DB::table('avaliacao.dimensao')->insert([
+            'numero' => 4,
+            'titulo' => 'Coloca em questão os processos de comunicação, divulgação e acesso à informação, visando a mobilização das usuárias do programa/serviço. O foco privilegia os esforços de comunicação e disponibilização de informação relevante para segmentos historicamente em desvantagem, por meio de linguagem adequada e adaptada, reduzindo custos de aprendizado e ampliando as possibilidades de engajamento do público a ser atendido.',
+            'descricao' => 'Chama atenção para os momentos e experiências de interação entre as usuárias e os serviços / programas. O foco aqui se dá sobre as exigências (documentação, custos de deslocamento, condutas, etc.) que são impostas sobre as usuárias para o envolvimento com a oferta pública, sobre as normas e instrumentos que medeiam a relação entre o público e os serviços, e sobre os comportamentos e as práticas das agentes públicas frente às atendidas (sensibilidade, compromisso, valores e julgamentos morais).',
+            'vl_baixo' => 84,
+            'vl_alto' => 50
+        ]);
+        DB::table('avaliacao.dimensao')->insert([
+            'numero' => 5,
+            'titulo' => 'Monitoramento, avaliação e retroalimentação',
+            'descricao' => 'Chama atenção para os processos de monitoramento da execução e avaliação dos resultados e efeitos da política, serviço ou programa em questão. O foco é na produção e uso (retroalimentação) de informações sobre o atendimento a públicos específicos e sobre os efeitos (não-pretendidos) derivados do envolvimento com as ofertas públicas, considerando também os esforços de incorporação de pontos de vistas e experiência de grupos historicamente em desvantagem na produção e análise dos dados.',
+            'vl_baixo' => 62,
+            'vl_alto' => 36
+        ]);*/
 
         // INDICADORES
+        // Para dimensão 1
         DB::table('avaliacao.indicador')->insert([
             'numero' => 1,
             'titulo' => 'DIVISÃO DO TRABALHO, COORDENAÇÃO E CONFLITO INTERINSTITUCIONAL',
@@ -71,7 +72,8 @@ class APISeeder extends Seeder
             'vl_baixo' => 22,
             'vl_alto' => 11,
             'consequencia' => ' A ausência (ou incipiência) de instrumentos de gestão afirmativa e inclusiva contribuem para a invisibilização de desigualdades e reforço a posturas passivas frente às desigualdades sociais já existentes.'
-        ]); /*
+        ]);
+        // Para dimensão 2
         DB::table('avaliacao.indicador')->insert([
             'numero' => 1,
             'titulo' => 'REPRESENTAÇÃO INSTITUCIONAL',
@@ -90,6 +92,8 @@ class APISeeder extends Seeder
             'vl_alto' => 13,
             'consequencia' => 'A ausência ou escassez de possibilidades de reconhecimento, escuta e influência de segmentos e territórios específicos do público atendido nos processos de implementação reforça a insensibilidade, a invisibilização e a desatenção às suas necessidades específicas.'
         ]);
+
+        // Para dimensão 3
         DB::table('avaliacao.indicador')->insert([
             'numero' => 1,
             'titulo' => 'COMUNICAÇÃO / DIVULGAÇÃO',
@@ -117,6 +121,8 @@ class APISeeder extends Seeder
             'vl_alto' => 11,
             'consequencia' => 'A dificuldade de compreensão das informações fornecidas ao público prejudica o acesso, o engajamento e o usufruto das ofertas por parte de segmentos específicos, especialmente, aqueles estruturalmente desfavorecidos.'
         ]);
+        /*
+        // Para dimensão 4
         DB::table('avaliacao.indicador')->insert([
             'numero' => 1,
             'titulo' => 'EXIGÊNCIAS SOBRE OS USUÁRIOS',
@@ -190,7 +196,7 @@ class APISeeder extends Seeder
         DB::table('avaliacao.pergunta')->insert([
             'letra' => 'a1',
             'descricao' => 'Esses espaços e mecanismos de articulação existentes são adequados e efetivos. Como você avalia essa afirmação? Marque uma opção abaixo.',
-             'legenda' => 'Sendo 1: Discorda totalmente e 5: Concorda Totalmente',
+             'legenda' => 'Sendo 1: Discordo totalmente e 5: Concordo totalmente',
             'vl_minimo' => 1,
             'vl_maximo' => 5,
             'tipo'=> 2,
@@ -202,7 +208,7 @@ class APISeeder extends Seeder
         DB::table('avaliacao.pergunta')->insert([
             'letra' => 'b',
             'descricao' => 'A atual divisão do trabalho e papéis entre as organizações (ou unidades da mesma organização) que atuam na implementação é adequada para dar cobertura a todos públicos e/ou territórios alvo da oferta pública. Isto é, seria possível dizer que nenhum segmento do público/território-alvo ficou sabidamente desatendido. Como você avalia essa afirmação? Marque uma opção abaixo.',
-            'legenda' => 'Sendo 1: Discorda totalmente e 5: Concorda Totalmente',
+            'legenda' => 'Sendo 1: Discordo totalmente e 5: Concordo totalmente',
             'vl_minimo' => 1,
             'vl_maximo' => 5,
             'tipo'=> 2,
@@ -213,7 +219,7 @@ class APISeeder extends Seeder
         DB::table('avaliacao.pergunta')->insert([
             'letra' => 'c',
             'descricao' => 'Existem espaços adequados para a gestão, processamento e superação de conflitos, disputas de jurisdição ou desentendimentos entre as organizações envolvidas, evitando prejuízos à boa comunicação e ao trabalho conjunto. Como você avalia essa afirmação? Marque uma opção abaixo.',
-            'legenda' => 'Sendo 1: Discorda totalmente e 5: Concorda Totalmente',
+            'legenda' => 'Sendo 1: Discordo totalmente e 5: Concordo totalmente',
             'vl_minimo' => 1,
             'vl_maximo' => 5,
             'tipo'=> 2,
@@ -224,7 +230,7 @@ class APISeeder extends Seeder
         DB::table('avaliacao.pergunta')->insert([
             'letra' => 'd',
             'descricao' => 'Regularmente, são feitos esforços de identificação de falhas ou dificuldades de articulação (conflito, competição, disputas de jurisdição ou desentendimentos entre as organizações) e de como elas impactam a cobertura do programa e seu acesso por parte de segmentos específicos do público ou território atendido. Como você avalia essa afirmação? Marque uma opção abaixo.',
-            'legenda' => 'Sendo 1: Discorda totalmente e 5: Concorda Totalmente',
+            'legenda' => 'Sendo 1: Discordo totalmente e 5: Concordo totalmente',
             'vl_minimo' => 1,
             'vl_maximo' => 5,
             'tipo'=> 2,
@@ -284,7 +290,7 @@ class APISeeder extends Seeder
         DB::table('avaliacao.pergunta')->insert([
             'letra' => 'd',
             'descricao' => 'A promoção de equidade de raça e gênero está inserida na dimensão estratégica e nos ciclos de planejamento e orçamento. Como você avalia essa afirmação? Marque uma opção abaixo.',
-            'legenda' => 'Sendo 1: Discorda totalmente e 5: Concorda Totalmente',
+            'legenda' => 'Sendo 1: Discordo totalmente e 5: Concordo totalmente',
             'vl_minimo' => 1,
             'vl_maximo' => 5,
             'tipo'=> 2,
@@ -294,7 +300,7 @@ class APISeeder extends Seeder
         ]);
 
         DB::table('avaliacao.pergunta')->insert([
-            'letra' => 'd',
+            'letra' => 'x',
             'descricao' => 'De forma geral, como você avalia os compromissos institucionais e esforços existentes no sentido da introdução e manutenção de instrumentos afirmativos de inclusão e de mitigação das disparidades sociais já existentes? Dê uma nota de zero a dez em relação ao nível de compromisso institucional.',
             'legenda' => 'Sendo 1: Baixissimo compromisso e 10: Altíssimo compromisso',
             'vl_minimo' => 1,
@@ -305,28 +311,128 @@ class APISeeder extends Seeder
             'id_indicador' => 2,
         ]);
 
-        // RISCOS
-        DB::table('avaliacao.risco')->insert([
-            'vl_alto' => 11,
-            'vl_baixo' => 22,
-            'id_indicador' => 1,
-        ]);
-        DB::table('avaliacao.risco')->insert([
-            'vl_alto' => 11,
-            'vl_baixo' => 22,
-            'id_indicador' => 2,
-        ]);
-        /*
-        DB::table('avaliacao.risco')->insert([
-            'vl_alto' => 11,
-            'vl_baixo' => 22,
+
+        // PERGUNTAS PARA INDICADOR 3 ( Dimensão 2 indicador 1)
+        DB::table('avaliacao.pergunta')->insert([
+            'letra' => 'a',
+            'descricao' => 'Organizações governamentais ou não-governamentais (sociedade civil) associadas às agendas de segmentos específicos do público atendido têm papel formal ou meios de influência no processo de execução da oferta público sob foco. Como você avalia essa afirmação? Marque uma opção abaixo.',
+            'legenda' => 'Sendo 1: Discordo totalmente e 5: Concordo totalmente',
+            'vl_minimo' => 1,
+            'vl_maximo' => 5,
+            'tipo'=> 2,
+            'nao_se_aplica'=> false,
+            'inverter' => false,
             'id_indicador' => 3,
         ]);
-        DB::table('avaliacao.risco')->insert([
-            'vl_alto' => 13,
-            'vl_baixo' => 23,
+
+        DB::table('avaliacao.pergunta')->insert([
+            'letra' => 'b',
+            'descricao' => 'Essas organizações (tanto as governamentais quanto as não-governamentais), associadas às agendas de segmentos específicos, têm condições adequadas de participação e interferência nos processos de execução e são ouvidas tempestivamente na coordenação e gestão da oferta pública. Como você avalia essa afirmação? Marque uma opção abaixo.',
+            'legenda' => 'Sendo 1: Discordo totalmente e 5: Concordo totalmente',
+            'vl_minimo' => 1,
+            'vl_maximo' => 5,
+            'tipo'=> 2,
+            'nao_se_aplica'=> false,
+            'inverter' => false,
+            'id_indicador' => 3,
+        ]);
+
+        DB::table('avaliacao.pergunta')->insert([
+            'letra' => 'c',
+            'descricao' => 'Existem membros de segmentos específicos do público atendido (ex.: mulheres negras, indígenas, pessoas com deficiência, etc.) em posto de chefia e coordenação das ações governamentais no âmbito da execução dessa oferta pública? ',
+            'legenda' => 'Marque uma opção abaixo',
+            'vl_minimo' => 0,
+            'vl_maximo' => 5,
+            'tipo'=> 1,
+            'nao_se_aplica'=> false,
+            'inverter' => false,
+            'id_indicador' => 3,
+        ]);
+
+        DB::table('avaliacao.pergunta')->insert([
+            'letra' => 'd',
+            'descricao' => 'Em sua avaliação geral, a proporção de membros de segmentos específicos do público atendido (ex.: mulheres negras, indígenas, pessoas com deficiência, etc.) na equipe envolvida com a prestação dos serviços na linha de frente é semelhante à proporção desses grupos na população atendida? Marque uma opção abaixo.',
+            'legenda' => 'Sendo 1: Nada Semelhante e 5: Muito Semelhante',
+            'vl_minimo' => 1,
+            'vl_maximo' => 5,
+            'tipo'=> 2,
+            'nao_se_aplica'=> false,
+            'inverter' => false,
+            'id_indicador' => 3,
+        ]);
+        DB::table('avaliacao.pergunta')->insert([
+            'letra' => 'x',
+            'descricao' => 'CConsiderando a relevância de se levar em consideração os pontos de vistas de segmentos específicos do público atendido no processo de implementação, como você avalia a representação das pautas e interesses desses grupos via organizações governamentais ou da sociedade civil? Dê uma nota de zero a dez em relação ao nível de representação institucional de segmentos específicos do público atendido.',
+            'legenda' => 'Sendo 1: Baixissima representação e 10: Altíssima representação',
+            'vl_minimo' => 1,
+            'vl_maximo' => 10,
+            'tipo'=> 3,
+            'nao_se_aplica'=> false,
+            'inverter' => false,
+            'id_indicador' => 3,
+        ]);
+
+        // PERGUNTAS PARA INDICADOR 4 ( Dimensão 2 indicador 2)
+        DB::table('avaliacao.pergunta')->insert([
+            'letra' => 'a',
+            'descricao' => 'Existem mecanismos formais que garantam a adequada participação dos usuários na gestão, tomada de decisão e controle da oferta pública sob foco. Como você avalia essa afirmação? Marque uma opção abaixo.',
+            'legenda' => 'Sendo 1: Discordo totalmente e 5: Concordo totalmente',
+            'vl_minimo' => 1,
+            'vl_maximo' => 5,
+            'tipo'=> 2,
+            'nao_se_aplica'=> false,
+            'inverter' => false,
             'id_indicador' => 4,
-        ]);*/
+        ]);
+        DB::table('avaliacao.pergunta')->insert([
+            'letra' => 'b',
+            'descricao' => 'Existem incentivos ou facilitação (ex.: acesso, simplicidade, cota, apoio logístico ou financeiro, etc.) para o envolvimento e representação de usuários de segmentos específicos nesses espaços de participação social. Como você avalia essa afirmação? Marque uma opção abaixo.',
+            'legenda' => 'Sendo 1: Discordo totalmente e 5: Concordo totalmente',
+            'vl_minimo' => 1,
+            'vl_maximo' => 5,
+            'tipo'=> 2,
+            'nao_se_aplica'=> false,
+            'inverter' => false,
+            'id_indicador' => 4,
+        ]);
+        DB::table('avaliacao.pergunta')->insert([
+            'letra' => 'c',
+            'descricao' => 'Os órgãos responsáveis pela condução da oferta pública sob foco têm sensibilidade e compromisso com a escuta desses mecanismos de participação social. Como você avalia essa afirmação? Marque uma opção abaixo.',
+            'legenda' => 'Sendo 1: Discordo totalmente e 5: Concordo totalmente',
+            'vl_minimo' => 1,
+            'vl_maximo' => 5,
+            'tipo'=> 2,
+            'nao_se_aplica'=> false,
+            'inverter' => false,
+            'id_indicador' => 4,
+        ]);
+        DB::table('avaliacao.pergunta')->insert([
+            'letra' => 'd',
+            'descricao' => 'Há esforço sistemático de acompanhamento do atendimento das demandas oriundas dos canais de participação e consulta à população. Como você avalia essa afirmação? Marque uma opção abaixo.',
+            'legenda' => 'Sendo 1: Discordo totalmente e 5: Concordo totalmente',
+            'vl_minimo' => 1,
+            'vl_maximo' => 5,
+            'tipo'=> 2,
+            'nao_se_aplica'=> false,
+            'inverter' => false,
+            'id_indicador' => 4,
+        ]);
+        DB::table('avaliacao.pergunta')->insert([
+            'letra' => 'x',
+            'descricao' => 'Considerando a relevância do envolvimento direto de segmentos específicos do público atendido, como você avalia a influência dos canais de participação social existentes nas decisões sobre a gestão da oferta pública? Dê uma nota de zero a dez em relação ao nível de influência dos canais de participação social.',
+            'legenda' => 'Sendo 1: Baixissima influência e 10: Altíssima influência',
+            'vl_minimo' => 1,
+            'vl_maximo' => 10,
+            'tipo'=> 3,
+            'nao_se_aplica'=> false,
+            'inverter' => false,
+            'id_indicador' => 4,
+        ]);
+
+
+
+
+
         // AUTOR
         DB::table('avaliacao.autor')->insert([
             'nome' => 'Vienna City',
