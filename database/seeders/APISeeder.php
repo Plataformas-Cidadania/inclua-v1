@@ -23,35 +23,35 @@ class APISeeder extends Seeder
             'vl_baixo' => 43,
             'vl_alto' => 23
         ]);
-        DB::table('avaliacao.dimensao')->insert([
-            'numero' => 2,
-            'titulo' => 'Participação social e representação institucional',
-            'descricao' => 'Aponta para a existência e operação de mecanismos de participação social e para a representação institucional de pontos de vistas e experiências de segmentos específicos do público nos processos de implementação, seja via organizações governamentais, não-governamentais, ou por meio do envolvimento direto de pessoas e grupos historicamente em desvantagem nos processos institucionais de decisão, definição de metas, estratégias, etc.',
-            'vl_baixo' => 44,
-            'vl_alto' => 25
-        ]);
-        /*
-        DB::table('avaliacao.dimensao')->insert([
-            'numero' => 3,
-            'titulo' => 'Comunicação, acesso à informação e mobilização',
-            'descricao' => 'Coloca em questão os processos de comunicação, divulgação e acesso à informação, visando a mobilização das usuárias do programa/serviço. O foco privilegia os esforços de comunicação e disponibilização de informação relevante para segmentos historicamente em desvantagem, por meio de linguagem adequada e adaptada, reduzindo custos de aprendizado e ampliando as possibilidades de engajamento do público a ser atendido.',
-            'vl_baixo' => 34,
-            'vl_alto' => 20
-        ]);
-        DB::table('avaliacao.dimensao')->insert([
-            'numero' => 4,
-            'titulo' => 'Coloca em questão os processos de comunicação, divulgação e acesso à informação, visando a mobilização das usuárias do programa/serviço. O foco privilegia os esforços de comunicação e disponibilização de informação relevante para segmentos historicamente em desvantagem, por meio de linguagem adequada e adaptada, reduzindo custos de aprendizado e ampliando as possibilidades de engajamento do público a ser atendido.',
-            'descricao' => 'Chama atenção para os momentos e experiências de interação entre as usuárias e os serviços / programas. O foco aqui se dá sobre as exigências (documentação, custos de deslocamento, condutas, etc.) que são impostas sobre as usuárias para o envolvimento com a oferta pública, sobre as normas e instrumentos que medeiam a relação entre o público e os serviços, e sobre os comportamentos e as práticas das agentes públicas frente às atendidas (sensibilidade, compromisso, valores e julgamentos morais).',
-            'vl_baixo' => 84,
-            'vl_alto' => 50
-        ]);
-        DB::table('avaliacao.dimensao')->insert([
-            'numero' => 5,
-            'titulo' => 'Monitoramento, avaliação e retroalimentação',
-            'descricao' => 'Chama atenção para os processos de monitoramento da execução e avaliação dos resultados e efeitos da política, serviço ou programa em questão. O foco é na produção e uso (retroalimentação) de informações sobre o atendimento a públicos específicos e sobre os efeitos (não-pretendidos) derivados do envolvimento com as ofertas públicas, considerando também os esforços de incorporação de pontos de vistas e experiência de grupos historicamente em desvantagem na produção e análise dos dados.',
-            'vl_baixo' => 62,
-            'vl_alto' => 36
-        ]);*/
+        /* DB::table('avaliacao.dimensao')->insert([
+             'numero' => 2,
+             'titulo' => 'Participação social e representação institucional',
+             'descricao' => 'Aponta para a existência e operação de mecanismos de participação social e para a representação institucional de pontos de vistas e experiências de segmentos específicos do público nos processos de implementação, seja via organizações governamentais, não-governamentais, ou por meio do envolvimento direto de pessoas e grupos historicamente em desvantagem nos processos institucionais de decisão, definição de metas, estratégias, etc.',
+             'vl_baixo' => 44,
+             'vl_alto' => 25
+         ]);
+
+         DB::table('avaliacao.dimensao')->insert([
+             'numero' => 3,
+             'titulo' => 'Comunicação, acesso à informação e mobilização',
+             'descricao' => 'Coloca em questão os processos de comunicação, divulgação e acesso à informação, visando a mobilização das usuárias do programa/serviço. O foco privilegia os esforços de comunicação e disponibilização de informação relevante para segmentos historicamente em desvantagem, por meio de linguagem adequada e adaptada, reduzindo custos de aprendizado e ampliando as possibilidades de engajamento do público a ser atendido.',
+             'vl_baixo' => 34,
+             'vl_alto' => 20
+         ]);
+         DB::table('avaliacao.dimensao')->insert([
+             'numero' => 4,
+             'titulo' => 'Coloca em questão os processos de comunicação, divulgação e acesso à informação, visando a mobilização das usuárias do programa/serviço. O foco privilegia os esforços de comunicação e disponibilização de informação relevante para segmentos historicamente em desvantagem, por meio de linguagem adequada e adaptada, reduzindo custos de aprendizado e ampliando as possibilidades de engajamento do público a ser atendido.',
+             'descricao' => 'Chama atenção para os momentos e experiências de interação entre as usuárias e os serviços / programas. O foco aqui se dá sobre as exigências (documentação, custos de deslocamento, condutas, etc.) que são impostas sobre as usuárias para o envolvimento com a oferta pública, sobre as normas e instrumentos que medeiam a relação entre o público e os serviços, e sobre os comportamentos e as práticas das agentes públicas frente às atendidas (sensibilidade, compromisso, valores e julgamentos morais).',
+             'vl_baixo' => 84,
+             'vl_alto' => 50
+         ]);
+         DB::table('avaliacao.dimensao')->insert([
+             'numero' => 5,
+             'titulo' => 'Monitoramento, avaliação e retroalimentação',
+             'descricao' => 'Chama atenção para os processos de monitoramento da execução e avaliação dos resultados e efeitos da política, serviço ou programa em questão. O foco é na produção e uso (retroalimentação) de informações sobre o atendimento a públicos específicos e sobre os efeitos (não-pretendidos) derivados do envolvimento com as ofertas públicas, considerando também os esforços de incorporação de pontos de vistas e experiência de grupos historicamente em desvantagem na produção e análise dos dados.',
+             'vl_baixo' => 62,
+             'vl_alto' => 36
+         ]);*/
 
         // INDICADORES
         DB::table('avaliacao.indicador')->insert([
