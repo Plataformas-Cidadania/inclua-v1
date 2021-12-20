@@ -27,22 +27,32 @@ const Pergunta = () => {
                                     <p>{key+1} - {item.descricao}</p>
                                     <br/>
                                     <div className="row">
-                                        <div className="col-md-3 text-center">
+                                        <div className="col-md-1 text-center">&nbsp;</div>
+                                        <div className="col-md-2 text-center">
+                                            <i className="far fa-tired fa-3x"/><br/>
+                                            <p>Detestei</p>
+                                        </div>
+                                        <div className="col-md-2 text-center">
                                             <i className="far fa-frown fa-3x"/><br/>
                                             <p>Não gostei</p>
                                         </div>
-                                        <div className="col-md-3 text-center">
+                                        <div className="col-md-2 text-center">
                                             <i className="far fa-meh fa-3x"/><br/>
                                             <p>Indiferente</p>
                                         </div>
-                                        <div className="col-md-3 text-center">
+                                        <div className="col-md-2 text-center">
                                             <i className="far fa-smile fa-3x"/><br/>
                                             <p>Gostei</p>
                                         </div>
-                                        <div className="col-md-3 text-center">
-                                            <i className="far fa-heart fa-3x"/><br/>
-                                            <p>Amei</p>
+                                        <div className="col-md-2 text-center">
+                                            <i className="far fa-grin-hearts fa-3x"/><br/>
+                                            <p>Adorei</p>
                                         </div>
+
+                                        <textarea id="story" name="story" rows="5" cols="33">
+                                        Deixe um comentário
+                                        </textarea>
+
                                     </div>
                                 </div>
                             </div>

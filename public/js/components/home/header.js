@@ -1,6 +1,13 @@
 const Header = () => {
   const context = React.useContext(HomeContext);
   console.log(localStorage.getItem('id_diagnostico_completo'));
+
+  const ClicklocalStorage = key => {
+    localStorage.removeItem('id_diagnostico_completo');
+    localStorage.removeItem('ids_dimensoes');
+    localStorage.removeItem('respostas_diagnostico_completo');
+  };
+
   return /*#__PURE__*/React.createElement("div", {
     className: "container"
   }, /*#__PURE__*/React.createElement("div", {
@@ -129,7 +136,22 @@ const Header = () => {
     width: "75%"
   })), /*#__PURE__*/React.createElement("p", {
     className: "mt-2"
-  }, "Recursos"))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+  }, "Recursos"))), /*#__PURE__*/React.createElement("div", {
+    className: "col text-center " + (localStorage.getItem('id_diagnostico_completo') ? '' : 'opacity-5')
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "btn-icon btn-icon-hover cursor",
+    style: {
+      top: 0
+    },
+    onClick: () => ClicklocalStorage()
+  }, /*#__PURE__*/React.createElement("img", {
+    src: "img/icon-limpar.png",
+    alt: "Parcial",
+    title: "Parcial",
+    width: "75%"
+  })), /*#__PURE__*/React.createElement("p", {
+    className: "mt-2"
+  }, "Limpar")), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
     className: "float-start cursor",
     style: {
       position: 'absolute',

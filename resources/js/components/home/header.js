@@ -5,6 +5,12 @@ const Header = () => {
     console.log(localStorage.getItem('id_diagnostico_completo'));
 
 
+    const ClicklocalStorage = (key) => {
+        localStorage.removeItem('id_diagnostico_completo')
+        localStorage.removeItem('ids_dimensoes')
+        localStorage.removeItem('respostas_diagnostico_completo')
+    }
+
     return (
         <div className="container">
             <div className="row">
@@ -74,7 +80,6 @@ const Header = () => {
                         </div>
                         <p className="mt-2">Resultado</p>
                     </a>
-
                 </div>
                 {/*<div className="col text-center  opacity-5" >
                     <div className="btn-icon btn-icon-hover">
@@ -92,6 +97,13 @@ const Header = () => {
                         </div>
                         <p className="mt-2">Recursos</p>
                     </a>
+                </div>
+
+                <div className={"col text-center " + (localStorage.getItem('id_diagnostico_completo') ? '' : 'opacity-5')}>
+                    <div className="btn-icon btn-icon-hover cursor" style={{top: 0}}  onClick={() => ClicklocalStorage()}>
+                        <img src="img/icon-limpar.png" alt="Parcial" title="Parcial" width="75%"/>
+                    </div>
+                    <p className="mt-2">Limpar</p>
                 </div>
 
                 <div>
