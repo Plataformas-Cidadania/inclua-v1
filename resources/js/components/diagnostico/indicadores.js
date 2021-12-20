@@ -108,9 +108,10 @@ const Indicadores = () => {
                                     </div>
                                 ) : null
                             }
+
                             {
                                 context.dimensao.indicadores.length > indicador ? (
-                                    <div className="d-grid gap-2 d-md-flex justify-content-md-end float-end">
+                                    <div className="d-grid gap-2 d-md-flex justify-content-md-end float-end ms-2">
                                         <div className="dorder-container">
                                             <button className={"btn btn-theme " + bgColorPx} type="button"
                                                 /*onClick={() => context.setIndicador(context.dimensao.indicadores[indicador])}*/>
@@ -120,6 +121,7 @@ const Indicadores = () => {
                                     </div>
                                 ) : null
                             }
+
                             {
                                 context.dimensao.indicadores.length > indicador ? (
                                     <div className="d-grid gap-2 d-md-flex justify-content-md-end float-end">

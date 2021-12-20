@@ -113,7 +113,7 @@ const Indicadores = () => {
   }, /*#__PURE__*/React.createElement("i", {
     className: "fas fa-angle-left"
   }), " indicador ", dimensao, ".", indicador - 1))) : null, context.dimensao.indicadores.length > indicador ? /*#__PURE__*/React.createElement("div", {
-    className: "d-grid gap-2 d-md-flex justify-content-md-end float-end"
+    className: "d-grid gap-2 d-md-flex justify-content-md-end float-end ms-2"
   }, /*#__PURE__*/React.createElement("div", {
     className: "dorder-container"
   }, /*#__PURE__*/React.createElement("button", {
