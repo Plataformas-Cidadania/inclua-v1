@@ -36,10 +36,6 @@ const Indicadores = () => {
   };
   bgColor = bgColor[context.dimensao.numero];
   bgColorPx = bgColorPx[context.dimensao.numero + 1];
-  console.log('//////');
-  console.log(context.dimensao.numero + 1);
-  console.log(bgColorPx);
-  console.log('//////');
   return /*#__PURE__*/React.createElement("div", {
     className: "container"
   }, /*#__PURE__*/React.createElement("div", {
@@ -103,7 +99,7 @@ const Indicadores = () => {
   }))), /*#__PURE__*/React.createElement("div", {
     className: "col-8 col-8"
   }, context.dimensao.indicadores.length <= indicador ? /*#__PURE__*/React.createElement("div", {
-    className: "d-grid gap-2 d-md-flex justify-content-md-end"
+    className: "d-grid gap-2 d-md-flex justify-content-md-end float-end"
   }, /*#__PURE__*/React.createElement("div", {
     className: "dorder-container"
   }, /*#__PURE__*/React.createElement("button", {
@@ -120,8 +116,9 @@ const Indicadores = () => {
     className: "btn btn-theme " + bgColorPx,
     type: "button"
     /*onClick={() => context.setIndicador(context.dimensao.indicadores[indicador])}*/
-
-  }, "indicador ", dimensao + 1, " ", /*#__PURE__*/React.createElement("i", {
+    ,
+    onClick: () => context.setDimensao(context.dimensao + 1)
+  }, "dimens\xE3o ", dimensao + 1, " ", /*#__PURE__*/React.createElement("i", {
     className: "fas fa-angle-right"
   })))) : null, context.dimensao.indicadores.length > indicador ? /*#__PURE__*/React.createElement("div", {
     className: "d-grid gap-2 d-md-flex justify-content-md-end float-end"
