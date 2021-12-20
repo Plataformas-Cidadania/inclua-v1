@@ -316,7 +316,7 @@ class APISeeder extends Seeder
             'vl_baixo' => 22,
             'id_indicador' => 2,
         ]);
-        DB::table('avaliacao.risco')->insert([
+        /*DB::table('avaliacao.risco')->insert([
             'vl_alto' => 11,
             'vl_baixo' => 22,
             'id_indicador' => 3, // indicador 2.1
@@ -325,7 +325,7 @@ class APISeeder extends Seeder
             'vl_alto' => 13,
             'vl_baixo' => 23,
             'id_indicador' => 4, // indicador 2.2
-        ]);
+        ]);*/
         // AUTOR
         DB::table('avaliacao.autor')->insert([
             'nome' => 'Jorge',
@@ -455,14 +455,14 @@ class APISeeder extends Seeder
             'id_indicador' => 2,
             'id_recurso' => 3,
         ]);
-        DB::table('avaliacao.indicacao')->insert([
+        /*DB::table('avaliacao.indicacao')->insert([
             'id_indicador' => 3,
             'id_recurso' => 2,
         ]);
         DB::table('avaliacao.indicacao')->insert([
             'id_indicador' => 4,
             'id_recurso' => 1,
-        ]);
+        ]);*/
 
     }
 }
