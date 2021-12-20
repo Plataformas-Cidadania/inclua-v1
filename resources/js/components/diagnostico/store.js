@@ -11,6 +11,7 @@ const DiagnosticoProvider = ({children}) => {
     const [indicador, setIndicador] = useState(1);
     const [dimensoesRespondidas, setDimensoesRespondidas] = useState([]);
     const [respostas, setRespostas] = useState([]);
+    const [alertFixed, setAlertFixed] = useState(0);
 
     /*state = {
         tipo: null,
@@ -160,7 +161,8 @@ const DiagnosticoProvider = ({children}) => {
 
     const enviarRespostas = async () => {
         if(!validarRespostas()){
-            alert("Responda a todas as perguntas");
+            //alert("Responda a todas as perguntas");
+            setAlertFixed(1);
             return false;
         }
         localStorage.setItem('respostas_diagnostico_completo', JSON.stringify(respostas));
@@ -215,19 +217,26 @@ const DiagnosticoProvider = ({children}) => {
     }
 
     return (
-        <DiagnosticoContext.Provider value={{
-            tipo, setTipo,
-            dimensao, setDimensao,
-            dimensoes,
-            dimensoesRespondidas, setDimensoesRespondidas,
-            indicador, setIndicador,
-            /*verificarResposta,*/
-            setResposta,
-            getResposta,
-            validarRespostas,
-            enviarRespostas
-        }}>
-            {children}
-        </DiagnosticoContext.Provider>
+        <div>
+            <div className="alert alert-success alert-fixed" role="alert" style={{display: alertFixed ? '' : 'none'}}>
+                <a onClick ={() => setAlertFixed(0)} ><i className="fas fa-times float-end cursor"/></a>
+                <i className="fas fa-exclamation-triangle"/>
+                Responda a todas as perguntas
+            </div>
+            <DiagnosticoContext.Provider value={{
+                tipo, setTipo,
+                dimensao, setDimensao,
+                dimensoes,
+                dimensoesRespondidas, setDimensoesRespondidas,
+                indicador, setIndicador,
+                /*verificarResposta,*/
+                setResposta,
+                getResposta,
+                validarRespostas,
+                enviarRespostas
+            }}>
+                {children}
+            </DiagnosticoContext.Provider>
+        </div>
     );
 };

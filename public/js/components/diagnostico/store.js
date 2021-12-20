@@ -15,11 +15,12 @@ const DiagnosticoProvider = ({
   const [indicador, setIndicador] = useState(1);
   const [dimensoesRespondidas, setDimensoesRespondidas] = useState([]);
   const [respostas, setRespostas] = useState([]);
+  const [alertFixed, setAlertFixed] = useState(0);
   /*state = {
       tipo: null,
       dimensoes: [],
   }
-    setState({tipo: 1}, function(){
+   setState({tipo: 1}, function(){
       console.log(this.state.tipo);
   })*/
 
@@ -62,7 +63,7 @@ const DiagnosticoProvider = ({
       if(pergunta.length > 0){
           //console.log('resposta: ', pergunta[0].resposta, 'alternativa: ', value, 'marcado: ', pergunta[0].resposta === value);
           //console.log('=====================================================');
-            return pergunta[0].resposta === value;
+           return pergunta[0].resposta === value;
       }
       //console.log('=====================================================');
       return false
@@ -170,7 +171,8 @@ const DiagnosticoProvider = ({
 
   const enviarRespostas = async () => {
     if (!validarRespostas()) {
-      alert("Responda a todas as perguntas");
+      //alert("Responda a todas as perguntas");
+      setAlertFixed(1);
       return false;
     }
 
@@ -231,7 +233,19 @@ const DiagnosticoProvider = ({
     return dimensoes;
   };
 
-  return /*#__PURE__*/React.createElement(DiagnosticoContext.Provider, {
+  return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: "alert alert-success alert-fixed",
+    role: "alert",
+    style: {
+      display: alertFixed ? '' : 'none'
+    }
+  }, /*#__PURE__*/React.createElement("a", {
+    onClick: () => setAlertFixed(0)
+  }, /*#__PURE__*/React.createElement("i", {
+    className: "fas fa-times float-end cursor"
+  })), /*#__PURE__*/React.createElement("i", {
+    className: "fas fa-exclamation-triangle"
+  }), "Responda a todas as perguntas"), /*#__PURE__*/React.createElement(DiagnosticoContext.Provider, {
     value: {
       tipo,
       setTipo,
@@ -249,5 +263,5 @@ const DiagnosticoProvider = ({
       validarRespostas,
       enviarRespostas
     }
-  }, children);
+  }, children));
 };
