@@ -316,22 +316,23 @@ class APISeeder extends Seeder
             'vl_baixo' => 22,
             'id_indicador' => 2,
         ]);
+        /*
         DB::table('avaliacao.risco')->insert([
             'vl_alto' => 11,
             'vl_baixo' => 22,
-            'id_indicador' => 3, // indicador 2.1
+            'id_indicador' => 3,
         ]);
         DB::table('avaliacao.risco')->insert([
             'vl_alto' => 13,
             'vl_baixo' => 23,
-            'id_indicador' => 4, // indicador 2.2
-        ]);
+            'id_indicador' => 4,
+        ]);*/
         // AUTOR
         DB::table('avaliacao.autor')->insert([
-            'nome' => 'Jorge',
+            'nome' => 'Vienna City',
         ]);
         DB::table('avaliacao.autor')->insert([
-            'nome' => 'Maycon',
+            'nome' => 'OPAS',
         ]);
         // FORMATO_RECURSO
         DB::table('avaliacao.formato_recurso')->insert([
@@ -368,17 +369,17 @@ class APISeeder extends Seeder
             'status' => 1
         ]);
         DB::table('avaliacao.recurso')->insert([
-            'nome' => 'Recurso 2',
+            'nome' => 'Guia para Implementação das Prioridades Transversais na OPAS/OMS do Brasil: direitos humanos, equidade, gênero e etnicidade e raça',
             'ultimo_acesso' => Carbon::parse('2000-01-01'),
-            'esfera' => 'Area de atuacao 2',
+            'esfera' => 'Brasil',
             'id_tipo_recurso' => 1,
             'id_formato' => 2,
             'status' => 1
         ]);
         DB::table('avaliacao.recurso')->insert([
-            'nome' => 'Recurso 3',
+            'nome' => 'Equidade de gênero em saúde',
             'ultimo_acesso' => Carbon::parse('2000-01-01'),
-            'esfera' => 'Area de atuacao 2',
+            'esfera' => 'Brasil',
             'id_tipo_recurso' => 2,
             'id_formato' => 1,
             'status' => 1
@@ -409,7 +410,7 @@ class APISeeder extends Seeder
         ]);
         DB::table('avaliacao.link')->insert([
             'uri' => 'https://www.oecd.org/gov/toolkit-for-mainstreaming-and-implementing-gender-equality.pdf	',
-            'idioma' => 'Inglês',
+            'idioma' => 'Português',
             'id_recurso' => 2,
         ]);
         DB::table('avaliacao.link')->insert([
@@ -425,10 +426,6 @@ class APISeeder extends Seeder
         DB::table('avaliacao.autoria')->insert([
             'id_autor' => 1,
             'id_recurso' => 2,
-        ]);
-        DB::table('avaliacao.autoria')->insert([
-            'id_autor' => 2,
-            'id_recurso' => 1,
         ]);
         DB::table('avaliacao.autoria')->insert([
             'id_autor' => 2,
@@ -455,14 +452,7 @@ class APISeeder extends Seeder
             'id_indicador' => 2,
             'id_recurso' => 3,
         ]);
-        DB::table('avaliacao.indicacao')->insert([
-            'id_indicador' => 3,
-            'id_recurso' => 2,
-        ]);
-        DB::table('avaliacao.indicacao')->insert([
-            'id_indicador' => 4,
-            'id_recurso' => 1,
-        ]);
+
 
     }
 }
