@@ -29,7 +29,7 @@ const Options = props => {
     className: "box-items bg-lgt"
   }, /*#__PURE__*/React.createElement("p", {
     className: "mb-3"
-  }, /*#__PURE__*/React.createElement("strong", null, "(", props.id, ")P", context.dimensao.numero, ".", context.indicador.numero, props.letra), " ", props.descricao), /*#__PURE__*/React.createElement("ul", {
+  }, /*#__PURE__*/React.createElement("strong", null, "(", props.id, ")P", context.dimensao.numero, ".", context.indicador.numero, props.letra), " ", props.descricao), /*#__PURE__*/React.createElement("p", null, props.legenda), /*#__PURE__*/React.createElement("ul", {
     className: "radio"
   }, props.naoSeAplica ? /*#__PURE__*/React.createElement("li", {
     onClick: () => selectResposta(null)

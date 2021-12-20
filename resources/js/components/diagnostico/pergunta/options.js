@@ -6,6 +6,8 @@ const Options = (props) => {
     const [showSubPerguntas, setShowSubPerguntas] = useState(false);
     const [resposta, setResposta] =useState(props.resposta);
 
+
+
     useEffect(() => {
         console.log('======================',props);
         setShowSubPerguntas(props.resposta === props.maximo);
@@ -28,7 +30,7 @@ const Options = (props) => {
     return (
         <div className="box-items bg-lgt">
             <p className="mb-3"><strong>({props.id})P{context.dimensao.numero}.{context.indicador.numero}{props.letra}</strong> {props.descricao}</p>
-
+            <p>{props.legenda}</p>
             <ul className="radio">
                 {
                     (props.naoSeAplica) ? (

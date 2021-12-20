@@ -12,7 +12,7 @@ const Pergunta = (props) => {
             letra={props.letra}
             minimo={props.minimo}
             maximo={props.maximo}
-            legenda={props.titulo}
+            legenda={props.legenda}
             inverter={props.inverter}
             naoSeAplica={props.naoSeAplica}
             resposta={props.resposta}
@@ -25,7 +25,7 @@ const Pergunta = (props) => {
             letra={props.letra}
             minimo={props.minimo}
             maximo={props.maximo}
-            legenda={props.titulo}
+            legenda={props.legenda}
             inverter={props.inverter}
             naoSeAplica={props.naoSeAplica}
             resposta={props.resposta}
@@ -38,7 +38,7 @@ const Pergunta = (props) => {
             letra={props.letra}
             minimo={props.minimo}
             maximo={props.maximo}
-            legenda={props.titulo}
+            legenda={props.legenda}
             inverter={props.inverter}
             naoSeAplica={props.naoSeAplica}
             resposta={props.resposta}

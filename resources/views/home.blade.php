@@ -55,8 +55,11 @@
                 <h2 class="number-circle bg-lgt2">1</h2>
             </div>
             <div class="col-md-6">
-                <h3>Diagnóstico</h3>
-                <p>O diagnóstico visa identificar e avaliar riscos de desatenção, tratamento inadequado e exclusão de segmentos específicos do público atendido. Muitas vezes, esses riscos não são suficientemente bem conhecidos.</p>
+                <h3>{{$text1->titulo}}</h3>
+                <p>{{$text1->descricao}}</p>
+                <a href="diagnostico">
+                    <p>Ir para o diagnóstico <i class="fas fa-angle-right" ></i></p>
+                </a>
             </div>
         </div>
 
@@ -73,8 +76,8 @@
                 <h2 class="number-circle bg-lgt2">2</h2>
             </div>
             <div class="col-md-6">
-                <h3>Diagnóstico</h3>
-                <p>O diagnóstico visa identificar e avaliar riscos de desatenção, tratamento inadequado e exclusão de segmentos específicos do público atendido. Muitas vezes, esses riscos não são suficientemente bem conhecidos.</p>
+                <h3>{{$text2->titulo}}</h3>
+                <p>{{$text2->descricao}}</p>
             </div>
             <div class="col-md-3 text-center">
                 <img src="img/p2.png" alt="" title="" width="70%">
@@ -97,8 +100,8 @@
                 <h2 class="number-circle bg-lgt2">3</h2>
             </div>
             <div class="col-md-6">
-                <h3>Diagnóstico</h3>
-                <p>O diagnóstico visa identificar e avaliar riscos de desatenção, tratamento inadequado e exclusão de segmentos específicos do público atendido. Muitas vezes, esses riscos não são suficientemente bem conhecidos.</p>
+                <h3>{{$text3->titulo}}</h3>
+                <p>{{$text3->descricao}}</p>
             </div>
         </div>
     </div>
