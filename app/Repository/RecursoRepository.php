@@ -6,6 +6,7 @@ use App\Models\Autoria;
 use App\Models\Indicador;
 use App\Models\Link;
 use App\Models\Recurso;
+use App\Models\TipoRecurso;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\JsonResponse;
 use function PHPUnit\Framework\isEmpty;
@@ -47,7 +48,7 @@ class RecursoRepository extends BaseRepository
      */
     public function getAllRecursoPorNomeTipoRecurso($nome_tipo_recurso)
     {
-        $res = TipoRecurso::where('nome', 'like', $nome_tipo_recurso)->with('recurso')->get();
+        $res = TipoRecurso::where('nome', 'like', $nome_tipo_recurso)->with('recursos')->get();
 
         if (!$res || $res->isEmpty()) throw new \Illuminate\Database\Eloquent\ModelNotFoundException;
         else return $res;

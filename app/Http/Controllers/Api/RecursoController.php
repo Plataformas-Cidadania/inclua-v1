@@ -57,7 +57,7 @@ class RecursoController extends Controller
      *
      * @return JsonResponse
      */
-    public function getAllRecursoPorNomeTipoRecurso($nome_tipo_recurso): JsonResponse
+    public function getAllRecursoPorNomeTipoRecurso($nome_tipo_recurso)
     {
         try {
             $res = $this->repo->getAllRecursoPorNomeTipoRecurso($nome_tipo_recurso);
