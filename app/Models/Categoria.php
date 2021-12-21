@@ -34,8 +34,8 @@ class Categoria extends Model
 		'nome'
 	];
 
-	public function recurso_categoria()
+	public function categorizacao()
 	{
-		return $this->hasMany(RecursoCategoria::class, 'id_categoria');
+		return $this->hasMany(Categorizacao::class, 'id_categoria');
 	}
 }
