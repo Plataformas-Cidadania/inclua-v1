@@ -12467,6 +12467,12 @@ figcaption {
   line-height: 80px;
 }
 
+.alert-fixed {
+  position: fixed;
+  margin: 5%;
+  width: 90%;
+}
+
 /*/////////*/
 /*.thumbs {
     width: 100%;

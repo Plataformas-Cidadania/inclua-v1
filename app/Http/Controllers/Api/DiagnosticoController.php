@@ -68,12 +68,12 @@ class DiagnosticoController extends Controller
                 $range = $soma_maximo - $soma_minimo;
                 $rangeAlto = $indicador->vl_alto - $soma_minimo;
                 $rangeMedio = $indicador->vl_baixo - $indicador->vl_alto;
-                $rangeBaixo = $indicador->vl_baixo - $soma_maximo;
+                $rangeBaixo = $soma_maximo  - $indicador->vl_baixo;
 
                 $percAlto = $rangeAlto * 100/$range;
                 $percMedio = $rangeMedio * 100/$range;
                 $percBaixo = $rangeBaixo * 100/$range;
-
+                
                 $risco='';
                 if ($pontuacao_indicador <= $indicador->vl_alto) {
                     $risco = 'Risco alto';

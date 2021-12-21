@@ -1,4 +1,3 @@
-
 const Paginate = (props) => {
 
     const {useState, useEffect} = React;
@@ -117,3 +116,4 @@ const Paginate = (props) => {
 
     return pagination;
 };
+

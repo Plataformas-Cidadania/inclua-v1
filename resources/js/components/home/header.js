@@ -2,8 +2,7 @@ const Header = () => {
 
     const context = React.useContext(HomeContext);
 
-    console.log(localStorage.getItem('id_diagnostico_completo'));
-
+    //console.log(localStorage.getItem('id_diagnostico_completo'));
 
     const ClicklocalStorage = (key) => {
         localStorage.removeItem('id_diagnostico_completo')
@@ -59,16 +58,20 @@ const Header = () => {
                 </div>
 
                 <div className="col text-center cursor" >
-                    <div className="btn-icon btn-icon-hover" style={{top: 0}}>
-                        <img src="img/icon-completo.png" alt="Completo" title="Completo" width="75%"/>
-                    </div>
-                    <p className="mt-2">Completo</p>
+                    <a href="diagnostico">
+                        <div className="btn-icon btn-icon-hover" style={{top: 0}}>
+                            <img src="img/icon-completo.png" alt="Completo" title="Completo" width="75%"/>
+                        </div>
+                        <p className="mt-2">Completo</p>
+                    </a>
                 </div>
                 <div className="col text-center cursor" >
-                    <div className="btn-icon btn-icon-hover" style={{top: 0}}>
-                        <img src="img/icon-parcial.png" alt="Parcial" title="Parcial" width="75%"/>
-                    </div>
-                    <p className="mt-2">Parcial</p>
+                    <a href="diagnostico">
+                        <div className="btn-icon btn-icon-hover" style={{top: 0}}>
+                            <img src="img/icon-parcial.png" alt="Parcial" title="Parcial" width="75%"/>
+                        </div>
+                        <p className="mt-2">Parcial</p>
+                    </a>
                 </div>
                 <div className={"col text-center " + (localStorage.getItem('id_diagnostico_completo') ? '' : 'opacity-5')} >
                     <a

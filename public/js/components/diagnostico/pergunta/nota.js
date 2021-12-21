@@ -55,7 +55,7 @@ const Nota = props => {
     className: "box-items bg-lgt"
   }, /*#__PURE__*/React.createElement("p", {
     className: "mb-3"
-  }, /*#__PURE__*/React.createElement("strong", null, "(", props.id, ")P", context.dimensao.numero, ".", context.indicador.numero, props.letra), " ", props.descricao), props.naoSeAplica ? /*#__PURE__*/React.createElement("li", {
+  }, /*#__PURE__*/React.createElement("strong", null, "(", props.id, ")P", context.dimensao.numero, ".", context.indicador.numero, props.letra), " ", props.descricao), /*#__PURE__*/React.createElement("p", null, props.legenda), props.naoSeAplica ? /*#__PURE__*/React.createElement("li", {
     onClick: () => selectResposta(null)
   }, /*#__PURE__*/React.createElement("div", {
     className: resposta === null ? props.bgColor : ''
