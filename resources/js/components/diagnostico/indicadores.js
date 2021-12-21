@@ -92,7 +92,7 @@ const Indicadores = () => {
                         <div className="col-8 col-8">
 
                             {
-                                context.dimensoes.length > dimensao ? (
+                                context.dimensoes.length > dimensao && context.dimensao.indicadores.length <= indicador ? (
                                     <div className="d-grid gap-2 d-md-flex justify-content-md-end float-end ms-2">
                                         <div className="dorder-container">
                                             <button className={"btn btn-theme " + bgColorPx} type="button"
@@ -107,7 +107,7 @@ const Indicadores = () => {
                             }
 
                             {
-                                context.dimensoes.length <= dimensao ? (
+                                context.dimensoes.length <= dimensao && false ? (
                                     <div className="d-grid gap-2 d-md-flex justify-content-md-end float-end ms-2">
                                         <div className="dorder-container">
                                             <button className={"btn btn-theme " + bgColorPx} type="button"
