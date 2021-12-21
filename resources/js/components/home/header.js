@@ -1,10 +1,12 @@
 const Header = () => {
 
+    const {useState, useEffect} = React;
     const context = React.useContext(HomeContext);
 
-    //console.log(localStorage.getItem('id_diagnostico_completo'));
+    const [varLocalStorage, setlocalStorage] = useState(localStorage.getItem('id_diagnostico_completo'));
 
     const ClicklocalStorage = (key) => {
+        setlocalStorage();
         localStorage.removeItem('id_diagnostico_completo')
         localStorage.removeItem('ids_dimensoes')
         localStorage.removeItem('respostas_diagnostico_completo')
@@ -73,10 +75,10 @@ const Header = () => {
                         <p className="mt-2">Parcial</p>
                     </a>
                 </div>
-                <div className={"col text-center " + (localStorage.getItem('id_diagnostico_completo') ? '' : 'opacity-5')} >
+                <div className={"col text-center " + (varLocalStorage ? '' : 'opacity-5')} >
                     <a
-                        href={(localStorage.getItem('id_diagnostico_completo') ? 'resultado' : '#')}
-                       style={{cursor: (localStorage.getItem('id_diagnostico_completo') ? 'pointer' : 'auto')}}
+                        href={(varLocalStorage ? 'resultado' : '#')}
+                       style={{cursor: (varLocalStorage ? 'pointer' : 'auto')}}
                     >
                         <div className="btn-icon btn-icon-hover" style={{top: 0}}>
                             <img src="img/icon-analise.png" alt="Resultado" title="Resultado" width="75%"/>
@@ -90,10 +92,10 @@ const Header = () => {
                     </div>
                     <p className="mt-2">Análise</p>
                 </div>*/}
-                <div className={"col text-center " + (localStorage.getItem('id_diagnostico_completo') ? '' : 'opacity-5')}>
+                <div className={"col text-center " + (varLocalStorage ? '' : 'opacity-5')}>
                     <a
-                        href={(localStorage.getItem('id_diagnostico_completo') ? 'resultado' : '#')}
-                        style={{cursor: (localStorage.getItem('id_diagnostico_completo') ? 'pointer' : 'auto')}}
+                        href={(varLocalStorage ? 'resultado' : '#')}
+                        style={{cursor: (varLocalStorage ? 'pointer' : 'auto')}}
                     >
                         <div className="btn-icon btn-icon-hover" style={{top: 0}}>
                             <img src="img/icon-recurso.png" alt="Recursos" title="Recursos" width="75%"/>
@@ -102,7 +104,7 @@ const Header = () => {
                     </a>
                 </div>
 
-                <div className={"col text-center " + (localStorage.getItem('id_diagnostico_completo') ? '' : 'opacity-5')}>
+                <div className={"col text-center " + (varLocalStorage ? '' : 'opacity-5')}>
                     <div className="btn-icon btn-icon-hover cursor" style={{top: 0}}  onClick={() => ClicklocalStorage()}>
                         <img src="img/icon-limpar.png" alt="Parcial" title="Parcial" width="75%"/>
                     </div>

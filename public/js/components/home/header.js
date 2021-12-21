@@ -1,7 +1,13 @@
 const Header = () => {
-  const context = React.useContext(HomeContext); //console.log(localStorage.getItem('id_diagnostico_completo'));
+  const {
+    useState,
+    useEffect
+  } = React;
+  const context = React.useContext(HomeContext);
+  const [varLocalStorage, setlocalStorage] = useState(localStorage.getItem('id_diagnostico_completo'));
 
   const ClicklocalStorage = key => {
+    setlocalStorage();
     localStorage.removeItem('id_diagnostico_completo');
     localStorage.removeItem('ids_dimensoes');
     localStorage.removeItem('respostas_diagnostico_completo');
@@ -102,11 +108,11 @@ const Header = () => {
   })), /*#__PURE__*/React.createElement("p", {
     className: "mt-2"
   }, "Parcial"))), /*#__PURE__*/React.createElement("div", {
-    className: "col text-center " + (localStorage.getItem('id_diagnostico_completo') ? '' : 'opacity-5')
+    className: "col text-center " + (varLocalStorage ? '' : 'opacity-5')
   }, /*#__PURE__*/React.createElement("a", {
-    href: localStorage.getItem('id_diagnostico_completo') ? 'resultado' : '#',
+    href: varLocalStorage ? 'resultado' : '#',
     style: {
-      cursor: localStorage.getItem('id_diagnostico_completo') ? 'pointer' : 'auto'
+      cursor: varLocalStorage ? 'pointer' : 'auto'
     }
   }, /*#__PURE__*/React.createElement("div", {
     className: "btn-icon btn-icon-hover",
@@ -121,11 +127,11 @@ const Header = () => {
   })), /*#__PURE__*/React.createElement("p", {
     className: "mt-2"
   }, "Resultado"))), /*#__PURE__*/React.createElement("div", {
-    className: "col text-center " + (localStorage.getItem('id_diagnostico_completo') ? '' : 'opacity-5')
+    className: "col text-center " + (varLocalStorage ? '' : 'opacity-5')
   }, /*#__PURE__*/React.createElement("a", {
-    href: localStorage.getItem('id_diagnostico_completo') ? 'resultado' : '#',
+    href: varLocalStorage ? 'resultado' : '#',
     style: {
-      cursor: localStorage.getItem('id_diagnostico_completo') ? 'pointer' : 'auto'
+      cursor: varLocalStorage ? 'pointer' : 'auto'
     }
   }, /*#__PURE__*/React.createElement("div", {
     className: "btn-icon btn-icon-hover",
@@ -140,7 +146,7 @@ const Header = () => {
   })), /*#__PURE__*/React.createElement("p", {
     className: "mt-2"
   }, "Recursos"))), /*#__PURE__*/React.createElement("div", {
-    className: "col text-center " + (localStorage.getItem('id_diagnostico_completo') ? '' : 'opacity-5')
+    className: "col text-center " + (varLocalStorage ? '' : 'opacity-5')
   }, /*#__PURE__*/React.createElement("div", {
     className: "btn-icon btn-icon-hover cursor",
     style: {
