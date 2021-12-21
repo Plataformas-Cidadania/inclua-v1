@@ -94,7 +94,7 @@ const Page = () => {
                                     <h2><br/><br/>Indicador {item.numero} - {item.titulo}</h2>
                                     <div className="row">
                                         <div className="col-md-6">
-                                            <BarChart id={'bar-chart'+key} series={item.series} labels={[]}/>
+                                            <BarChart id={'bar-chart'+key} series={item.series} annotationsX={item.pontos}/>
                                         </div>
                                         <div className="col-md-6">
                                             <div className="text-right">

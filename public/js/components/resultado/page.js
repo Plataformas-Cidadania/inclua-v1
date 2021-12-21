@@ -113,7 +113,7 @@ const Page = () => {
     }, /*#__PURE__*/React.createElement(BarChart, {
       id: 'bar-chart' + key,
       series: item.series,
-      labels: []
+      annotationsX: item.pontos
     })), /*#__PURE__*/React.createElement("div", {
       className: "col-md-6"
     }, /*#__PURE__*/React.createElement("div", {
