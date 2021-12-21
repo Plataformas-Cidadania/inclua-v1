@@ -125,6 +125,6 @@ mix.scripts('packages/cms/resources/assets/js/controllers/alterarParceiroCtrl.js
 
 //Dimensoes
 mix.scripts('packages/cms/resources/assets/js/controllers/dimensaoCtrl.js', 'public/assets-cms/js/controllers/dimensaoCtrl.js');
-mix.scripts('packages/cms/resources/assets/js/controllers/alterarDimensaoCtrl.js', 'public/assets-cms/js/controllers/alterarDimensaooCtrl.js');
+mix.scripts('packages/cms/resources/assets/js/controllers/alterarDimensaoCtrl.js', 'public/assets-cms/js/controllers/alterarDimensaoCtrl.js');
 
 //FIM CMS///////////////////////////////////////////////////////////////////

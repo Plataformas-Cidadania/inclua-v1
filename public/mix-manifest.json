@@ -31,5 +31,5 @@
     "/assets-cms/js/controllers/parceiroCtrl.js": "/assets-cms/js/controllers/parceiroCtrl.js",
     "/assets-cms/js/controllers/alterarParceiroCtrl.js": "/assets-cms/js/controllers/alterarParceiroCtrl.js",
     "/assets-cms/js/controllers/dimensaoCtrl.js": "/assets-cms/js/controllers/dimensaoCtrl.js",
-    "/assets-cms/js/controllers/alterarDimensaooCtrl.js": "/assets-cms/js/controllers/alterarDimensaooCtrl.js"
+    "/assets-cms/js/controllers/alterarDimensaoCtrl.js": "/assets-cms/js/controllers/alterarDimensaoCtrl.js"
 }

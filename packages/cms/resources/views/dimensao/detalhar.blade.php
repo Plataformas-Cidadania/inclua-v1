@@ -4,7 +4,7 @@
     {!! Html::script(config('app.url').'assets-cms/js/controllers/alterarDimensaoCtrl.js') !!}
     <div ng-controller="alterarDimensaoCtrl">
         <div class="box-padrao">
-            <h1><a href="javascript:history.back();"><i class="fa fa-arrow-circle-left"></i></a>&nbsp;&nbsp;Dimensoes</h1>
+            <h1><a href="javascript:history.back();"><i class="fa fa-arrow-circle-left"></i></a>&nbsp;&nbsp;Dimensão</h1>
             <?php //print_r($dimensao);?>
             <div ng-init="carregaImagem('{{$dimensao->imagem}}', '{{$dimensao->arquivo}}'); detalhar({{$dimensao->id_dimensao}})">
                 <span class="texto-obrigatorio">* campos obrigatórios</span><br><br>
@@ -37,6 +37,7 @@
                 <input type="hidden" name="id" ng-model="id" ng-init="id='{{$dimensao->id_dimensao}}'"/>
                 <div class="row">
                     <div class="col-md-1 col-lg-1 col-xs-3">
+                        <br>
                         <button class="btn btn-info" type="button" ng-click="alterar(picFile, fileArquivo)" ng-disabled="form.$invalid && form.dimensao.$dirty">Salvar</button>
                     </div>
                     <div class="col-md-2 col-lg-2 col-xs-6">
