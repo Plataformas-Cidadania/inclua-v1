@@ -38,6 +38,21 @@ class RecursoRepository extends BaseRepository
         return Recurso::with('links','autoria')->paginate($nr_itens);
     }
 
+     /**
+     * Obter uma lista de autores especificados por um id de recurso
+     *
+     * @param int $id_recurso
+     *
+     * @return JsonResponse
+     */
+    public function getAllRecursoPorNomeTipoRecurso($nome_tipo_recurso)
+    {
+        $res = TipoRecurso::where('nome', 'like', $nome_tipo_recurso)->with('recurso')->get();
+
+        if (!$res || $res->isEmpty()) throw new \Illuminate\Database\Eloquent\ModelNotFoundException;
+        else return $res;
+    }
+
     /**
      * Obter uma lista de autores especificados por um id de recurso
      *
