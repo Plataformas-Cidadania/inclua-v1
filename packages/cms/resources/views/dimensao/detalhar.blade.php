@@ -6,7 +6,7 @@
         <div class="box-padrao">
             <h1><a href="javascript:history.back();"><i class="fa fa-arrow-circle-left"></i></a>&nbsp;&nbsp;Dimensoes</h1>
             <?php //print_r($dimensao);?>
-            <div ng-init="carregaImagem('{{$dimensao->imagem}}', '{{$dimensao->arquivo}}')">
+            <div ng-init="carregaImagem('{{$dimensao->imagem}}', '{{$dimensao->arquivo}}'); detalhar({{$dimensao->id_dimensao}})">
                 <span class="texto-obrigatorio">* campos obrigatórios</span><br><br>
                 {!! Form::model($dimensao, ['name' =>'form']) !!}
                 <div class="container-thumb" style="display: none;">
@@ -34,7 +34,7 @@
 
                 <br><br>
                 @include('cms::dimensao._form')
-                <input type="hidden" name="id" ng-model="id" ng-init="id='{{$dimensao->id}}'"/>
+                <input type="hidden" name="id" ng-model="id" ng-init="id='{{$dimensao->id_dimensao}}'"/>
                 <div class="row">
                     <div class="col-md-1 col-lg-1 col-xs-3">
                         <button class="btn btn-info" type="button" ng-click="alterar(picFile, fileArquivo)" ng-disabled="form.$invalid && form.dimensao.$dirty">Salvar</button>

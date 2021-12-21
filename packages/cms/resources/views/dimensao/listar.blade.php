@@ -43,6 +43,7 @@
                 @include('cms::dimensao._form')
                 <div class="row">
                     <div class="col-md-1 col-lg-1 col-xs-3">
+                        <br>
                         <button class="btn btn-info" type="button" ng-click="inserir(picFile, fileArquivo)" ng-disabled="form.$invalid">Salvar</button>
                     </div>
                     <div class="col-md-2 col-lg-2 col-xs-6">
@@ -71,7 +72,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="box-padrao">
-                    <div class="input-group">
+                    <div class="input-group" ng-hide="true" >
                         <div class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></div>
                         <input class="form-control" type="text" ng-model="dadoPesquisa" placeholder="Faça sua busca"/>
                     </div>
@@ -82,30 +83,22 @@
                     <table ng-show="totalItens>0" class="table table-striped">
                         <thead>
                         <tr>
-                            <th ng-click="ordernarPor('id')" style="dimensaor:pointer;">
-                                Id
-                                <i ng-if="ordem=='id' && sentidoOrdem=='asc'" class="fa fa-angle-double-down"></i>
-                                <i ng-if="ordem=='id' && sentidoOrdem=='desc'" class="fa fa-angle-double-up"></i>
-                            </th>
-                            {{--<th>Imagem</th>--}}
-                            <th ng-click="ordernarPor('dimensao')" style="dimensaor:pointer;">
-                                Dimensao
-                                <i ng-if="ordem=='dimensao' && sentidoOrdem=='asc'" class="fa fa-angle-double-down"></i>
-                                <i ng-if="ordem=='dimensao' && sentidoOrdem=='desc'" class="fa fa-angle-double-up"></i>
-                            </th>
-                            <th></th>
+                            <th>Id</th>
+                            <th>Número</th>
+                            <th>Título</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr ng-repeat="dimensao in dimensoes">
-                            <td><% dimensao.id %></td>
+                            <td><% dimensao.id_dimensao %></td>
                            {{-- <td><img ng-show="dimensao.imagem" ng-src="imagens/dimensoes/xs-<% dimensao.imagem %>" width="60"></td>--}}
-                            <td><a href="cms/dimensao/<% dimensao.id %>"><% dimensao.titulo %></a></td>
+                            <td><% dimensao.numero %></td>
+                            <td><% dimensao.titulo %></td>
                             <td class="text-right">
                                 <div>
                                     {{--<a href="cms/items/<% dimensao.id %>"><i class="fa fa-sitemap fa-2x" title="Itens"></i></a>&nbsp;&nbsp;--}}
-                                    <a href="cms/dimensao/<% dimensao.id %>"><i class="fa fa-edit fa-2x" title="Editar"></i></a>&nbsp;&nbsp;{{--<% mensagemStatus %><% idStatus %>--}}
-                                    <a  ng-class="<% dimensao.status %> == 1 ? 'color-success' : 'color-success-inactive'"  style="cursor: pointer;"><i class="fa fa-check-circle fa-2x" aria-hidden="true" ng-click="status(dimensao.id);"></i></a>&nbsp;&nbsp;
+                                    <a href="cms/dimensao/<% dimensao.id_dimensao %>"><i class="fa fa-edit fa-2x" title="Editar"></i></a>&nbsp;&nbsp;{{--<% mensagemStatus %><% idStatus %>--}}
+                                    {{--<a  ng-class="<% dimensao.status %> == 1 ? 'color-success' : 'color-success-inactive'"  style="cursor: pointer;"><i class="fa fa-check-circle fa-2x" aria-hidden="true" ng-click="status(dimensao.id);"></i></a>&nbsp;&nbsp;--}}
                                     <a><i data-toggle="modal" data-target="#modalExcluir" class="fa fa-remove fa-2x" ng-click="perguntaExcluir(dimensao.id, dimensao.titulo, dimensao.imagem)"></i></a>
                                 </div>
                             </td>

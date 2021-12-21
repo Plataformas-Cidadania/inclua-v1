@@ -37,7 +37,7 @@ class DimensaoController extends Controller
         return view('cms::dimensao.listar', ['dimensoes' => $dimensoes]);
     }
 
-    public function listar(Request $request)
+    /*public function listar(Request $request)
     {
 
         //Log::info('CAMPOS: '.$request->campos);
@@ -54,9 +54,9 @@ class DimensaoController extends Controller
             ->orderBy($request->ordem, $request->sentido)
             ->paginate($request->itensPorPagina);
         return $dimensoes;
-    }
+    }*/
 
-    public function inserir(Request $request)
+    /*public function inserir(Request $request)
     {
 
         $data = $request->all();
@@ -87,14 +87,21 @@ class DimensaoController extends Controller
 
         return $this->dimensao->create($data['dimensao']);
 
-    }
+    }*/
 
     public function detalhar($id)
     {
-        $dimensao = $this->dimensao->where([
+        /*$dimensao = $this->dimensao->where([
             ['id', '=', $id],
         ])->firstOrFail();
+        return view('cms::dimensao.detalhar', ['dimensao' => $dimensao]);*/
+
+        $dimensao = new \stdClass();
+        $dimensao->id_dimensao = $id;
+        $dimensao->imagem = "";
+        $dimensao->arquivo = "";
         return view('cms::dimensao.detalhar', ['dimensao' => $dimensao]);
+
     }
 
     public function alterar(Request $request, $id)
