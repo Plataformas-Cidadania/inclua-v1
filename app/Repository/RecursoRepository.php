@@ -73,6 +73,7 @@ class RecursoRepository extends BaseRepository
     /**
      * Obter uma lista de autores especificados por um id de recurso
      *
+     *
      * @param int $id_recurso
      *
      * @return JsonResponse
