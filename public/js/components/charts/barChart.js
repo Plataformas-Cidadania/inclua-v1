@@ -105,7 +105,6 @@ class BarChart extends React.Component {
       options: {
           chart: {
               type: 'bar',
-              height: 250,
               stacked: true,
               stackType: '100%',
           },
