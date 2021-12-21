@@ -98,7 +98,7 @@ const Indicadores = () => {
     }
   }))), /*#__PURE__*/React.createElement("div", {
     className: "col-8 col-8"
-  }, /*#__PURE__*/React.createElement("div", {
+  }, context.dimensoes.length > dimensao ? /*#__PURE__*/React.createElement("div", {
     className: "d-grid gap-2 d-md-flex justify-content-md-end float-end ms-2"
   }, /*#__PURE__*/React.createElement("div", {
     className: "dorder-container"
@@ -107,10 +107,10 @@ const Indicadores = () => {
     type: "button"
     /*onClick={() => context.setIndicador(context.dimensao.indicadores[indicador])}*/
     ,
-    onClick: () => context.setDimensao(context.dimensao + 1)
+    onClick: () => context.setDimensao(context.dimensoes[dimensao])
   }, "dimens\xE3o ", dimensao + 1, " ", /*#__PURE__*/React.createElement("i", {
     className: "fas fa-angle-right"
-  })))), context.dimensao.indicadores.length <= indicador ? /*#__PURE__*/React.createElement("div", {
+  })))) : null, context.dimensao.indicadores.length <= indicador ? /*#__PURE__*/React.createElement("div", {
     className: "d-grid gap-2 d-md-flex justify-content-md-end float-end"
   }, /*#__PURE__*/React.createElement("div", {
     className: "dorder-container"
