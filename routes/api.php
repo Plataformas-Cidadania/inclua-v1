@@ -184,6 +184,9 @@ Route::group([
     Route::get('links/{recurso}',[App\Http\Controllers\Api\RecursoController::class, 'getAllLinksPorIdRecurso'])
         ->name('api.recurso.getAllLinksPorIdRecurso');
 
+    Route::get('tipo_recurso/{nome}',[App\Http\Controllers\Api\RecursoController::class, 'getAllRecursoPorNomeTipoRecurso'])
+        ->name('api.recurso.getAllRecursoPorNomeTipoRecurso');
+
     Route::get('categoria/{nome}',[App\Http\Controllers\Api\RecursoController::class, 'getAllRecursosPorNomeCategoria'])
         ->name('api.recurso.getAllRecursosPorNomeCategoria');
 });

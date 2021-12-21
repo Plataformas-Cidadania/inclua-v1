@@ -44,6 +44,36 @@ class RecursoController extends Controller
             $res
         );
     }
+/* to do:
+    Get all recurso by tipos
+    get all recurso by temas
+    get all recurso by categoria
+*/
+
+    /**
+     * Obter uma lista de recurso por id de tipo
+     *
+     * @param int $id_tipo
+     *
+     * @return JsonResponse
+     */
+    public function getAllRecursoPorNomeTipoRecurso($nome_tipo_recurso): JsonResponse
+    {
+        try {
+            $res = $this->repo->getAllRecursoPorNomeTipoRecurso($nome_tipo_recurso);
+            return $this->successResponse(
+                'Retornado com sucesso',
+                $res
+            );
+        }catch (Exception $exception) {
+            if ($exception instanceof ModelNotFoundException)
+                return $this->errorResponse('Not found');
+            return $this->errorResponse('Erro inesperado.'.$exception);
+        }
+    }
+
+
+
 
     /**
      * Mostrar todos os Recursoes com Paginação.
