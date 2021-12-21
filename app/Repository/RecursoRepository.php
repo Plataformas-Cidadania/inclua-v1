@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Models\Autoria;
+use App\Models\Categoria;
 use App\Models\Indicador;
 use App\Models\Link;
 use App\Models\Recurso;
@@ -56,6 +57,22 @@ class RecursoRepository extends BaseRepository
 
     /**
      * Obter uma lista de autores especificados por um id de recurso
+     *
+     * @param int getAllRecursosPorNomeTema
+     *
+     * @return JsonResponse
+     */
+    public function getAllRecursosPorNomeCategoria($nome_categoria)
+    {
+        $res = Categoria::where('nome', 'like', $nome_categoria)->with('categorizacao')->get();
+
+        if (!$res || $res->isEmpty()) throw new \Illuminate\Database\Eloquent\ModelNotFoundException;
+        else return $res;
+    }
+
+    /**
+     * Obter uma lista de autores especificados por um id de recurso
+     *
      *
      * @param int $id_recurso
      *
