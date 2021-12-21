@@ -37,10 +37,10 @@ class APISeeder extends Seeder
             'descricao' => 'Coloca em questão os processos de comunicação, divulgação e acesso à informação, visando a mobilização das usuárias do programa/serviço. O foco privilegia os esforços de comunicação e disponibilização de informação relevante para segmentos historicamente em desvantagem, por meio de linguagem adequada e adaptada, reduzindo custos de aprendizado e ampliando as possibilidades de engajamento do público a ser atendido.',
             'vl_baixo' => 34,
             'vl_alto' => 20
-        ]);/*
+        ]);
         DB::table('avaliacao.dimensao')->insert([
             'numero' => 4,
-            'titulo' => 'Coloca em questão os processos de comunicação, divulgação e acesso à informação, visando a mobilização das usuárias do programa/serviço. O foco privilegia os esforços de comunicação e disponibilização de informação relevante para segmentos historicamente em desvantagem, por meio de linguagem adequada e adaptada, reduzindo custos de aprendizado e ampliando as possibilidades de engajamento do público a ser atendido.',
+            'titulo' => 'Interações e a experiência do usuário',
             'descricao' => 'Chama atenção para os momentos e experiências de interação entre as usuárias e os serviços / programas. O foco aqui se dá sobre as exigências (documentação, custos de deslocamento, condutas, etc.) que são impostas sobre as usuárias para o envolvimento com a oferta pública, sobre as normas e instrumentos que medeiam a relação entre o público e os serviços, e sobre os comportamentos e as práticas das agentes públicas frente às atendidas (sensibilidade, compromisso, valores e julgamentos morais).',
             'vl_baixo' => 84,
             'vl_alto' => 50
@@ -51,7 +51,7 @@ class APISeeder extends Seeder
             'descricao' => 'Chama atenção para os processos de monitoramento da execução e avaliação dos resultados e efeitos da política, serviço ou programa em questão. O foco é na produção e uso (retroalimentação) de informações sobre o atendimento a públicos específicos e sobre os efeitos (não-pretendidos) derivados do envolvimento com as ofertas públicas, considerando também os esforços de incorporação de pontos de vistas e experiência de grupos historicamente em desvantagem na produção e análise dos dados.',
             'vl_baixo' => 62,
             'vl_alto' => 36
-        ]);*/
+        ]);
 
         // INDICADORES
         // Para dimensão 1
@@ -121,7 +121,7 @@ class APISeeder extends Seeder
             'vl_alto' => 11,
             'consequencia' => 'A dificuldade de compreensão das informações fornecidas ao público prejudica o acesso, o engajamento e o usufruto das ofertas por parte de segmentos específicos, especialmente, aqueles estruturalmente desfavorecidos.'
         ]);
-        /*
+
                 // Para dimensão 4
                 DB::table('avaliacao.indicador')->insert([
                     'numero' => 1,
@@ -179,7 +179,7 @@ class APISeeder extends Seeder
                     'vl_baixo' => 19,
                     'vl_alto' => 10,
                     'consequencia' => 'A ausência de envolvimento de usuários, especialmente de segmentos específicos e desfavorecidos do público atendido, nos esforços de monitoramento e avaliação prejudicam a compreensão de suas experiências com o programa/serviço e contribuem para a invisbilização e manutenção de formas de desatenção e exclusão.'
-                ]);*/
+                ]);
 
         // PERGUNTAS
 
@@ -197,7 +197,7 @@ class APISeeder extends Seeder
             'vl_subPergunta' => 1
         ]);
         DB::table('avaliacao.pergunta')->insert([
-            'letra' => 'a1',
+            'letra' => '1',
             'descricao' => 'Esses espaços e mecanismos de articulação existentes são adequados e efetivos. Como você avalia essa afirmação? Marque uma opção abaixo.',
              'legenda' => 'Sendo 1: Discordo totalmente e 5: Concordo totalmente',
             'vl_minimo' => 1,
@@ -524,8 +524,414 @@ class APISeeder extends Seeder
             'inverter' => false,
             'id_indicador' => 7,
         ]);
+        // PERGUNTAS PARA INDICADOR 8 ( Dimensão 4 indicador 1)
+        DB::table('avaliacao.pergunta')->insert([
+            'letra' => 'a',
+            'descricao' => 'Para ter acesso ao bem ou serviço público oferecido, é uma pré-condição o fornecimento de um volume extenso de documentos e outros tipos de informações que podem ser difíceis ou custosos para o demandante fornecer. Como você avalia essa afirmação? Marque uma opção abaixo.',
+            'legenda' => 'Sendo 1: Discordo totalmente e 5: Concordo totalmente',
+            'vl_minimo' => 1,
+            'vl_maximo' => 5,
+            'tipo'=> 2,
+            'nao_se_aplica'=> false,
+            'inverter' => true,
+            'id_indicador' => 8,
+        ]);
+        DB::table('avaliacao.pergunta')->insert([
+            'letra' => 'b',
+            'descricao' => 'Considerando as diferentes possibilidades de entrega/coleta das informações requisitadas (exemplo: online, coleta em domicílio, coleta via intermediários, entrega no balcão, via correio, etc.), pode-se dizer que elas são muito bem distribuídas no território e acessíveis, facilitando o contato com os usuários. Como você avalia essa afirmação? Marque uma opção abaixo.',
+            'legenda' => 'Sendo 1: Discordo totalmente e 5: Concordo totalmente',
+            'vl_minimo' => 1,
+            'vl_maximo' => 5,
+            'tipo'=> 2,
+            'nao_se_aplica'=> false,
+            'inverter' => false,
+            'id_indicador' => 8,
+        ]);
+        DB::table('avaliacao.pergunta')->insert([
+            'letra' => 'c',
+            'descricao' => 'Existem estratégias eficazes para alcançar grupos espacialmente isolados ou distantes dos pontos de atenção oferecidos pela oferta pública (exemplo: excursões periódicas, fornecimento de vale-transporte, parcerias com ONGS, mutirões e ações coletivas, etc.) Como você avalia essa afirmação? Marque uma opção abaixo.',
+            'legenda' => 'Sendo 1: Discordo totalmente e 5: Concordo totalmente',
+            'vl_minimo' => 1,
+            'vl_maximo' => 5,
+            'tipo'=> 2,
+            'nao_se_aplica'=> false,
+            'inverter' => false,
+            'id_indicador' => 8,
+        ]);
+        DB::table('avaliacao.pergunta')->insert([
+            'letra' => 'd',
+            'descricao' => 'Os pontos de atendimento presencial disponibilizam turnos alternativos para atendimento dos diferentes segmentos da população em função de suas necessidades (exemplo: contraturnos, 24h, atendimento aos finais de semana, etc.) Como você avalia essa afirmação? Marque uma opção abaixo.',
+            'legenda' => 'Sendo 1: Discordo totalmente e 5: Concordo totalmente',
+            'vl_minimo' => 1,
+            'vl_maximo' => 5,
+            'tipo'=> 2,
+            'nao_se_aplica'=> false,
+            'inverter' => false,
+            'id_indicador' => 8,
+        ]);
+        DB::table('avaliacao.pergunta')->insert([
+            'letra' => 'e',
+            'descricao' => 'Caso haja cobrança de taxas ou de algum tipo de pagamento pelo bem ou serviço em questão, há possibilidade de isenção desses encargos para segmentos específicos do público? ',
+            'legenda' => 'Marque uma opção abaixo',
+            'vl_minimo' => 0,
+            'vl_maximo' => 5,
+            'tipo'=> 2,
+            'nao_se_aplica'=> true,
+            'inverter' => false,
+            'id_indicador' => 8,
+        ]);
+        DB::table('avaliacao.pergunta')->insert([
+            'letra' => 'f',
+            'descricao' => 'O envolvimento de algum tipo de intermediário (exemplo: advogado, cartório, despachante, acompanhante, associação, etc.) é necessário ou muito comum para o acesso ou manutenção do serviço ou benefício. Como você avalia essa afirmação? Marque uma opção abaixo.',
+            'legenda' => 'Sendo 1: Discordo totalmente e 5: Concordo totalmente',
+            'vl_minimo' => 1,
+            'vl_maximo' => 5,
+            'tipo'=> 2,
+            'nao_se_aplica'=> false,
+            'inverter' => true,
+            'id_indicador' => 8,
+        ]);
+        DB::table('avaliacao.pergunta')->insert([
+            'letra' => 'g',
+            'descricao' => 'Existem normas ou protocolos que definem claramente o que pode ser exigido do cidadão, deixando pouca margem para arbitrariedade na imposição de exigências imprevistas (exemplo: demanda de documentos e informações adicionais, contraprestação de serviços e doações, ameaças de exposição/denúncia, exigências de condutas e comportamentos "adequados", etc.) Como você avalia essa afirmação? Marque uma opção abaixo.',
+            'legenda' => 'Sendo 1: Discordo totalmente e 5: Concordo totalmente',
+            'vl_minimo' => 1,
+            'vl_maximo' => 5,
+            'tipo'=> 2,
+            'nao_se_aplica'=> false,
+            'inverter' => false,
+            'id_indicador' => 8,
+        ]);
+        DB::table('avaliacao.pergunta')->insert([
+            'letra' => 'h',
+            'descricao' => 'Caso exista exigência de regularização, atualização periódica ou recadastramento para manutenção do acesso ao bem ou serviço público em questão, os custos e ônus impostos ao cidadão nesse processo são elevados. Como você avalia essa afirmação? Marque uma opção abaixo.',
+            'legenda' => 'Sendo 1: Discordo totalmente e 5: Concordo totalmente',
+            'vl_minimo' => 0,
+            'vl_maximo' => 5,
+            'tipo'=> 2,
+            'nao_se_aplica'=> true,
+            'inverter' => false,
+            'id_indicador' => 8,
+        ]);
+        DB::table('avaliacao.pergunta')->insert([
+            'letra' => 'x',
+            'descricao' => 'Caso exista exigência de regularização, atualização periódica ou recadastramento para manutenção do acesso ao bem ou serviço público em questão, os custos e ônus impostos ao cidadão nesse processo são elevados. Como você avalia essa afirmação? Marque uma opção abaixo.',
+            'legenda' => 'Sendo 1: Baixíssima exigência/custo e 10: Altíssima exigência/custo',
+            'vl_minimo' => 1,
+            'vl_maximo' => 10,
+            'tipo'=> 3,
+            'nao_se_aplica'=> false,
+            'inverter' => false,
+            'id_indicador' => 8,
+        ]);
 
+        // PERGUNTAS PARA INDICADOR 9 ( Dimensão 4 indicador 2)
+        DB::table('avaliacao.pergunta')->insert([
+            'letra' => 'a',
+            'descricao' => 'Atos normativos que organizam a implementação da política/serviço (decretos, portarias, resoluções, instruções normativas, etc.) comumente contém definições e formas de classificação dos públicos atendidos. No caso da oferta pública sob avaliação, pode-se dizer que as definições existentes incorrem em reducionismos, reprodução de estereótipos, preconceitos e visões inferiorizantes (ainda que social e culturalmente difundidos) sobre segmentos específicos do público atendido. Como você avalia essa afirmação? Marque uma opção abaixo.',
+            'legenda' => 'Sendo 1: Discordo totalmente e 5: Concordo totalmente',
+            'vl_minimo' => 1,
+            'vl_maximo' => 5,
+            'tipo'=> 2,
+            'nao_se_aplica'=> false,
+            'inverter' => true,
+            'id_indicador' => 9,
+        ]);
+        DB::table('avaliacao.pergunta')->insert([
+            'letra' => 'b',
+            'descricao' => 'Existem processos regulares de discussão e avaliação desses atos normativos e suas definições (e classificações) envolvendo atores externos ao órgão responsável pela implementação. Como você avalia essa afirmação? Marque uma opção abaixo.',
+            'legenda' => 'Sendo 1: Discordo totalmente e 5: Concordo totalmente',
+            'vl_minimo' => 1,
+            'vl_maximo' => 5,
+            'tipo'=> 2,
+            'nao_se_aplica'=> false,
+            'inverter' => false,
+            'id_indicador' => 9,
+        ]);
 
+        DB::table('avaliacao.pergunta')->insert([
+            'letra' => 'c',
+            'descricao' => 'Os formulários, sistemas, cadastros, etc. são regularmente submetidos a testes e avaliações em relação a sua adequação às situações vividas por segmentos específicos do público atendido, visando evitar a invisibilização de algum grupo, território, cultura, ou tema/questão. Como você avalia essa afirmação? Marque uma opção abaixo.',
+            'legenda' => 'Sendo 1: Discordo totalmente e 5: Concordo totalmente',
+            'vl_minimo' => 1,
+            'vl_maximo' => 5,
+            'tipo'=> 2,
+            'nao_se_aplica'=> false,
+            'inverter' => false,
+            'id_indicador' => 9,
+        ]);
+        DB::table('avaliacao.pergunta')->insert([
+            'letra' => 'x',
+            'descricao' => 'Considerando os vários instrumentos que organizam a relação do serviço com o cidadão – atos normativos, formulários, sistemas, etc. – como você avalia a sensibilidade e adaptação deles às especificidades dos diferentes públicos atendidos? Dê uma nota de zero a dez em relação ao nível de adaptação e sensibilidade dos instrumentos.',
+            'legenda' => 'Sendo 1: Baixíssima sensibilidade e e 10: Altíssima sensibilidade',
+            'vl_minimo' => 1,
+            'vl_maximo' => 10,
+            'tipo'=> 3,
+            'nao_se_aplica'=> false,
+            'inverter' => false,
+            'id_indicador' => 9,
+        ]);
+        // PERGUNTAS PARA INDICADOR 10 ( Dimensão 4 indicador 3)
+        DB::table('avaliacao.pergunta')->insert([
+            'letra' => 'a',
+            'descricao' => 'Nos processos de recrutamento para esse programa/serviço, buscou-se selecionar pessoas que tenham experiência (pessoal ou profissional) relativa à realidade vivida por segmentos específicos do público atendido. Como você avalia essa afirmação? Marque uma opção abaixo.',
+            'legenda' => 'Sendo 1: Discordo totalmente e 5: Concordo totalmente',
+            'vl_minimo' => 1,
+            'vl_maximo' => 5,
+            'tipo'=> 2,
+            'nao_se_aplica'=> false,
+            'inverter' => false,
+            'id_indicador' => 10,
+        ]);
+        DB::table('avaliacao.pergunta')->insert([
+            'letra' => 'b',
+            'descricao' => 'São feitos esforços regulares de diagnóstico e verificação do nível de aceitação, concordância ou alinhamento dos trabalhadores na ponta com as prescrições formais da política pública relativas à inclusão e atenção a segmentos específicos do público. Como você avalia essa afirmação? Marque uma opção abaixo.',
+            'legenda' => 'Sendo 1: Discordo totalmente e 5: Concordo totalmente',
+            'vl_minimo' => 1,
+            'vl_maximo' => 5,
+            'tipo'=> 2,
+            'nao_se_aplica'=> false,
+            'inverter' => false,
+            'id_indicador' => 10,
+        ]);
+        DB::table('avaliacao.pergunta')->insert([
+            'letra' => 'c',
+            'descricao' => 'Existem estratégias ou procedimentos para lidar com a resistência dos trabalhadores em relação aos públicos atendidos ou para lidar com as divergências internas em colocar em prática as prescrições formais voltadas para inclusão e atenção a segmentos específicos do público (exemplo: produção de materiais de orientação, protocolos, cursos de capacitação, discussão de casos e trocas de experiência, processo administrativo disciplinar, etc.) Como você avalia essa afirmação? Marque uma opção abaixo.',
+            'legenda' => 'Sendo 1: Discordo totalmente e 5: Concordo totalmente',
+            'vl_minimo' => 1,
+            'vl_maximo' => 5,
+            'tipo'=> 2,
+            'nao_se_aplica'=> false,
+            'inverter' => false,
+            'id_indicador' => 10,
+        ]);
+        DB::table('avaliacao.pergunta')->insert([
+            'letra' => 'd',
+            'descricao' => 'As equipes recebem treinamentos periódicos e estão preparadas para abordagem singularizada e diferenciada dos públicos. Como você avalia essa afirmação? Marque uma opção abaixo.',
+            'legenda' => 'Sendo 1: Discordo totalmente e 5: Concordo totalmente',
+            'vl_minimo' => 1,
+            'vl_maximo' => 5,
+            'tipo'=> 2,
+            'nao_se_aplica'=> false,
+            'inverter' => false,
+            'id_indicador' => 10,
+        ]);
+        DB::table('avaliacao.pergunta')->insert([
+            'letra' => 'e',
+            'descricao' => 'Reconhecendo que preconceitos, valores e visões de mundo influenciam as decisões cotidianas dos agentes de implementação local, são feitos esforços no sentido de compreender os sistemas de classificação e categorização dos usuários informalmente construídos e compartilhados por estes agentes de linha de frente (ex.: "merecedores", "pacientes fáceis ou difíceis", “aderentes ou resistentes”, etc.), por meio de contratação de pesquisas, questionários e entrevistas internas, usuário oculto, simulações de casos grupos focais, etc. Como você avalia essa afirmação? Marque uma opção abaixo',
+            'legenda' => 'Sendo 1: Discordo totalmente e 5: Concordo totalmente',
+            'vl_minimo' => 1,
+            'vl_maximo' => 5,
+            'tipo'=> 2,
+            'nao_se_aplica'=> false,
+            'inverter' => false,
+            'id_indicador' => 10,
+        ]);
+        DB::table('avaliacao.pergunta')->insert([
+            'letra' => 'f',
+            'descricao' => 'Existem procedimentos ou mecanismos adequados para a discussão e reflexão sobre decisões e condutas dos agentes de implementação em casos concretos e específicos (exemplo: supervisão clínica, discussão de casos em equipe, avaliação externa de casos via sorteio, difusão de boas práticas, trocas de experiências, auditorias a partir de denúncias dos usuários, etc.) Como você avalia essa afirmação? Marque uma opção abaixo.',
+            'legenda' => 'Sendo 1: Discordo totalmente e 5: Concordo totalmente',
+            'vl_minimo' => 1,
+            'vl_maximo' => 5,
+            'tipo'=> 2,
+            'nao_se_aplica'=> false,
+            'inverter' => false,
+            'id_indicador' => 10,
+        ]);
+        DB::table('avaliacao.pergunta')->insert([
+            'letra' => 'x',
+            'descricao' => 'Considerando os trabalhadores envolvidos na execução dos serviços na linha de frente, como você avalia os mecanismos existentes para lidar com insensibilidades, resistências, divergências de entendimento e falta de compromisso com objetivos de inclusão e equidade? Dê uma nota de zero a dez em relação à adequação dos mecanismos existentes frente ao desafio de se promover a adesão dos agentes de implementação local com objetivos de inclusão e equidade.',
+            'legenda' => 'Sendo 1: Baixíssima adequação e 10: Altíssima adequação',
+            'vl_minimo' => 1,
+            'vl_maximo' => 10,
+            'tipo'=> 3,
+            'nao_se_aplica'=> false,
+            'inverter' => false,
+            'id_indicador' => 10,
+        ]);
+        // PERGUNTAS PARA INDICADOR 11 ( Dimensão 5 indicador 1)
+        DB::table('avaliacao.pergunta')->insert([
+            'letra' => 'a',
+            'descricao' => 'Há um sistema de monitoramento e acompanhamento da execução do serviço?',
+            'legenda' => 'Marque uma opção abaixo.',
+            'vl_minimo' => 0,
+            'vl_maximo' => 1,
+            'tipo'=> 1,
+            'nao_se_aplica'=> false,
+            'inverter' => false,
+            'vl_subPergunta' => 1,
+            'id_indicador' => 11,
+        ]);
+        DB::table('avaliacao.pergunta')->insert([
+            'letra' => '1',
+            'descricao' => 'Os indicadores desse sistema de monitoramento são sensíveis às situações vividas por segmentos específicos do público atendido. Como você avalia essa afirmação? Marque uma opção abaixo.',
+            'legenda' => 'Sendo 1: Discordo totalmente e 5: Concordo totalmente',
+            'vl_minimo' => 1,
+            'vl_maximo' => 5,
+            'tipo'=> 2,
+            'nao_se_aplica'=> false,
+            'inverter' => false,
+            'id_indicador' => 11,
+            'id_perguntaPai'=> 50
+        ]);
+        DB::table('avaliacao.pergunta')->insert([
+            'letra' => 'b',
+            'descricao' => 'Há levantamentos regulares de informação sobre características da população atendida segundo raça/cor, sexo/identidade de gênero, etnia, território, etc. Como você avalia essa afirmação? Marque uma opção abaixo.',
+            'legenda' => 'Sendo 1: Discordo totalmente e 5: Concordo totalmente',
+            'vl_minimo' => 1,
+            'vl_maximo' => 5,
+            'tipo'=> 2,
+            'nao_se_aplica'=> false,
+            'inverter' => false,
+            'id_indicador' => 11,
+        ]);
+        DB::table('avaliacao.pergunta')->insert([
+            'letra' => 'c',
+            'descricao' => 'Existem esforços de identificação de casos e situações (indivíduos, grupos ou territórios) que não encontram “encaixe” – i.e. são desviantes, atípicos ou anormais – ou para os quais não há atenção por nenhuma das vias e canais disponibilizados. Como você avalia essa afirmação? Marque uma opção abaixo.',
+            'legenda' => 'Sendo 1: Discordo totalmente e 5: Concordo totalmente',
+            'vl_minimo' => 1,
+            'vl_maximo' => 5,
+            'tipo'=> 2,
+            'nao_se_aplica'=> false,
+            'inverter' => false,
+            'id_indicador' => 11,
+        ]);
+        DB::table('avaliacao.pergunta')->insert([
+            'letra' => 'd',
+            'descricao' => 'Existem processos contínuos de exploração dos riscos conhecidos e de novos possíveis riscos de exclusão e desatenção a segmentos específicos do público atendido (por exemplo, cruzamento de bases de dados, abertura a fontes alternativas de informação e a inputs e questionamentos externos, participação social para revisão de consensos e visões de mundo já estabelecidos, etc.) Como você avalia essa afirmação? Marque uma opção abaixo.',
+            'legenda' => 'Sendo 1: Discordo totalmente e 5: Concordo totalmente',
+            'vl_minimo' => 1,
+            'vl_maximo' => 5,
+            'tipo'=> 2,
+            'nao_se_aplica'=> false,
+            'inverter' => false,
+            'id_indicador' => 11,
+        ]);
+        DB::table('avaliacao.pergunta')->insert([
+            'letra' => 'x',
+            'descricao' => 'Considerando que a ausência de monitoramento, com foco explícito na experiência de segmentos específicos, pode contribuir para a invisibilização das experiências desses grupos, ocultando possíveis situações de exclusão e desatenção, como você avalia os esforços atuais de monitoramento da execução dos serviços? Dê uma nota de zero a dez em relação ao nível de aderência dos processos de monitoramento às experiências de segmentos específicos do público.',
+            'legenda' => 'Sendo 1: Baixíssima aderência e 10: Altíssima aderência',
+            'vl_minimo' => 1,
+            'vl_maximo' => 10,
+            'tipo'=> 3,
+            'nao_se_aplica'=> false,
+            'inverter' => false,
+            'id_indicador' => 11,
+        ]);
+        // PERGUNTAS PARA INDICADOR 12 ( Dimensão 5 indicador 2)
+        DB::table('avaliacao.pergunta')->insert([
+            'letra' => 'a',
+            'descricao' => 'Existem esforços de avaliação de possíveis efeitos negativos que o envolvimento com a oferta pública sob foco pode provocar na autoimagem do beneficiário/usuário – i.e. na forma como internalizam as categorias administrativas (formais e informais) e se o status de beneficiário acarreta uma leitura inferiorizada de si – por meio, por exemplo, de contratação de pesquisas, acompanhamento qualitativo de usuários, avaliação de egressos, grupos focais, etc. Como você avalia essa afirmação? Marque uma opção abaixo.',
+            'legenda' => 'Sendo 1: Discordo totalmente e 5: Concordo totalmente',
+            'vl_minimo' => 1,
+            'vl_maximo' => 5,
+            'tipo'=> 2,
+            'nao_se_aplica'=> false,
+            'inverter' => false,
+            'id_indicador' => 12,
+        ]);
+        DB::table('avaliacao.pergunta')->insert([
+            'letra' => 'b',
+            'descricao' => 'Existem esforços de avaliação sobre os possíveis efeitos negativos que o envolvimento com a oferta pública sob foco pode provocar na imagem que outros constroem sobre o beneficiário/usuário (heteroimagem) – i.e. na forma como são vistos pela sua comunidade local (família, amigos, vizinhos, etc.) acarretando estigmatização, vergonha ou assédio – por meio, por exemplo, de contratação de pesquisas, acompanhamento qualitativo de usuários, avaliação de egressos, grupos focais, etc.) Como você avalia essa afirmação? Marque uma opção abaixo.',
+            'legenda' => 'Sendo 1: Discordo totalmente e 5: Concordo totalmente',
+            'vl_minimo' => 1,
+            'vl_maximo' => 5,
+            'tipo'=> 2,
+            'nao_se_aplica'=> false,
+            'inverter' => false,
+            'id_indicador' => 12,
+        ]);
+        DB::table('avaliacao.pergunta')->insert([
+            'letra' => 'c',
+            'descricao' => 'Quando efeitos negativos são identificados na auto e/ou hetero imagem dos beneficiários/usuários, existem procedimentos ou práticas previstas e voltadas para mitigação desses danos. Como você avalia essa afirmação? Marque uma opção abaixo.',
+            'legenda' => 'Sendo 1: Discordo totalmente e 5: Concordo totalmente',
+            'vl_minimo' => 1,
+            'vl_maximo' => 5,
+            'tipo'=> 2,
+            'nao_se_aplica'=> false,
+            'inverter' => false,
+            'id_indicador' => 12,
+        ]);
+        DB::table('avaliacao.pergunta')->insert([
+            'letra' => 'd',
+            'descricao' => 'Caso a participação no programa/serviço possa acarretar a intrusão na intimidade, exposição indevida e supervisão administrativa da vida privada, existem iniciativas voltadas para mitigar os efeitos da devassa da vida íntima do beneficiário/usuário. Como você avalia essa afirmação? Marque uma opção abaixo.',
+            'legenda' => 'Sendo 1: Discordo totalmente e 5: Concordo totalmente',
+            'vl_minimo' => 1,
+            'vl_maximo' => 5,
+            'tipo'=> 2,
+            'nao_se_aplica'=> true,
+            'inverter' => false,
+            'id_indicador' => 12,
+        ]);
+        DB::table('avaliacao.pergunta')->insert([
+            'letra' => 'x',
+            'descricao' => 'De forma geral, como você avalia os atuais esforços de avaliação de possíveis efeitos negativos (e não intencionais) associados ao envolvimento dos usuários/demandantes com o programa? Dê uma nota de zero a dez em relação a você avalia as ações existentes no sentido de captar, processar e mitigar esses efeitos.',
+            'legenda' => 'Sendo 1: Baixíssimo esforço de avaliação e 10 : Altíssimo esforço de avaliação',
+            'vl_minimo' => 1,
+            'vl_maximo' => 10,
+            'tipo'=> 3,
+            'nao_se_aplica'=> false,
+            'inverter' => false,
+            'id_indicador' => 12,
+        ]);
+        // PERGUNTAS PARA INDICADOR 13 ( Dimensão 5 indicador 3)
+        DB::table('avaliacao.pergunta')->insert([
+            'letra' => 'a',
+            'descricao' => 'Membros ou representantes de segmentos específicos e grupos tradicionalmente desfavorecidos dentre o público atendido participam dos processos institucionais de monitoramento e avaliação. Como você avalia essa afirmação? Marque uma opção abaixo.',
+            'legenda' => 'Sendo 1: Discordo totalmente e 5: Concordo totalmente',
+            'vl_minimo' => 1,
+            'vl_maximo' => 5,
+            'tipo'=> 2,
+            'nao_se_aplica'=> false,
+            'inverter' => false,
+            'id_indicador' => 13,
+        ]);
+        DB::table('avaliacao.pergunta')->insert([
+            'letra' => 'b',
+            'descricao' => 'Existem ouvidorias, SACs ou outros canais em adequada operação para envio de denúncia, reclamação ou recurso. Como você avalia essa afirmação? Marque uma opção abaixo.',
+            'legenda' => 'Sendo 1: Discordo totalmente e 5: Concordo totalmente',
+            'vl_minimo' => 1,
+            'vl_maximo' => 5,
+            'tipo'=> 2,
+            'nao_se_aplica'=> false,
+            'inverter' => false,
+            'id_indicador' => 13,
+        ]);
+        DB::table('avaliacao.pergunta')->insert([
+            'letra' => 'c',
+            'descricao' => 'É feita a avaliação de satisfação com o público atendido? ',
+            'legenda' => 'Marque uma opção abaixo.',
+            'vl_minimo' => 0,
+            'vl_maximo' => 1,
+            'tipo'=> 1,
+            'nao_se_aplica'=> false,
+            'inverter' => false,
+            'vl_subPergunta'=> 1,
+            'id_indicador' => 13,
+        ]);
+        DB::table('avaliacao.pergunta')->insert([
+            'letra' => '1',
+            'descricao' => 'Os resultados da avaliação de satisfação são costumeiramente analisados em termos de segmentos específicos do público atendido (perfil racial, identidade de gênero, território, etc.) Como você avalia essa afirmação? Marque uma opção abaixo.',
+            'legenda' => 'Sendo 1: Discordo totalmente e 5: Concordo totalmente',
+            'vl_minimo' => 1,
+            'vl_maximo' => 5,
+            'tipo'=> 2,
+            'nao_se_aplica'=> false,
+            'inverter' => false,
+            'id_perguntaPai' => 63,
+            'id_indicador' => 13,
+        ]);
+        DB::table('avaliacao.pergunta')->insert([
+            'letra' => 'x',
+            'descricao' => 'Considerando que a ausência de envolvimento de usuários, especialmente de segmentos específicos e desfavorecidos do público atendido, nos esforços de monitoramento e avaliação prejudica a compreensão de suas experiências com a oferta pública sob foco, como você avalia os atuais esforços de inclusão, abertura a críticas e grau de incorporação da perspectiva dos usuários sobre a qualidade do atendimento? Dê uma nota de zero a dez em relação ao nível de incorporação dos usuários nos processos de avaliação.',
+            'legenda' => 'Sendo 1: Baixíssima incorporação e 10: Altíssima incorporação',
+            'vl_minimo' => 1,
+            'vl_maximo' => 10,
+            'tipo'=> 3,
+            'nao_se_aplica'=> false,
+            'inverter' => false,
+            'id_indicador' => 13,
+        ]);
 
         // AUTOR
         DB::table('avaliacao.autor')->insert([
