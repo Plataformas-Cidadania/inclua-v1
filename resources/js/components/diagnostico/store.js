@@ -165,9 +165,20 @@ const DiagnosticoProvider = ({children}) => {
             setAlertFixed(1);
             return false;
         }
+        let respostasApi = [];
+        respostas.forEach((item) => {
+            let valor = item.resposta === null ? 0 : item.resposta;
+            let respostaApi =  {
+                id_dimensao: item.id_dimensao,
+                id_indicador: item.id_indicador,
+                id_pergunta: item.id_pergunta,
+                resposta: valor
+            };
+            respostasApi.push(respostaApi);
+        });
         localStorage.setItem('respostas_diagnostico_completo', JSON.stringify(respostas));
         try {
-            const jsonRespostas = JSON.stringify(respostas);
+            const jsonRespostas = JSON.stringify(respostasApi);
             const result = await axios.post('api/resposta/insereRespostas', jsonRespostas, {
                 headers: {
                     'Content-Type': 'application/json'
