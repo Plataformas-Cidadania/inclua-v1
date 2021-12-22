@@ -1,6 +1,7 @@
 //import React from 'react';
 const Header = () => {
   const context = React.useContext(DiagnosticoContext);
+  console.log('setTipo:', context.tipo);
   return /*#__PURE__*/React.createElement("div", {
     className: "bg-lgt"
   }, /*#__PURE__*/React.createElement("div", {
@@ -24,12 +25,25 @@ const Header = () => {
     style: {
       marginTop: '15px'
     }
-  }, "Completo"), /*#__PURE__*/React.createElement("i", {
-    className: "fas fa-angle-right fa-3x float-end",
+  }, "Completo"), /*#__PURE__*/React.createElement("span", {
+    style: {
+      display: context.tipo !== 1 ? 'none' : ''
+    }
+  }, /*#__PURE__*/React.createElement("i", {
+    className: "far fa-check-circle fa-3x float-end ",
     style: {
       marginTop: '-52px'
     }
-  }))), /*#__PURE__*/React.createElement("br", null)), /*#__PURE__*/React.createElement("div", {
+  })), /*#__PURE__*/React.createElement("span", {
+    style: {
+      display: context.tipo === 1 ? 'none' : ''
+    }
+  }, /*#__PURE__*/React.createElement("i", {
+    className: "fas fa-angle-right fa-3x float-end ",
+    style: {
+      marginTop: '-52px'
+    }
+  })))), /*#__PURE__*/React.createElement("br", null)), /*#__PURE__*/React.createElement("div", {
     className: "col-md-6"
   }, /*#__PURE__*/React.createElement("div", {
     className: "dorder-container cursor",
@@ -40,12 +54,25 @@ const Header = () => {
     style: {
       marginTop: '15px'
     }
-  }, "Parcial"), /*#__PURE__*/React.createElement("i", {
-    className: "fas fa-angle-right fa-3x float-end",
+  }, "Parcial"), /*#__PURE__*/React.createElement("span", {
+    style: {
+      display: context.tipo !== 2 ? 'none' : ''
+    }
+  }, /*#__PURE__*/React.createElement("i", {
+    className: "far fa-check-circle fa-3x float-end ",
     style: {
       marginTop: '-52px'
     }
-  })))), /*#__PURE__*/React.createElement("br", null)), /*#__PURE__*/React.createElement("br", null))), /*#__PURE__*/React.createElement("div", {
+  })), /*#__PURE__*/React.createElement("span", {
+    style: {
+      display: context.tipo === 2 ? 'none' : ''
+    }
+  }, /*#__PURE__*/React.createElement("i", {
+    className: "fas fa-angle-right fa-3x float-end ",
+    style: {
+      marginTop: '-52px'
+    }
+  }))))), /*#__PURE__*/React.createElement("br", null)), /*#__PURE__*/React.createElement("br", null))), /*#__PURE__*/React.createElement("div", {
     className: "col-md-3"
   }, /*#__PURE__*/React.createElement("img", {
     src: "/img/bg-top.png",

@@ -55,6 +55,7 @@ class ModulosSeeder extends Seeder
             <strong>Equipe de conteúdo:</strong>
             <ul>
                 <li>Camila Escudero</li>
+                <li>Victor Gomes</li>
             </ul>
 
             <strong>Equipe técnica de desenvolvimento:</strong>
@@ -64,7 +65,6 @@ class ModulosSeeder extends Seeder
                 <li>Fábio Barreto</li>
                 <li>Raphael Silva</li>
                 <li>Relison Galvão</li>
-                <li>Victor Gomes</li>
             </ul>",
             'slug' => 'equipe',
             'status' => 1,
