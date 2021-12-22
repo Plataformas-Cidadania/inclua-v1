@@ -575,7 +575,7 @@ class APISeeder extends Seeder
             'legenda' => 'Marque uma opção abaixo',
             'vl_minimo' => 0,
             'vl_maximo' => 5,
-            'tipo'=> 2,
+            'tipo'=> 1,
             'nao_se_aplica'=> true,
             'inverter' => false,
             'id_indicador' => 8,
