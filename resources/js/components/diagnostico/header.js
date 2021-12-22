@@ -4,6 +4,8 @@ const Header = () => {
 
     const context = React.useContext(DiagnosticoContext);
 
+    console.log('setTipo:', context.tipo);
+
     return (
         <div className="bg-lgt">
             <div className="container-fluid">
@@ -24,8 +26,12 @@ const Header = () => {
                                     <div className="dorder-container cursor" onClick={() => context.setTipo(1)}>
                                         <div className="bg-lgt2 p-3">
                                             <h2 style={{marginTop: '15px'}}>Completo</h2>
-                                            <i className="fas fa-angle-right fa-3x float-end"
-                                               style={{marginTop: '-52px'}}/>
+                                            <span style={{display: context.tipo !== 1  ? 'none' : ''}}>
+                                                <i className={"far fa-check-circle fa-3x float-end "} style={{marginTop: '-52px'}}/>
+                                            </span>
+                                            <span style={{display: context.tipo === 1  ? 'none' : ''}}>
+                                                <i className={"fas fa-angle-right fa-3x float-end "} style={{marginTop: '-52px'}}/>
+                                            </span>
                                         </div>
                                     </div>
                                     <br/>
@@ -34,9 +40,12 @@ const Header = () => {
                                     <div className="dorder-container cursor" onClick={() => context.setTipo(2)}>
                                         <div className="bg-lgt2 p-3">
                                             <h2 style={{marginTop: '15px'}}>Parcial</h2>
-                                            <i className="fas fa-angle-right fa-3x float-end"
-                                               style={{marginTop: '-52px'}}
-                                            />
+                                            <span style={{display: context.tipo !== 2  ? 'none' : ''}}>
+                                                <i className={"far fa-check-circle fa-3x float-end "} style={{marginTop: '-52px'}}/>
+                                            </span>
+                                            <span style={{display: context.tipo === 2  ? 'none' : ''}}>
+                                                <i className={"fas fa-angle-right fa-3x float-end "} style={{marginTop: '-52px'}}/>
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
