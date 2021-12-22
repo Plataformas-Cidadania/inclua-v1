@@ -196,8 +196,8 @@ const DiagnosticoProvider = ({children}) => {
                 //const ids = JSON.parse(result.data.data)
                 //localStorage.setItem('id_diagnostico_completo', ids[1]);
                 localStorage.setItem('id_diagnostico_completo', result.data.data);
-                //location.href = 'resultado';
-                console.log('redirecionamento desativado');
+                location.href = 'resultado';
+                //console.log('redirecionamento desativado');
                 return;
             }
             alert("Não foi possível gravar as respostas");

@@ -208,9 +208,9 @@ const DiagnosticoProvider = ({
       if (result.data.success) {
         //const ids = JSON.parse(result.data.data)
         //localStorage.setItem('id_diagnostico_completo', ids[1]);
-        localStorage.setItem('id_diagnostico_completo', result.data.data); //location.href = 'resultado';
+        localStorage.setItem('id_diagnostico_completo', result.data.data);
+        location.href = 'resultado'; //console.log('redirecionamento desativado');
 
-        console.log('redirecionamento desativado');
         return;
       }
 
