@@ -126,6 +126,7 @@ const DiagnosticoProvider = ({
 
     setRespostas(newRespostas); //console.log(newRespostas);
 
+    localStorage.setItem('respostas_diagnostico_completo', JSON.stringify(newRespostas));
     console.log(JSON.stringify(newRespostas));
   };
 
@@ -154,17 +155,24 @@ const DiagnosticoProvider = ({
     let valid = true;
     console.log(respostas);
     dimensoes.forEach(d => {
-      if (d.id_dimensao === dimensao.id_dimensao) {
-        d.indicadores.forEach(i => {
-          if (i.id_indicador === indicador.id_indicador) {
-            i.perguntas.forEach(p => {
-              if (p.resposta === undefined) {
-                valid = false;
-              }
-            });
+      //if(d.id_dimensao === dimensao.id_dimensao){
+      d.indicadores.forEach(i => {
+        //if(i.id_indicador === indicador.id_indicador){
+        i.perguntas.forEach(p => {
+          console.log('validarRespostas', d.numero, i.numero, p.id_pergunta, p.letra, p.resposta);
+
+          if (p.resposta === undefined && p.id_perguntaPai === 0) {
+            console.log('inválido', p);
+            valid = false;
           }
-        });
-      }
+
+          p.perguntas.forEach(sp => {
+            if (sp.resposta === undefined && p.resposta > 0) {
+              valid = false;
+            }
+          });
+        }); //}
+      }); //}
     });
     return valid;
   };
@@ -200,8 +208,9 @@ const DiagnosticoProvider = ({
       if (result.data.success) {
         //const ids = JSON.parse(result.data.data)
         //localStorage.setItem('id_diagnostico_completo', ids[1]);
-        localStorage.setItem('id_diagnostico_completo', result.data.data);
-        location.href = 'resultado';
+        localStorage.setItem('id_diagnostico_completo', result.data.data); //location.href = 'resultado';
+
+        console.log('redirecionamento desativado');
         return;
       }
 
