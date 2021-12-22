@@ -13116,11 +13116,15 @@ label, input, .btn-number {
   top: 3px;
 }
 
-input[type=text] {
+input {
   background-color: #F5F1ED !important;
   border: solid 1px #E6DACE !important;
   border-radius: 0 !important;
   padding: 10px !important;
+}
+
+.input100 {
+  width: 100% !important;
 }
 
 select {

@@ -20,6 +20,22 @@
 
     <div class="container">
         <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-4">
+                <h2>Já tenho cadastro</h2>
+                @include('auth.login')
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-4">
+                <h2>Criar meu cadastro</h2>
+                @include('auth.register')
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
             <div class="col-md-4">
                 <a href="interaja">
                     <div class="dorder-container">

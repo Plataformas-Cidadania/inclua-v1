@@ -428,11 +428,15 @@ label, input, .btn-number {
     top: 3px;
 }
 
-input[type=text]{
+input{
     background-color: $color-lgt !important;
     border: solid 1px $color-lgt2 !important;
     border-radius: 0 !important;
     padding: 10px !important;
+}
+
+.input100{
+    width: 100% !important;
 }
 select{
     background-color: $color-lgt !important;
