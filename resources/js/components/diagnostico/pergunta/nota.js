@@ -23,7 +23,9 @@ const Nota = (props) => {
         }
         setNotas(newNotas);
         //console.log(props);
-        //console.log('INVERTER', props.inverter);
+        /*if(context.dimensao.numero === 4 && context.indicador.numero === 1 && props.letra === 'a') {
+            console.log('INVERTER', props.inverter, props);
+        }*/
         if(props.inverter){
             //console.log('INVERTIDOS ..................');
             let newValoresInvertidos = [];
@@ -32,7 +34,7 @@ const Nota = (props) => {
             }
             setValoresInvertidos(newValoresInvertidos);
         }
-    }, [props.minimo, props.maximo]);
+    }, [props]);
 
     useEffect(() => {
         setName(context.dimensao.dimensao+'_'+context.indicador.indicador+'_'+props.letra);
@@ -54,22 +56,27 @@ const Nota = (props) => {
             <p className="mb-3"><strong>({props.id})P{context.dimensao.numero}.{context.indicador.numero}{props.letra}</strong> {props.descricao}</p>
             <p>{props.legenda}</p>
 
-            {
-                (props.naoSeAplica) ? (
-                    <li onClick={() => selectResposta(null)}>
-                        <div className={resposta === null ? props.bgColor : ''}/><p>Não se aplica</p>
-                    </li>
-                ) : null
-            }
+
 
             <div>
                 <br/>
                 <div className="range-merker" style={{width: '113%', marginLeft: '-80px'}}>
                     <ul className="radio">
                         {
+                            (props.naoSeAplica) ? (
+                                <li onClick={() => selectResposta(null)}>
+                                    <div className={resposta === null ? props.bgColor : ''}/><p>Não se aplica</p>
+                                </li>
+                            ) : null
+                        }
+                        {
                             notas.map((nota, key) => {
                                 let valor = props.inverter ? valoresInvertidos[key] : nota;
-                                //console.log(resposta, valor);
+                                /*if(context.dimensao.numero === 4 && context.indicador.numero === 1 && props.letra === 'a'){
+                                    console.log(valoresInvertidos);
+                                    console.log('valor invertido', valoresInvertidos[key], 'note', nota);
+                                    console.log(context.dimensao.numero, context.indicador.numero, props.letra, 'resposta', resposta, 'valor', valor);
+                                }*/
                                 return(
                                     <li key={'P'+context.dimensao.numero+context.indicador.numero+props.letra+"_"+key} onClick={() => selectResposta(valor)}>
                                         <div  className={resposta ===  valor ? props.bgColor : ''}/><p>{nota}</p>

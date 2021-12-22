@@ -23,7 +23,10 @@ const Nota = props => {
     }
 
     setNotas(newNotas); //console.log(props);
-    //console.log('INVERTER', props.inverter);
+
+    /*if(context.dimensao.numero === 4 && context.indicador.numero === 1 && props.letra === 'a') {
+        console.log('INVERTER', props.inverter, props);
+    }*/
 
     if (props.inverter) {
       //console.log('INVERTIDOS ..................');
@@ -35,7 +38,7 @@ const Nota = props => {
 
       setValoresInvertidos(newValoresInvertidos);
     }
-  }, [props.minimo, props.maximo]);
+  }, [props]);
   useEffect(() => {
     setName(context.dimensao.dimensao + '_' + context.indicador.indicador + '_' + props.letra);
   }, [context]);
@@ -55,11 +58,7 @@ const Nota = props => {
     className: "box-items bg-lgt"
   }, /*#__PURE__*/React.createElement("p", {
     className: "mb-3"
-  }, /*#__PURE__*/React.createElement("strong", null, "(", props.id, ")P", context.dimensao.numero, ".", context.indicador.numero, props.letra), " ", props.descricao), /*#__PURE__*/React.createElement("p", null, props.legenda), props.naoSeAplica ? /*#__PURE__*/React.createElement("li", {
-    onClick: () => selectResposta(null)
-  }, /*#__PURE__*/React.createElement("div", {
-    className: resposta === null ? props.bgColor : ''
-  }), /*#__PURE__*/React.createElement("p", null, "N\xE3o se aplica")) : null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("strong", null, "(", props.id, ")P", context.dimensao.numero, ".", context.indicador.numero, props.letra), " ", props.descricao), /*#__PURE__*/React.createElement("p", null, props.legenda), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
     className: "range-merker",
     style: {
       width: '113%',
@@ -67,8 +66,17 @@ const Nota = props => {
     }
   }, /*#__PURE__*/React.createElement("ul", {
     className: "radio"
-  }, notas.map((nota, key) => {
-    let valor = props.inverter ? valoresInvertidos[key] : nota; //console.log(resposta, valor);
+  }, props.naoSeAplica ? /*#__PURE__*/React.createElement("li", {
+    onClick: () => selectResposta(null)
+  }, /*#__PURE__*/React.createElement("div", {
+    className: resposta === null ? props.bgColor : ''
+  }), /*#__PURE__*/React.createElement("p", null, "N\xE3o se aplica")) : null, notas.map((nota, key) => {
+    let valor = props.inverter ? valoresInvertidos[key] : nota;
+    /*if(context.dimensao.numero === 4 && context.indicador.numero === 1 && props.letra === 'a'){
+        console.log(valoresInvertidos);
+        console.log('valor invertido', valoresInvertidos[key], 'note', nota);
+        console.log(context.dimensao.numero, context.indicador.numero, props.letra, 'resposta', resposta, 'valor', valor);
+    }*/
 
     return /*#__PURE__*/React.createElement("li", {
       key: 'P' + context.dimensao.numero + context.indicador.numero + props.letra + "_" + key,
