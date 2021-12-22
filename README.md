@@ -12,14 +12,15 @@ o presente Guia de Avaliação de Riscos de Reprodução de Desigualdades na Exe
 
 ### Equipe técnica envolvida no Projeto
 
-- **[Thiago Giannini Ramos](https://github.com/gianninimail)**
+- **[Thiago Giannini](https://github.com/gianninimail)**
 - **[Relison Galvão](https://git)**
 - **[Fabio Barreto](https://git)**
 - **[Bruno Passos](https://git)**
 - **[Raphael Abreu](https://git)**
 - **[Victor Gomes](https://git)**
 
-
+### Repositório do Projeto
+- **https://github.com/Plataformas-Cidadania/inclua-v1**
 
 #### Desenvolvido em Laravel
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
