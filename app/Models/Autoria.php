@@ -37,7 +37,7 @@ class Autoria extends Model
 		'id_recurso'
 	];
 
-	protected $with = ['autor'];
+	protected $with = ['autor','recurso'];
 
 	public function autor()
 	{

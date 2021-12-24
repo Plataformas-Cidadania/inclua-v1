@@ -15,7 +15,7 @@ class CreateRecursoTable extends Migration
     {
         Schema::create('avaliacao.recurso', function (Blueprint $table) {
             $table->increments('id_recurso')->comment('Identifica o recurso');
-            $table->string('nome', 200)->comment('nomde do recurso');
+            $table->string('nome', 200)->comment('nome do recurso');
             $table->timestamp('ultimo_acesso')->comment('Data do último acesso');
             $table->string('esfera', 200)->comment('nome da área de atuação');
             $table->integer('id_tipo_recurso')->nullable();

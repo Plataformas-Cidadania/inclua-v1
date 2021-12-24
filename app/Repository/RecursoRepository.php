@@ -2,7 +2,9 @@
 
 namespace App\Repository;
 
+use Illuminate\Support\Facades\DB;
 use App\Models\Autoria;
+use App\Models\Autor;
 use App\Models\Categoria;
 use App\Models\Indicador;
 use App\Models\Link;
@@ -41,15 +43,39 @@ class RecursoRepository extends BaseRepository
     }
 
      /**
-     * Obter uma lista de autores especificados por um id de recurso
+     * Obter uma lista de recurso que tenha a palavra_chave em titulo, esfera ou autor
      *
-     * @param int $id_recurso
+     * @param int $palavra_chave
      *
-     * @return JsonResponse
+     */
+    public function getAllRecursoPorPalavraChave($palavra_chave)
+    {
+        $first = DB::table('avaliacao.recurso')
+            ->select('avaliacao.recurso.*')
+            ->where('nome', 'like', "%$palavra_chave%")
+            ->orwhere('esfera', 'like', "%$palavra_chave%");
+        $res = DB::table('avaliacao.recurso')
+            ->join('avaliacao.autoria', 'recurso.id_recurso', '=', 'autoria.id_recurso')
+            ->join('avaliacao.autor', 'autor.id_autor', '=', 'autoria.id_autor')
+            ->select('avaliacao.recurso.*')
+            ->where('autor.nome', 'like', "%$palavra_chave%")
+            ->union($first)
+            ->get();                    
+
+        if (!$res || $res->isEmpty()) throw new \Illuminate\Database\Eloquent\ModelNotFoundException;
+        else return $res;
+    }
+
+     /**
+     * Obter uma lista de recurso que tenha por nome de tipo de recurso
+     *
+     * @param int $nome_tipo_recurso
+     *
      */
     public function getAllRecursoPorNomeTipoRecurso($nome_tipo_recurso)
     {
         $res = TipoRecurso::where('nome', 'like', $nome_tipo_recurso)->with('recursos')->get();
+
 
         if (!$res || $res->isEmpty()) throw new \Illuminate\Database\Eloquent\ModelNotFoundException;
         else return $res;
@@ -60,11 +86,10 @@ class RecursoRepository extends BaseRepository
      *
      * @param int getAllRecursosPorNomeTema
      *
-     * @return JsonResponse
      */
     public function getAllRecursosPorNomeCategoria($nome_categoria)
     {
-        $res = Categoria::where('nome', 'like', $nome_categoria)->with('categorizacao')->get();
+        $res = Categoria::where('nome', 'like', "%$nome_categoria%")->with('categorizacao')->get();
 
         if (!$res || $res->isEmpty()) throw new \Illuminate\Database\Eloquent\ModelNotFoundException;
         else return $res;
@@ -76,7 +101,6 @@ class RecursoRepository extends BaseRepository
      *
      * @param int $id_recurso
      *
-     * @return JsonResponse
      */
     public function getAllAutoresPorIdRecurso($id_recurso)
     {

@@ -52,7 +52,8 @@ class Recurso extends Model
         'id_formato'
 	];
     protected $primaryKey = 'id_recurso';
-	protected $with = ['tipo_recurso', 'formato_recurso', 'autoria', 'links'];
+//	protected $with = ['tipo_recurso', 'formato_recurso', 'autoria', 'links'];
+	protected $with = ['tipo_recurso', 'formato_recurso', 'links'];
 
 	public function tipo_recurso()
 	{

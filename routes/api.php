@@ -189,6 +189,9 @@ Route::group([
 
     Route::get('categoria/{nome}',[App\Http\Controllers\Api\RecursoController::class, 'getAllRecursosPorNomeCategoria'])
         ->name('api.recurso.getAllRecursosPorNomeCategoria');
+
+    Route::get('palavra_chave/{palavra_chave}',[App\Http\Controllers\Api\RecursoController::class, 'getAllRecursoPorPalavraChave'])
+        ->name('api.recurso.getAllRecursoPorPalavraChave');
 });
 
 

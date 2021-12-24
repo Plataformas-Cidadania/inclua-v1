@@ -8,6 +8,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Validator;
+
 use Exception;
 use App\Repository\RecursoRepository;
 
@@ -44,18 +45,12 @@ class RecursoController extends Controller
             $res
         );
     }
-/* to do:
-    Get all recurso by tipos
-    get all recurso by temas
-    get all recurso by categoria
-*/
 
     /**
-     * Obter uma lista de recurso por id de tipo
+     * Obter uma lista de recurso por nome do tipo
      *
-     * @param int $id_tipo
+     * @param int $nome do tipo
      *
-     * @return JsonResponse
      */
     public function getAllRecursoPorNomeTipoRecurso($nome_tipo_recurso)
     {
@@ -71,6 +66,28 @@ class RecursoController extends Controller
             return $this->errorResponse('Erro inesperado.'.$exception);
         }
     }
+
+    /**
+     * Obter uma lista de recurso por id de tipo
+     *Obter uma lista de recurso que tenha a palavra_chave em titulo, esfera ou autor
+     * @param int $palavra_chave
+     *
+     */
+    public function getAllRecursoPorPalavraChave($palavra_chave)
+    {
+        try {
+            $res = $this->repo->getAllRecursoPorPalavraChave($palavra_chave);
+            return $this->successResponse(
+                'Retornado com sucesso',
+                $res
+            );
+        }catch (Exception $exception) {
+            if ($exception instanceof ModelNotFoundException)
+                return $this->errorResponse('Not found');
+            return $this->errorResponse('Erro inesperado.'.$exception);
+        }
+    }
+
 
 
 
@@ -202,9 +219,8 @@ class RecursoController extends Controller
      *
      * @param int $id
      *
-     * @return JsonResponse
      */
-    public function get($id): JsonResponse
+    public function get($id)
     {
         try {
             $res = $this->repo->findById($id);
