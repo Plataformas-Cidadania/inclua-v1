@@ -28,7 +28,7 @@
                     Escolher Arquivo <input  type="file" ngf-select ng-model="fileArquivo" name="fileArquivo" accept="application/pdf,.zip,.rar,.doc,.docx,.xlsx,.xls" ngf-max-size="100MB" ngf-model-invalid="errorFile">
                 </span>
                 <button class="btn btn-danger" ng-click="limparArquivo()" ng-show="fileArquivo || arquivoBD" type="button">Remover Arquivo</button>
-                <a href="arquivos/dimensoes/<% arquivoBD %>" target="_blank" ng-show="arquivoBD"><% arquivoBD %></a>
+                <a href="arquivos/indicadores/<% arquivoBD %>" target="_blank" ng-show="arquivoBD"><% arquivoBD %></a>
                 <a ng-show="fileArquivo"><% fileArquivo.name %></a>
                 {{--<br><br>--}}
 

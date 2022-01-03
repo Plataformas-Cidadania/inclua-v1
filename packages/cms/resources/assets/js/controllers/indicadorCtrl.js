@@ -7,7 +7,7 @@ cmsApp.controller('indicadorCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
         vl_baixo: 1,
         vl_alto: 2,
     };
-    $scope.dimensoes = [];
+    $scope.indicadores = [];
     $scope.currentPage = 1;
     $scope.lastPage = 0;
     $scope.totalItens = 0;
@@ -24,22 +24,22 @@ cmsApp.controller('indicadorCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
 
     $scope.$watch('currentPage', function(){
         if($listar){
-            listarDimensoes();
+            listarIndicadores();
         }
     });
     $scope.$watch('itensPerPage', function(){
         if($listar){
-            listarDimensoes();
+            listarIndicadores();
         }
     });
     $scope.$watch('dadoPesquisa', function(){
         if($listar){
-            listarDimensoes();
+            listarIndicadores();
         }
     });
 
 
-    var listarDimensoes = function(){
+    var listarIndicadores = function(){
         $scope.processandoListagem = true;
         $http({
             url: 'api/indicador',
@@ -55,8 +55,8 @@ cmsApp.controller('indicadorCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
             }
         }).success(function(data, status, headers, config){
             console.log(data.data);
-            $scope.dimensoes = data.data;
-            let numeroMaximo = Math.max.apply(Math, $scope.dimensoes.map(function(item) { return item.numero; }));
+            $scope.indicadores = data.data;
+            let numeroMaximo = Math.max.apply(Math, $scope.indicadores.map(function(item) { return item.numero; }));
             $scope.indicador.numero = numeroMaximo + 1;
             $scope.lastPage = data.last_page;
             $scope.totalItens = data.data.length;
@@ -81,7 +81,7 @@ cmsApp.controller('indicadorCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
             $scope.sentidoOrdem = "asc";
         }
 
-        listarDimensoes();
+        listarIndicadores();
     };
 
     $scope.validar = function(){
@@ -89,7 +89,7 @@ cmsApp.controller('indicadorCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
     };
 
 
-    listarDimensoes();
+    listarIndicadores();
 
     //INSERIR/////////////////////////////
 
@@ -116,7 +116,7 @@ cmsApp.controller('indicadorCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
                     'Content-Type': undefined
                 }
             }).success(function (data){
-                 listarDimensoes();
+                 listarIndicadores();
                  delete $scope.indicador;//limpa o form
                 $scope.mensagemInserir =  "Gravado com sucesso!";
                 $scope.processandoInserir = false;
@@ -140,7 +140,7 @@ cmsApp.controller('indicadorCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
                 delete $scope.indicador;//limpa o form
                 $scope.picFile = null;//limpa o file
                 $scope.fileArquivo = null;//limpa o file
-                listarDimensoes();
+                listarIndicadores();
                 $scope.mensagemInserir =  "Gravado com sucesso!";
             }, function (response) {
                 console.log(response.data);
@@ -190,7 +190,7 @@ cmsApp.controller('indicadorCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
                 $scope.processandoExcluir = false;
                 $scope.excluido = true;
                 $scope.mensagemExcluido = data.message;
-                listarDimensoes();
+                listarIndicadores();
                 return;
             }
             $scope.processandoExcluir = false;
@@ -217,7 +217,7 @@ cmsApp.controller('indicadorCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
             //$scope.excluido = true;
             $scope.mensagemStatus = 'color-success';
             $scope.idStatus = id;
-            listarDimensoes();
+            listarIndicadores();
         }).error(function(data){
             $scope.message = "Ocorreu um erro: "+data;
             $scope.processandoStatus = false;

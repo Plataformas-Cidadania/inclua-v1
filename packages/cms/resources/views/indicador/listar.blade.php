@@ -89,9 +89,9 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr ng-repeat="indicador in dimensoes">
+                        <tr ng-repeat="indicador in indicadores">
                             <td><% indicador.id_indicador %></td>
-                           {{-- <td><img ng-show="indicador.imagem" ng-src="imagens/dimensoes/xs-<% indicador.imagem %>" width="60"></td>--}}
+                           {{-- <td><img ng-show="indicador.imagem" ng-src="imagens/indicadores/xs-<% indicador.imagem %>" width="60"></td>--}}
                             <td><% indicador.numero %></td>
                             <td><% indicador.titulo %></td>
                             <td class="text-right">
@@ -144,7 +144,7 @@
                     <div class="modal-body">
                         <div class="row">
                             {{--<div class="col-md-3">
-                                <img  ng-src="imagens/dimensoes/xs-<% imagemExcluir %>" width="100">
+                                <img  ng-src="imagens/indicadores/xs-<% imagemExcluir %>" width="100">
                             </div>--}}
                             <div class="col-md-9">
                                 <p><% tituloExcluir %></p>
