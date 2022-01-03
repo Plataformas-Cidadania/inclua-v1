@@ -9,8 +9,8 @@
 </script>
     <div ng-controller="indicadorCtrl">
         <div class="box-padrao">
-            <h1><i class="fa fa-indicador" aria-hidden="true"></i>&nbsp;Indicadores</h1>
-            <button class="btn btn-primary" ng-click="mostrarForm=!mostrarForm" ng-show="!mostrarForm">Novo Indicador</button>
+            <h1><i class="fa fa-indicador" aria-hidden="true"></i>&nbsp;Dimensões</h1>
+            <button class="btn btn-primary" ng-click="mostrarForm=!mostrarForm" ng-show="!mostrarForm">Nova Dimensão</button>
             <button class="btn btn-warning" ng-click="mostrarForm=!mostrarForm" ng-show="mostrarForm">Cancelar</button>
             <br><br>
             <div ng-show="mostrarForm">
@@ -43,6 +43,7 @@
                 @include('cms::indicador._form')
                 <div class="row">
                     <div class="col-md-1 col-lg-1 col-xs-3">
+                        <br>
                         <button class="btn btn-info" type="button" ng-click="inserir(picFile, fileArquivo)" ng-disabled="form.$invalid">Salvar</button>
                     </div>
                     <div class="col-md-2 col-lg-2 col-xs-6">
@@ -71,7 +72,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="box-padrao">
-                    <div class="input-group">
+                    <div class="input-group" ng-hide="true" >
                         <div class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></div>
                         <input class="form-control" type="text" ng-model="dadoPesquisa" placeholder="Faça sua busca"/>
                     </div>
@@ -82,31 +83,23 @@
                     <table ng-show="totalItens>0" class="table table-striped">
                         <thead>
                         <tr>
-                            <th ng-click="ordernarPor('id')" style="indicadorr:pointer;">
-                                Id
-                                <i ng-if="ordem=='id' && sentidoOrdem=='asc'" class="fa fa-angle-double-down"></i>
-                                <i ng-if="ordem=='id' && sentidoOrdem=='desc'" class="fa fa-angle-double-up"></i>
-                            </th>
-                            {{--<th>Imagem</th>--}}
-                            <th ng-click="ordernarPor('indicador')" style="indicadorr:pointer;">
-                                Indicador
-                                <i ng-if="ordem=='indicador' && sentidoOrdem=='asc'" class="fa fa-angle-double-down"></i>
-                                <i ng-if="ordem=='indicador' && sentidoOrdem=='desc'" class="fa fa-angle-double-up"></i>
-                            </th>
-                            <th></th>
+                            <th>Id</th>
+                            <th>Número</th>
+                            <th>Título</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr ng-repeat="indicador in indicadores">
-                            <td><% indicador.id %></td>
-                           {{-- <td><img ng-show="indicador.imagem" ng-src="imagens/indicadores/xs-<% indicador.imagem %>" width="60"></td>--}}
-                            <td><a href="cms/indicador/<% indicador.id %>"><% indicador.titulo %></a></td>
+                        <tr ng-repeat="indicador in dimensoes">
+                            <td><% indicador.id_indicador %></td>
+                           {{-- <td><img ng-show="indicador.imagem" ng-src="imagens/dimensoes/xs-<% indicador.imagem %>" width="60"></td>--}}
+                            <td><% indicador.numero %></td>
+                            <td><% indicador.titulo %></td>
                             <td class="text-right">
                                 <div>
                                     {{--<a href="cms/items/<% indicador.id %>"><i class="fa fa-sitemap fa-2x" title="Itens"></i></a>&nbsp;&nbsp;--}}
-                                    <a href="cms/indicador/<% indicador.id %>"><i class="fa fa-edit fa-2x" title="Editar"></i></a>&nbsp;&nbsp;{{--<% mensagemStatus %><% idStatus %>--}}
-                                    <a  ng-class="<% indicador.status %> == 1 ? 'color-success' : 'color-success-inactive'"  style="cursor: pointer;"><i class="fa fa-check-circle fa-2x" aria-hidden="true" ng-click="status(indicador.id);"></i></a>&nbsp;&nbsp;
-                                    <a><i data-toggle="modal" data-target="#modalExcluir" class="fa fa-remove fa-2x" ng-click="perguntaExcluir(indicador.id, indicador.titulo, indicador.imagem)"></i></a>
+                                    <a href="cms/indicador/<% indicador.id_indicador %>"><i class="fa fa-edit fa-2x" title="Editar"></i></a>&nbsp;&nbsp;{{--<% mensagemStatus %><% idStatus %>--}}
+                                    {{--<a  ng-class="<% indicador.status %> == 1 ? 'color-success' : 'color-success-inactive'"  style="cursor: pointer;"><i class="fa fa-check-circle fa-2x" aria-hidden="true" ng-click="status(indicador.id);"></i></a>&nbsp;&nbsp;--}}
+                                    <a><i data-toggle="modal" data-target="#modalExcluir" class="fa fa-remove fa-2x" ng-click="perguntaExcluir(indicador.id_indicador, indicador.titulo, indicador.imagem)"></i></a>
                                 </div>
                             </td>
                         </tr>
@@ -150,9 +143,9 @@
                     </div>
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col-md-3">
-                                <img  ng-src="imagens/indicadores/xs-<% imagemExcluir %>" width="100">
-                            </div>
+                            {{--<div class="col-md-3">
+                                <img  ng-src="imagens/dimensoes/xs-<% imagemExcluir %>" width="100">
+                            </div>--}}
                             <div class="col-md-9">
                                 <p><% tituloExcluir %></p>
                             </div>

@@ -4,9 +4,9 @@
     {!! Html::script(config('app.url').'assets-cms/js/controllers/alterarIndicadorCtrl.js') !!}
     <div ng-controller="alterarIndicadorCtrl">
         <div class="box-padrao">
-            <h1><a href="javascript:history.back();"><i class="fa fa-arrow-circle-left"></i></a>&nbsp;&nbsp;Indicadores</h1>
+            <h1><a href="javascript:history.back();"><i class="fa fa-arrow-circle-left"></i></a>&nbsp;&nbsp;Dimensão</h1>
             <?php //print_r($indicador);?>
-            <div ng-init="carregaImagem('{{$indicador->imagem}}', '{{$indicador->arquivo}}')">
+            <div ng-init="carregaImagem('{{$indicador->imagem}}', '{{$indicador->arquivo}}'); detalhar({{$indicador->id_indicador}})">
                 <span class="texto-obrigatorio">* campos obrigatórios</span><br><br>
                 {!! Form::model($indicador, ['name' =>'form']) !!}
                 <div class="container-thumb" style="display: none;">
@@ -28,15 +28,16 @@
                     Escolher Arquivo <input  type="file" ngf-select ng-model="fileArquivo" name="fileArquivo" accept="application/pdf,.zip,.rar,.doc,.docx,.xlsx,.xls" ngf-max-size="100MB" ngf-model-invalid="errorFile">
                 </span>
                 <button class="btn btn-danger" ng-click="limparArquivo()" ng-show="fileArquivo || arquivoBD" type="button">Remover Arquivo</button>
-                <a href="arquivos/indicadores/<% arquivoBD %>" target="_blank" ng-show="arquivoBD"><% arquivoBD %></a>
+                <a href="arquivos/dimensoes/<% arquivoBD %>" target="_blank" ng-show="arquivoBD"><% arquivoBD %></a>
                 <a ng-show="fileArquivo"><% fileArquivo.name %></a>
                 {{--<br><br>--}}
 
                 <br><br>
                 @include('cms::indicador._form')
-                <input type="hidden" name="id" ng-model="id" ng-init="id='{{$indicador->id}}'"/>
+                <input type="hidden" name="id" ng-model="id" ng-init="id='{{$indicador->id_indicador}}'"/>
                 <div class="row">
                     <div class="col-md-1 col-lg-1 col-xs-3">
+                        <br>
                         <button class="btn btn-info" type="button" ng-click="alterar(picFile, fileArquivo)" ng-disabled="form.$invalid && form.indicador.$dirty">Salvar</button>
                     </div>
                     <div class="col-md-2 col-lg-2 col-xs-6">

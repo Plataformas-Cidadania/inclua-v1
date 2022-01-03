@@ -1,31 +1,52 @@
-cmsApp.controller('alterarTipoCtrl', ['$scope', '$http', 'Upload', '$timeout', function($scope, $http, Upload, $timeout){
+cmsApp.controller('alterarIndicadorCtrl', ['$scope', '$http', 'Upload', '$timeout', function($scope, $http, Upload, $timeout){
 
     $scope.processandoSalvar = false;
-    
+    $scope.processandoDetalhar = false;
+
     //ALTERAR/////////////////////////////
 
     $scope.tinymceOptions = tinymceOptions;
 
     $scope.mostrarForm = false;
 
-    $scope.removerImagem = 0;
-    $scope.removerArquivo = 0;
+    $scope.removerImagem = false;
 
-    $scope.alterar = function (file, arquivo){
-        $scope.processandoSalvar = true;
-        $scope.mensagemSalvar = "";
+    $scope.detalhar = function(id){
+        $scope.processandoDetalhar = true;
+        $http({
+            url: 'api/indicador/'+id,
+            method: 'GET',
+            params: {
 
-        if(file==null && arquivo==null){
+            }
+        }).success(function(data, status, headers, config){
+            $scope.indicador = data.data;
+            $scope.processandoDetalhar = false;
+        }).error(function(data){
+            $scope.message = "Ocorreu um erro: "+data;
+            $scope.processandoDetalhar = false;
+        });
+    };
 
-            //console.log($scope.tipo);
-            $http.post("cms/alterar-tipo/"+$scope.id, {
-                'tipo': $scope.tipo,
-                'removerImagem': $scope.removerImagem,
-                'removerArquivo': $scope.removerArquivo
+    $scope.alterar = function (file){
+
+        if(file==null){
+
+            $scope.processandoSalvar = true;
+            let formData = new FormData();
+            formData.append('numero', $scope.indicador.numero);
+            formData.append('titulo', $scope.indicador.titulo);
+            formData.append('descricao', $scope.indicador.descricao);
+            formData.append('vl_baixo', $scope.indicador.vl_baixo);
+            formData.append('vl_alto', $scope.indicador.vl_alto);
+            $http.put("api/indicador/"+$scope.id, formData, {
+                headers: {
+                    'Content-Type': undefined
+                }
             }).success(function (data){
                 //console.log(data);
                 $scope.processandoSalvar = false;
-                $scope.mensagemSalvar = "Gravado com Sucesso";
+                $scope.mensagemSalvar = data.message;
                 $scope.removerImagem = false;
             }).error(function(data){
                 //console.log(data);
@@ -35,42 +56,28 @@ cmsApp.controller('alterarTipoCtrl', ['$scope', '$http', 'Upload', '$timeout', f
 
         }else{
 
-            var data1 = {
-                tipo: $scope.tipo,
-                'removerImagem': $scope.removerImagem,
-                'removerArquivo': $scope.removerArquivo
-            };
+            file.upload = Upload.upload({
+                url: 'api/indicador/'+$scope.id,
+                data: {text: $scope.text, file: file},
+            });
 
-            if(file!=null){
-                data1.file = file;
-            }
-            if(arquivo!=null){
-                data1.arquivo = arquivo;
-            }
-
-            Upload.upload({
-                url: 'cms/alterar-tipo/'+$scope.id,
-                data: data1
-            }).then(function (response) {
+            file.upload.then(function (response) {
                 $timeout(function () {
-                    $scope.result = response.data;
+                    file.result = response.data;
                 });
-                $scope.picFile = null;//limpa o file
-                //$scope.fileArquivo = null;//limpa o file
+                $scope.picFile = null;//limpa o form
                 $scope.mensagemSalvar =  "Gravado com sucesso!";
                 $scope.removerImagem = false;
-                $scope.imagemBD = '/imagens/tipos/'+response.data;
-                $scope.processandoSalvar = false;
-
+                $scope.imagemBD = 'imagens/texts/'+response.data;
+                console.log($scope.imagemDB);
             }, function (response) {
                 if (response.status > 0){
                     $scope.errorMsg = response.status + ': ' + response.data;
-                    $scope.processandoSalvar = false;
                 }
             }, function (evt) {
                 //console.log(evt);
                 // Math.min is to fix IE which reports 200% sometimes
-                $scope.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+                file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
             });
 
         }
@@ -80,23 +87,13 @@ cmsApp.controller('alterarTipoCtrl', ['$scope', '$http', 'Upload', '$timeout', f
     $scope.limparImagem = function(){
         $scope.picFile = null;
         $scope.imagemBD = null;
-        $scope.removerImagem = 1;
+        $scope.removerImagem = true;
     };
 
-    $scope.limparArquivo= function(){
-        $scope.fileArquivo = null;
-        $scope.arquivoBD = null;
-        $scope.removerArquivo = 1;
-    };
-
-    $scope.carregaImagem  = function(img, arquivo) {
+    $scope.carregaImagem  = function(img) {
         if(img!=''){
-            $scope.imagemBD = 'imagens/tipos/xs-'+img;
+            $scope.imagemBD = 'imagens/texts/xs-'+img;
             //console.log($scope.imagemBD);
-        }
-        if(arquivo!=''){
-            $scope.arquivoBD = arquivo;
-            //console.log($scope.baseBD);
         }
     };
 
@@ -107,8 +104,7 @@ cmsApp.controller('alterarTipoCtrl', ['$scope', '$http', 'Upload', '$timeout', f
         return "";
     };
     /////////////////////////////////
-    
-    
-    
+
+
 
 }]);

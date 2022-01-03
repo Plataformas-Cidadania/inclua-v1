@@ -1,41 +1,48 @@
-cmsApp.controller('tipoCtrl', ['$scope', '$http', 'Upload', '$timeout', function($scope, $http, Upload, $timeout){
-    
-    $scope.tipos = [];
+cmsApp.controller('indicadorCtrl', ['$scope', '$http', 'Upload', '$timeout', function($scope, $http, Upload, $timeout){
+
+    $scope.indicador = {
+        numero: 2,
+        titulo: 'aaaa',
+        descricao: 'aaaaaaaaaaa',
+        vl_baixo: 1,
+        vl_alto: 2,
+    };
+    $scope.dimensoes = [];
     $scope.currentPage = 1;
     $scope.lastPage = 0;
     $scope.totalItens = 0;
     $scope.maxSize = 5;
     $scope.itensPerPage = 10;
     $scope.dadoPesquisa = '';
-    $scope.campos = "id, titulo, imagem, status";
+    $scope.campos = "id_indicador, numero, titulo";
     $scope.campoPesquisa = "titulo";
     $scope.processandoListagem = false;
     $scope.processandoExcluir = false;
-    $scope.ordem = "titulo";
+    $scope.ordem = "numero";
     $scope.sentidoOrdem = "asc";
     var $listar = false;//para impedir de carregar o conteúdo dos watchs no carregamento da página.
 
     $scope.$watch('currentPage', function(){
         if($listar){
-            listarTipos();
+            listarDimensoes();
         }
     });
     $scope.$watch('itensPerPage', function(){
         if($listar){
-            listarTipos();
+            listarDimensoes();
         }
     });
     $scope.$watch('dadoPesquisa', function(){
         if($listar){
-            listarTipos();
+            listarDimensoes();
         }
     });
 
 
-    var listarTipos = function(){
+    var listarDimensoes = function(){
         $scope.processandoListagem = true;
         $http({
-            url: 'cms/listar-tipos',
+            url: 'api/indicador',
             method: 'GET',
             params: {
                 page: $scope.currentPage,
@@ -47,9 +54,13 @@ cmsApp.controller('tipoCtrl', ['$scope', '$http', 'Upload', '$timeout', function
                 sentido: $scope.sentidoOrdem
             }
         }).success(function(data, status, headers, config){
-            $scope.tipos = data.data;
+            console.log(data.data);
+            $scope.dimensoes = data.data;
+            let numeroMaximo = Math.max.apply(Math, $scope.dimensoes.map(function(item) { return item.numero; }));
+            $scope.indicador.numero = numeroMaximo + 1;
             $scope.lastPage = data.last_page;
-            $scope.totalItens = data.total;
+            $scope.totalItens = data.data.length;
+            //$scope.totalItens = data.total;
             $scope.primeiroDaPagina = data.from;
             $scope.ultimoDaPagina = data.to;
             $listar = true;
@@ -61,8 +72,6 @@ cmsApp.controller('tipoCtrl', ['$scope', '$http', 'Upload', '$timeout', function
         });
     };
 
-
-
     $scope.ordernarPor = function(ordem){
         $scope.ordem = ordem;
         //console.log($scope.ordem);
@@ -72,15 +81,15 @@ cmsApp.controller('tipoCtrl', ['$scope', '$http', 'Upload', '$timeout', function
             $scope.sentidoOrdem = "asc";
         }
 
-        listarTipos();
+        listarDimensoes();
     };
 
     $scope.validar = function(){
 
     };
-    
 
-    listarTipos();
+
+    listarDimensoes();
 
     //INSERIR/////////////////////////////
 
@@ -95,10 +104,20 @@ cmsApp.controller('tipoCtrl', ['$scope', '$http', 'Upload', '$timeout', function
         if(file==null && arquivo==null){
             $scope.processandoInserir = true;
 
-            //console.log($scope.tipo);
-            $http.post("cms/inserir-tipo", {tipo: $scope.tipo}).success(function (data){
-                 listarTipos();
-                 delete $scope.tipo;//limpa o form
+            //console.log($scope.indicador);
+            let formData = new FormData();
+            formData.append('numero', $scope.indicador.numero);
+            formData.append('titulo', $scope.indicador.titulo);
+            formData.append('descricao', $scope.indicador.descricao);
+            formData.append('vl_baixo', $scope.indicador.vl_baixo);
+            formData.append('vl_alto', $scope.indicador.vl_alto);
+            $http.post("api/indicador", formData, {
+                headers: {
+                    'Content-Type': undefined
+                }
+            }).success(function (data){
+                 listarDimensoes();
+                 delete $scope.indicador;//limpa o form
                 $scope.mensagemInserir =  "Gravado com sucesso!";
                 $scope.processandoInserir = false;
              }).error(function(data){
@@ -107,19 +126,21 @@ cmsApp.controller('tipoCtrl', ['$scope', '$http', 'Upload', '$timeout', function
              });
         }else{
 
-
+            indicador.file = file;
+            indicador.arquivo = arquivo;
             Upload.upload({
-                url: 'cms/inserir-tipo',
-                data: {tipo: $scope.tipo, file: file, arquivo: arquivo},
+                url: 'api/indicador',
+                data: indicador,
+                //data: {indicador: $scope.indicador, file: file, arquivo: arquivo},
             }).then(function (response) {
                 $timeout(function () {
                     $scope.result = response.data;
                 });
                 console.log(response.data);
-                delete $scope.tipo;//limpa o form
+                delete $scope.indicador;//limpa o form
                 $scope.picFile = null;//limpa o file
                 $scope.fileArquivo = null;//limpa o file
-                listarTipos();
+                listarDimensoes();
                 $scope.mensagemInserir =  "Gravado com sucesso!";
             }, function (response) {
                 console.log(response.data);
@@ -161,14 +182,20 @@ cmsApp.controller('tipoCtrl', ['$scope', '$http', 'Upload', '$timeout', function
     $scope.excluir = function(id){
         $scope.processandoExcluir = true;
         $http({
-            url: 'cms/excluir-tipo/'+id,
-            method: 'GET'
+            url: 'api/indicador/'+id,
+            method: 'DELETE'
         }).success(function(data, status, headers, config){
             console.log(data);
+            if(data.success){
+                $scope.processandoExcluir = false;
+                $scope.excluido = true;
+                $scope.mensagemExcluido = data.message;
+                listarDimensoes();
+                return;
+            }
             $scope.processandoExcluir = false;
-            $scope.excluido = true;
-            $scope.mensagemExcluido = "Excluído com sucesso!";
-            listarTipos();
+            $scope.excluido = false;
+            $scope.mensagemExcluido = data.message;
         }).error(function(data){
             $scope.message = "Ocorreu um erro: "+data;
             $scope.processandoExcluir = false;
@@ -182,7 +209,7 @@ cmsApp.controller('tipoCtrl', ['$scope', '$http', 'Upload', '$timeout', function
         $scope.idStatus = '';
         $scope.processandoStatus = true;
         $http({
-            url: 'cms/status-tipo/'+id,
+            url: 'cms/status-indicador/'+id,
             method: 'GET'
         }).success(function(data, status, headers, config){
             //console.log(data);
@@ -190,7 +217,7 @@ cmsApp.controller('tipoCtrl', ['$scope', '$http', 'Upload', '$timeout', function
             //$scope.excluido = true;
             $scope.mensagemStatus = 'color-success';
             $scope.idStatus = id;
-            listarTipos();
+            listarDimensoes();
         }).error(function(data){
             $scope.message = "Ocorreu um erro: "+data;
             $scope.processandoStatus = false;
