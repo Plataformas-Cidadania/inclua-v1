@@ -25,7 +25,7 @@ $base_href = config('app.url');
 
 
 <!-- Bootstrap Core JavaScript -->
-{!! Html::script($base_href.'/assets-cms/lib/bootstrap/js/bootstrap.min.js') !!}
+{!! Html::script($base_href.'assets-cms/lib/bootstrap/js/bootstrap.min.js') !!}
 
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

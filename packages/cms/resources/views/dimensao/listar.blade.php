@@ -99,7 +99,7 @@
                                     {{--<a href="cms/items/<% dimensao.id %>"><i class="fa fa-sitemap fa-2x" title="Itens"></i></a>&nbsp;&nbsp;--}}
                                     <a href="cms/dimensao/<% dimensao.id_dimensao %>"><i class="fa fa-edit fa-2x" title="Editar"></i></a>&nbsp;&nbsp;{{--<% mensagemStatus %><% idStatus %>--}}
                                     {{--<a  ng-class="<% dimensao.status %> == 1 ? 'color-success' : 'color-success-inactive'"  style="cursor: pointer;"><i class="fa fa-check-circle fa-2x" aria-hidden="true" ng-click="status(dimensao.id);"></i></a>&nbsp;&nbsp;--}}
-                                    <a><i data-toggle="modal" data-target="#modalExcluir" class="fa fa-remove fa-2x" ng-click="perguntaExcluir(dimensao.id, dimensao.titulo, dimensao.imagem)"></i></a>
+                                    <a><i data-toggle="modal" data-target="#modalExcluir" class="fa fa-remove fa-2x" ng-click="perguntaExcluir(dimensao.id_dimensao, dimensao.titulo, dimensao.imagem)"></i></a>
                                 </div>
                             </td>
                         </tr>
@@ -143,9 +143,9 @@
                     </div>
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col-md-3">
+                            {{--<div class="col-md-3">
                                 <img  ng-src="imagens/dimensoes/xs-<% imagemExcluir %>" width="100">
-                            </div>
+                            </div>--}}
                             <div class="col-md-9">
                                 <p><% tituloExcluir %></p>
                             </div>

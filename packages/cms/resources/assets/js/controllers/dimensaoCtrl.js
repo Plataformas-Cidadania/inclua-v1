@@ -182,14 +182,20 @@ cmsApp.controller('dimensaoCtrl', ['$scope', '$http', 'Upload', '$timeout', func
     $scope.excluir = function(id){
         $scope.processandoExcluir = true;
         $http({
-            url: 'cms/excluir-dimensao/'+id,
-            method: 'GET'
+            url: 'api/dimensao/'+id,
+            method: 'DELETE'
         }).success(function(data, status, headers, config){
             console.log(data);
+            if(data.success){
+                $scope.processandoExcluir = false;
+                $scope.excluido = true;
+                $scope.mensagemExcluido = data.message;
+                listarDimensoes();
+                return;
+            }
             $scope.processandoExcluir = false;
-            $scope.excluido = true;
-            $scope.mensagemExcluido = "Excluído com sucesso!";
-            listarDimensoes();
+            $scope.excluido = false;
+            $scope.mensagemExcluido = data.message;
         }).error(function(data){
             $scope.message = "Ocorreu um erro: "+data;
             $scope.processandoExcluir = false;
