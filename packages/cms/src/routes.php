@@ -177,13 +177,17 @@ Route::group(['middleware' => 'cms'], function () {
         Route::post('/cms/alterar-text/{id}', 'Cms\Controllers\TextController@alterar');
         Route::get('/cms/excluir-text/{id}', 'Cms\Controllers\TextController@excluir');
 
+        //ROTAS DO CRUD PELA API////////////////////////////////////////////////////////////
+
         //Dimensão
         Route::get('/cms/dimensoes', 'Cms\Controllers\DimensaoController@index');
-        //Route::get('/cms/listar-texts', 'Cms\Controllers\TextController@listar');
         Route::get('/cms/dimensao/{id}', 'Cms\Controllers\DimensaoController@detalhar');
-        //Route::post('/cms/alterar-text/{id}', 'Cms\Controllers\TextController@alterar');
-        //Route::get('/cms/excluir-text/{id}', 'Cms\Controllers\TextController@excluir');
 
+        //Indicador
+        Route::get('/cms/indicadores', 'Cms\Controllers\IndicadorController@index');
+        Route::get('/cms/indicador/{id}', 'Cms\Controllers\IndicadorController@detalhar');
+
+        ////////////////////////////////////////////////////////////////////////////////////
 
 
     });
