@@ -96,6 +96,9 @@
                 {{--<li>
                     <a href="cms/apoios"><i class="fa fa-fw fa-anchor"></i> Apoio</a>
                 </li>--}}
+                <li>
+                    <a href="cms/dimensoes"><i class="fa fa-fw fa-link"></i> Dimensões</a>
+                </li>
 
 
 
