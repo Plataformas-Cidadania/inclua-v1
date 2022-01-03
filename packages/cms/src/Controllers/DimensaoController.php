@@ -104,7 +104,7 @@ class DimensaoController extends Controller
 
     }
 
-    public function alterar(Request $request, $id)
+    /*public function alterar(Request $request, $id)
     {
         $data = $request->all();
         $data['dimensao'] += ['cmsuser_id' => auth()->guard('cms')->user()->id];//adiciona id do usuario
@@ -146,9 +146,9 @@ class DimensaoController extends Controller
 
         $dimensao->update($data['dimensao']);
         return "Gravado com sucesso";
-    }
+    }*/
 
-    public function excluir($id)
+    /*public function excluir($id)
     {
         //Auth::loginUsingId(2);
 
@@ -166,7 +166,7 @@ class DimensaoController extends Controller
 
         $dimensao->delete();
 
-    }
+    }*/
 
 
 
