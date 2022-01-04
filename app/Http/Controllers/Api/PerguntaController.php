@@ -17,12 +17,16 @@ class PerguntaController extends Controller
 
     private PerguntaRepository $repo;
     private $rules = [
-        'id_pergunta' => 'int|min:1',
-        'nome' => 'string|min:1',
+        'letra' => 'string|nullable',
         'descricao' => 'string|min:1|nullable',
+        'legenda' => 'string|min:1|nullable',
         'vl_minimo' => 'int|min:1',
-        'vl_medio' => 'int|min:1',
         'vl_maximo' => 'int|min:1',
+        'tipo' => 'int|min:1',
+        'nao_se_aplica' => 'boolean|nullable',
+        'inverter' => 'boolean',
+        'vl_subpergunta' => 'int|min:1|nullable',
+        'id_perguntaPai' => 'int|min:1|nullable',
         'id_indicador' => 'int|min:1'
     ];
     public function __construct(PerguntaRepository $repo)
@@ -198,6 +202,6 @@ class PerguntaController extends Controller
 
 
 
-    
+
 
 }

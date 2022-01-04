@@ -33,22 +33,30 @@ class Pergunta extends Model
 
 	protected $casts = [
 		'id_pergunta' => 'int',
-		'nome' => 'string',
+		'letra' => 'string',
 		'descricao' => 'string',
+        'legenda' => 'string',
 		'vl_minimo' => 'int',
-		'vl_medio' => 'int',
 		'vl_maximo' => 'int',
-		'id_indicador' => 'int',
-		'vl_subPergunta'=> 'int'
+        'tipo' => 'int',
+        'nao_se_aplica' => 'boolean',
+        'inverter' => 'boolean',
+        'vl_subPergunta'=> 'int',
+        'vl_perguntaPai'=> 'int',
+		'id_indicador' => 'int'
 	];
 
 	protected $fillable = [
-		'nome',
+		'letra',
 		'descricao',
+        'legenda',
 		'vl_minimo',
-		'vl_medio',
 		'vl_maximo',
-		'vl_subPergunta',
+		'tipo',
+        'nao_se_aplica',
+        'inverter',
+        'vl_subPergunta',
+        'vl_perguntaPai',
 		'id_indicador'
 	];
 	protected $with = ['perguntas'];

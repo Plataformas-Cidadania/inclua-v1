@@ -190,6 +190,10 @@ Route::group([
     Route::get('categoria/{nome}',[App\Http\Controllers\Api\RecursoController::class, 'getAllRecursosPorNomeCategoria'])
         ->name('api.recurso.getAllRecursosPorNomeCategoria');
 
+    Route::get('indicador/{nome}',[App\Http\Controllers\Api\RecursoController::class, 'getAllRecursosPorNomeIndicador'])
+        ->name('api.recurso.getAllRecursosPorNomeIndicador');
+
+
     Route::get('palavra_chave/{palavra_chave}',[App\Http\Controllers\Api\RecursoController::class, 'getAllRecursoPorPalavraChave'])
         ->name('api.recurso.getAllRecursoPorPalavraChave');
 });
@@ -202,13 +206,13 @@ Route::group([
     Route::get('/', [App\Http\Controllers\Api\IndicacaoController::class, 'getAll'])
         ->name('api.indicacao.getAll');
 
-    Route::get('/{id_categoria}/{id_recurso}',[App\Http\Controllers\Api\IndicacaoController::class, 'get'])
+    Route::get('/{id_indicador}/{id_recurso}',[App\Http\Controllers\Api\IndicacaoController::class, 'get'])
         ->name('api.indicacao.get');
 
     Route::post('/', [App\Http\Controllers\Api\IndicacaoController::class, 'store'])
         ->name('api.indicacao.store');
 
-    Route::delete('/{id_categoria}/{id_recurso}',[App\Http\Controllers\Api\IndicacaoController::class, 'destroy'])
+    Route::delete('/{id_indicador}/{id_recurso}',[App\Http\Controllers\Api\IndicacaoController::class, 'destroy'])
         ->name('api.indicacao.destroy');
 });
 

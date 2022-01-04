@@ -15,16 +15,13 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id_autor
  * @property string|null $nome
  *
- * @property Collection|Autoria[] $autoria
- * @property timestamp $created_at
- * @property timestamp $updated_at
  * @package App\Models
  */
 class Autor extends Model
 {
 	protected $table = 'avaliacao.autor';
 	protected $primaryKey = 'id_autor';
-
+    public $timestamps = false;
 	protected $casts = [
 		'id_autor' => 'int',
 		'nome' => 'string'

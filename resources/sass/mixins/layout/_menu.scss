@@ -401,6 +401,24 @@
 .menu-small li:hover{
     border-bottom: solid 2px #1b4b72;
 }
+.menu-small-on{
+    border-bottom: solid 2px #1b4b72!important;
+}
+
+.list-search{
+    margin: 0;
+    padding:0;
+}
+.list-search li{
+    margin: 0;
+    padding:5px;
+    list-style: none;
+    border-bottom: solid 1px #CCCCCC;
+}
+.list-search li:hover{
+    background-color: $color-lgt2
+}
+
 
 @media only screen and (max-width : 480px) {
     .cel-footer{
