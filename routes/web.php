@@ -90,8 +90,8 @@ foreach ($routesSearch as $route) {
 }
 
 
-//if(env('DYNAMIC_ROUTES') && Schema::hasTable('cms.modulos')){
-if(env('DYNAMIC_ROUTES')){
+if(env('DYNAMIC_ROUTES') && Schema::hasTable('cms.modulos')){
+//if(env('DYNAMIC_ROUTES')){
     $modulos = \Illuminate\Support\Facades\DB::table('cms.modulos')->select('slug')->get();
 
     foreach ($modulos as $modulo) {
