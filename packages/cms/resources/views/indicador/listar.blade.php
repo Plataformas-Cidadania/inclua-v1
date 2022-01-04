@@ -9,8 +9,8 @@
 </script>
     <div ng-controller="indicadorCtrl">
         <div class="box-padrao">
-            <h1><i class="fa fa-indicador" aria-hidden="true"></i>&nbsp;Dimensões</h1>
-            <button class="btn btn-primary" ng-click="mostrarForm=!mostrarForm" ng-show="!mostrarForm">Nova Dimensão</button>
+            <h1><i class="fa fa-indicador" aria-hidden="true"></i>&nbsp;Indicadores</h1>
+            <button class="btn btn-primary" ng-click="mostrarForm=!mostrarForm" ng-show="!mostrarForm">Novo Indicador</button>
             <button class="btn btn-warning" ng-click="mostrarForm=!mostrarForm" ng-show="mostrarForm">Cancelar</button>
             <br><br>
             <div ng-show="mostrarForm">
@@ -117,14 +117,14 @@
                     <div class="item-paginacao">
                         <uib-pagination total-items="totalItens" ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" force-ellipses="true" items-per-page="itensPerPage" num-pages="numPages"></uib-pagination>
                     </div>
-                    <div class="item-paginacao">
+                    {{--<div class="item-paginacao">
                         <select class="form-control itens-por-pagina item-paginacao"  ng-model="itensPerPage">
                             <option ng-selected="true">10</option>
                             <option>25</option>
                             <option>50</option>
                             <option>100</option>
                         </select>
-                    </div>
+                    </div>--}}
                     <div class="item-paginacao">
                         <div class="resumo-pagina">&nbsp; <% primeiroDaPagina %> - <% (ultimoDaPagina) %> de <% totalItens %></div>
                     </div>

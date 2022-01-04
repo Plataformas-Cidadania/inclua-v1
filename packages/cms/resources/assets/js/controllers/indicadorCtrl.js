@@ -12,7 +12,7 @@ cmsApp.controller('indicadorCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
     $scope.lastPage = 0;
     $scope.totalItens = 0;
     $scope.maxSize = 5;
-    $scope.itensPerPage = 10;
+    $scope.itensPerPage = 100;
     $scope.dadoPesquisa = '';
     $scope.campos = "id_indicador, numero, titulo";
     $scope.campoPesquisa = "titulo";

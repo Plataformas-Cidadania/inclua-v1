@@ -4,7 +4,7 @@
     {!! Html::script(config('app.url').'assets-cms/js/controllers/alterarIndicadorCtrl.js') !!}
     <div ng-controller="alterarIndicadorCtrl">
         <div class="box-padrao">
-            <h1><a href="javascript:history.back();"><i class="fa fa-arrow-circle-left"></i></a>&nbsp;&nbsp;Dimensão</h1>
+            <h1><a href="javascript:history.back();"><i class="fa fa-arrow-circle-left"></i></a>&nbsp;&nbsp;Indicador</h1>
             <?php //print_r($indicador);?>
             <div ng-init="carregaImagem('{{$indicador->imagem}}', '{{$indicador->arquivo}}'); detalhar({{$indicador->id_indicador}})">
                 <span class="texto-obrigatorio">* campos obrigatórios</span><br><br>
