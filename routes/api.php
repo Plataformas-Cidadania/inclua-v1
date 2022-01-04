@@ -202,13 +202,13 @@ Route::group([
     Route::get('/', [App\Http\Controllers\Api\IndicacaoController::class, 'getAll'])
         ->name('api.indicacao.getAll');
 
-    Route::get('/{id_categoria}/{id_recurso}',[App\Http\Controllers\Api\IndicacaoController::class, 'get'])
+    Route::get('/{id_indicador}/{id_recurso}',[App\Http\Controllers\Api\IndicacaoController::class, 'get'])
         ->name('api.indicacao.get');
 
     Route::post('/', [App\Http\Controllers\Api\IndicacaoController::class, 'store'])
         ->name('api.indicacao.store');
 
-    Route::delete('/{id_categoria}/{id_recurso}',[App\Http\Controllers\Api\IndicacaoController::class, 'destroy'])
+    Route::delete('/{id_indicador}/{id_recurso}',[App\Http\Controllers\Api\IndicacaoController::class, 'destroy'])
         ->name('api.indicacao.destroy');
 });
 
