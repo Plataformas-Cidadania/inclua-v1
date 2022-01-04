@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Models\Indicacao;
 use Illuminate\Support\Facades\DB;
 use App\Models\Autoria;
 use App\Models\Autor;
@@ -60,7 +61,7 @@ class RecursoRepository extends BaseRepository
             ->select('avaliacao.recurso.*')
             ->where('autor.nome', 'like', "%$palavra_chave%")
             ->union($first)
-            ->get();                    
+            ->get();
 
         if (!$res || $res->isEmpty()) throw new \Illuminate\Database\Eloquent\ModelNotFoundException;
         else return $res;
@@ -82,14 +83,29 @@ class RecursoRepository extends BaseRepository
     }
 
     /**
-     * Obter uma lista de autores especificados por um id de recurso
+     * Obter uma lista de autores especificados por um nome de categoria
      *
-     * @param int getAllRecursosPorNomeTema
+     * @param int getAllRecursosPorNomeCategoria
      *
      */
     public function getAllRecursosPorNomeCategoria($nome_categoria)
     {
         $res = Categoria::where('nome', 'like', "%$nome_categoria%")->with('categorizacao')->get();
+
+        if (!$res || $res->isEmpty()) throw new \Illuminate\Database\Eloquent\ModelNotFoundException;
+        else return $res;
+    }
+
+
+    /**
+     * Obter uma lista de autores especificados por um nome de indicador
+     *
+     * @param int getAllRecursosPorNomeIndicador
+     *
+     */
+    public function getAllRecursosPorNomeIndicador($nome_indicador)
+    {
+        $res = Indicador::where('titulo', 'like', "%$nome_indicador%")->with(['recursos'])->get();
 
         if (!$res || $res->isEmpty()) throw new \Illuminate\Database\Eloquent\ModelNotFoundException;
         else return $res;

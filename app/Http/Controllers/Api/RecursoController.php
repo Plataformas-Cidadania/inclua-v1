@@ -142,6 +142,28 @@ class RecursoController extends Controller
         }
     }
 
+
+    /**
+     * Obter uma lista de recursos especificados por um nome de indicador
+     *
+     * @param string $nome_categoria
+     *
+     * @return JsonResponse
+     */
+    public function getAllRecursosPorNomeIndicador($nome_indicador): JsonResponse
+    {
+        try {
+            $res = $this->repo->getAllRecursosPorNomeIndicador($nome_indicador);
+            return $this->successResponse(
+                'Retornado com sucesso',
+                $res
+            );
+        }catch (Exception $exception) {
+            if ($exception instanceof ModelNotFoundException)
+                return $this->errorResponse('Not found');
+            return $this->errorResponse('Erro inesperado.'.$exception);
+        }
+    }
     /**
      * Obter uma lista de autores especificados por um id de recurso
      *
