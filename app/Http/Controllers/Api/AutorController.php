@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Api\Controller;
 use App\Models\Autor;
-use App\Models\Categorizacao;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\Eloquent\RelationNotFoundException;
 use Illuminate\Http\JsonResponse;
@@ -54,11 +53,13 @@ class AutorController extends Controller
         try {
             $validator = $this->getValidator($request);
 
+
             if ($validator->fails()) {
                 return $this->errorResponse($validator->errors()->all());
             }
 
             $data = $this->getData($request);
+
             $res = $this->repo->create($data);
             return $this->successResponse(
 			    'Autor '.$res->id_autor.' foi adicionado',
