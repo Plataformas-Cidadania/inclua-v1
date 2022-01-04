@@ -20,7 +20,9 @@ class IndicadorController extends Controller
         'titulo' => 'string|min:1|nullable',
         'descricao' => 'string|min:1|nullable',
         'consequencia'=> 'string|min:1|nullable',
-        'id_dimensao' => 'int|min:1|nullable',
+        'id_dimensao' => 'int|min:1',
+        'vl_baixo' => 'int|min:1',
+        'vl_alto' => 'int|min:1'
     ];
     public function __construct(IndicadorRepository $repo)
     {
@@ -112,7 +114,6 @@ class IndicadorController extends Controller
             }
 
             $data = $this->getData($request);
-
             $res = $this->repo->update($id,$data);
 
             return $this->successResponse(
