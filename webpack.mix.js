@@ -127,4 +127,8 @@ mix.scripts('packages/cms/resources/assets/js/controllers/alterarParceiroCtrl.js
 mix.scripts('packages/cms/resources/assets/js/controllers/dimensaoCtrl.js', 'public/assets-cms/js/controllers/dimensaoCtrl.js');
 mix.scripts('packages/cms/resources/assets/js/controllers/alterarDimensaoCtrl.js', 'public/assets-cms/js/controllers/alterarDimensaoCtrl.js');
 
+//Indicadores
+mix.scripts('packages/cms/resources/assets/js/controllers/indicadorCtrl.js', 'public/assets-cms/js/controllers/indicadorCtrl.js');
+mix.scripts('packages/cms/resources/assets/js/controllers/alterarIndicadorCtrl.js', 'public/assets-cms/js/controllers/alterarIndicadorCtrl.js');
+
 //FIM CMS///////////////////////////////////////////////////////////////////
