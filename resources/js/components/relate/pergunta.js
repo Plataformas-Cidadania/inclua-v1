@@ -34,9 +34,9 @@ const Pergunta = () => {
                             <div className="dorder-container"  key={key}>
                                 <div className="dorder-container-mai p-4 ">
                                     <p>{key+1} - {item.descricao}</p>
-                                    <br/>
                                     <div className="row">
-                                        <div className="col-md-1 text-center">&nbsp;</div>
+
+                                        {/*<div className="col-md-1 text-center">&nbsp;</div>
                                         <div className="col-md-2 text-center cursor" onClick={() => ClickRelate(item.id, 1)}>
                                             <i className="far fa-tired fa-3x"/><br/>
                                             <p>Detestei</p>
@@ -57,8 +57,10 @@ const Pergunta = () => {
                                             <i className="far fa-grin-hearts fa-3x"/><br/>
                                             <p>Adorei</p>
                                         </div>
+                                        <textarea id="story" name="story" rows="5" cols="33" placeholder={"Deixe um comentário"} style={{display: item.id === relate ? '' : 'none'}}  />*/}
 
-                                        <textarea id="story" name="story" rows="5" cols="33" placeholder={"Deixe um comentário"} style={{display: item.id === relate ? '' : 'none'}}  />
+
+                                        <textarea id="story" name="story" rows="5" cols="33" placeholder={"Deixe um comentário"}  />
 
                                     </div>
                                 </div>

@@ -9,6 +9,7 @@ const Page = () => {
     const [menuLi, setMenuLi] = useState(1);
     const [listMenu, setListMenu] = useState([]);
     const [spinList, setspinList] = useState(false);
+    const [searchBox, setSearchBox] = useState(false);
 
     const menu = [
         {id: 1, title: "Categoria", txt: 'Busque por categoria', rota: 'api/recurso/categoria/', type: true},
@@ -43,6 +44,7 @@ const Page = () => {
     const handleSearch = async(e) => {
 
         setspinList(false);
+        setSearchBox(true);
 
         const search = e.target.value ? e.target.value : ' ';
 
@@ -63,6 +65,15 @@ const Page = () => {
     const btnSearch = (item) => {
         setSearch(item);
         setMenuLi(item.id);
+        setSearchBox(true);
+        setListMenu([]);
+    }
+
+    const clickSearchBox = () => {
+        setSearchBox(false);
+    }
+    const clickSearchBoxOn = () => {
+        setSearchBox(true);
     }
 
     return (
@@ -71,8 +82,9 @@ const Page = () => {
                 <div className="row">
                     <div className="col-md-3"/>
                     <div className="col-md-6">
-                        <div style={{position: "absolute"}}>
-                            <ul className="menu-small  mb-2">
+
+                        <div className="container-search" >
+                            <ul className="menu-small mb-2">
                                 {
                                     menu.map((item, key) => {
                                         return (<li className={"cursor " + (menuLi===item.id ? 'menu-small-on' : '')}
@@ -89,18 +101,17 @@ const Page = () => {
                                        placeholder={menuItens.txt}
                                        onChange={handleSearch}
                                        autoComplete="off"
+                                       onClick={() => clickSearchBoxOn()}
+                                       style={{zIndex: '999'}}
                                 />
                                 <i className="fas fa-search"/>
                             </div>
                             <div  style={{display: menuItens.type ? '' : 'none'}}>
-                                <ul className="box-search-itens box-busca" >
-                                {/*<div className="text-center">
-                                    <img src="/img/load.gif" alt="" width="60" className="login-img" />
-                                </div>*/}
-                                <div className="fa-3x text-center" style={{display: spinList ? '' : 'none'}} >
-                                    <i className="fas fa-circle-notch fa-spin"/>
-                                </div>
-                                <div>
+                                <ul className="box-search-itens box-busca" style={{display: searchBox ? '' : 'none'}}>
+                                    <div className="fa-3x text-center" style={{display: spinList ? '' : 'none'}} >
+                                        <i className="fas fa-circle-notch fa-spin"/>
+                                    </div>
+
                                     <ul className="list-search">
                                         {
                                             listMenu.map((item, key) => {
@@ -112,13 +123,16 @@ const Page = () => {
                                         }
 
                                     </ul>
-                                </div>
 
-                            </ul>
+
+                                </ul>
                             </div>
-                            <br/><br/>
                         </div>
                         <br/><br/><br/><br/>
+                        <div
+                            className="container-search-click cursor"
+                            style={{display: searchBox ? '' : 'none'}}
+                            onClick={() => clickSearchBox()}/>
                     </div>
                     <div className="col-md-3"/>
                     <div className="col-md-12">

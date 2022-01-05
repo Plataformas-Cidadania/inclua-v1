@@ -71,13 +71,11 @@
 
                     <div class="col-md-3">
                         <div>
-                            <h3>Recursos</h3>
+                            <h3>Inclua</h3>
                             <ul>
-                                <li><a href="recursos">Dimensão 1</a></li>
-                                <li><a href="recursos">Dimensão 2</a></li>
-                                <li><a href="recursos">Dimensão 3</a></li>
-                                <li><a href="recursos">Dimensão 4</a></li>
-                                <li><a href="recursos">Dimensão 5</a></li>
+                                <li role="presentation"><a href="diagnostico" >Diagnóstico</a></li>
+                                <li role="presentation"><a href="recursos" >Biblioteca</a></li>
+                                <li role="presentation"><a href="contribua" >Contribua</a></li>
                                 <br><br>
                             </ul>
                         </div>

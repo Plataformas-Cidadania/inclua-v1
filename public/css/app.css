@@ -11905,13 +11905,36 @@ time {
 
 .list-search li {
   margin: 0;
-  padding: 5px;
+  padding: 5px 10px;
   list-style: none;
   border-bottom: solid 1px #CCCCCC;
+  text-align: left;
 }
 
 .list-search li:hover {
   background-color: #E6DACE;
+}
+
+.container-search {
+  position: absolute;
+  margin: auto;
+  text-align: center;
+  min-width: 450px;
+  z-index: 100;
+  background-color: #FFFFFF;
+  border-radius: 3px;
+  padding: 5px;
+}
+
+.container-search-click {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: all 0.5s, z-index 0ms;
+  z-index: 99;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 @media only screen and (max-width: 480px) {
@@ -13056,7 +13079,7 @@ label, input, .btn-number {
 }
 
 .box-busca {
-  display: none;
+  /*display: none;*/
 }
 
 .box-checkbox {

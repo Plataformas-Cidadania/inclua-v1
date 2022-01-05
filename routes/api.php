@@ -178,23 +178,22 @@ Route::group([
     Route::delete('/{recurso}',[App\Http\Controllers\Api\RecursoController::class, 'destroy'])
         ->name('api.recurso.destroy');
 
-    Route::get('autores/{recurso}',[App\Http\Controllers\Api\RecursoController::class, 'getAllAutoresPorIdRecurso'])
+    Route::get('/autores/{recurso}',[App\Http\Controllers\Api\RecursoController::class, 'getAllAutoresPorIdRecurso'])
         ->name('api.recurso.getAllAutoresPorIdRecurso');
 
-    Route::get('links/{recurso}',[App\Http\Controllers\Api\RecursoController::class, 'getAllLinksPorIdRecurso'])
+    Route::get('/links/{recurso}',[App\Http\Controllers\Api\RecursoController::class, 'getAllLinksPorIdRecurso'])
         ->name('api.recurso.getAllLinksPorIdRecurso');
 
-    Route::get('tipo_recurso/{nome_tipo_recurso}',[App\Http\Controllers\Api\RecursoController::class, 'getAllRecursoPorNomeTipoRecurso'])
+    Route::get('/tipo_recurso/{nome_tipo_recurso}',[App\Http\Controllers\Api\RecursoController::class, 'getAllRecursoPorNomeTipoRecurso'])
         ->name('api.recurso.getAllRecursoPorNomeTipoRecurso');
 
-    Route::get('categoria/{nome}',[App\Http\Controllers\Api\RecursoController::class, 'getAllRecursosPorNomeCategoria'])
+    Route::get('/categoria/{nome}',[App\Http\Controllers\Api\RecursoController::class, 'getAllRecursosPorNomeCategoria'])
         ->name('api.recurso.getAllRecursosPorNomeCategoria');
 
-    Route::get('indicador/{nome}',[App\Http\Controllers\Api\RecursoController::class, 'getAllRecursosPorNomeIndicador'])
+    Route::get('/indicador/{nome}',[App\Http\Controllers\Api\RecursoController::class, 'getAllRecursosPorNomeIndicador'])
         ->name('api.recurso.getAllRecursosPorNomeIndicador');
 
-
-    Route::get('palavra_chave/{palavra_chave}',[App\Http\Controllers\Api\RecursoController::class, 'getAllRecursoPorPalavraChave'])
+    Route::get('/palavra_chave/{palavra_chave}',[App\Http\Controllers\Api\RecursoController::class, 'getAllRecursoPorPalavraChave'])
         ->name('api.recurso.getAllRecursoPorPalavraChave');
 });
 

@@ -43,7 +43,7 @@ class RecursoRepository extends BaseRepository
         return Recurso::with('links','autoria')->paginate($nr_itens);
     }
 
-     /**
+    /**
      * Obter uma lista de recurso que tenha a palavra_chave em titulo, esfera ou autor
      *
      * @param int $palavra_chave
@@ -53,13 +53,13 @@ class RecursoRepository extends BaseRepository
     {
         $first = DB::table('avaliacao.recurso')
             ->select('avaliacao.recurso.*')
-            ->where('nome', 'like', "%$palavra_chave%")
-            ->orwhere('esfera', 'like', "%$palavra_chave%");
+            ->where('nome', 'ilike', "%$palavra_chave%")
+            ->orwhere('esfera', 'ilike', "%$palavra_chave%");
         $res = DB::table('avaliacao.recurso')
             ->join('avaliacao.autoria', 'recurso.id_recurso', '=', 'autoria.id_recurso')
             ->join('avaliacao.autor', 'autor.id_autor', '=', 'autoria.id_autor')
             ->select('avaliacao.recurso.*')
-            ->where('autor.nome', 'like', "%$palavra_chave%")
+            ->where('autor.nome', 'ilike', "%$palavra_chave%")
             ->union($first)
             ->get();
 
@@ -67,7 +67,7 @@ class RecursoRepository extends BaseRepository
         else return $res;
     }
 
-     /**
+    /**
      * Obter uma lista de recurso que tenha por nome de tipo de recurso
      *
      * @param int $nome_tipo_recurso
@@ -75,7 +75,9 @@ class RecursoRepository extends BaseRepository
      */
     public function getAllRecursoPorNomeTipoRecurso($nome_tipo_recurso)
     {
-        $res = TipoRecurso::where('nome', 'like', $nome_tipo_recurso)->with('recursos')->get();
+
+        //$res = TipoRecurso::where('nome', 'ilike', $nome_tipo_recurso)->with('recursos')->get();
+        $res = TipoRecurso::whereRaw("? % nome", [$nome_tipo_recurso])->with('recursos')->get();
 
 
         if (!$res || $res->isEmpty()) throw new \Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -90,7 +92,9 @@ class RecursoRepository extends BaseRepository
      */
     public function getAllRecursosPorNomeCategoria($nome_categoria)
     {
-        $res = Categoria::where('nome', 'like', "%$nome_categoria%")->with('categorizacao')->get();
+        //$res = Categoria::where('nome', 'ilike', "%$nome_categoria%")->with('categorizacao')->get();
+        $res = Categoria::whereRaw("? % nome", [$nome_categoria])->with('categorizacao')->get();
+
 
         if (!$res || $res->isEmpty()) throw new \Illuminate\Database\Eloquent\ModelNotFoundException;
         else return $res;
@@ -105,7 +109,7 @@ class RecursoRepository extends BaseRepository
      */
     public function getAllRecursosPorNomeIndicador($nome_indicador)
     {
-        $res = Indicador::where('titulo', 'like', "%$nome_indicador%")->with(['recursos'])->get();
+        $res = Indicador::where('titulo', 'ilike', "%$nome_indicador%")->with(['recursos'])->get();
 
         if (!$res || $res->isEmpty()) throw new \Illuminate\Database\Eloquent\ModelNotFoundException;
         else return $res;
