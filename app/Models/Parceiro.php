@@ -29,8 +29,6 @@ class Parceiro extends Model
 		'imagem' => 'string',
 		'titulo' => 'string',
 		'url' => 'string',
-		'created_at' => 'timestamp without time zone',
-		'updated_at' => 'timestamp without time zone'
 	];
 
 	protected $fillable = [
