@@ -35,9 +35,7 @@ class Url extends Model
 		'titulo' => 'string',
 		'url' => 'string',
 		'status' => 'int',
-		'posicao' => 'int',
-		'created_at' => 'timestamp without time zone',
-		'updated_at' => 'timestamp without time zone'
+		'posicao' => 'int'
 	];
 
 	protected $fillable = [

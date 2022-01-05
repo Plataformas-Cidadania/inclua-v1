@@ -84,9 +84,7 @@ class Setting extends Model
 		'pinterest' => 'string',
 		'twitter' => 'string',
 		'instagram' => 'string',
-		'blog' => 'string',
-		'created_at' => 'timestamp without time zone',
-		'updated_at' => 'timestamp without time zone'
+		'blog' => 'string'
 	];
 
 	protected $fillable = [

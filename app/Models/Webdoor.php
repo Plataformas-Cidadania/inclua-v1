@@ -36,9 +36,7 @@ class Webdoor extends Model
 		'titulo' => 'string',
 		'legenda' => 'string',
 		'posicao' => 'int',
-		'status' => 'int',
-		'created_at' => 'timestamp without time zone',
-		'updated_at' => 'timestamp without time zone'
+		'status' => 'int'
 	];
 
 	protected $fillable = [

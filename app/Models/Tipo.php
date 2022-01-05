@@ -31,9 +31,7 @@ class Tipo extends Model
 	protected $casts = [
 		'imagem' => 'string',
 		'titulo' => 'string',
-		'status' => 'int',
-		'created_at' => 'timestamp without time zone',
-		'updated_at' => 'timestamp without time zone'
+		'status' => 'int'
 	];
 
 	protected $fillable = [

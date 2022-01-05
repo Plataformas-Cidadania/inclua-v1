@@ -31,9 +31,7 @@ class Text extends Model
 	protected $casts = [
 		'imagem' => 'string',
 		'titulo' => 'string',
-		'slug' => 'string',
-		'created_at' => 'timestamp without time zone',
-		'updated_at' => 'timestamp without time zone'
+		'slug' => 'string'
 	];
 
 	protected $fillable = [
