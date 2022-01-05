@@ -1,5 +1,6 @@
 cmsApp.controller('indicadorCtrl', ['$scope', '$http', 'Upload', '$timeout', function($scope, $http, Upload, $timeout){
 
+
     $scope.indicador = {
         numero: 2,
         titulo: 'aaaa',
@@ -8,6 +9,7 @@ cmsApp.controller('indicadorCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
         vl_alto: 2,
     };
     $scope.indicadores = [];
+    $scope.dimensoes = [];
     $scope.currentPage = 1;
     $scope.lastPage = 0;
     $scope.totalItens = 0;
@@ -38,6 +40,23 @@ cmsApp.controller('indicadorCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
         }
     });
 
+
+
+    var listarDimensoes = function(){
+        $scope.processandoListagem = true;
+        $http({
+            url: 'api/dimensao',
+            method: 'GET',
+            params: {
+
+            }
+        }).success(function(data, status, headers, config){
+            console.log(data.data);
+            $scope.dimensoes = data.data;
+        }).error(function(data){
+            $scope.message = "Ocorreu um erro: "+data;
+        });
+    }
 
     var listarIndicadores = function(){
         $scope.processandoListagem = true;
@@ -82,6 +101,7 @@ cmsApp.controller('indicadorCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
         }
 
         listarIndicadores();
+        listarDimensoes();
     };
 
     $scope.validar = function(){

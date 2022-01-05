@@ -38,8 +38,6 @@ class Item extends Model
 		'posicao' => 'int',
 		'status' => 'int',
 		'modulo_id' => 'int',
-		'created_at' => 'timestamp without time zone',
-		'updated_at' => 'timestamp without time zone'
 	];
 
 	protected $fillable = [
