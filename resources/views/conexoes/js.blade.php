@@ -290,10 +290,10 @@
 
 
 <script>
-    $('#ativarBox').click(function(){
+    /*$('#ativarBox').click(function(){
         $('.box-busca').toggle();
     });
     $('.box-busca').mouseleave(function(){
         $('.box-busca').toggle();
-    });
+    });*/
 </script>

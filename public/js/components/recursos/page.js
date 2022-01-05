@@ -17,6 +17,7 @@ const Page = () => {
   const [menuLi, setMenuLi] = useState(1);
   const [listMenu, setListMenu] = useState([]);
   const [spinList, setspinList] = useState(false);
+  const [searchBox, setSearchBox] = useState(false);
   const menu = [{
     id: 1,
     title: "Categoria",
@@ -66,6 +67,7 @@ const Page = () => {
 
   const handleSearch = async e => {
     setspinList(false);
+    setSearchBox(true);
     const search = e.target.value ? e.target.value : ' ';
 
     try {
@@ -84,6 +86,16 @@ const Page = () => {
   const btnSearch = item => {
     setSearch(item);
     setMenuLi(item.id);
+    setSearchBox(true);
+    setListMenu([]);
+  };
+
+  const clickSearchBox = () => {
+    setSearchBox(false);
+  };
+
+  const clickSearchBoxOn = () => {
+    setSearchBox(true);
   };
 
   return /*#__PURE__*/React.createElement("div", {
@@ -97,11 +109,9 @@ const Page = () => {
   }), /*#__PURE__*/React.createElement("div", {
     className: "col-md-6"
   }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      position: "absolute"
-    }
+    className: "container-search"
   }, /*#__PURE__*/React.createElement("ul", {
-    className: "menu-small  mb-2"
+    className: "menu-small mb-2"
   }, menu.map((item, key) => {
     return /*#__PURE__*/React.createElement("li", {
       className: "cursor " + (menuLi === item.id ? 'menu-small-on' : ''),
@@ -116,7 +126,11 @@ const Page = () => {
     className: "form-control",
     placeholder: menuItens.txt,
     onChange: handleSearch,
-    autoComplete: "off"
+    autoComplete: "off",
+    onClick: () => clickSearchBoxOn(),
+    style: {
+      zIndex: '999'
+    }
   }), /*#__PURE__*/React.createElement("i", {
     className: "fas fa-search"
   })), /*#__PURE__*/React.createElement("div", {
@@ -124,7 +138,10 @@ const Page = () => {
       display: menuItens.type ? '' : 'none'
     }
   }, /*#__PURE__*/React.createElement("ul", {
-    className: "box-search-itens box-busca"
+    className: "box-search-itens box-busca",
+    style: {
+      display: searchBox ? '' : 'none'
+    }
   }, /*#__PURE__*/React.createElement("div", {
     className: "fa-3x text-center",
     style: {
@@ -132,7 +149,7 @@ const Page = () => {
     }
   }, /*#__PURE__*/React.createElement("i", {
     className: "fas fa-circle-notch fa-spin"
-  })), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("ul", {
+  })), /*#__PURE__*/React.createElement("ul", {
     className: "list-search"
   }, listMenu.map((item, key) => {
     return /*#__PURE__*/React.createElement("li", {
@@ -140,7 +157,13 @@ const Page = () => {
       key: 'list_' + key //onClick={() => btnSearch(item)}
 
     }, item.nome);
-  }))))), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null)), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null)), /*#__PURE__*/React.createElement("div", {
+  }))))), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
+    className: "container-search-click cursor",
+    style: {
+      display: searchBox ? '' : 'none'
+    },
+    onClick: () => clickSearchBox()
+  })), /*#__PURE__*/React.createElement("div", {
     className: "col-md-3"
   }), /*#__PURE__*/React.createElement("div", {
     className: "col-md-12"
