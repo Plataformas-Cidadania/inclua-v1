@@ -6,13 +6,13 @@ const Item = props => {
     3: 'far fa-file-image',
     4: 'far fa-file-video',
     5: 'fas fa-link'
-  };
-  console.log('***props: ', propsData);
+  }; //console.log('***props: ', propsData);
+
   return /*#__PURE__*/React.createElement("div", {
     className: "row"
   }, propsData.map((item, key) => {
     return /*#__PURE__*/React.createElement("div", {
-      className: "col-md-4 col-sm-6 col-xs-12",
+      className: "col-lg-4 col-md-6 col-sm-12 col-xs-12",
       key: key
     }, /*#__PURE__*/React.createElement("div", {
       className: "dorder-container"

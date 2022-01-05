@@ -10,14 +10,14 @@ const Item = (props) => {
         5:'fas fa-link',
     };
 
-    console.log('***props: ', propsData);
+    //console.log('***props: ', propsData);
 
     return (
         <div className={"row"}>
             {
                 propsData.map((item, key) => {
                     return(
-                        <div className="col-md-4 col-sm-6 col-xs-12"  key={key}>
+                        <div className="col-lg-4 col-md-6 col-sm-12 col-xs-12"  key={key}>
                             <div className="dorder-container">
 
                                 <div className="bg-lgt">
