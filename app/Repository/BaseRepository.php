@@ -42,12 +42,12 @@ class BaseRepository
      * @return Model
      */
     public function findById(
-        int $modelId,
+         $modelId,
         array $columns = ['*'],
         array $relations = [],
         array $appends = []
     ): Model
-    {
+    {   if(!is_int($modelId)) throw new \Illuminate\Database\Eloquent\ModelNotFoundException;
         return $this->model->select($columns)->with($relations)->findOrFail($modelId)->append($appends);
     }
 

@@ -75,6 +75,8 @@ class RecursoRepository extends BaseRepository
      */
     public function getAllRecursoPorNomeTipoRecurso($nome_tipo_recurso)
     {
+
+        if(!$nome_tipo_recurso) throw new \Illuminate\Database\Eloquent\ModelNotFoundException;
         $res = TipoRecurso::where('nome', 'like', $nome_tipo_recurso)->with('recursos')->get();
 
 
