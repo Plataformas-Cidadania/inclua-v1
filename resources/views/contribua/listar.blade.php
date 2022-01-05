@@ -23,8 +23,28 @@
 
 
     @if((array)auth()->user())
-        <h2>Olá, {{auth()->user()->name}}!</h2>
+
+
+
+
         <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Authentication -->
+                    <form method="POST" action="{{ route('logout') }}" class="text-right">
+                        @csrf
+                        Olá, {{auth()->user()->name}}!
+                        <x-responsive-nav-link :href="route('logout')"
+                                               onclick="event.preventDefault();
+                                    this.closest('form').submit();">
+                            <strong> {{ __('Sair') }}</strong>
+                        </x-responsive-nav-link>
+                    </form>
+                    <br>
+                </div>
+            </div>
+
+
             <div class="row">
                 <div class="col-md-4">
                     <a href="interaja">
