@@ -106,7 +106,7 @@
         <br>
         <li role="presentation"><a href="" accesskey="h" @if($rota=='/') class="corrente" @endif>Início</a></li>
         <li role="presentation"><a href="diagnostico" >Diagnóstico</a></li>
-        <li role="presentation"><a href="recursos" >Recursos</a></li>
+        <li role="presentation"><a href="recursos" >Biblioteca</a></li>
         <li role="presentation"><a href="contribua"  @if($rota=='sobre') class="corrente" @endif>Contribua</a></li>
         <li role="presentation"><a href="sobre" accesskey="q" @if($rota=='sobre') class="corrente" @endif>Sobre</a></li>
         <li role="presentation"><a href="contato" accesskey="c" @if($rota=='quem') class="contato" @endif>Contato</a></li>
@@ -131,7 +131,7 @@
                             <ul id="menu-desk">
                                 <li role="presentation"><a href="" accesskey="h" @if($rota=='/') class="corrente" @endif>Início</a></li>
                                 <li role="presentation"><a href="diagnostico" >Diagnóstico</a></li>
-                                <li role="presentation"><a href="recursos" >Recursos</a></li>
+                                <li role="presentation"><a href="recursos" >Biblioteca</a></li>
                                 <li role="presentation"><a href="contribua"  @if($rota=='sobre') class="corrente" @endif>Contribua</a></li>
                                 <li role="presentation"><a href="sobre" accesskey="q" @if($rota=='sobre') class="corrente" @endif>Sobre</a></li>
                                 <li role="presentation"><a href="contato" accesskey="c" @if($rota=='quem') class="contato" @endif>Contato</a></li>

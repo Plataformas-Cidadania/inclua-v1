@@ -92,7 +92,7 @@ const Header = () => {
                     </div>
                     <p className="mt-2">Análise</p>
                 </div>*/}
-                <div className={"col text-center " + (varLocalStorage ? '' : 'opacity-5')}>
+                {/*<div className={"col text-center " + (varLocalStorage ? '' : 'opacity-5')}>
                     <a
                         href={(varLocalStorage ? 'resultado' : '#')}
                         style={{cursor: (varLocalStorage ? 'pointer' : 'auto')}}
@@ -102,7 +102,7 @@ const Header = () => {
                         </div>
                         <p className="mt-2">Recursos</p>
                     </a>
-                </div>
+                </div>*/}
 
                 <div className={"col text-center " + (varLocalStorage ? '' : 'opacity-5')}>
                     <div className="btn-icon btn-icon-hover cursor" style={{top: 0}}  onClick={() => ClicklocalStorage()}>
