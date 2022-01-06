@@ -42,7 +42,7 @@ class BaseRepository
      * @return Model
      */
     public function findById(
-         $modelId,
+        int $modelId,
         array $columns = ['*'],
         array $relations = [],
         array $appends = []
