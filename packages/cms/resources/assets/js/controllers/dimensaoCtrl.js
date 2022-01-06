@@ -103,19 +103,7 @@ cmsApp.controller('dimensaoCtrl', ['$scope', '$http', 'Upload', '$timeout', func
 
         if(file==null && arquivo==null){
             $scope.processandoInserir = true;
-
-            //console.log($scope.dimensao);
-            let formData = new FormData();
-            formData.append('numero', $scope.dimensao.numero);
-            formData.append('titulo', $scope.dimensao.titulo);
-            formData.append('descricao', $scope.dimensao.descricao);
-            formData.append('vl_baixo', $scope.dimensao.vl_baixo);
-            formData.append('vl_alto', $scope.dimensao.vl_alto);
-            $http.post("api/dimensao", formData, {
-                headers: {
-                    'Content-Type': undefined
-                }
-            }).success(function (data){
+            $http.post("api/dimensao", $scope.dimensao).success(function (data){
                  listarDimensoes();
                  delete $scope.dimensao;//limpa o form
                 $scope.mensagemInserir =  "Gravado com sucesso!";

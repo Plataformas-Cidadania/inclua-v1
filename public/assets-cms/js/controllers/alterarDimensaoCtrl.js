@@ -33,17 +33,7 @@ cmsApp.controller('alterarDimensaoCtrl', ['$scope', '$http', 'Upload', '$timeout
         if(file==null){
 
             $scope.processandoSalvar = true;
-            let formData = new FormData();
-            formData.append('numero', $scope.dimensao.numero);
-            formData.append('titulo', $scope.dimensao.titulo);
-            formData.append('descricao', $scope.dimensao.descricao);
-            formData.append('vl_baixo', $scope.dimensao.vl_baixo);
-            formData.append('vl_alto', $scope.dimensao.vl_alto);
-            $http.put("api/dimensao/"+$scope.id, formData, {
-                headers: {
-                    'Content-Type': undefined
-                }
-            }).success(function (data){
+            $http.put("api/dimensao/"+$scope.id, $scope.dimensao).success(function (data){
                 //console.log(data);
                 $scope.processandoSalvar = false;
                 $scope.mensagemSalvar = data.message;
