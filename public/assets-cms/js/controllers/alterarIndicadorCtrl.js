@@ -62,6 +62,7 @@ cmsApp.controller('alterarIndicadorCtrl', ['$scope', '$http', 'Upload', '$timeou
         if(file==null){
 
             $scope.processandoSalvar = true;
+            $scope.indicador.id_dimensao = $scope.dimensao.id_dimensao;
             $http.put("api/indicadores/"+$scope.id, $scope.indicador).success(function (data){
                 //console.log(data);
                 $scope.processandoSalvar = false;
