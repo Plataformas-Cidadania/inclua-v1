@@ -11,7 +11,7 @@ const Page = () => {
     id: 1,
     title: "Categoria",
     txt: 'Busque por categoria',
-    rota: 'recurso/categoria/',
+    rota: 'api/recurso/categoria/',
     type: true
   });
   const [menuLi, setMenuLi] = useState(1);

@@ -15,10 +15,13 @@
                 </div>
             </div>
         </div>
-        <div class="p-3">&nbsp;</div>
+        <div class="p-2">&nbsp;</div>
     </div>
 
     <div class="container">
+
+        @include('contribua.user-login')
+
         <div class="row">
             <div class="col-md-12">
                 <br><br>

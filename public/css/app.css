@@ -12009,6 +12009,17 @@ time {
   z-index: 0;
 }
 
+.group-btn {
+  margin: 0;
+  padding: 0;
+  clear: both;
+}
+
+.group-btn li {
+  display: inline-block;
+  list-style: none;
+}
+
 body {
   background-color: #FFFFFF !important;
 }

@@ -15,7 +15,7 @@
                 </div>
             </div>
         </div>
-        <div class="p-3">&nbsp;</div>
+        <div class="p-2">&nbsp;</div>
     </div>
 
 
@@ -28,21 +28,8 @@
 
 
         <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <!-- Authentication -->
-                    <form method="POST" action="{{ route('logout') }}" class="text-right">
-                        @csrf
-                        Olá, {{auth()->user()->name}}!
-                        <x-responsive-nav-link :href="route('logout')"
-                                               onclick="event.preventDefault();
-                                    this.closest('form').submit();">
-                            <strong> {{ __('Sair') }}</strong>
-                        </x-responsive-nav-link>
-                    </form>
-                    <br>
-                </div>
-            </div>
+
+            @include('contribua.user-login')
 
 
             <div class="row">
