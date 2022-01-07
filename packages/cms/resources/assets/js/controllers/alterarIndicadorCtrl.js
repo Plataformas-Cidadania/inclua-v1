@@ -3,6 +3,8 @@ cmsApp.controller('alterarIndicadorCtrl', ['$scope', '$http', 'Upload', '$timeou
     $scope.processandoSalvar = false;
     $scope.processandoDetalhar = false;
 
+
+    $scope.id_indicador = 0;
     $scope.dimensoes = [];
     $scope.dimensao = null;
 
@@ -25,6 +27,7 @@ cmsApp.controller('alterarIndicadorCtrl', ['$scope', '$http', 'Upload', '$timeou
         }).success(function(data, status, headers, config){
             console.log(data.data);
             $scope.dimensoes = data.data;
+            $scope.detalhar($scope.id_indicador);
         }).error(function(data){
             $scope.message = "Ocorreu um erro: "+data;
         });
@@ -42,6 +45,11 @@ cmsApp.controller('alterarIndicadorCtrl', ['$scope', '$http', 'Upload', '$timeou
         }).success(function(data, status, headers, config){
             $scope.indicador = data.data;
             console.log($scope.indicador);
+            $scope.dimensoes.forEach(function (item){
+                if(item.id_dimensao === $scope.indicador.id_dimensao){
+                    $scope.dimensao = item;
+                }
+            });
             $scope.processandoDetalhar = false;
         }).error(function(data){
             $scope.message = "Ocorreu um erro: "+data;
@@ -54,17 +62,7 @@ cmsApp.controller('alterarIndicadorCtrl', ['$scope', '$http', 'Upload', '$timeou
         if(file==null){
 
             $scope.processandoSalvar = true;
-            let formData = new FormData();
-            formData.append('numero', $scope.indicador.numero);
-            formData.append('titulo', $scope.indicador.titulo);
-            formData.append('descricao', $scope.indicador.descricao);
-            formData.append('vl_baixo', $scope.indicador.vl_baixo);
-            formData.append('vl_alto', $scope.indicador.vl_alto);
-            $http.put("api/indicador/"+$scope.id, formData, {
-                headers: {
-                    'Content-Type': undefined
-                }
-            }).success(function (data){
+            $http.put("api/indicadores/"+$scope.id, $scope.indicador).success(function (data){
                 //console.log(data);
                 $scope.processandoSalvar = false;
                 $scope.mensagemSalvar = data.message;

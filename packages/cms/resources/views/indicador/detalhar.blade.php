@@ -6,7 +6,7 @@
         <div class="box-padrao">
             <h1><a href="javascript:history.back();"><i class="fa fa-arrow-circle-left"></i></a>&nbsp;&nbsp;Indicador</h1>
             <?php //print_r($indicador);?>
-            <div ng-init="carregaImagem('{{$indicador->imagem}}', '{{$indicador->arquivo}}'); listarDimensoes(); detalhar({{$indicador->id_indicador}})">
+            <div ng-init="carregaImagem('{{$indicador->imagem}}', '{{$indicador->arquivo}}'); listarDimensoes(); id_indicador={{$indicador->id_indicador}}">
                 <span class="texto-obrigatorio">* campos obrigatórios</span><br><br>
                 {!! Form::model($indicador, ['name' =>'form']) !!}
                 <div class="container-thumb" style="display: none;">
