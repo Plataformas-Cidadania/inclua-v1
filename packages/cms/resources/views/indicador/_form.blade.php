@@ -10,8 +10,8 @@
 <select
     name="dimensao_id"
     class="form-control width-grande"
-    ng-model="indicador.dimensao_id"
-    ng-init="indicador.dimensao_id = null"
+    ng-model="dimensao"
+    ng-init="dimensao = null"
     ng-required="true"
     ng-options="option.titulo for option in dimensoes track by option.id_dimensao"
     placeholder="Selecione"

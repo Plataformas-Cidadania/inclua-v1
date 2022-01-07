@@ -10,6 +10,7 @@ cmsApp.controller('indicadorCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
     };
     $scope.indicadores = [];
     $scope.dimensoes = [];
+    $scope.dimensao = null;
     $scope.currentPage = 1;
     $scope.lastPage = 0;
     $scope.totalItens = 0;
@@ -123,6 +124,8 @@ cmsApp.controller('indicadorCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
 
         if(file==null && arquivo==null){
             $scope.processandoInserir = true;
+            $scope.indicador.id_dimensao = $scope.dimensao.id_dimensao;
+            console.log($scope.indicador.id_dimensao);
             $http.post("api/indicadores", $scope.indicador).success(function (data){
                  listarIndicadores();
                  //delete $scope.indicador;//limpa o form

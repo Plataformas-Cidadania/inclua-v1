@@ -3,6 +3,9 @@ cmsApp.controller('alterarIndicadorCtrl', ['$scope', '$http', 'Upload', '$timeou
     $scope.processandoSalvar = false;
     $scope.processandoDetalhar = false;
 
+    $scope.dimensoes = [];
+    $scope.dimensao = null;
+
     //ALTERAR/////////////////////////////
 
     $scope.tinymceOptions = tinymceOptions;
@@ -10,6 +13,23 @@ cmsApp.controller('alterarIndicadorCtrl', ['$scope', '$http', 'Upload', '$timeou
     $scope.mostrarForm = false;
 
     $scope.removerImagem = false;
+
+    $scope.listarDimensoes = function(){
+        $scope.processandoListagem = true;
+        $http({
+            url: 'api/dimensao',
+            method: 'GET',
+            params: {
+
+            }
+        }).success(function(data, status, headers, config){
+            console.log(data.data);
+            $scope.dimensoes = data.data;
+        }).error(function(data){
+            $scope.message = "Ocorreu um erro: "+data;
+        });
+    }
+
 
     $scope.detalhar = function(id){
         $scope.processandoDetalhar = true;
@@ -21,6 +41,7 @@ cmsApp.controller('alterarIndicadorCtrl', ['$scope', '$http', 'Upload', '$timeou
             }
         }).success(function(data, status, headers, config){
             $scope.indicador = data.data;
+            console.log($scope.indicador);
             $scope.processandoDetalhar = false;
         }).error(function(data){
             $scope.message = "Ocorreu um erro: "+data;
