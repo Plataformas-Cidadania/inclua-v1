@@ -101,7 +101,6 @@ cmsApp.controller('indicadorCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
         }
 
         listarIndicadores();
-        listarDimensoes();
     };
 
     $scope.validar = function(){
@@ -110,6 +109,7 @@ cmsApp.controller('indicadorCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
 
 
     listarIndicadores();
+    listarDimensoes();
 
     //INSERIR/////////////////////////////
 
@@ -123,21 +123,10 @@ cmsApp.controller('indicadorCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
 
         if(file==null && arquivo==null){
             $scope.processandoInserir = true;
-
-            //console.log($scope.indicador);
-            let formData = new FormData();
-            formData.append('numero', $scope.indicador.numero);
-            formData.append('titulo', $scope.indicador.titulo);
-            formData.append('descricao', $scope.indicador.descricao);
-            formData.append('vl_baixo', $scope.indicador.vl_baixo);
-            formData.append('vl_alto', $scope.indicador.vl_alto);
-            $http.post("api/indicador", formData, {
-                headers: {
-                    'Content-Type': undefined
-                }
-            }).success(function (data){
+            $http.post("api/indicadores", $scope.indicador).success(function (data){
                  listarIndicadores();
-                 delete $scope.indicador;//limpa o form
+                 //delete $scope.indicador;//limpa o form
+                $scope.indicador = {};//limpa o form
                 $scope.mensagemInserir =  "Gravado com sucesso!";
                 $scope.processandoInserir = false;
              }).error(function(data){
