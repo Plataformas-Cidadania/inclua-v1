@@ -193,7 +193,7 @@ cmsApp.controller('indicadorCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
     $scope.excluir = function(id){
         $scope.processandoExcluir = true;
         $http({
-            url: 'api/indicador/'+id,
+            url: 'api/indicadores/'+id,
             method: 'DELETE'
         }).success(function(data, status, headers, config){
             console.log(data);
@@ -213,29 +213,6 @@ cmsApp.controller('indicadorCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
             $scope.mensagemExcluido = "Erro ao tentar excluir!";
         });
     };
-
-    $scope.status = function(id){
-        //console.log(id);
-        $scope.mensagemStatus = '';
-        $scope.idStatus = '';
-        $scope.processandoStatus = true;
-        $http({
-            url: 'cms/status-indicador/'+id,
-            method: 'GET'
-        }).success(function(data, status, headers, config){
-            //console.log(data);
-            $scope.processandoStatus = false;
-            //$scope.excluido = true;
-            $scope.mensagemStatus = 'color-success';
-            $scope.idStatus = id;
-            listarIndicadores();
-        }).error(function(data){
-            $scope.message = "Ocorreu um erro: "+data;
-            $scope.processandoStatus = false;
-            $scope.mensagemStatus = "Erro ao tentar status!";
-        });
-    };
-    //////////////////////////////////
 
 
 }]);
