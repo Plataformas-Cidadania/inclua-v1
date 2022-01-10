@@ -35,5 +35,7 @@
     "/assets-cms/js/controllers/indicadorCtrl.js": "/assets-cms/js/controllers/indicadorCtrl.js",
     "/assets-cms/js/controllers/alterarIndicadorCtrl.js": "/assets-cms/js/controllers/alterarIndicadorCtrl.js",
     "/assets-cms/js/controllers/autorCtrl.js": "/assets-cms/js/controllers/autorCtrl.js",
-    "/assets-cms/js/controllers/alterarAutorCtrl.js": "/assets-cms/js/controllers/alterarAutorCtrl.js"
+    "/assets-cms/js/controllers/alterarAutorCtrl.js": "/assets-cms/js/controllers/alterarAutorCtrl.js",
+    "/assets-cms/js/controllers/categoriaCtrl.js": "/assets-cms/js/controllers/categoriaCtrl.js",
+    "/assets-cms/js/controllers/alterarCategoriaCtrl.js": "/assets-cms/js/controllers/alterarCategoriaCtrl.js"
 }
