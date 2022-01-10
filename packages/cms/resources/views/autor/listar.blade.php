@@ -97,7 +97,7 @@
                                     {{--<a href="cms/items/<% autor.id %>"><i class="fa fa-sitemap fa-2x" title="Itens"></i></a>&nbsp;&nbsp;--}}
                                     <a href="cms/autor/<% autor.id_autor %>"><i class="fa fa-edit fa-2x" title="Editar"></i></a>&nbsp;&nbsp;{{--<% mensagemStatus %><% idStatus %>--}}
                                     {{--<a  ng-class="<% autor.status %> == 1 ? 'color-success' : 'color-success-inactive'"  style="cursor: pointer;"><i class="fa fa-check-circle fa-2x" aria-hidden="true" ng-click="status(autor.id);"></i></a>&nbsp;&nbsp;--}}
-                                    <a><i data-toggle="modal" data-target="#modalExcluir" class="fa fa-remove fa-2x" ng-click="perguntaExcluir(autor.id_autor, autor.titulo, autor.imagem)"></i></a>
+                                    <a><i data-toggle="modal" data-target="#modalExcluir" class="fa fa-remove fa-2x" ng-click="perguntaExcluir(autor.id_autor, autor.nome, autor.imagem)"></i></a>
                                 </div>
                             </td>
                         </tr>
