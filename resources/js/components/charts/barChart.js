@@ -77,8 +77,10 @@ class BarChart extends React.Component {
                 name: 'Tank Picture',
                 data: [12]
             }],*/
+
             series: props.series,
             options: {
+                colors:['#31A853', '#FBBC09', '#E84335'],
                 dataLabels: {
                     enabled: false,
                 },
