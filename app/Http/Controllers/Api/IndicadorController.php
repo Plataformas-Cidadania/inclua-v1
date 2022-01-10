@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Api\Controller;
+use App\Models\Autoria;
 use App\Models\Indicador;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\Eloquent\RelationNotFoundException;
@@ -149,6 +150,29 @@ class IndicadorController extends Controller
             return $this->errorResponse('Erro inesperado'.$exception);
         }
     }
+
+    /**
+     * Obter indicadores especificados por um id de dimensao
+     *
+     * @param int $id_dimensao
+     *
+     * @return JsonResponse
+     */
+    public function getAllIndicadoresPorIdDimensao($id_dimensao): JsonResponse
+    {
+        try {
+            $res = $this->repo->getAllIndicadoresPorIdDimensao($id_dimensao);
+            return $this->successResponse(
+                'Retornado com sucesso',
+                $res
+            );
+        }catch (Exception $exception) {
+            if ($exception instanceof ModelNotFoundException)
+                return $this->errorResponse('Not found');
+            return $this->errorResponse('Erro inesperado.'.$exception);
+        }
+    }
+
 
     /**
      * Cria uma instancia de validador com as regras definidas

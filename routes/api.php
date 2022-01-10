@@ -273,6 +273,9 @@ Route::group([
 
     Route::delete('/{pergunta}',[App\Http\Controllers\Api\PerguntaController::class, 'destroy'])
         ->name('api.pergunta.destroy');
+
+    Route::get('/indicador/{id_indicador}',[App\Http\Controllers\Api\PerguntaController::class, 'getPerguntasPorIdIndicador'])
+        ->name('api.pergunta.getPerguntasPorIdIndicador');
 });
 
 Route::group([

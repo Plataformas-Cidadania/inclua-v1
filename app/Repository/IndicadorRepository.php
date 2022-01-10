@@ -3,6 +3,8 @@
 namespace App\Repository;
 
 use App\Models\Indicador;
+use Illuminate\Http\JsonResponse;
+use Reliese\Coders\Model\Model;
 
 class IndicadorRepository extends BaseRepository
 {
@@ -19,5 +21,20 @@ class IndicadorRepository extends BaseRepository
     public function __construct(Indicador $model)
     {
         $this->model = $model;
+    }
+
+    /**
+     * Obter indicadores especificados por um id de dimensao
+     *
+     * @param int $id_dimensao
+     *
+     * @return Model
+     */
+    public function getAllIndicadoresPorIdDimensao($id_dimensao)
+    {
+        $res = Indicador::where('id_dimensao', '=', $id_dimensao)->without('perguntas')->get();
+
+        if (!$res || $res->isEmpty()) throw new \Illuminate\Database\Eloquent\ModelNotFoundException;
+        else return $res;
     }
 }
