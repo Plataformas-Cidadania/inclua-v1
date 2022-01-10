@@ -155,6 +155,29 @@ class PerguntaController extends Controller
     }
 
     /**
+     * Obter indicadores especificados por um id de dimensao
+     *
+     * @param int $id_indicador
+     *
+     * @return JsonResponse
+     */
+    public function getPerguntasPorIdIndicador($id_indicador): JsonResponse
+    {
+        try {
+            $res = $this->repo->getPerguntasPorIdIndicador($id_indicador);
+            return $this->successResponse(
+                'Retornado com sucesso',
+                $res
+            );
+        }catch (Exception $exception) {
+            if ($exception instanceof ModelNotFoundException)
+                return $this->errorResponse('Not found');
+            return $this->errorResponse('Erro inesperado.'.$exception);
+        }
+    }
+
+
+    /**
      * Cria uma instancia de validador com as regras definidas
      *
      * @param Request $request
