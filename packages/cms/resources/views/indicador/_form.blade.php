@@ -4,9 +4,10 @@
 */ ?>
 
 <input type="hidden" name="numero" ng-model="indicador.numero">
-<% indicador.numero %>
+<input type="hidden" name="id_dimensao" ng-model="indicador.id_dimensao">
+
 <br>
-<label for="dimensao_id">Dimensão</label>
+{{--<label for="dimensao_id">Dimensão</label>
 <select
     name="dimensao_id"
     class="form-control width-grande"
@@ -18,7 +19,7 @@
 >
     <option value="" ng-disabled="!!indicador.dimensao_id">Selecione</option>
 </select>
-<br>
+<br>--}}
 
 <label for="titulo">Título</label>
 <input type="text" name="titulo" class="form-control width-medio <% validar(indicador.titulo)%>" ng-model="indicador.titulo" ng-required="true">

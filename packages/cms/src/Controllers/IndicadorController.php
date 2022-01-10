@@ -15,10 +15,9 @@ class IndicadorController extends Controller
         $this->indicador = new \App\Models\Indicador;
     }
 
-    function index()
+    function index($id_dimensao)
     {
-        $indicadores = \App\Models\Indicador::all();
-        return view('cms::indicador.listar', ['indicadores' => $indicadores]);
+        return view('cms::indicador.listar', ['id_dimensao' => $id_dimensao]);
     }
 
     public function detalhar($id)
