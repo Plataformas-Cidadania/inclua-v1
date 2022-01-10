@@ -103,6 +103,9 @@
                     <a href="cms/autores"><i class="fa fa-fw fa-link"></i> Autores</a>
                 </li>
                 <li>
+                    <a href="cms/categorias"><i class="fa fa-fw fa-link"></i> Categorias</a>
+                </li>
+                <li>
                     <a href="cms/usuarios"><i class="fa fa-fw fa-users"></i> Usuários</a>
                 </li>
 

@@ -191,6 +191,10 @@ Route::group(['middleware' => 'cms'], function () {
         Route::get('/cms/autores', 'Cms\Controllers\AutorController@index');
         Route::get('/cms/autor/{id}', 'Cms\Controllers\AutorController@detalhar');
 
+        //Categoria
+        Route::get('/cms/categorias', 'Cms\Controllers\CategoriaController@index');
+        Route::get('/cms/categoria/{id}', 'Cms\Controllers\CategoriaController@detalhar');
+
         ////////////////////////////////////////////////////////////////////////////////////
 
 
