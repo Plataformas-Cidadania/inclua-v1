@@ -2,11 +2,11 @@ cmsApp.controller('indicadorCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
 
 
     $scope.indicador = {
-        numero: 2,
-        titulo: 'aaaa',
-        descricao: 'aaaaaaaaaaa',
-        vl_baixo: 1,
-        vl_alto: 2,
+        numero: null,
+        titulo: null,
+        descricao: null,
+        vl_baixo: null,
+        vl_alto: null,
     };
     $scope.indicadores = [];
     $scope.dimensoes = [];

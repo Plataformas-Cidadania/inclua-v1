@@ -17,7 +17,7 @@ class AutorController extends Controller
 
     function index()
     {
-        return view('cms::indicador.listar');
+        return view('cms::autor.listar');
     }
 
     public function detalhar($id)

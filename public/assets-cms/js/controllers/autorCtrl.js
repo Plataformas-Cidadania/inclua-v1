@@ -1,20 +1,23 @@
-cmsApp.controller('dimensaoCtrl', ['$scope', '$http', 'Upload', '$timeout', function($scope, $http, Upload, $timeout){
+cmsApp.controller('autorCtrl', ['$scope', '$http', 'Upload', '$timeout', function($scope, $http, Upload, $timeout){
 
-    $scope.dimensao = {
-        numero: null,
-        titulo: null,
-        descricao: null,
-        vl_baixo: null,
-        vl_alto: null,
+
+    $scope.autor = {
+        numero: 2,
+        titulo: 'aaaa',
+        descricao: 'aaaaaaaaaaa',
+        vl_baixo: 1,
+        vl_alto: 2,
     };
+    $scope.autores = [];
     $scope.dimensoes = [];
+    $scope.dimensao = null;
     $scope.currentPage = 1;
     $scope.lastPage = 0;
     $scope.totalItens = 0;
     $scope.maxSize = 5;
-    $scope.itensPerPage = 10;
+    $scope.itensPerPage = 100;
     $scope.dadoPesquisa = '';
-    $scope.campos = "id_dimensao, numero, titulo";
+    $scope.campos = "id_autor, nome";
     $scope.campoPesquisa = "titulo";
     $scope.processandoListagem = false;
     $scope.processandoExcluir = false;
@@ -24,25 +27,42 @@ cmsApp.controller('dimensaoCtrl', ['$scope', '$http', 'Upload', '$timeout', func
 
     $scope.$watch('currentPage', function(){
         if($listar){
-            listarDimensoes();
+            listarAutores();
         }
     });
     $scope.$watch('itensPerPage', function(){
         if($listar){
-            listarDimensoes();
+            listarAutores();
         }
     });
     $scope.$watch('dadoPesquisa', function(){
         if($listar){
-            listarDimensoes();
+            listarAutores();
         }
     });
+
 
 
     var listarDimensoes = function(){
         $scope.processandoListagem = true;
         $http({
             url: 'api/dimensao',
+            method: 'GET',
+            params: {
+
+            }
+        }).success(function(data, status, headers, config){
+            console.log(data.data);
+            $scope.dimensoes = data.data;
+        }).error(function(data){
+            $scope.message = "Ocorreu um erro: "+data;
+        });
+    }
+
+    var listarAutores = function(){
+        $scope.processandoListagem = true;
+        $http({
+            url: 'api/autores',
             method: 'GET',
             params: {
                 page: $scope.currentPage,
@@ -55,9 +75,9 @@ cmsApp.controller('dimensaoCtrl', ['$scope', '$http', 'Upload', '$timeout', func
             }
         }).success(function(data, status, headers, config){
             console.log(data.data);
-            $scope.dimensoes = data.data;
-            let numeroMaximo = Math.max.apply(Math, $scope.dimensoes.map(function(item) { return item.numero; }));
-            $scope.dimensao.numero = numeroMaximo + 1;
+            $scope.autores = data.data;
+            let numeroMaximo = Math.max.apply(Math, $scope.autores.map(function(item) { return item.numero; }));
+            $scope.autor.numero = numeroMaximo + 1;
             $scope.lastPage = data.last_page;
             $scope.totalItens = data.data.length;
             //$scope.totalItens = data.total;
@@ -81,7 +101,7 @@ cmsApp.controller('dimensaoCtrl', ['$scope', '$http', 'Upload', '$timeout', func
             $scope.sentidoOrdem = "asc";
         }
 
-        listarDimensoes();
+        listarAutores();
     };
 
     $scope.validar = function(){
@@ -89,6 +109,7 @@ cmsApp.controller('dimensaoCtrl', ['$scope', '$http', 'Upload', '$timeout', func
     };
 
 
+    listarAutores();
     listarDimensoes();
 
     //INSERIR/////////////////////////////
@@ -103,9 +124,11 @@ cmsApp.controller('dimensaoCtrl', ['$scope', '$http', 'Upload', '$timeout', func
 
         if(file==null && arquivo==null){
             $scope.processandoInserir = true;
-            $http.post("api/dimensao", $scope.dimensao).success(function (data){
-                 listarDimensoes();
-                 delete $scope.dimensao;//limpa o form
+            $scope.autor.id_dimensao = $scope.dimensao.id_dimensao;
+            $http.post("api/autores", $scope.autor).success(function (data){
+                 listarAutores();
+                 //delete $scope.autor;//limpa o form
+                $scope.autor = {};//limpa o form
                 $scope.mensagemInserir =  "Gravado com sucesso!";
                 $scope.processandoInserir = false;
              }).error(function(data){
@@ -114,21 +137,21 @@ cmsApp.controller('dimensaoCtrl', ['$scope', '$http', 'Upload', '$timeout', func
              });
         }else{
 
-            dimensao.file = file;
-            dimensao.arquivo = arquivo;
+            autor.file = file;
+            autor.arquivo = arquivo;
             Upload.upload({
-                url: 'api/dimensao',
-                data: dimensao,
-                //data: {dimensao: $scope.dimensao, file: file, arquivo: arquivo},
+                url: 'api/autor',
+                data: autor,
+                //data: {autor: $scope.autor, file: file, arquivo: arquivo},
             }).then(function (response) {
                 $timeout(function () {
                     $scope.result = response.data;
                 });
                 console.log(response.data);
-                delete $scope.dimensao;//limpa o form
+                delete $scope.autor;//limpa o form
                 $scope.picFile = null;//limpa o file
                 $scope.fileArquivo = null;//limpa o file
-                listarDimensoes();
+                listarAutores();
                 $scope.mensagemInserir =  "Gravado com sucesso!";
             }, function (response) {
                 console.log(response.data);
@@ -170,7 +193,7 @@ cmsApp.controller('dimensaoCtrl', ['$scope', '$http', 'Upload', '$timeout', func
     $scope.excluir = function(id){
         $scope.processandoExcluir = true;
         $http({
-            url: 'api/dimensao/'+id,
+            url: 'api/autores/'+id,
             method: 'DELETE'
         }).success(function(data, status, headers, config){
             console.log(data);
@@ -178,7 +201,7 @@ cmsApp.controller('dimensaoCtrl', ['$scope', '$http', 'Upload', '$timeout', func
                 $scope.processandoExcluir = false;
                 $scope.excluido = true;
                 $scope.mensagemExcluido = data.message;
-                listarDimensoes();
+                listarAutores();
                 return;
             }
             $scope.processandoExcluir = false;
@@ -190,29 +213,6 @@ cmsApp.controller('dimensaoCtrl', ['$scope', '$http', 'Upload', '$timeout', func
             $scope.mensagemExcluido = "Erro ao tentar excluir!";
         });
     };
-
-    $scope.status = function(id){
-        //console.log(id);
-        $scope.mensagemStatus = '';
-        $scope.idStatus = '';
-        $scope.processandoStatus = true;
-        $http({
-            url: 'cms/status-dimensao/'+id,
-            method: 'GET'
-        }).success(function(data, status, headers, config){
-            //console.log(data);
-            $scope.processandoStatus = false;
-            //$scope.excluido = true;
-            $scope.mensagemStatus = 'color-success';
-            $scope.idStatus = id;
-            listarDimensoes();
-        }).error(function(data){
-            $scope.message = "Ocorreu um erro: "+data;
-            $scope.processandoStatus = false;
-            $scope.mensagemStatus = "Erro ao tentar status!";
-        });
-    };
-    //////////////////////////////////
 
 
 }]);
