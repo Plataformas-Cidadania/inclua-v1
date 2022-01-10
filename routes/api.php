@@ -36,6 +36,9 @@ Route::group([
 
     Route::delete('/{indicador}',[App\Http\Controllers\Api\IndicadorController::class, 'destroy'])
          ->name('api.indicadores.destroy');
+
+    Route::get('/dimensao/{id_dimensao}',[App\Http\Controllers\Api\IndicadorController::class, 'getAllIndicadoresPorIdDimensao'])
+        ->name('api.indicadores.getAllIndicadoresPorIdDimensao');
 });
 
 
