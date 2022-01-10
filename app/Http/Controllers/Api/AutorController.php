@@ -16,7 +16,7 @@ class AutorController extends Controller
 {
     private AutorRepository $repo;
     private  $rules = [
-        'id_autor' => 'string|min:1|nullable',
+        //'id_autor' => 'string|min:1|nullable',
         'nome' => 'string|min:1|nullable',
     ];
     public function __construct(AutorRepository $repo)

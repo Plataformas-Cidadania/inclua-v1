@@ -1,14 +1,14 @@
 @extends('cms::layouts.app')
 
 @section('content')
-    {!! Html::script(config('app.url').'assets-cms/js/controllers/alterarAutorCtrl.js') !!}
-    <div ng-controller="alterarAutorCtrl">
+    {!! Html::script(config('app.url').'assets-cms/js/controllers/alterarCategoriaCtrl.js') !!}
+    <div ng-controller="alterarCategoriaCtrl">
         <div class="box-padrao">
-            <h1><a href="javascript:history.back();"><i class="fa fa-arrow-circle-left"></i></a>&nbsp;&nbsp;Autor</h1>
-            <?php //print_r($autor);?>
-            <div ng-init="carregaImagem('{{$autor->imagem}}', '{{$autor->arquivo}}'); detalhar({{$autor->id_autor}})">
+            <h1><a href="javascript:history.back();"><i class="fa fa-arrow-circle-left"></i></a>&nbsp;&nbsp;Categoria</h1>
+            <?php //print_r($categoria);?>
+            <div ng-init="carregaImagem('{{$categoria->imagem}}', '{{$categoria->arquivo}}'); detalhar({{$categoria->id_categoria}})">
                 <span class="texto-obrigatorio">* campos obrigatórios</span><br><br>
-                {!! Form::model($autor, ['name' =>'form']) !!}
+                {!! Form::model($categoria, ['name' =>'form']) !!}
                 <div class="container-thumb" style="display: none;">
                     <div class="box-thumb" name="fileDrop" ngf-drag-over-class="'box-thumb-hover'" ngf-drop ngf-select ng-model="picFile"
                          ng-show="!picFile && !imagemBD" accept="image/*" ngf-max-size="2MB">Solte uma imagem aqui!</div>
@@ -28,17 +28,17 @@
                     Escolher Arquivo <input  type="file" ngf-select ng-model="fileArquivo" name="fileArquivo" accept="application/pdf,.zip,.rar,.doc,.docx,.xlsx,.xls" ngf-max-size="100MB" ngf-model-invalid="errorFile">
                 </span>
                 <button class="btn btn-danger" ng-click="limparArquivo()" ng-show="fileArquivo || arquivoBD" type="button">Remover Arquivo</button>
-                <a href="arquivos/autores/<% arquivoBD %>" target="_blank" ng-show="arquivoBD"><% arquivoBD %></a>
+                <a href="arquivos/categorias/<% arquivoBD %>" target="_blank" ng-show="arquivoBD"><% arquivoBD %></a>
                 <a ng-show="fileArquivo"><% fileArquivo.name %></a>
                 {{--<br><br>--}}
 
                 <br><br>
-                @include('cms::autor._form')
-                <input type="hidden" name="id" ng-model="id" ng-init="id='{{$autor->id_autor}}'"/>
+                @include('cms::categoria._form')
+                <input type="hidden" name="id" ng-model="id" ng-init="id='{{$categoria->id_categoria}}'"/>
                 <div class="row">
                     <div class="col-md-1 col-lg-1 col-xs-3">
                         <br>
-                        <button class="btn btn-info" type="button" ng-click="alterar(picFile, fileArquivo)" ng-disabled="form.$invalid && form.autor.$dirty">Salvar</button>
+                        <button class="btn btn-info" type="button" ng-click="alterar(picFile, fileArquivo)" ng-disabled="form.$invalid && form.categoria.$dirty">Salvar</button>
                     </div>
                     <div class="col-md-2 col-lg-2 col-xs-6">
                         <span class="progress" ng-show="picFile.progress >= 0">

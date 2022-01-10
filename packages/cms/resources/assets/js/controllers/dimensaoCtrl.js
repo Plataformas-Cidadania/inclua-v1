@@ -1,11 +1,11 @@
 cmsApp.controller('dimensaoCtrl', ['$scope', '$http', 'Upload', '$timeout', function($scope, $http, Upload, $timeout){
 
     $scope.dimensao = {
-        numero: 2,
-        titulo: 'aaaa',
-        descricao: 'aaaaaaaaaaa',
-        vl_baixo: 1,
-        vl_alto: 2,
+        numero: null,
+        titulo: null,
+        descricao: null,
+        vl_baixo: null,
+        vl_alto: null,
     };
     $scope.dimensoes = [];
     $scope.currentPage = 1;

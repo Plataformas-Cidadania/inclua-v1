@@ -17,13 +17,13 @@ class AutorController extends Controller
 
     function index()
     {
-        return view('cms::indicador.listar');
+        return view('cms::autor.listar');
     }
 
     public function detalhar($id)
     {
         $autor = new \stdClass();
-        $autor->id_indicador = $id;
+        $autor->id_autor= $id;
         $autor->imagem = "";
         $autor->arquivo = "";
         return view('cms::autor.detalhar', ['autor' => $autor]);

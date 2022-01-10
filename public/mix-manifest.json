@@ -33,5 +33,7 @@
     "/assets-cms/js/controllers/dimensaoCtrl.js": "/assets-cms/js/controllers/dimensaoCtrl.js",
     "/assets-cms/js/controllers/alterarDimensaoCtrl.js": "/assets-cms/js/controllers/alterarDimensaoCtrl.js",
     "/assets-cms/js/controllers/indicadorCtrl.js": "/assets-cms/js/controllers/indicadorCtrl.js",
-    "/assets-cms/js/controllers/alterarIndicadorCtrl.js": "/assets-cms/js/controllers/alterarIndicadorCtrl.js"
+    "/assets-cms/js/controllers/alterarIndicadorCtrl.js": "/assets-cms/js/controllers/alterarIndicadorCtrl.js",
+    "/assets-cms/js/controllers/autorCtrl.js": "/assets-cms/js/controllers/autorCtrl.js",
+    "/assets-cms/js/controllers/alterarAutorCtrl.js": "/assets-cms/js/controllers/alterarAutorCtrl.js"
 }

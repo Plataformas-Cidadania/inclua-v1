@@ -99,9 +99,9 @@
                 <li>
                     <a href="cms/dimensoes"><i class="fa fa-fw fa-link"></i> Dimensões</a>
                 </li>
-
-
-
+                <li>
+                    <a href="cms/autores"><i class="fa fa-fw fa-link"></i> Autores</a>
+                </li>
                 <li>
                     <a href="cms/usuarios"><i class="fa fa-fw fa-users"></i> Usuários</a>
                 </li>
