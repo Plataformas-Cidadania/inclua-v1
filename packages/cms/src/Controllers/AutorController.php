@@ -23,7 +23,7 @@ class AutorController extends Controller
     public function detalhar($id)
     {
         $autor = new \stdClass();
-        $autor->id_indicador = $id;
+        $autor->id_autor= $id;
         $autor->imagem = "";
         $autor->arquivo = "";
         return view('cms::autor.detalhar', ['autor' => $autor]);

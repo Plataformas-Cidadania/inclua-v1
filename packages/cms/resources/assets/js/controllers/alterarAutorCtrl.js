@@ -4,7 +4,7 @@ cmsApp.controller('alterarAutorCtrl', ['$scope', '$http', 'Upload', '$timeout', 
     $scope.processandoDetalhar = false;
 
 
-    $scope.id_autor = 0;
+    //$scope.id_autor = 0;
     $scope.dimensoes = [];
     $scope.dimensao = null;
 
@@ -45,7 +45,6 @@ cmsApp.controller('alterarAutorCtrl', ['$scope', '$http', 'Upload', '$timeout', 
         if(file==null){
 
             $scope.processandoSalvar = true;
-            $scope.autor.id_dimensao = $scope.dimensao.id_dimensao;
             $http.put("api/autores/"+$scope.id, $scope.autor).success(function (data){
                 //console.log(data);
                 $scope.processandoSalvar = false;
