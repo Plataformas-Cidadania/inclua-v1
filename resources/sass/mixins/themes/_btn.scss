@@ -35,3 +35,16 @@
 .toggle li:hover{
     background-color: $color-lgt2;
 }
+.box-btn-icon{
+    width: 70px;
+    padding: 10px;
+    border: solid 1px #FFFFFF;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.box-btn-icon:hover{
+    background-color: $color-lgt;
+}
+.box-btn-icon-set{
+    background-color: $color-pri;
+}

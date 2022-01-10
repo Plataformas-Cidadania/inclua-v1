@@ -71,6 +71,7 @@ Route::get('/interaja', [ContribuaController::class , 'interaja']);
 Route::get('/interaja-detalhar', [ContribuaController::class , 'interajaDetalhar']);
 Route::get('/compartilhe', [ContribuaController::class , 'compartilhe']);
 Route::get('/relate', [ContribuaController::class , 'relate']);
+Route::get('/depoimento', [ContribuaController::class , 'depoimento']);
 Route::get('/resultado', [ResultadoController::class , 'listar']);
 
 $routes = [

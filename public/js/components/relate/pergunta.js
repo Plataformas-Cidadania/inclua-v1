@@ -37,6 +37,15 @@ const Pergunta = () => {
       rows: "5",
       cols: "33",
       placeholder: "Deixe um comentário"
-    })))), /*#__PURE__*/React.createElement("br", null));
+    }), /*#__PURE__*/React.createElement("div", {
+      className: "col-md-12"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "dorder-container justify-content-end"
+    }, /*#__PURE__*/React.createElement("button", {
+      className: "btn btn-theme bg-pri float-end",
+      type: "button"
+    }, "Enviar ", /*#__PURE__*/React.createElement("i", {
+      className: "fas fa-angle-right"
+    }))))))), /*#__PURE__*/React.createElement("br", null));
   }));
 };

@@ -62,6 +62,14 @@ const Pergunta = () => {
 
                                         <textarea id="story" name="story" rows="5" cols="33" placeholder={"Deixe um comentário"}  />
 
+                                        <div className="col-md-12">
+                                            <div className="dorder-container justify-content-end">
+                                                <button className="btn btn-theme bg-pri float-end"
+                                                        type="button">Enviar <i className="fas fa-angle-right"/>
+                                                </button>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
