@@ -27,17 +27,7 @@
                     </a>
                 </li>
                 @endif
-                <li class="btn btn-light">
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-                        <i class="fas fa-sign-out-alt"></i>
-                        <x-responsive-nav-link :href="route('logout')"
-                                               onclick="event.preventDefault();
-                                        this.closest('form').submit();">
-                            <strong class="float-end d-none d-sm-block ms-2"> {{ __('Sair') }}</strong>
-                        </x-responsive-nav-link>
-                    </form>
-                </li>
+
 
             </ul>
             <br>
@@ -47,8 +37,16 @@
             <!-- Authentication -->
             <form method="POST" action="{{ route('logout') }}"  style="float: right; margin-bottom: 20px;">
                 @csrf
-                Olá, {{auth()->user()->name}}!
+                Olá, <strong>{{auth()->user()->name}}!</strong>
+
+
+                <x-responsive-nav-link :href="route('logout')"
+                                       onclick="event.preventDefault();
+                                        this.closest('form').submit();">
+                    <strong class="float-end d-none d-sm-block ms-2">  <i class="fas fa-sign-out-alt"></i> {{ __('Sair') }}</strong>
+                </x-responsive-nav-link>
             </form>
+
         </div>
     </div>
 </div>

@@ -47,7 +47,7 @@ class BaseRepository
         array $relations = [],
         array $appends = []
     ): Model
-    {   if(!is_int($modelId)) throw new \Illuminate\Database\Eloquent\ModelNotFoundException;
+    {
         return $this->model->select($columns)->with($relations)->findOrFail($modelId)->append($appends);
     }
 
