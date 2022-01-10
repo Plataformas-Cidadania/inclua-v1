@@ -5,17 +5,17 @@ const Page = () => {
     const [total, setTotal] = useState(0);
     const [page, setPage] = useState(0);
     const [perPage, setPerpage] = useState(12);
-    const [menuItens, setSearch] = useState({id: 1, title: "Categoria", txt: 'Busque por categoria', rota: 'api/recurso/categoria/', type: true});
+    const [menuItens, setSearch] = useState({id: 1, title: "Categoria", txt: 'Busque por categoria', rota: 'api/recurso/categoria/', type: true, typeTitle: 'nome'});
     const [menuLi, setMenuLi] = useState(1);
     const [listMenu, setListMenu] = useState([]);
     const [spinList, setspinList] = useState(false);
     const [searchBox, setSearchBox] = useState(false);
 
     const menu = [
-        {id: 1, title: "Categoria", txt: 'Busque por categoria', rota: 'api/recurso/categoria/', type: true},
-        {id: 2, title: "Tipo", txt: 'Busque por tipo', rota: 'api/recurso/tipo_recurso/', type: true},
-        {id: 3, title: "Palavra-chave", txt: 'Busque por palavra-chave', rota: 'api/recurso/palavra_chave/', type: false},
-        {id: 4, title: "Indicador", txt: 'Busque por indicador', rota: '', type: true},
+        {id: 1, title: "Categoria", txt: 'Busque por categoria', rota: 'api/recurso/categoria/', type: true, typeTitle: 'nome'},
+        {id: 2, title: "Tipo", txt: 'Busque por tipo', rota: 'api/recurso/tipo_recurso/', type: true, typeTitle: 'nome'},
+        {id: 3, title: "Palavra-chave", txt: 'Busque por palavra-chave', rota: 'api/recurso/palavra_chave/', type: false, typeTitle: 'nome'},
+        {id: 4, title: "Indicador", txt: 'Busque por indicador', rota: 'api/recurso/indicador/', type: true, typeTitle: 'titulo'},
         //{id: 5, title: "Autores", txt: 'Busque por autores', rota: 'recurso/autores/{recurso}'},
     ];
 
@@ -118,7 +118,7 @@ const Page = () => {
                                                 return (<li className={"cursor "}
                                                             key={'list_'+key}
                                                     //onClick={() => btnSearch(item)}
-                                                >{item.nome}</li>);
+                                                >{item[menuItens.typeTitle]}</li>);
                                             })
                                         }
 

@@ -72,4 +72,16 @@ class ContribuaController extends Controller{
         ]);
 
     }
+
+    public function depoimento(){
+
+        $rota = Route::getCurrentRoute()->uri();
+
+        $modulo = \App\Models\Modulo::first();
+
+        return view('contribua.depoimento', [
+            'page' => $modulo,
+        ]);
+
+    }
 }

@@ -33,7 +33,7 @@
 
 
             <div class="row">
-                <div class="col-md-4">
+                {{--<div class="col-md-4">
                     <a href="interaja">
                         <div class="dorder-container">
                             <div class="dorder-container-mai p-4 text-center">
@@ -43,7 +43,7 @@
                             </div>
                         </div>
                     </a>
-                </div>
+                </div>--}}
                 <div class="col-md-4">
                     <a href="compartilhe">
                         <div class="dorder-container">
@@ -62,6 +62,17 @@
                                 <i class="fas fa-bullhorn fa-3x"></i><br><br>
                                 <h2>Relate</h2>
                                 <p>Como a INCLUA te ajudou? Conte-nos sua experiência</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="depoimento">
+                        <div class="dorder-container">
+                            <div class="dorder-container-mai p-4 text-center">
+                                <i class="far fa-comment fa-3x"></i><br><br>
+                                <h2>Depoimento</h2>
+                                <p>Deixe seu depoimento</p>
                             </div>
                         </div>
                     </a>

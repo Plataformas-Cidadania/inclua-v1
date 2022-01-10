@@ -12658,6 +12658,22 @@ figcaption {
   background-color: #E6DACE;
 }
 
+.box-btn-icon {
+  width: 70px;
+  padding: 10px;
+  border: solid 1px #FFFFFF;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.box-btn-icon:hover {
+  background-color: #F5F1ED;
+}
+
+.box-btn-icon-set {
+  background-color: #FBCB4A;
+}
+
 label {
   font-size: 13px;
   margin-bottom: 0;

@@ -12,7 +12,8 @@ const Page = () => {
     title: "Categoria",
     txt: 'Busque por categoria',
     rota: 'api/recurso/categoria/',
-    type: true
+    type: true,
+    typeTitle: 'nome'
   });
   const [menuLi, setMenuLi] = useState(1);
   const [listMenu, setListMenu] = useState([]);
@@ -23,25 +24,29 @@ const Page = () => {
     title: "Categoria",
     txt: 'Busque por categoria',
     rota: 'api/recurso/categoria/',
-    type: true
+    type: true,
+    typeTitle: 'nome'
   }, {
     id: 2,
     title: "Tipo",
     txt: 'Busque por tipo',
     rota: 'api/recurso/tipo_recurso/',
-    type: true
+    type: true,
+    typeTitle: 'nome'
   }, {
     id: 3,
     title: "Palavra-chave",
     txt: 'Busque por palavra-chave',
     rota: 'api/recurso/palavra_chave/',
-    type: false
+    type: false,
+    typeTitle: 'nome'
   }, {
     id: 4,
     title: "Indicador",
     txt: 'Busque por indicador',
-    rota: '',
-    type: true
+    rota: 'api/recurso/indicador/',
+    type: true,
+    typeTitle: 'titulo'
   } //{id: 5, title: "Autores", txt: 'Busque por autores', rota: 'recurso/autores/{recurso}'},
   ];
   useEffect(() => {
@@ -156,7 +161,7 @@ const Page = () => {
       className: "cursor ",
       key: 'list_' + key //onClick={() => btnSearch(item)}
 
-    }, item.nome);
+    }, item[menuItens.typeTitle]);
   }))))), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
     className: "container-search-click cursor",
     style: {
