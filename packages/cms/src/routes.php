@@ -184,7 +184,7 @@ Route::group(['middleware' => 'cms'], function () {
         Route::get('/cms/dimensao/{id}', 'Cms\Controllers\DimensaoController@detalhar');
 
         //Indicador
-        Route::get('/cms/indicadores', 'Cms\Controllers\IndicadorController@index');
+        Route::get('/cms/indicadores/{id_dimensao}', 'Cms\Controllers\IndicadorController@index');
         Route::get('/cms/indicador/{id}', 'Cms\Controllers\IndicadorController@detalhar');
 
         //Autor

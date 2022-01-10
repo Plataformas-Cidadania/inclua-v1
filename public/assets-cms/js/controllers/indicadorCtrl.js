@@ -8,6 +8,7 @@ cmsApp.controller('indicadorCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
         vl_baixo: null,
         vl_alto: null,
     };
+    $scope.id_dimensao = 0;
     $scope.indicadores = [];
     $scope.dimensoes = [];
     $scope.dimensao = null;
@@ -27,17 +28,17 @@ cmsApp.controller('indicadorCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
 
     $scope.$watch('currentPage', function(){
         if($listar){
-            listarIndicadores();
+            $scope.listarIndicadores($scope.id_dimensao);
         }
     });
     $scope.$watch('itensPerPage', function(){
         if($listar){
-            listarIndicadores();
+            $scope.listarIndicadores($scope.id_dimensao);
         }
     });
     $scope.$watch('dadoPesquisa', function(){
         if($listar){
-            listarIndicadores();
+            $scope.listarIndicadores($scope.id_dimensao);
         }
     });
 
@@ -59,10 +60,10 @@ cmsApp.controller('indicadorCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
         });
     }
 
-    var listarIndicadores = function(){
+    $scope.listarIndicadores = function(id_dimensao){
         $scope.processandoListagem = true;
         $http({
-            url: 'api/indicadores',
+            url: 'api/indicadores/dimensao/'+id_dimensao,
             method: 'GET',
             params: {
                 page: $scope.currentPage,
@@ -101,7 +102,7 @@ cmsApp.controller('indicadorCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
             $scope.sentidoOrdem = "asc";
         }
 
-        listarIndicadores();
+        $scope.listarIndicadores($scope.id_dimensao);
     };
 
     $scope.validar = function(){
@@ -109,7 +110,7 @@ cmsApp.controller('indicadorCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
     };
 
 
-    listarIndicadores();
+    //listarIndicadores();
     listarDimensoes();
 
     //INSERIR/////////////////////////////
@@ -126,7 +127,7 @@ cmsApp.controller('indicadorCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
             $scope.processandoInserir = true;
             $scope.indicador.id_dimensao = $scope.dimensao.id_dimensao;
             $http.post("api/indicadores", $scope.indicador).success(function (data){
-                 listarIndicadores();
+                $scope.listarIndicadores($scope.id_dimensao);
                  //delete $scope.indicador;//limpa o form
                 $scope.indicador = {};//limpa o form
                 $scope.mensagemInserir =  "Gravado com sucesso!";
@@ -151,7 +152,7 @@ cmsApp.controller('indicadorCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
                 delete $scope.indicador;//limpa o form
                 $scope.picFile = null;//limpa o file
                 $scope.fileArquivo = null;//limpa o file
-                listarIndicadores();
+                $scope.listarIndicadores($scope.id_dimensao);
                 $scope.mensagemInserir =  "Gravado com sucesso!";
             }, function (response) {
                 console.log(response.data);
@@ -201,7 +202,7 @@ cmsApp.controller('indicadorCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
                 $scope.processandoExcluir = false;
                 $scope.excluido = true;
                 $scope.mensagemExcluido = data.message;
-                listarIndicadores();
+                $scope.listarIndicadores($scope.id_dimensao);
                 return;
             }
             $scope.processandoExcluir = false;

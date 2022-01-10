@@ -7,7 +7,7 @@
         $('[data-toggle="popover"]').popover()
     })
 </script>
-    <div ng-controller="indicadorCtrl">
+    <div ng-controller="indicadorCtrl" ng-init="id_dimensao={{$id_dimensao}}; listarIndicadores({{$id_dimensao}})">
         <div class="box-padrao">
             <h1><i class="fa fa-indicador" aria-hidden="true"></i>&nbsp;Indicadores</h1>
             <button class="btn btn-primary" ng-click="mostrarForm=!mostrarForm" ng-show="!mostrarForm">Novo Indicador</button>
