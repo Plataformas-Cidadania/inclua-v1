@@ -20,7 +20,7 @@ cmsApp.controller('alterarCategoriaCtrl', ['$scope', '$http', 'Upload', '$timeou
     $scope.detalhar = function(id){
         $scope.processandoDetalhar = true;
         $http({
-            url: 'api/categorias/'+id,
+            url: 'api/categoria/'+id,
             method: 'GET',
             params: {
 
@@ -45,7 +45,7 @@ cmsApp.controller('alterarCategoriaCtrl', ['$scope', '$http', 'Upload', '$timeou
         if(file==null){
 
             $scope.processandoSalvar = true;
-            $http.put("api/categorias/"+$scope.id, $scope.categoria).success(function (data){
+            $http.put("api/categoria/"+$scope.id, $scope.categoria).success(function (data){
                 //console.log(data);
                 $scope.processandoSalvar = false;
                 $scope.mensagemSalvar = data.message;
@@ -59,7 +59,7 @@ cmsApp.controller('alterarCategoriaCtrl', ['$scope', '$http', 'Upload', '$timeou
         }else{
 
             file.upload = Upload.upload({
-                url: 'api/categorias/'+$scope.id,
+                url: 'api/categoria/'+$scope.id,
                 data: {text: $scope.text, file: file},
             });
 

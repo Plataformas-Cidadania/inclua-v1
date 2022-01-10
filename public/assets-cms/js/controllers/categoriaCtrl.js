@@ -62,7 +62,7 @@ cmsApp.controller('categoriaCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
     var listarCategorias = function(){
         $scope.processandoListagem = true;
         $http({
-            url: 'api/categorias',
+            url: 'api/categoria',
             method: 'GET',
             params: {
                 page: $scope.currentPage,
@@ -124,7 +124,7 @@ cmsApp.controller('categoriaCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
 
         if(file==null && arquivo==null){
             $scope.processandoInserir = true;
-            $http.post("api/categorias", $scope.categoria).success(function (data){
+            $http.post("api/categoria", $scope.categoria).success(function (data){
                  listarCategorias();
                  //delete $scope.categoria;//limpa o form
                 $scope.categoria = {};//limpa o form
@@ -192,7 +192,7 @@ cmsApp.controller('categoriaCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
     $scope.excluir = function(id){
         $scope.processandoExcluir = true;
         $http({
-            url: 'api/categorias/'+id,
+            url: 'api/categoria/'+id,
             method: 'DELETE'
         }).success(function(data, status, headers, config){
             console.log(data);
