@@ -44,7 +44,7 @@ cmsApp.controller('indicadorCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
 
 
 
-    var listarDimensoes = function(){
+    /*var listarDimensoes = function(){
         $scope.processandoListagem = true;
         $http({
             url: 'api/dimensao',
@@ -58,7 +58,7 @@ cmsApp.controller('indicadorCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
         }).error(function(data){
             $scope.message = "Ocorreu um erro: "+data;
         });
-    }
+    }*/
 
     $scope.listarIndicadores = function(id_dimensao){
         $scope.processandoListagem = true;
@@ -111,7 +111,7 @@ cmsApp.controller('indicadorCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
 
 
     //listarIndicadores();
-    listarDimensoes();
+    //listarDimensoes();
 
     //INSERIR/////////////////////////////
 
@@ -123,9 +123,12 @@ cmsApp.controller('indicadorCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
 
         $scope.mensagemInserir = "";
 
+
         if(file==null && arquivo==null){
             $scope.processandoInserir = true;
-            $scope.indicador.id_dimensao = $scope.dimensao.id_dimensao;
+            //$scope.indicador.id_dimensao = $scope.dimensao.id_dimensao;
+            $scope.indicador.id_dimensao = $scope.id_dimensao;
+
             $http.post("api/indicadores", $scope.indicador).success(function (data){
                 $scope.listarIndicadores($scope.id_dimensao);
                  //delete $scope.indicador;//limpa o form
