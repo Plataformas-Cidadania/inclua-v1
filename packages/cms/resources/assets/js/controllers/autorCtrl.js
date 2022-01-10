@@ -124,7 +124,6 @@ cmsApp.controller('autorCtrl', ['$scope', '$http', 'Upload', '$timeout', functio
 
         if(file==null && arquivo==null){
             $scope.processandoInserir = true;
-            $scope.autor.id_dimensao = $scope.dimensao.id_dimensao;
             $http.post("api/autores", $scope.autor).success(function (data){
                  listarAutores();
                  //delete $scope.autor;//limpa o form
