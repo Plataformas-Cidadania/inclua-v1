@@ -22,6 +22,9 @@ class CreateSchemas extends Migration
             SET search_path to public;
             CREATE SCHEMA avaliacao;
         ");
+        // extensão para implementar busca fuzzy
+        DB::statement('CREATE EXTENSION IF NOT EXISTS pg_trgm');
+
     }
 
     /**
@@ -39,5 +42,8 @@ class CreateSchemas extends Migration
             SET search_path to public;
             DROP SCHEMA avaliacao;
         ");
+
+        DB::statement('DROP EXTENSION IF EXISTS pg_trgm');
+
     }
 }

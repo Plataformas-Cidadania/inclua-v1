@@ -109,7 +109,8 @@ class RecursoRepository extends BaseRepository
      */
     public function getAllRecursosPorNomeIndicador($nome_indicador)
     {
-        $res = Indicador::where('titulo', 'ilike', "%$nome_indicador%")->with(['recursos'])->get();
+        //$res = Indicador::where('titulo', 'ilike', "%$nome_indicador%")->with(['recursos'])->get();
+        $res = Indicador::whereRaw("titulo ilike '%$nome_indicador%'")->with('recursos')->get();
 
         if (!$res || $res->isEmpty()) throw new \Illuminate\Database\Eloquent\ModelNotFoundException;
         else return $res;
