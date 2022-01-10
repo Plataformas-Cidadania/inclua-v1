@@ -135,7 +135,7 @@ class RecursoRepository extends BaseRepository
      *
      * @param int $id_recurso
      *
-     * @return JsonResponse
+     * @return Model
      */
     public function getAllLinksPorIdRecurso($id_recurso)
     {
@@ -149,7 +149,7 @@ class RecursoRepository extends BaseRepository
      *
      * @param int $id_indicador
      *
-     * @return JsonResponse
+     * @return Model
      */
     public function getByIdIndicadorPaginado($id_indicador, $nr_itens)
     {
