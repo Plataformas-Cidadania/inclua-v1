@@ -70,9 +70,14 @@ class DiagnosticoController extends Controller
                 $rangeMedio = $indicador->vl_baixo - $indicador->vl_alto;
                 $rangeBaixo = $soma_maximo  - $indicador->vl_baixo;
 
-                $percAlto = $rangeAlto * 100/$range;
-                $percMedio = $rangeMedio * 100/$range;
-                $percBaixo = $rangeBaixo * 100/$range;
+                if ($range != 0 )
+                {
+                    $percAlto = $rangeAlto * 100/$range;
+                    $percMedio = $rangeMedio * 100/$range;
+                    $percBaixo = $rangeBaixo * 100/$range;
+                }
+                else 
+                    $percAlto = $percMedio = $percBaixo = 0;
                 
                 $risco='';
                 if ($pontuacao_indicador <= $indicador->vl_alto) {
@@ -92,6 +97,7 @@ class DiagnosticoController extends Controller
                     'qtd_recursos'=> $indicador->recursos->count(),
                     'risco'=> $risco,
                     'pontos'=> $pontuacao_indicador,
+                    'posPontos'=> $pontuacao_indicador*100/$indicador->vl_alto,
                     'series'=> [
                         [
                             'name'=> 'Risco baixo',
