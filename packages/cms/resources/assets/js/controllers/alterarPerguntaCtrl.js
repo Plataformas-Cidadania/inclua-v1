@@ -1,0 +1,134 @@
+cmsApp.controller('alterarPerguntaCtrl', ['$scope', '$http', 'Upload', '$timeout', function($scope, $http, Upload, $timeout){
+
+    $scope.processandoSalvar = false;
+    $scope.processandoDetalhar = false;
+
+    $scope.letras = [
+        'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',
+        'a2','b2','c2','d2','e2','f2','g2','h2','i2','j2','k2','l2','m2','n2','o2','p2','q2','r2','s2','t2','u2','v2','w2','x2','y2','z2'
+    ];
+
+    $scope.id_pergunta = 0;
+    $scope.dimensoes = [];
+    $scope.dimensao = null;
+
+    //ALTERAR/////////////////////////////
+
+    $scope.tinymceOptions = tinymceOptions;
+
+    $scope.mostrarForm = false;
+
+    $scope.removerImagem = false;
+
+    $scope.listarDimensoes = function(){
+        $scope.processandoListagem = true;
+        $http({
+            url: 'api/dimensao',
+            method: 'GET',
+            params: {
+
+            }
+        }).success(function(data, status, headers, config){
+            console.log(data.data);
+            $scope.dimensoes = data.data;
+            $scope.detalhar($scope.id_pergunta);
+        }).error(function(data){
+            $scope.message = "Ocorreu um erro: "+data;
+        });
+    }
+
+
+    $scope.detalhar = function(id){
+        $scope.processandoDetalhar = true;
+        $http({
+            url: 'api/perguntas/'+id,
+            method: 'GET',
+            params: {
+
+            }
+        }).success(function(data, status, headers, config){
+            $scope.pergunta = data.data;
+            console.log($scope.pergunta);
+            $scope.dimensoes.forEach(function (item){
+                if(item.id_dimensao === $scope.pergunta.id_dimensao){
+                    $scope.dimensao = item;
+                }
+            });
+            $scope.processandoDetalhar = false;
+        }).error(function(data){
+            $scope.message = "Ocorreu um erro: "+data;
+            $scope.processandoDetalhar = false;
+        });
+    };
+
+    $scope.alterar = function (file){
+
+        if(file==null){
+
+            $scope.processandoSalvar = true;
+            $scope.pergunta.id_dimensao = $scope.dimensao.id_dimensao;
+            $http.put("api/perguntas/"+$scope.id, $scope.pergunta).success(function (data){
+                //console.log(data);
+                $scope.processandoSalvar = false;
+                $scope.mensagemSalvar = data.message;
+                $scope.removerImagem = false;
+            }).error(function(data){
+                //console.log(data);
+                $scope.mensagemSalvar = "Ocorreu um erro: "+data;
+                $scope.processandoSalvar = false;
+            });
+
+        }else{
+
+            file.upload = Upload.upload({
+                url: 'api/perguntas/'+$scope.id,
+                data: {text: $scope.text, file: file},
+            });
+
+            file.upload.then(function (response) {
+                $timeout(function () {
+                    file.result = response.data;
+                });
+                $scope.picFile = null;//limpa o form
+                $scope.mensagemSalvar =  "Gravado com sucesso!";
+                $scope.removerImagem = false;
+                $scope.imagemBD = 'imagens/texts/'+response.data;
+                console.log($scope.imagemDB);
+            }, function (response) {
+                if (response.status > 0){
+                    $scope.errorMsg = response.status + ': ' + response.data;
+                }
+            }, function (evt) {
+                //console.log(evt);
+                // Math.min is to fix IE which reports 200% sometimes
+                file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+            });
+
+        }
+
+    };
+
+    $scope.limparImagem = function(){
+        $scope.picFile = null;
+        $scope.imagemBD = null;
+        $scope.removerImagem = true;
+    };
+
+    $scope.carregaImagem  = function(img) {
+        if(img!=''){
+            $scope.imagemBD = 'imagens/perguntas/xs-'+img;
+            //console.log($scope.imagemBD);
+        }
+    };
+
+    $scope.validar = function(valor) {
+        if(valor===undefined && $scope.form.$dirty){
+            return "campo-obrigatorio";
+        }
+        return "";
+    };
+    /////////////////////////////////
+
+
+
+}]);
