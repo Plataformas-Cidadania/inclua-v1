@@ -1,10 +1,10 @@
 @extends('cms::layouts.app')
 
 @section('content')
-    {!! Html::script(config('app.url').'assets-cms/js/controllers/alterarformatoRecursoCtrl.js') !!}
-    <div ng-controller="alterarformatoRecursoCtrl">
+    {!! Html::script(config('app.url').'assets-cms/js/controllers/alterarFormatoRecursoCtrl.js') !!}
+    <div ng-controller="alterarFormatoRecursoCtrl">
         <div class="box-padrao">
-            <h1><a href="javascript:history.back();"><i class="fa fa-arrow-circle-left"></i></a>&nbsp;&nbsp;formatoRecurso</h1>
+            <h1><a href="javascript:history.back();"><i class="fa fa-arrow-circle-left"></i></a>&nbsp;&nbsp;Formato Recurso</h1>
             <?php //print_r($formatoRecurso);?>
             <div ng-init="carregaImagem('{{$formatoRecurso->imagem}}', '{{$formatoRecurso->arquivo}}'); detalhar({{$formatoRecurso->id_formatoRecurso}})">
                 <span class="texto-obrigatorio">* campos obrigatórios</span><br><br>

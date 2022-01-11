@@ -39,5 +39,7 @@
     "/assets-cms/js/controllers/autorCtrl.js": "/assets-cms/js/controllers/autorCtrl.js",
     "/assets-cms/js/controllers/alterarAutorCtrl.js": "/assets-cms/js/controllers/alterarAutorCtrl.js",
     "/assets-cms/js/controllers/categoriaCtrl.js": "/assets-cms/js/controllers/categoriaCtrl.js",
-    "/assets-cms/js/controllers/alterarCategoriaCtrl.js": "/assets-cms/js/controllers/alterarCategoriaCtrl.js"
+    "/assets-cms/js/controllers/alterarCategoriaCtrl.js": "/assets-cms/js/controllers/alterarCategoriaCtrl.js",
+    "/assets-cms/js/controllers/formatoRecursoCtrl.js": "/assets-cms/js/controllers/formatoRecursoCtrl.js",
+    "/assets-cms/js/controllers/alterarFormatoRecursoCtrl.js": "/assets-cms/js/controllers/alterarFormatoRecursoCtrl.js"
 }

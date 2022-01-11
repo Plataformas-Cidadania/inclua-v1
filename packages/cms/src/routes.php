@@ -199,6 +199,10 @@ Route::group(['middleware' => 'cms'], function () {
         Route::get('/cms/categorias', 'Cms\Controllers\CategoriaController@index');
         Route::get('/cms/categoria/{id}', 'Cms\Controllers\CategoriaController@detalhar');
 
+        //Formato Recurso
+        Route::get('/cms/formatos-recursos', 'Cms\Controllers\FormatoRecursoController@index');
+        Route::get('/cms/formato-recurso/{id}', 'Cms\Controllers\FormatoRecursoController@detalhar');
+
         ////////////////////////////////////////////////////////////////////////////////////
 
 
