@@ -3,10 +3,6 @@ cmsApp.controller('alterarPerguntaCtrl', ['$scope', '$http', 'Upload', '$timeout
     $scope.processandoSalvar = false;
     $scope.processandoDetalhar = false;
 
-    $scope.letras = [
-        'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',
-        'a2','b2','c2','d2','e2','f2','g2','h2','i2','j2','k2','l2','m2','n2','o2','p2','q2','r2','s2','t2','u2','v2','w2','x2','y2','z2'
-    ];
 
     $scope.id_pergunta = 0;
     $scope.dimensoes = [];

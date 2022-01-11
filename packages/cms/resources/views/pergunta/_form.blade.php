@@ -1,6 +1,6 @@
 <input type="hidden" name="letra" ng-model="pergunta.letra">
 <input type="hidden" name="id_pergunta" ng-model="pergunta.id_indicador"><br>
-
+<br><% pergunta.letra %><br>
 <label for="descricao">Descricao</label>
 <input type="text" name="descricao" class="form-control width-medio <% validar(pergunta.descricao)%>" ng-model="pergunta.descricao" ng-required="true">
 

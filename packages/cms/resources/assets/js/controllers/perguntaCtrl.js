@@ -1,5 +1,9 @@
 cmsApp.controller('perguntaCtrl', ['$scope', '$http', 'Upload', '$timeout', function($scope, $http, Upload, $timeout){
 
+    $scope.letras = [
+        'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',
+        'a2','b2','c2','d2','e2','f2','g2','h2','i2','j2','k2','l2','m2','n2','o2','p2','q2','r2','s2','t2','u2','v2','w2','x2','y2','z2'
+    ];
 
     $scope.pergunta = {
         numero: null,
@@ -8,7 +12,7 @@ cmsApp.controller('perguntaCtrl', ['$scope', '$http', 'Upload', '$timeout', func
         vl_baixo: null,
         vl_alto: null,
     };
-    $scope.id_dimensao = 0;
+    $scope.id_indicador = 0;
     $scope.perguntas = [];
     $scope.dimensoes = [];
     $scope.dimensao = null;
@@ -28,17 +32,17 @@ cmsApp.controller('perguntaCtrl', ['$scope', '$http', 'Upload', '$timeout', func
 
     $scope.$watch('currentPage', function(){
         if($listar){
-            $scope.listarPerguntas($scope.id_dimensao);
+            $scope.listarPerguntas($scope.id_indicador);
         }
     });
     $scope.$watch('itensPerPage', function(){
         if($listar){
-            $scope.listarPerguntas($scope.id_dimensao);
+            $scope.listarPerguntas($scope.id_indicador);
         }
     });
     $scope.$watch('dadoPesquisa', function(){
         if($listar){
-            $scope.listarPerguntas($scope.id_dimensao);
+            $scope.listarPerguntas($scope.id_indicador);
         }
     });
 
@@ -60,10 +64,10 @@ cmsApp.controller('perguntaCtrl', ['$scope', '$http', 'Upload', '$timeout', func
         });
     }*/
 
-    $scope.listarPerguntas = function(id_dimensao){
+    $scope.listarPerguntas = function(id_indicador){
         $scope.processandoListagem = true;
         $http({
-            url: 'api/perguntas/dimensao/'+id_dimensao,
+            url: 'api/perguntas/dimensao/'+id_indicador,
             method: 'GET',
             params: {
                 page: $scope.currentPage,
@@ -77,8 +81,9 @@ cmsApp.controller('perguntaCtrl', ['$scope', '$http', 'Upload', '$timeout', func
         }).success(function(data, status, headers, config){
             console.log(data.data);
             $scope.perguntas = data.data;
-            let numeroMaximo = Math.max.apply(Math, $scope.perguntas.map(function(item) { return item.numero; }));
-            $scope.pergunta.numero = numeroMaximo + 1;
+            let letraMaxima = Math.max.apply(Math, $scope.perguntas.map(function(item) { return item.numero; }));
+            let indice = $scope.letras.indexOf(letraMaxima);
+            $scope.pergunta.letra = $scope.letras[indice+1];
             $scope.lastPage = data.last_page;
             $scope.totalItens = data.data.length;
             //$scope.totalItens = data.total;
@@ -102,7 +107,7 @@ cmsApp.controller('perguntaCtrl', ['$scope', '$http', 'Upload', '$timeout', func
             $scope.sentidoOrdem = "asc";
         }
 
-        $scope.listarPerguntas($scope.id_dimensao);
+        $scope.listarPerguntas($scope.id_indicador);
     };
 
     $scope.validar = function(){
@@ -126,11 +131,11 @@ cmsApp.controller('perguntaCtrl', ['$scope', '$http', 'Upload', '$timeout', func
 
         if(file==null && arquivo==null){
             $scope.processandoInserir = true;
-            //$scope.pergunta.id_dimensao = $scope.dimensao.id_dimensao;
-            $scope.pergunta.id_dimensao = $scope.id_dimensao;
+            //$scope.pergunta.id_indicador = $scope.dimensao.id_indicador;
+            $scope.pergunta.id_indicador = $scope.id_indicador;
 
             $http.post("api/perguntas", $scope.pergunta).success(function (data){
-                $scope.listarPerguntas($scope.id_dimensao);
+                $scope.listarPerguntas($scope.id_indicador);
                  //delete $scope.pergunta;//limpa o form
                 $scope.pergunta = {};//limpa o form
                 $scope.mensagemInserir =  "Gravado com sucesso!";
@@ -155,7 +160,7 @@ cmsApp.controller('perguntaCtrl', ['$scope', '$http', 'Upload', '$timeout', func
                 delete $scope.pergunta;//limpa o form
                 $scope.picFile = null;//limpa o file
                 $scope.fileArquivo = null;//limpa o file
-                $scope.listarPerguntas($scope.id_dimensao);
+                $scope.listarPerguntas($scope.id_indicador);
                 $scope.mensagemInserir =  "Gravado com sucesso!";
             }, function (response) {
                 console.log(response.data);
@@ -205,7 +210,7 @@ cmsApp.controller('perguntaCtrl', ['$scope', '$http', 'Upload', '$timeout', func
                 $scope.processandoExcluir = false;
                 $scope.excluido = true;
                 $scope.mensagemExcluido = data.message;
-                $scope.listarPerguntas($scope.id_dimensao);
+                $scope.listarPerguntas($scope.id_indicador);
                 return;
             }
             $scope.processandoExcluir = false;
