@@ -131,7 +131,7 @@ mix.scripts('packages/cms/resources/assets/js/controllers/alterarDimensaoCtrl.js
 mix.scripts('packages/cms/resources/assets/js/controllers/indicadorCtrl.js', 'public/assets-cms/js/controllers/indicadorCtrl.js');
 mix.scripts('packages/cms/resources/assets/js/controllers/alterarIndicadorCtrl.js', 'public/assets-cms/js/controllers/alterarIndicadorCtrl.js');
 
-//Pergutnas
+//Perguntas
 mix.scripts('packages/cms/resources/assets/js/controllers/perguntaCtrl.js', 'public/assets-cms/js/controllers/perguntaCtrl.js');
 mix.scripts('packages/cms/resources/assets/js/controllers/alterarPerguntaCtrl.js', 'public/assets-cms/js/controllers/alterarPerguntaCtrl.js');
 
@@ -142,5 +142,9 @@ mix.scripts('packages/cms/resources/assets/js/controllers/alterarAutorCtrl.js', 
 //Categorias
 mix.scripts('packages/cms/resources/assets/js/controllers/categoriaCtrl.js', 'public/assets-cms/js/controllers/categoriaCtrl.js');
 mix.scripts('packages/cms/resources/assets/js/controllers/alterarCategoriaCtrl.js', 'public/assets-cms/js/controllers/alterarCategoriaCtrl.js');
+
+//Formato Recurso
+mix.scripts('packages/cms/resources/assets/js/controllers/formatoRecursoCtrl.js', 'public/assets-cms/js/controllers/formatoRecursoCtrl.js');
+mix.scripts('packages/cms/resources/assets/js/controllers/alterarFormatoRecursoCtrl.js', 'public/assets-cms/js/controllers/alterarFormatoRecursoCtrl.js');
 
 //FIM CMS///////////////////////////////////////////////////////////////////
