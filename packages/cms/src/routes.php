@@ -187,6 +187,10 @@ Route::group(['middleware' => 'cms'], function () {
         Route::get('/cms/indicadores/{id_dimensao}', 'Cms\Controllers\IndicadorController@index');
         Route::get('/cms/indicador/{id}', 'Cms\Controllers\IndicadorController@detalhar');
 
+        //Perguntas
+        Route::get('/cms/perguntas/{id_indicador}', 'Cms\Controllers\PerguntaController@index');
+        Route::get('/cms/pergunta/{id}', 'Cms\Controllers\PerguntaController@detalhar');
+
         //Autor
         Route::get('/cms/autores', 'Cms\Controllers\AutorController@index');
         Route::get('/cms/autor/{id}', 'Cms\Controllers\AutorController@detalhar');
