@@ -95,7 +95,9 @@ class BarChart extends React.Component {
                 color: '#fff',
                 background: '#333333'
               },
-              text: 'Sua pontuação ' + props.annotationsX
+              text: 'Sua pontuação '
+              /*+props.annotationsX*/
+
             }
           }]
           /*yaxis: [{

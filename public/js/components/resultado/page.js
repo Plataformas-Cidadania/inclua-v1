@@ -15,6 +15,7 @@ const Page = () => {
       //const result = await axios.get('json/resultado.json');
       const result = await axios.get("api/diagnostico/" + dimensao + "/" + localStorage.getItem('id_diagnostico_completo'));
       setResultado(result.data);
+      console.log('***', Math.round(result.data.indicadores[0].posPontos));
     } catch (error) {
       console.log(error);
     }
@@ -37,8 +38,8 @@ const Page = () => {
     5: 'bg-qui'
   }; //bgColor = bgColor[resultado.id_dimensao];
 
-  bgColor = bgColor[dimensao];
-  console.log('----', resultado.indicadores);
+  bgColor = bgColor[dimensao]; //console.log('----', resultado.indicadores);
+
   return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
     className: "container"
   }, /*#__PURE__*/React.createElement("div", {
@@ -113,7 +114,7 @@ const Page = () => {
     }, /*#__PURE__*/React.createElement(BarChart, {
       id: 'bar-chart' + key,
       series: item.series,
-      annotationsX: item.pontos
+      annotationsX: Math.round(item.posPontos)
     })), /*#__PURE__*/React.createElement("div", {
       className: "col-md-6"
     }, /*#__PURE__*/React.createElement("div", {
