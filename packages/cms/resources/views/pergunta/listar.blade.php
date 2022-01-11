@@ -92,8 +92,8 @@
                         <tr ng-repeat="pergunta in perguntas">
                             <td><% pergunta.id_pergunta %></td>
                            {{-- <td><img ng-show="pergunta.imagem" ng-src="imagens/perguntas/xs-<% pergunta.imagem %>" width="60"></td>--}}
-                            <td><% pergunta.numero %></td>
-                            <td><% pergunta.titulo %></td>
+                            <td><% pergunta.letra %></td>
+                            <td><% pergunta.descricao %></td>
                             <td class="text-right">
                                 <div>
                                     {{--<a href="cms/items/<% pergunta.id %>"><i class="fa fa-sitemap fa-2x" title="Itens"></i></a>&nbsp;&nbsp;--}}

@@ -34,6 +34,8 @@
     "/assets-cms/js/controllers/alterarDimensaoCtrl.js": "/assets-cms/js/controllers/alterarDimensaoCtrl.js",
     "/assets-cms/js/controllers/indicadorCtrl.js": "/assets-cms/js/controllers/indicadorCtrl.js",
     "/assets-cms/js/controllers/alterarIndicadorCtrl.js": "/assets-cms/js/controllers/alterarIndicadorCtrl.js",
+    "/assets-cms/js/controllers/perguntaCtrl.js": "/assets-cms/js/controllers/perguntaCtrl.js",
+    "/assets-cms/js/controllers/alterarPerguntaCtrl.js": "/assets-cms/js/controllers/alterarPerguntaCtrl.js",
     "/assets-cms/js/controllers/autorCtrl.js": "/assets-cms/js/controllers/autorCtrl.js",
     "/assets-cms/js/controllers/alterarAutorCtrl.js": "/assets-cms/js/controllers/alterarAutorCtrl.js",
     "/assets-cms/js/controllers/categoriaCtrl.js": "/assets-cms/js/controllers/categoriaCtrl.js",

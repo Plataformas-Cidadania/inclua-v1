@@ -131,6 +131,10 @@ mix.scripts('packages/cms/resources/assets/js/controllers/alterarDimensaoCtrl.js
 mix.scripts('packages/cms/resources/assets/js/controllers/indicadorCtrl.js', 'public/assets-cms/js/controllers/indicadorCtrl.js');
 mix.scripts('packages/cms/resources/assets/js/controllers/alterarIndicadorCtrl.js', 'public/assets-cms/js/controllers/alterarIndicadorCtrl.js');
 
+//Pergutnas
+mix.scripts('packages/cms/resources/assets/js/controllers/perguntaCtrl.js', 'public/assets-cms/js/controllers/perguntaCtrl.js');
+mix.scripts('packages/cms/resources/assets/js/controllers/alterarPerguntaCtrl.js', 'public/assets-cms/js/controllers/alterarPerguntaCtrl.js');
+
 //Autores
 mix.scripts('packages/cms/resources/assets/js/controllers/autorCtrl.js', 'public/assets-cms/js/controllers/autorCtrl.js');
 mix.scripts('packages/cms/resources/assets/js/controllers/alterarAutorCtrl.js', 'public/assets-cms/js/controllers/alterarAutorCtrl.js');
