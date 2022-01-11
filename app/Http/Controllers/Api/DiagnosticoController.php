@@ -97,7 +97,7 @@ class DiagnosticoController extends Controller
                     'qtd_recursos'=> $indicador->recursos->count(),
                     'risco'=> $risco,
                     'pontos'=> $pontuacao_indicador,
-                    'posPontos'=> $pontuacao_indicador*100/$indicador->vl_alto,
+                    'posPontos'=> $pontuacao_indicador*100/$soma_maximo,
                     'series'=> [
                         [
                             'name'=> 'Risco baixo',
