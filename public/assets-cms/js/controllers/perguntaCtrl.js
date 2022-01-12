@@ -79,10 +79,19 @@ cmsApp.controller('perguntaCtrl', ['$scope', '$http', 'Upload', '$timeout', func
                 sentido: $scope.sentidoOrdem
             }
         }).success(function(data, status, headers, config){
-            console.log(data.data);
+            //console.log(data.data);
             $scope.perguntas = data.data;
-            let letraMaxima = Math.max.apply(Math, $scope.perguntas.map(function(item) { return item.numero; }));
+            //let letraMaxima = Math.max.apply(Math, $scope.perguntas.map(function(item) { return item.letra; }));
+            let letras = $scope.perguntas.map(function(item) { return item.letra; });
+            //console.log(letras);
+            letras = letras.filter((item) => {
+                return item !== ".";
+            });
+            let letraMaxima = letras.sort().pop();
+            //console.log(letras);
+            //console.log(letraMaxima);
             let indice = $scope.letras.indexOf(letraMaxima);
+            //.log(indice);
             $scope.pergunta.letra = $scope.letras[indice+1];
             $scope.lastPage = data.last_page;
             $scope.totalItens = data.data.length;
