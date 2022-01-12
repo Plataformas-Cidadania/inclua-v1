@@ -10,6 +10,7 @@ const Page = () => {
     const [listMenu, setListMenu] = useState([]);
     const [spinList, setspinList] = useState(false);
     const [searchBox, setSearchBox] = useState(false);
+    const [nEncontado, setNEncontado] = useState(false);
 
     const menu = [
         {id: 1, title: "Categoria", txt: 'Busque por categoria', rota: 'api/recurso/categoria/', type: true, typeTitle: 'nome'},
@@ -45,18 +46,21 @@ const Page = () => {
 
         setspinList(false);
         setSearchBox(true);
+        setNEncontado(false);
 
         const search = e.target.value ? e.target.value : ' ';
 
         try {
             setspinList(true);
             const result = await axios.get(menuItens.rota+search, {});
-            console.log('-----', result.data.data);
             setListMenu(result.data.data);
             setRecursos(result.data.data);
-            setTotal(result.data.total)
+            setTotal(result.data.data.length)
         } catch (error) {
             setspinList(false);
+            setNEncontado(search===" " ? false : true);
+
+
             console.log(error);
         }
 
@@ -105,7 +109,9 @@ const Page = () => {
                                        style={{zIndex: '999'}}
                                 />
                                 <i className="fas fa-search"/>
+
                             </div>
+                            <div className="m-2" style={{display: nEncontado ? '' : 'none'}}>Ops! nenhum resultado encontrado!</div>
                             <div  style={{display: menuItens.type ? '' : 'none'}}>
                                 <ul className="box-search-itens box-busca" style={{display: searchBox ? '' : 'none'}}>
                                     <div className="fa-3x text-center" style={{display: spinList ? '' : 'none'}} >

@@ -26,14 +26,14 @@ const Paginate = (props) => {
         let pages = [];//paginas q serão mostradas
         let n_pages = Math.ceil(total/perPage);
         //let n_pages = Math.ceil(page.per_page/10);
-        console.log('PAGINATE', 'page', page);
-        console.log('PAGINATE', 'total', total);
-        console.log('PAGINATE', 'n_pages', n_pages);
+        //console.log('PAGINATE', 'page', page);
+        //console.log('PAGINATE', 'total', total);
+        //console.log('PAGINATE', 'n_pages', n_pages);
         let qtdPages = 5;
         for (let i=0; i < n_pages; i++){
             let active = page === i ? 'active' : '';
             p[i] = (
-                <li className={"page-item "+active}>
+                <li className={"page-item "+active} key={"pg"+i}>
                     <a className="page-link" style={{cursor: 'pointer'}} onClick={()=>props.setPage(i)}>
                         {/*<a className="page-link" style={{cursor: 'pointer'}} >*/}
                         {i + 1}
