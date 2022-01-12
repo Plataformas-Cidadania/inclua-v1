@@ -25,7 +25,7 @@ class PerguntaController extends Controller
         'tipo' => 'int',
         'nao_se_aplica' => 'boolean|nullable',
         'inverter' => 'boolean',
-        'vl_subpergunta' => 'int|min:1|nullable',
+        'vl_subpergunta' => 'int|nullable',
         'id_perguntaPai' => 'int|min:1|nullable',
         'id_indicador' => 'int|min:1'
     ];
