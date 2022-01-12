@@ -15,9 +15,9 @@ class PerguntaController extends Controller
         $this->pergunta = new \App\Models\Pergunta;
     }
 
-    function index($id_dimensao)
+    function index($id_indicador)
     {
-        return view('cms::pergunta.listar', ['id_dimensao' => $id_dimensao]);
+        return view('cms::pergunta.listar', ['id_indicador' => $id_indicador]);
     }
 
     public function detalhar($id)

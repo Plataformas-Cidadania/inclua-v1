@@ -9,8 +9,6 @@ cmsApp.controller('perguntaCtrl', ['$scope', '$http', 'Upload', '$timeout', func
         numero: null,
         titulo: null,
         descricao: null,
-        vl_baixo: null,
-        vl_alto: null,
     };
     $scope.id_indicador = 0;
     $scope.perguntas = [];
@@ -142,7 +140,7 @@ cmsApp.controller('perguntaCtrl', ['$scope', '$http', 'Upload', '$timeout', func
             $scope.processandoInserir = true;
             //$scope.pergunta.id_indicador = $scope.dimensao.id_indicador;
             $scope.pergunta.id_indicador = $scope.id_indicador;
-
+            console.log($scope.pergunta);
             $http.post("api/pergunta", $scope.pergunta).success(function (data){
                 $scope.listarPerguntas($scope.id_indicador);
                  //delete $scope.pergunta;//limpa o form

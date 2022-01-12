@@ -7,7 +7,7 @@
         $('[data-toggle="popover"]').popover()
     })
 </script>
-    <div ng-controller="perguntaCtrl" ng-init="id_dimensao={{$id_dimensao}}; listarPerguntas({{$id_dimensao}})">
+    <div ng-controller="perguntaCtrl" ng-init="id_indicador={{$id_indicador}}; listarPerguntas({{$id_indicador}})">
         <div class="box-padrao">
             <h1><i class="fa fa-pergunta" aria-hidden="true"></i>&nbsp;Perguntas</h1>
             <button class="btn btn-primary" ng-click="mostrarForm=!mostrarForm" ng-show="!mostrarForm">Nova Pergunta</button>

@@ -27,7 +27,7 @@
 </select>
 <br>
 <label for="vl_subPergunta">Valor de ativação de subpergunta</label>
-<input type="text" name="vl_subPergunta" id="vl_subPergunta" class="form-control width-medio <% validar(pergunta.vlSubpergunta)%>" ng-model="pergunta.vlSubPergunta">
+<input type="number" name="vl_subPergunta" id="vl_subpergunta" class="form-control width-medio <% validar(pergunta.vl_subpergunta)%>" ng-model="pergunta.vl_subpergunta">
 <br>
 <label for="vl_minimo">Valor Mínimo</label>
 <input type="number" name="vl_minimo" class="form-control width-pequeno <% validar(pergunta.vl_minimo)%>" ng-model="pergunta.vl_minimo" ng-required="true">
