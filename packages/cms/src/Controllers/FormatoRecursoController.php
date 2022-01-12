@@ -26,7 +26,7 @@ class FormatoRecursoController extends Controller
         $formatoRecurso->id_formato= $id;
         $formatoRecurso->imagem = "";
         $formatoRecurso->arquivo = "";
-        return view('cms::formato-recurso.detalhar', ['categoria' => $formatoRecurso]);
+        return view('cms::formato-recurso.detalhar', ['formatoRecurso' => $formatoRecurso]);
     }
 
 }

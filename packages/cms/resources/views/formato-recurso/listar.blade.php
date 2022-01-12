@@ -95,7 +95,7 @@
                             <td class="text-right">
                                 <div>
                                     {{--<a href="cms/items/<% formatoRecurso.id %>"><i class="fa fa-sitemap fa-2x" title="Itens"></i></a>&nbsp;&nbsp;--}}
-                                    <a href="cms/formatoRecurso/<% formatoRecurso.id_formato %>"><i class="fa fa-edit fa-2x" title="Editar"></i></a>&nbsp;&nbsp;{{--<% mensagemStatus %><% idStatus %>--}}
+                                    <a href="cms/formato-recurso/<% formatoRecurso.id_formato %>"><i class="fa fa-edit fa-2x" title="Editar"></i></a>&nbsp;&nbsp;{{--<% mensagemStatus %><% idStatus %>--}}
                                     {{--<a  ng-class="<% formatoRecurso.status %> == 1 ? 'color-success' : 'color-success-inactive'"  style="cursor: pointer;"><i class="fa fa-check-circle fa-2x" aria-hidden="true" ng-click="status(formatoRecurso.id);"></i></a>&nbsp;&nbsp;--}}
                                     <a><i data-toggle="modal" data-target="#modalExcluir" class="fa fa-remove fa-2x" ng-click="perguntaExcluir(formatoRecurso.id_formato, formatoRecurso.nome, formatoRecurso.imagem)"></i></a>
                                 </div>
