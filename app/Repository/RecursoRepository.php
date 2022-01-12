@@ -3,7 +3,6 @@
 namespace App\Repository;
 
 use App\Models\Indicacao;
-use Illuminate\Support\Facades\DB;
 use App\Models\Autoria;
 use App\Models\Autor;
 use App\Models\Categoria;
@@ -51,18 +50,15 @@ class RecursoRepository extends BaseRepository
      */
     public function getAllRecursoPorPalavraChave($palavra_chave)
     {
-        $first = DB::table('avaliacao.recurso')
-            ->select('avaliacao.recurso.*')
-            ->where('nome', 'ilike', "%$palavra_chave%")
-            ->orwhere('esfera', 'ilike', "%$palavra_chave%");
-        $res = DB::table('avaliacao.recurso')
-            ->join('avaliacao.autoria', 'recurso.id_recurso', '=', 'autoria.id_recurso')
+        $first = Recurso::whereRaw("nome ilike '%$palavra_chave%'")->with('autoria')
+        ->orWhereRaw("esfera ilike '%$palavra_chave%'")->with('autoria')
+        ->get();
+
+        $res = Recurso::join('avaliacao.autoria', 'recurso.id_recurso', '=', 'autoria.id_recurso')
             ->join('avaliacao.autor', 'autor.id_autor', '=', 'autoria.id_autor')
             ->select('avaliacao.recurso.*')
-            ->where('autor.nome', 'ilike', "%$palavra_chave%")
-            ->union($first)
-            ->get();
-
+            ->where('autor.nome', 'ilike', "%$palavra_chave%")->with('autoria')->get()
+            ->union($first);
         if (!$res || $res->isEmpty()) throw new \Illuminate\Database\Eloquent\ModelNotFoundException;
         else return $res;
     }
