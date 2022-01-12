@@ -43,7 +43,7 @@ class CreateSchemas extends Migration
             DROP SCHEMA avaliacao;
         ");
 
-        DB::statement('DROP EXTENSION IF EXISTS pg_trgm');
+        //DB::statement('DROP EXTENSION IF EXISTS pg_trgm');
 
     }
 }
