@@ -20,7 +20,7 @@ cmsApp.controller('alterarFormatoRecursoCtrl', ['$scope', '$http', 'Upload', '$t
     $scope.detalhar = function(id){
         $scope.processandoDetalhar = true;
         $http({
-            url: 'api/formatoRecurso/'+id,
+            url: 'api/formatorecurso/'+id,
             method: 'GET',
             params: {
 
@@ -45,7 +45,7 @@ cmsApp.controller('alterarFormatoRecursoCtrl', ['$scope', '$http', 'Upload', '$t
         if(file==null){
 
             $scope.processandoSalvar = true;
-            $http.put("api/formatoRecurso/"+$scope.id, $scope.formatoRecurso).success(function (data){
+            $http.put("api/formatorecurso/"+$scope.id, $scope.formatoRecurso).success(function (data){
                 //console.log(data);
                 $scope.processandoSalvar = false;
                 $scope.mensagemSalvar = data.message;
@@ -59,7 +59,7 @@ cmsApp.controller('alterarFormatoRecursoCtrl', ['$scope', '$http', 'Upload', '$t
         }else{
 
             file.upload = Upload.upload({
-                url: 'api/formatoRecurso/'+$scope.id,
+                url: 'api/formatorecurso/'+$scope.id,
                 data: {text: $scope.text, file: file},
             });
 
