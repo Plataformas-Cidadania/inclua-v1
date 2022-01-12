@@ -23,7 +23,7 @@ class CreateSchemas extends Migration
             CREATE SCHEMA avaliacao;
         ");
         // extensão para implementar busca fuzzy
-        DB::statement('CREATE EXTENSION IF NOT EXISTS pg_trgm');
+        //DB::statement('CREATE EXTENSION IF NOT EXISTS pg_trgm');
 
     }
 
