@@ -33,7 +33,7 @@
                 {{--<br><br>--}}
 
                 <br><br>
-                @include('cms::formatoRecurso._form')
+                @include('cms::formato-recurso._form')
                 <input type="hidden" name="id" ng-model="id" ng-init="id='{{$formatoRecurso->id_formatoRecurso}}'"/>
                 <div class="row">
                     <div class="col-md-1 col-lg-1 col-xs-3">

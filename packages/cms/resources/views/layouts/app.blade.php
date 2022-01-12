@@ -106,6 +106,9 @@
                     <a href="cms/categorias"><i class="fa fa-fw fa-link"></i> Categorias</a>
                 </li>
                 <li>
+                    <a href="cms/formatos-recursos"><i class="fa fa-fw fa-link"></i> Formatos Recursos</a>
+                </li>
+                <li>
                     <a href="cms/usuarios"><i class="fa fa-fw fa-users"></i> Usuários</a>
                 </li>
 

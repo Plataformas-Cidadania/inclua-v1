@@ -17,7 +17,7 @@ cmsApp.controller('formatoRecursoCtrl', ['$scope', '$http', 'Upload', '$timeout'
     $scope.maxSize = 5;
     $scope.itensPerPage = 100;
     $scope.dadoPesquisa = '';
-    $scope.campos = "id_formatoRecurso, nome";
+    $scope.campos = "id_formato, nome";
     $scope.campoPesquisa = "titulo";
     $scope.processandoListagem = false;
     $scope.processandoExcluir = false;
@@ -41,8 +41,6 @@ cmsApp.controller('formatoRecursoCtrl', ['$scope', '$http', 'Upload', '$timeout'
         }
     });
 
-
-
     var listarDimensoes = function(){
         $scope.processandoListagem = true;
         $http({
@@ -62,7 +60,7 @@ cmsApp.controller('formatoRecursoCtrl', ['$scope', '$http', 'Upload', '$timeout'
     var listarformatosRecursos = function(){
         $scope.processandoListagem = true;
         $http({
-            url: 'api/formatoRecurso',
+            url: 'api/formatorecurso',
             method: 'GET',
             params: {
                 page: $scope.currentPage,
@@ -124,7 +122,7 @@ cmsApp.controller('formatoRecursoCtrl', ['$scope', '$http', 'Upload', '$timeout'
 
         if(file==null && arquivo==null){
             $scope.processandoInserir = true;
-            $http.post("api/formatoRecurso", $scope.formatoRecurso).success(function (data){
+            $http.post("api/formatorecurso", $scope.formatoRecurso).success(function (data){
                  listarformatosRecursos();
                  //delete $scope.formatoRecurso;//limpa o form
                 $scope.formatoRecurso = {};//limpa o form
@@ -139,7 +137,7 @@ cmsApp.controller('formatoRecursoCtrl', ['$scope', '$http', 'Upload', '$timeout'
             formatoRecurso.file = file;
             formatoRecurso.arquivo = arquivo;
             Upload.upload({
-                url: 'api/formatoRecurso',
+                url: 'api/formatorecurso',
                 data: formatoRecurso,
                 //data: {formatoRecurso: $scope.formatoRecurso, file: file, arquivo: arquivo},
             }).then(function (response) {
@@ -192,7 +190,7 @@ cmsApp.controller('formatoRecursoCtrl', ['$scope', '$http', 'Upload', '$timeout'
     $scope.excluir = function(id){
         $scope.processandoExcluir = true;
         $http({
-            url: 'api/formatoRecurso/'+id,
+            url: 'api/formatorecurso/'+id,
             method: 'DELETE'
         }).success(function(data, status, headers, config){
             console.log(data);
