@@ -19,6 +19,7 @@ const Page = () => {
   const [listMenu, setListMenu] = useState([]);
   const [spinList, setspinList] = useState(false);
   const [searchBox, setSearchBox] = useState(false);
+  const [nEncontado, setNEncontado] = useState(false);
   const menu = [{
     id: 1,
     title: "Categoria",
@@ -73,17 +74,18 @@ const Page = () => {
   const handleSearch = async e => {
     setspinList(false);
     setSearchBox(true);
+    setNEncontado(false);
     const search = e.target.value ? e.target.value : ' ';
 
     try {
       setspinList(true);
       const result = await axios.get(menuItens.rota + search, {});
-      console.log('-----', result.data.data);
       setListMenu(result.data.data);
       setRecursos(result.data.data);
-      setTotal(result.data.total);
+      setTotal(result.data.data.length);
     } catch (error) {
       setspinList(false);
+      setNEncontado(search === " " ? false : true);
       console.log(error);
     }
   };
@@ -139,6 +141,11 @@ const Page = () => {
   }), /*#__PURE__*/React.createElement("i", {
     className: "fas fa-search"
   })), /*#__PURE__*/React.createElement("div", {
+    className: "m-2",
+    style: {
+      display: nEncontado ? '' : 'none'
+    }
+  }, "Ops! nenhum resultado encontrado!"), /*#__PURE__*/React.createElement("div", {
     style: {
       display: menuItens.type ? '' : 'none'
     }

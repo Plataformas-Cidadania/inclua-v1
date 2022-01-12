@@ -52,13 +52,17 @@ const Item = props => {
       return /*#__PURE__*/React.createElement("a", {
         href: link.uri,
         target: "_blank",
-        title: link.idioma
+        title: link.idioma,
+        key: "linksIdoma" + key
       }, link.idioma, item.links.length !== key + 1 ? ', ' : '');
     }) : null), /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("strong", null, "Tipo: "), /*#__PURE__*/React.createElement("span", null, item.tipo_recurso ? item.tipo_recurso.nome : '')), /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("strong", null, "Autoria: "), item.autoria !== undefined ? item.autoria.map((autoria, key) => {
-      return /*#__PURE__*/React.createElement("span", null, autoria.autor.nome, item.autoria.length !== key + 1 ? ', ' : '');
+      return /*#__PURE__*/React.createElement("span", {
+        key: "autoria" + key
+      }, autoria.autor.nome, item.autoria.length !== key + 1 ? ', ' : '');
     }) : null), /*#__PURE__*/React.createElement("br", null)), item.links !== undefined ? item.links.map((link, key) => {
       return key === 0 ? /*#__PURE__*/React.createElement("div", {
-        className: "col-6"
+        className: "col-6",
+        key: "btn1" + key
       }, /*#__PURE__*/React.createElement("div", {
         className: "dorder-container"
       }, /*#__PURE__*/React.createElement("a", {
@@ -68,7 +72,8 @@ const Item = props => {
       }, "Acessar ", /*#__PURE__*/React.createElement("i", {
         className: "fas fa-angle-right"
       })))) : /*#__PURE__*/React.createElement("div", {
-        className: "col-2 d-flex justify-content-end text-right mt-2"
+        className: "col-2 d-flex justify-content-end text-right mt-2",
+        key: "btn2" + key
       }, /*#__PURE__*/React.createElement("a", {
         href: link.uri,
         target: "_blank"

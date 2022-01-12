@@ -52,7 +52,7 @@ const Item = (props) => {
                                                 item.links !== undefined ?
                                                     item.links.map((link, key) => {
                                                         return (
-                                                            <a href={link.uri} target="_blank" title={link.idioma}>
+                                                            <a href={link.uri} target="_blank" title={link.idioma} key={"linksIdoma"+key}>
                                                                 {link.idioma}
                                                                 {item.links.length !== key+1 ? ', ' : ''}
                                                             </a>
@@ -67,7 +67,7 @@ const Item = (props) => {
                                             {
                                                 item.autoria !== undefined ? item.autoria.map((autoria, key) => {
                                                     return (
-                                                        <span>
+                                                        <span key={"autoria"+key}>
                                                             {autoria.autor.nome}
                                                             {item.autoria.length !== key+1 ? ', ' : ''}
                                                         </span>
@@ -83,13 +83,13 @@ const Item = (props) => {
                                             item.links.map((link, key) => {
                                                 return (
                                                     key===0 ?
-                                                        <div className="col-6">
+                                                        <div className="col-6" key={"btn1"+key}>
                                                             <div className="dorder-container">
                                                                 <a href={link.uri} className="btn btn-theme bg-pri" type="button">Acessar <i className="fas fa-angle-right"/></a>
                                                             </div>
                                                         </div>
                                                         :
-                                                        <div className="col-2 d-flex justify-content-end text-right mt-2">
+                                                        <div className="col-2 d-flex justify-content-end text-right mt-2" key={"btn2"+key}>
                                                             <a href={link.uri} target="_blank"> {link.idioma} <i className="fas fa-angle-right"/></a>
                                                         </div>
                                                 );
