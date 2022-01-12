@@ -6,7 +6,7 @@
         <div class="box-padrao">
             <h1><a href="javascript:history.back();"><i class="fa fa-arrow-circle-left"></i></a>&nbsp;&nbsp;Formato Recurso</h1>
             <?php //print_r($formatoRecurso);?>
-            <div ng-init="carregaImagem('{{$formatoRecurso->imagem}}', '{{$formatoRecurso->arquivo}}'); detalhar({{$formatoRecurso->id_formatoRecurso}})">
+            <div ng-init="carregaImagem('{{$formatoRecurso->imagem}}', '{{$formatoRecurso->arquivo}}'); detalhar({{$formatoRecurso->id_formato}})">
                 <span class="texto-obrigatorio">* campos obrigatórios</span><br><br>
                 {!! Form::model($formatoRecurso, ['name' =>'form']) !!}
                 <div class="container-thumb" style="display: none;">
@@ -33,8 +33,8 @@
                 {{--<br><br>--}}
 
                 <br><br>
-                @include('cms::formatoRecurso._form')
-                <input type="hidden" name="id" ng-model="id" ng-init="id='{{$formatoRecurso->id_formatoRecurso}}'"/>
+                @include('cms::formato-recurso._form')
+                <input type="hidden" name="id" ng-model="id" ng-init="id='{{$formatoRecurso->id_formato}}'"/>
                 <div class="row">
                     <div class="col-md-1 col-lg-1 col-xs-3">
                         <br>

@@ -40,7 +40,7 @@
 
 
                 {{--<br><br>--}}
-                @include('cms::formatoRecurso._form')
+                @include('cms::formato-recurso._form')
                 <div class="row">
                     <div class="col-md-1 col-lg-1 col-xs-3">
                         <br>
@@ -88,16 +88,16 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr ng-repeat="formatoRecurso in formatoRecursos">
-                            <td><% formatoRecurso.id_formatoRecurso %></td>
+                        <tr ng-repeat="formatoRecurso in formatosRecursos">
+                            <td><% formatoRecurso.id_formato %></td>
                            {{-- <td><img ng-show="formatoRecurso.imagem" ng-src="imagens/formatoRecursos/xs-<% formatoRecurso.imagem %>" width="60"></td>--}}
                             <td><% formatoRecurso.nome %></td>
                             <td class="text-right">
                                 <div>
                                     {{--<a href="cms/items/<% formatoRecurso.id %>"><i class="fa fa-sitemap fa-2x" title="Itens"></i></a>&nbsp;&nbsp;--}}
-                                    <a href="cms/formatoRecurso/<% formatoRecurso.id_formatoRecurso %>"><i class="fa fa-edit fa-2x" title="Editar"></i></a>&nbsp;&nbsp;{{--<% mensagemStatus %><% idStatus %>--}}
+                                    <a href="cms/formato-recurso/<% formatoRecurso.id_formato %>"><i class="fa fa-edit fa-2x" title="Editar"></i></a>&nbsp;&nbsp;{{--<% mensagemStatus %><% idStatus %>--}}
                                     {{--<a  ng-class="<% formatoRecurso.status %> == 1 ? 'color-success' : 'color-success-inactive'"  style="cursor: pointer;"><i class="fa fa-check-circle fa-2x" aria-hidden="true" ng-click="status(formatoRecurso.id);"></i></a>&nbsp;&nbsp;--}}
-                                    <a><i data-toggle="modal" data-target="#modalExcluir" class="fa fa-remove fa-2x" ng-click="perguntaExcluir(formatoRecurso.id_formatoRecurso, formatoRecurso.nome, formatoRecurso.imagem)"></i></a>
+                                    <a><i data-toggle="modal" data-target="#modalExcluir" class="fa fa-remove fa-2x" ng-click="perguntaExcluir(formatoRecurso.id_formato, formatoRecurso.nome, formatoRecurso.imagem)"></i></a>
                                 </div>
                             </td>
                         </tr>
