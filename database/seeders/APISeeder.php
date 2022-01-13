@@ -242,7 +242,7 @@ class APISeeder extends Seeder
             'id_indicador' => 1,
         ]);
         DB::table('avaliacao.pergunta')->insert([
-            'letra' => 'x',
+            'letra' => '.',
             'descricao' => 'Considerando a atual divisão do trabalho e papéis entre as organizações (ou unidades da mesma organização) que atuam na implementação da oferta pública, como você avalia a probabilidade das (des)articulações observadas repercutirem em déficits de cobertura, lacunas de atenção ou repercussões negativas para o atendimento a segmentos específicos do público ou do territórios?',
             'legenda' => ' Dê uma nota de zero a dez:',
             'vl_minimo' => 1,
@@ -303,7 +303,7 @@ class APISeeder extends Seeder
         ]);
 
         DB::table('avaliacao.pergunta')->insert([
-            'letra' => 'x',
+            'letra' => '.',
             'descricao' => 'De forma geral, como você avalia os compromissos institucionais e esforços existentes no sentido da introdução e manutenção de instrumentos afirmativos de inclusão e de mitigação das disparidades sociais já existentes? Dê uma nota de zero a dez em relação ao nível de compromisso institucional.',
             'legenda' => 'Sendo 1: Baixissimo compromisso e 10: Altíssimo compromisso',
             'vl_minimo' => 1,
@@ -364,7 +364,7 @@ class APISeeder extends Seeder
             'id_indicador' => 3,
         ]);
         DB::table('avaliacao.pergunta')->insert([
-            'letra' => 'x',
+            'letra' => '.',
             'descricao' => 'CConsiderando a relevância de se levar em consideração os pontos de vistas de segmentos específicos do público atendido no processo de implementação, como você avalia a representação das pautas e interesses desses grupos via organizações governamentais ou da sociedade civil? Dê uma nota de zero a dez em relação ao nível de representação institucional de segmentos específicos do público atendido.',
             'legenda' => 'Sendo 1: Baixissima representação e 10: Altíssima representação',
             'vl_minimo' => 1,
@@ -421,7 +421,7 @@ class APISeeder extends Seeder
             'id_indicador' => 4,
         ]);
         DB::table('avaliacao.pergunta')->insert([
-            'letra' => 'x',
+            'letra' => '.',
             'descricao' => 'Considerando a relevância do envolvimento direto de segmentos específicos do público atendido, como você avalia a influência dos canais de participação social existentes nas decisões sobre a gestão da oferta pública? Dê uma nota de zero a dez em relação ao nível de influência dos canais de participação social.',
             'legenda' => 'Sendo 1: Baixissima influência e 10: Altíssima influência',
             'vl_minimo' => 1,
@@ -514,7 +514,7 @@ class APISeeder extends Seeder
             'id_indicador' => 7,
         ]);
         DB::table('avaliacao.pergunta')->insert([
-            'letra' => 'x',
+            'letra' => '.',
             'descricao' => 'De forma geral, como você avalia a contribuição das estratégias de comunicação, de disponibilização de informações e a linguagem adotadas para facilitar o acesso e a inclusão de segmentos específicos do público atendido (em especial aqueles tradicionalmente vulnerabilizados)? Dê uma nota de zero a dez em relação ao nível de adaptação e adequação da comunicação para esses segmentos.',
             'legenda' => 'Sendo 1: Baixíssima adaptação e 10: Altíssima adaptação',
             'vl_minimo' => 1,
@@ -614,7 +614,7 @@ class APISeeder extends Seeder
             'id_indicador' => 8,
         ]);
         DB::table('avaliacao.pergunta')->insert([
-            'letra' => 'x',
+            'letra' => '.',
             'descricao' => 'Caso exista exigência de regularização, atualização periódica ou recadastramento para manutenção do acesso ao bem ou serviço público em questão, os custos e ônus impostos ao cidadão nesse processo são elevados. Como você avalia essa afirmação? Marque uma opção abaixo.',
             'legenda' => 'Sendo 1: Baixíssima exigência/custo e 10: Altíssima exigência/custo',
             'vl_minimo' => 1,
@@ -661,7 +661,7 @@ class APISeeder extends Seeder
             'id_indicador' => 9,
         ]);
         DB::table('avaliacao.pergunta')->insert([
-            'letra' => 'x',
+            'letra' => '.',
             'descricao' => 'Considerando os vários instrumentos que organizam a relação do serviço com o cidadão – atos normativos, formulários, sistemas, etc. – como você avalia a sensibilidade e adaptação deles às especificidades dos diferentes públicos atendidos? Dê uma nota de zero a dez em relação ao nível de adaptação e sensibilidade dos instrumentos.',
             'legenda' => 'Sendo 1: Baixíssima sensibilidade e e 10: Altíssima sensibilidade',
             'vl_minimo' => 1,
@@ -739,7 +739,7 @@ class APISeeder extends Seeder
             'id_indicador' => 10,
         ]);
         DB::table('avaliacao.pergunta')->insert([
-            'letra' => 'x',
+            'letra' => '.',
             'descricao' => 'Considerando os trabalhadores envolvidos na execução dos serviços na linha de frente, como você avalia os mecanismos existentes para lidar com insensibilidades, resistências, divergências de entendimento e falta de compromisso com objetivos de inclusão e equidade? Dê uma nota de zero a dez em relação à adequação dos mecanismos existentes frente ao desafio de se promover a adesão dos agentes de implementação local com objetivos de inclusão e equidade.',
             'legenda' => 'Sendo 1: Baixíssima adequação e 10: Altíssima adequação',
             'vl_minimo' => 1,
@@ -808,7 +808,7 @@ class APISeeder extends Seeder
             'id_indicador' => 11,
         ]);
         DB::table('avaliacao.pergunta')->insert([
-            'letra' => 'x',
+            'letra' => '.',
             'descricao' => 'Considerando que a ausência de monitoramento, com foco explícito na experiência de segmentos específicos, pode contribuir para a invisibilização das experiências desses grupos, ocultando possíveis situações de exclusão e desatenção, como você avalia os esforços atuais de monitoramento da execução dos serviços? Dê uma nota de zero a dez em relação ao nível de aderência dos processos de monitoramento às experiências de segmentos específicos do público.',
             'legenda' => 'Sendo 1: Baixíssima aderência e 10: Altíssima aderência',
             'vl_minimo' => 1,
@@ -864,7 +864,7 @@ class APISeeder extends Seeder
             'id_indicador' => 12,
         ]);
         DB::table('avaliacao.pergunta')->insert([
-            'letra' => 'x',
+            'letra' => '.',
             'descricao' => 'De forma geral, como você avalia os atuais esforços de avaliação de possíveis efeitos negativos (e não intencionais) associados ao envolvimento dos usuários/demandantes com o programa? Dê uma nota de zero a dez em relação a você avalia as ações existentes no sentido de captar, processar e mitigar esses efeitos.',
             'legenda' => 'Sendo 1: Baixíssimo esforço de avaliação e 10 : Altíssimo esforço de avaliação',
             'vl_minimo' => 1,
@@ -922,7 +922,7 @@ class APISeeder extends Seeder
             'id_indicador' => 13,
         ]);
         DB::table('avaliacao.pergunta')->insert([
-            'letra' => 'x',
+            'letra' => '.',
             'descricao' => 'Considerando que a ausência de envolvimento de usuários, especialmente de segmentos específicos e desfavorecidos do público atendido, nos esforços de monitoramento e avaliação prejudica a compreensão de suas experiências com a oferta pública sob foco, como você avalia os atuais esforços de inclusão, abertura a críticas e grau de incorporação da perspectiva dos usuários sobre a qualidade do atendimento? Dê uma nota de zero a dez em relação ao nível de incorporação dos usuários nos processos de avaliação.',
             'legenda' => 'Sendo 1: Baixíssima incorporação e 10: Altíssima incorporação',
             'vl_minimo' => 1,
