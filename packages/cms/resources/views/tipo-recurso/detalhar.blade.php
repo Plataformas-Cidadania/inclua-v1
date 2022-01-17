@@ -1,14 +1,14 @@
 @extends('cms::layouts.app')
 
 @section('content')
-    {!! Html::script(config('app.url').'assets-cms/js/controllers/alterarTipoRecursoCtrl.js') !!}
-    <div ng-controller="alterarTipoRecursoCtrl">
+    {!! Html::script(config('app.url').'assets-cms/js/controllers/alterarFormatoRecursoCtrl.js') !!}
+    <div ng-controller="alterarFormatoRecursoCtrl">
         <div class="box-padrao">
-            <h1><a href="javascript:history.back();"><i class="fa fa-arrow-circle-left"></i></a>&nbsp;&nbsp;Tipo Recurso</h1>
-            <?php //print_r($tipoRecurso);?>
-            <div ng-init="carregaImagem('{{$tipoRecurso->imagem}}', '{{$tipoRecurso->arquivo}}'); detalhar({{$tipoRecurso->id_tipo}})">
+            <h1><a href="javascript:history.back();"><i class="fa fa-arrow-circle-left"></i></a>&nbsp;&nbsp;Formato Recurso</h1>
+            <?php //print_r($formatoRecurso);?>
+            <div ng-init="carregaImagem('{{$formatoRecurso->imagem}}', '{{$formatoRecurso->arquivo}}'); detalhar({{$formatoRecurso->id_formato}})">
                 <span class="texto-obrigatorio">* campos obrigatórios</span><br><br>
-                {!! Form::model($tipoRecurso, ['name' =>'form']) !!}
+                {!! Form::model($formatoRecurso, ['name' =>'form']) !!}
                 <div class="container-thumb" style="display: none;">
                     <div class="box-thumb" name="fileDrop" ngf-drag-over-class="'box-thumb-hover'" ngf-drop ngf-select ng-model="picFile"
                          ng-show="!picFile && !imagemBD" accept="image/*" ngf-max-size="2MB">Solte uma imagem aqui!</div>
@@ -28,17 +28,17 @@
                     Escolher Arquivo <input  type="file" ngf-select ng-model="fileArquivo" name="fileArquivo" accept="application/pdf,.zip,.rar,.doc,.docx,.xlsx,.xls" ngf-max-size="100MB" ngf-model-invalid="errorFile">
                 </span>
                 <button class="btn btn-danger" ng-click="limparArquivo()" ng-show="fileArquivo || arquivoBD" type="button">Remover Arquivo</button>
-                <a href="arquivos/tipos-recursos/<% arquivoBD %>" target="_blank" ng-show="arquivoBD"><% arquivoBD %></a>
+                <a href="arquivos/formatos-recursos/<% arquivoBD %>" target="_blank" ng-show="arquivoBD"><% arquivoBD %></a>
                 <a ng-show="fileArquivo"><% fileArquivo.name %></a>
                 {{--<br><br>--}}
 
                 <br><br>
-                @include('cms::tipo-recurso._form')
-                <input type="hidden" name="id" ng-model="id" ng-init="id='{{$tipoRecurso->id_tipo}}'"/>
+                @include('cms::formato-recurso._form')
+                <input type="hidden" name="id" ng-model="id" ng-init="id='{{$formatoRecurso->id_formato}}'"/>
                 <div class="row">
                     <div class="col-md-1 col-lg-1 col-xs-3">
                         <br>
-                        <button class="btn btn-info" type="button" ng-click="alterar(picFile, fileArquivo)" ng-disabled="form.$invalid && form.tipoRecurso.$dirty">Salvar</button>
+                        <button class="btn btn-info" type="button" ng-click="alterar(picFile, fileArquivo)" ng-disabled="form.$invalid && form.formatoRecurso.$dirty">Salvar</button>
                     </div>
                     <div class="col-md-2 col-lg-2 col-xs-6">
                         <span class="progress" ng-show="picFile.progress >= 0">
