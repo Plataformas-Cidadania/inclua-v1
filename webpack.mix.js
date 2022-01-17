@@ -151,4 +151,8 @@ mix.scripts('packages/cms/resources/assets/js/controllers/alterarFormatoRecursoC
 mix.scripts('packages/cms/resources/assets/js/controllers/tipoRecursoCtrl.js', 'public/assets-cms/js/controllers/tipoRecursoCtrl.js');
 mix.scripts('packages/cms/resources/assets/js/controllers/alterarTipoRecursoCtrl.js', 'public/assets-cms/js/controllers/alterarTipoRecursoCtrl.js');
 
+//Recursos
+mix.scripts('packages/cms/resources/assets/js/controllers/recursoCtrl.js', 'public/assets-cms/js/controllers/recursoCtrl.js');
+mix.scripts('packages/cms/resources/assets/js/controllers/alterarRecursoCtrl.js', 'public/assets-cms/js/controllers/alterarRecursoCtrl.js');
+
 //FIM CMS///////////////////////////////////////////////////////////////////
