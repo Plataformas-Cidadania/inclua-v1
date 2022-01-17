@@ -45,7 +45,7 @@ cmsApp.controller('alterarPerguntaCtrl', ['$scope', '$http', 'Upload', '$timeout
         if(file==null){
 
             $scope.processandoSalvar = true;
-            $scope.pergunta.id_indicador = $scope.dimensao.id_indicador;
+            //$scope.pergunta.id_indicador = $scope.dimensao.id_indicador;
             $http.put("api/pergunta/"+$scope.id, $scope.pergunta).success(function (data){
                 //console.log(data);
                 $scope.processandoSalvar = false;

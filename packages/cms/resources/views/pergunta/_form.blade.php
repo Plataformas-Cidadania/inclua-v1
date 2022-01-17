@@ -1,7 +1,7 @@
 <input type="hidden" name="letra" ng-model="pergunta.letra">
 <input type="hidden" name="id_indicador" ng-model="pergunta.id_indicador"><br>
-<br><% pergunta.letra %><br>
-<br><% pergunta %><br>
+{{--<br><% pergunta.letra %><br>
+<br><% pergunta %><br>--}}
 <label for="descricao">Descricao</label>
 <input type="text" name="descricao" class="form-control width-grande <% validar(pergunta.descricao)%>" ng-model="pergunta.descricao" ng-required="true">
 <br>
