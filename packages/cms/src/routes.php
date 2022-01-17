@@ -207,6 +207,10 @@ Route::group(['middleware' => 'cms'], function () {
         Route::get('/cms/tipos-recursos', 'Cms\Controllers\TipoRecursoController@index');
         Route::get('/cms/tipo-recurso/{id}', 'Cms\Controllers\TipoRecursoController@detalhar');
 
+        //Recurso
+        Route::get('/cms/recursos', 'Cms\Controllers\RecursoController@index');
+        Route::get('/cms/recurso/{id}', 'Cms\Controllers\RecursoController@detalhar');
+
         ////////////////////////////////////////////////////////////////////////////////////
 
 

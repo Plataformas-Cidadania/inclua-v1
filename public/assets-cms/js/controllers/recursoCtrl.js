@@ -9,8 +9,10 @@ cmsApp.controller('recursoCtrl', ['$scope', '$http', 'Upload', '$timeout', funct
         vl_alto: 2,
     };
     $scope.recursos = [];
-    $scope.dimensoes = [];
-    $scope.dimensao = null;
+    $scope.tipos = [];
+    $scope.tipo = null;
+    $scope.formatos = [];
+    $scope.formato = null;
     $scope.currentPage = 1;
     $scope.lastPage = 0;
     $scope.totalItens = 0;
@@ -42,18 +44,34 @@ cmsApp.controller('recursoCtrl', ['$scope', '$http', 'Upload', '$timeout', funct
     });
 
 
-
-    var listarDimensoes = function(){
+    var listarTipos = function(){
         $scope.processandoListagem = true;
         $http({
-            url: 'api/dimensao',
+            url: 'api/tipo_recurso',
             method: 'GET',
             params: {
 
             }
         }).success(function(data, status, headers, config){
-            console.log(data.data);
-            $scope.dimensoes = data.data;
+            //console.log(data.data);
+            $scope.tipos = data.data;
+        }).error(function(data){
+            $scope.message = "Ocorreu um erro: "+data;
+        });
+    }
+
+
+    var listarFormatos = function(){
+        $scope.processandoListagem = true;
+        $http({
+            url: 'api/formato_recurso',
+            method: 'GET',
+            params: {
+
+            }
+        }).success(function(data, status, headers, config){
+            //console.log(data.data);
+            $scope.formatos = data.data;
         }).error(function(data){
             $scope.message = "Ocorreu um erro: "+data;
         });
@@ -110,7 +128,8 @@ cmsApp.controller('recursoCtrl', ['$scope', '$http', 'Upload', '$timeout', funct
 
 
     listarRecursos();
-    listarDimensoes();
+    listarTipos();
+    listarFormatos();
 
     //INSERIR/////////////////////////////
 
