@@ -10,7 +10,7 @@
     <div ng-controller="recursoCtrl">
         <div class="box-padrao">
             <h1><i class="fa fa-recurso" aria-hidden="true"></i>&nbsp;Recursos</h1>
-            <button class="btn btn-primary" ng-click="mostrarForm=!mostrarForm" ng-show="!mostrarForm">Nova Recurso</button>
+            <button class="btn btn-primary" ng-click="mostrarForm=!mostrarForm" ng-show="!mostrarForm">Novo Recurso</button>
             <button class="btn btn-warning" ng-click="mostrarForm=!mostrarForm" ng-show="mostrarForm">Cancelar</button>
             <br><br>
             <div ng-show="mostrarForm">
