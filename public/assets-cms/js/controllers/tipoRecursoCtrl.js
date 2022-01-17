@@ -17,7 +17,7 @@ cmsApp.controller('tipoRecursoCtrl', ['$scope', '$http', 'Upload', '$timeout', f
     $scope.maxSize = 5;
     $scope.itensPerPage = 100;
     $scope.dadoPesquisa = '';
-    $scope.campos = "id_tipo, nome";
+    $scope.campos = "id_tipo_recurso, nome";
     $scope.campoPesquisa = "titulo";
     $scope.processandoListagem = false;
     $scope.processandoExcluir = false;
@@ -41,26 +41,11 @@ cmsApp.controller('tipoRecursoCtrl', ['$scope', '$http', 'Upload', '$timeout', f
         }
     });
 
-    var listarDimensoes = function(){
-        $scope.processandoListagem = true;
-        $http({
-            url: 'api/dimensao',
-            method: 'GET',
-            params: {
-
-            }
-        }).success(function(data, status, headers, config){
-            console.log(data.data);
-            $scope.dimensoes = data.data;
-        }).error(function(data){
-            $scope.message = "Ocorreu um erro: "+data;
-        });
-    }
 
     var listartiposRecursos = function(){
         $scope.processandoListagem = true;
         $http({
-            url: 'api/tiporecurso',
+            url: 'api/tipo_recurso',
             method: 'GET',
             params: {
                 page: $scope.currentPage,
@@ -108,7 +93,6 @@ cmsApp.controller('tipoRecursoCtrl', ['$scope', '$http', 'Upload', '$timeout', f
 
 
     listartiposRecursos();
-    listarDimensoes();
 
     //INSERIR/////////////////////////////
 
@@ -122,7 +106,7 @@ cmsApp.controller('tipoRecursoCtrl', ['$scope', '$http', 'Upload', '$timeout', f
 
         if(file==null && arquivo==null){
             $scope.processandoInserir = true;
-            $http.post("api/tiporecurso", $scope.tipoRecurso).success(function (data){
+            $http.post("api/tipo_recurso", $scope.tipoRecurso).success(function (data){
                  listartiposRecursos();
                  //delete $scope.tipoRecurso;//limpa o form
                 $scope.tipoRecurso = {};//limpa o form
@@ -137,7 +121,7 @@ cmsApp.controller('tipoRecursoCtrl', ['$scope', '$http', 'Upload', '$timeout', f
             tipoRecurso.file = file;
             tipoRecurso.arquivo = arquivo;
             Upload.upload({
-                url: 'api/tiporecurso',
+                url: 'api/tipo_recurso',
                 data: tipoRecurso,
                 //data: {tipoRecurso: $scope.tipoRecurso, file: file, arquivo: arquivo},
             }).then(function (response) {
@@ -190,7 +174,7 @@ cmsApp.controller('tipoRecursoCtrl', ['$scope', '$http', 'Upload', '$timeout', f
     $scope.excluir = function(id){
         $scope.processandoExcluir = true;
         $http({
-            url: 'api/tiporecurso/'+id,
+            url: 'api/tipo_recurso/'+id,
             method: 'DELETE'
         }).success(function(data, status, headers, config){
             console.log(data);

@@ -89,15 +89,15 @@
                         </thead>
                         <tbody>
                         <tr ng-repeat="tipoRecurso in tiposRecursos">
-                            <td><% tipoRecurso.id_tipo %></td>
+                            <td><% tipoRecurso.id_tipo_recurso %></td>
                            {{-- <td><img ng-show="tipoRecurso.imagem" ng-src="imagens/tipoRecursos/xs-<% tipoRecurso.imagem %>" width="60"></td>--}}
                             <td><% tipoRecurso.nome %></td>
                             <td class="text-right">
                                 <div>
                                     {{--<a href="cms/items/<% tipoRecurso.id %>"><i class="fa fa-sitemap fa-2x" title="Itens"></i></a>&nbsp;&nbsp;--}}
-                                    <a href="cms/tipo-recurso/<% tipoRecurso.id_tipo %>"><i class="fa fa-edit fa-2x" title="Editar"></i></a>&nbsp;&nbsp;{{--<% mensagemStatus %><% idStatus %>--}}
+                                    <a href="cms/tipo-recurso/<% tipoRecurso.id_tipo_recurso %>"><i class="fa fa-edit fa-2x" title="Editar"></i></a>&nbsp;&nbsp;{{--<% mensagemStatus %><% idStatus %>--}}
                                     {{--<a  ng-class="<% tipoRecurso.status %> == 1 ? 'color-success' : 'color-success-inactive'"  style="cursor: pointer;"><i class="fa fa-check-circle fa-2x" aria-hidden="true" ng-click="status(tipoRecurso.id);"></i></a>&nbsp;&nbsp;--}}
-                                    <a><i data-toggle="modal" data-target="#modalExcluir" class="fa fa-remove fa-2x" ng-click="perguntaExcluir(tipoRecurso.id_tipo, tipoRecurso.nome, tipoRecurso.imagem)"></i></a>
+                                    <a><i data-toggle="modal" data-target="#modalExcluir" class="fa fa-remove fa-2x" ng-click="perguntaExcluir(tipoRecurso.id_tipo_recurso, tipoRecurso.nome, tipoRecurso.imagem)"></i></a>
                                 </div>
                             </td>
                         </tr>

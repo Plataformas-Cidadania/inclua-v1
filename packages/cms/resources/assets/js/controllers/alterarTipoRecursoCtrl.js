@@ -20,7 +20,7 @@ cmsApp.controller('alterarTipoRecursoCtrl', ['$scope', '$http', 'Upload', '$time
     $scope.detalhar = function(id){
         $scope.processandoDetalhar = true;
         $http({
-            url: 'api/tiporecurso/'+id,
+            url: 'api/tipo_recurso/'+id,
             method: 'GET',
             params: {
 
@@ -28,11 +28,6 @@ cmsApp.controller('alterarTipoRecursoCtrl', ['$scope', '$http', 'Upload', '$time
         }).success(function(data, status, headers, config){
             $scope.tipoRecurso = data.data;
             console.log($scope.tipoRecurso);
-            $scope.dimensoes.forEach(function (item){
-                if(item.id_dimensao === $scope.tipoRecurso.id_dimensao){
-                    $scope.dimensao = item;
-                }
-            });
             $scope.processandoDetalhar = false;
         }).error(function(data){
             $scope.message = "Ocorreu um erro: "+data;
@@ -45,7 +40,7 @@ cmsApp.controller('alterarTipoRecursoCtrl', ['$scope', '$http', 'Upload', '$time
         if(file==null){
 
             $scope.processandoSalvar = true;
-            $http.put("api/tiporecurso/"+$scope.id, $scope.tipoRecurso).success(function (data){
+            $http.put("api/tipo_recurso/"+$scope.id, $scope.tipoRecurso).success(function (data){
                 //console.log(data);
                 $scope.processandoSalvar = false;
                 $scope.mensagemSalvar = data.message;
