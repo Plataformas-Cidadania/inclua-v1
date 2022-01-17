@@ -272,24 +272,24 @@ class UrlController extends Controller
 
     public function status($id)
     {
-        $tipo_atual = DB::table('urls')->where('id', $id)->first();
+        $tipo_atual = DB::table('cms.urls')->where('id', $id)->first();
         $status = $tipo_atual->status == 0 ? 1 : 0;
-        DB::table('urls')->where('id', $id)->update(['status' => $status]);
+        DB::table('cms.urls')->where('id', $id)->update(['status' => $status]);
 
     }
 
     public function positionUp($id)
     {
 
-        $posicao_atual = DB::table('urls')->where('id', $id)->first();
+        $posicao_atual = DB::table('cms.urls')->where('id', $id)->first();
         $upPosicao = $posicao_atual->posicao-1;
         $posicao = $posicao_atual->posicao;
 
         //Coloca com a posicao do anterior
-        DB::table('urls')->where('posicao', $upPosicao)->update(['posicao' => $posicao]);
+        DB::table('cms.urls')->where('posicao', $upPosicao)->update(['posicao' => $posicao]);
 
         //atualiza a posicao para o anterior
-        DB::table('urls')->where('id', $id)->update(['posicao' => $upPosicao]);
+        DB::table('cms.urls')->where('id', $id)->update(['posicao' => $upPosicao]);
 
 
     }
@@ -297,15 +297,15 @@ class UrlController extends Controller
     public function positionDown($id)
     {
 
-        $posicao_atual = DB::table('urls')->where('id', $id)->first();
+        $posicao_atual = DB::table('cms.urls')->where('id', $id)->first();
         $upPosicao = $posicao_atual->posicao+1;
         $posicao = $posicao_atual->posicao;
 
         //Coloca com a posicao do anterior
-        DB::table('urls')->where('posicao', $upPosicao)->update(['posicao' => $posicao]);
+        DB::table('cms.urls')->where('posicao', $upPosicao)->update(['posicao' => $posicao]);
 
         //atualiza a posicao para o anterior
-        DB::table('urls')->where('id', $id)->update(['posicao' => $upPosicao]);
+        DB::table('cms.urls')->where('id', $id)->update(['posicao' => $upPosicao]);
 
     }
 

@@ -281,15 +281,15 @@ class ParceiroController extends Controller
     public function positionUp($id)
     {
 
-        $posicao_atual = DB::table('parceiros')->where('id', $id)->first();
+        $posicao_atual = DB::table('cms.parceiros')->where('id', $id)->first();
         $upPosicao = $posicao_atual->posicao-1;
         $posicao = $posicao_atual->posicao;
 
         //Coloca com a posicao do anterior
-        DB::table('parceiros')->where('posicao', $upPosicao)->update(['posicao' => $posicao]);
+        DB::table('cms.parceiros')->where('posicao', $upPosicao)->update(['posicao' => $posicao]);
 
         //atualiza a posicao para o anterior
-        DB::table('parceiros')->where('id', $id)->update(['posicao' => $upPosicao]);
+        DB::table('cms.parceiros')->where('id', $id)->update(['posicao' => $upPosicao]);
 
 
     }
@@ -297,15 +297,15 @@ class ParceiroController extends Controller
     public function positionDown($id)
     {
 
-        $posicao_atual = DB::table('parceiros')->where('id', $id)->first();
+        $posicao_atual = DB::table('cms.parceiros')->where('id', $id)->first();
         $upPosicao = $posicao_atual->posicao+1;
         $posicao = $posicao_atual->posicao;
 
         //Coloca com a posicao do anterior
-        DB::table('parceiros')->where('posicao', $upPosicao)->update(['posicao' => $posicao]);
+        DB::table('cms.parceiros')->where('posicao', $upPosicao)->update(['posicao' => $posicao]);
 
         //atualiza a posicao para o anterior
-        DB::table('parceiros')->where('id', $id)->update(['posicao' => $upPosicao]);
+        DB::table('cms.parceiros')->where('id', $id)->update(['posicao' => $upPosicao]);
 
     }
 
