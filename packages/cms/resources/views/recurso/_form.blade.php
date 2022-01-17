@@ -13,6 +13,20 @@
 </select>
 <br>
 
+<label for="id_formato">Formato</label>
+<select
+    name="id_formato"
+    class="form-control width-medio"
+    ng-model="formato_recurso"
+    ng-init="formato_recurso = null"
+    ng-required="true"
+    ng-options="option.nome for option in formatos track by option.id_formato"
+    placeholder="Selecione"
+>
+    <option value="" ng-disabled="!!recurso.id_formato">Selecione</option>
+</select>
+<br>
+
 <label for="nome">Nome</label>
 <input type="text" name="nome" class="form-control width-grande <% validar(recurso.nome)%>" ng-model="recurso.nome" ng-required="true">
 
