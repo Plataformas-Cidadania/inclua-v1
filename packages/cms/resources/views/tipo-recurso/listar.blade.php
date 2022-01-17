@@ -1,16 +1,16 @@
 @extends('cms::layouts.app')
 
 @section('content')
-    {!! Html::script(config('app.url').'assets-cms/js/controllers/formatoRecursoCtrl.js') !!}
+    {!! Html::script(config('app.url').'assets-cms/js/controllers/tipoRecursoCtrl.js') !!}
 <script>
     $(function () {
         $('[data-toggle="popover"]').popover()
     })
 </script>
-    <div ng-controller="formatoRecursoCtrl">
+    <div ng-controller="tipoRecursoCtrl">
         <div class="box-padrao">
-            <h1><i class="fa fa-formatoRecurso" aria-hidden="true"></i>&nbsp;Formato Recurso</h1>
-            <button class="btn btn-primary" ng-click="mostrarForm=!mostrarForm" ng-show="!mostrarForm">Novo Formato Recurso</button>
+            <h1><i class="fa fa-tipoRecurso" aria-hidden="true"></i>&nbsp;Tipo Recurso</h1>
+            <button class="btn btn-primary" ng-click="mostrarForm=!mostrarForm" ng-show="!mostrarForm">Novo Tipo Recurso</button>
             <button class="btn btn-warning" ng-click="mostrarForm=!mostrarForm" ng-show="mostrarForm">Cancelar</button>
             <br><br>
             <div ng-show="mostrarForm">
@@ -40,7 +40,7 @@
 
 
                 {{--<br><br>--}}
-                @include('cms::formato-recurso._form')
+                @include('cms::tipo-recurso._form')
                 <div class="row">
                     <div class="col-md-1 col-lg-1 col-xs-3">
                         <br>
@@ -77,7 +77,7 @@
                         <input class="form-control" type="text" ng-model="dadoPesquisa" placeholder="Faça sua busca"/>
                     </div>
                     <br>
-                    <div><% mensagemformatoRecursor %></div>
+                    <div><% mensagemtipoRecursor %></div>
                     <div ng-show="processandoListagem"><i class="fa fa-spinner fa-spin"></i> Processando...</div>
                     <h2 class="tabela_vazia" ng-show="!processandoListagem && totalItens==0">Nenhum registro encontrado!</h2>
                     <table ng-show="totalItens>0" class="table table-striped">
@@ -88,16 +88,16 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr ng-repeat="formatoRecurso in formatosRecursos">
-                            <td><% formatoRecurso.id_formato %></td>
-                           {{-- <td><img ng-show="formatoRecurso.imagem" ng-src="imagens/formatoRecursos/xs-<% formatoRecurso.imagem %>" width="60"></td>--}}
-                            <td><% formatoRecurso.nome %></td>
+                        <tr ng-repeat="tipoRecurso in tiposRecursos">
+                            <td><% tipoRecurso.id_tipo %></td>
+                           {{-- <td><img ng-show="tipoRecurso.imagem" ng-src="imagens/tipoRecursos/xs-<% tipoRecurso.imagem %>" width="60"></td>--}}
+                            <td><% tipoRecurso.nome %></td>
                             <td class="text-right">
                                 <div>
-                                    {{--<a href="cms/items/<% formatoRecurso.id %>"><i class="fa fa-sitemap fa-2x" title="Itens"></i></a>&nbsp;&nbsp;--}}
-                                    <a href="cms/formato-recurso/<% formatoRecurso.id_formato %>"><i class="fa fa-edit fa-2x" title="Editar"></i></a>&nbsp;&nbsp;{{--<% mensagemStatus %><% idStatus %>--}}
-                                    {{--<a  ng-class="<% formatoRecurso.status %> == 1 ? 'color-success' : 'color-success-inactive'"  style="cursor: pointer;"><i class="fa fa-check-circle fa-2x" aria-hidden="true" ng-click="status(formatoRecurso.id);"></i></a>&nbsp;&nbsp;--}}
-                                    <a><i data-toggle="modal" data-target="#modalExcluir" class="fa fa-remove fa-2x" ng-click="perguntaExcluir(formatoRecurso.id_formato, formatoRecurso.nome, formatoRecurso.imagem)"></i></a>
+                                    {{--<a href="cms/items/<% tipoRecurso.id %>"><i class="fa fa-sitemap fa-2x" title="Itens"></i></a>&nbsp;&nbsp;--}}
+                                    <a href="cms/tipo-recurso/<% tipoRecurso.id_tipo %>"><i class="fa fa-edit fa-2x" title="Editar"></i></a>&nbsp;&nbsp;{{--<% mensagemStatus %><% idStatus %>--}}
+                                    {{--<a  ng-class="<% tipoRecurso.status %> == 1 ? 'color-success' : 'color-success-inactive'"  style="cursor: pointer;"><i class="fa fa-check-circle fa-2x" aria-hidden="true" ng-click="status(tipoRecurso.id);"></i></a>&nbsp;&nbsp;--}}
+                                    <a><i data-toggle="modal" data-target="#modalExcluir" class="fa fa-remove fa-2x" ng-click="perguntaExcluir(tipoRecurso.id_tipo, tipoRecurso.nome, tipoRecurso.imagem)"></i></a>
                                 </div>
                             </td>
                         </tr>
@@ -142,7 +142,7 @@
                     <div class="modal-body">
                         <div class="row">
                             {{--<div class="col-md-3">
-                                <img  ng-src="imagens/formatoRecursos/xs-<% imagemExcluir %>" width="100">
+                                <img  ng-src="imagens/tipoRecursos/xs-<% imagemExcluir %>" width="100">
                             </div>--}}
                             <div class="col-md-9">
                                 <p><% tituloExcluir %></p>
