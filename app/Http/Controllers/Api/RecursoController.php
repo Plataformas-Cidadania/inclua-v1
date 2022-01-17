@@ -47,15 +47,15 @@ class RecursoController extends Controller
     }
 
     /**
-     * Obter uma lista de recurso por nome do tipo
+     * Obter uma lista de recurso por id do tipo de recurso
      *
-     * @param int $nome do tipo
+     * @param int $id_tipo_recurso
      *
      */
-    public function getAllRecursoPorNomeTipoRecurso($nome_tipo_recurso)
+    public function getAllRecursoPorIdTipoRecurso($id_tipo_recurso)
     {
         try {
-            $res = $this->repo->getAllRecursoPorNomeTipoRecurso($nome_tipo_recurso);
+            $res = $this->repo->getAllRecursoPorIdTipoRecurso($id_tipo_recurso);
             return $this->successResponse(
                 'Retornado com sucesso',
                 $res
@@ -123,14 +123,14 @@ class RecursoController extends Controller
     /**
      * Obter uma lista de recursos especificados por um nome de categoria
      *
-     * @param string $nome_categoria
+     * @param string $id_categoria
      *
      * @return JsonResponse
      */
-    public function getAllRecursosPorNomeCategoria($nome_categoria): JsonResponse
+    public function getAllRecursosPorIDCategoria($id_categoria): JsonResponse
     {
         try {
-            $res = $this->repo->getAllRecursosPorNomeCategoria($nome_categoria);
+            $res = $this->repo->getAllRecursosPorIDCategoria($id_categoria);
             return $this->successResponse(
                 'Retornado com sucesso',
                 $res
@@ -144,16 +144,16 @@ class RecursoController extends Controller
 
 
     /**
-     * Obter uma lista de recursos especificados por um nome de indicador
+     * Obter uma lista de recursos especificados por um id de indicador
      *
-     * @param string $nome_categoria
+     * @param int $nome_categoria
      *
      * @return JsonResponse
      */
-    public function getAllRecursosPorNomeIndicador($nome_indicador): JsonResponse
+    public function getAllRecursosPorIdIndicador($id_indicador): JsonResponse
     {
         try {
-            $res = $this->repo->getAllRecursosPorNomeIndicador($nome_indicador);
+            $res = $this->repo->getAllRecursosPorIdIndicador($id_indicador);
             return $this->successResponse(
                 'Retornado com sucesso',
                 $res

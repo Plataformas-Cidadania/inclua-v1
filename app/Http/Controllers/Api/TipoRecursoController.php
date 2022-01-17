@@ -146,6 +146,29 @@ class TipoRecursoController extends Controller
         }
     }
 
+
+    /**
+     * Obter uma lista de indicadores especificados por uma palavra
+     *
+     * @param string $nome_tipo
+     *
+     * @return JsonResponse
+     */
+    public function getAllTipoRecursoPorNome($nome_tipo): JsonResponse
+    {
+        try {
+            $res = $this->repo->getAllTipoRecursoPorNome($nome_tipo);
+            return $this->successResponse(
+                'Retornado com sucesso',
+                $res
+            );
+        }catch (Exception $exception) {
+            if ($exception instanceof ModelNotFoundException)
+                return $this->errorResponse('Not found');
+            return $this->errorResponse('Erro inesperado.'.$exception);
+        }
+    }
+
     /**
      * Cria uma instancia de validador com as regras definidas
      *

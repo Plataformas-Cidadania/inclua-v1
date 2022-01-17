@@ -35,7 +35,7 @@ class Categorizacao extends Model
 		'id_recurso'
 	];
 
-	protected $with = ['categoria', 'recurso'];
+	//protected $with = ['categoria', 'recurso'];
 
 	public function categoria()
 	{

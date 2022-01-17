@@ -39,6 +39,9 @@ Route::group([
 
     Route::get('/dimensao/{id_dimensao}',[App\Http\Controllers\Api\IndicadorController::class, 'getAllIndicadoresPorIdDimensao'])
         ->name('api.indicadores.getAllIndicadoresPorIdDimensao');
+
+    Route::get('/nome/{nome_indicador}',[App\Http\Controllers\Api\IndicadorController::class, 'getAllIndicadoresPorNome'])
+        ->name('api.indicadores.getAllIndicadoresPorNome');
 });
 
 
@@ -68,6 +71,9 @@ Route::group([
 
     Route::get('/', [App\Http\Controllers\Api\CategoriaController::class, 'getAll'])
         ->name('api.categoria.getAll');
+
+    Route::get('nome/{nome_categoria}', [App\Http\Controllers\Api\CategoriaController::class, 'getCategoriaPorNome'])
+        ->name('api.categoria.getCategoriaPorNome');
 
     Route::get('/{categoria}',[App\Http\Controllers\Api\CategoriaController::class, 'get'])
         ->name('api.categoria.get');
@@ -187,19 +193,24 @@ Route::group([
     Route::get('/links/{recurso}',[App\Http\Controllers\Api\RecursoController::class, 'getAllLinksPorIdRecurso'])
         ->name('api.recurso.getAllLinksPorIdRecurso');
 
-    Route::get('/tipo_recurso/{nome_tipo_recurso}',[App\Http\Controllers\Api\RecursoController::class, 'getAllRecursoPorNomeTipoRecurso'])
-        ->name('api.recurso.getAllRecursoPorNomeTipoRecurso');
-
-    Route::get('/categoria/{nome}',[App\Http\Controllers\Api\RecursoController::class, 'getAllRecursosPorNomeCategoria'])
-        ->name('api.recurso.getAllRecursosPorNomeCategoria');
-
-    Route::get('/indicador/{nome}',[App\Http\Controllers\Api\RecursoController::class, 'getAllRecursosPorNomeIndicador'])
-        ->name('api.recurso.getAllRecursosPorNomeIndicador');
-
-    Route::get('/palavra_chave/{palavra_chave}',[App\Http\Controllers\Api\RecursoController::class, 'getAllRecursoPorPalavraChave'])
-        ->name('api.recurso.getAllRecursoPorPalavraChave');
 });
 
+
+Route::group([
+    'prefix' => 'busca_recursos',
+], function () {
+    Route::get('/tipo_recurso/{id_tipo_recurso}',[App\Http\Controllers\Api\RecursoController::class, 'getAllRecursoPorIdTipoRecurso'])
+        ->name('api.busca_recurso.getAllRecursoPorIdTipoRecurso');
+
+    Route::get('/categoria/{id}',[App\Http\Controllers\Api\RecursoController::class, 'getAllRecursosPorIDCategoria'])
+        ->name('api.busca_recurso.getAllRecursosPorIDCategoria');
+
+    Route::get('/indicador/{nome}',[App\Http\Controllers\Api\RecursoController::class, 'getAllRecursosPorIdIndicador'])
+        ->name('api.busca_recurso.getAllRecursosPorIdIndicador');
+
+    Route::get('/palavra_chave/{palavra_chave}',[App\Http\Controllers\Api\RecursoController::class, 'getAllRecursoPorPalavraChave'])
+        ->name('api.busca_recurso.getAllRecursoPorPalavraChave');
+});
 
 Route::group([
     'prefix' => 'indicacao',
@@ -247,6 +258,9 @@ Route::group([
 
     Route::get('/{tipo_recurso}',[App\Http\Controllers\Api\TipoRecursoController::class, 'get'])
         ->name('api.tipo_recurso.get');
+
+    Route::get('/nome/{tipo_recurso}',[App\Http\Controllers\Api\TipoRecursoController::class, 'getAllTipoRecursoPorNome'])
+        ->name('api.tipo_recurso.getAllTipoRecursoPorNome');
 
     Route::post('/', [App\Http\Controllers\Api\TipoRecursoController::class, 'store'])
         ->name('api.tipo_recurso.store');
