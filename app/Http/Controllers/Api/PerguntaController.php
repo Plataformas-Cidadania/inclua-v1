@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\Eloquent\RelationNotFoundException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Exception;
 use App\Repository\PerguntaRepository;
@@ -25,7 +26,7 @@ class PerguntaController extends Controller
         'tipo' => 'int',
         'nao_se_aplica' => 'boolean|nullable',
         'inverter' => 'boolean',
-        'vl_subpergunta' => 'int|nullable',
+        'vl_subPergunta' => 'int|nullable',
         'id_perguntaPai' => 'int|min:1|nullable',
         'id_indicador' => 'int|min:1'
     ];
@@ -70,6 +71,7 @@ class PerguntaController extends Controller
 
             $data = $this->getData($request);
             $res = $this->repo->create($data);
+            Log::info($data);
             return $this->successResponse(
 			    ''.$res->id_pergunta.' foi adicionado',
 			    $this->transform($res)
