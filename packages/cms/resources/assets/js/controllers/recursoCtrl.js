@@ -1,14 +1,14 @@
-cmsApp.controller('categoriaCtrl', ['$scope', '$http', 'Upload', '$timeout', function($scope, $http, Upload, $timeout){
+cmsApp.controller('recursoCtrl', ['$scope', '$http', 'Upload', '$timeout', function($scope, $http, Upload, $timeout){
 
 
-    $scope.categoria = {
+    $scope.recurso = {
         numero: 2,
         titulo: 'aaaa',
         descricao: 'aaaaaaaaaaa',
         vl_baixo: 1,
         vl_alto: 2,
     };
-    $scope.categorias = [];
+    $scope.recursos = [];
     $scope.dimensoes = [];
     $scope.dimensao = null;
     $scope.currentPage = 1;
@@ -17,7 +17,7 @@ cmsApp.controller('categoriaCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
     $scope.maxSize = 5;
     $scope.itensPerPage = 100;
     $scope.dadoPesquisa = '';
-    $scope.campos = "id_categoria, nome";
+    $scope.campos = "id_recurso, nome";
     $scope.campoPesquisa = "titulo";
     $scope.processandoListagem = false;
     $scope.processandoExcluir = false;
@@ -27,17 +27,17 @@ cmsApp.controller('categoriaCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
 
     $scope.$watch('currentPage', function(){
         if($listar){
-            listarCategorias();
+            listarRecursos();
         }
     });
     $scope.$watch('itensPerPage', function(){
         if($listar){
-            listarCategorias();
+            listarRecursos();
         }
     });
     $scope.$watch('dadoPesquisa', function(){
         if($listar){
-            listarCategorias();
+            listarRecursos();
         }
     });
 
@@ -59,10 +59,10 @@ cmsApp.controller('categoriaCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
         });
     }
 
-    var listarCategorias = function(){
+    var listarRecursos = function(){
         $scope.processandoListagem = true;
         $http({
-            url: 'api/categoria',
+            url: 'api/recurso',
             method: 'GET',
             params: {
                 page: $scope.currentPage,
@@ -75,9 +75,9 @@ cmsApp.controller('categoriaCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
             }
         }).success(function(data, status, headers, config){
             console.log(data.data);
-            $scope.categorias = data.data;
-            let numeroMaximo = Math.max.apply(Math, $scope.categorias.map(function(item) { return item.numero; }));
-            $scope.categoria.numero = numeroMaximo + 1;
+            $scope.recursos = data.data;
+            let numeroMaximo = Math.max.apply(Math, $scope.recursos.map(function(item) { return item.numero; }));
+            $scope.recurso.numero = numeroMaximo + 1;
             $scope.lastPage = data.last_page;
             $scope.totalItens = data.data.length;
             //$scope.totalItens = data.total;
@@ -101,7 +101,7 @@ cmsApp.controller('categoriaCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
             $scope.sentidoOrdem = "asc";
         }
 
-        listarCategorias();
+        listarRecursos();
     };
 
     $scope.validar = function(){
@@ -109,7 +109,7 @@ cmsApp.controller('categoriaCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
     };
 
 
-    listarCategorias();
+    listarRecursos();
     listarDimensoes();
 
     //INSERIR/////////////////////////////
@@ -124,10 +124,10 @@ cmsApp.controller('categoriaCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
 
         if(file==null && arquivo==null){
             $scope.processandoInserir = true;
-            $http.post("api/categoria", $scope.categoria).success(function (data){
-                 listarCategorias();
-                 //delete $scope.categoria;//limpa o form
-                $scope.categoria = {};//limpa o form
+            $http.post("api/recurso", $scope.recurso).success(function (data){
+                 listarRecursos();
+                 //delete $scope.recurso;//limpa o form
+                $scope.recurso = {};//limpa o form
                 $scope.mensagemInserir =  "Gravado com sucesso!";
                 $scope.processandoInserir = false;
              }).error(function(data){
@@ -136,21 +136,21 @@ cmsApp.controller('categoriaCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
              });
         }else{
 
-            categoria.file = file;
-            categoria.arquivo = arquivo;
+            recurso.file = file;
+            recurso.arquivo = arquivo;
             Upload.upload({
-                url: 'api/categoria',
-                data: categoria,
-                //data: {categoria: $scope.categoria, file: file, arquivo: arquivo},
+                url: 'api/recurso',
+                data: recurso,
+                //data: {recurso: $scope.recurso, file: file, arquivo: arquivo},
             }).then(function (response) {
                 $timeout(function () {
                     $scope.result = response.data;
                 });
                 console.log(response.data);
-                delete $scope.categoria;//limpa o form
+                delete $scope.recurso;//limpa o form
                 $scope.picFile = null;//limpa o file
                 $scope.fileArquivo = null;//limpa o file
-                listarCategorias();
+                listarRecursos();
                 $scope.mensagemInserir =  "Gravado com sucesso!";
             }, function (response) {
                 console.log(response.data);
@@ -192,7 +192,7 @@ cmsApp.controller('categoriaCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
     $scope.excluir = function(id){
         $scope.processandoExcluir = true;
         $http({
-            url: 'api/categoria/'+id,
+            url: 'api/recurso/'+id,
             method: 'DELETE'
         }).success(function(data, status, headers, config){
             console.log(data);
@@ -200,7 +200,7 @@ cmsApp.controller('categoriaCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
                 $scope.processandoExcluir = false;
                 $scope.excluido = true;
                 $scope.mensagemExcluido = data.message;
-                listarCategorias();
+                listarRecursos();
                 return;
             }
             $scope.processandoExcluir = false;

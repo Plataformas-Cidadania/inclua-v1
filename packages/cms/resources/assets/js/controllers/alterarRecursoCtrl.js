@@ -1,10 +1,10 @@
-cmsApp.controller('alterarCategoriaCtrl', ['$scope', '$http', 'Upload', '$timeout', function($scope, $http, Upload, $timeout){
+cmsApp.controller('alterarRecursoCtrl', ['$scope', '$http', 'Upload', '$timeout', function($scope, $http, Upload, $timeout){
 
     $scope.processandoSalvar = false;
     $scope.processandoDetalhar = false;
 
 
-    //$scope.id_categoria = 0;
+    //$scope.id_recurso = 0;
     $scope.dimensoes = [];
     $scope.dimensao = null;
 
@@ -20,16 +20,16 @@ cmsApp.controller('alterarCategoriaCtrl', ['$scope', '$http', 'Upload', '$timeou
     $scope.detalhar = function(id){
         $scope.processandoDetalhar = true;
         $http({
-            url: 'api/categoria/'+id,
+            url: 'api/recurso/'+id,
             method: 'GET',
             params: {
 
             }
         }).success(function(data, status, headers, config){
-            $scope.categoria = data.data;
-            console.log($scope.categoria);
+            $scope.recurso = data.data;
+            console.log($scope.recurso);
             $scope.dimensoes.forEach(function (item){
-                if(item.id_dimensao === $scope.categoria.id_dimensao){
+                if(item.id_dimensao === $scope.recurso.id_dimensao){
                     $scope.dimensao = item;
                 }
             });
@@ -45,7 +45,7 @@ cmsApp.controller('alterarCategoriaCtrl', ['$scope', '$http', 'Upload', '$timeou
         if(file==null){
 
             $scope.processandoSalvar = true;
-            $http.put("api/categoria/"+$scope.id, $scope.categoria).success(function (data){
+            $http.put("api/recurso/"+$scope.id, $scope.recurso).success(function (data){
                 //console.log(data);
                 $scope.processandoSalvar = false;
                 $scope.mensagemSalvar = data.message;
@@ -59,7 +59,7 @@ cmsApp.controller('alterarCategoriaCtrl', ['$scope', '$http', 'Upload', '$timeou
         }else{
 
             file.upload = Upload.upload({
-                url: 'api/categoria/'+$scope.id,
+                url: 'api/recurso/'+$scope.id,
                 data: {text: $scope.text, file: file},
             });
 
@@ -94,7 +94,7 @@ cmsApp.controller('alterarCategoriaCtrl', ['$scope', '$http', 'Upload', '$timeou
 
     $scope.carregaImagem  = function(img) {
         if(img!=''){
-            $scope.imagemBD = 'imagens/categorias/xs-'+img;
+            $scope.imagemBD = 'imagens/recursos/xs-'+img;
             //console.log($scope.imagemBD);
         }
     };
