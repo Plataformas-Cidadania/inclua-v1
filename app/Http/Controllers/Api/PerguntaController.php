@@ -71,7 +71,7 @@ class PerguntaController extends Controller
 
             $data = $this->getData($request);
             $res = $this->repo->create($data);
-            Log::info($data);
+            #Log::info($data);
             return $this->successResponse(
 			    ''.$res->id_pergunta.' foi adicionado',
 			    $this->transform($res)
