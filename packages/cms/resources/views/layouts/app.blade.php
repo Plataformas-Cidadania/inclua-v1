@@ -109,6 +109,9 @@
                     <a href="cms/formatos-recursos"><i class="fa fa-fw fa-link"></i> Formatos Recursos</a>
                 </li>
                 <li>
+                    <a href="cms/tipos-recursos"><i class="fa fa-fw fa-link"></i> Tipos Recursos</a>
+                </li>
+                <li>
                     <a href="cms/usuarios"><i class="fa fa-fw fa-users"></i> Usuários</a>
                 </li>
 

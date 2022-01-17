@@ -203,6 +203,10 @@ Route::group(['middleware' => 'cms'], function () {
         Route::get('/cms/formatos-recursos', 'Cms\Controllers\FormatoRecursoController@index');
         Route::get('/cms/formato-recurso/{id}', 'Cms\Controllers\FormatoRecursoController@detalhar');
 
+        //Tipo Recurso
+        Route::get('/cms/tipos-recursos', 'Cms\Controllers\TipoRecursoController@index');
+        Route::get('/cms/tipo-recurso/{id}', 'Cms\Controllers\TipoRecursoController@detalhar');
+
         ////////////////////////////////////////////////////////////////////////////////////
 
 
