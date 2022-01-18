@@ -342,4 +342,6 @@ Route::group([
 
     Route::get('/{id_dimensao}/{id_diagnostico}',[App\Http\Controllers\Api\DiagnosticoController::class, 'calcularPontuacao'])
         ->name('api.diagnostico.calcularPontuacao');
+    Route::get('{id_diagnostico}',[App\Http\Controllers\Api\DiagnosticoController::class, 'calcularPontuacaoAll'])
+        ->name('api.diagnostico.calcularPontuacaoAll');
 });
