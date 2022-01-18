@@ -15,11 +15,14 @@ class ResultadoController extends Controller{
 
     public function listar(){
 
-
         //$rota = Route::getCurrentRoute()->uri();
         //$modulo = \App\Models\Modulo::first();
 
         return view('resultado.listar');
 
+    }
+
+    public function print(){
+        return view('resultado.print');
     }
 }
