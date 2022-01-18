@@ -66,6 +66,7 @@ Route::get('compartilhe', 'App\Http\Controllers\Front\ContribuaController@compar
 Route::get('relate', 'App\Http\Controllers\Front\ContribuaController@relate');*/
 
 
+Route::get('/esqueceu-senha', [ContribuaController::class , 'esqueceu']);
 Route::get('/contribua', [ContribuaController::class , 'listar']);
 Route::get('/interaja', [ContribuaController::class , 'interaja']);
 Route::get('/interaja-detalhar', [ContribuaController::class , 'interajaDetalhar']);

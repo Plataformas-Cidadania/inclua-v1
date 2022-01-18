@@ -47,13 +47,14 @@
             </div>
 
             <div class="flex items-center justify-end mt-4 text-center">
-                @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                        {{ __('Esqueceu sua senha?') }}
-                    </a>
-                @endif
+                {{--@if (Route::has('password.request'))--}}
+                    {{--<a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">--}}
+                <a href="/esqueceu-senha">
+                    {{ __('Esqueceu sua senha?') }}
+                </a>
 
-
+                   {{-- </a>--}}
+                {{--@endif--}}
             </div>
         </form>
     </x-auth-card>
