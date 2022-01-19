@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Models\Categorizacao;
 use App\Models\Indicacao;
 use App\Models\Autoria;
 use App\Models\Autor;
@@ -64,20 +65,19 @@ class RecursoRepository extends BaseRepository
     }
 
     /**
-     * Obter uma lista de recurso que tenha por nome de tipo de recurso
+     * Obter uma lista de recurso que tenha por id de tipo de recurso
      *
-     * @param int $nome_tipo_recurso
+     * @param int $id_tipo_recurso
      *
      */
-    public function getAllRecursoPorNomeTipoRecurso($nome_tipo_recurso)
+    public function getAllRecursoPorIdTipoRecurso($id_tipo_recurso)
     {
-
-        //$res = TipoRecurso::where('nome', 'ilike', $nome_tipo_recurso)->with('recursos')->get();
-        $res = TipoRecurso::whereRaw("? % nome", [$nome_tipo_recurso])->with('recursos')->get();
-
-
-        if (!$res || $res->isEmpty()) throw new \Illuminate\Database\Eloquent\ModelNotFoundException;
-        else return $res;
+        $res = TipoRecurso::findOrFail($id_tipo_recurso);
+        $list = [];
+        foreach ($res->recursos as $temp){
+            array_push($list,$temp);
+        }
+       return $list;
     }
 
     /**
@@ -86,31 +86,37 @@ class RecursoRepository extends BaseRepository
      * @param int getAllRecursosPorNomeCategoria
      *
      */
-    public function getAllRecursosPorNomeCategoria($nome_categoria)
+    public function getAllRecursosPorIDCategoria($id_categoria)
     {
-        //$res = Categoria::where('nome', 'ilike', "%$nome_categoria%")->with('categorizacao')->get();
-        $res = Categoria::whereRaw("? % nome", [$nome_categoria])->with('categorizacao')->get();
 
+        $res = Categoria::findOrFail($id_categoria);
+        $list = [];
+        foreach ($res->categorizacao as $cat){
+            array_push($list,$cat->recurso);
+        }
 
-        if (!$res || $res->isEmpty()) throw new \Illuminate\Database\Eloquent\ModelNotFoundException;
-        else return $res;
+        return $list;
     }
 
 
     /**
-     * Obter uma lista de autores especificados por um nome de indicador
+     * Obter uma lista de recursos especificados por um id de indicador
      *
-     * @param int getAllRecursosPorNomeIndicador
+     * @param int getAllRecursosPorIdIndicador
      *
      */
-    public function getAllRecursosPorNomeIndicador($nome_indicador)
+    public function getAllRecursosPorIdIndicador($id_indicador)
     {
-        //$res = Indicador::where('titulo', 'ilike', "%$nome_indicador%")->with(['recursos'])->get();
-        $res = Indicador::whereRaw("titulo ilike '%$nome_indicador%'")->with('recursos')->get();
+        $res = Indicador::findOrFail($id_indicador);
 
-        if (!$res || $res->isEmpty()) throw new \Illuminate\Database\Eloquent\ModelNotFoundException;
-        else return $res;
+        $list = [];
+        foreach ($res->recursos as $temp){
+            array_push($list,$temp);
+        }
+
+        return $list;
     }
+
 
     /**
      * Obter uma lista de autores especificados por um id de recurso

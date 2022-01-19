@@ -37,4 +37,18 @@ class IndicadorRepository extends BaseRepository
         if (!$res || $res->isEmpty()) throw new \Illuminate\Database\Eloquent\ModelNotFoundException;
         else return $res;
     }
+
+    /**
+     * Obter uma lista de indicadores especificados por uma palavra
+     *
+     * @param int getIndicadorPorNome
+     *
+     */
+    public function getAllIndicadoresPorNome($nome_indicador)
+    {
+        $res = Indicador::whereRaw("? % titulo",[$nome_indicador])->select('titulo','id_indicador')->without('perguntas')->get();
+
+        if (!$res || $res->isEmpty()) throw new \Illuminate\Database\Eloquent\ModelNotFoundException;
+        else return $res;
+    }
 }

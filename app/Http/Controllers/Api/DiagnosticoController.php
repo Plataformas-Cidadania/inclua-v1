@@ -40,6 +40,7 @@ class DiagnosticoController extends Controller
         }
     }
 
+
     public function calcularPontuacao($id_dimensao,$id_diagnostico)
     {
         try {
@@ -76,9 +77,9 @@ class DiagnosticoController extends Controller
                     $percMedio = $rangeMedio * 100/$range;
                     $percBaixo = $rangeBaixo * 100/$range;
                 }
-                else 
+                else
                     $percAlto = $percMedio = $percBaixo = 0;
-                
+
                 $risco='';
                 if ($pontuacao_indicador <= $indicador->vl_alto) {
                     $risco = 'Risco alto';
@@ -143,9 +144,16 @@ class DiagnosticoController extends Controller
     }
 
 
+    public function calcularPontuacaoAll($id_diagnostico){
+        $dimensoes = Dimensao::select('id_dimensao')->get();
+        $pontuacaoList = [];
+        foreach ($dimensoes as $dimensao){
+            $res = $this->calcularPontuacao($dimensao->id_dimensao, $id_diagnostico);
+            array_push($pontuacaoList,$res);
+        }
+        return $pontuacaoList;
 
-
-
+    }
 
     /**
      * Obter especificado pelo id

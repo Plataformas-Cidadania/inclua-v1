@@ -25,6 +25,18 @@ class ContribuaController extends Controller{
 
     }
 
+    public function esqueceu(){
+
+        $rota = Route::getCurrentRoute()->uri();
+
+        $modulo = \App\Models\Modulo::first();
+
+        return view('contribua.esqueceu-senha', [
+            'page' => $modulo,
+        ]);
+
+    }
+
     public function interaja(){
 
         $rota = Route::getCurrentRoute()->uri();

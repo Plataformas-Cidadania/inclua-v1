@@ -5,7 +5,17 @@ const Page = () => {
     const [total, setTotal] = useState(0);
     const [page, setPage] = useState(0);
     const [perPage, setPerpage] = useState(12);
-    const [menuItens, setSearch] = useState({id: 1, title: "Categoria", txt: 'Busque por categoria', rota: 'api/recurso/categoria/', type: true, typeTitle: 'nome'});
+    const [menuItens, setSearch] = useState(
+        {
+            id: 1,
+            title: "Categoria",
+            txt: 'Busque por categoria',
+            rota: '/api/categoria/nome/',
+            type: true,
+            typeTitle: 'nome',
+            nameId: 'id_categoria',
+            rotaSelected: 'categoria'
+        });
     const [menuLi, setMenuLi] = useState(1);
     const [listMenu, setListMenu] = useState([]);
     const [spinList, setspinList] = useState(false);
@@ -13,11 +23,46 @@ const Page = () => {
     const [nEncontado, setNEncontado] = useState(false);
 
     const menu = [
-        {id: 1, title: "Categoria", txt: 'Busque por categoria', rota: 'api/recurso/categoria/', type: true, typeTitle: 'nome'},
-        {id: 2, title: "Tipo", txt: 'Busque por tipo', rota: 'api/recurso/tipo_recurso/', type: true, typeTitle: 'nome'},
-        {id: 3, title: "Palavra-chave", txt: 'Busque por palavra-chave', rota: 'api/recurso/palavra_chave/', type: false, typeTitle: 'nome'},
-        {id: 4, title: "Indicador", txt: 'Busque por indicador', rota: 'api/recurso/indicador/', type: true, typeTitle: 'titulo'},
-        //{id: 5, title: "Autores", txt: 'Busque por autores', rota: 'recurso/autores/{recurso}'},
+        {
+            id: 1,
+            title: "Categoria",
+            txt: 'Busque por categoria',
+            rota: '/api/categoria/nome/',
+            type: true,
+            typeTitle: 'nome',
+            nameId: 'id_categoria',
+            rotaSelected: 'categoria'
+        },
+        {
+            id: 2,
+            title: "Tipo",
+            txt: 'Busque por tipo',
+            rota: '/api/tipo_recurso/nome/',
+            type: true,
+            typeTitle: 'nome',
+            nameId: 'id_tipo_recurso',
+            rotaSelected: 'tipo_recurso'
+        },
+        {
+            id: 3,
+            title: "Palavra-chave",
+            txt: 'Busque por palavra-chave',
+            rota: 'api/busca_recursos/palavra_chave/',
+            type: false,
+            typeTitle: 'nome',
+            nameId: 'id',
+            //rotaSelected: 'palavra_chave'
+        },
+        {
+            id: 4,
+            title: "Indicador",
+            txt: 'Busque por indicador',
+            rota: 'api/indicadores/nome/',
+            type: true,
+            typeTitle: 'titulo',
+            nameId: 'id_indicador',
+            rotaSelected: 'indicador'
+        },
     ];
 
     useEffect(() => {
@@ -42,26 +87,51 @@ const Page = () => {
         }
     }
 
+    const ClickSearch = async (item) => {
+
+
+        try {
+            const result = await axios.get('/api/busca_recursos/' + menuItens.rotaSelected + '/' + item[menuItens.nameId], {
+                params: {}
+            });
+            setRecursos(result.data.data);
+            setTotal(result.data.data.length);
+            setSearchBox(false);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     const handleSearch = async(e) => {
 
-        setspinList(false);
+
         setSearchBox(true);
         setNEncontado(false);
 
         const search = e.target.value ? e.target.value : ' ';
 
-        try {
+        if(search.length > 2) {
+
             setspinList(true);
-            const result = await axios.get(menuItens.rota+search, {});
-            setListMenu(result.data.data);
-            setRecursos(result.data.data);
-            setTotal(result.data.data.length)
-        } catch (error) {
-            setspinList(false);
-            setNEncontado(search===" " ? false : true);
+
+            try {
+
+                console.log('spinList', spinList);
+                const result = await axios.get(menuItens.rota + search, {});
+                setListMenu(result.data.data);
+
+                if (!menuItens.type) {
+                    setRecursos(result.data.data);
+                    setTotal(result.data.data.length);
+                }
+                setspinList(false);
+            } catch (error) {
+                setspinList(false);
+                setNEncontado(search === " " ? false : true);
 
 
-            console.log(error);
+                console.log(error);
+            }
         }
 
     }
@@ -123,7 +193,7 @@ const Page = () => {
                                             listMenu.map((item, key) => {
                                                 return (<li className={"cursor "}
                                                             key={'list_'+key}
-                                                    //onClick={() => btnSearch(item)}
+                                                    onClick={() => ClickSearch(item)}
                                                 >{item[menuItens.typeTitle]}</li>);
                                             })
                                         }
@@ -149,7 +219,12 @@ const Page = () => {
 
             <Item propsData={recursos}/>
 
-            <Paginate setPage={setPage} total={total} page={page} perPage={perPage}/>
+            <Paginate
+                setPage={setPage}
+                total={total}
+                page={page}
+                perPage={perPage}
+            />
 
 
         </div>

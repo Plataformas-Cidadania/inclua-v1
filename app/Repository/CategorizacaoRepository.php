@@ -32,7 +32,8 @@ class CategorizacaoRepository extends BaseRepository
 
     public function findByCompositeId(int $firstId,int $secondId): Model
     {
-        $res = Categorizacao::where('id_categoria', '=', $firstId)
+        $res = Categorizacao::with(['categoria','recurso'])
+            ->where('id_categoria', '=', $firstId)
             ->where('id_recurso', '=', $secondId)
             ->first();
         if (!$res) throw new \Illuminate\Database\Eloquent\ModelNotFoundException;

@@ -145,7 +145,27 @@ class CategoriaController extends Controller
         }
     }
 
-
+    /**
+     * Obter especificado pelo nome
+     *
+     * @param int $nome_categoria
+     *
+     * @return JsonResponse
+     */
+    public function getCategoriaPorNome($nome_categoria): JsonResponse
+    {
+        try {
+            $res = $this->repo->getCategoriaPorNome($nome_categoria);
+            return $this->successResponse(
+                'Retornado com sucesso',
+                $res
+            );
+        }catch (Exception $exception) {
+            if ($exception instanceof ModelNotFoundException)
+                return $this->errorResponse('Not found');
+            return $this->errorResponse('Erro inesperado.'.$exception);
+        }
+    }
 
     /**
      * Cria uma instancia de validador com as regras definidas

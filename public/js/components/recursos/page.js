@@ -11,9 +11,11 @@ const Page = () => {
     id: 1,
     title: "Categoria",
     txt: 'Busque por categoria',
-    rota: 'api/recurso/categoria/',
+    rota: '/api/categoria/nome/',
     type: true,
-    typeTitle: 'nome'
+    typeTitle: 'nome',
+    nameId: 'id_categoria',
+    rotaSelected: 'categoria'
   });
   const [menuLi, setMenuLi] = useState(1);
   const [listMenu, setListMenu] = useState([]);
@@ -24,32 +26,39 @@ const Page = () => {
     id: 1,
     title: "Categoria",
     txt: 'Busque por categoria',
-    rota: 'api/recurso/categoria/',
+    rota: '/api/categoria/nome/',
     type: true,
-    typeTitle: 'nome'
+    typeTitle: 'nome',
+    nameId: 'id_categoria',
+    rotaSelected: 'categoria'
   }, {
     id: 2,
     title: "Tipo",
     txt: 'Busque por tipo',
-    rota: 'api/recurso/tipo_recurso/',
+    rota: '/api/tipo_recurso/nome/',
     type: true,
-    typeTitle: 'nome'
+    typeTitle: 'nome',
+    nameId: 'id_tipo_recurso',
+    rotaSelected: 'tipo_recurso'
   }, {
     id: 3,
     title: "Palavra-chave",
     txt: 'Busque por palavra-chave',
-    rota: 'api/recurso/palavra_chave/',
+    rota: 'api/busca_recursos/palavra_chave/',
     type: false,
-    typeTitle: 'nome'
+    typeTitle: 'nome',
+    nameId: 'id' //rotaSelected: 'palavra_chave'
+
   }, {
     id: 4,
     title: "Indicador",
     txt: 'Busque por indicador',
-    rota: 'api/recurso/indicador/',
+    rota: 'api/indicadores/nome/',
     type: true,
-    typeTitle: 'titulo'
-  } //{id: 5, title: "Autores", txt: 'Busque por autores', rota: 'recurso/autores/{recurso}'},
-  ];
+    typeTitle: 'titulo',
+    nameId: 'id_indicador',
+    rotaSelected: 'indicador'
+  }];
   useEffect(() => {
     Recurso();
   }, []);
@@ -71,22 +80,43 @@ const Page = () => {
     }
   };
 
+  const ClickSearch = async item => {
+    try {
+      const result = await axios.get('/api/busca_recursos/' + menuItens.rotaSelected + '/' + item[menuItens.nameId], {
+        params: {}
+      });
+      setRecursos(result.data.data);
+      setTotal(result.data.data.length);
+      setSearchBox(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const handleSearch = async e => {
-    setspinList(false);
     setSearchBox(true);
     setNEncontado(false);
     const search = e.target.value ? e.target.value : ' ';
 
-    try {
+    if (search.length > 2) {
       setspinList(true);
-      const result = await axios.get(menuItens.rota + search, {});
-      setListMenu(result.data.data);
-      setRecursos(result.data.data);
-      setTotal(result.data.data.length);
-    } catch (error) {
-      setspinList(false);
-      setNEncontado(search === " " ? false : true);
-      console.log(error);
+
+      try {
+        console.log('spinList', spinList);
+        const result = await axios.get(menuItens.rota + search, {});
+        setListMenu(result.data.data);
+
+        if (!menuItens.type) {
+          setRecursos(result.data.data);
+          setTotal(result.data.data.length);
+        }
+
+        setspinList(false);
+      } catch (error) {
+        setspinList(false);
+        setNEncontado(search === " " ? false : true);
+        console.log(error);
+      }
     }
   };
 
@@ -166,8 +196,8 @@ const Page = () => {
   }, listMenu.map((item, key) => {
     return /*#__PURE__*/React.createElement("li", {
       className: "cursor ",
-      key: 'list_' + key //onClick={() => btnSearch(item)}
-
+      key: 'list_' + key,
+      onClick: () => ClickSearch(item)
     }, item[menuItens.typeTitle]);
   }))))), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
     className: "container-search-click cursor",
