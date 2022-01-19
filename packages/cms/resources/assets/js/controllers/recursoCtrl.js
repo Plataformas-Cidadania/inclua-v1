@@ -2,11 +2,7 @@ cmsApp.controller('recursoCtrl', ['$scope', '$http', 'Upload', '$timeout', funct
 
 
     $scope.recurso = {
-        numero: 2,
-        titulo: 'aaaa',
-        descricao: 'aaaaaaaaaaa',
-        vl_baixo: 1,
-        vl_alto: 2,
+
     };
     $scope.recursos = [];
     $scope.tipos = [];
@@ -23,7 +19,7 @@ cmsApp.controller('recursoCtrl', ['$scope', '$http', 'Upload', '$timeout', funct
     $scope.campoPesquisa = "titulo";
     $scope.processandoListagem = false;
     $scope.processandoExcluir = false;
-    $scope.ordem = "numero";
+    $scope.ordem = "id_recurso";
     $scope.sentidoOrdem = "asc";
     var $listar = false;//para impedir de carregar o conteúdo dos watchs no carregamento da página.
 
@@ -64,7 +60,7 @@ cmsApp.controller('recursoCtrl', ['$scope', '$http', 'Upload', '$timeout', funct
     var listarFormatos = function(){
         $scope.processandoListagem = true;
         $http({
-            url: 'api/formato_recurso',
+            url: 'api/formatorecurso',
             method: 'GET',
             params: {
 
@@ -94,8 +90,6 @@ cmsApp.controller('recursoCtrl', ['$scope', '$http', 'Upload', '$timeout', funct
         }).success(function(data, status, headers, config){
             console.log(data.data);
             $scope.recursos = data.data;
-            let numeroMaximo = Math.max.apply(Math, $scope.recursos.map(function(item) { return item.numero; }));
-            $scope.recurso.numero = numeroMaximo + 1;
             $scope.lastPage = data.last_page;
             $scope.totalItens = data.data.length;
             //$scope.totalItens = data.total;
@@ -109,6 +103,7 @@ cmsApp.controller('recursoCtrl', ['$scope', '$http', 'Upload', '$timeout', funct
             $scope.processandoListagem = false;
         });
     };
+
 
     $scope.ordernarPor = function(ordem){
         $scope.ordem = ordem;
@@ -140,6 +135,19 @@ cmsApp.controller('recursoCtrl', ['$scope', '$http', 'Upload', '$timeout', funct
     $scope.inserir = function (file, arquivo){
 
         $scope.mensagemInserir = "";
+
+        let date = new Date();
+        $scope.recurso.ultimo_acesso = date.getFullYear()+"-"+
+            ((date.getMonth()+1).toString().padStart(2, "0"))+"-"+
+            (date.getDate().toString().padStart(2, "0"))+" "+
+            (date.getHours().toString().padStart(2, "0"))+":"+
+            (date.getMinutes().toString().padStart(2, "0"))+":"+
+            (date.getSeconds().toString().padStart(2, "0"));
+
+        $scope.recurso.id_tipo_recurso = $scope.tipo.id_tipo_recurso;
+        $scope.recurso.id_formato = $scope.formato.id_formato;
+
+        console.log($scope.recurso);
 
         if(file==null && arquivo==null){
             $scope.processandoInserir = true;

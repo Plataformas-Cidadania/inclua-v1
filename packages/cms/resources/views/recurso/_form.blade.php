@@ -3,8 +3,8 @@
 <select
     name="id_tipo_recurso"
     class="form-control width-medio"
-    ng-model="tipo_recurso"
-    ng-init="tipo_recurso = null"
+    ng-model="tipo"
+    ng-init="tipo = null"
     ng-required="true"
     ng-options="option.nome for option in tipos track by option.id_tipo_recurso"
     placeholder="Selecione"
@@ -17,8 +17,8 @@
 <select
     name="id_formato"
     class="form-control width-medio"
-    ng-model="formato_recurso"
-    ng-init="formato_recurso = null"
+    ng-model="formato"
+    ng-init="formato = null"
     ng-required="true"
     ng-options="option.nome for option in formatos track by option.id_formato"
     placeholder="Selecione"
