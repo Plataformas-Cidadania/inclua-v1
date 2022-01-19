@@ -103,7 +103,19 @@ const Page = () => {
     className: "container"
   }, /*#__PURE__*/React.createElement("div", {
     className: "row"
-  }, resultado.indicadores ? resultado.indicadores.map((item, key) => {
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "col-md-12"
+  }, /*#__PURE__*/React.createElement("a", {
+    href: "/imprimir",
+    target: "_blank"
+  }, /*#__PURE__*/React.createElement("img", {
+    src: "/img/print.png",
+    alt: "",
+    className: "float-end m-2 cursor",
+    style: {
+      width: '35px'
+    }
+  }))), resultado.indicadores ? resultado.indicadores.map((item, key) => {
     return /*#__PURE__*/React.createElement("div", {
       className: "col-md-12",
       key: 'indicadores_' + key
