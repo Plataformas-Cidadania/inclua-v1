@@ -45,7 +45,10 @@ const Page = () => {
   }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("img", {
     src: "img/dimensao1.png",
     width: "80",
-    style: "float: left; margin-right: 15px;"
+    style: {
+      float: "left",
+      marginRight: "15px"
+    }
   }), /*#__PURE__*/React.createElement("h2", {
     style: {
       margin: "0"

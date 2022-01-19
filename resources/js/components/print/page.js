@@ -16,6 +16,7 @@ const Page = () => {
         }
     }
 
+
     return (
         <>
             <div>
@@ -30,7 +31,7 @@ const Page = () => {
             <div style={{fontFamily: "Verdana", fontSize: "16px", lineHeight: "25px", width: "800px", margin: "auto"}}>
 
                 <div>
-                    <img src="img/dimensao1.png" width="80" style="float: left; margin-right: 15px;"/>
+                    <img src="img/dimensao1.png" width="80" style={{float: "left", marginRight: "15px"}}/>
                         <h2 style={{margin: "0"}}>DIMENSÃO 1</h2>
                         <p style={{margin: "0"}}><strong>Relações interinstitucionais e instrumentos de gestão
                             inclusivainclusiva</strong></p>
