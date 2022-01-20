@@ -12,7 +12,11 @@ const Page = () => {
     try {
       const result = await axios.get("api/diagnostico/" + localStorage.getItem('id_diagnostico_completo'));
       setResultado(result.data);
-      window.print();
+      setTimeout(showSubmit, 1000);
+
+      function showSubmit() {
+        window.print();
+      }
     } catch (error) {
       console.log(error);
     }
@@ -57,24 +61,12 @@ const Page = () => {
       key: "resultado" + item.id_recurso
     }, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("img", {
       src: "img/dimensao" + item.id_dimensao + ".png",
-      width: "80",
+      width: "60",
       style: {
         float: "left",
         marginRight: "15px"
       }
-    }), /*#__PURE__*/React.createElement("h2", {
-      style: {
-        margin: "0"
-      }
-    }, "DIMENS\xC3O ", item.id_dimensao), /*#__PURE__*/React.createElement("p", {
-      style: {
-        margin: "0"
-      }
-    }, /*#__PURE__*/React.createElement("strong", null, item.titulo)), /*#__PURE__*/React.createElement("p", {
-      style: {
-        margin: "0"
-      }
-    }, "Veja abaixo os resultados por indicador:")), /*#__PURE__*/React.createElement("div", {
+    }), /*#__PURE__*/React.createElement("h2", null, "DIMENS\xC3O ", item.id_dimensao), /*#__PURE__*/React.createElement("h3", null, item.titulo), /*#__PURE__*/React.createElement("h4", null, "Veja abaixo os resultados por indicador:")), /*#__PURE__*/React.createElement("div", {
       style: {
         clear: "both",
         margin: "15px 0"
@@ -103,7 +95,9 @@ const Page = () => {
     }, /*#__PURE__*/React.createElement("hr", null)), item.indicadores !== undefined ? item.indicadores.map((indicador, key) => {
       return /*#__PURE__*/React.createElement("div", {
         key: "indicadores" + indicador.id_recurso
-      }, /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("strong", null, "Indicador ", indicador.numero, " - ", indicador.titulo)), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("p", {
+      }, /*#__PURE__*/React.createElement("p", {
+        className: "font-15"
+      }, /*#__PURE__*/React.createElement("strong", null, "Indicador ", indicador.numero, " - ", indicador.titulo)), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("p", {
         style: {
           float: "left"
         }
@@ -115,7 +109,11 @@ const Page = () => {
         style: {
           float: "both"
         }
-      })), /*#__PURE__*/React.createElement("div", {
+      })), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement(BarChart, {
+        id: 'bar-chart' + key,
+        series: indicador.series,
+        annotationsX: Math.round(indicador.posPontos)
+      }), /*#__PURE__*/React.createElement("div", {
         style: {
           clear: "both",
           margin: "15px 0"
@@ -172,7 +170,7 @@ const Page = () => {
         }) : null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("strong", null, "Autoria:\xA0", recurso.autoria !== undefined ? recurso.autoria.map((autoria, key) => {
           return /*#__PURE__*/React.createElement("span", {
             key: "autoria" + key
-          }, autoria.autor.nome, item.autoria.length !== key + 1 ? ', ' : '');
+          }, autoria.autor.nome);
         }) : null)), /*#__PURE__*/React.createElement("td", {
           style: {
             borderBottom: "solid 1px #CCCCCC",

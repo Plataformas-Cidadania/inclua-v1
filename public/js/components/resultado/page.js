@@ -119,7 +119,7 @@ const Page = () => {
     return /*#__PURE__*/React.createElement("div", {
       className: "col-md-12",
       key: 'indicadores_' + key
-    }, /*#__PURE__*/React.createElement("h2", null, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "Indicador ", item.numero, " - ", item.titulo), /*#__PURE__*/React.createElement("div", {
+    }, /*#__PURE__*/React.createElement("h2", null, /*#__PURE__*/React.createElement("br", null), "Indicador ", item.numero, " - ", item.titulo), /*#__PURE__*/React.createElement("div", {
       className: "row"
     }, /*#__PURE__*/React.createElement("div", {
       className: "col-md-6"

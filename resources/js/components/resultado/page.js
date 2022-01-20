@@ -97,7 +97,7 @@ const Page = () => {
                             resultado.indicadores.map((item, key) => {
                                 return (
                                 <div className="col-md-12" key={'indicadores_'+key}>
-                                    <h2><br/><br/>Indicador {item.numero} - {item.titulo}</h2>
+                                    <h2><br/>Indicador {item.numero} - {item.titulo}</h2>
                                     <div className="row">
                                         <div className="col-md-6">
                                             <BarChart id={'bar-chart'+key} series={item.series} annotationsX={Math.round(item.posPontos)}/>

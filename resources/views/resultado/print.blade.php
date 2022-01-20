@@ -16,6 +16,28 @@
 
 <style>
 
+    h2{
+        margin: 0;
+        font-size: 18px;
+    }
+    h3{
+        margin: 0;
+        font-size: 16px;
+        font-weight: normal;
+    }
+    h4{
+        margin: 0;
+        font-size: 12px;
+        font-weight: normal;
+    }
+    p{
+        margin: 0;
+    }
+    .font-15{
+        font-size: 15px;
+        margin: 15px 0;
+    }
+
     @media print {
         .no-print {
             visibility: hidden;
@@ -37,6 +59,11 @@
 
 <script src="js/components/print/page.js"></script>
 <script src="js/components/print/index.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/prop-types@15.7.2/prop-types.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script src="https://cdn.jsdelivr.net/npm/react-apexcharts@1.3.6/dist/react-apexcharts.iife.min.js"></script>
+<script src="js/components/charts/barChart.js"></script>
 
 
 

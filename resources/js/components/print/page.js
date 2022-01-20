@@ -3,19 +3,29 @@ const Page = () => {
     const {useState, useEffect} = React;
     const [resultado, setResultado] = useState([]);
 
+
     useEffect(() => {
         Resultado();
+
     }, []);
 
     const Resultado = async () => {
         try {
             const result = await axios.get("api/diagnostico/"+localStorage.getItem('id_diagnostico_completo'));
-            setResultado(result.data)
-            window.print();
+            setResultado(result.data);
+
+            setTimeout(showSubmit, 1000)
+            function showSubmit() {
+                window.print();
+
+            }
+
         } catch (error) {
             console.log(error);
         }
     }
+
+
 
     return (
         <>
@@ -36,13 +46,13 @@ const Page = () => {
                         <div style={{fontFamily: "Verdana", fontSize: "16px", lineHeight: "25px", width: "800px", margin: "auto"}} key={"resultado"+item.id_recurso}>
 
                             <br/><br/>
-
                             <div>
-                                <img src={"img/dimensao" + item.id_dimensao + ".png"} width="80" style={{float: "left", marginRight: "15px"}}/>
-                                <h2 style={{margin: "0"}}>DIMENSÃO {item.id_dimensao}</h2>
-                                <p style={{margin: "0"}}><strong>{item.titulo}</strong></p>
-                                <p style={{margin: "0"}}>Veja abaixo os resultados por indicador:</p>
+                                <img src={"img/dimensao" + item.id_dimensao + ".png"} width="60" style={{float: "left", marginRight: "15px"}}/>
+                                <h2>DIMENSÃO {item.id_dimensao}</h2>
+                                <h3>{item.titulo}</h3>
+                                <h4>Veja abaixo os resultados por indicador:</h4>
                             </div>
+
                             <div style={{clear: "both", margin: "15px 0"}}>
                                 <div style={{float: "both"}}>
                                     <h2 style={{float: "left"}}>{item.risco}</h2>
@@ -58,20 +68,21 @@ const Page = () => {
                                     item.indicadores.map((indicador, key) => {
                                         return (
                                             <div key={"indicadores"+indicador.id_recurso}>
-                                                <p><strong>Indicador {indicador.numero} - {indicador.titulo}</strong></p>
+                                                <p className="font-15"><strong>Indicador {indicador.numero} - {indicador.titulo}</strong></p>
 
                                                 <div>
                                                     <p style={{float: "left"}}>{indicador.risco}</p>
                                                     <p style={{float: "right"}}>{indicador.pontos} pontos</p>
                                                     <div style={{float: "both"}}/>
                                                 </div>
+                                                <br/><br/>
+                                                <BarChart id={'bar-chart'+key} series={indicador.series} annotationsX={Math.round(indicador.posPontos)}/>
+
                                                 <div style={{clear: "both", margin: "15px 0"}}>
                                                     <p><b>CONSEQUÊNCIA: </b>
                                                         {indicador.consequencia}
                                                     </p>
                                                 </div>
-
-
 
                                                 <table className="table" width="100%" style={{fontSize: "13px"}}>
                                                     <thead>
@@ -121,7 +132,7 @@ const Page = () => {
                                                                                         return (
                                                                                             <span key={"autoria"+key}>
                                                                                                 {autoria.autor.nome}
-                                                                                                {item.autoria.length !== key+1 ? ', ' : ''}
+                                                                                                {/*{item.autoria.length !== key+1 ? ', ' : ''}*/}
                                                                                             </span>
                                                                                         );
                                                                                     }) : null
