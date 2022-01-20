@@ -86,6 +86,11 @@ const Page = () => {
 
             <div className="container">
                 <div className="row">
+                    <div className="col-md-12">
+                        <a href="/imprimir" target="_blank">
+                            <img src="/img/print.png" alt="" className="float-end m-2 cursor" style={{width: '35px'}}/>
+                        </a>
+                    </div>
 
                     {
                         resultado.indicadores ?
