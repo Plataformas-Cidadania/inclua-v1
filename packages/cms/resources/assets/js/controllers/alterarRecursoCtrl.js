@@ -3,7 +3,6 @@ cmsApp.controller('alterarRecursoCtrl', ['$scope', '$http', 'Upload', '$timeout'
     $scope.processandoSalvar = false;
     $scope.processandoDetalhar = false;
 
-
     //$scope.id_recurso = 0;
     $scope.dimensoes = [];
     $scope.dimensao = null;
@@ -16,6 +15,41 @@ cmsApp.controller('alterarRecursoCtrl', ['$scope', '$http', 'Upload', '$timeout'
 
     $scope.removerImagem = false;
 
+    $scope.listarTipos = function(){
+        $scope.processandoListagem = true;
+        $http({
+            url: 'api/tipo_recurso',
+            method: 'GET',
+            params: {
+
+            }
+        }).success(function(data, status, headers, config){
+            //console.log(data.data);
+            $scope.tipos = data.data;
+            $scope.listarFormatos();
+        }).error(function(data){
+            $scope.message = "Ocorreu um erro: "+data;
+        });
+    }
+
+    $scope.listarFormatos = function(){
+        $scope.processandoListagem = true;
+        $http({
+            url: 'api/formatorecurso',
+            method: 'GET',
+            params: {
+
+            }
+        }).success(function(data, status, headers, config){
+            //console.log(data.data);
+            $scope.formatos = data.data;
+            $scope.detalhar($scope.id_recurso);
+        }).error(function(data){
+            $scope.message = "Ocorreu um erro: "+data;
+        });
+    }
+
+    $scope.listarTipos();
 
     $scope.detalhar = function(id){
         $scope.processandoDetalhar = true;

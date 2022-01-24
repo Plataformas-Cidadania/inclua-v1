@@ -245,7 +245,7 @@ class RecursoController extends Controller
     public function get($id)
     {
         try {
-            if(!is_int($id)) throw new \Illuminate\Database\Eloquent\ModelNotFoundException;
+            //if(!is_int($id)) throw new \Illuminate\Database\Eloquent\ModelNotFoundException;
             $res = $this->repo->findById($id);
             return $this->successResponse(
                 'Retornado com sucesso',

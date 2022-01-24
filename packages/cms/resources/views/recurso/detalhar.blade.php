@@ -6,7 +6,7 @@
         <div class="box-padrao">
             <h1><a href="javascript:history.back();"><i class="fa fa-arrow-circle-left"></i></a>&nbsp;&nbsp;Recurso</h1>
             <?php //print_r($recurso);?>
-            <div ng-init="carregaImagem('{{$recurso->imagem}}', '{{$recurso->arquivo}}'); detalhar({{$recurso->id_recurso}})">
+            <div ng-init="carregaImagem('{{$recurso->imagem}}', '{{$recurso->arquivo}}'); id_recurso={{$recurso->id_recurso}})">
                 <span class="texto-obrigatorio">* campos obrigatórios</span><br><br>
                 {!! Form::model($recurso, ['name' =>'form']) !!}
                 <div class="container-thumb" style="display: none;">
