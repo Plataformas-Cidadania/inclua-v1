@@ -254,7 +254,7 @@ cmsApp.controller('recursoCtrl', ['$scope', '$http', 'Upload', '$timeout', funct
             }
         }).success(function(data, status, headers, config){
             //console.log(data.data);
-            $scope.indicadores = data.data;
+            $scope.dimensoes = data.data;
             $scope.processandoDimensoes = false;
         }).error(function(data){
             $scope.message = "Ocorreu um erro: "+data;

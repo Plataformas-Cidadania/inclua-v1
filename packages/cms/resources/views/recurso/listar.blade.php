@@ -175,20 +175,34 @@
                     </div>
                     <div class="modal-body">
                         <form action="frmIndicacao">
+                            <label for="dimensao">Dimensão</label>
+                            <select
+                                name="id_dimensao"
+                                class="form-control width-grande"
+                                ng-model="dimensao"
+                                ng-init="dimensao = null"
+                                ng-required="true"
+                                ng-options="option.titulo for option in dimensoes track by option.id_dimensao"
+                                placeholder="Selecione"
+                                ng-change="listarIndicadores(dimensao.id_dimensao)"
+                            >
+                                <option value="" ng-disabled="!!indicacao.id_dimensao">Selecione</option>
+                            </select>
+                            <br>
                             <label for="indicador">Indicador</label>
                             <select
                                 name="id_indicador"
-                                class="form-control width-medio"
+                                class="form-control width-grande"
                                 ng-model="indicador"
                                 ng-init="indicador = null"
                                 ng-required="true"
                                 ng-options="option.titulo for option in indicadores track by option.id_indicador"
                                 placeholder="Selecione"
-                                ng-change="listarIndicadores(dimensao.id_dimensao)"
                             >
                                 <option value="" ng-disabled="!!indicacao.id_indicador">Selecione</option>
                             </select>
-                            <button class="btn btn-info">Adicionar</button>
+                            <br>
+                            <button class="btn btn-info" id="btnIndicacao">Adicionar</button>
                         </form>
                         <br>
                         {{--<div class="row" ng-repeat="indicador in indicadores">
