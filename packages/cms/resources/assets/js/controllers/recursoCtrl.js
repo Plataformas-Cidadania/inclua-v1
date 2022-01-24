@@ -147,7 +147,7 @@ cmsApp.controller('recursoCtrl', ['$scope', '$http', 'Upload', '$timeout', funct
         $scope.recurso.id_tipo_recurso = $scope.tipo.id_tipo_recurso;
         $scope.recurso.id_formato = $scope.formato.id_formato;
 
-        console.log($scope.recurso);
+        //console.log($scope.recurso);
 
         if(file==null && arquivo==null){
             $scope.processandoInserir = true;

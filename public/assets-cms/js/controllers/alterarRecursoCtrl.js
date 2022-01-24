@@ -4,8 +4,10 @@ cmsApp.controller('alterarRecursoCtrl', ['$scope', '$http', 'Upload', '$timeout'
     $scope.processandoDetalhar = false;
 
     $scope.id_recurso = 0;
-    $scope.dimensoes = [];
-    $scope.dimensao = null;
+    $scope.tipos = [];
+    $scope.formatos = [];
+    $scope.tipo = null;
+    $scope.formato = null;
 
     //ALTERAR/////////////////////////////
 
@@ -62,10 +64,16 @@ cmsApp.controller('alterarRecursoCtrl', ['$scope', '$http', 'Upload', '$timeout'
             }
         }).success(function(data, status, headers, config){
             $scope.recurso = data.data;
-            console.log($scope.recurso);
-            $scope.dimensoes.forEach(function (item){
-                if(item.id_dimensao === $scope.recurso.id_dimensao){
-                    $scope.dimensao = item;
+            //console.log($scope.recurso);
+            delete $scope.recurso.ultimo_acesso;
+            $scope.tipos.forEach(function (item){
+                if(item.id_tipo_recurso === $scope.recurso.id_tipo_recurso){
+                    $scope.tipo = item;
+                }
+            });
+            $scope.formatos.forEach(function (item){
+                if(item.id_formato === $scope.recurso.id_formato){
+                    $scope.formato = item;
                 }
             });
             $scope.processandoDetalhar = false;
@@ -76,6 +84,9 @@ cmsApp.controller('alterarRecursoCtrl', ['$scope', '$http', 'Upload', '$timeout'
     };
 
     $scope.alterar = function (file){
+
+        $scope.recurso.id_tipo_recurso = $scope.tipo.id_tipo_recurso;
+        $scope.recurso.id_formato = $scope.formato.id_formato;
 
         if(file==null){
 
