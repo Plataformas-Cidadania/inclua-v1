@@ -241,9 +241,12 @@ cmsApp.controller('recursoCtrl', ['$scope', '$http', 'Upload', '$timeout', funct
     };
 
     //INDICAÇÃO////////////////////////////////////
+    $scope.indicacao = {};
     $scope.dimensao = null;
+    $scope.indicador = null;
     $scope.processandoDimensoes = false;
     $scope.processandoIndicadores = false;
+    $scope.processandoInserirIndicacao = false;
     $scope.listarDimensoes = function(){
         $scope.processandoDimensoes = true;
         $http({
@@ -281,10 +284,26 @@ cmsApp.controller('recursoCtrl', ['$scope', '$http', 'Upload', '$timeout', funct
     }
 
     $scope.indicacao = function (id, titulo){
-        $scope.idIndicao = id;
+        $scope.indicacao.id_recurso = id;
         $scope.tituloIndicacao = titulo;
         $scope.listarDimensoes();
     }
+
+    $scope.inserirIndicacao = function(){
+        $scope.processandoInserirIndicacao= true;
+        $scope.mensagemInserirIndicacao = "";
+        $scope.indicacao.id_indicacao = $scope.indicador.id_indicador;
+        $http.post("api/indicacao", $scope.indicacao).success(function (data){
+            listarRecursos();
+            $scope.mensagemInserirIndicacao =  "Gravado com sucesso!";
+            $scope.processandoInserirIndicacao = false;
+            $scope.indicacao = {};
+        }).error(function(data){
+            $scope.mensagemInserirIndicacao = "Ocorreu um erro!";
+            $scope.processandoInserirIndicacao = false;
+        });
+    }
+
     ///////////////////////////////////////////////
 
 
