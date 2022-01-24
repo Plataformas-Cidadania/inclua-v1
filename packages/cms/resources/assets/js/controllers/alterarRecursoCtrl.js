@@ -3,7 +3,7 @@ cmsApp.controller('alterarRecursoCtrl', ['$scope', '$http', 'Upload', '$timeout'
     $scope.processandoSalvar = false;
     $scope.processandoDetalhar = false;
 
-    //$scope.id_recurso = 0;
+    $scope.id_recurso = 0;
     $scope.dimensoes = [];
     $scope.dimensao = null;
 
@@ -14,6 +14,7 @@ cmsApp.controller('alterarRecursoCtrl', ['$scope', '$http', 'Upload', '$timeout'
     $scope.mostrarForm = false;
 
     $scope.removerImagem = false;
+
 
     $scope.listarTipos = function(){
         $scope.processandoListagem = true;
