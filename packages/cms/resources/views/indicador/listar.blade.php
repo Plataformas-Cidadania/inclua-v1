@@ -165,5 +165,27 @@
             </div>
         </div>
         <!-- Fim Modal Excluir-->
+
+        <!-- Modal Indicador-->
+        <div class="modal fade" id="modalIndicador" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Indicadores</h4>
+                    </div>
+                    <div class="modal-body">
+
+                        <div ng-show="processando"><i class="fa fa-spinner fa-spin"></i> Processando...</div>
+                        <div class="mensagem-ok text-center text-danger"><% mensagemIndicador %></div>
+                    </div>
+                    <div id="fecharIndicador" class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Fim Modal Excluir-->
     </div>
 @endsection
