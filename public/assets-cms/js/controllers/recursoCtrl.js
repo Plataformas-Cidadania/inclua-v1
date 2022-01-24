@@ -241,15 +241,13 @@ cmsApp.controller('recursoCtrl', ['$scope', '$http', 'Upload', '$timeout', funct
     };
 
     //INDICAÇÃO////////////////////////////////////
-    $scope.indicacao = function (id, titulo){
-        $scope.idIndicao = id;
-        $scope.tituloIndicacao = titulo;
-    }
-
-    var listarIndicadores = function(){
-        $scope.processandoListagem = true;
+    $scope.dimensao = null;
+    $scope.processandoDimensoes = false;
+    $scope.processandoIndicadores = false;
+    $scope.listarDimensoes = function(){
+        $scope.processandoDimensoes = true;
         $http({
-            url: 'api/indicadores',
+            url: 'api/dimensao',
             method: 'GET',
             params: {
 
@@ -257,9 +255,35 @@ cmsApp.controller('recursoCtrl', ['$scope', '$http', 'Upload', '$timeout', funct
         }).success(function(data, status, headers, config){
             //console.log(data.data);
             $scope.indicadores = data.data;
+            $scope.processandoDimensoes = false;
         }).error(function(data){
             $scope.message = "Ocorreu um erro: "+data;
+            $scope.processandoDimensoes = false;
         });
+    }
+
+    $scope.listarIndicadores = function(id_dimensao){
+        $scope.processandoIndicadores = true;
+        $http({
+            url: 'api/indicadores/dimensao/'+id_dimensao,
+            method: 'GET',
+            params: {
+
+            }
+        }).success(function(data, status, headers, config){
+            //console.log(data.data);
+            $scope.indicadores = data.data;
+            $scope.processandoIndicadores = false;
+        }).error(function(data){
+            $scope.message = "Ocorreu um erro: "+data;
+            $scope.processandoIndicadores = false;
+        });
+    }
+
+    $scope.indicacao = function (id, titulo){
+        $scope.idIndicao = id;
+        $scope.tituloIndicacao = titulo;
+        $scope.listarDimensoes();
     }
     ///////////////////////////////////////////////
 

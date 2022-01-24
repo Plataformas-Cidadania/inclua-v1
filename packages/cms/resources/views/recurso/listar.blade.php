@@ -184,6 +184,7 @@
                                 ng-required="true"
                                 ng-options="option.titulo for option in indicadores track by option.id_indicador"
                                 placeholder="Selecione"
+                                ng-change="listarIndicadores(dimensao.id_dimensao)"
                             >
                                 <option value="" ng-disabled="!!indicacao.id_indicador">Selecione</option>
                             </select>
