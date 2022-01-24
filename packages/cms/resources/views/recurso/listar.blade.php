@@ -97,6 +97,7 @@
                                     {{--<a href="cms/items/<% recurso.id %>"><i class="fa fa-sitemap fa-2x" title="Itens"></i></a>&nbsp;&nbsp;--}}
                                     <a href="cms/recurso/<% recurso.id_recurso %>"><i class="fa fa-edit fa-2x" title="Editar"></i></a>&nbsp;&nbsp;{{--<% mensagemStatus %><% idStatus %>--}}
                                     {{--<a  ng-class="<% recurso.status %> == 1 ? 'color-success' : 'color-success-inactive'"  style="cursor: pointer;"><i class="fa fa-check-circle fa-2x" aria-hidden="true" ng-click="status(recurso.id);"></i></a>&nbsp;&nbsp;--}}
+                                    <a><i data-toggle="modal" data-target="#modalIndicacao" class="fa fa-tachometer fa-2x" ng-click="indicacao(recurso.id_recurso, recurso.nome)"></i></a>
                                     <a><i data-toggle="modal" data-target="#modalExcluir" class="fa fa-remove fa-2x" ng-click="perguntaExcluir(recurso.id_recurso, recurso.nome, recurso.imagem)"></i></a>
                                 </div>
                             </td>
@@ -162,5 +163,45 @@
             </div>
         </div>
         <!-- Fim Modal Excluir-->
+
+        <!-- Modal Indicação-->
+        <div class="modal fade" id="modalIndicacao" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Indicadores</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form action="frmIndicacao">
+                            <label for="indicador">Indicador</label>
+                            <select
+                                name="id_indicador"
+                                class="form-control width-medio"
+                                ng-model="indicador"
+                                ng-init="indicador = null"
+                                ng-required="true"
+                                ng-options="option.titulo for option in indicadores track by option.id_indicador"
+                                placeholder="Selecione"
+                            >
+                                <option value="" ng-disabled="!!indicacao.id_indicador">Selecione</option>
+                            </select>
+                            <button class="btn btn-info">Adicionar</button>
+                        </form>
+                        <br>
+                        {{--<div class="row" ng-repeat="indicador in indicadores">
+
+                        </div>--}}
+                        <div ng-show="processando"><i class="fa fa-spinner fa-spin"></i> Processando...</div>
+                        <div class="mensagem-ok text-center text-danger"><% mensagemIndicacao %></div>
+                    </div>
+                    <div id="fecharIndicacao" class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Fim Modal Indicador-->
     </div>
 @endsection

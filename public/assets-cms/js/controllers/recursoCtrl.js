@@ -240,5 +240,28 @@ cmsApp.controller('recursoCtrl', ['$scope', '$http', 'Upload', '$timeout', funct
         });
     };
 
+    //INDICAÇÃO////////////////////////////////////
+    $scope.indicacao = function (id, titulo){
+        $scope.idIndicao = id;
+        $scope.tituloIndicacao = titulo;
+    }
+
+    var listarIndicadores = function(){
+        $scope.processandoListagem = true;
+        $http({
+            url: 'api/indicadores',
+            method: 'GET',
+            params: {
+
+            }
+        }).success(function(data, status, headers, config){
+            //console.log(data.data);
+            $scope.indicadores = data.data;
+        }).error(function(data){
+            $scope.message = "Ocorreu um erro: "+data;
+        });
+    }
+    ///////////////////////////////////////////////
+
 
 }]);
