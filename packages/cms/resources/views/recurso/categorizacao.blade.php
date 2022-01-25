@@ -1,14 +1,14 @@
 <!-- Modal Indicação-->
-<div class="modal fade" id="modalcategorizacao" role="dialog">
+<div class="modal fade" id="modalCategorizacao" role="dialog">
     <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">categorias</h4>
+                <h4 class="modal-title">Categorias</h4>
             </div>
             <div class="modal-body">
-                <form action="frmcategorizacao">
+                <form action="frmCategorizacao">
                     <label for="dimensao">Dimensão</label>
                     <select
                         name="id_dimensao"
@@ -18,12 +18,12 @@
                         ng-required="true"
                         ng-options="option.titulo for option in dimensoes track by option.id_dimensao"
                         placeholder="Selecione"
-                        ng-change="listarcategorias(dimensao.id_dimensao)"
+                        ng-change="listarCategorias(dimensao.id_dimensao)"
                     >
                         <option value="" ng-disabled="!!categorizacao.id_dimensao">Selecione</option>
                     </select>
                     <br>
-                    <label for="categoria">categoria</label>
+                    <label for="categoria">Categoria</label>
                     <select
                         name="id_categoria"
                         class="form-control width-grande"
@@ -36,17 +36,17 @@
                         <option value="" ng-disabled="!!categorizacao.id_categoria">Selecione</option>
                     </select>
                     <br>
-                    <button type="button" class="btn btn-info" id="btncategorizacao" ng-click="inserircategorizacao()">Adicionar</button>
+                    <button type="button" class="btn btn-info" id="btnCategorizacao" ng-click="inserirCategorizacao()">Adicionar</button>
                 </form>
                 <br>
-                <div ng-show="processandoListagemcategorizacoes"><i class="fa fa-spinner fa-spin"></i> Processando...</div>
-                <h2 class="tabela_vazia" ng-show="!processandoListagemcategorizacoes && totalIndicaoes==0">Nenhum registro encontrado!</h2>
+                <div ng-show="processandoListagemCategorizacoes"><i class="fa fa-spinner fa-spin"></i> Processando...</div>
+                <h2 class="tabela_vazia" ng-show="!processandoListagemCategorizacoes && totalIndicaoes==0">Nenhum registro encontrado!</h2>
                 <div style="height: 300px;  overflow-y: auto;">
-                    <table ng-show="totalcategorizacoes>0" class="table table-striped">
+                    <table ng-show="totalCategorizacoes>0" class="table table-striped">
                         <thead>
                         <tr>
                             <th>Recurso</th>
-                            <th>categoria</th>
+                            <th>Categoria</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -55,7 +55,7 @@
                             <td><% categorizacao.categoria.titulo %></td>
                             <td class="text-right">
                                 <div>
-                                    <a><i data-toggle="modal" data-target="#modalExcluircategorizacao" class="fa fa-remove fa-2x" ng-click="perguntaExcluircategorizacao(categorizacao.id_categoria, categorizacao.id_recurso, categorizacao.categoria.titulo)"></i></a>
+                                    <a><i data-toggle="modal" data-target="#modalExcluirCategorizacao" class="fa fa-remove fa-2x" ng-click="perguntaExcluirCategorizacao(categorizacao.id_categoria, categorizacao.id_recurso, categorizacao.categoria.titulo)"></i></a>
                                 </div>
                             </td>
                         </tr>
@@ -64,23 +64,23 @@
                     </table>
                 </div>
                 <div ng-show="processando"><i class="fa fa-spinner fa-spin"></i> Processando...</div>
-                <div class="mensagem-ok text-center text-danger"><% mensagemcategorizacao %></div>
+                <div class="mensagem-ok text-center text-danger"><% mensagemCategorizacao %></div>
             </div>
-            <div id="fecharcategorizacao" class="modal-footer">
+            <div id="fecharCategorizacao" class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
             </div>
         </div>
     </div>
 </div>
-<!-- Fim Modal categoria-->
-<!-- Modal Excluir categoria-->
-<div class="modal fade" id="modalExcluircategorizacao" role="dialog">
+<!-- Fim Modal Categoria-->
+<!-- Modal Excluir Categoria-->
+<div class="modal fade" id="modalExcluirCategorizacao" role="dialog">
     <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Excluir categoria</h4>
+                <h4 class="modal-title">Excluir Categoria</h4>
             </div>
             <div class="modal-body">
                 <div class="row">
@@ -88,17 +88,17 @@
                         <img  ng-src="imagens/recursos/xs-<% imagemExcluir %>" width="100">
                     </div>--}}
                     <div class="col-md-9">
-                        <p><% tituloExcluircategorizacao %></p>
+                        <p><% tituloExcluirCategorizacao %></p>
                     </div>
                 </div>
                 <div ng-show="processandoExcluir"><i class="fa fa-spinner fa-spin"></i> Processando...</div>
-                <div class="mensagem-ok text-center text-danger"><% mensagemExcluidocategorizacao %></div>
+                <div class="mensagem-ok text-center text-danger"><% mensagemExcluidoCategorizacao %></div>
             </div>
-            <div id="opcoesExcluircategorizacao" class="modal-footer" ng-show="!excluidocategorizacao">
-                <button id="btnExcluircategorizacao" type="button" class="btn btn-default" ng-click="excluircategorizacao(idExcluircategorizacaocategoria, idExcluircategorizacaoRecurso);">Sim</button>
+            <div id="opcoesExcluirCategorizacao" class="modal-footer" ng-show="!excluidoCategorizacao">
+                <button id="btnExcluirCategorizacao" type="button" class="btn btn-default" ng-click="excluirCategorizacao(idExcluirCategorizacaoCategoria, idExcluirCategorizacaoRecurso);">Sim</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Não</button>
             </div>
-            <div id="fecharExcluircategorizacao" class="modal-footer" ng-show="excluidocategorizacao">
+            <div id="fecharExcluirCategorizacao" class="modal-footer" ng-show="excluidoCategorizacao">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
             </div>
         </div>
