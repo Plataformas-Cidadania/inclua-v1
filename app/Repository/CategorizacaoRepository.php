@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Models\Categorizacao;
+use App\Models\Indicacao;
 use Illuminate\Database\Eloquent\Model;
 
 class CategorizacaoRepository extends BaseRepository
@@ -40,6 +41,13 @@ class CategorizacaoRepository extends BaseRepository
         else return $res;
     }
 
+    public function getAllByIdRecurso(int $idRecurso)
+    {
+        $res = Categorizacao::where('id_recurso', '=', $idRecurso)
+            ->get();
+        if (!$res) throw new \Illuminate\Database\Eloquent\ModelNotFoundException;
+        else return $res;
+    }
     /**
      * Remove um modelo por um ID composto.
      *

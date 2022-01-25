@@ -3,29 +3,30 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Api\Controller;
-use App\Models\Categorizacao;
+use App\Models\PerguntaRelate;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\Eloquent\RelationNotFoundException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Exception;
-use App\Repository\CategorizacaoRepository;
+use App\Repository\PerguntaRelateRepository;
 
-class CategorizacaoController extends Controller
+class PerguntaRelateController extends Controller
 {
-    private CategorizacaoRepository $repo;
+
+    private PerguntaRelateRepository $repo;
     private $rules = [
-    'id_categoria' => 'int|min:1',
-    'id_recurso' => 'int|min:1',
+        'descricao' => 'string|min:1|nullable',
     ];
-    public function __construct(CategorizacaoRepository $repo)
+    public function __construct(PerguntaRelateRepository $repo)
     {
         $this->repo = $repo;
     }
 
     /**
-     * Mostrar todos.
+     * Mostrar todos os Indicadores.
      *
      * @param null
      *
@@ -34,9 +35,10 @@ class CategorizacaoController extends Controller
 
     public function getAll(): JsonResponse
     {
-        $res = $this->repo->all();
+       // $res = $this->repo->all();
+        $res = $this->repo->getAll();
         return $this->successResponse(
-            'Categorizacao retornadas com sucesso',
+            'Perguntas retornadas com sucesso',
             $res
         );
     }
@@ -56,12 +58,12 @@ class CategorizacaoController extends Controller
             if ($validator->fails()) {
                 return $this->errorResponse($validator->errors()->all());
             }
+
             $data = $this->getData($request);
-
-            $res = $this->repo->createCompositeId($data);
-
+            $res = $this->repo->create($data);
+            #Log::info($data);
             return $this->successResponse(
-			    ''.$res->id_categoria.','.$res->id_recurso.' foi adicionado',
+			    ''.$res->id_pergunta.' foi adicionado',
 			    $this->transform($res)
 			);
         } catch (Exception $exception) {
@@ -72,17 +74,14 @@ class CategorizacaoController extends Controller
     /**
      * Obter especificado pelo id
      *
-     * @param int $firstId
-     *
-     * @param int $secondId
+     * @param int $id
      *
      * @return JsonResponse
      */
-    public function get(int $firstId, int $secondId): JsonResponse
+    public function get($id): JsonResponse
     {
         try {
-
-            $res = $this->repo->findByCompositeId($firstId,$secondId);
+            $res = $this->repo->findById($id);
             return $this->successResponse(
                 'Retornado com sucesso',
                 $res
@@ -90,60 +89,62 @@ class CategorizacaoController extends Controller
         }catch (Exception $exception) {
             if ($exception instanceof ModelNotFoundException)
                 return $this->errorResponse('Not found');
-            return $this->errorResponse($exception);
+            return $this->errorResponse('Erro inesperado.'.$exception);
         }
     }
 
     /**
-     * Obter especificado pelo id do recurso
-     *
-     * @param int $idRecurso
-     *
-     * @return JsonResponse
-     */
-    public function getAllByIdRecurso(int $idRecurso): JsonResponse
-    {
-        try {
-
-            $res = $this->repo->getAllByIdRecurso($idRecurso);
-            return $this->successResponse(
-                'Retornado com sucesso',
-                $res
-            );
-        }catch (Exception $exception) {
-            if ($exception instanceof ModelNotFoundException)
-                return $this->errorResponse('Not found');
-            return $this->errorResponse($exception);
-        }
-    }
-
-
-    /**
-     * Remover da base de dados especificado pelo id
-     *
-     * @param int $firstId
-     *
-     * @param int $secondId
-     *
+     * Atualizar especificado pelo id
+     *Perguntaest
      *
      * @return JsonResponse
      */
-    public function destroy($firstId,$secondId): JsonResponse
+    public function update($id, Request $request): JsonResponse
     {
         try {
-            $res = $this->repo->deleteByCompositeId($firstId,$secondId);
+            $validator = $this->getValidator($request);
+
+            if ($validator->fails()) {
+                return $this->errorResponse($validator->errors()->all());
+            }
+
+            $data = $this->getData($request);
+
+            $res = $this->repo->update($id,$data);
 
             return $this->successResponse(
-			    ''.$firstId.','.$secondId.' deletado com sucesso',
+			    'Atualizado com sucesso.',
 			    $this->transform($res)
 			);
         } catch (Exception $exception) {
             if ($exception instanceof ModelNotFoundException)
                 return $this->errorResponse('Not found');
-            return $this->errorResponse($exception);
+            return $this->errorResponse('Erro inesperado.'.$exception->getMessage());
         }
     }
 
+    /**
+     * Remover da base de dados especificado pelo id
+     *
+     * @param int $id
+     *
+     * @return JsonResponse
+     */
+    public function destroy($id): JsonResponse
+    {
+        try {
+            $res = $this->repo->deleteById($id);
+
+            return $this->successResponse(
+			    ''.$id.' deletado com sucesso',
+			    $this->transform($res)
+			);
+        } catch (Exception $exception) {
+            if ($exception instanceof ModelNotFoundException)
+                return $this->errorResponse('Not found');
+            return $this->errorResponse('Erro inesperado'.$exception);
+        }
+    }
     /**
      * Cria uma instancia de validador com as regras definidas
      *
@@ -155,8 +156,6 @@ class CategorizacaoController extends Controller
     {
         return Validator::make($request->all(), $this->rules);
     }
-
-
     /**
      * Pegar e validar os dados da requisição
      *
@@ -171,17 +170,15 @@ class CategorizacaoController extends Controller
     /**
      * Transformar em um array
      *
-     * @param Categorizacao $res
+     * @param Pergunta $res
      *
      * @return array
      */
-    protected function transform(Categorizacao $res): array
+    protected function transform(Pergunta $res): array
     {
-        return [
-            'id_categoria' => $res->id_categoria,
-            'id_recurso' => $res->id_recurso
+          return [
+            'id_pergunta' => $res->id_pergunta,
+            'descricao' => $res->descricao
         ];
     }
-
-
 }

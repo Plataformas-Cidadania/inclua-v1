@@ -138,6 +138,9 @@ Route::group([
     Route::get('/{id_categoria}/{id_recurso}',[App\Http\Controllers\Api\CategorizacaoController::class, 'get'])
         ->name('api.categorizacao.get');
 
+    Route::get('/{id_recurso}',[App\Http\Controllers\Api\CategorizacaoController::class, 'getAllByIdRecurso'])
+        ->name('api.categorizacao.getAllByIdRecurso');
+
     Route::post('/', [App\Http\Controllers\Api\CategorizacaoController::class, 'store'])
         ->name('api.categorizacao.store');
 
@@ -221,6 +224,9 @@ Route::group([
 
     Route::get('/{id_indicador}/{id_recurso}',[App\Http\Controllers\Api\IndicacaoController::class, 'get'])
         ->name('api.indicacao.get');
+
+    Route::get('/{id_recurso}',[App\Http\Controllers\Api\IndicacaoController::class, 'getAllByIdRecurso'])
+        ->name('api.indicacao.getAllByIdRecurso');
 
     Route::post('/', [App\Http\Controllers\Api\IndicacaoController::class, 'store'])
         ->name('api.indicacao.store');
@@ -344,4 +350,65 @@ Route::group([
         ->name('api.diagnostico.calcularPontuacao');
     Route::get('{id_diagnostico}',[App\Http\Controllers\Api\DiagnosticoController::class, 'calcularPontuacaoAll'])
         ->name('api.diagnostico.calcularPontuacaoAll');
+});
+
+
+Route::group([
+    'prefix' => 'pergunta_relate',
+], function () {
+
+    Route::get('/', [App\Http\Controllers\Api\PerguntaRelateController::class, 'getAll'])
+        ->name('api.pergunta_relate.getAll');
+
+    Route::get('/{pergunta_relate}',[App\Http\Controllers\Api\PerguntaRelateController::class, 'get'])
+        ->name('api.pergunta_relate.get');
+
+    Route::post('/', [App\Http\Controllers\Api\PerguntaRelateController::class, 'store'])
+        ->name('api.pergunta_relate.store');
+
+    Route::put('/{pergunta_relate}', [App\Http\Controllers\Api\PerguntaRelateController::class, 'update'])
+        ->name('api.pergunta_relate.update');
+
+    Route::delete('/{pergunta_relate}',[App\Http\Controllers\Api\PerguntaRelateController::class, 'destroy'])
+        ->name('api.pergunta_relate.destroy');
+});
+
+Route::group([
+    'prefix' => 'resposta_relate',
+], function () {
+
+    Route::get('/', [App\Http\Controllers\Api\RespostaRelateController::class, 'getAll'])
+        ->name('api.resposta_relate.getAll');
+
+    Route::get('/{resposta_relate}',[App\Http\Controllers\Api\RespostaRelateController::class, 'get'])
+        ->name('api.resposta_relate.get');
+
+    Route::post('/', [App\Http\Controllers\Api\RespostaRelateController::class, 'store'])
+        ->name('api.resposta_relate.store');
+
+    Route::put('/{resposta_relate}', [App\Http\Controllers\Api\RespostaRelateController::class, 'update'])
+        ->name('api.resposta_relate.update');
+
+    Route::delete('/{resposta_relate}',[App\Http\Controllers\Api\RespostaRelateController::class, 'destroy'])
+        ->name('api.resposta_relate.destroy');
+});
+
+Route::group([
+    'prefix' => 'depoimento',
+], function () {
+
+    Route::get('/', [App\Http\Controllers\Api\DepoimentoController::class, 'getAll'])
+        ->name('api.depoimento.getAll');
+
+    Route::get('/{depoimento}',[App\Http\Controllers\Api\DepoimentoController::class, 'get'])
+        ->name('api.depoimento.get');
+
+    Route::post('/', [App\Http\Controllers\Api\DepoimentoController::class, 'store'])
+        ->name('api.depoimento.store');
+
+    Route::put('/{depoimento}', [App\Http\Controllers\Api\DepoimentoController::class, 'update'])
+        ->name('api.depoimento.update');
+
+    Route::delete('/{depoimento}',[App\Http\Controllers\Api\DepoimentoController::class, 'destroy'])
+        ->name('api.depoimento.destroy');
 });

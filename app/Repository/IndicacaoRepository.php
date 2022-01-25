@@ -38,6 +38,22 @@ class IndicacaoRepository extends BaseRepository
         else return $res;
     }
 
+
+    /**
+     * Encontra indicacoes por ID de recurso.
+     *
+     * @param int $idRecurso
+     * @return Indicacao
+     */
+
+    public function getAllByIdRecurso(int $idRecurso)
+    {
+        $res = Indicacao::where('id_recurso', '=', $idRecurso)
+            ->get();
+        if (!$res) throw new \Illuminate\Database\Eloquent\ModelNotFoundException;
+        else return $res;
+    }
+
     /**
      * Remove um modelo por um ID composto.
      *
