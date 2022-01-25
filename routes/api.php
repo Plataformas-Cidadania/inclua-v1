@@ -138,6 +138,9 @@ Route::group([
     Route::get('/{id_categoria}/{id_recurso}',[App\Http\Controllers\Api\CategorizacaoController::class, 'get'])
         ->name('api.categorizacao.get');
 
+    Route::get('/{id_recurso}',[App\Http\Controllers\Api\CategorizacaoController::class, 'getAllByIdRecurso'])
+        ->name('api.categorizacao.getAllByIdRecurso');
+
     Route::post('/', [App\Http\Controllers\Api\CategorizacaoController::class, 'store'])
         ->name('api.categorizacao.store');
 
@@ -221,6 +224,9 @@ Route::group([
 
     Route::get('/{id_indicador}/{id_recurso}',[App\Http\Controllers\Api\IndicacaoController::class, 'get'])
         ->name('api.indicacao.get');
+
+    Route::get('/{id_recurso}',[App\Http\Controllers\Api\IndicacaoController::class, 'getAllByIdRecurso'])
+        ->name('api.indicacao.getAllByIdRecurso');
 
     Route::post('/', [App\Http\Controllers\Api\IndicacaoController::class, 'store'])
         ->name('api.indicacao.store');

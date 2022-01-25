@@ -94,6 +94,29 @@ class IndicacaoController extends Controller
         }
     }
 
+    /**
+     * Obter especificado pelo id do recurso
+     *
+     * @param int $idRecurso
+     *
+     * @return JsonResponse
+     */
+    public function getAllByIdRecurso(int $idRecurso): JsonResponse
+    {
+        try {
+
+            $res = $this->repo->getAllByIdRecurso($idRecurso);
+            return $this->successResponse(
+                'Retornado com sucesso',
+                $res
+            );
+        }catch (Exception $exception) {
+            if ($exception instanceof ModelNotFoundException)
+                return $this->errorResponse('Not found');
+            return $this->errorResponse($exception);
+        }
+    }
+
 
     /**
      * Remover da base de dados especificado pelo id
