@@ -97,7 +97,7 @@
                                     {{--<a href="cms/items/<% recurso.id %>"><i class="fa fa-sitemap fa-2x" title="Itens"></i></a>&nbsp;&nbsp;--}}
                                     <a href="cms/recurso/<% recurso.id_recurso %>"><i class="fa fa-edit fa-2x" title="Editar"></i></a>&nbsp;&nbsp;{{--<% mensagemStatus %><% idStatus %>--}}
                                     {{--<a  ng-class="<% recurso.status %> == 1 ? 'color-success' : 'color-success-inactive'"  style="cursor: pointer;"><i class="fa fa-check-circle fa-2x" aria-hidden="true" ng-click="status(recurso.id);"></i></a>&nbsp;&nbsp;--}}
-                                    <a><i data-toggle="modal" data-target="#modalIndicacao" class="fa fa-tachometer fa-2x" ng-click="indicacao(recurso.id_recurso, recurso.nome)"></i></a>
+                                    <a><i data-toggle="modal" data-target="#modalIndicacao" class="fa fa-tachometer fa-2x" ng-click="modalIndicacao(recurso.id_recurso, recurso.nome)"></i></a>
                                     <a><i data-toggle="modal" data-target="#modalExcluir" class="fa fa-remove fa-2x" ng-click="perguntaExcluir(recurso.id_recurso, recurso.nome, recurso.imagem)"></i></a>
                                 </div>
                             </td>
@@ -202,12 +202,33 @@
                                 <option value="" ng-disabled="!!indicacao.id_indicador">Selecione</option>
                             </select>
                             <br>
-                            <button class="btn btn-info" id="btnIndicacao">Adicionar</button>
+                            <button type="button" class="btn btn-info" id="btnIndicacao" ng-click="inserirIndicacao()">Adicionar</button>
                         </form>
                         <br>
-                        {{--<div class="row" ng-repeat="indicador in indicadores">
+                        <div ng-show="processandoListagemIndicacoes"><i class="fa fa-spinner fa-spin"></i> Processando...</div>
+                        <h2 class="tabela_vazia" ng-show="!processandoListagemIndicacoes && totalIndicaoes==0">Nenhum registro encontrado!</h2>
+                        <div style="height: 300px;  overflow-y: auto;">
+                            <table ng-show="totalIndicacoes>0" class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Recurso</th>
+                                    <th>Indicador</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat="indicacao in indicacoes">
+                                    <td><% indicacao.recurso.nome %></td>
+                                    <td><% indicacao.indicador.titulo %></td>
+                                    <td class="text-right">
+                                        <div>
+                                            <a><i data-toggle="modal" data-target="#modalExcluirIndicacao" class="fa fa-remove fa-2x" ng-click="perguntaExcluirIndicacao(indicacao.id_indicador, indicacao.id_recurso, indicacao.indicador.titulo)"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
 
-                        </div>--}}
+                            </table>
+                        </div>
                         <div ng-show="processando"><i class="fa fa-spinner fa-spin"></i> Processando...</div>
                         <div class="mensagem-ok text-center text-danger"><% mensagemIndicacao %></div>
                     </div>
@@ -218,5 +239,37 @@
             </div>
         </div>
         <!-- Fim Modal Indicador-->
+        <!-- Modal Excluir Indicador-->
+        <div class="modal fade" id="modalExcluirIndicacao" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Excluir Indicador</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            {{--<div class="col-md-3">
+                                <img  ng-src="imagens/recursos/xs-<% imagemExcluir %>" width="100">
+                            </div>--}}
+                            <div class="col-md-9">
+                                <p><% tituloExcluirIndicacao %></p>
+                            </div>
+                        </div>
+                        <div ng-show="processandoExcluir"><i class="fa fa-spinner fa-spin"></i> Processando...</div>
+                        <div class="mensagem-ok text-center text-danger"><% mensagemExcluidoIndicacao %></div>
+                    </div>
+                    <div id="opcoesExcluirIndicacao" class="modal-footer" ng-show="!excluidoIndicacao">
+                        <button id="btnExcluirIndicacao" type="button" class="btn btn-default" ng-click="excluirIndicacao(idExcluirIndicacaoIndicador, idExcluirIndicacaoRecurso);">Sim</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Não</button>
+                    </div>
+                    <div id="fecharExcluirIndicacao" class="modal-footer" ng-show="excluidoIndicacao">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Fim Modal Excluir-->
     </div>
 @endsection
