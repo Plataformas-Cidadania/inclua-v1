@@ -244,9 +244,12 @@ cmsApp.controller('recursoCtrl', ['$scope', '$http', 'Upload', '$timeout', funct
     $scope.indicacao = {};
     $scope.dimensao = null;
     $scope.indicador = null;
+    $scope.indicacoes = [];
+    $scope.totalIndicacoes = 0;
     $scope.processandoDimensoes = false;
     $scope.processandoIndicadores = false;
     $scope.processandoInserirIndicacao = false;
+    $scope.processandoListagemIndicacoes = false;
     $scope.listarDimensoes = function(){
         $scope.processandoDimensoes = true;
         $http({
@@ -283,18 +286,20 @@ cmsApp.controller('recursoCtrl', ['$scope', '$http', 'Upload', '$timeout', funct
         });
     }
 
-    $scope.indicacao = function (id, titulo){
+    $scope.modalIndicacao = function (id, titulo){
         $scope.indicacao.id_recurso = id;
         $scope.tituloIndicacao = titulo;
         $scope.listarDimensoes();
+        $scope.listarIndicacoes();
     }
 
     $scope.inserirIndicacao = function(){
+        console.log($scope.indicacao);
         $scope.processandoInserirIndicacao= true;
         $scope.mensagemInserirIndicacao = "";
-        $scope.indicacao.id_indicacao = $scope.indicador.id_indicador;
+        $scope.indicacao.id_indicador = $scope.indicador.id_indicador;
         $http.post("api/indicacao", $scope.indicacao).success(function (data){
-            listarRecursos();
+            $scope.listarIndicacoes();
             $scope.mensagemInserirIndicacao =  "Gravado com sucesso!";
             $scope.processandoInserirIndicacao = false;
             $scope.indicacao = {};
@@ -304,7 +309,61 @@ cmsApp.controller('recursoCtrl', ['$scope', '$http', 'Upload', '$timeout', funct
         });
     }
 
+    $scope.listarIndicacoes = function(){
+        $scope.processandoListagemIndicacoes = true;
+        $http({
+            url: 'api/indicacao',
+            method: 'GET',
+            params: {
+
+            }
+        }).success(function(data, status, headers, config){
+            $scope.indicacoes = data.data;
+            $scope.totalIndicacoes = $scope.indicacoes.length;
+            $scope.processandoListagemIndicacoes = false;
+        }).error(function(data){
+            $scope.message = "Ocorreu um erro: "+data;
+            $scope.processandoListagemIndicacoes = false;
+        });
+    }
+
+    $scope.perguntaExcluirIndicacao = function (idIndicador, idRecurso, titulo){
+        $scope.idExcluirIndicacaoIndicador = idIndicador;
+        $scope.idExcluirIndicacaoRecurso = idRecurso;
+        $scope.tituloExcluirIndicacao = titulo;
+        $scope.excluidoIndicacao = false;
+        $scope.mensagemExcluidoIndicacao = "";
+    }
+
+    $scope.excluirIndicacao = function(idIndicador, idRecurso){
+        $scope.processandoExcluirIndicacao = true;
+        $http({
+            url: 'api/indicacao/'+idIndicador+'/'+idRecurso,
+            method: 'DELETE'
+        }).success(function(data, status, headers, config){
+            console.log(data);
+            if(data.success){
+                $scope.processandoExcluirIndicacao = false;
+                $scope.excluidoIndicacao = true;
+                $scope.mensagemExcluidoIndicacao = data.message;
+                $scope.listarIndicacoes();
+                return;
+            }
+            $scope.processandoExcluirIndicacao = false;
+            $scope.excluidoIndicacao = false;
+            $scope.mensagemExcluidoIndicacao = data.message;
+        }).error(function(data){
+            $scope.message = "Ocorreu um erro: "+data;
+            $scope.processandoExcluirIndicacao = false;
+            $scope.mensagemExcluidoIndicacao = "Erro ao tentar excluir!";
+        });
+    };
+
     ///////////////////////////////////////////////
+
+
+
+
 
 
 }]);
