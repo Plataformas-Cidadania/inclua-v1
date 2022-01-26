@@ -22,17 +22,17 @@ cmsApp.controller('linkCtrl', ['$scope', '$http', 'Upload', '$timeout', function
 
     $scope.$watch('currentPage', function(){
         if($listar){
-            listarLinks();
+            $scope.listarLinks($scope.id_recurso);
         }
     });
     $scope.$watch('itensPerPage', function(){
         if($listar){
-            listarLinks();
+            $scope.listarLinks($scope.id_recurso);
         }
     });
     $scope.$watch('dadoPesquisa', function(){
         if($listar){
-            listarLinks();
+            $scope.listarLinks($scope.id_recurso);
         }
     });
 
@@ -54,8 +54,6 @@ cmsApp.controller('linkCtrl', ['$scope', '$http', 'Upload', '$timeout', function
         }).success(function(data, status, headers, config){
             console.log(data.data);
             $scope.links = data.data;
-            let numeroMaximo = Math.max.apply(Math, $scope.links.map(function(item) { return item.numero; }));
-            $scope.link.numero = numeroMaximo + 1;
             $scope.lastPage = data.last_page;
             $scope.totalItens = data.data.length;
             //$scope.totalItens = data.total;
@@ -79,7 +77,7 @@ cmsApp.controller('linkCtrl', ['$scope', '$http', 'Upload', '$timeout', function
             $scope.sentidoOrdem = "asc";
         }
 
-        listarLinks();
+        $scope.listarLinks($scope.id_recurso);
     };
 
     $scope.validar = function(){
@@ -95,11 +93,12 @@ cmsApp.controller('linkCtrl', ['$scope', '$http', 'Upload', '$timeout', function
     $scope.inserir = function (file, arquivo){
 
         $scope.mensagemInserir = "";
+        $scope.link.id_recurso = $scope.id_recurso;
 
         if(file==null && arquivo==null){
             $scope.processandoInserir = true;
             $http.post("api/link", $scope.link).success(function (data){
-                 listarLinks();
+                $scope.listarLinks($scope.id_recurso);
                  //delete $scope.link;//limpa o form
                 $scope.link = {};//limpa o form
                 $scope.mensagemInserir =  "Gravado com sucesso!";
@@ -124,7 +123,7 @@ cmsApp.controller('linkCtrl', ['$scope', '$http', 'Upload', '$timeout', function
                 delete $scope.link;//limpa o form
                 $scope.picFile = null;//limpa o file
                 $scope.fileArquivo = null;//limpa o file
-                listarLinks();
+                $scope.listarLinks($scope.id_recurso);
                 $scope.mensagemInserir =  "Gravado com sucesso!";
             }, function (response) {
                 console.log(response.data);
@@ -174,7 +173,7 @@ cmsApp.controller('linkCtrl', ['$scope', '$http', 'Upload', '$timeout', function
                 $scope.processandoExcluir = false;
                 $scope.excluido = true;
                 $scope.mensagemExcluido = data.message;
-                listarLinks();
+                $scope.listarLinks($scope.id_recurso);
                 return;
             }
             $scope.processandoExcluir = false;
