@@ -41,7 +41,7 @@
                             <td><% getCategoria(categorizacao.id_categoria) %></td>
                             <td class="text-right">
                                 <div>
-                                    <a><i data-toggle="modal" data-target="#modalExcluirCategorizacao" class="fa fa-remove fa-2x" ng-click="perguntaExcluirCategorizacao(categorizacao.id_categoria, categorizacao.id_recurso, categorizacao.categoria.titulo)"></i></a>
+                                    <a><i data-toggle="modal" data-target="#modalExcluirCategorizacao" class="fa fa-remove fa-2x" ng-click="perguntaExcluirCategorizacao(categorizacao.id_categoria, categorizacao.id_recurso, getCategoria(categorizacao.id_categoria))"></i></a>
                                 </div>
                             </td>
                         </tr>
