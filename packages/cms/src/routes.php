@@ -215,6 +215,10 @@ Route::group(['middleware' => 'cms'], function () {
         Route::get('/cms/links/{id_recurso}', 'Cms\Controllers\LinkController@index');
         Route::get('/cms/link/{id}', 'Cms\Controllers\LinkController@detalhar');
 
+        //PerguntaRelate
+        Route::get('/cms/perguntas-relate/{id_recurso}', 'Cms\Controllers\PerguntaRelateController@index');
+        Route::get('/cms/pergunta-relate/{id}', 'Cms\Controllers\PerguntaRelateController@detalhar');
+
         ////////////////////////////////////////////////////////////////////////////////////
 
 
