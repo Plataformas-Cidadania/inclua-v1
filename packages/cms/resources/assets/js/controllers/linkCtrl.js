@@ -2,15 +2,11 @@ cmsApp.controller('linkCtrl', ['$scope', '$http', 'Upload', '$timeout', function
 
 
     $scope.link = {
-        numero: 2,
-        titulo: 'aaaa',
-        descricao: 'aaaaaaaaaaa',
-        vl_baixo: 1,
-        vl_alto: 2,
+
     };
+    $scope.id_recurso = 0;
     $scope.links = [];
     $scope.dimensoes = [];
-    $scope.dimensao = null;
     $scope.currentPage = 1;
     $scope.lastPage = 0;
     $scope.totalItens = 0;
