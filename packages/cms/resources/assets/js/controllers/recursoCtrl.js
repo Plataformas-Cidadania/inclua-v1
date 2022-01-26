@@ -390,6 +390,20 @@ cmsApp.controller('recursoCtrl', ['$scope', '$http', 'Upload', '$timeout', funct
         });
     }
 
+    $scope.getCategoria = function(id_categoria){
+        let categoria = $scope.categorias.find(function(item){
+            return item.id_categoria === id_categoria;
+        });
+        return categoria.nome;
+    }
+
+    $scope.getRecurso = function(id_recurso){
+        let recurso = $scope.recursos.find(function(item){
+            return item.id_recurso === id_recurso;
+        });
+        return recurso.nome;
+    }
+
     $scope.modalCategorizacao = function (id, titulo){
         $scope.categorizacao.id_recurso = id;
         $scope.tituloCategorizacao = titulo;

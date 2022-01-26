@@ -37,8 +37,8 @@
                         </thead>
                         <tbody>
                         <tr ng-repeat="categorizacao in categorizacoes">
-                            <td><% categorizacao.recurso.nome %></td>
-                            <td><% categorizacao.categoria.titulo %></td>
+                            <td><% getRecurso(categorizacao.id_recurso) %></td>
+                            <td><% getCategoria(categorizacao.id_categoria) %></td>
                             <td class="text-right">
                                 <div>
                                     <a><i data-toggle="modal" data-target="#modalExcluirCategorizacao" class="fa fa-remove fa-2x" ng-click="perguntaExcluirCategorizacao(categorizacao.id_categoria, categorizacao.id_recurso, categorizacao.categoria.titulo)"></i></a>
