@@ -9,20 +9,6 @@
             </div>
             <div class="modal-body">
                 <form action="frmCategorizacao">
-                    <label for="dimensao">Dimensão</label>
-                    <select
-                        name="id_dimensao"
-                        class="form-control width-grande"
-                        ng-model="dimensao"
-                        ng-init="dimensao = null"
-                        ng-required="true"
-                        ng-options="option.titulo for option in dimensoes track by option.id_dimensao"
-                        placeholder="Selecione"
-                        ng-change="listarCategorias(dimensao.id_dimensao)"
-                    >
-                        <option value="" ng-disabled="!!categorizacao.id_dimensao">Selecione</option>
-                    </select>
-                    <br>
                     <label for="categoria">Categoria</label>
                     <select
                         name="id_categoria"

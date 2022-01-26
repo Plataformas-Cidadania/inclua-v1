@@ -361,6 +361,110 @@ cmsApp.controller('recursoCtrl', ['$scope', '$http', 'Upload', '$timeout', funct
 
     ///////////////////////////////////////////////
 
+    //INDICAÇÃO////////////////////////////////////
+    $scope.categoriazacao = {};
+    $scope.dimensao = null;
+    $scope.categoria = null;
+    $scope.categoriazacoes = [];
+    $scope.totalCategoriazacoes = 0;
+    $scope.processandoDimensoes = false;
+    $scope.processandoCategorias = false;
+    $scope.processandoInserirCategoriazacao = false;
+    $scope.processandoListagemCategoriazacoes = false;
+
+    $scope.listarCategorias = function(id_dimensao){
+        $scope.processandoCategorias = true;
+        $http({
+            url: 'api/categorias',
+            method: 'GET',
+            params: {
+
+            }
+        }).success(function(data, status, headers, config){
+            //console.log(data.data);
+            $scope.categorias = data.data;
+            $scope.processandoCategorias = false;
+        }).error(function(data){
+            $scope.message = "Ocorreu um erro: "+data;
+            $scope.processandoCategorias = false;
+        });
+    }
+
+    $scope.modalCategoriazacao = function (id, titulo){
+        $scope.categoriazacao.id_recurso = id;
+        $scope.tituloCategoriazacao = titulo;
+        $scope.listarCategorias();
+        $scope.listarCategoriazacoes();
+    }
+
+    $scope.inserirCategoriazacao = function(){
+        console.log($scope.categoriazacao);
+        $scope.processandoInserirCategoriazacao= true;
+        $scope.mensagemInserirCategoriazacao = "";
+        $scope.categoriazacao.id_categoria = $scope.categoria.id_categoria;
+        $http.post("api/categoriazacao", $scope.categoriazacao).success(function (data){
+            $scope.listarCategoriazacoes();
+            $scope.mensagemInserirCategoriazacao =  "Gravado com sucesso!";
+            $scope.processandoInserirCategoriazacao = false;
+            $scope.categoriazacao = {};
+        }).error(function(data){
+            $scope.mensagemInserirCategoriazacao = "Ocorreu um erro!";
+            $scope.processandoInserirCategoriazacao = false;
+        });
+    }
+
+    $scope.listarCategoriazacoes = function(){
+        $scope.processandoListagemCategoriazacoes = true;
+        $http({
+            url: 'api/categoriazacao',
+            method: 'GET',
+            params: {
+
+            }
+        }).success(function(data, status, headers, config){
+            $scope.categoriazacoes = data.data;
+            $scope.totalCategoriazacoes = $scope.categoriazacoes.length;
+            $scope.processandoListagemCategoriazacoes = false;
+        }).error(function(data){
+            $scope.message = "Ocorreu um erro: "+data;
+            $scope.processandoListagemCategoriazacoes = false;
+        });
+    }
+
+    $scope.perguntaExcluirCategoriazacao = function (idCategoria, idRecurso, titulo){
+        $scope.idExcluirCategoriazacaoCategoria = idCategoria;
+        $scope.idExcluirCategoriazacaoRecurso = idRecurso;
+        $scope.tituloExcluirCategoriazacao = titulo;
+        $scope.excluidoCategoriazacao = false;
+        $scope.mensagemExcluidoCategoriazacao = "";
+    }
+
+    $scope.excluirCategoriazacao = function(idCategoria, idRecurso){
+        $scope.processandoExcluirCategoriazacao = true;
+        $http({
+            url: 'api/categoriazacao/'+idCategoria+'/'+idRecurso,
+            method: 'DELETE'
+        }).success(function(data, status, headers, config){
+            console.log(data);
+            if(data.success){
+                $scope.processandoExcluirCategoriazacao = false;
+                $scope.excluidoCategoriazacao = true;
+                $scope.mensagemExcluidoCategoriazacao = data.message;
+                $scope.listarCategoriazacoes();
+                return;
+            }
+            $scope.processandoExcluirCategoriazacao = false;
+            $scope.excluidoCategoriazacao = false;
+            $scope.mensagemExcluidoCategoriazacao = data.message;
+        }).error(function(data){
+            $scope.message = "Ocorreu um erro: "+data;
+            $scope.processandoExcluirCategoriazacao = false;
+            $scope.mensagemExcluidoCategoriazacao = "Erro ao tentar excluir!";
+        });
+    };
+
+    ///////////////////////////////////////////////
+
 
 
 
