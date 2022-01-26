@@ -96,6 +96,7 @@
                                 <div>
                                     {{--<a href="cms/items/<% recurso.id %>"><i class="fa fa-sitemap fa-2x" title="Itens"></i></a>&nbsp;&nbsp;--}}
                                     <a href="cms/recurso/<% recurso.id_recurso %>"><i class="fa fa-edit fa-2x" title="Editar"></i></a>&nbsp;&nbsp;{{--<% mensagemStatus %><% idStatus %>--}}
+                                    <a href="cms/links/<% recurso.id_recurso %>"><i class="fa fa-link fa-2x" title="Links"></i></a>&nbsp;&nbsp;{{--<% mensagemStatus %><% idStatus %>--}}
                                     {{--<a  ng-class="<% recurso.status %> == 1 ? 'color-success' : 'color-success-inactive'"  style="cursor: pointer;"><i class="fa fa-check-circle fa-2x" aria-hidden="true" ng-click="status(recurso.id);"></i></a>&nbsp;&nbsp;--}}
                                     <a><i data-toggle="modal" data-target="#modalIndicacao" class="fa fa-tachometer fa-2x" style="cursor:pointer;" ng-click="modalIndicacao(recurso.id_recurso, recurso.nome)"></i></a>
                                     <a><i data-toggle="modal" data-target="#modalCategorizacao" class="fa fa-cubes fa-2x" style="cursor:pointer;"  ng-click="modalCategorizacao(recurso.id_recurso, recurso.nome)"></i></a>
