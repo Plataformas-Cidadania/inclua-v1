@@ -45,5 +45,7 @@
     "/assets-cms/js/controllers/tipoRecursoCtrl.js": "/assets-cms/js/controllers/tipoRecursoCtrl.js",
     "/assets-cms/js/controllers/alterarTipoRecursoCtrl.js": "/assets-cms/js/controllers/alterarTipoRecursoCtrl.js",
     "/assets-cms/js/controllers/recursoCtrl.js": "/assets-cms/js/controllers/recursoCtrl.js",
-    "/assets-cms/js/controllers/alterarRecursoCtrl.js": "/assets-cms/js/controllers/alterarRecursoCtrl.js"
+    "/assets-cms/js/controllers/alterarRecursoCtrl.js": "/assets-cms/js/controllers/alterarRecursoCtrl.js",
+    "/assets-cms/js/controllers/linkCtrl.js": "/assets-cms/js/controllers/linkCtrl.js",
+    "/assets-cms/js/controllers/alterarLinkCtrl.js": "/assets-cms/js/controllers/alterarLinkCtrl.js"
 }

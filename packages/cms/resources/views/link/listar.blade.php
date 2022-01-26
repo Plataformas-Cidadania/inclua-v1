@@ -7,7 +7,7 @@
         $('[data-toggle="popover"]').popover()
     })
 </script>
-    <div ng-controller="linkCtrl">
+    <div ng-controller="linkCtrl" ng-init="id_recurso={{$id_recurso}}; listarLinks({{$id_recurso}})">
         <div class="box-padrao">
             <h1><i class="fa fa-link" aria-hidden="true"></i>&nbsp;Links</h1>
             <button class="btn btn-primary" ng-click="mostrarForm=!mostrarForm" ng-show="!mostrarForm">Novo Link</button>
@@ -84,14 +84,16 @@
                         <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Nome</th>
+                            <th>Idioma</th>
+                            <th>Uri</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr ng-repeat="link in links">
                             <td><% link.id_link %></td>
                            {{-- <td><img ng-show="link.imagem" ng-src="imagens/links/xs-<% link.imagem %>" width="60"></td>--}}
-                            <td><% link.nome %></td>
+                            <td><% link.idioma %></td>
+                            <td><% link.uri %></td>
                             <td class="text-right">
                                 <div>
                                     {{--<a href="cms/items/<% link.id %>"><i class="fa fa-sitemap fa-2x" title="Itens"></i></a>&nbsp;&nbsp;--}}
