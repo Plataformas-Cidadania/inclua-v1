@@ -16,7 +16,7 @@
                         ng-model="categoria"
                         ng-init="categoria = null"
                         ng-required="true"
-                        ng-options="option.titulo for option in categorias track by option.id_categoria"
+                        ng-options="option.nome for option in categorias track by option.id_categoria"
                         placeholder="Selecione"
                     >
                         <option value="" ng-disabled="!!categorizacao.id_categoria">Selecione</option>
