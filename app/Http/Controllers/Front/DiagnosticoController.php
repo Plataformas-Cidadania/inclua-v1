@@ -37,6 +37,21 @@ class DiagnosticoController extends Controller{
 
     }
 
+    public function diagnostico($tipo = ""){
+
+        $rota = Route::getCurrentRoute()->uri();
+
+        $tipo = $tipo === "completo" ? 1 : ($tipo === "parcial" ? 2 : "");
+
+        $modulo = \App\Models\Modulo::first();
+
+        return view('diagnostico.diagnostico-react', [
+            'page' => $modulo,
+            'tipo' => $tipo
+        ]);
+
+    }
+
     public function testeDimensoes(){
         /*$rows = DB::table('dimensao')->orderBy('id_dimensao')->get();
         $dimensoes = [];

@@ -60,7 +60,7 @@ const Header = () => {
                 </div>
 
                 <div className="col text-center cursor" >
-                    <a href="diagnostico">
+                    <a href="diagnostico/completo">
                         <div className="btn-icon btn-icon-hover" style={{top: 0}}>
                             <img src="img/icon-completo.png" alt="Completo" title="Completo" width="75%"/>
                         </div>
@@ -68,7 +68,7 @@ const Header = () => {
                     </a>
                 </div>
                 <div className="col text-center cursor" >
-                    <a href="diagnostico">
+                    <a href="diagnostico/parcial">
                         <div className="btn-icon btn-icon-hover" style={{top: 0}}>
                             <img src="img/icon-parcial.png" alt="Parcial" title="Parcial" width="75%"/>
                         </div>

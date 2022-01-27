@@ -1,7 +1,16 @@
+
 const Diagnostico = () => {
 
-    const { useContext } = React;
+    const { useContext, useEffect } = React;
     const context = useContext(DiagnosticoContext);
+
+    useEffect(() => {
+        if(tipo && context.indicador){
+            console.log('setTipo', tipo);
+            //console.log('dimensoes', context.dimensoes);
+            context.setTipo(tipo);
+        }
+    }, [context.indicador]);
 
     return (
         <div>
@@ -23,7 +32,7 @@ const Diagnostico = () => {
 
 ReactDOM.render(
     <DiagnosticoProvider>
-        <Diagnostico />
+        <Diagnostico tipo={tipo} />
     </DiagnosticoProvider>,
     document.getElementById('diagnostico')
 );
