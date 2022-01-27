@@ -45,13 +45,13 @@
                     <table ng-show="totalIndicacoes>0" class="table table-striped">
                         <thead>
                         <tr>
-                            <th>Recurso</th>
+                            {{--<th>Recurso</th>--}}
                             <th>Indicador</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr ng-repeat="indicacao in indicacoes">
-                            <td><% indicacao.recurso.nome %></td>
+                            {{--<td><% indicacao.recurso.nome %></td>--}}
                             <td><% indicacao.indicador.titulo %></td>
                             <td class="text-right">
                                 <div>

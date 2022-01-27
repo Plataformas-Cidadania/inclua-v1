@@ -31,13 +31,13 @@
                     <table ng-show="totalCategorizacoes>0" class="table table-striped">
                         <thead>
                         <tr>
-                            <th>Recurso</th>
+                            {{--<th>Recurso</th>--}}
                             <th>Categoria</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr ng-repeat="categorizacao in categorizacoes">
-                            <td><% getRecurso(categorizacao.id_recurso) %></td>
+                            {{--<td><% getRecurso(categorizacao.id_recurso) %></td>--}}
                             <td><% getCategoria(categorizacao.id_categoria) %></td>
                             <td class="text-right">
                                 <div>
