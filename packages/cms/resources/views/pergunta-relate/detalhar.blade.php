@@ -33,7 +33,7 @@
                 {{--<br><br>--}}
 
                 <br><br>
-                @include('cms::pergunta._form')
+                @include('cms::pergunta-relate._form')
                 <input type="hidden" name="id" ng-model="id" ng-init="id='{{$pergunta->id_pergunta}}'"/>
                 <div class="row">
                     <div class="col-md-1 col-lg-1 col-xs-3">

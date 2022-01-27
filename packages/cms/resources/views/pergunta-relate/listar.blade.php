@@ -9,7 +9,7 @@
 </script>
     <div ng-controller="perguntaRelateCtrl">
         <div class="box-padrao">
-            <h1><i class="fa fa-pergunta" aria-hidden="true"></i>&nbsp;Perguntas</h1>
+            <h1><i class="fa fa-pergunta" aria-hidden="true"></i>&nbsp;Perguntas (Relate)</h1>
             <button class="btn btn-primary" ng-click="mostrarForm=!mostrarForm" ng-show="!mostrarForm">Nova Pergunta</button>
             <button class="btn btn-warning" ng-click="mostrarForm=!mostrarForm" ng-show="mostrarForm">Cancelar</button>
             <br><br>
@@ -40,7 +40,7 @@
 
 
                 {{--<br><br>--}}
-                @include('cms::pergunta._form')
+                @include('cms::pergunta-relate._form')
                 <div class="row">
                     <div class="col-md-1 col-lg-1 col-xs-3">
                         <br>
