@@ -159,4 +159,8 @@ mix.scripts('packages/cms/resources/assets/js/controllers/alterarRecursoCtrl.js'
 mix.scripts('packages/cms/resources/assets/js/controllers/linkCtrl.js', 'public/assets-cms/js/controllers/linkCtrl.js');
 mix.scripts('packages/cms/resources/assets/js/controllers/alterarLinkCtrl.js', 'public/assets-cms/js/controllers/alterarLinkCtrl.js');
 
+//Perguntas Relate
+mix.scripts('packages/cms/resources/assets/js/controllers/perguntaRelateCtrl.js', 'public/assets-cms/js/controllers/perguntaRelateCtrl.js');
+mix.scripts('packages/cms/resources/assets/js/controllers/alterarPertuntaRelateCtrl.js', 'public/assets-cms/js/controllers/alterarPertuntaRelateCtrl.js');
+
 //FIM CMS///////////////////////////////////////////////////////////////////

@@ -167,7 +167,7 @@ cmsApp.controller('perguntaRelateCtrl', ['$scope', '$http', 'Upload', '$timeout'
     $scope.excluir = function(id){
         $scope.processandoExcluir = true;
         $http({
-            url: 'api/pergunta/'+id,
+            url: 'api/pergunta_relate/'+id,
             method: 'DELETE'
         }).success(function(data, status, headers, config){
             console.log(data);
