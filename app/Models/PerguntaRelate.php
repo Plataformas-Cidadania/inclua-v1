@@ -13,14 +13,14 @@ use Illuminate\Database\Eloquent\Model;
  * Class Perguntum
  *
  * @property int $id_pergunta
- * 
+ *
  * @property string|null $descricao
  *
  * @property Collection|Resposta[] $respostas
  *
  * @package App\Models
  */
-class Pergunta extends Model
+class PerguntaRelate extends Model
 {
 	protected $table = 'avaliacao.pergunta_relate';
 	protected $primaryKey = 'id_pergunta';
