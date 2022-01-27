@@ -23,6 +23,7 @@ class RecursoController extends Controller
         'status'=> 'int',
         'id_tipo_recurso' => 'int',
         'id_formato' => 'int',
+        'id_user' => 'int|nullable'
     ];
     public function __construct(RecursoRepository $repo)
     {
@@ -44,6 +45,27 @@ class RecursoController extends Controller
             'Recurso retornados com sucesso',
             $res
         );
+    }
+
+    /**
+     * Obter uma lista de recurso por id do usuario
+     *
+     * @param int $id_usuario
+     *
+     */
+    public function getAllRecursoPorIdUsuario($id_usuario)
+    {
+        try {
+            $res = $this->repo->getAllRecursoPorIdUsuario($id_usuario);
+            return $this->successResponse(
+                'Retornado com sucesso',
+                $res
+            );
+        }catch (Exception $exception) {
+            if ($exception instanceof ModelNotFoundException)
+                return $this->errorResponse('Not found');
+            return $this->errorResponse('Erro inesperado.'.$exception);
+        }
     }
 
     /**
@@ -355,6 +377,7 @@ class RecursoController extends Controller
             'status'=> $res->status,
             'id_tipo_recurso' => $res->id_tipo_recurso,
             'id_formato' => $res->id_formato,
+            'id_user' => $res->id_user
         ];
     }
 }

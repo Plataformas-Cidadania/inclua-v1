@@ -40,7 +40,8 @@ class Recurso extends Model
 		'esfera' => 'string',
 		'status'=> 'int',
         'id_tipo_recurso' => 'int',
-        'id_formato' => 'int'
+        'id_formato' => 'int',
+        'id_user' => 'int'
 	];
 
 	protected $fillable = [
@@ -49,7 +50,8 @@ class Recurso extends Model
 		'esfera',
 		'status',
         'id_tipo_recurso',
-        'id_formato'
+        'id_formato',
+        'id_user'
 	];
     protected $primaryKey = 'id_recurso';
 //	protected $with = ['tipo_recurso', 'formato_recurso', 'autoria', 'links'];
@@ -64,6 +66,11 @@ class Recurso extends Model
 	{
 		return $this->belongsTo(FormatoRecurso::class, 'id_formato');
 	}
+
+    public function usuario()
+    {
+        return $this->belongsTo(User::class, 'id');
+    }
 
 	public function links()
 	{
