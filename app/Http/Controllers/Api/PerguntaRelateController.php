@@ -170,11 +170,11 @@ class PerguntaRelateController extends Controller
     /**
      * Transformar em um array
      *
-     * @param Pergunta $res
+     * @param PerguntaRelate $res
      *
      * @return array
      */
-    protected function transform(Pergunta $res): array
+    protected function transform(PerguntaRelate $res): array
     {
           return [
             'id_pergunta' => $res->id_pergunta,

@@ -167,11 +167,11 @@ class DepoimentoController extends Controller
     /**
      * Transformar em um array
      *
-     * @param Resposta $model
+     * @param Depoimento $model
      *
      * @return array
      */
-    protected function transform(Resposta $model): array
+    protected function transform(Depoimento $model): array
     {
         return [
             'id_resposta' => $model->id_resposta,

@@ -167,11 +167,11 @@ class RespostaRelateController extends Controller
     /**
      * Transformar em um array
      *
-     * @param Resposta $model
+     * @param RespostaRelate $model
      *
      * @return array
      */
-    protected function transform(Resposta $model): array
+    protected function transform(RespostaRelate $model): array
     {
         return [
             'id_resposta' => $model->id_resposta,
