@@ -1,4 +1,4 @@
-cmsApp.controller('alterarPerguntaCtrl', ['$scope', '$http', 'Upload', '$timeout', function($scope, $http, Upload, $timeout){
+cmsApp.controller('alterarPerguntaRelateCtrl', ['$scope', '$http', 'Upload', '$timeout', function($scope, $http, Upload, $timeout){
 
     $scope.processandoSalvar = false;
     $scope.processandoDetalhar = false;
