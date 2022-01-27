@@ -8,7 +8,8 @@ const DiagnosticoProvider = ({children}) => {
     const [tipo, setTipo] = useState(null);
     const [dimensoes, setDimensoes] = useState([]);
     const [dimensao, setDimensao] = useState({indicadores:[]});
-    const [indicador, setIndicador] = useState(1);
+    //const [indicador, setIndicador] = useState(1);
+    const [indicador, setIndicador] = useState(null);
     const [dimensoesRespondidas, setDimensoesRespondidas] = useState([]);
     const [respostas, setRespostas] = useState([]);
     const [alertFixed, setAlertFixed] = useState(0);
@@ -46,9 +47,10 @@ const DiagnosticoProvider = ({children}) => {
                 setDimensao(dimensoes[0]);//pega a primeira dimensão
                 return;
             }
-            alert("Não foi possível carregar as dimensões");
+            alert("Não foi possível carregar as dimensões.");
         } catch (error) {
-            alert("Não foi possível carregar as dimensões");
+            //alert("Não foi possível carregar as dimensões!");
+            console.log("Não foi possível carregar as dimensões!");
             console.log(error);
         }
     }

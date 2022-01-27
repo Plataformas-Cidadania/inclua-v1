@@ -56,7 +56,9 @@ Route::get('contato', 'App\Http\Controllers\Front\ContactController@email');
 Route::post('contact', 'App\Http\Controllers\Front\ContactController@send');
 
 //Route::get('diagnostico', 'App\Http\Controllers\Front\DiagnosticoController@completo');
-Route::get('diagnostico', 'App\Http\Controllers\Front\DiagnosticoController@completoReact');
+//Route::get('diagnostico', 'App\Http\Controllers\Front\DiagnosticoController@completoReact');
+Route::get('diagnostico', 'App\Http\Controllers\Front\DiagnosticoController@diagnostico');
+Route::get('diagnostico/{tipo}', 'App\Http\Controllers\Front\DiagnosticoController@diagnostico');
 Route::get('recursos', 'App\Http\Controllers\Front\RecursoController@listar');
 
 

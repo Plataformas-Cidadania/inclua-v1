@@ -20,7 +20,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @package App\Models
  */
-class RespostaReDepoimento extends Model
+class Depoimento extends Model
 {
     use Uuids;
 	protected $table = 'avaliacao.depoimento';

@@ -133,7 +133,7 @@
 
 @endif
 
-@if($rota=="diagnostico")
+@if($rota=="diagnostico" || $rota=="diagnostico/{tipo}")
     <script src="js/components/diagnostico/store.js"></script>
     <script src="js/components/diagnostico/pergunta/options.js"></script>
     <script src="js/components/diagnostico/pergunta/nota.js"></script>

@@ -1,7 +1,7 @@
 //import React from 'react';
 const Header = () => {
   const context = React.useContext(DiagnosticoContext);
-  console.log('setTipo:', context.tipo);
+  console.log('tipo:', context.tipo);
   return /*#__PURE__*/React.createElement("div", {
     className: "bg-lgt"
   }, /*#__PURE__*/React.createElement("div", {
@@ -27,7 +27,7 @@ const Header = () => {
     }
   }, "Completo"), /*#__PURE__*/React.createElement("span", {
     style: {
-      display: context.tipo !== 1 ? 'none' : ''
+      display: parseInt(context.tipo) !== 1 ? 'none' : ''
     }
   }, /*#__PURE__*/React.createElement("i", {
     className: "far fa-check-circle fa-3x float-end ",
@@ -36,7 +36,7 @@ const Header = () => {
     }
   })), /*#__PURE__*/React.createElement("span", {
     style: {
-      display: context.tipo === 1 ? 'none' : ''
+      display: parseInt(context.tipo) === 1 ? 'none' : ''
     }
   }, /*#__PURE__*/React.createElement("i", {
     className: "fas fa-angle-right fa-3x float-end ",
@@ -56,7 +56,7 @@ const Header = () => {
     }
   }, "Parcial"), /*#__PURE__*/React.createElement("span", {
     style: {
-      display: context.tipo !== 2 ? 'none' : ''
+      display: parseInt(context.tipo) !== 2 ? 'none' : ''
     }
   }, /*#__PURE__*/React.createElement("i", {
     className: "far fa-check-circle fa-3x float-end ",
@@ -65,7 +65,7 @@ const Header = () => {
     }
   })), /*#__PURE__*/React.createElement("span", {
     style: {
-      display: context.tipo === 2 ? 'none' : ''
+      display: parseInt(context.tipo) === 2 ? 'none' : ''
     }
   }, /*#__PURE__*/React.createElement("i", {
     className: "fas fa-angle-right fa-3x float-end ",

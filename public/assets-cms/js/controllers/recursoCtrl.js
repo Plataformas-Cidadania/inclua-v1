@@ -312,7 +312,7 @@ cmsApp.controller('recursoCtrl', ['$scope', '$http', 'Upload', '$timeout', funct
     $scope.listarIndicacoes = function(){
         $scope.processandoListagemIndicacoes = true;
         $http({
-            url: 'api/indicacao',
+            url: 'api/indicacao/'+$scope.indicacao.id_recurso,
             method: 'GET',
             params: {
 
@@ -372,7 +372,7 @@ cmsApp.controller('recursoCtrl', ['$scope', '$http', 'Upload', '$timeout', funct
     $scope.processandoInserirCategorizacao = false;
     $scope.processandoListagemCategorizacoes = false;
 
-    $scope.listarCategorias = function(id_dimensao){
+    $scope.listarCategorias = function(){
         $scope.processandoCategorias = true;
         $http({
             url: 'api/categoria',
@@ -430,7 +430,7 @@ cmsApp.controller('recursoCtrl', ['$scope', '$http', 'Upload', '$timeout', funct
     $scope.listarCategorizacoes = function(){
         $scope.processandoListagemCategorizacoes = true;
         $http({
-            url: 'api/categorizacao',
+            url: 'api/categorizacao/'+$scope.categorizacao.id_recurso,
             method: 'GET',
             params: {
 

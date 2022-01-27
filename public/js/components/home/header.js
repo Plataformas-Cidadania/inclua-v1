@@ -78,7 +78,7 @@ const Header = () => {
   }, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null)), /*#__PURE__*/React.createElement("div", {
     className: "col text-center cursor"
   }, /*#__PURE__*/React.createElement("a", {
-    href: "diagnostico"
+    href: "diagnostico/completo"
   }, /*#__PURE__*/React.createElement("div", {
     className: "btn-icon btn-icon-hover",
     style: {
@@ -94,7 +94,7 @@ const Header = () => {
   }, "Completo"))), /*#__PURE__*/React.createElement("div", {
     className: "col text-center cursor"
   }, /*#__PURE__*/React.createElement("a", {
-    href: "diagnostico"
+    href: "diagnostico/parcial"
   }, /*#__PURE__*/React.createElement("div", {
     className: "btn-icon btn-icon-hover",
     style: {
