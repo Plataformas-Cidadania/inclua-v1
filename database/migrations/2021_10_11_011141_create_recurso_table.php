@@ -27,6 +27,10 @@ class CreateRecursoTable extends Migration
             $table->foreign('id_formato')->references('id_formato')
                     ->on('avaliacao.formato_recurso')
                     ->onDelete('set null');
+            $table->integer('id_user')->nullable();
+            $table->foreign('id_user')->references('id')
+                ->on('users')
+                ->onDelete('set null');
         });
     }
 
@@ -39,6 +43,7 @@ class CreateRecursoTable extends Migration
     {
         Schema::table('avaliacao.recurso', function (Blueprint $table) {
             $table->dropForeign(['id_formato']);
+            $table->dropForeign(['id_user']);
             $table->dropForeign(['id_tipo_recurso']);
         });
         Schema::dropIfExists('avaliacao.recurso');

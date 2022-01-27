@@ -11,6 +11,7 @@ use App\Models\Indicador;
 use App\Models\Link;
 use App\Models\Recurso;
 use App\Models\TipoRecurso;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\JsonResponse;
 use function PHPUnit\Framework\isEmpty;
@@ -98,6 +99,17 @@ class RecursoRepository extends BaseRepository
         return $list;
     }
 
+    /**
+     * Obter uma lista de fecursos especificados por um id de user
+     *
+     * @param int getAllRecursoPorIdUsuario
+     *
+     */
+    public function getAllRecursoPorIdUsuario($id_user)
+    {
+        $res = Recurso::where('id_user','=',$id_user)->get();
+        return $res;
+    }
 
     /**
      * Obter uma lista de recursos especificados por um id de indicador

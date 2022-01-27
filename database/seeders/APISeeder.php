@@ -15,6 +15,13 @@ class APISeeder extends Seeder
      */
     public function run()
     {
+
+        // USUARIOS
+        DB::table('users')->insert([
+            'name' => 'admin',
+            'email' => 'admin@admin',
+            'password' => '12345678'
+        ]);
         // DIMENSOES
         DB::table('avaliacao.dimensao')->insert([
             'numero' => 1,
