@@ -84,20 +84,20 @@
                         <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Nome</th>
+                            <th>Descrição</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr ng-repeat="pergunta in perguntas">
                             <td><% pergunta.id_pergunta %></td>
                            {{-- <td><img ng-show="pergunta.imagem" ng-src="imagens/perguntas/xs-<% pergunta.imagem %>" width="60"></td>--}}
-                            <td><% pergunta.nome %></td>
+                            <td><% pergunta.descricao %></td>
                             <td class="text-right">
                                 <div>
                                     {{--<a href="cms/items/<% pergunta.id %>"><i class="fa fa-sitemap fa-2x" title="Itens"></i></a>&nbsp;&nbsp;--}}
-                                    <a href="cms/pergunta/<% pergunta.id_pergunta %>"><i class="fa fa-edit fa-2x" title="Editar"></i></a>&nbsp;&nbsp;{{--<% mensagemStatus %><% idStatus %>--}}
+                                    <a href="cms/pergunta-relate/<% pergunta.id_pergunta %>"><i class="fa fa-edit fa-2x" title="Editar"></i></a>&nbsp;&nbsp;{{--<% mensagemStatus %><% idStatus %>--}}
                                     {{--<a  ng-class="<% pergunta.status %> == 1 ? 'color-success' : 'color-success-inactive'"  style="cursor: pointer;"><i class="fa fa-check-circle fa-2x" aria-hidden="true" ng-click="status(pergunta.id);"></i></a>&nbsp;&nbsp;--}}
-                                    <a><i data-toggle="modal" data-target="#modalExcluir" class="fa fa-remove fa-2x" ng-click="perguntaExcluir(pergunta.id_pergunta, pergunta.nome, pergunta.imagem)"></i></a>
+                                    <a><i data-toggle="modal" data-target="#modalExcluir" class="fa fa-remove fa-2x" ng-click="perguntaExcluir(pergunta.id_pergunta, pergunta.descricao, pergunta.imagem)"></i></a>
                                 </div>
                             </td>
                         </tr>
