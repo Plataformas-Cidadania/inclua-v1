@@ -151,6 +151,8 @@
     <script src="js/components/home/index.js"></script>
 @endif
 @if($rota=="relate")
+
+    <script src="js/components/relate/insert.js"></script>
     <script src="js/components/relate/pergunta.js"></script>
     <script src="js/components/relate/index.js"></script>
 @endif
