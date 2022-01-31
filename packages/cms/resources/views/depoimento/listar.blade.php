@@ -88,13 +88,16 @@
                         <tr>
                             <th>Id</th>
                             <th>Descrição</th>
+                            <th>Ícone</th>
+                            <th>Status</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr ng-repeat="depoimento in depoimentos">
                             <td><% depoimento.id_depoimento %></td>
-                           {{-- <td><img ng-show="depoimento.imagem" ng-src="imagens/depoimentos/xs-<% depoimento.imagem %>" width="60"></td>--}}
                             <td><% depoimento.descricao %></td>
+                            <td><img ng-show="depoimento.imagem" ng-src="imagens/img/d<% depoimento.icone %>" width="60"></td>
+                            <td><% depoimento.status %></td>
                             <td class="text-right">
                                 <div>
                                     {{--<a href="cms/items/<% depoimento.id %>"><i class="fa fa-sitemap fa-2x" title="Itens"></i></a>&nbsp;&nbsp;--}}
