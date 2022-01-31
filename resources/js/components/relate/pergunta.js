@@ -19,9 +19,9 @@ const Pergunta = () => {
     }
 
     const Relate = async () => {
+        console.log('aaa');
         try {
-            const result = await axios.get('api/pergunta_relate/');
-            //const result = await axios.get('json/relate.json');
+            const result = await axios.get('api/pergunta_relate');
             setRelateMap(result.data.data)
 
             console.log(result.data.data)
@@ -43,7 +43,7 @@ const Pergunta = () => {
 
                                     <Insert
                                         id_pergunta={item.id_pergunta}
-                                        id_user={1}
+                                        id_user={2}
                                     />
                                         {/*<textarea id="story" name="story" rows="5" cols="33" placeholder={"Deixe um comentário"}  />
 
