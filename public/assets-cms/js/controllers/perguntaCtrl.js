@@ -2,7 +2,11 @@ cmsApp.controller('perguntaCtrl', ['$scope', '$http', 'Upload', '$timeout', func
 
     $scope.letras = [
         'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',
-        'a2','b2','c2','d2','e2','f2','g2','h2','i2','j2','k2','l2','m2','n2','o2','p2','q2','r2','s2','t2','u2','v2','w2','x2','y2','z2'
+        'aa','ab','ac','ad','ae','af','ag','ah','ai','aj','ak','al','am','an','ao','ap','aq','ar','as','at','au','av','aw','ax','ay','az',
+        'ba','bb','bc','bd','be','bf','bg','bh','bi','bj','bk','bl','bm','bn','bo','bp','bq','br','bs','bt','bu','bv','bw','bx','by','bz',
+        'ca','cb','cc','cd','ce','cf','cg','ch','ci','cj','ck','cl','cm','cn','co','cp','cq','cr','cs','ct','cu','cv','cw','cx','cy','cz',
+        'da','db','dc','dd','de','df','dg','dh','di','dj','dk','dl','dm','dn','do','dp','dq','dr','ds','dt','du','dv','dw','dx','dy','dz',
+        'ea','eb','ec','ed','ee','ef','eg','eh','ei','ej','ek','el','em','en','eo','ep','eq','er','es','et','eu','ev','ew','ex','ey','ez',
     ];
 
     $scope.pergunta = {
@@ -62,6 +66,7 @@ cmsApp.controller('perguntaCtrl', ['$scope', '$http', 'Upload', '$timeout', func
         });
     }*/
 
+
     $scope.listarPerguntas = function(id_indicador){
         $scope.processandoListagem = true;
         $http({
@@ -77,20 +82,21 @@ cmsApp.controller('perguntaCtrl', ['$scope', '$http', 'Upload', '$timeout', func
                 sentido: $scope.sentidoOrdem
             }
         }).success(function(data, status, headers, config){
-            //console.log(data.data);
+            console.log(data.data);
             $scope.perguntas = data.data;
             //let letraMaxima = Math.max.apply(Math, $scope.perguntas.map(function(item) { return item.letra; }));
             let letras = $scope.perguntas.map(function(item) { return item.letra; });
-            //console.log(letras);
+            console.log(letras);
             letras = letras.filter((item) => {
                 return item !== ".";
             });
             let letraMaxima = letras.sort().pop();
-            //console.log(letras);
-            //console.log(letraMaxima);
+            console.log(letras);
+            console.log(letraMaxima);
             let indice = $scope.letras.indexOf(letraMaxima);
-            //.log(indice);
+            console.log(indice);
             $scope.pergunta.letra = $scope.letras[indice+1];
+            console.log($scope.pergunta.letra);
             $scope.lastPage = data.last_page;
             $scope.totalItens = data.data.length;
             //$scope.totalItens = data.total;
@@ -133,8 +139,17 @@ cmsApp.controller('perguntaCtrl', ['$scope', '$http', 'Upload', '$timeout', func
 
     $scope.inserir = function (file, arquivo){
 
+        console.log($scope.pergunta);
         $scope.mensagemInserir = "";
 
+        if($scope.pergunta.tipo == 3){
+            $scope.pergunta.letra = ".";
+        }
+
+        if(!$scope.pergunta.letra){
+            $scope.pergunta.letra = "a";
+        }
+        console.log($scope.pergunta);
 
         if(file==null && arquivo==null){
             $scope.processandoInserir = true;
