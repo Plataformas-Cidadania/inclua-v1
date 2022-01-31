@@ -84,8 +84,8 @@
                         <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Número</th>
-                            <th>Título</th>
+                            <th>Letra</th>
+                            <th>Descricao</th>
                         </tr>
                         </thead>
                         <tbody>
