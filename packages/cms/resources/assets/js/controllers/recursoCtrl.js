@@ -240,6 +240,18 @@ cmsApp.controller('recursoCtrl', ['$scope', '$http', 'Upload', '$timeout', funct
         });
     };
 
+    $scope.status = function(id_recurso, statusAtual){
+        let recursoStatus = {
+            status: statusAtual === 0 ? 1 : 0
+        }
+        $http.put("api/recurso/"+id_recurso, recursoStatus).success(function (data){
+            //console.log(data);
+            listarRecursos();
+        }).error(function(data){
+            console.log(data);
+        });
+    }
+
     //INDICAÇÃO////////////////////////////////////
     $scope.indicacao = {};
     $scope.dimensao = null;
