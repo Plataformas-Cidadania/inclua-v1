@@ -96,7 +96,7 @@
                         <tr ng-repeat="depoimento in depoimentos">
                             <td><% depoimento.id_depoimento %></td>
                             <td><% depoimento.descricao %></td>
-                            <td><img ng-show="depoimento.imagem" ng-src="imagens/img/d<% depoimento.icone %>" width="60"></td>
+                            <td><img ng-show="depoimento.imagem" ng-src="img/d<% depoimento.icone %>" width="60"></td>
                             <td><% depoimento.status %></td>
                             <td class="text-right">
                                 <div>

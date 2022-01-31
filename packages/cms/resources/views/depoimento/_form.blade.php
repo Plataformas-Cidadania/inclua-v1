@@ -8,3 +8,5 @@
     <option value="1" ng-selected="depoimento.status == 1">Ativo</option>
     <option value="0" ng-selected="depoimento.status == 0">Inativo</option>
 </select>
+
+<img  ng-src="img/d<% depoimento.icone %>">
