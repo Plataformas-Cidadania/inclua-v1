@@ -13,7 +13,7 @@ const List = () => {
 
   const listGet = async () => {
     try {
-      const result = await axios.get('api/recurso');
+      const result = await axios.get('api/busca_recursos/usuario/1');
       setListMap(result.data.data);
     } catch (error) {
       console.log(error);

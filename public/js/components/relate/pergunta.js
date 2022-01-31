@@ -16,8 +16,10 @@ const Pergunta = () => {
 
   const Relate = async () => {
     try {
-      const result = await axios.get('json/relate.json');
-      setRelateMap(result.data);
+      const result = await axios.get('api/pergunta_relate/'); //const result = await axios.get('json/relate.json');
+
+      setRelateMap(result.data.data);
+      console.log(result.data.data);
     } catch (error) {
       console.log(error);
     }
@@ -29,23 +31,9 @@ const Pergunta = () => {
       key: key
     }, /*#__PURE__*/React.createElement("div", {
       className: "dorder-container-mai p-4 "
-    }, /*#__PURE__*/React.createElement("p", null, key + 1, " - ", item.descricao), /*#__PURE__*/React.createElement("div", {
-      className: "row"
-    }, /*#__PURE__*/React.createElement("textarea", {
-      id: "story",
-      name: "story",
-      rows: "5",
-      cols: "33",
-      placeholder: "Deixe um comentário"
-    }), /*#__PURE__*/React.createElement("div", {
-      className: "col-md-12"
-    }, /*#__PURE__*/React.createElement("div", {
-      className: "dorder-container justify-content-end"
-    }, /*#__PURE__*/React.createElement("button", {
-      className: "btn btn-theme bg-pri float-end",
-      type: "button"
-    }, "Enviar ", /*#__PURE__*/React.createElement("i", {
-      className: "fas fa-angle-right"
-    }))))))), /*#__PURE__*/React.createElement("br", null));
+    }, /*#__PURE__*/React.createElement("p", null, key + 1, " - ", item.descricao), /*#__PURE__*/React.createElement(Insert, {
+      id_pergunta: item.id_pergunta,
+      id_user: 1
+    }))), /*#__PURE__*/React.createElement("br", null));
   }));
 };
