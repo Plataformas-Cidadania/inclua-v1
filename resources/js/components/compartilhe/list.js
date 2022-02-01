@@ -15,7 +15,7 @@ const List = () => {
 
     const listGet = async () => {
         try {
-            const result = await axios.get('api/busca_recursos/usuario/1');
+            const result = await axios.get('api/busca_recursos/usuario/'+id_user);
             setListMap(result.data.data)
         } catch (error) {
             console.log(error);
@@ -97,7 +97,7 @@ const List = () => {
                         <div className="modal-content">
                             <div className="modal-header">
                                 <h5 className="modal-title" id="insertModalLabel">Inserir</h5>
-                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"/>
+                                {/*<button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"/>*/}
                             </div>
                             <div className="modal-body">
                                 <Insert listGet={listGet}/>
@@ -117,13 +117,12 @@ const List = () => {
                         <div className="modal-content">
                             <div className="modal-header">
                                 <h5 className="modal-title" id="putModalLabel">Editar</h5>
-                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"/>
+                                {/*<button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"/>*/}
                             </div>
                             <div className="modal-body">
-                                <Edit id_recurso={idRedurso}/>
-                            </div>
-                            <div className="modal-footer">
-                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                                <Edit
+                                    id_recurso={idRedurso}
+                                    listGet={listGet}/>
                             </div>
                         </div>
                     </div>

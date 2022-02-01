@@ -18,7 +18,7 @@
 >
     <option value="1" ng-selected="pergunta.tipo == 1">Sim/Não</option>
     <option value="2" ng-selected="pergunta.tipo == 2">Nota</option>
-    <option value="3" ng-selected="pergunta.tipo == 3">Range</option>
+    <option value="3" ng-selected="pergunta.tipo == 3">Range (Reflexão-síntese)</option>
 </select>
 <br>
 <label for="nao_se_aplica">Opção de Não se Aplica</label>

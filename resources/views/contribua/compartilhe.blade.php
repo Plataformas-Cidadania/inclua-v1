@@ -5,6 +5,10 @@
 @section('image', "/imagens/modulos/lg-".$page->imagem)
 @section('content')
 
+    <script>
+        id_user = {{auth()->user()->id}};
+    </script>
+
     <div class="container-fluid">
         <div class="p-3">&nbsp;</div>
         <div class="dorder-container">

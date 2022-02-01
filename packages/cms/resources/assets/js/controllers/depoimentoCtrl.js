@@ -1,30 +1,15 @@
-cmsApp.controller('perguntaCtrl', ['$scope', '$http', 'Upload', '$timeout', function($scope, $http, Upload, $timeout){
+cmsApp.controller('depoimentoCtrl', ['$scope', '$http', 'Upload', '$timeout', function($scope, $http, Upload, $timeout){
 
-    $scope.letras = [
-        'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',
-        'aa','ab','ac','ad','ae','af','ag','ah','ai','aj','ak','al','am','an','ao','ap','aq','ar','as','at','au','av','aw','ax','ay','az',
-        'ba','bb','bc','bd','be','bf','bg','bh','bi','bj','bk','bl','bm','bn','bo','bp','bq','br','bs','bt','bu','bv','bw','bx','by','bz',
-        'ca','cb','cc','cd','ce','cf','cg','ch','ci','cj','ck','cl','cm','cn','co','cp','cq','cr','cs','ct','cu','cv','cw','cx','cy','cz',
-        'da','db','dc','dd','de','df','dg','dh','di','dj','dk','dl','dm','dn','do','dp','dq','dr','ds','dt','du','dv','dw','dx','dy','dz',
-        'ea','eb','ec','ed','ee','ef','eg','eh','ei','ej','ek','el','em','en','eo','ep','eq','er','es','et','eu','ev','ew','ex','ey','ez',
-    ];
 
-    $scope.pergunta = {
-        numero: null,
-        titulo: null,
-        descricao: null,
-    };
-    $scope.id_indicador = 0;
-    $scope.perguntas = [];
-    $scope.dimensoes = [];
-    $scope.dimensao = null;
+    $scope.depoimento = {};
+    $scope.depoimentos = [];
     $scope.currentPage = 1;
     $scope.lastPage = 0;
     $scope.totalItens = 0;
     $scope.maxSize = 5;
     $scope.itensPerPage = 100;
     $scope.dadoPesquisa = '';
-    $scope.campos = "id_pergunta, letra, descricao";
+    $scope.campos = "id_depoimento, nome";
     $scope.campoPesquisa = "titulo";
     $scope.processandoListagem = false;
     $scope.processandoExcluir = false;
@@ -34,69 +19,33 @@ cmsApp.controller('perguntaCtrl', ['$scope', '$http', 'Upload', '$timeout', func
 
     $scope.$watch('currentPage', function(){
         if($listar){
-            $scope.listarPerguntas($scope.id_indicador);
+            listarDepoimentos();
         }
     });
     $scope.$watch('itensPerPage', function(){
         if($listar){
-            $scope.listarPerguntas($scope.id_indicador);
+            listarDepoimentos();
         }
     });
     $scope.$watch('dadoPesquisa', function(){
         if($listar){
-            $scope.listarPerguntas($scope.id_indicador);
+            listarDepoimentos();
         }
     });
 
 
-
-    /*var listarDimensoes = function(){
+    var listarDepoimentos = function(){
         $scope.processandoListagem = true;
         $http({
-            url: 'api/dimensao',
+            url: 'api/depoimento',
             method: 'GET',
             params: {
-
             }
         }).success(function(data, status, headers, config){
             console.log(data.data);
-            $scope.dimensoes = data.data;
-        }).error(function(data){
-            $scope.message = "Ocorreu um erro: "+data;
-        });
-    }*/
-
-
-    $scope.listarPerguntas = function(id_indicador){
-        $scope.processandoListagem = true;
-        $http({
-            url: 'api/pergunta/indicador/'+id_indicador,
-            method: 'GET',
-            params: {
-                page: $scope.currentPage,
-                itensPorPagina: $scope.itensPerPage,
-                dadoPesquisa: $scope.dadoPesquisa,
-                campos: $scope.campos,
-                campoPesquisa: $scope.campoPesquisa,
-                ordem: $scope.ordem,
-                sentido: $scope.sentidoOrdem
-            }
-        }).success(function(data, status, headers, config){
-            console.log(data.data);
-            $scope.perguntas = data.data;
-            //let letraMaxima = Math.max.apply(Math, $scope.perguntas.map(function(item) { return item.letra; }));
-            let letras = $scope.perguntas.map(function(item) { return item.letra; });
-            console.log(letras);
-            letras = letras.filter((item) => {
-                return item !== ".";
-            });
-            let letraMaxima = letras.sort().pop();
-            console.log(letras);
-            console.log(letraMaxima);
-            let indice = $scope.letras.indexOf(letraMaxima);
-            console.log(indice);
-            $scope.pergunta.letra = $scope.letras[indice+1];
-            console.log($scope.pergunta.letra);
+            $scope.depoimentos = data.data;
+            let numeroMaximo = Math.max.apply(Math, $scope.depoimentos.map(function(item) { return item.numero; }));
+            $scope.depoimento.numero = numeroMaximo + 1;
             $scope.lastPage = data.last_page;
             $scope.totalItens = data.data.length;
             //$scope.totalItens = data.total;
@@ -120,16 +69,14 @@ cmsApp.controller('perguntaCtrl', ['$scope', '$http', 'Upload', '$timeout', func
             $scope.sentidoOrdem = "asc";
         }
 
-        $scope.listarPerguntas($scope.id_indicador);
+        listarDepoimentos();
     };
 
     $scope.validar = function(){
 
     };
 
-
-    //listarPerguntas();
-    //listarDimensoes();
+    listarDepoimentos();
 
     //INSERIR/////////////////////////////
 
@@ -139,27 +86,14 @@ cmsApp.controller('perguntaCtrl', ['$scope', '$http', 'Upload', '$timeout', func
 
     $scope.inserir = function (file, arquivo){
 
-        console.log($scope.pergunta);
         $scope.mensagemInserir = "";
-
-        if($scope.pergunta.tipo == 3){
-            $scope.pergunta.letra = ".";
-        }
-
-        if(!$scope.pergunta.letra){
-            $scope.pergunta.letra = "a";
-        }
-        console.log($scope.pergunta);
 
         if(file==null && arquivo==null){
             $scope.processandoInserir = true;
-            //$scope.pergunta.id_indicador = $scope.dimensao.id_indicador;
-            $scope.pergunta.id_indicador = $scope.id_indicador;
-            //console.log($scope.pergunta);
-            $http.post("api/pergunta", $scope.pergunta).success(function (data){
-                $scope.listarPerguntas($scope.id_indicador);
-                 //delete $scope.pergunta;//limpa o form
-                $scope.pergunta = {};//limpa o form
+            $http.post("api/depoimento", $scope.depoimento).success(function (data){
+                 listarDepoimentos();
+                 //delete $scope.depoimento;//limpa o form
+                $scope.depoimento = {};//limpa o form
                 $scope.mensagemInserir =  "Gravado com sucesso!";
                 $scope.processandoInserir = false;
              }).error(function(data){
@@ -168,21 +102,21 @@ cmsApp.controller('perguntaCtrl', ['$scope', '$http', 'Upload', '$timeout', func
              });
         }else{
 
-            pergunta.file = file;
-            pergunta.arquivo = arquivo;
+            depoimento.file = file;
+            depoimento.arquivo = arquivo;
             Upload.upload({
-                url: 'api/pergunta',
-                data: pergunta,
-                //data: {pergunta: $scope.pergunta, file: file, arquivo: arquivo},
+                url: 'api/depoimento',
+                data: depoimento,
+                //data: {depoimento: $scope.depoimento, file: file, arquivo: arquivo},
             }).then(function (response) {
                 $timeout(function () {
                     $scope.result = response.data;
                 });
                 console.log(response.data);
-                delete $scope.pergunta;//limpa o form
+                delete $scope.depoimento;//limpa o form
                 $scope.picFile = null;//limpa o file
                 $scope.fileArquivo = null;//limpa o file
-                $scope.listarPerguntas($scope.id_indicador);
+                listarDepoimentos();
                 $scope.mensagemInserir =  "Gravado com sucesso!";
             }, function (response) {
                 console.log(response.data);
@@ -224,7 +158,7 @@ cmsApp.controller('perguntaCtrl', ['$scope', '$http', 'Upload', '$timeout', func
     $scope.excluir = function(id){
         $scope.processandoExcluir = true;
         $http({
-            url: 'api/pergunta/'+id,
+            url: 'api/depoimento/'+id,
             method: 'DELETE'
         }).success(function(data, status, headers, config){
             console.log(data);
@@ -232,7 +166,7 @@ cmsApp.controller('perguntaCtrl', ['$scope', '$http', 'Upload', '$timeout', func
                 $scope.processandoExcluir = false;
                 $scope.excluido = true;
                 $scope.mensagemExcluido = data.message;
-                $scope.listarPerguntas($scope.id_indicador);
+                listarDepoimentos();
                 return;
             }
             $scope.processandoExcluir = false;

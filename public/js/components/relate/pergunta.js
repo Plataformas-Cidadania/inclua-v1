@@ -15,9 +15,10 @@ const Pergunta = () => {
   };
 
   const Relate = async () => {
-    try {
-      const result = await axios.get('api/pergunta_relate/'); //const result = await axios.get('json/relate.json');
+    console.log('aaa');
 
+    try {
+      const result = await axios.get('api/pergunta_relate');
       setRelateMap(result.data.data);
       console.log(result.data.data);
     } catch (error) {
@@ -33,7 +34,7 @@ const Pergunta = () => {
       className: "dorder-container-mai p-4 "
     }, /*#__PURE__*/React.createElement("p", null, key + 1, " - ", item.descricao), /*#__PURE__*/React.createElement(Insert, {
       id_pergunta: item.id_pergunta,
-      id_user: 1
+      id_user: 2
     }))), /*#__PURE__*/React.createElement("br", null));
   }));
 };

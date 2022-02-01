@@ -1,18 +1,19 @@
 @extends('cms::layouts.app')
 
 @section('content')
-    {!! Html::script(config('app.url').'assets-cms/js/controllers/recursoCtrl.js') !!}
+    {!! Html::script(config('app.url').'assets-cms/js/controllers/depoimentoCtrl.js') !!}
 <script>
     $(function () {
         $('[data-toggle="popover"]').popover()
     })
 </script>
-    <div ng-controller="recursoCtrl">
+    <div ng-controller="depoimentoCtrl">
         <div class="box-padrao">
-            <h1><i class="fa fa-recurso" aria-hidden="true"></i>&nbsp;Recursos</h1>
-            <button class="btn btn-primary" ng-click="mostrarForm=!mostrarForm" ng-show="!mostrarForm">Novo Recurso</button>
+            <h1><i class="fa fa-depoimento" aria-hidden="true"></i>&nbsp;Depoimentos</h1>
+            {{--<button class="btn btn-primary" ng-click="mostrarForm=!mostrarForm" ng-show="!mostrarForm">Novo Depoimento</button>--}}
             <button class="btn btn-warning" ng-click="mostrarForm=!mostrarForm" ng-show="mostrarForm">Cancelar</button>
             <br><br>
+            <?php /*
             <div ng-show="mostrarForm">
                 <span class="texto-obrigatorio" ng-show="form.$invalid">* campos obrigatórios</span><br><br>
                 {!! Form::open(['name' =>'form']) !!}
@@ -40,7 +41,7 @@
 
 
                 {{--<br><br>--}}
-                @include('cms::recurso._form')
+                @include('cms::depoimento._form')
                 <div class="row">
                     <div class="col-md-1 col-lg-1 col-xs-3">
                         <br>
@@ -65,7 +66,9 @@
 
 
                 {!! Form::close()!!}
+
             </div>
+            < */?>
         </div>
 
         <br>
@@ -77,31 +80,30 @@
                         <input class="form-control" type="text" ng-model="dadoPesquisa" placeholder="Faça sua busca"/>
                     </div>
                     <br>
-                    <div><% mensagemRecursor %></div>
+                    <div><% mensagemDepoimentor %></div>
                     <div ng-show="processandoListagem"><i class="fa fa-spinner fa-spin"></i> Processando...</div>
                     <h2 class="tabela_vazia" ng-show="!processandoListagem && totalItens==0">Nenhum registro encontrado!</h2>
                     <table ng-show="totalItens>0" class="table table-striped">
                         <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Nome</th>
-                            <th>Nome</th>
+                            <th>Descrição</th>
+                            <th>Ícone</th>
+                            <th>Status</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr ng-repeat="recurso in recursos">
-                            <td><% recurso.id_recurso %></td>
-                           {{-- <td><img ng-show="recurso.imagem" ng-src="imagens/recursos/xs-<% recurso.imagem %>" width="60"></td>--}}
-                            <td><% recurso.nome %></td>
+                        <tr ng-repeat="depoimento in depoimentos">
+                            <td><% depoimento.id_depoimento %></td>
+                            <td><% depoimento.descricao %></td>
+                            <td><img ng-show="depoimento.imagem" ng-src="img/d<% depoimento.icone %>" width="60"></td>
+                            <td><% depoimento.status %></td>
                             <td class="text-right">
                                 <div>
-                                    {{--<a href="cms/items/<% recurso.id %>"><i class="fa fa-sitemap fa-2x" title="Itens"></i></a>&nbsp;&nbsp;--}}
-                                    <a href="cms/recurso/<% recurso.id_recurso %>"><i class="fa fa-edit fa-2x" title="Editar"></i></a>&nbsp;&nbsp;{{--<% mensagemStatus %><% idStatus %>--}}
-                                    <a href="cms/links/<% recurso.id_recurso %>"><i class="fa fa-link fa-2x" title="Links"></i></a>&nbsp;&nbsp;{{--<% mensagemStatus %><% idStatus %>--}}
-                                    <a  ng-class="<% recurso.status %> == 1 ? 'color-success' : 'color-success-inactive'"  style="cursor: pointer;"><i class="fa fa-check-circle fa-2x" aria-hidden="true" ng-click="status(recurso.id_recurso, recurso.status);"></i></a>&nbsp;&nbsp;
-                                    <a><i data-toggle="modal" data-target="#modalIndicacao" class="fa fa-tachometer fa-2x" style="cursor:pointer;" ng-click="modalIndicacao(recurso.id_recurso, recurso.nome)"></i></a>
-                                    <a><i data-toggle="modal" data-target="#modalCategorizacao" class="fa fa-cubes fa-2x" style="cursor:pointer;"  ng-click="modalCategorizacao(recurso.id_recurso, recurso.nome)"></i></a>
-                                    <a><i data-toggle="modal" data-target="#modalExcluir" class="fa fa-remove fa-2x" style="cursor:pointer;"  ng-click="perguntaExcluir(recurso.id_recurso, recurso.nome, recurso.imagem)"></i></a>
+                                    {{--<a href="cms/items/<% depoimento.id %>"><i class="fa fa-sitemap fa-2x" title="Itens"></i></a>&nbsp;&nbsp;--}}
+                                    <a href="cms/depoimento/<% depoimento.id_depoimento %>"><i class="fa fa-edit fa-2x" title="Editar"></i></a>&nbsp;&nbsp;{{--<% mensagemStatus %><% idStatus %>--}}
+                                    {{--<a  ng-class="<% depoimento.status %> == 1 ? 'color-success' : 'color-success-inactive'"  style="cursor: pointer;"><i class="fa fa-check-circle fa-2x" aria-hidden="true" ng-click="status(depoimento.id);"></i></a>&nbsp;&nbsp;--}}
+                                    <a><i data-toggle="modal" data-target="#modalExcluir" class="fa fa-remove fa-2x" ng-click="perguntaExcluir(depoimento.id_depoimento, depoimento.descricao, depoimento.imagem)"></i></a>
                                 </div>
                             </td>
                         </tr>
@@ -146,7 +148,7 @@
                     <div class="modal-body">
                         <div class="row">
                             {{--<div class="col-md-3">
-                                <img  ng-src="imagens/recursos/xs-<% imagemExcluir %>" width="100">
+                                <img  ng-src="imagens/depoimentos/xs-<% imagemExcluir %>" width="100">
                             </div>--}}
                             <div class="col-md-9">
                                 <p><% tituloExcluir %></p>
@@ -166,8 +168,5 @@
             </div>
         </div>
         <!-- Fim Modal Excluir-->
-
-        @include("cms::recurso.indicacao")
-        @include("cms::recurso.categorizacao")
     </div>
 @endsection

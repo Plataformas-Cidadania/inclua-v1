@@ -3,8 +3,11 @@ const Pergunta = () => {
     const [icon, setIcon] = useState(0);
     const [varValid, setValid] = useState(false);
     const [form, setForm] = useState({
-        icon: 0,
-        comentario: '',
+        icon: 1,
+        descricao: '',
+        status: 1,
+        id_user: 1,
+
     });
 
     const ClickIcon = (id) => {
@@ -23,8 +26,27 @@ const Pergunta = () => {
 
     const [requireds, setRequireds] = useState({
         icon: true,
-        comentario: true,
+        descricao: true,
     });
+
+
+    const Insert = async () => {
+        try {
+            const result = await axios.post('api/depoimento', form);
+            //Limpar form
+            let newForm = {
+                ...form,
+                nome: "",
+                esfera: "",
+                id_tipo_recurso: 0,
+                id_formato: 0,
+            }
+            setForm(newForm);
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     const handleForm = (event) => {
         console.log('event', event);
@@ -77,14 +99,15 @@ const Pergunta = () => {
                         <img src="img/d10.png" alt="" title="" width="100" className={"box-btn-icon float-start ms-4 " + (icon === 10 ? 'box-btn-icon-set' : '')} onClick={() => ClickIcon(10)}/>
                         <br/><br/>
 
-                        <textarea id="comentario" name="esfera" rows="5" cols="33" placeholder={"Deixe um comentário"}   className="mt-2" onChange={handleForm} value={form.comentario}/>
+                        <textarea id="descricao" name="descricao" rows="5" cols="33" placeholder={"Deixe um comentário"}   className="mt-2" onChange={handleForm} defaultValue={form.descricao}/>
 
                         <div className="dorder-container justify-content-end mt-2" >
                             <button className="btn btn-theme bg-pri "
-                                    type="button">Enviar <i className="fas fa-angle-right"/>
+                                    type="button"
+                                    onClick={() => Insert()}
+                            >Enviar <i className="fas fa-angle-right"/>
                             </button>
                         </div>
-
                     </div>
                 </div>
             </div>

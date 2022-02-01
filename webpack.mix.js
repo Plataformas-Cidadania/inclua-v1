@@ -163,4 +163,9 @@ mix.scripts('packages/cms/resources/assets/js/controllers/alterarLinkCtrl.js', '
 mix.scripts('packages/cms/resources/assets/js/controllers/perguntaRelateCtrl.js', 'public/assets-cms/js/controllers/perguntaRelateCtrl.js');
 mix.scripts('packages/cms/resources/assets/js/controllers/alterarPerguntaRelateCtrl.js', 'public/assets-cms/js/controllers/alterarPerguntaRelateCtrl.js');
 
+
+//Perguntas Depoimento
+mix.scripts('packages/cms/resources/assets/js/controllers/depoimentoCtrl.js', 'public/assets-cms/js/controllers/depoimentoCtrl.js');
+mix.scripts('packages/cms/resources/assets/js/controllers/alterarDepoimentoCtrl.js', 'public/assets-cms/js/controllers/alterarDepoimentoCtrl.js');
+
 //FIM CMS///////////////////////////////////////////////////////////////////

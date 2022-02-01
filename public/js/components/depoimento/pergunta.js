@@ -5,8 +5,10 @@ const Pergunta = () => {
   const [icon, setIcon] = useState(0);
   const [varValid, setValid] = useState(false);
   const [form, setForm] = useState({
-    icon: 0,
-    comentario: ''
+    icon: 1,
+    descricao: '',
+    status: 1,
+    id_user: 1
   });
 
   const ClickIcon = id => {
@@ -21,8 +23,24 @@ const Pergunta = () => {
 
   const [requireds, setRequireds] = useState({
     icon: true,
-    comentario: true
+    descricao: true
   });
+
+  const Insert = async () => {
+    try {
+      const result = await axios.post('api/depoimento', form); //Limpar form
+
+      let newForm = { ...form,
+        nome: "",
+        esfera: "",
+        id_tipo_recurso: 0,
+        id_formato: 0
+      };
+      setForm(newForm);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const handleForm = event => {
     console.log('event', event);
@@ -136,19 +154,20 @@ const Pergunta = () => {
     className: "box-btn-icon float-start ms-4 " + (icon === 10 ? 'box-btn-icon-set' : ''),
     onClick: () => ClickIcon(10)
   }), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("textarea", {
-    id: "comentario",
-    name: "esfera",
+    id: "descricao",
+    name: "descricao",
     rows: "5",
     cols: "33",
     placeholder: "Deixe um comentário",
     className: "mt-2",
     onChange: handleForm,
-    value: form.comentario
+    defaultValue: form.descricao
   }), /*#__PURE__*/React.createElement("div", {
     className: "dorder-container justify-content-end mt-2"
   }, /*#__PURE__*/React.createElement("button", {
     className: "btn btn-theme bg-pri ",
-    type: "button"
+    type: "button",
+    onClick: () => Insert()
   }, "Enviar ", /*#__PURE__*/React.createElement("i", {
     className: "fas fa-angle-right"
   })))))), /*#__PURE__*/React.createElement("br", null));

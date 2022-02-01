@@ -13,7 +13,7 @@ const List = () => {
 
   const listGet = async () => {
     try {
-      const result = await axios.get('api/busca_recursos/usuario/1');
+      const result = await axios.get('api/busca_recursos/usuario/' + id_user);
       setListMap(result.data.data);
     } catch (error) {
       console.log(error);
@@ -101,12 +101,7 @@ const List = () => {
   }, /*#__PURE__*/React.createElement("h5", {
     className: "modal-title",
     id: "insertModalLabel"
-  }, "Inserir"), /*#__PURE__*/React.createElement("button", {
-    type: "button",
-    className: "btn-close",
-    "data-bs-dismiss": "modal",
-    "aria-label": "Close"
-  })), /*#__PURE__*/React.createElement("div", {
+  }, "Inserir")), /*#__PURE__*/React.createElement("div", {
     className: "modal-body"
   }, /*#__PURE__*/React.createElement(Insert, {
     listGet: listGet
@@ -125,20 +120,10 @@ const List = () => {
   }, /*#__PURE__*/React.createElement("h5", {
     className: "modal-title",
     id: "putModalLabel"
-  }, "Editar"), /*#__PURE__*/React.createElement("button", {
-    type: "button",
-    className: "btn-close",
-    "data-bs-dismiss": "modal",
-    "aria-label": "Close"
-  })), /*#__PURE__*/React.createElement("div", {
+  }, "Editar")), /*#__PURE__*/React.createElement("div", {
     className: "modal-body"
   }, /*#__PURE__*/React.createElement(Edit, {
-    id_recurso: idRedurso
-  })), /*#__PURE__*/React.createElement("div", {
-    className: "modal-footer"
-  }, /*#__PURE__*/React.createElement("button", {
-    type: "button",
-    className: "btn btn-secondary",
-    "data-bs-dismiss": "modal"
-  }, "Fechar"))))));
+    id_recurso: idRedurso,
+    listGet: listGet
+  }))))));
 };
