@@ -3,6 +3,7 @@ namespace App\Http\Controllers\Front;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Schema;
+use Exception;
 
 
 /*
@@ -97,15 +98,19 @@ foreach ($routesSearch as $route) {
 }
 
     if(env('DYNAMIC_ROUTES')){
+        try {
+            $modulos = \Illuminate\Support\Facades\DB::table('cms.modulos')->select('slug')->get();
 
-    $modulos = \Illuminate\Support\Facades\DB::table('cms.modulos')->select('slug')->get();
-
-    foreach ($modulos as $modulo) {
-        if(!empty($modulo->slug)){
-            //Route::get($modulo->slug.'/', 'App\Http\Controllers\Front\ModuloController@details');
-            Route::get($modulo->slug.'/', [ModuloController::class , 'details']);
+            foreach ($modulos as $modulo) {
+                if(!empty($modulo->slug)){
+                    //Route::get($modulo->slug.'/', 'App\Http\Controllers\Front\ModuloController@details');
+                    Route::get($modulo->slug.'/', [ModuloController::class , 'details']);
+                }
+            }
+        }catch (Exception $exception) {
+            echo("First run\n");
         }
-    }
+
 }
 
 //Testes components-------------------------------------------------

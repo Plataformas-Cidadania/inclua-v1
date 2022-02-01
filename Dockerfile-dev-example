@@ -8,10 +8,6 @@ RUN apt-get install -y libpq-dev \
     && docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
     && docker-php-ext-install pdo pdo_pgsql pgsql
 
-#Install Lib image
-RUN apt-get install -y libpng-dev \
-    && docker-php-ext-install gd
-
 # Install PHP extensions for pgsql
 #RUN docker-php-ext-install pdo pdo_pgsql pgsql
 
@@ -19,8 +15,5 @@ RUN apt-get update -y && apt-get install -y libmcrypt-dev openssl
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 WORKDIR /app
 COPY . /app
-RUN composer install
-RUN php artisan key:generate
-RUN php artisan config:cache
-CMD php artisan serve --host=0.0.0.0 --port=8000
+CMD ./docker/wait-for-it.sh db_inclua:5432 -- ./docker/start_app.sh
 EXPOSE 8000

@@ -1,22 +1,5 @@
 version: '3'
 services:
-  app_inclua:
-    build:
-      context: ./
-      dockerfile: Dockerfile
-    ports:
-      - "8001:8000"
-    volumes:
-      - .:/app
-    env_file: .env
-    working_dir: /app
-    command: bash -c 'php artisan migrate && php artisan serve --host 0.0.0.0 --port 8000'
-    depends_on:
-      - db_inclua
-    links:
-      - db_inclua
-    networks:
-      - laravelnetwork
   db_inclua:
     image: postgres:12.0-alpine
     container_name: postgresql-inclua
@@ -30,8 +13,17 @@ services:
       POSTGRES_PASSWORD: 123456
     ports:
       - 5438:5432
-    networks:
-      - laravelnetwork
-networks:
-  laravelnetwork:
-    driver: bridge
+  app_inclua:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "8001:8000"
+    volumes:
+      - .:/app
+    env_file: .env
+    working_dir: /app
+    depends_on:
+      - db_inclua
+    links:
+      - db_inclua
