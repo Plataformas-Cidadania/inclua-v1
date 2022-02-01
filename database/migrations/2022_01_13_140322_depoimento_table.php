@@ -18,7 +18,7 @@ class DepoimentoTable extends Migration
             $table->text('descricao')->comment('Descrição do depoimento');
             $table->integer('status');
             $table->integer('icone');
-            $table->integer('id_user');
+            $table->integer('id_user')->nullable();
             $table->foreign('id_user')->references('id')
                     ->on('public.users')
                     ->onDelete('cascade');

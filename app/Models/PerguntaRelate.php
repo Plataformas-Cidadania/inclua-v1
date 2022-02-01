@@ -34,7 +34,6 @@ class PerguntaRelate extends Model
 	protected $fillable = [
 		'descricao'
 	];
-	protected $with = ['respostas_relate'];
 
 	public function respostas_relate()
 	{

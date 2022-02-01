@@ -22,7 +22,6 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Depoimento extends Model
 {
-    use Uuids;
 	protected $table = 'avaliacao.depoimento';
 	protected $primaryKey = 'id_depoimento';
 
