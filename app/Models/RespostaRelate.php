@@ -22,7 +22,6 @@ use Illuminate\Database\Eloquent\Model;
  */
 class RespostaRelate extends Model
 {
-    use Uuids;
 	protected $table = 'avaliacao.resposta_relate';
 	protected $primaryKey = 'id_resposta';
 
@@ -43,7 +42,7 @@ class RespostaRelate extends Model
         'id_user'
 	];
 
-	protected $with = ['pergunta','id_user'];
+	protected $with = ['pergunta'];
 	public function pergunta()
 	{
 		return $this->belongsTo(PerguntaRelate::class, 'id_pergunta');

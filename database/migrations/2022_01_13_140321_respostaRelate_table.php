@@ -18,7 +18,7 @@ class RespostaRelateTable extends Migration
             $table->text('descricao')->comment('Descrição da resposta');
             $table->integer('status');
             $table->integer('id_pergunta');
-            $table->integer('id_user');
+            $table->integer('id_user')->nullable();
             $table->foreign('id_pergunta')->references('id_pergunta')
                     ->on('avaliacao.pergunta_relate')
                     ->onDelete('cascade');
