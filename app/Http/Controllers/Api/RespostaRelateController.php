@@ -19,7 +19,7 @@ class RespostaRelateController extends Controller
         'descricao' => 'string',
         'status' => 'int|min:1|',
         'id_pergunta' => 'int|min:1|',
-        'id_user' => 'int|min:1|'
+        'id_user' => 'int|nullable'
     ];
     public function __construct(RespostaRelateRepository $repo)
     {

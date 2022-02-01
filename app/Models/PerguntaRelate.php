@@ -34,10 +34,5 @@ class PerguntaRelate extends Model
 	protected $fillable = [
 		'descricao'
 	];
-	protected $with = ['respostas_relate'];
 
-	public function respostas_relate()
-	{
-		return $this->hasMany(RespostaRelate::class, 'id_pergunta');
-	}
 }
