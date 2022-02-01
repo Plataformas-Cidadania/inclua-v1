@@ -23,6 +23,15 @@ class HomeController extends Controller
         $text3 = \App\Models\Text::where('slug', 'recursos')->first();
         $partners = \App\Models\Parceiro::orderBy('id')->get();
 
+        $depoimentos = DB::table('avaliacao.depoimento')
+            ->select('depoimento.descricao', 'depoimento.icone', 'users.name')
+            ->join('users', 'users.id', '=', 'depoimento.id_user')
+            ->where('status', 1)
+            ->orderBy('id', 'desc')
+            ->get();
+
+
+
 
         return view('home', [
             'webdoors' => $webdoors,
@@ -30,6 +39,7 @@ class HomeController extends Controller
             'text2' => $text2,
             'text3' => $text3,
             'partners' => $partners,
+            'depoimentos' => $depoimentos,
         ]);
 
 

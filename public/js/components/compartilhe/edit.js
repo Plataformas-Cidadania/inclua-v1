@@ -75,6 +75,10 @@ const Edit = props => {
     setNotify(notify);
   };
 
+  const ClickClear = () => {
+    props.listGet();
+  };
+
   const Update = async () => {
     handleNotify({
       type: null,
@@ -263,5 +267,12 @@ const Edit = props => {
     listLinks: listLinks,
     setListLinks: setListLinks,
     id_recurso: props.id_recurso
-  })));
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "modal-footer"
+  }, /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    className: "btn btn-secondary",
+    "data-bs-dismiss": "modal",
+    onClick: () => ClickClear()
+  }, "Fechar")));
 };

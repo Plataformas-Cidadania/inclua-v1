@@ -112,34 +112,19 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="owl-carousel owl-theme">
-
-                        <a href="">
+                        @foreach($depoimentos as $depoimento)
                             <div class="row">
                                 <div class="col-md-4">
-                                    <img src="img/d1.png" alt="" title="" width="100%"  style="padding: 5rem">
+                                    <img src="img/d{{$depoimento->icone}}.png" alt="" title="" width="100%"  style="padding: 5rem">
                                 </div>
                                 <div class="col-md-8">
                                     <div style="padding: 8rem">
-                                        <h2>“Amei! Me ajudou muito! Me fez enxergar questões que não via antes!” </h2>
-                                        <h3>Maria lima</h3>
+                                        <h2>“{{$depoimento->descricao}}” </h2>
+                                        <h3>{{$depoimento->name}}</h3>
                                     </div>
                                 </div>
                             </div>
-                        </a>
-                        <a href="">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <img src="img/d2.png" alt="" title="" width="100%"  style="padding: 5rem">
-                                </div>
-                                <div class="col-md-8">
-                                    <div style="padding: 8rem">
-                                        <h2>“Amei! Me ajudou muito! Me fez enxergar questões que não via antes!” </h2>
-                                        <h3>Maria lima</h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-
+                        @endforeach
                     </div>
                 </div>
 

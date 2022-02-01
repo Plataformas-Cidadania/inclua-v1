@@ -10,10 +10,11 @@ const Insert = props => {
   const [id_recurso, setIdRecurso] = useState(0);
   const [varValid, setValid] = useState(false);
   const [form, setForm] = useState({
-    ultimo_acesso: '1992-02-10 13:21:37',
+    ultimo_acesso: '2020-02-20 00:00:00',
     id_tipo_recurso: 0,
     id_formato: 0,
-    status: 0
+    status: 0,
+    id_user: id_user
   });
   const [tipoSelected, setTipoSelected] = useState(0);
   const [formatoSelected, setFormatoSelected] = useState(0);

@@ -78,6 +78,10 @@ const Edit = (props) => {
         setNotify(notify);
     }
 
+    const ClickClear = () => {
+        props.listGet();
+    }
+
 
     const Update = async () => {
         handleNotify({type: null, text: null, spin: true});
@@ -247,6 +251,10 @@ const Edit = (props) => {
                     setListLinks={setListLinks}
                     id_recurso={props.id_recurso}
                 />
+            </div>
+
+            <div className="modal-footer">
+                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal"  onClick={() => ClickClear()}>Fechar</button>
             </div>
         </div>
     );
