@@ -35,8 +35,4 @@ class PerguntaRelate extends Model
 		'descricao'
 	];
 
-	public function respostas_relate()
-	{
-		return $this->hasMany(RespostaRelate::class, 'id_pergunta');
-	}
 }
