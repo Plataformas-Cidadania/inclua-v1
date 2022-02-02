@@ -1,7 +1,7 @@
 const Depoimento = () => {
     return (
         <div>
-            <Pergunta/>
+            <List/>
         </div>
     );
 };

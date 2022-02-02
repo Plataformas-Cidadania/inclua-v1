@@ -48,7 +48,7 @@
             <div class="container">
                 <br>
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <div>
                             <h3>Sobre</h3>
                             <ul>
@@ -59,7 +59,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    {{--<div class="col-md-3">
                         <div>
                             <h3>Diagnóstico</h3>
                             <ul>
@@ -68,26 +68,26 @@
                                 <br><br>
                             </ul>
                         </div>
-                    </div>
+                    </div>--}}
 
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <div>
                             <h3>Inclua</h3>
                             <ul>
                                 <li role="presentation"><a href="diagnostico" >Diagnóstico</a></li>
-                                <li role="presentation"><a href="recursos" >Biblioteca</a></li>
-                                <li role="presentation"><a href="contribua" >Contribua</a></li>
+                                <li role="presentation"><a href="recursos" >Biblioteca de recursos</a></li>
+                                <li role="presentation"><a href="contribua" >Interaja</a></li>
                                 <br><br>
                             </ul>
                         </div>
                     </div>
 
                     @if($setting->twitter!="" || $setting->youtube!="" || $setting->facebook!="" || $setting->pinterest!="")
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <div>
                                 <h3>Ajuda</h3>
                                 <ul>
-                                    <li role="presentation"><a href="contato" accesskey="a" @if($rota=='quem') class="contato" @endif>Fale conosco</a></li>
+                                    <li role="presentation"><a href="contato" accesskey="a" @if($rota=='quem') class="contato" @endif>Contato</a></li>
                                     <br><br>
                                 </ul>
                             </div>

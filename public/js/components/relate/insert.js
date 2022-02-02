@@ -30,22 +30,19 @@ const Insert = props => {
       const result = await axios.post('api/resposta_relate', form);
       handleNotify({
         type: 'success',
-        text: 'Recurso inserido, cadastre o links!',
+        text: 'Resposta inserida com sucesso!',
         spin: false
       }); //Limpar form
 
       let newForm = { ...form,
-        nome: "",
-        esfera: "",
-        id_tipo_recurso: 0,
-        id_formato: 0
+        descricao: ""
       };
       setForm(newForm); ////
     } catch (error) {
       console.log(error);
       handleNotify({
         type: 'danger',
-        text: 'Recurso não foi inserido, tente novamente!',
+        text: 'Resposta não foi inserido, tente novamente!',
         spin: false
       });
     }
@@ -69,22 +66,37 @@ const Insert = props => {
     name: "descricao",
     rows: "5",
     cols: "33",
-    placeholder: "Deixe um comentário",
+    placeholder: "Deixe um descrição",
     onChange: handleForm,
     value: form.descricao
   }), /*#__PURE__*/React.createElement("div", {
     className: "col-md-12"
-  }, /*#__PURE__*/React.createElement("hr", {
-    style: {
-      display: notify.type === "success" ? '' : 'none'
-    }
-  }), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
     className: "dorder-container justify-content-end"
   }, /*#__PURE__*/React.createElement("button", {
-    className: "btn btn-theme bg-pri float-end",
+    className: "btn btn-theme bg-pri ",
     type: "button",
     onClick: () => Insert()
-  }, "Enviar ", /*#__PURE__*/React.createElement("i", {
+  }, "Enviar", /*#__PURE__*/React.createElement("i", {
     className: "fas fa-angle-right"
-  })))));
+  }), /*#__PURE__*/React.createElement("span", {
+    style: {
+      marginLeft: '10px',
+      display: notify.spin ? '' : 'none'
+    }
+  }, /*#__PURE__*/React.createElement("i", {
+    className: "fas fa-spinner float-end fa-spin"
+  })))), /*#__PURE__*/React.createElement("div", {
+    className: "alert alert-" + notify.type + " d-flex align-items-center",
+    role: "alert",
+    style: {
+      display: notify.type ? '' : 'none'
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      display: notify.type ? '' : 'none'
+    }
+  }, /*#__PURE__*/React.createElement("i", {
+    className: "fas fa-exclamation-triangle bi flex-shrink-0 me-2"
+  })), /*#__PURE__*/React.createElement("div", null, notify.text))), /*#__PURE__*/React.createElement(List, null));
 };

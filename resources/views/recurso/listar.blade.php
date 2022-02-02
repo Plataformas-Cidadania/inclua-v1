@@ -10,7 +10,7 @@
         <div class="dorder-container">
             <div class="bg-lgt dorder-container-mai">
                 <div class="dorder-container-line">
-                    <h1>Recursos</h1>
+                    <h1>Biblioteca de recursos</h1>
                     <div class="dorder-container-box bg-lgt"></div>
                 </div>
             </div>

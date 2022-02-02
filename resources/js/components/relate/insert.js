@@ -25,22 +25,19 @@ const Insert = (props) => {
         try {
             const result = await axios.post('api/resposta_relate', form);
 
-            handleNotify({type: 'success', text: 'Recurso inserido, cadastre o links!', spin: false});
+            handleNotify({type: 'success', text: 'Resposta inserida com sucesso!', spin: false});
 
             //Limpar form
             let newForm = {
                 ...form,
-                nome: "",
-                esfera: "",
-                id_tipo_recurso: 0,
-                id_formato: 0,
+                descricao: "",
             }
             setForm(newForm);
             ////
 
         } catch (error) {
             console.log(error);
-            handleNotify({type: 'danger', text: 'Recurso não foi inserido, tente novamente!', spin: false});
+            handleNotify({type: 'danger', text: 'Resposta não foi inserido, tente novamente!', spin: false});
         }
     }
 
@@ -57,16 +54,23 @@ const Insert = (props) => {
 
     return (
         <div className="row">
-            <textarea id="descricao" name="descricao" rows="5" cols="33" placeholder={"Deixe um comentário"}  onChange={handleForm} value={form.descricao}/>
+            <textarea id="descricao" name="descricao" rows="5" cols="33" placeholder={"Deixe um descrição"}  onChange={handleForm} value={form.descricao}/>
 
             <div className="col-md-12">
-                <hr  style={{display: notify.type === "success" ? '' : 'none'}}/>
+                <br/>
                 <div className="dorder-container justify-content-end">
-                    <button className="btn btn-theme bg-pri float-end"
-                            type="button"  onClick={() => Insert()}>Enviar <i className="fas fa-angle-right"/>
+                    <button className="btn btn-theme bg-pri "
+                            type="button"  onClick={() => Insert()}>Enviar<i className="fas fa-angle-right"/>
+                            <span style={{marginLeft: '10px', display: notify.spin ? '' : 'none'}}><i className="fas fa-spinner float-end fa-spin" /></span>
                     </button>
                 </div>
+                <div className={"alert alert-"+notify.type+" d-flex align-items-center"} role="alert" style={{display: notify.type ? '' : 'none'}}>
+                    <span style={{display: notify.type ? '' : 'none'}}><i className="fas fa-exclamation-triangle bi flex-shrink-0 me-2" /></span>
+                    <div>{notify.text}</div>
+                </div>
             </div>
+
+            <List />
 
         </div>
     );

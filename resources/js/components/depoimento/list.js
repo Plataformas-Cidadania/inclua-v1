@@ -1,12 +1,14 @@
-const Pergunta = () => {
+const List = () => {
     const {useState} = React;
     const [icon, setIcon] = useState(0);
     const [varValid, setValid] = useState(false);
+
+    const [notify, setNotify] = useState({type:null, text:null, spin:false});
     const [form, setForm] = useState({
-        icon: 1,
+        icone: 1,
         descricao: '',
         status: 1,
-        id_user: 1,
+        id_user: id_user,
 
     });
 
@@ -16,40 +18,38 @@ const Pergunta = () => {
         setTipoSelected(id);
         let newForm = {
             ...form,
-            icon: id
+            icone: id
         }
         setForm(newForm);
         validate(newForm);
     }
 
-
-
     const [requireds, setRequireds] = useState({
-        icon: true,
+        icone: true,
         descricao: true,
     });
 
 
     const Insert = async () => {
+        handleNotify({type: null, text: null, spin: true});
         try {
+            handleNotify({type: 'success', text: 'Recurso inserido, cadastre o links!', spin: false});
             const result = await axios.post('api/depoimento', form);
             //Limpar form
             let newForm = {
                 ...form,
-                nome: "",
-                esfera: "",
-                id_tipo_recurso: 0,
-                id_formato: 0,
+                nome: 0,
+                descricao: "",
             }
             setForm(newForm);
 
         } catch (error) {
+            handleNotify({type: 'danger', text: 'Recurso não foi inserido, tente novamente!', spin: false});
             console.log(error);
         }
     }
 
     const handleForm = (event) => {
-        console.log('event', event);
         let { value, id } = event.target;
         let newForm = {
             ...form,
@@ -79,6 +79,10 @@ const Pergunta = () => {
         return valid;
     }
 
+    const handleNotify = (notify) =>{
+        setNotify(notify);
+    }
+
     return (
         <form>
             <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
@@ -106,7 +110,13 @@ const Pergunta = () => {
                                     type="button"
                                     onClick={() => Insert()}
                             >Enviar <i className="fas fa-angle-right"/>
+                                <span style={{marginLeft: '10px', display: notify.spin ? '' : 'none'}}><i className="fas fa-spinner float-end fa-spin" /></span>
                             </button>
+                        </div>
+                        <br/>
+                        <div className={"alert alert-"+notify.type+" d-flex align-items-center"} role="alert" style={{display: notify.type ? '' : 'none'}}>
+                            <span style={{display: notify.type ? '' : 'none'}}><i className="fas fa-exclamation-triangle bi flex-shrink-0 me-2" /></span>
+                            <div>{notify.text}</div>
                         </div>
                     </div>
                 </div>

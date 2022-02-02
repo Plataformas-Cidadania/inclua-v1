@@ -7,7 +7,7 @@ const Pergunta = () => {
   const [relate, setRelate] = useState(0);
   useEffect(() => {
     Relate();
-  }, []); //console.log('relate', relate);
+  }, []);
 
   const ClickRelate = (id, key) => {
     console.log(id, key);
@@ -15,12 +15,9 @@ const Pergunta = () => {
   };
 
   const Relate = async () => {
-    console.log('aaa');
-
     try {
       const result = await axios.get('api/pergunta_relate');
       setRelateMap(result.data.data);
-      console.log(result.data.data);
     } catch (error) {
       console.log(error);
     }

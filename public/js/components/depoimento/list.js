@@ -1,4 +1,4 @@
-const Pergunta = () => {
+const List = () => {
   const {
     useState
   } = React;
