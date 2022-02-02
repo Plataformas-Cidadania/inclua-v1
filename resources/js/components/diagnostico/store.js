@@ -35,6 +35,10 @@ const DiagnosticoProvider = ({children}) => {
         //console.log(indicador);
     }, [indicador]);
 
+    useEffect(() => {
+        console.log(respostas);
+    }, [respostas]);
+
     const listDimensoes = async () => {
         try {
             //const result = await axios.get('json/diagnostico.json');
@@ -146,13 +150,55 @@ const DiagnosticoProvider = ({children}) => {
     const validarRespostas = () => {
         let valid = true;
         console.log(respostas);
-        dimensoes.forEach((d) => {
-            //if(d.id_dimensao === dimensao.id_dimensao){
+
+        if(respostas.length === 0){
+            console.log('Válido:', false);
+            return false;
+        }
+
+        //DIAGNÓSTICO COMPLETO
+        if(tipo === 1){
+            console.log('Validar Diagnóstico Completo');
+            dimensoes.forEach((d) => {
+                //if(d.id_dimensao === dimensao.id_dimensao){
                 d.indicadores.forEach((i) => {
                     //if(i.id_indicador === indicador.id_indicador){
+                    i.perguntas.forEach((p) => {
+                        console.log("numero_dimensao", "numero_indicador", "id_pergunta", "letra", "id_perguntaPai", "resposta");
+                        console.log(d.numero, i.numero, p.id_pergunta, p.letra, p.id_perguntaPai, p.resposta);
+                        console.log(p);
+                        if(p.resposta === undefined && p.id_perguntaPai === null){
+                            console.log('inválido', p);
+                            valid = false;
+                        }
+                        p.perguntas.forEach((sp) => {
+                            if(sp.resposta === undefined && p.resposta > 0){
+                                valid = false;
+                            }
+                        });
+                    });
+                    //}
+                })
+                //}
+            });
+            console.log('Válido:', valid);
+            return valid;
+        }
+
+        //DIAGNÓSTICO PARCIAL
+        if(tipo === 2){
+            console.log('Validar Diagnóstico Parcial');
+            let dimensoesComRespostas = getDimensoesComRespostas(respostas);
+
+            dimensoes.forEach((d) => {
+                //verifica primeiro se essa dimensão possui alguma resposta, pois só é validado dimensões que começaram a ser respondidas
+                if(dimensoesComRespostas.includes(d.id_dimensao)){
+                    d.indicadores.forEach((i) => {
                         i.perguntas.forEach((p) => {
-                            console.log('validarRespostas', d.numero, i.numero, p.id_pergunta, p.letra, p.resposta);
-                            if(p.resposta === undefined && p.id_perguntaPai === 0){
+                            console.log("numero_dimensao", "numero_indicador", "id_pergunta", "letra", "id_perguntaPai", "resposta");
+                            console.log(d.numero, i.numero, p.id_pergunta, p.letra, p.id_perguntaPai, p.resposta);
+                            console.log(p);
+                            if(p.resposta === undefined && p.id_perguntaPai === null){
                                 console.log('inválido', p);
                                 valid = false;
                             }
@@ -162,11 +208,23 @@ const DiagnosticoProvider = ({children}) => {
                                 }
                             });
                         });
-                    //}
-                })
-            //}
+                    })
+                }
+            });
+            console.log('Válido:', valid);
+            return valid;
+        }
+
+    }
+
+    const getDimensoesComRespostas = (respostas) => {
+        let dimensoes = [];
+        respostas.forEach((item) => {
+            if(!dimensoes.includes(item.id_dimensao)){
+                dimensoes.push(item.id_dimensao);
+            }
         });
-        return valid;
+        return dimensoes;
     }
 
     const enviarRespostas = async () => {
@@ -187,6 +245,8 @@ const DiagnosticoProvider = ({children}) => {
             respostasApi.push(respostaApi);
         });
         localStorage.setItem('respostas_diagnostico_completo', JSON.stringify(respostas));
+        //console.log(respostas);
+        //return;
         try {
             const jsonRespostas = JSON.stringify(respostasApi);
             const result = await axios.post('api/resposta/insereRespostas', jsonRespostas, {
@@ -238,9 +298,45 @@ const DiagnosticoProvider = ({children}) => {
         return dimensoes;
     }
 
+    /*const limparTodasRespostas = () => {
+        let newDimensoes = dimensoes;
+        newDimensoes.forEach((d) => {
+            if(d.id_dimensao === dimensao.id_dimensao){
+                d.indicadores.forEach((i) => {
+                    if(i.id_indicador === indicador.id_indicador){
+                        i.perguntas.forEach((p) => {
+                                delete p.resposta;
+                            p.perguntas.forEach((sp) => {
+                                delete sp.resposta;
+                            });
+                        });
+                    }
+                })
+            }
+        });
+        setDimensoes(newDimensoes);
+
+        //Atualiza dimensao atual
+        let newDimensao = newDimensoes.find((d) => {
+            return d.id_dimensao = dimensao.id_dimensao;
+        });
+        setDimensao({});
+        setDimensao(newDimensao);
+
+        //Atualiza indicador atual
+        let newIndicador = newDimensao.indicadores.find((i) => {
+            return i.id_indicador = indicador.id_indicador;
+        });
+        setIndicador({})
+        setIndicador(newIndicador);
+
+        setRespostas([]);
+        localStorage.removeItem('respostas_diagnostico_completo');
+    }*/
+
     return (
         <div>
-            <div className="alert alert-success alert-fixed" role="alert" style={{display: alertFixed ? '' : 'none'}}>
+            <div className="alert alert-danger alert-fixed" role="alert" style={{display: alertFixed ? '' : 'none'}}>
                 <a onClick ={() => setAlertFixed(0)} ><i className="fas fa-times float-end cursor"/></a>
                 <i className="fas fa-exclamation-triangle"/>
                 Responda a todas as perguntas
@@ -255,7 +351,8 @@ const DiagnosticoProvider = ({children}) => {
                 setResposta,
                 getResposta,
                 validarRespostas,
-                enviarRespostas
+                enviarRespostas,
+                /*limparTodasRespostas*/
             }}>
                 {children}
             </DiagnosticoContext.Provider>
