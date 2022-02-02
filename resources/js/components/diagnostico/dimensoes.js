@@ -16,6 +16,10 @@ const Dimensoes = () => {
         <div>
             <div className="container">
                 <div className="row">
+                    {/*<div className="col-md-12 text-center">
+                        <br/>
+                        <button className="btn btn-lg btn-primary" onClick={() => context.limparTodasRespostas()}>Limpar Todas as Respostas</button>
+                    </div>*/}
                     <div className="col-md-12 text-center">
                         <div className="text-center nav-icons">
                             {

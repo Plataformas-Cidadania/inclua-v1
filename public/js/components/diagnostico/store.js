@@ -21,7 +21,7 @@ const DiagnosticoProvider = ({
       tipo: null,
       dimensoes: [],
   }
-    setState({tipo: 1}, function(){
+   setState({tipo: 1}, function(){
       console.log(this.state.tipo);
   })*/
 
@@ -33,6 +33,9 @@ const DiagnosticoProvider = ({
   }, [dimensao]);
   useEffect(() => {//console.log(indicador);
   }, [indicador]);
+  useEffect(() => {
+    console.log(respostas);
+  }, [respostas]);
 
   const listDimensoes = async () => {
     try {
@@ -65,7 +68,7 @@ const DiagnosticoProvider = ({
       if(pergunta.length > 0){
           //console.log('resposta: ', pergunta[0].resposta, 'alternativa: ', value, 'marcado: ', pergunta[0].resposta === value);
           //console.log('=====================================================');
-            return pergunta[0].resposta === value;
+           return pergunta[0].resposta === value;
       }
       //console.log('=====================================================');
       return false
@@ -155,15 +158,26 @@ const DiagnosticoProvider = ({
 
   const validarRespostas = () => {
     let valid = true;
-    console.log(respostas);
+    console.log(respostas); //NENHUMA PERGUNTA FOI RESPONDIDA
+
+    if (respostas.length === 0) {//valid = false;
+      //console.log('Válido:', valid);
+      //return valid;
+    } //DIAGNÓSTICO COMPLETO
+
+
+    if (tipo === 1) {}
+
     dimensoes.forEach(d => {
       //if(d.id_dimensao === dimensao.id_dimensao){
       d.indicadores.forEach(i => {
         //if(i.id_indicador === indicador.id_indicador){
         i.perguntas.forEach(p => {
-          console.log('validarRespostas', d.numero, i.numero, p.id_pergunta, p.letra, p.resposta);
+          console.log("numero_dimensao", "numero_indicador", "id_pergunta", "letra", "id_perguntaPai", "resposta");
+          console.log(d.numero, i.numero, p.id_pergunta, p.letra, p.id_perguntaPai, p.resposta);
+          console.log(p);
 
-          if (p.resposta === undefined && p.id_perguntaPai === 0) {
+          if (p.resposta === undefined && p.id_perguntaPai === null) {
             console.log('inválido', p);
             valid = false;
           }
@@ -176,6 +190,7 @@ const DiagnosticoProvider = ({
         }); //}
       }); //}
     });
+    console.log('Válido:', valid);
     return valid;
   };
 
@@ -198,6 +213,8 @@ const DiagnosticoProvider = ({
       respostasApi.push(respostaApi);
     });
     localStorage.setItem('respostas_diagnostico_completo', JSON.stringify(respostas));
+    console.log(respostas);
+    return;
 
     try {
       const jsonRespostas = JSON.stringify(respostasApi);
@@ -254,9 +271,42 @@ const DiagnosticoProvider = ({
     });
     return dimensoes;
   };
+  /*const limparTodasRespostas = () => {
+      let newDimensoes = dimensoes;
+      newDimensoes.forEach((d) => {
+          if(d.id_dimensao === dimensao.id_dimensao){
+              d.indicadores.forEach((i) => {
+                  if(i.id_indicador === indicador.id_indicador){
+                      i.perguntas.forEach((p) => {
+                              delete p.resposta;
+                          p.perguntas.forEach((sp) => {
+                              delete sp.resposta;
+                          });
+                      });
+                  }
+              })
+          }
+      });
+      setDimensoes(newDimensoes);
+       //Atualiza dimensao atual
+      let newDimensao = newDimensoes.find((d) => {
+          return d.id_dimensao = dimensao.id_dimensao;
+      });
+      setDimensao({});
+      setDimensao(newDimensao);
+       //Atualiza indicador atual
+      let newIndicador = newDimensao.indicadores.find((i) => {
+          return i.id_indicador = indicador.id_indicador;
+      });
+      setIndicador({})
+      setIndicador(newIndicador);
+       setRespostas([]);
+      localStorage.removeItem('respostas_diagnostico_completo');
+  }*/
+
 
   return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-    className: "alert alert-success alert-fixed",
+    className: "alert alert-danger alert-fixed",
     role: "alert",
     style: {
       display: alertFixed ? '' : 'none'
@@ -284,6 +334,8 @@ const DiagnosticoProvider = ({
       getResposta,
       validarRespostas,
       enviarRespostas
+      /*limparTodasRespostas*/
+
     }
   }, children));
 };
