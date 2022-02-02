@@ -158,40 +158,82 @@ const DiagnosticoProvider = ({
 
   const validarRespostas = () => {
     let valid = true;
-    console.log(respostas); //NENHUMA PERGUNTA FOI RESPONDIDA
+    console.log(respostas);
 
-    if (respostas.length === 0) {//valid = false;
-      //console.log('Válido:', valid);
-      //return valid;
+    if (respostas.length === 0) {
+      console.log('Válido:', false);
+      return false;
     } //DIAGNÓSTICO COMPLETO
 
 
-    if (tipo === 1) {}
+    if (tipo === 1) {
+      console.log('Validar Diagnóstico Completo');
+      dimensoes.forEach(d => {
+        //if(d.id_dimensao === dimensao.id_dimensao){
+        d.indicadores.forEach(i => {
+          //if(i.id_indicador === indicador.id_indicador){
+          i.perguntas.forEach(p => {
+            console.log("numero_dimensao", "numero_indicador", "id_pergunta", "letra", "id_perguntaPai", "resposta");
+            console.log(d.numero, i.numero, p.id_pergunta, p.letra, p.id_perguntaPai, p.resposta);
+            console.log(p);
 
-    dimensoes.forEach(d => {
-      //if(d.id_dimensao === dimensao.id_dimensao){
-      d.indicadores.forEach(i => {
-        //if(i.id_indicador === indicador.id_indicador){
-        i.perguntas.forEach(p => {
-          console.log("numero_dimensao", "numero_indicador", "id_pergunta", "letra", "id_perguntaPai", "resposta");
-          console.log(d.numero, i.numero, p.id_pergunta, p.letra, p.id_perguntaPai, p.resposta);
-          console.log(p);
-
-          if (p.resposta === undefined && p.id_perguntaPai === null) {
-            console.log('inválido', p);
-            valid = false;
-          }
-
-          p.perguntas.forEach(sp => {
-            if (sp.resposta === undefined && p.resposta > 0) {
+            if (p.resposta === undefined && p.id_perguntaPai === null) {
+              console.log('inválido', p);
               valid = false;
             }
-          });
+
+            p.perguntas.forEach(sp => {
+              if (sp.resposta === undefined && p.resposta > 0) {
+                valid = false;
+              }
+            });
+          }); //}
         }); //}
-      }); //}
+      });
+      console.log('Válido:', valid);
+      return valid;
+    } //DIAGNÓSTICO PARCIAL
+
+
+    if (tipo === 2) {
+      console.log('Validar Diagnóstico Parcial');
+      let dimensoesComRespostas = getDimensoesComRespostas(respostas);
+      dimensoes.forEach(d => {
+        //verifica primeiro se essa dimensão possui alguma resposta, pois só é validado dimensões que começaram a ser respondidas
+        if (dimensoesComRespostas.includes(d.id_dimensao)) {
+          d.indicadores.forEach(i => {
+            i.perguntas.forEach(p => {
+              console.log("numero_dimensao", "numero_indicador", "id_pergunta", "letra", "id_perguntaPai", "resposta");
+              console.log(d.numero, i.numero, p.id_pergunta, p.letra, p.id_perguntaPai, p.resposta);
+              console.log(p);
+
+              if (p.resposta === undefined && p.id_perguntaPai === null) {
+                console.log('inválido', p);
+                valid = false;
+              }
+
+              p.perguntas.forEach(sp => {
+                if (sp.resposta === undefined && p.resposta > 0) {
+                  valid = false;
+                }
+              });
+            });
+          });
+        }
+      });
+      console.log('Válido:', valid);
+      return valid;
+    }
+  };
+
+  const getDimensoesComRespostas = respostas => {
+    let dimensoes = [];
+    respostas.forEach(item => {
+      if (!dimensoes.includes(item.id_dimensao)) {
+        dimensoes.push(item.id_dimensao);
+      }
     });
-    console.log('Válido:', valid);
-    return valid;
+    return dimensoes;
   };
 
   const enviarRespostas = async () => {
@@ -212,9 +254,8 @@ const DiagnosticoProvider = ({
       };
       respostasApi.push(respostaApi);
     });
-    localStorage.setItem('respostas_diagnostico_completo', JSON.stringify(respostas));
-    console.log(respostas);
-    return;
+    localStorage.setItem('respostas_diagnostico_completo', JSON.stringify(respostas)); //console.log(respostas);
+    //return;
 
     try {
       const jsonRespostas = JSON.stringify(respostasApi);
