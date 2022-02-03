@@ -35,7 +35,30 @@ class DepoimentoController extends Controller
         );
     }
 
-       /**
+    /**
+     * Obter uma lista de depoimentos por usuário
+     *
+     * @param int $id_user
+     *
+     * @return JsonResponse
+    */
+    public function getAllDepoimentosPorUser($id_user): JsonResponse
+    {
+        try {
+            $res = $this->repo->getAllDepoimentosPorUser($id_user);
+            return $this->successResponse(
+                'Retornado com sucesso',
+                $res
+            );
+        }catch (Exception $exception) {
+            if ($exception instanceof ModelNotFoundException)
+                return $this->errorResponse('Not found');
+            return $this->errorResponse('Erro inesperado.'.$exception);
+        }
+    }
+
+
+    /**
      * Adicionar um novo
      *
      * @param Request $request
