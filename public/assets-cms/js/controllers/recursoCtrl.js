@@ -2,7 +2,6 @@ cmsApp.controller('recursoCtrl', ['$scope', '$http', 'Upload', '$timeout', funct
 
 
     $scope.recurso = {
-
     };
     $scope.recursos = [];
     $scope.tipos = [];
@@ -13,7 +12,7 @@ cmsApp.controller('recursoCtrl', ['$scope', '$http', 'Upload', '$timeout', funct
     $scope.lastPage = 0;
     $scope.totalItens = 0;
     $scope.maxSize = 5;
-    $scope.itensPerPage = 100;
+    $scope.itensPerPage = 10;
     $scope.dadoPesquisa = '';
     $scope.campos = "id_recurso, nome";
     $scope.campoPesquisa = "titulo";
@@ -35,9 +34,13 @@ cmsApp.controller('recursoCtrl', ['$scope', '$http', 'Upload', '$timeout', funct
     });
     $scope.$watch('dadoPesquisa', function(){
         if($listar){
-            listarRecursos();
+            if($scope.dadoPesquisa.length > 2 || $scope.dadoPesquisa.length === 0){
+                listarRecursos();
+            }
         }
     });
+
+
 
 
     var listarTipos = function(){
@@ -75,28 +78,33 @@ cmsApp.controller('recursoCtrl', ['$scope', '$http', 'Upload', '$timeout', funct
 
     var listarRecursos = function(){
         $scope.processandoListagem = true;
+        let pesquisa = false;
+        let url = 'api/recurso/paginado/'+$scope.itensPerPage+'?page='+$scope.currentPage;
+        if($scope.dadoPesquisa){
+            pesquisa = true;
+            url = 'api/busca_recursos/palavra_chave/'+$scope.dadoPesquisa;
+        }
         $http({
-            url: 'api/recurso',
+            url: url,
             method: 'GET',
             params: {
-                page: $scope.currentPage,
+                /*page: $scope.currentPage,
                 itensPorPagina: $scope.itensPerPage,
                 dadoPesquisa: $scope.dadoPesquisa,
                 campos: $scope.campos,
                 campoPesquisa: $scope.campoPesquisa,
                 ordem: $scope.ordem,
-                sentido: $scope.sentidoOrdem
+                sentido: $scope.sentidoOrdem*/
             }
         }).success(function(data, status, headers, config){
-            console.log(data.data);
+            //console.log(data.data);
             $scope.recursos = data.data;
-            $scope.lastPage = data.last_page;
-            $scope.totalItens = data.data.length;
-            //$scope.totalItens = data.total;
-            $scope.primeiroDaPagina = data.from;
-            $scope.ultimoDaPagina = data.to;
+            $scope.lastPage = pesquisa ? 1 : data.last_page;
+            $scope.totalItens = pesquisa ? data.data.length : data.total;
+            $scope.primeiroDaPagina = pesquisa ? 1 : data.from;
+            $scope.ultimoDaPagina = pesquisa ? 1 : data.to;
             $listar = true;
-            //console.log(data);
+            console.log($scope.recursos);
             $scope.processandoListagem = false;
         }).error(function(data){
             $scope.message = "Ocorreu um erro: "+data;
