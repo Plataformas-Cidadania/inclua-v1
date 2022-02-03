@@ -6,16 +6,6 @@ const Edit = (props) => {
     const [form, setForm] = useState([]);
     const [listLinks, setListLinks] = useState(1);
 
-    //const [id_recurso, setIdRecurso] = useState(0);
-
-    /*const [form, setForm] = useState({
-        ultimo_acesso: '1992-02-10 13:21:37',
-        id_tipo_recurso: 0,
-        id_formato: 0,
-    });*/
-
-    /*const [tipoSelected, setTipoSelected] = useState(0);
-    const [formatoSelected, setFormatoSelected] = useState(0);*/
 
 
     const [notify, setNotify] = useState({type:null, text:null, spin:false});
@@ -85,7 +75,6 @@ const Edit = (props) => {
 
     const Update = async () => {
         handleNotify({type: null, text: null, spin: true});
-        console.log('---', notify.spin);
         const params = new URLSearchParams();
         params.append('nome', form.nome);
         params.append('esfera', form.esfera);

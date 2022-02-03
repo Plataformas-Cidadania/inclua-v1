@@ -30,7 +30,7 @@ class DepoimentoController extends Controller
     {
         $res = $this->repo->all();
         return $this->successResponse(
-            'Recurso retornados com sucesso',
+            'Depoimentos retornados com sucesso',
             $res
         );
     }

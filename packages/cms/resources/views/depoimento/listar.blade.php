@@ -87,22 +87,20 @@
                         <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Descrição</th>
                             <th>Ícone</th>
-                            <th>Status</th>
+                            <th>Descrição</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr ng-repeat="depoimento in depoimentos">
                             <td><% depoimento.id_depoimento %></td>
+                            <td><img ng-show="depoimento.icone" ng-src="img/d<% depoimento.icone %>.png" width="30"></td>
                             <td><% depoimento.descricao %></td>
-                            <td><img ng-show="depoimento.imagem" ng-src="img/d<% depoimento.icone %>" width="60"></td>
-                            <td><% depoimento.status %></td>
                             <td class="text-right">
                                 <div>
                                     {{--<a href="cms/items/<% depoimento.id %>"><i class="fa fa-sitemap fa-2x" title="Itens"></i></a>&nbsp;&nbsp;--}}
                                     <a href="cms/depoimento/<% depoimento.id_depoimento %>"><i class="fa fa-edit fa-2x" title="Editar"></i></a>&nbsp;&nbsp;{{--<% mensagemStatus %><% idStatus %>--}}
-                                    {{--<a  ng-class="<% depoimento.status %> == 1 ? 'color-success' : 'color-success-inactive'"  style="cursor: pointer;"><i class="fa fa-check-circle fa-2x" aria-hidden="true" ng-click="status(depoimento.id);"></i></a>&nbsp;&nbsp;--}}
+                                    <a  ng-class="<% depoimento.status %> == 1 ? 'color-success' : 'color-success-inactive'"  style="cursor: pointer;"><i class="fa fa-check-circle fa-2x" aria-hidden="true" ng-click="status(depoimento.id_depoimento, depoimento.status);"></i></a>&nbsp;&nbsp;
                                     <a><i data-toggle="modal" data-target="#modalExcluir" class="fa fa-remove fa-2x" ng-click="perguntaExcluir(depoimento.id_depoimento, depoimento.descricao, depoimento.imagem)"></i></a>
                                 </div>
                             </td>

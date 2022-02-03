@@ -151,13 +151,16 @@
     <script src="js/components/home/index.js"></script>
 @endif
 @if($rota=="relate")
+    <script src="js/components/relate/edit.js"></script>
     <script src="js/components/relate/insert.js"></script>
     <script src="js/components/relate/list.js"></script>
     <script src="js/components/relate/pergunta.js"></script>
     <script src="js/components/relate/index.js"></script>
 @endif
 @if($rota=="depoimento")
+    <script src="js/components/depoimento/edit.js"></script>
     <script src="js/components/depoimento/list.js"></script>
+    <script src="js/components/depoimento/insert.js"></script>
     <script src="js/components/depoimento/index.js"></script>
 @endif
 @if($rota=="interaja")

@@ -10,7 +10,6 @@ const Pergunta = () => {
   }, []);
 
   const ClickRelate = (id, key) => {
-    console.log(id, key);
     setRelate(id, key);
   };
 
@@ -31,7 +30,7 @@ const Pergunta = () => {
       className: "dorder-container-mai p-4 "
     }, /*#__PURE__*/React.createElement("p", null, key + 1, " - ", item.descricao), /*#__PURE__*/React.createElement(Insert, {
       id_pergunta: item.id_pergunta,
-      id_user: 2
+      id_user: id_user
     }))), /*#__PURE__*/React.createElement("br", null));
   }));
 };

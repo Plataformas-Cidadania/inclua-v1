@@ -4,13 +4,12 @@ const Pergunta = () => {
     const [relateMap, setRelateMap] = useState([]);
     const [relate, setRelate] = useState(0);
 
+
     useEffect(() => {
         Relate();
     }, []);
 
     const ClickRelate = (id, key) => {
-
-        console.log(id, key);
         setRelate(id, key);
     }
 
@@ -34,9 +33,9 @@ const Pergunta = () => {
                                     <p>{key+1} - {item.descricao}</p>
                                     <Insert
                                         id_pergunta={item.id_pergunta}
-                                        id_user={2}
-                                    />
+                                        id_user={id_user}
 
+                                    />
                                 </div>
                             </div>
                             <br/>

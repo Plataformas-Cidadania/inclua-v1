@@ -179,5 +179,17 @@ cmsApp.controller('depoimentoCtrl', ['$scope', '$http', 'Upload', '$timeout', fu
         });
     };
 
+    $scope.status = function(id_depoimento, statusAtual){
+        let depoimentoStatus = {
+            status: statusAtual === 0 ? 1 : 0
+        }
+        $http.put("api/depoimento/"+id_depoimento, depoimentoStatus).success(function (data){
+            //console.log(data);
+            listarDepoimentos();
+        }).error(function(data){
+            console.log(data);
+        });
+    }
+
 
 }]);
