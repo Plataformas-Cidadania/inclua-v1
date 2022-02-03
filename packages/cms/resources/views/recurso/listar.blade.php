@@ -85,7 +85,6 @@
                         <tr>
                             <th>Id</th>
                             <th>Nome</th>
-                            <th>Nome</th>
                         </tr>
                         </thead>
                         <tbody>
