@@ -1,5 +1,4 @@
 const Insert = props => {
-  console.log('porps', props);
   const {
     useState
   } = React;
@@ -9,6 +8,7 @@ const Insert = props => {
     id_user: props.id_user,
     status: 1
   });
+  const [teste, setTeste] = useState(false);
   const [notify, setNotify] = useState({
     type: null,
     text: null,
@@ -19,7 +19,7 @@ const Insert = props => {
     setNotify(notify);
   };
 
-  const Insert = async () => {
+  const Update = async () => {
     handleNotify({
       type: null,
       text: null,
@@ -38,6 +38,8 @@ const Insert = props => {
         descricao: ""
       };
       setForm(newForm); ////
+
+      setTeste(true);
     } catch (error) {
       console.log(error);
       handleNotify({
@@ -76,7 +78,7 @@ const Insert = props => {
   }, /*#__PURE__*/React.createElement("button", {
     className: "btn btn-theme bg-pri ",
     type: "button",
-    onClick: () => Insert()
+    onClick: () => Update()
   }, "Enviar", /*#__PURE__*/React.createElement("i", {
     className: "fas fa-angle-right"
   }), /*#__PURE__*/React.createElement("span", {
@@ -98,5 +100,7 @@ const Insert = props => {
     }
   }, /*#__PURE__*/React.createElement("i", {
     className: "fas fa-exclamation-triangle bi flex-shrink-0 me-2"
-  })), /*#__PURE__*/React.createElement("div", null, notify.text))), /*#__PURE__*/React.createElement(List, null));
+  })), /*#__PURE__*/React.createElement("div", null, notify.text))), /*#__PURE__*/React.createElement(List, {
+    teste: teste
+  }));
 };
