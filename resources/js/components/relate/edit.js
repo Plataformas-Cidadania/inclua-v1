@@ -6,19 +6,19 @@ const Edit = (props) => {
 
     const [requireds, setRequireds] = useState({
         status: 2,
-        depoimento: true,
+        descricao: true,
     });
 
     useEffect(() => {
-        if(props.id_depoimento > 0){
+        if(props.id_resposta > 0){
             Detail();
         }
-    }, [props.id_depoimento]);
+    }, [props.id_resposta]);
 
     const Detail = async () => {
-
+        console.log(props.id_recurso);
         try {
-            const result = await axios.get('api/depoimento/'+props.id_depoimento);
+            const result = await axios.get('api/resposta_relate/'+props.id_resposta);
             setForm(result.data.data);
         } catch (error) {
             console.error(error);
@@ -37,7 +37,7 @@ const Edit = (props) => {
         params.append('descricao', form.descricao);
 
         try {
-            const result = await axios.put('api/depoimento/'+form.id_depoimento, params, {
+            const result = await axios.put('api/resposta_relate/'+form.id_resposta, params, {
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }

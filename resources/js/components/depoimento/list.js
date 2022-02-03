@@ -1,4 +1,4 @@
-const List = () => {
+const List = (props) => {
 
 
     const {useState, useEffect} = React;
@@ -6,15 +6,19 @@ const List = () => {
     const [varTrash, setVarTrash] = useState(0);
 
 
-    const [idRedurso, setIdRecurso] = useState(0);
+    const [depoimento, setIdDepoimento] = useState(0);
 
     useEffect(() => {
         listGet();
     }, []);
 
+    useEffect(() => {
+        listGet();
+    }, [props]);
+
     const listGet = async () => {
         try {
-            const result = await axios.get('api/resposta_relate/');
+            const result = await axios.get('api/depoimento/');
             setListMap(result.data.data)
         } catch (error) {
             console.log(error);
@@ -23,7 +27,7 @@ const List = () => {
 
     const clickDell = async (id) => {
         try {
-            const result = await axios.delete('api/resposta_relate/'+id);
+            const result = await axios.delete('api/depoimento/'+id);
             listGet();
         } catch (error) {
             console.log(error);
@@ -34,16 +38,16 @@ const List = () => {
         setVarTrash(id);
     }
 
-    /*const clickEdit = (id) => {
-        setIdRecurso(id);
-    }*/
+    const clickEdit = (id) => {
+        setIdDepoimento(id);
+    }
 
     return (
         <div>
             <table className="table table-hover">
                 <thead>
                 <tr>
-                    <th scope="col">Descrição</th>
+                    <th scope="col">Descricao</th>
                     <th scope="col">Status</th>
                     <th scope="col">Ações</th>
                 </tr>
@@ -61,19 +65,18 @@ const List = () => {
                                     </div>
                                 </th>
                                 <td>
-                                    <div style={{display: item.id_resposta===varTrash ? 'none' : ''}}>
-                                        {/*<span className="cursor" data-bs-toggle="modal" data-bs-target="#putModal" onClick={() => clickEdit(item.id_recurso)}>*/}
-                                        <span className="cursor" data-bs-toggle="modal" data-bs-target="#putModal" >
+                                    <div style={{display: item.id_depoimento===varTrash ? 'none' : ''}}>
+                                        <span className="cursor" data-bs-toggle="modal" data-bs-target="#putModal" onClick={() => clickEdit(item.id_depoimento)}>
                                             <i className="far fa-edit fa-2x" />
                                         </span>
                                          &nbsp;
-                                        <span onClick={() => clickTrash(item.id_resposta)} className="cursor">
+                                        <span onClick={() => clickTrash(item.id_depoimento)} className="cursor">
                                             <i className="far fa-trash-alt fa-2x"/>
                                         </span>
                                     </div>
-                                    <div style={{display: item.id_resposta===varTrash ? '' : 'none'}}>
+                                    <div style={{display: item.id_depoimento===varTrash ? '' : 'none'}}>
                                         <span className="badge bg-secondary cursor" onClick={() => clickTrash(0)}>Cancelar</span>&nbsp;
-                                        <span className="badge bg-danger cursor" onClick={() => clickDell(item.id_resposta)}>Excluir</span>
+                                        <span className="badge bg-danger cursor" onClick={() => clickDell(item.id_depoimento)}>Excluir</span>
                                     </div>
                                 </td>
 
@@ -94,9 +97,9 @@ const List = () => {
                                 {/*<button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"/>*/}
                             </div>
                             <div className="modal-body">
-                                {/*<Edit
-                                    id_recurso={idRedurso}
-                                    listGet={listGet}/>*/}
+                                <Edit
+                                    id_depoimento={depoimento}
+                                    listGet={listGet}/>
                             </div>
                         </div>
                     </div>

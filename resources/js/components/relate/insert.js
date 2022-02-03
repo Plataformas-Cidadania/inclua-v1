@@ -1,7 +1,5 @@
 const Insert = (props) => {
 
-    console.log('porps', props);
-
     const {useState} = React;
 
     const [form, setForm] = useState({
@@ -10,6 +8,8 @@ const Insert = (props) => {
         id_user: props.id_user,
         status: 1,
     });
+
+    const [teste, setTeste] = useState(false);
 
 
 
@@ -20,7 +20,7 @@ const Insert = (props) => {
     }
 
 
-    const Insert = async () => {
+    const Update = async () => {
         handleNotify({type: null, text: null, spin: true});
         try {
             const result = await axios.post('api/resposta_relate', form);
@@ -34,6 +34,8 @@ const Insert = (props) => {
             }
             setForm(newForm);
             ////
+
+            setTeste(true);
 
         } catch (error) {
             console.log(error);
@@ -60,7 +62,7 @@ const Insert = (props) => {
                 <br/>
                 <div className="dorder-container justify-content-end">
                     <button className="btn btn-theme bg-pri "
-                            type="button"  onClick={() => Insert()}>Enviar<i className="fas fa-angle-right"/>
+                            type="button"  onClick={() => Update()}>Enviar<i className="fas fa-angle-right"/>
                             <span style={{marginLeft: '10px', display: notify.spin ? '' : 'none'}}><i className="fas fa-spinner float-end fa-spin" /></span>
                     </button>
                 </div>
@@ -69,9 +71,7 @@ const Insert = (props) => {
                     <div>{notify.text}</div>
                 </div>
             </div>
-
-            <List />
-
+            <List teste={teste}/>
         </div>
     );
 };
