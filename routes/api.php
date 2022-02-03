@@ -387,6 +387,12 @@ Route::group([
     Route::get('/{resposta_relate}',[App\Http\Controllers\Api\RespostaRelateController::class, 'get'])
         ->name('api.resposta_relate.get');
 
+    Route::get('/user/{id_user}',[App\Http\Controllers\Api\RespostaRelateController::class, 'getAllRespostaRelatePorUser'])
+        ->name('api.resposta_relate.getAllRespostaRelatePorUser');
+
+    Route::get('/perguntaRelate/{id_pergunta}',[App\Http\Controllers\Api\RespostaRelateController::class, 'getAllRespostaRelatePorPergunta'])
+        ->name('api.resposta_relate.getAllRespostaRelatePorPergunta');
+
     Route::post('/', [App\Http\Controllers\Api\RespostaRelateController::class, 'store'])
         ->name('api.resposta_relate.store');
 
@@ -406,6 +412,10 @@ Route::group([
 
     Route::get('/{depoimento}',[App\Http\Controllers\Api\DepoimentoController::class, 'get'])
         ->name('api.depoimento.get');
+
+    Route::get('/user/{id_user}',[App\Http\Controllers\Api\DepoimentoController::class, 'getAllDepoimentosPorUser'])
+        ->name('api.resposta_relate.getAllDepoimentosPorUser');
+
 
     Route::post('/', [App\Http\Controllers\Api\DepoimentoController::class, 'store'])
         ->name('api.depoimento.store');

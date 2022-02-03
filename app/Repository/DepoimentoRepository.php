@@ -23,4 +23,18 @@ class DepoimentoRepository extends BaseRepository
     {
         $this->model = $model;
     }
+        /**
+     * Obter uma lista de depoimentos por usuário
+     *
+     * @param int $id_user
+     *
+     */
+    public function getAllDepoimentosPorUser($id_user)
+    {
+        $res = Depoimento::where('id_user', '=', $id_user)->get();
+        if (!$res || $res->isEmpty()) throw new \Illuminate\Database\Eloquent\ModelNotFoundException;
+        else return $res;
+    }
+
+
 }
