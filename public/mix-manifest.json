@@ -50,6 +50,8 @@
     "/assets-cms/js/controllers/alterarLinkCtrl.js": "/assets-cms/js/controllers/alterarLinkCtrl.js",
     "/assets-cms/js/controllers/perguntaRelateCtrl.js": "/assets-cms/js/controllers/perguntaRelateCtrl.js",
     "/assets-cms/js/controllers/alterarPerguntaRelateCtrl.js": "/assets-cms/js/controllers/alterarPerguntaRelateCtrl.js",
+    "/assets-cms/js/controllers/respostaRelateCtrl.js": "/assets-cms/js/controllers/respostaRelateCtrl.js",
+    "/assets-cms/js/controllers/alterarRespostaRelateCtrl.js": "/assets-cms/js/controllers/alterarRespostaRelateCtrl.js",
     "/assets-cms/js/controllers/depoimentoCtrl.js": "/assets-cms/js/controllers/depoimentoCtrl.js",
     "/assets-cms/js/controllers/alterarDepoimentoCtrl.js": "/assets-cms/js/controllers/alterarDepoimentoCtrl.js"
 }

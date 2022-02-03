@@ -163,6 +163,9 @@ mix.scripts('packages/cms/resources/assets/js/controllers/alterarLinkCtrl.js', '
 mix.scripts('packages/cms/resources/assets/js/controllers/perguntaRelateCtrl.js', 'public/assets-cms/js/controllers/perguntaRelateCtrl.js');
 mix.scripts('packages/cms/resources/assets/js/controllers/alterarPerguntaRelateCtrl.js', 'public/assets-cms/js/controllers/alterarPerguntaRelateCtrl.js');
 
+//Respostas Relate
+mix.scripts('packages/cms/resources/assets/js/controllers/respostaRelateCtrl.js', 'public/assets-cms/js/controllers/respostaRelateCtrl.js');
+mix.scripts('packages/cms/resources/assets/js/controllers/alterarRespostaRelateCtrl.js', 'public/assets-cms/js/controllers/alterarRespostaRelateCtrl.js');
 
 //Perguntas Depoimento
 mix.scripts('packages/cms/resources/assets/js/controllers/depoimentoCtrl.js', 'public/assets-cms/js/controllers/depoimentoCtrl.js');
