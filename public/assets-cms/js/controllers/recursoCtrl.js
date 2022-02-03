@@ -2,7 +2,6 @@ cmsApp.controller('recursoCtrl', ['$scope', '$http', 'Upload', '$timeout', funct
 
 
     $scope.recurso = {
-
     };
     $scope.recursos = [];
     $scope.tipos = [];
@@ -13,7 +12,7 @@ cmsApp.controller('recursoCtrl', ['$scope', '$http', 'Upload', '$timeout', funct
     $scope.lastPage = 0;
     $scope.totalItens = 0;
     $scope.maxSize = 5;
-    $scope.itensPerPage = 100;
+    $scope.itensPerPage = 10;
     $scope.dadoPesquisa = '';
     $scope.campos = "id_recurso, nome";
     $scope.campoPesquisa = "titulo";
@@ -38,6 +37,8 @@ cmsApp.controller('recursoCtrl', ['$scope', '$http', 'Upload', '$timeout', funct
             listarRecursos();
         }
     });
+
+
 
 
     var listarTipos = function(){
@@ -76,22 +77,23 @@ cmsApp.controller('recursoCtrl', ['$scope', '$http', 'Upload', '$timeout', funct
     var listarRecursos = function(){
         $scope.processandoListagem = true;
         $http({
-            url: 'api/recurso',
+            url: 'api/recurso/paginado/'+$scope.itensPerPage+'?page='+$scope.currentPage,
             method: 'GET',
             params: {
-                page: $scope.currentPage,
+                /*page: $scope.currentPage,
                 itensPorPagina: $scope.itensPerPage,
                 dadoPesquisa: $scope.dadoPesquisa,
                 campos: $scope.campos,
                 campoPesquisa: $scope.campoPesquisa,
                 ordem: $scope.ordem,
-                sentido: $scope.sentidoOrdem
+                sentido: $scope.sentidoOrdem*/
             }
         }).success(function(data, status, headers, config){
             console.log(data.data);
             $scope.recursos = data.data;
             $scope.lastPage = data.last_page;
-            $scope.totalItens = data.data.length;
+            $scope.totalItens = data.total;
+
             //$scope.totalItens = data.total;
             $scope.primeiroDaPagina = data.from;
             $scope.ultimoDaPagina = data.to;
