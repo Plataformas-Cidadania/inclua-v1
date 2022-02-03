@@ -33,6 +33,12 @@
     <option value="1" ng-selected="pergunta.inverter == 1">Sim</option>
 </select>
 <br>
+<label for="inverter">Subpergunta</label>
+<select name="subpergunta" id="subpergunta" ng-model="subpergunta" ng-init="subpergunta=0">
+    <option value="0">Não</option>
+    <option value="1">Sim</option>
+</select>
+<br>
 <label for="vl_subPergunta">Valor de ativação de subpergunta</label>
 <input type="number" name="vl_subPergunta" id="vl_subPergunta" class="form-control width-medio <% validar(pergunta.vl_subPergunta)%>" ng-model="pergunta.vl_subPergunta">
 <br>
