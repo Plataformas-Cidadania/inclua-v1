@@ -7,7 +7,7 @@
         $('[data-toggle="popover"]').popover()
     })
 </script>
-    <div ng-controller="respostaRelateCtrl">
+    <div ng-controller="respostaRelateCtrl" ng-init="id_recurso={{$id_recurso}}; listarLinks({{$id_recurso}})>
         <div class="box-padrao">
             <h1><i class="fa fa-resposta" aria-hidden="true"></i>&nbsp;Respostas (Relate)</h1>
             {{--<button class="btn btn-primary" ng-click="mostrarForm=!mostrarForm" ng-show="!mostrarForm">Nova Resposta</button>--}}

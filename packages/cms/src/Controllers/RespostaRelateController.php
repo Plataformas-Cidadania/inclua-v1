@@ -15,9 +15,9 @@ class RespostaRelateController extends Controller
 
     }
 
-    function index()
+    function index($id_pergunta)
     {
-        return view('cms::resposta-relate.listar');
+        return view('cms::resposta-relate.listar', ['id_recurso' => $id_pergunta]);
     }
 
     public function detalhar($id)
