@@ -1,14 +1,17 @@
-const List = () => {
+const List = props => {
   const {
     useState,
     useEffect
   } = React;
   const [listMap, setListMap] = useState([]);
   const [varTrash, setVarTrash] = useState(0);
-  const [idRedurso, setIdRecurso] = useState(0);
+  const [relate, setIdRelate] = useState(0);
   useEffect(() => {
     listGet();
   }, []);
+  useEffect(() => {
+    listGet();
+  }, [props]);
 
   const listGet = async () => {
     try {
@@ -31,10 +34,10 @@ const List = () => {
   const clickTrash = id => {
     setVarTrash(id);
   };
-  /*const clickEdit = (id) => {
-      setIdRecurso(id);
-  }*/
 
+  const clickEdit = id => {
+    setIdRelate(id);
+  };
 
   return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("table", {
     className: "table table-hover"
@@ -48,25 +51,26 @@ const List = () => {
     return /*#__PURE__*/React.createElement("tr", {
       key: 'table_' + key
     }, /*#__PURE__*/React.createElement("td", null, item.descricao), /*#__PURE__*/React.createElement("th", null, /*#__PURE__*/React.createElement("div", {
-      className: "badge " + (item.status === 1 ? 'bg-success' : 'bg-warning text-dark')
-    }, item.status === 1 ? 'Aprovado' : 'Em analise')), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", {
+      className: "badge " + (item.status === 1 ? 'bg-warning text-dark' : 'bg-success')
+    }, item.status === 1 ? 'Em analise' : 'Aprovado')), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", {
       style: {
-        display: item.id_recurso === varTrash ? 'none' : ''
+        display: item.id_resposta === varTrash ? 'none' : ''
       }
     }, /*#__PURE__*/React.createElement("span", {
       className: "cursor",
       "data-bs-toggle": "modal",
-      "data-bs-target": "#putModal"
+      "data-bs-target": "#putModal",
+      onClick: () => clickEdit(item.id_resposta)
     }, /*#__PURE__*/React.createElement("i", {
       className: "far fa-edit fa-2x"
     })), "\xA0", /*#__PURE__*/React.createElement("span", {
-      onClick: () => clickTrash(item.id_recurso),
+      onClick: () => clickTrash(item.id_resposta),
       className: "cursor"
     }, /*#__PURE__*/React.createElement("i", {
       className: "far fa-trash-alt fa-2x"
     }))), /*#__PURE__*/React.createElement("div", {
       style: {
-        display: item.id_recurso === varTrash ? '' : 'none'
+        display: item.id_resposta === varTrash ? '' : 'none'
       }
     }, /*#__PURE__*/React.createElement("span", {
       className: "badge bg-secondary cursor",
@@ -76,23 +80,6 @@ const List = () => {
       onClick: () => clickDell(item.id_resposta)
     }, "Excluir"))));
   }))), /*#__PURE__*/React.createElement("div", {
-    className: "modal fade",
-    id: "insertModal",
-    tabIndex: "-1",
-    "aria-labelledby": "insertModalLabel",
-    "aria-hidden": "true"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "modal-dialog"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "modal-content"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "modal-header"
-  }, /*#__PURE__*/React.createElement("h5", {
-    className: "modal-title",
-    id: "insertModalLabel"
-  }, "Inserir")), /*#__PURE__*/React.createElement("div", {
-    className: "modal-body"
-  })))), /*#__PURE__*/React.createElement("div", {
     className: "modal fade",
     id: "putModal",
     tabIndex: "-1",
@@ -109,5 +96,8 @@ const List = () => {
     id: "putModalLabel"
   }, "Editar")), /*#__PURE__*/React.createElement("div", {
     className: "modal-body"
-  })))));
+  }, /*#__PURE__*/React.createElement(Edit, {
+    id_resposta: relate,
+    listGet: listGet
+  }))))));
 };

@@ -17,7 +17,7 @@ class RespostaRelateController extends Controller
     private RespostaRelateRepository $repo;
     private $rules = [
         'descricao' => 'string',
-        'status' => 'int|min:1|',
+        'status' => 'int',
         'id_pergunta' => 'int|min:1|',
         'id_user' => 'int|nullable'
     ];
