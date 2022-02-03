@@ -7,7 +7,7 @@
         $('[data-toggle="popover"]').popover()
     })
 </script>
-    <div ng-controller="respostaRelateCtrl" ng-init="id_recurso={{$id_recurso}}; listarLinks({{$id_recurso}})>
+    <div ng-controller="respostaRelateCtrl" ng-init="id_pergunta={{$id_pergunta}}; listarRespostas({{$id_pergunta}})">
         <div class="box-padrao">
             <h1><i class="fa fa-resposta" aria-hidden="true"></i>&nbsp;Respostas (Relate)</h1>
             {{--<button class="btn btn-primary" ng-click="mostrarForm=!mostrarForm" ng-show="!mostrarForm">Nova Resposta</button>--}}
@@ -85,7 +85,6 @@
                         <tr>
                             <th>Id</th>
                             <th>Descrição</th>
-                            <th>Status</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -97,7 +96,7 @@
                                 <div>
                                     {{--<a href="cms/items/<% resposta.id %>"><i class="fa fa-sitemap fa-2x" title="Itens"></i></a>&nbsp;&nbsp;--}}
                                     <a href="cms/resposta-relate/<% resposta.id_resposta %>"><i class="fa fa-edit fa-2x" title="Editar"></i></a>&nbsp;&nbsp;{{--<% mensagemStatus %><% idStatus %>--}}
-                                    <a  ng-class="<% resposta.status %> == 1 ? 'color-success' : 'color-success-inactive'"  style="cursor: pointer;"><i class="fa fa-check-circle fa-2x" aria-hidden="true" ng-click="status(resposta.id_depoimento, resposta.status);"></i></a>&nbsp;&nbsp;
+                                    <a  ng-class="<% resposta.status %> == 1 ? 'color-success' : 'color-success-inactive'"  style="cursor: pointer;"><i class="fa fa-check-circle fa-2x" aria-hidden="true" ng-click="status(resposta.id_resposta, resposta.status);"></i></a>&nbsp;&nbsp;
                                     <a><i data-toggle="modal" data-target="#modalExcluir" class="fa fa-remove fa-2x" ng-click="respostaExcluir(resposta.id_resposta, resposta.descricao, resposta.imagem)"></i></a>
                                 </div>
                             </td>

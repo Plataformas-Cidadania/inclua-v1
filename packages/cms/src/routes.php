@@ -221,7 +221,7 @@ Route::group(['middleware' => 'cms'], function () {
 
         //RespostaRelate
         Route::get('/cms/respostas-relate/{id_pergunta}', 'Cms\Controllers\RespostaRelateController@index');
-        Route::get('/cms/respostas-relate/{id}', 'Cms\Controllers\RespostaRelateController@detalhar');
+        Route::get('/cms/resposta-relate/{id}', 'Cms\Controllers\RespostaRelateController@detalhar');
 
         //Depoimento
         Route::get('/cms/depoimentos', 'Cms\Controllers\DepoimentoController@index');

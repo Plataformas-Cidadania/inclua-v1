@@ -22,21 +22,21 @@ cmsApp.controller('respostaRelateCtrl', ['$scope', '$http', 'Upload', '$timeout'
 
     $scope.$watch('currentPage', function(){
         if($listar){
-            listarRespostas($scope.id_pergunta);
+            $scope.listarRespostas($scope.id_pergunta);
         }
     });
     $scope.$watch('itensPerPage', function(){
         if($listar){
-            listarRespostas($scope.id_pergunta);
+            $scope.listarRespostas($scope.id_pergunta);
         }
     });
     $scope.$watch('dadoPesquisa', function(){
         if($listar){
-            listarRespostas($scope.id_pergunta);
+            $scope.listarRespostas($scope.id_pergunta);
         }
     });
 
-    var listarRespostas = function(id_pergunta){
+    $scope.listarRespostas = function(id_pergunta){
         $scope.processandoListagem = true;
         $http({
             url: 'api/resposta_relate/perguntaRelate/'+id_pergunta,
@@ -78,7 +78,7 @@ cmsApp.controller('respostaRelateCtrl', ['$scope', '$http', 'Upload', '$timeout'
             $scope.sentidoOrdem = "asc";
         }
 
-        listarRespostas($scope.id_pergunta);
+        $scope.listarRespostas($scope.id_pergunta);
     };
 
     $scope.validar = function(){
@@ -86,7 +86,7 @@ cmsApp.controller('respostaRelateCtrl', ['$scope', '$http', 'Upload', '$timeout'
     };
 
 
-    //listarRespostas();
+    //$scope.listarRespostas();
 
     //INSERIR/////////////////////////////
 
@@ -101,7 +101,7 @@ cmsApp.controller('respostaRelateCtrl', ['$scope', '$http', 'Upload', '$timeout'
         if(file==null && arquivo==null){
             $scope.processandoInserir = true;
             $http.post("api/resposta_relate", $scope.resposta).success(function (data){
-                 listarRespostas($scope.id_pergunta);
+                 $scope.listarRespostas($scope.id_pergunta);
                  //delete $scope.resposta;//limpa o form
                 $scope.resposta = {};//limpa o form
                 $scope.mensagemInserir =  "Gravado com sucesso!";
@@ -126,7 +126,7 @@ cmsApp.controller('respostaRelateCtrl', ['$scope', '$http', 'Upload', '$timeout'
                 delete $scope.resposta;//limpa o form
                 $scope.picFile = null;//limpa o file
                 $scope.fileArquivo = null;//limpa o file
-                listarRespostas($scope.id_pergunta);
+                $scope.listarRespostas($scope.id_pergunta);
                 $scope.mensagemInserir =  "Gravado com sucesso!";
             }, function (response) {
                 console.log(response.data);
@@ -176,7 +176,7 @@ cmsApp.controller('respostaRelateCtrl', ['$scope', '$http', 'Upload', '$timeout'
                 $scope.processandoExcluir = false;
                 $scope.excluido = true;
                 $scope.mensagemExcluido = data.message;
-                listarRespostas($scope.id_pergunta);
+                $scope.listarRespostas($scope.id_pergunta);
                 return;
             }
             $scope.processandoExcluir = false;
@@ -193,9 +193,9 @@ cmsApp.controller('respostaRelateCtrl', ['$scope', '$http', 'Upload', '$timeout'
         let depoimentoStatus = {
             status: statusAtual === 0 ? 1 : 0
         }
-        $http.put("api/depoimento/"+id_depoimento, depoimentoStatus).success(function (data){
+        $http.put("api/resposta_relate/"+id_depoimento, depoimentoStatus).success(function (data){
             //console.log(data);
-            listarRespostas($scope.id_pergunta);
+            $scope.listarRespostas($scope.id_pergunta);
         }).error(function(data){
             console.log(data);
         });
