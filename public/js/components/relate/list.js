@@ -5,10 +5,11 @@ const List = props => {
   } = React;
   const [listMap, setListMap] = useState([]);
   const [varTrash, setVarTrash] = useState(0);
-  const [relate, setIdRelate] = useState(0);
-  useEffect(() => {
-    listGet();
-  }, []);
+  const [idRelate, setIdRelate] = useState(0);
+  /*useEffect(() => {
+      listGet();
+  }, []);*/
+
   useEffect(() => {
     listGet();
   }, [props]);
@@ -37,6 +38,7 @@ const List = props => {
   };
 
   const clickEdit = id => {
+    console.log(id);
     setIdRelate(id);
   };
 
@@ -60,7 +62,7 @@ const List = props => {
     }, /*#__PURE__*/React.createElement("span", {
       className: "cursor",
       "data-bs-toggle": "modal",
-      "data-bs-target": "#putModal",
+      "data-bs-target": "#putModal" + props.pergunta_id,
       onClick: () => clickEdit(item.id_resposta)
     }, /*#__PURE__*/React.createElement("i", {
       className: "far fa-edit fa-2x"
@@ -82,9 +84,9 @@ const List = props => {
     }, "Excluir"))));
   }))), /*#__PURE__*/React.createElement("div", {
     className: "modal fade",
-    id: "putModal",
+    id: "putModal" + props.pergunta_id,
     tabIndex: "-1",
-    "aria-labelledby": "putModalLabel",
+    "aria-labelledby": "putModalLabel" + props.pergunta_id,
     "aria-hidden": "true"
   }, /*#__PURE__*/React.createElement("div", {
     className: "modal-dialog"
@@ -94,11 +96,11 @@ const List = props => {
     className: "modal-header"
   }, /*#__PURE__*/React.createElement("h5", {
     className: "modal-title",
-    id: "putModalLabel"
+    id: "putModalLabel" + props.pergunta_id
   }, "Editar")), /*#__PURE__*/React.createElement("div", {
     className: "modal-body"
   }, /*#__PURE__*/React.createElement(Edit, {
-    id_resposta: relate,
+    id_resposta: idRelate,
     listGet: listGet
   }))))));
 };

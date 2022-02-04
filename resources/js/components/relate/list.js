@@ -5,11 +5,11 @@ const List = (props) => {
     const [listMap, setListMap] = useState([]);
     const [varTrash, setVarTrash] = useState(0);
 
-    const [relate, setIdRelate] = useState(0);
+    const [idRelate, setIdRelate] = useState(0);
 
-    useEffect(() => {
+    /*useEffect(() => {
         listGet();
-    }, []);
+    }, []);*/
 
     useEffect(() => {
         listGet();
@@ -39,6 +39,7 @@ const List = (props) => {
     }
 
     const clickEdit = (id) => {
+        console.log(id);
         setIdRelate(id);
     }
 
@@ -66,7 +67,7 @@ const List = (props) => {
                                 </th>
                                 <td>
                                     <div style={{display: item.id_resposta===varTrash ? 'none' : ''}}>
-                                        <span className="cursor" data-bs-toggle="modal" data-bs-target="#putModal" onClick={() => clickEdit(item.id_resposta)}>
+                                        <span className="cursor" data-bs-toggle="modal" data-bs-target={"#putModal"+props.pergunta_id} onClick={() => clickEdit(item.id_resposta)}>
                                             <i className="far fa-edit fa-2x" />
                                         </span>
                                          &nbsp;
@@ -89,16 +90,16 @@ const List = (props) => {
 
             {/*Modal Put*/}
             {
-                <div className="modal fade" id="putModal" tabIndex="-1" aria-labelledby="putModalLabel" aria-hidden="true">
+                <div className="modal fade" id={"putModal"+props.pergunta_id} tabIndex="-1" aria-labelledby={"putModalLabel"+props.pergunta_id} aria-hidden="true">
                     <div className="modal-dialog">
                         <div className="modal-content">
                             <div className="modal-header">
-                                <h5 className="modal-title" id="putModalLabel">Editar</h5>
+                                <h5 className="modal-title" id={"putModalLabel"+props.pergunta_id}>Editar</h5>
                                 {/*<button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"/>*/}
                             </div>
                             <div className="modal-body">
                                 <Edit
-                                    id_resposta={relate}
+                                    id_resposta={idRelate}
                                     listGet={listGet}/>
                             </div>
                         </div>

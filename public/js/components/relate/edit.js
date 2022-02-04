@@ -14,6 +14,8 @@ const Edit = props => {
     descricao: true
   });
   useEffect(() => {
+    console.log(props.id_resposta);
+
     if (props.id_resposta > 0) {
       Detail();
     }

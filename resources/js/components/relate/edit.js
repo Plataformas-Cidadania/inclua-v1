@@ -10,6 +10,7 @@ const Edit = (props) => {
     });
 
     useEffect(() => {
+        console.log(props.id_resposta);
         if(props.id_resposta > 0){
             Detail();
         }
@@ -83,7 +84,6 @@ const Edit = (props) => {
     return (
         <div>
             <form>
-
                 <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
                 <div className="row">
                     <div className="col-md-12">
