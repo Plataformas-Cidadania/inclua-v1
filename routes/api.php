@@ -390,8 +390,11 @@ Route::group([
     Route::get('/user/{id_user}',[App\Http\Controllers\Api\RespostaRelateController::class, 'getAllRespostaRelatePorUser'])
         ->name('api.resposta_relate.getAllRespostaRelatePorUser');
 
-    Route::get('/perguntaRelate/{id_pergunta}',[App\Http\Controllers\Api\RespostaRelateController::class, 'getAllRespostaRelatePorPergunta'])
+        Route::get('/perguntaRelate/{id_pergunta}',[App\Http\Controllers\Api\RespostaRelateController::class, 'getAllRespostaRelatePorPergunta'])
         ->name('api.resposta_relate.getAllRespostaRelatePorPergunta');
+
+    Route::get('/perguntaRelate/{id_pergunta}/user/{id_user}',[App\Http\Controllers\Api\RespostaRelateController::class, 'getAllRespostaRelate_pergunta_user'])
+        ->name('api.resposta_relate.getAllRespostaRelate_pergunta_user');
 
     Route::post('/', [App\Http\Controllers\Api\RespostaRelateController::class, 'store'])
         ->name('api.resposta_relate.store');

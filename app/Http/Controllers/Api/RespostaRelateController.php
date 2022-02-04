@@ -56,7 +56,7 @@ class RespostaRelateController extends Controller
             return $this->errorResponse('Erro inesperado.'.$exception);
         }
     }
-
+ 
     /**
      * Obter uma lista de resposta do relate por pergunta
      *
@@ -78,7 +78,28 @@ class RespostaRelateController extends Controller
             return $this->errorResponse('Erro inesperado.'.$exception);
         }
     }
-
+    /**
+     * Obter uma lista de resposta do relate por pergunta e user
+     *
+     * @param int $id_pergunta
+     * @param int $id_user
+     *
+     * @return JsonResponse
+    */
+    public function getAllRespostaRelate_pergunta_user($id_pergunta, $id_user): JsonResponse
+    {
+        try {
+            $res = $this->repo->getAllRespostaRelate_pergunta_user($id_pergunta, $id_user);
+            return $this->successResponse(
+                'Retornado com sucesso',
+                $res
+            );
+        }catch (Exception $exception) {
+            if ($exception instanceof ModelNotFoundException)
+                return $this->errorResponse('Not found');
+            return $this->errorResponse('Erro inesperado.'.$exception);
+        }
+    }
 
 
        /**

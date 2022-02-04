@@ -50,6 +50,29 @@ class RespostaRelateRepository extends BaseRepository
         else return $res;
     }
 
+    /**
+     * Obter uma lista de respostas do relate por pergunta e user
+     *
+     * @param int $id_pergunta
+     * @param int $id_user
+     *
+     */
+    public function getAllRespostaRelate_pergunta_user($id_pergunta, $id_user)
+    {
+        $res = RespostaRelate::where('id_pergunta', '=', $id_pergunta)
+                                ->where('id_user', '=', $id_user)
+                                ->get();
+        if (!$res || $res->isEmpty()) throw new \Illuminate\Database\Eloquent\ModelNotFoundException;
+        else return $res;
+    }
+
+
+
+
+
+
+
+
 
 
 }
