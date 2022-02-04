@@ -27,14 +27,13 @@ const Pergunta = () => {
             {
                 relateMap.map((item, key) => {
                     return(
-                        <div>
-                            <div className="dorder-container"  key={key}>
+                        <div key={'pergunta'+item.id_pergunta}>
+                            <div className="dorder-container">
                                 <div className="dorder-container-mai p-4 ">
                                     <p>{key+1} - {item.descricao}</p>
                                     <Insert
                                         id_pergunta={item.id_pergunta}
                                         id_user={id_user}
-
                                     />
                                 </div>
                             </div>

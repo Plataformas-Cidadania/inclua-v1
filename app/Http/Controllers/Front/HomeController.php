@@ -26,8 +26,8 @@ class HomeController extends Controller
         $depoimentos = DB::table('avaliacao.depoimento')
             ->select('depoimento.descricao', 'depoimento.icone', 'users.name')
             ->join('users', 'users.id', '=', 'depoimento.id_user')
-            ->where('status', 1)
-            ->orderBy('id', 'desc')
+            ->where('depoimento.status', 1)
+            ->orderBy('depoimento.id_depoimento', 'desc')
             ->get();
 
 

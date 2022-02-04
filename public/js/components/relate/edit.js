@@ -10,7 +10,7 @@ const Edit = props => {
     spin: false
   });
   const [requireds, setRequireds] = useState({
-    status: 2,
+    status: 0,
     descricao: true
   });
   useEffect(() => {
@@ -20,8 +20,6 @@ const Edit = props => {
   }, [props.id_resposta]);
 
   const Detail = async () => {
-    console.log(props.id_recurso);
-
     try {
       const result = await axios.get('api/resposta_relate/' + props.id_resposta);
       setForm(result.data.data);
@@ -42,6 +40,7 @@ const Edit = props => {
     });
     const params = new URLSearchParams();
     params.append('descricao', form.descricao);
+    params.append('status', 0);
 
     try {
       const result = await axios.put('api/resposta_relate/' + form.id_resposta, params, {

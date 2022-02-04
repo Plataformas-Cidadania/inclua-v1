@@ -6,7 +6,7 @@ const Insert = props => {
     descricao: '',
     id_pergunta: props.id_pergunta,
     id_user: props.id_user,
-    status: 1
+    status: 0
   });
   const [teste, setTeste] = useState(false);
   const [notify, setNotify] = useState({
@@ -101,6 +101,7 @@ const Insert = props => {
   }, /*#__PURE__*/React.createElement("i", {
     className: "fas fa-exclamation-triangle bi flex-shrink-0 me-2"
   })), /*#__PURE__*/React.createElement("div", null, notify.text))), /*#__PURE__*/React.createElement(List, {
-    teste: teste
+    teste: teste,
+    pergunta_id: props.id_pergunta
   }));
 };

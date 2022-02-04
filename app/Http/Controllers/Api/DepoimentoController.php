@@ -17,7 +17,7 @@ class DepoimentoController extends Controller
     private DepoimentoRepository $repo;
     private $rules = [
         'descricao' => 'string',
-        'status' => 'int|min:1|',
+        'status' => 'int|min:0|',
         'icone' => 'int|min:1|',
         'id_user' => 'int|nullable'
     ];

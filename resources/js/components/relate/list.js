@@ -17,7 +17,8 @@ const List = (props) => {
 
     const listGet = async () => {
         try {
-            const result = await axios.get('api/resposta_relate/');
+            //const result = await axios.get('api/resposta_relate/');
+            const result = await axios.get('api/resposta_relate/perguntaRelate/'+props.pergunta_id+'/user/'+id_user);
             setListMap(result.data.data)
         } catch (error) {
             console.log(error);
@@ -59,8 +60,8 @@ const List = (props) => {
                                 <td>{item.descricao}</td>
 
                                 <th>
-                                    <div className={"badge "+(item.status === 1 ? 'bg-warning text-dark': 'bg-success')}>
-                                        {item.status === 1 ? 'Em analise' : 'Aprovado'}
+                                    <div className={"badge "+(item.status === 0 ? 'bg-warning text-dark': 'bg-success')}>
+                                        {item.status === 0 ? 'Em analise' : 'Aprovado'}
                                     </div>
                                 </th>
                                 <td>

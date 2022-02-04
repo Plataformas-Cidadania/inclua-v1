@@ -62,8 +62,8 @@ const List = (props) => {
                                     <td>{item.descricao}</td>
 
                                     <th>
-                                        <div className={"badge "+(item.status === 1 ? 'bg-warning text-dark': 'bg-success')}>
-                                            {item.status === 1 ? 'Em analise' : 'Aprovado'}
+                                        <div className={"badge "+(item.status === 0 ? 'bg-warning text-dark': 'bg-success')}>
+                                            {item.status === 0 ? 'Em analise' : 'Aprovado'}
                                         </div>
                                     </th>
                                     <td>

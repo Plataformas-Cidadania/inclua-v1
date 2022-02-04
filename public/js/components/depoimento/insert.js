@@ -13,7 +13,7 @@ const Inserts = () => {
   const [form, setForm] = useState({
     icone: 1,
     descricao: '',
-    status: 1,
+    status: 0,
     id_user: id_user
   });
 
@@ -41,7 +41,7 @@ const Inserts = () => {
     try {
       handleNotify({
         type: 'success',
-        text: 'Recurso inserido, cadastre o links!',
+        text: 'Depoimento registrado, Obrigado!',
         spin: false
       });
       const result = await axios.post('api/depoimento', form); //Limpar form
@@ -54,7 +54,7 @@ const Inserts = () => {
     } catch (error) {
       handleNotify({
         type: 'danger',
-        text: 'Recurso não foi inserido, tente novamente!',
+        text: 'Depoimento não foi registrado! Tente novamente!',
         spin: false
       });
     }

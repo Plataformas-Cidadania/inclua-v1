@@ -6,7 +6,7 @@ const Insert = (props) => {
         descricao: '',
         id_pergunta: props.id_pergunta,
         id_user: props.id_user,
-        status: 1,
+        status: 0,
     });
 
     const [teste, setTeste] = useState(false);
@@ -71,7 +71,7 @@ const Insert = (props) => {
                     <div>{notify.text}</div>
                 </div>
             </div>
-            <List teste={teste}/>
+            <List teste={teste} pergunta_id={props.id_pergunta}/>
         </div>
     );
 };

@@ -15,7 +15,8 @@ const List = props => {
 
   const listGet = async () => {
     try {
-      const result = await axios.get('api/resposta_relate/');
+      //const result = await axios.get('api/resposta_relate/');
+      const result = await axios.get('api/resposta_relate/perguntaRelate/' + props.pergunta_id + '/user/' + id_user);
       setListMap(result.data.data);
     } catch (error) {
       console.log(error);
@@ -51,8 +52,8 @@ const List = props => {
     return /*#__PURE__*/React.createElement("tr", {
       key: 'table_' + key
     }, /*#__PURE__*/React.createElement("td", null, item.descricao), /*#__PURE__*/React.createElement("th", null, /*#__PURE__*/React.createElement("div", {
-      className: "badge " + (item.status === 1 ? 'bg-warning text-dark' : 'bg-success')
-    }, item.status === 1 ? 'Em analise' : 'Aprovado')), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", {
+      className: "badge " + (item.status === 0 ? 'bg-warning text-dark' : 'bg-success')
+    }, item.status === 0 ? 'Em analise' : 'Aprovado')), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", {
       style: {
         display: item.id_resposta === varTrash ? 'none' : ''
       }

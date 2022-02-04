@@ -23,9 +23,10 @@ const Pergunta = () => {
   };
 
   return /*#__PURE__*/React.createElement("div", null, relateMap.map((item, key) => {
-    return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-      className: "dorder-container",
-      key: key
+    return /*#__PURE__*/React.createElement("div", {
+      key: 'pergunta' + item.id_pergunta
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "dorder-container"
     }, /*#__PURE__*/React.createElement("div", {
       className: "dorder-container-mai p-4 "
     }, /*#__PURE__*/React.createElement("p", null, key + 1, " - ", item.descricao), /*#__PURE__*/React.createElement(Insert, {

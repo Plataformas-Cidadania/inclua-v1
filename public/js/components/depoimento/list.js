@@ -52,8 +52,8 @@ const List = props => {
     return /*#__PURE__*/React.createElement("tr", {
       key: 'table_' + key
     }, /*#__PURE__*/React.createElement("td", null, item.descricao), /*#__PURE__*/React.createElement("th", null, /*#__PURE__*/React.createElement("div", {
-      className: "badge " + (item.status === 1 ? 'bg-warning text-dark' : 'bg-success')
-    }, item.status === 1 ? 'Em analise' : 'Aprovado')), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", {
+      className: "badge " + (item.status === 0 ? 'bg-warning text-dark' : 'bg-success')
+    }, item.status === 0 ? 'Em analise' : 'Aprovado')), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", {
       style: {
         display: item.id_depoimento === varTrash ? 'none' : ''
       }
