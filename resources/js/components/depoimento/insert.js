@@ -1,4 +1,4 @@
-const Insert = () => {
+const Inserts = () => {
     const {useState} = React;
     const [icon, setIcon] = useState(0);
     const [varValid, setValid] = useState(false);

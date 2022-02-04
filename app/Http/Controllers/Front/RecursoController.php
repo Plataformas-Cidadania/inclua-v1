@@ -17,7 +17,7 @@ class RecursoController extends Controller{
 
         $rota = Route::getCurrentRoute()->uri();
 
-        $modulo = \App\Models\Modulo::first();
+        $modulo = \App\Models\Modulo::where('slug', 'biblioteca')->first();
 
         return view('recurso.listar', [
             'page' => $modulo,

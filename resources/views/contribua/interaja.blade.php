@@ -5,6 +5,8 @@
 @section('image', "/imagens/modulos/lg-".$page->imagem)
 @section('content')
 
+
+
     <div class="container-fluid">
         <div class="p-3">&nbsp;</div>
         <div class="dorder-container">

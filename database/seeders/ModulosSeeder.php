@@ -75,17 +75,6 @@ class ModulosSeeder extends Seeder
         DB::table('cms.modulos')->insert([
             'imagem' => '',
             'arquivo' => '',
-            'titulo' => 'Mapa do site',
-            'descricao' => 'Página em construção!',
-            'slug' => 'mapa-do-site',
-            'status' => 1,
-            'show' => 0,
-            'tipo_id' => 1,
-        ]);
-
-        DB::table('cms.modulos')->insert([
-            'imagem' => '',
-            'arquivo' => '',
             'titulo' => 'Parceiros',
             'descricao' => '',
             'slug' => 'parceiros',
@@ -103,6 +92,17 @@ class ModulosSeeder extends Seeder
             'status' => 1,
             'show' => 0,
             'tipo_id' => 1,
+        ]);
+
+        DB::table('cms.modulos')->insert([
+            'imagem' => '',
+            'arquivo' => '',
+            'titulo' => 'Mapa do site',
+            'descricao' => 'Digite um texto!',
+            'slug' => 'mapa-do-site',
+            'status' => 1,
+            'show' => 0,
+            'tipo_id' => 2,
         ]);
 
         DB::table('cms.modulos')->insert([
@@ -140,6 +140,63 @@ class ModulosSeeder extends Seeder
             'show' => 0,
             'tipo_id' => 0,
         ]);
+
+        DB::table('cms.modulos')->insert([
+            'imagem' => '',
+            'arquivo' => '',
+            'titulo' => 'Interaja',
+            'descricao' => 'Digite um texto!',
+            'slug' => 'txt-interaja',
+            'status' => 1,
+            'show' => 0,
+            'tipo_id' => 3,
+        ]);
+
+        DB::table('cms.modulos')->insert([
+            'imagem' => '',
+            'arquivo' => '',
+            'titulo' => 'Compartilhe',
+            'descricao' => 'Digite um texto!',
+            'slug' => 'txt-compartilhe',
+            'status' => 1,
+            'show' => 0,
+            'tipo_id' => 3,
+        ]);
+
+        DB::table('cms.modulos')->insert([
+            'imagem' => '',
+            'arquivo' => '',
+            'titulo' => 'Relate',
+            'descricao' => 'Digite um texto!',
+            'slug' => 'txt-relate',
+            'status' => 1,
+            'show' => 0,
+            'tipo_id' => 3,
+        ]);
+
+        DB::table('cms.modulos')->insert([
+            'imagem' => '',
+            'arquivo' => '',
+            'titulo' => 'Depoimento',
+            'descricao' => 'Digite um texto!',
+            'slug' => 'txt-depoimento',
+            'status' => 1,
+            'show' => 0,
+            'tipo_id' => 3,
+        ]);
+
+        DB::table('cms.modulos')->insert([
+            'imagem' => '',
+            'arquivo' => '',
+            'titulo' => 'Biblioteca de recursos',
+            'descricao' => 'Digite um texto!',
+            'slug' => 'biblioteca',
+            'status' => 1,
+            'show' => 0,
+            'tipo_id' => 3,
+        ]);
+
+
 
     }
 }

@@ -17,7 +17,7 @@ class ContribuaController extends Controller{
 
         $rota = Route::getCurrentRoute()->uri();
 
-        $modulo = \App\Models\Modulo::first();
+        $modulo = \App\Models\Modulo::where('slug', 'txt-interaja')->first();
 
         return view('contribua.listar', [
             'page' => $modulo,
@@ -65,7 +65,7 @@ class ContribuaController extends Controller{
 
         $rota = Route::getCurrentRoute()->uri();
 
-        $modulo = \App\Models\Modulo::first();
+        $modulo = \App\Models\Modulo::where('slug', 'txt-compartilhe')->first();
 
         return view('contribua.compartilhe', [
             'page' => $modulo,
@@ -77,7 +77,7 @@ class ContribuaController extends Controller{
 
         $rota = Route::getCurrentRoute()->uri();
 
-        $modulo = \App\Models\Modulo::first();
+        $modulo = \App\Models\Modulo::where('slug', 'txt-relate')->first();
 
         return view('contribua.relate', [
             'page' => $modulo,
@@ -89,7 +89,7 @@ class ContribuaController extends Controller{
 
         $rota = Route::getCurrentRoute()->uri();
 
-        $modulo = \App\Models\Modulo::first();
+        $modulo = \App\Models\Modulo::where('slug', 'txt-depoimento')->first();
 
         return view('contribua.depoimento', [
             'page' => $modulo,

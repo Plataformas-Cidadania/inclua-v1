@@ -15,7 +15,7 @@ const List = props => {
 
   const listGet = async () => {
     try {
-      const result = await axios.get('api/depoimento/');
+      const result = await axios.get('api/depoimento/user/' + id_user);
       setListMap(result.data.data);
     } catch (error) {
       console.log(error);
@@ -47,7 +47,8 @@ const List = props => {
     scope: "col"
   }, "Status"), /*#__PURE__*/React.createElement("th", {
     scope: "col"
-  }, "A\xE7\xF5es"))), /*#__PURE__*/React.createElement("tbody", null, listMap.map((item, key) => {
+  }, "A\xE7\xF5es"))), /*#__PURE__*/React.createElement("tbody", null, //listMap===undefined ?
+  listMap.map((item, key) => {
     return /*#__PURE__*/React.createElement("tr", {
       key: 'table_' + key
     }, /*#__PURE__*/React.createElement("td", null, item.descricao), /*#__PURE__*/React.createElement("th", null, /*#__PURE__*/React.createElement("div", {
@@ -79,7 +80,8 @@ const List = props => {
       className: "badge bg-danger cursor",
       onClick: () => clickDell(item.id_depoimento)
     }, "Excluir"))));
-  }))), /*#__PURE__*/React.createElement("div", {
+  }) //: null
+  )), /*#__PURE__*/React.createElement("div", {
     className: "modal fade",
     id: "putModal",
     tabIndex: "-1",

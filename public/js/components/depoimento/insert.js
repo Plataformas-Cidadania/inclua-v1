@@ -1,4 +1,4 @@
-const Insert = () => {
+const Inserts = () => {
   const {
     useState
   } = React;

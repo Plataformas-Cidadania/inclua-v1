@@ -1,7 +1,8 @@
 const Depoimento = () => {
     return (
         <div>
-            <List/>
+            {/*<List/>*/}
+            <Inserts/>
         </div>
     );
 };
