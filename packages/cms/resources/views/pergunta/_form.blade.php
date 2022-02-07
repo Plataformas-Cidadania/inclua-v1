@@ -33,10 +33,15 @@
     <option value="1" ng-selected="pergunta.inverter == 1">Sim</option>
 </select>
 <br>
-<label for="inverter">Subpergunta</label>
-<select name="subpergunta" id="subpergunta" ng-model="subpergunta" ng-init="subpergunta=0">
-    <option value="0">Não</option>
-    <option value="1">Sim</option>
+<label for="id_perguntaPai">Pergunta Pai</label>
+<select
+    name="id_perguntaPai"
+    class="form-control width-grande"
+    ng-model="perguntaPai"
+    ng-init="perguntaPai = null"
+    ng-options="option.descricao for option in perguntas track by option.id_pergunta"
+>
+    <option value="" ng-disabled="!!pergunta.id_perguntaPai">Não Possui</option>
 </select>
 <br>
 <label for="vl_subPergunta">Valor de ativação de subpergunta</label>

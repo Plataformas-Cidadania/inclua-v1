@@ -15,6 +15,7 @@ cmsApp.controller('perguntaCtrl', ['$scope', '$http', 'Upload', '$timeout', func
         descricao: null,
     };
     $scope.id_indicador = 0;
+    $scope.perguntaPai = null;
     $scope.perguntas = [];
     $scope.dimensoes = [];
     $scope.dimensao = null;
@@ -149,6 +150,11 @@ cmsApp.controller('perguntaCtrl', ['$scope', '$http', 'Upload', '$timeout', func
         if(!$scope.pergunta.letra){
             $scope.pergunta.letra = "a";
         }
+
+        if($scope.perguntaPai){
+            $scope.pergunta.id_perguntaPai = $scope.perguntaPai.id_pergunta;
+        }
+
         console.log($scope.pergunta);
 
         if(file==null && arquivo==null){
