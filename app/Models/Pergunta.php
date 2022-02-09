@@ -43,6 +43,7 @@ class Pergunta extends Model
         'inverter' => 'boolean',
         'vl_subPergunta'=> 'int',
         'vl_perguntaPai'=> 'int',
+        'id_perguntaPai' => 'int',
 		'id_indicador' => 'int'
 	];
 
@@ -57,6 +58,7 @@ class Pergunta extends Model
         'inverter',
         'vl_subPergunta',
         'vl_perguntaPai',
+        'id_perguntaPai',
 		'id_indicador'
 	];
 	protected $with = ['perguntas'];

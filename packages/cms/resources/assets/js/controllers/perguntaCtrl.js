@@ -89,7 +89,7 @@ cmsApp.controller('perguntaCtrl', ['$scope', '$http', 'Upload', '$timeout', func
             let letras = $scope.perguntas.map(function(item) { return item.letra; });
             console.log(letras);
             letras = letras.filter((item) => {
-                return item !== ".";
+                return item !== "." && isNaN(item);
             });
             let letraMaxima = letras.sort().pop();
             console.log(letras);
@@ -151,6 +151,7 @@ cmsApp.controller('perguntaCtrl', ['$scope', '$http', 'Upload', '$timeout', func
             $scope.pergunta.letra = "a";
         }
 
+        console.log($scope.perguntaPai);
         if($scope.perguntaPai){
             $scope.pergunta.id_perguntaPai = $scope.perguntaPai.id_pergunta;
         }
@@ -166,6 +167,7 @@ cmsApp.controller('perguntaCtrl', ['$scope', '$http', 'Upload', '$timeout', func
                 $scope.listarPerguntas($scope.id_indicador);
                  //delete $scope.pergunta;//limpa o form
                 $scope.pergunta = {};//limpa o form
+                $scope.perguntaPai = null;//limpa a seleção do select de perguntaPai
                 $scope.mensagemInserir =  "Gravado com sucesso!";
                 $scope.processandoInserir = false;
              }).error(function(data){
