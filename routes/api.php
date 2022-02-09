@@ -429,3 +429,23 @@ Route::group([
     Route::delete('/{depoimento}',[App\Http\Controllers\Api\DepoimentoController::class, 'destroy'])
         ->name('api.depoimento.destroy');
 });
+
+Route::group([
+    'prefix' => 'tipo_pergunta_relate',
+], function () {
+
+    Route::get('/', [App\Http\Controllers\Api\TipoPerguntaRelateController::class, 'getAll'])
+        ->name('api.tipo_pergunta_relate.getAll');
+
+    Route::get('/{tipo_pergunta_relate}',[App\Http\Controllers\Api\TipoPerguntaRelateController::class, 'get'])
+        ->name('api.tipo_pergunta_relate.get');
+
+    Route::post('/', [App\Http\Controllers\Api\TipoPerguntaRelateController::class, 'store'])
+        ->name('api.tipo_pergunta_relate.store');
+
+    Route::put('/{tipo_pergunta_relate}', [App\Http\Controllers\Api\TipoPerguntaRelateController::class, 'update'])
+        ->name('api.tipo_pergunta_relate.update');
+
+    Route::delete('/{tipo_pergunta_relate}',[App\Http\Controllers\Api\TipoPerguntaRelateController::class, 'destroy'])
+        ->name('api.tipo_pergunta_relate.destroy');
+});
