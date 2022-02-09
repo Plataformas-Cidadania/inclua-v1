@@ -28,7 +28,8 @@ class PerguntaRelate extends Model
 
 	protected $casts = [
 		'id_pergunta' => 'int',
-		'descricao' => 'string'
+		'descricao' => 'string',
+		'id_tipo' => 'int'
 	];
 
 	protected $fillable = [

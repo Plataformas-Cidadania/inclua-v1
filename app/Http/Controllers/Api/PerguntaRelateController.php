@@ -177,7 +177,8 @@ class PerguntaRelateController extends Controller
     {
           return [
             'id_pergunta' => $res->id_pergunta,
-            'descricao' => $res->descricao
+            'descricao' => $res->descricao,
+            'id_tipo' => $res->descricao
         ];
     }
 }
