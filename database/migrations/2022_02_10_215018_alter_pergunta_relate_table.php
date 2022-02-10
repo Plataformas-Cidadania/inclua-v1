@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddCamposTipoTablePergunteRelate extends Migration
+class AlterPerguntaRelateTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,10 +14,8 @@ class AddCamposTipoTablePergunteRelate extends Migration
     public function up()
     {
         Schema::table('avaliacao.pergunta_relate', function (Blueprint $table) {
-            $table->integer('id_tipo')->nullable()->comment('Identifica o tipo da pergunta');
-            $table->foreign('id_tipo')->references('id_tipo')
-                ->on('avaliacao.tipo_pergunta_relate')
-                ->onDelete('cascade');
+            $table->integer('max_caracteres_resposta')->default(200)
+                ->comment("Quantidade máxima de caracteres permitida na resposta");
         });
     }
 
@@ -29,8 +27,7 @@ class AddCamposTipoTablePergunteRelate extends Migration
     public function down()
     {
         Schema::table('avaliacao.pergunta_relate', function (Blueprint $table) {
-            $table->dropConstrainedForeignId('id_tipo');
-            //$table->dropColumn('id_tipo');
+            $table->dropColumn('max_caracteres_resposta');
         });
     }
 }

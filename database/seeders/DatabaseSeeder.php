@@ -21,5 +21,7 @@ class DatabaseSeeder extends Seeder
         $this->call(UrlsSeeder::class);
         $this->call(ParceirosSeeder::class);
         $this->call(APISeeder::class);
+        $this->call(TiposPerguntasRelateSeeder::class);
+        $this->call(PerguntasRelateSeeder::class);
     }
 }
