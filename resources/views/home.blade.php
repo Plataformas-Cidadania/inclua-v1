@@ -56,7 +56,7 @@
             </div>
             <div class="col-md-6">
                 <h3>{{$text1->titulo}}</h3>
-                <p>{{$text1->descricao}}</p>
+                <p>{!! $text1->descricao !!}</p>
                 <a href="diagnostico">
                     <p>Ir para o diagnóstico <i class="fas fa-angle-right" ></i></p>
                 </a>
@@ -77,7 +77,7 @@
             </div>
             <div class="col-md-6">
                 <h3>{{$text2->titulo}}</h3>
-                <p>{{$text2->descricao}}</p>
+                <p>{!! $text2->descricao !!}</p>
             </div>
             <div class="col-md-3 text-center">
                 <img src="img/p2.png" alt="" title="" width="70%">
@@ -101,7 +101,7 @@
             </div>
             <div class="col-md-6">
                 <h3>{{$text3->titulo}}</h3>
-                <p>{{$text3->descricao}}</p>
+                <p>{!! $text3->descricao !!}</p>
             </div>
         </div>
     </div>

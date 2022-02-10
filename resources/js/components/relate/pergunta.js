@@ -31,12 +31,12 @@ const Pergunta = (props) => {
                         <div key={'pergunta'+item.id_pergunta}>
                             <p>{key+1} - {item.descricao}</p>
 
-                            <Option
+                            {/*<Option
                                 id_pergunta={item.id_pergunta}
                                 id_user={id_user}
                                 descricao={item.descricao}
                                 style={{display: props.id_tipo === 4 ? 'none' : ''}}
-                            />
+                            />*/}
                             <Insert
                                 id_pergunta={item.id_pergunta}
                                 id_user={id_user}

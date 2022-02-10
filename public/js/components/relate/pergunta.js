@@ -26,14 +26,7 @@ const Pergunta = props => {
   return /*#__PURE__*/React.createElement("div", null, perguntas.map((item, key) => {
     return /*#__PURE__*/React.createElement("div", {
       key: 'pergunta' + item.id_pergunta
-    }, /*#__PURE__*/React.createElement("p", null, key + 1, " - ", item.descricao), /*#__PURE__*/React.createElement(Option, {
-      id_pergunta: item.id_pergunta,
-      id_user: id_user,
-      descricao: item.descricao,
-      style: {
-        display: props.id_tipo === 4 ? 'none' : ''
-      }
-    }), /*#__PURE__*/React.createElement(Insert, {
+    }, /*#__PURE__*/React.createElement("p", null, key + 1, " - ", item.descricao), /*#__PURE__*/React.createElement(Insert, {
       id_pergunta: item.id_pergunta,
       id_user: id_user,
       style: {
