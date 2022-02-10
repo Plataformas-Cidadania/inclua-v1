@@ -31,6 +31,6 @@ class CreateRelateTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('relate');
+        Schema::dropIfExists('avaliacao.relate');
     }
 }
