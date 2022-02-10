@@ -449,3 +449,26 @@ Route::group([
     Route::delete('/{tipo_pergunta_relate}',[App\Http\Controllers\Api\TipoPerguntaRelateController::class, 'destroy'])
         ->name('api.tipo_pergunta_relate.destroy');
 });
+
+Route::group([
+    'prefix' => 'alternativa_relate',
+], function () {
+
+    Route::get('/', [App\Http\Controllers\Api\AlternativaRelateController::class, 'getAll'])
+        ->name('api.alternativa_relate.getAll');
+
+    Route::get('/{alternativa_relate}',[App\Http\Controllers\Api\AlternativaRelateController::class, 'get'])
+        ->name('api.alternativa_relate.get');
+
+    Route::get('/perguntaRelate/{id_pergunta}',[App\Http\Controllers\Api\AlternativaRelateController::class, 'getAllAlternativaRelatePorPergunta'])
+        ->name('api.alternativa_relate.getAllAlternativaRelatePorPergunta');
+
+    Route::post('/', [App\Http\Controllers\Api\AlternativaRelateController::class, 'store'])
+        ->name('api.alternativa_relate.store');
+
+    Route::put('/{alternativa_relate}', [App\Http\Controllers\Api\AlternativaRelateController::class, 'update'])
+        ->name('api.alternativa_relate.update');
+
+    Route::delete('/{alternativa_relate}',[App\Http\Controllers\Api\AlternativaRelateController::class, 'destroy'])
+        ->name('api.alternativa_relate.destroy');
+});
