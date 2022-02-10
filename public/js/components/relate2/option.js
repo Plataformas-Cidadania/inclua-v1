@@ -1,6 +1,7 @@
-const Insert = props => {
+const Option = props => {
   const {
-    useState
+    useState,
+    useEffect
   } = React;
   const [form, setForm] = useState({
     descricao: '',
@@ -8,7 +9,7 @@ const Insert = props => {
     id_user: props.id_user,
     status: 0
   });
-  const [teste, setTeste] = useState(false);
+  const [validar, setValidar] = useState(false);
   const [notify, setNotify] = useState({
     type: null,
     text: null,
@@ -19,7 +20,13 @@ const Insert = props => {
     setNotify(notify);
   };
 
-  const Update = async () => {
+  const Inserir = async descri => {
+    //Limpar form
+    let newForm = { ...form,
+      descricao: descri
+    };
+    setForm(newForm); ////
+
     handleNotify({
       type: null,
       text: null,
@@ -38,8 +45,6 @@ const Insert = props => {
         descricao: ""
       };
       setForm(newForm); ////
-
-      setTeste(true);
     } catch (error) {
       console.log(error);
       handleNotify({
@@ -63,32 +68,31 @@ const Insert = props => {
 
   return /*#__PURE__*/React.createElement("div", {
     className: "row"
-  }, /*#__PURE__*/React.createElement("textarea", {
-    id: "descricao",
-    name: "descricao",
-    rows: "5",
-    cols: "33",
-    placeholder: "Deixe um descrição",
-    onChange: handleForm,
-    value: form.descricao
+  }, /*#__PURE__*/React.createElement(Detalhar, {
+    id_pergunta: props.id_pergunta,
+    setProps: setValidar
   }), /*#__PURE__*/React.createElement("div", {
-    className: "col-md-12"
-  }, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
-    className: "dorder-container justify-content-end"
-  }, /*#__PURE__*/React.createElement("button", {
-    className: "btn btn-theme bg-pri ",
-    type: "button",
-    onClick: () => Update()
-  }, "Enviar", /*#__PURE__*/React.createElement("i", {
-    className: "fas fa-angle-right"
-  }), /*#__PURE__*/React.createElement("span", {
     style: {
-      marginLeft: '10px',
-      display: notify.spin ? '' : 'none'
-    }
+      fontSize: '20px'
+    },
+    onClick: () => Inserir(props.descricao),
+    className: "cursor"
   }, /*#__PURE__*/React.createElement("i", {
-    className: "fas fa-spinner float-end fa-spin"
-  })))), /*#__PURE__*/React.createElement("div", {
+    className: "far fa-circle"
+  })), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: '20px'
+    },
+    onClick: () => Inserir(props.descricao),
+    className: "cursor"
+  }, /*#__PURE__*/React.createElement("i", {
+    className: "fas fa-circle"
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "col-md-12",
+    style: {
+      display: validar ? 'none' : ''
+    }
+  }, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
     className: "alert alert-" + notify.type + " d-flex align-items-center",
     role: "alert",
     style: {
@@ -100,8 +104,5 @@ const Insert = props => {
     }
   }, /*#__PURE__*/React.createElement("i", {
     className: "fas fa-exclamation-triangle bi flex-shrink-0 me-2"
-  })), /*#__PURE__*/React.createElement("div", null, notify.text))), /*#__PURE__*/React.createElement(List, {
-    teste: teste,
-    pergunta_id: props.id_pergunta
-  }));
+  })), /*#__PURE__*/React.createElement("div", null, notify.text))));
 };

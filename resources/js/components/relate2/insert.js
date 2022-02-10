@@ -1,6 +1,6 @@
 const Insert = (props) => {
 
-    const {useState} = React;
+    const {useState, useEffect} = React;
 
     const [form, setForm] = useState({
         descricao: '',
@@ -9,8 +9,7 @@ const Insert = (props) => {
         status: 0,
     });
 
-    const [teste, setTeste] = useState(false);
-
+    const [validar, setValidar] = useState(false);
 
 
     const [notify, setNotify] = useState({type:null, text:null, spin:false});
@@ -20,7 +19,7 @@ const Insert = (props) => {
     }
 
 
-    const Update = async () => {
+    const Inserir = async () => {
         handleNotify({type: null, text: null, spin: true});
         try {
             const result = await axios.post('api/resposta_relate', form);
@@ -35,7 +34,6 @@ const Insert = (props) => {
             setForm(newForm);
             ////
 
-            setTeste(true);
 
         } catch (error) {
             console.log(error);
@@ -56,13 +54,29 @@ const Insert = (props) => {
 
     return (
         <div className="row">
-            <textarea id="descricao" name="descricao" rows="5" cols="33" placeholder={"Deixe um descrição"}  onChange={handleForm} value={form.descricao}/>
 
-            <div className="col-md-12">
+            <Detalhar
+                id_pergunta={props.id_pergunta}
+                setProps={setValidar}
+
+            />
+            <textarea
+                id="descricao"
+                name="descricao"
+                rows="5"
+                cols="33"
+                placeholder={"Deixe um descrição"}
+                onChange={handleForm}
+                value={form.descricao}
+                style={{display: validar ? 'none' : ''}}
+            />
+
+
+            <div className="col-md-12" style={{display: validar ? 'none' : ''}}>
                 <br/>
                 <div className="dorder-container justify-content-end">
                     <button className="btn btn-theme bg-pri "
-                            type="button"  onClick={() => Update()}>Enviar<i className="fas fa-angle-right"/>
+                            type="button"  onClick={() => Inserir()}>Enviar<i className="fas fa-angle-right"/>
                             <span style={{marginLeft: '10px', display: notify.spin ? '' : 'none'}}><i className="fas fa-spinner float-end fa-spin" /></span>
                     </button>
                 </div>
@@ -71,7 +85,7 @@ const Insert = (props) => {
                     <div>{notify.text}</div>
                 </div>
             </div>
-            <List teste={teste} pergunta_id={props.id_pergunta}/>
+
         </div>
     );
 };

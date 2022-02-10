@@ -9,31 +9,16 @@ const Tipo = () => {
 
     const Tipos = async () => {
         try {
-            const result = await axios.get('api/tipo_pergunta_relate');
+            const result = await axios.get('api/tipo_pergunta_relate/1');
             setTipoPergunta(result.data.data)
         } catch (error) {
             console.log(error);
         }
     }
-
+    console.log(tipoPergunta);
     return (
         <div>
-            {
-                tipoPergunta.map((item, key) => {
-                    return(
-                        <div key={'pergunta'+item.id_tipo}>
-                            <div className="dorder-container">
-                                <div className="dorder-container-mai p-4 ">
-                                    <p><strong>{key+1} - {item.descricao}</strong></p>
-                                    <Pergunta id_tipo={item.id_tipo}/>
-                                </div>
-                            </div>
-                            <br/>
-                        </div>
 
-                    );
-                })
-            }
         </div>
     );
 };

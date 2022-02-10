@@ -1,7 +1,7 @@
 const Relate = () => {
     return (
         <div>
-            <Pergunta/>
+            <Tipo/>
         </div>
     );
 };

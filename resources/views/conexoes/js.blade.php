@@ -151,14 +151,14 @@
     <script src="js/components/home/index.js"></script>
 @endif
 @if($rota=="relate")
-    {{--<script src="js/components/relate/edit.js"></script>
+    <script src="js/components/relate/edit.js"></script>
 
-    <script src="js/components/relate/list.js"></script>--}}
+    <script src="js/components/relate/list.js"></script>
     <script src="js/components/relate/detalhar.js"></script>
     <script src="js/components/relate/option.js"></script>
     <script src="js/components/relate/insert.js"></script>
     <script src="js/components/relate/pergunta.js"></script>
-    <script src="js/components/relate/tipo.js"></script>
+    {{--<script src="js/components/relate/tipo.js"></script>--}}
     <script src="js/components/relate/index.js"></script>
 @endif
 @if($rota=="depoimento")
