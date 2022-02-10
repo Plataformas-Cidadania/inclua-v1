@@ -1,22 +1,23 @@
-const Pergunta = () => {
+const Pergunta = (props) => {
 
     const {useState, useEffect} = React;
-    const [relateMap, setRelateMap] = useState([]);
+    const [perguntas, setPerguntas] = useState([]);
     const [relate, setRelate] = useState(0);
 
 
     useEffect(() => {
-        Relate();
+        ListPerguntas();
     }, []);
 
     const ClickRelate = (id, key) => {
         setRelate(id, key);
     }
 
-    const Relate = async () => {
+    const ListPerguntas = async () => {
         try {
+            //const result = await axios.get('api/pergunta_relate/'+props.id_tipo);
             const result = await axios.get('api/pergunta_relate');
-            setRelateMap(result.data.data)
+            setPerguntas(result.data.data)
         } catch (error) {
             console.log(error);
         }
@@ -25,18 +26,22 @@ const Pergunta = () => {
     return (
         <div>
             {
-                relateMap.map((item, key) => {
+                perguntas.map((item, key) => {
                     return(
                         <div key={'pergunta'+item.id_pergunta}>
-                            <div className="dorder-container">
-                                <div className="dorder-container-mai p-4 ">
-                                    <p>{key+1} - {item.descricao}</p>
-                                    <Insert
-                                        id_pergunta={item.id_pergunta}
-                                        id_user={id_user}
-                                    />
-                                </div>
-                            </div>
+                            <p>{key+1} - {item.descricao}</p>
+
+                            <Option
+                                id_pergunta={item.id_pergunta}
+                                id_user={id_user}
+                                descricao={item.descricao}
+                                style={{display: props.id_tipo === 4 ? 'none' : ''}}
+                            />
+                            <Insert
+                                id_pergunta={item.id_pergunta}
+                                id_user={id_user}
+                                style={{display: props.id_tipo === 4 ? '' : 'none'}}
+                            />
                             <br/>
                         </div>
 

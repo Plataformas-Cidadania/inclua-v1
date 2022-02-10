@@ -1,4 +1,4 @@
-const Insert = props => {
+const Select = props => {
   const {
     useState,
     useEffect
