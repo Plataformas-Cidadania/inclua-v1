@@ -32,6 +32,7 @@ const Pergunta = () => {
 
                     return(
                         <div key={'pergunta'+item.id_pergunta}>
+
                             <div className="dorder-container">
                                 <div className="dorder-container-mai p-4 ">
                                     <div dangerouslySetInnerHTML={{__html: descricao}}/>

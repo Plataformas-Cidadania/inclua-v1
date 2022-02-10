@@ -19,8 +19,13 @@ class ContribuaController extends Controller{
 
         $modulo = \App\Models\Modulo::where('slug', 'txt-interaja')->first();
 
+        $text_termo = \App\Models\Text::where('slug', 'termo')->first();
+        $text_concede_direitos = \App\Models\Text::where('slug', 'concede_direitos')->first();
+
         return view('contribua.listar', [
             'page' => $modulo,
+            'text_termo' => $text_termo,
+            'text_concede_direitos' => $text_concede_direitos,
         ]);
 
     }
