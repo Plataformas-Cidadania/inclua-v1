@@ -1,4 +1,4 @@
-const Insert = props => {
+const Option = props => {
   const {
     useState,
     useEffect
@@ -20,7 +20,13 @@ const Insert = props => {
     setNotify(notify);
   };
 
-  const Inserir = async () => {
+  const Inserir = async descri => {
+    //Limpar form
+    let newForm = { ...form,
+      descricao: descri
+    };
+    setForm(newForm); ////
+
     handleNotify({
       type: null,
       text: null,
@@ -65,38 +71,28 @@ const Insert = props => {
   }, /*#__PURE__*/React.createElement(Detalhar, {
     id_pergunta: props.id_pergunta,
     setProps: setValidar
-  }), /*#__PURE__*/React.createElement("textarea", {
-    id: "descricao",
-    name: "descricao",
-    rows: "5",
-    cols: "33",
-    placeholder: "Deixe um descrição",
-    onChange: handleForm,
-    value: form.descricao,
-    style: {
-      display: validar ? 'none' : ''
-    }
   }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: '20px'
+    },
+    onClick: () => Inserir(props.descricao),
+    className: "cursor"
+  }, /*#__PURE__*/React.createElement("i", {
+    className: "far fa-circle"
+  })), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: '20px'
+    },
+    onClick: () => Inserir(props.descricao),
+    className: "cursor"
+  }, /*#__PURE__*/React.createElement("i", {
+    className: "fas fa-circle"
+  })), /*#__PURE__*/React.createElement("div", {
     className: "col-md-12",
     style: {
       display: validar ? 'none' : ''
     }
   }, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
-    className: "dorder-container justify-content-end"
-  }, /*#__PURE__*/React.createElement("button", {
-    className: "btn btn-theme bg-pri ",
-    type: "button",
-    onClick: () => Inserir()
-  }, "Enviar", /*#__PURE__*/React.createElement("i", {
-    className: "fas fa-angle-right"
-  }), /*#__PURE__*/React.createElement("span", {
-    style: {
-      marginLeft: '10px',
-      display: notify.spin ? '' : 'none'
-    }
-  }, /*#__PURE__*/React.createElement("i", {
-    className: "fas fa-spinner float-end fa-spin"
-  })))), /*#__PURE__*/React.createElement("div", {
     className: "alert alert-" + notify.type + " d-flex align-items-center",
     role: "alert",
     style: {

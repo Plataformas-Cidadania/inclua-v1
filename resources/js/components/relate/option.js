@@ -1,4 +1,4 @@
-const Insert = (props) => {
+const Option = (props) => {
 
     const {useState, useEffect} = React;
 
@@ -19,7 +19,16 @@ const Insert = (props) => {
     }
 
 
-    const Inserir = async () => {
+    const Inserir = async (descri) => {
+
+        //Limpar form
+        let newForm = {
+            ...form,
+            descricao: descri,
+        }
+        setForm(newForm);
+        ////
+
         handleNotify({type: null, text: null, spin: true});
         try {
             const result = await axios.post('api/resposta_relate', form);
@@ -60,26 +69,20 @@ const Insert = (props) => {
                 setProps={setValidar}
 
             />
-            <textarea
-                id="descricao"
-                name="descricao"
-                rows="5"
-                cols="33"
-                placeholder={"Deixe um descrição"}
-                onChange={handleForm}
-                value={form.descricao}
-                style={{display: validar ? 'none' : ''}}
-            />
+
+
+            <div style={{fontSize: '20px'}}  onClick={() => Inserir(props.descricao)} className="cursor">
+                <i className="far fa-circle" />
+            </div>
+            <div style={{fontSize: '20px'}}  onClick={() => Inserir(props.descricao)} className="cursor">
+                <i className="fas fa-circle" />
+            </div>
+
+
 
 
             <div className="col-md-12" style={{display: validar ? 'none' : ''}}>
                 <br/>
-                <div className="dorder-container justify-content-end">
-                    <button className="btn btn-theme bg-pri "
-                            type="button"  onClick={() => Inserir()}>Enviar<i className="fas fa-angle-right"/>
-                            <span style={{marginLeft: '10px', display: notify.spin ? '' : 'none'}}><i className="fas fa-spinner float-end fa-spin" /></span>
-                    </button>
-                </div>
                 <div className={"alert alert-"+notify.type+" d-flex align-items-center"} role="alert" style={{display: notify.type ? '' : 'none'}}>
                     <span style={{display: notify.type ? '' : 'none'}}><i className="fas fa-exclamation-triangle bi flex-shrink-0 me-2" /></span>
                     <div>{notify.text}</div>

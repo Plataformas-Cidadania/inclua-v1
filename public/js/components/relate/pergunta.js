@@ -1,37 +1,44 @@
-const Pergunta = () => {
+const Pergunta = props => {
   const {
     useState,
     useEffect
   } = React;
-  const [relateMap, setRelateMap] = useState([]);
+  const [perguntas, setPerguntas] = useState([]);
   const [relate, setRelate] = useState(0);
   useEffect(() => {
-    Relate();
+    ListPerguntas();
   }, []);
 
   const ClickRelate = (id, key) => {
     setRelate(id, key);
   };
 
-  const Relate = async () => {
+  const ListPerguntas = async () => {
     try {
+      //const result = await axios.get('api/pergunta_relate/'+props.id_tipo);
       const result = await axios.get('api/pergunta_relate');
-      setRelateMap(result.data.data);
+      setPerguntas(result.data.data);
     } catch (error) {
       console.log(error);
     }
   };
 
-  return /*#__PURE__*/React.createElement("div", null, relateMap.map((item, key) => {
+  return /*#__PURE__*/React.createElement("div", null, perguntas.map((item, key) => {
     return /*#__PURE__*/React.createElement("div", {
       key: 'pergunta' + item.id_pergunta
-    }, /*#__PURE__*/React.createElement("div", {
-      className: "dorder-container"
-    }, /*#__PURE__*/React.createElement("div", {
-      className: "dorder-container-mai p-4 "
-    }, /*#__PURE__*/React.createElement("p", null, key + 1, " - ", item.descricao), /*#__PURE__*/React.createElement(Insert, {
+    }, /*#__PURE__*/React.createElement("p", null, key + 1, " - ", item.descricao), /*#__PURE__*/React.createElement(Option, {
       id_pergunta: item.id_pergunta,
-      id_user: id_user
-    }))), /*#__PURE__*/React.createElement("br", null));
+      id_user: id_user,
+      descricao: item.descricao,
+      style: {
+        display: props.id_tipo === 4 ? 'none' : ''
+      }
+    }), /*#__PURE__*/React.createElement(Insert, {
+      id_pergunta: item.id_pergunta,
+      id_user: id_user,
+      style: {
+        display: props.id_tipo === 4 ? '' : 'none'
+      }
+    }), /*#__PURE__*/React.createElement("br", null));
   }));
 };
