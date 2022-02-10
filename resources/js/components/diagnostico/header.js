@@ -4,8 +4,6 @@ const Header = () => {
 
     const context = React.useContext(DiagnosticoContext);
 
-    console.log('tipo:', context.tipo);
-
     return (
         <div className="bg-lgt">
             <div className="container-fluid">
@@ -14,12 +12,8 @@ const Header = () => {
                     <div className="col-md-7">
                         <div>
                             <br/><br/>
-                            <h1>Diagnóstico</h1>
-                            <p>Instruções: essa atividade dura aproximadamente de XX a XX minutos e deve ser
-                                realizada com bastante atenção de forma a retratar com a maior precisão possível a
-                                situação da oferta pública na qual você está envolvido. Caso prefira, você pode
-                                baixar o questionário, ler e reunir as informações necessárias para então voltar
-                                aqui e responder às perguntas.</p>
+                            <h1>{text_diagnostico_titulo}</h1>
+                            <p>{text_diagnostico_descricao}</p>
                             <br/>
                             <div className="row">
                                 <div className="col-md-6">

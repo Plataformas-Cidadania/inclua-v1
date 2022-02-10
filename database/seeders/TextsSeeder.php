@@ -39,7 +39,7 @@ class TextsSeeder extends Seeder
             'imagem' => '',
             'titulo' => 'Diagnóstico',
             'descricao' => 'Instruções: essa atividade dura aproximadamente de XX a XX minutos e deve ser realizada com bastante atenção de forma a retratar com a maior precisão possível a situação da oferta pública na qual você está envolvido. Caso prefira, você pode baixar o questionário, ler e reunir as informações necessárias para então voltar aqui e responder às perguntas.',
-            'slug' => 'diagnostico',
+            'slug' => 'pg-diagnostico',
         ]);
 
         DB::table('cms.texts')->insert([
