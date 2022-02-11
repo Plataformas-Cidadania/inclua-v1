@@ -68,6 +68,15 @@ const Pergunta = () => {
 
     }
 
+    const listAlternativas = async (id_pergunta) => {
+        try {
+            const result = await axios.get('api/alternativa_relate/perguntaRelate/'+id_pergunta);
+            return result.data.data;
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
 
     return (
         <form>
@@ -75,6 +84,11 @@ const Pergunta = () => {
                 relateMap.map((item, key) => {
 
                     const descricao = item.descricao
+
+                    if(item.tipo_resposta === 2){
+                        const alternativas = listAlternativas(item.id_pergunta);
+                        console.log(alternativas);
+                    }
 
                     return(
                         <div key={'pergunta'+item.id_pergunta}>
@@ -85,12 +99,28 @@ const Pergunta = () => {
                                     <div className="row">
                                         <div className="col-md-12">
                                             {
-                                                item.tipo_resposta === "1"  ? (
-                                                    <textarea id="descricao" name="descricao" rows="5" cols="33" placeholder={"Deixe um descrição"}  onChange={handleForm} value={form.descricao} style={{width: '100%'}}/>
+                                                item.tipo_resposta === 1  ? (
+                                                    <textarea
+                                                        id="descricao"
+                                                        name="descricao"
+                                                        rows="5"
+                                                        cols="33"
+                                                        placeholder={"Deixe um descrição"}
+                                                        onChange={handleForm}
+                                                        value={""}
+                                                        style={{width: '100%'}}
+                                                    />
                                                 ) : (
-                                                    <select name="" id="">
-                                                        <option value="">aaaa</option>
-                                                    </select>
+                                                    alternativas.map((alternativa) => {
+                                                        return (
+                                                            <input
+                                                                key={"alternativa_"+alternativa.id_alternativa}
+                                                                type="option"
+                                                                name={"alternativa_"+item.id_pergunta}
+                                                                id={"alternativa_"+item.id_pergunta+"_"+alternativa.id_alternativa}
+                                                            />
+                                                        );
+                                                    })
                                                 )
                                             }
 

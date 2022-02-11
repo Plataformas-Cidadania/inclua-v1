@@ -81,8 +81,23 @@ const Pergunta = () => {
     setForm(newForm);
   };
 
+  const listAlternativas = async id_pergunta => {
+    try {
+      const result = await axios.get('api/alternativa_relate/perguntaRelate/' + id_pergunta);
+      return result.data.data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return /*#__PURE__*/React.createElement("form", null, relateMap.map((item, key) => {
     const descricao = item.descricao;
+
+    if (item.tipo_resposta === 2) {
+      const alternativas = listAlternativas(item.id_pergunta);
+      console.log(alternativas);
+    }
+
     return /*#__PURE__*/React.createElement("div", {
       key: 'pergunta' + item.id_pergunta
     }, /*#__PURE__*/React.createElement("div", {
@@ -97,23 +112,25 @@ const Pergunta = () => {
       className: "row"
     }, /*#__PURE__*/React.createElement("div", {
       className: "col-md-12"
-    }, item.tipo_resposta === "1" ? /*#__PURE__*/React.createElement("textarea", {
+    }, item.tipo_resposta === 1 ? /*#__PURE__*/React.createElement("textarea", {
       id: "descricao",
       name: "descricao",
       rows: "5",
       cols: "33",
       placeholder: "Deixe um descrição",
       onChange: handleForm,
-      value: form.descricao,
+      value: "",
       style: {
         width: '100%'
       }
-    }) : /*#__PURE__*/React.createElement("select", {
-      name: "",
-      id: ""
-    }, /*#__PURE__*/React.createElement("option", {
-      value: ""
-    }, "aaaa")))))), /*#__PURE__*/React.createElement("br", null));
+    }) : alternativas.map(alternativa => {
+      return /*#__PURE__*/React.createElement("input", {
+        key: "alternativa_" + alternativa.id_alternativa,
+        type: "option",
+        name: "alternativa_" + item.id_pergunta,
+        id: "alternativa_" + item.id_pergunta + "_" + alternativa.id_alternativa
+      });
+    }))))), /*#__PURE__*/React.createElement("br", null));
   }), /*#__PURE__*/React.createElement("div", {
     className: "col-md-12"
   }, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
