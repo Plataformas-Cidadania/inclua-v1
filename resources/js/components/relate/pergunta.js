@@ -5,13 +5,13 @@ const Pergunta = () => {
     const [relate, setRelate] = useState(0);
     const [notify, setNotify] = useState({type:null, text:null, spin:false});
 
-    const [form, setForm] = useState({
+    const [repostas, setRespostas] = useState([]);
+    /*{
         descricao: '',
         id_pergunta: 0,
         id_user: id_user,
         status: 0,
-    });
-
+    }*/
 
     useEffect(() => {
         Relate();
@@ -84,7 +84,17 @@ const Pergunta = () => {
                                     <div dangerouslySetInnerHTML={{__html: descricao}}/>
                                     <div className="row">
                                         <div className="col-md-12">
-                                            <textarea id="descricao" name="descricao" rows="5" cols="33" placeholder={"Deixe um descrição"}  onChange={handleForm} value={form.descricao} style={{width: '100%'}}/>
+                                            {
+                                                item.tipo_resposta === "1"  ? (
+                                                    <textarea id="descricao" name="descricao" rows="5" cols="33" placeholder={"Deixe um descrição"}  onChange={handleForm} value={form.descricao} style={{width: '100%'}}/>
+                                                ) : (
+                                                    <select name="" id="">
+                                                        <option value="">aaaa</option>
+                                                    </select>
+                                                )
+                                            }
+
+
                                         </div>
                                     </div>
                                     {/*<Tipo />*/}

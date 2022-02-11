@@ -14,7 +14,7 @@ class AddCamposPerguntaRelateTable extends Migration
     public function up()
     {
         Schema::table('avaliacao.pergunta_relate', function (Blueprint $table) {
-            $table->string('tipo_resposta')->default(1)
+            $table->integer('tipo_resposta')->default(1)
                 ->comment("Informa o tipo de campo que será usado para resposta. 1: Texto | 2: Alternativas");
         });
     }

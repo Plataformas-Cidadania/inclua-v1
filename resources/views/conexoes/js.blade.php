@@ -153,7 +153,7 @@
 @if($rota=="relate")
     <script src="js/components/relate/edit.js"></script>
 
-    <script src="js/components/relate/list.js"></script>
+    {{--<script src="js/components/relate/list.js"></script>--}}
     <script src="js/components/relate/detalhar.js"></script>
     <script src="js/components/relate/option.js"></script>
     <script src="js/components/relate/insert.js"></script>

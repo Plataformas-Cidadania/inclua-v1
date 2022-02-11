@@ -10,12 +10,14 @@ const Pergunta = () => {
     text: null,
     spin: false
   });
-  const [form, setForm] = useState({
-    descricao: '',
-    id_pergunta: 0,
-    id_user: id_user,
-    status: 0
-  });
+  const [repostas, setRespostas] = useState([]);
+  /*{
+      descricao: '',
+      id_pergunta: 0,
+      id_user: id_user,
+      status: 0,
+  }*/
+
   useEffect(() => {
     Relate();
   }, []);
@@ -95,7 +97,7 @@ const Pergunta = () => {
       className: "row"
     }, /*#__PURE__*/React.createElement("div", {
       className: "col-md-12"
-    }, /*#__PURE__*/React.createElement("textarea", {
+    }, item.tipo_resposta === "1" ? /*#__PURE__*/React.createElement("textarea", {
       id: "descricao",
       name: "descricao",
       rows: "5",
@@ -106,7 +108,12 @@ const Pergunta = () => {
       style: {
         width: '100%'
       }
-    }))))), /*#__PURE__*/React.createElement("br", null));
+    }) : /*#__PURE__*/React.createElement("select", {
+      name: "",
+      id: ""
+    }, /*#__PURE__*/React.createElement("option", {
+      value: ""
+    }, "aaaa")))))), /*#__PURE__*/React.createElement("br", null));
   }), /*#__PURE__*/React.createElement("div", {
     className: "col-md-12"
   }, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
