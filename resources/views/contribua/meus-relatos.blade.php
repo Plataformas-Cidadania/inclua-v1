@@ -37,7 +37,7 @@
 
         <div class="row">
             <div class="col-md-12">
-                {{--<div id="relate">&nbsp;</div>--}}
+                <div id="meus-relatos">&nbsp;</div>
                 <br>
             </div>
         </div>

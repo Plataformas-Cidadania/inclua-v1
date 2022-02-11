@@ -161,6 +161,9 @@
     <script src="js/components/relate/pergunta.js"></script>
     <script src="js/components/relate/index.js"></script>
 @endif
+@if($rota=="meus-relatos")
+    <script src="js/components/relate/meus-relatos.js"></script>
+@endif
 @if($rota=="depoimento")
     <script src="js/components/depoimento/edit.js"></script>
     <script src="js/components/depoimento/list.js"></script>
