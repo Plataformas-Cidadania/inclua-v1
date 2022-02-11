@@ -100,7 +100,7 @@ const Insert = props => {
     }
   }, /*#__PURE__*/React.createElement("i", {
     className: "fas fa-exclamation-triangle bi flex-shrink-0 me-2"
-  })), /*#__PURE__*/React.createElement("div", null, notify.text))), /*#__PURE__*/React.createElement(ListOff, {
+  })), /*#__PURE__*/React.createElement("div", null, notify.text))), /*#__PURE__*/React.createElement(List, {
     teste: teste,
     pergunta_id: props.id_pergunta
   }));

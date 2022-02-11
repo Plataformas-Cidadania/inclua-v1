@@ -1,11 +1,9 @@
 const Pergunta = () => {
 
     const {useState, useEffect} = React;
-    const [relateMap, setRelateMap] = useState([]);
-    const [relate, setRelate] = useState(0);
+    const [perguntas, setPerguntas] = useState([]);
     const [notify, setNotify] = useState({type:null, text:null, spin:false});
-
-    const [repostas, setRespostas] = useState([]);
+    const [respostas, setRespostas] = useState([]);
     /*{
         descricao: '',
         id_pergunta: 0,
@@ -14,17 +12,17 @@ const Pergunta = () => {
     }*/
 
     useEffect(() => {
-        Relate();
+        listPerguntas();
     }, []);
 
-    const ClickRelate = (id, key) => {
-        setRelate(id, key);
-    }
+    useEffect(() => {
+        console.log(respostas);
+    }, [respostas]);
 
-    const Relate = async () => {
+    const listPerguntas = async () => {
         try {
             const result = await axios.get('api/pergunta_relate');
-            setRelateMap(result.data.data)
+            setPerguntas(result.data.data)
         } catch (error) {
             console.log(error);
         }
@@ -58,37 +56,42 @@ const Pergunta = () => {
         }
     }
 
-    const handleForm = (event) => {
-        let { value, id } = event.target;
-        let newForm = {
-            ...form,
-            [id]: value
-        }
-        setForm(newForm);
-
+    const handleAlternativaRespostas = (value, idPergunta) => {
+        handleRespostas(value, idPergunta);
     }
 
-    const listAlternativas = async (id_pergunta) => {
-        try {
-            const result = await axios.get('api/alternativa_relate/perguntaRelate/'+id_pergunta);
-            return result.data.data;
-        } catch (error) {
-            console.log(error);
-        }
+    const handleTextRespostas = (event, idPergunta) => {
+        handleRespostas(event.target.value, idPergunta);
     }
 
+    const handleRespostas = (value, idPergunta) => {
+        let newRespostas = respostas;
+        let existeResposta = false;
+        for(let i = 0; i < newRespostas.length; i++){
+            if(newRespostas[i].id_pergunta === idPergunta){
+                newRespostas[i].descricao = value;
+                existeResposta = true;
+                break;
+            }
+        };
+        if(!existeResposta){
+            newRespostas.push({
+                descricao: value,
+                id_pergunta: idPergunta
+            });
+        }
+        setRespostas(newRespostas);
+        console.log(newRespostas);
+    }
 
     return (
         <form>
             {
-                relateMap.map((item, key) => {
+                perguntas.map((item, key) => {
 
                     const descricao = item.descricao
 
-                    if(item.tipo_resposta === 2){
-                        const alternativas = listAlternativas(item.id_pergunta);
-                        console.log(alternativas);
-                    }
+                    //console.log(item);
 
                     return(
                         <div key={'pergunta'+item.id_pergunta}>
@@ -106,25 +109,16 @@ const Pergunta = () => {
                                                         rows="5"
                                                         cols="33"
                                                         placeholder={"Deixe um descrição"}
-                                                        onChange={handleForm}
-                                                        value={""}
+                                                        onChange={e => handleTextRespostas(e, item.id_pergunta)}
                                                         style={{width: '100%'}}
                                                     />
                                                 ) : (
-                                                    alternativas.map((alternativa) => {
-                                                        return (
-                                                            <input
-                                                                key={"alternativa_"+alternativa.id_alternativa}
-                                                                type="option"
-                                                                name={"alternativa_"+item.id_pergunta}
-                                                                id={"alternativa_"+item.id_pergunta+"_"+alternativa.id_alternativa}
-                                                            />
-                                                        );
-                                                    })
+                                                    <Alternativas
+                                                        id_pergunta={item.id_pergunta}
+                                                        handleAlternativaRespostas={handleAlternativaRespostas}
+                                                    />
                                                 )
                                             }
-
-
                                         </div>
                                     </div>
                                     {/*<Tipo />*/}

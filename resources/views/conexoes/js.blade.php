@@ -157,6 +157,7 @@
     <script src="js/components/relate/detalhar.js"></script>
     <script src="js/components/relate/option.js"></script>
     <script src="js/components/relate/insert.js"></script>
+    <script src="js/components/relate/alternativa.js"></script>
     <script src="js/components/relate/pergunta.js"></script>
     <script src="js/components/relate/index.js"></script>
 @endif
