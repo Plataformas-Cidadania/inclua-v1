@@ -36,7 +36,7 @@ class PerguntasRelateSeeder extends Seeder
             Descreva a sua experiência*<br>
             ',
             'max_caracteres_resposta' => 5000,
-            'id_tipo' => 1,
+            'tipo_resposta' => 1,
         ]);
 
         //PERGUNTA 2
@@ -47,7 +47,7 @@ class PerguntasRelateSeeder extends Seeder
             Caso queira, pode enviar um link com algum material ou recurso que possa complementar ou enriquecer o seu relato.<br>
             ',
             'max_caracteres_resposta' => 200,
-            'id_tipo' => 1,
+            'tipo_resposta' => 1,
         ]);
 
         //PERGUNTA 3
@@ -57,7 +57,7 @@ class PerguntasRelateSeeder extends Seeder
             <br>
             ',
             'max_caracteres_resposta' => 200,
-            'id_tipo' => 2,
+            'tipo_resposta' => 2,
         ]);
 
         //ALTERNATIVAS DA PERGUNTA 3
@@ -95,7 +95,7 @@ class PerguntasRelateSeeder extends Seeder
             <strong>Área de atuação em que trabalha*</strong><br>
             <br>
             ',
-            'id_tipo' => 1,
+            'tipo_resposta' => 1,
         ]);
 
         //PERGUNTA 5
@@ -104,7 +104,7 @@ class PerguntasRelateSeeder extends Seeder
             <strong>Programa/Projeto/Serviço em que trabalha?*</strong><br>
             <br>
             ',
-            'id_tipo' => 1,
+            'tipo_resposta' => 1,
         ]);
 
         //PERGUNTA 6
@@ -113,7 +113,7 @@ class PerguntasRelateSeeder extends Seeder
             <strong>Público atendido pelo Programa/Projeto/Serviço em que trabalha?*</strong><br>
             <br>
             ',
-            'id_tipo' => 1,
+            'tipo_resposta' => 1,
         ]);
 
         //PERGUNTA 7
@@ -122,7 +122,7 @@ class PerguntasRelateSeeder extends Seeder
             <strong>Abrangência do serviço/projeto/programa em que atua</strong><br>
             <br>
             ',
-            'id_tipo' => 2,
+            'tipo_resposta' => 2,
         ]);
 
         //ALTERNATIVAS DA PERGUNTA 7
