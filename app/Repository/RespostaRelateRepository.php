@@ -67,7 +67,29 @@ class RespostaRelateRepository extends BaseRepository
     }
 
 
+    public function findByRelateId($id_relate)
+    {
+        $res = $this->model->where('id_relate', $id_relate)->get();
+        if (!$res || $res->isEmpty()) throw new \Illuminate\Database\Eloquent\ModelNotFoundException;
+        else return $res;
+    }
 
+    public function storeMany(string $id_relate, array $respostas)
+    {
+        $relateId = $this->model->where('id_relate', $id_relate)->get();
+        if (!$relateId) throw new \Illuminate\Database\Eloquent\ModelNotFoundException;
+
+        foreach ($respostas as $resposta)
+        {
+            $data = [];
+            $data['descricao'] = $resposta['resposta'];
+            $data['id_pergunta'] = $resposta['id_pergunta'];
+            $data['id_user'] = auth()->user()->id;
+            $data['id_relate'] = $id_relate;
+            $this->create($data);
+        }
+        return $id_relate;
+    }
 
 
 

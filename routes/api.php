@@ -399,6 +399,9 @@ Route::group([
     Route::post('/', [App\Http\Controllers\Api\RespostaRelateController::class, 'store'])
         ->name('api.resposta_relate.store');
 
+    Route::post('/insereRespostas', [App\Http\Controllers\Api\RespostaRelateController::class, 'insereRespostas'])
+        ->name('api.resposta_relate.insereRespostas');
+
     Route::put('/{resposta_relate}', [App\Http\Controllers\Api\RespostaRelateController::class, 'update'])
         ->name('api.resposta_relate.update');
 
