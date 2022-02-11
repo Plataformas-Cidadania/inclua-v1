@@ -49,7 +49,7 @@ const Pergunta = () => {
       if (result.data.success) {
         handleNotify({
           type: 'success',
-          text: 'Resposta inserida com sucesso!',
+          text: 'Obrigada por compartilhar suas experiências conosco!',
           spin: false
         });
         return;
@@ -152,7 +152,7 @@ const Pergunta = () => {
     }
   }, /*#__PURE__*/React.createElement("i", {
     className: "fas fa-spinner float-end fa-spin"
-  })))), /*#__PURE__*/React.createElement("div", {
+  })))), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
     className: "alert alert-" + notify.type + " d-flex align-items-center",
     role: "alert",
     style: {

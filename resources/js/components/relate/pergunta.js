@@ -39,7 +39,7 @@ const Pergunta = () => {
             });
 
             if(result.data.success){
-                handleNotify({type: 'success', text: 'Resposta inserida com sucesso!', spin: false});
+                handleNotify({type: 'success', text: 'Obrigada por compartilhar suas experiências conosco!', spin: false});
                 return;
             }
 
@@ -138,6 +138,7 @@ const Pergunta = () => {
                         <span style={{marginLeft: '10px', display: notify.spin ? '' : 'none'}}><i className="fas fa-spinner float-end fa-spin" /></span>
                     </button>
                 </div>
+                <br/>
                 <div className={"alert alert-"+notify.type+" d-flex align-items-center"} role="alert" style={{display: notify.type ? '' : 'none'}}>
                     <span style={{display: notify.type ? '' : 'none'}}><i className="fas fa-exclamation-triangle bi flex-shrink-0 me-2" /></span>
                     <div>{notify.text}</div>
