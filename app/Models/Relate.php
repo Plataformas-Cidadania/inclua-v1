@@ -20,9 +20,9 @@ use App\Traits\Uuids;
  */
 class Relate extends Model
 {
-    use Uuids;
 	protected $table = 'avaliacao.relate';
 	protected $primaryKey = 'id_relate';
+    protected $fillable = ['id_user'];
     protected $with = ['resposta'];
 	public function resposta()
 	{

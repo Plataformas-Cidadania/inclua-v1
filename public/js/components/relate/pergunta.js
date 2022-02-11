@@ -10,13 +10,6 @@ const Pergunta = () => {
     spin: false
   });
   const [respostas, setRespostas] = useState([]);
-  /*{
-      descricao: '',
-      id_pergunta: 0,
-      id_user: id_user,
-      status: 0,
-  }*/
-
   useEffect(() => {
     listPerguntas();
   }, []);
@@ -45,19 +38,28 @@ const Pergunta = () => {
     });
 
     try {
-      const result = await axios.post('api/resposta_relate', form);
+      //const jsonRespostas = JSON.stringify({resposta: respostas});
+      const jsonRespostas = JSON.stringify(respostas);
+      const result = await axios.post('resposta_relate/insereRespostas', jsonRespostas, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+
+      if (result.data.success) {
+        handleNotify({
+          type: 'success',
+          text: 'Resposta inserida com sucesso!',
+          spin: false
+        });
+        return;
+      }
+
       handleNotify({
-        type: 'success',
-        text: 'Resposta inserida com sucesso!',
+        type: 'danger',
+        text: 'Resposta não foi inserido, tente novamente!',
         spin: false
-      }); //Limpar form
-
-      let newForm = { ...form,
-        descricao: ""
-      };
-      setForm(newForm); ////
-
-      setTeste(true);
+      });
     } catch (error) {
       console.log(error);
       handleNotify({
@@ -93,7 +95,8 @@ const Pergunta = () => {
     if (!existeResposta) {
       newRespostas.push({
         descricao: value,
-        id_pergunta: idPergunta
+        id_pergunta: idPergunta,
+        status: 0
       });
     }
 

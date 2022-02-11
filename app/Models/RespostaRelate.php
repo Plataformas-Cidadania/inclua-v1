@@ -32,14 +32,16 @@ class RespostaRelate extends Model
 		'descricao' => 'string',
 		'status' => 'int',
 		'id_pergunta' => 'int',
-		'id_user' => 'int'
+		'id_user' => 'int',
+        'id_relate' => 'int'
 	];
 
 	protected $fillable = [
 		'descricao',
 		'status',
 		'id_pergunta',
-        'id_user'
+        'id_user',
+        'id_relate'
 	];
 
 	protected $with = ['pergunta'];

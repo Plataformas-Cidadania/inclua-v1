@@ -4,11 +4,13 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Api\Controller;
 use App\Models\RespostaRelate;
+use App\Repository\RelateRepository;
 use App\Repository\RespostaRelateRepository;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\Eloquent\RelationNotFoundException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Exception;
 
@@ -56,7 +58,7 @@ class RespostaRelateController extends Controller
             return $this->errorResponse('Erro inesperado.'.$exception);
         }
     }
- 
+
     /**
      * Obter uma lista de resposta do relate por pergunta
      *
@@ -127,6 +129,29 @@ class RespostaRelateController extends Controller
 			);
         } catch (Exception $exception) {
             return $this->errorResponse('Erro inesperado.'.$exception);
+        }
+    }
+
+    /**
+     * Adicionar vários respostas para um Relate
+     *
+     * @param Request $request
+     *
+     * @return JsonResponse
+     */
+    public function insereRespostas(Request $request): JsonResponse
+    {
+        $relateRepo = (new RelateRepository(app('App\Models\Relate')));
+        try {
+            $data = $request->all();
+            $relate_id = (new RelateController($relateRepo))->store();
+            $res = $this->repo->storeMany($relate_id,$data);
+            return $this->successResponse(
+                'Respostas adicionadas',
+                $res
+            );
+        } catch (Exception $exception) {
+            return $this->errorResponse($exception);
         }
     }
 

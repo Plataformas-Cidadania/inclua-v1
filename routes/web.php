@@ -123,3 +123,13 @@ Route::get('/teste-dimensoes', [DiagnosticoController::class , 'testeDimensoes']
 | FRONT
 <--------------------------------------------------------------------------|
 */
+
+
+
+
+Route::group([
+    'prefix' => 'resposta_relate',
+], function () {
+    Route::post('/insereRespostas', [\App\Http\Controllers\Api\RespostaRelateController::class, 'insereRespostas'])
+        ->name('api.resposta_relate.insereRespostas')->middleware('auth');
+});

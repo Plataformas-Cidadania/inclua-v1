@@ -9,6 +9,8 @@ use App\Repository\RelateRepository;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Exception;
 
@@ -32,32 +34,10 @@ class RelateController extends Controller
      */
     public function store(): String
     {
+        //Log::info(Auth::id());
         try {
             $res = $this->repo->createRelate();
             return $res->id_relate;
-        } catch (Exception $exception) {
-            return $this->errorResponse($exception);
-        }
-    }
-
-    /**
-     * Adicionar vários respostas para um Relate
-     *
-     * @param Request $request
-     *
-     * @return JsonResponse
-     */
-    public function insereRespostas(Request $request): JsonResponse
-    {
-        $relateRepo = (new RelateRepository(app('App\Models\Relate')));
-        try {
-            $data = $request->all();
-            $relate_id = (new RelateController($relateRepo))->store();
-            $res = $this->repo->storeMany($relate_id,$data);
-            return $this->successResponse(
-                'Respostas adicionadas',
-                $res
-            );
         } catch (Exception $exception) {
             return $this->errorResponse($exception);
         }

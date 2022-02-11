@@ -5,6 +5,7 @@ namespace App\Repository;
 
 use App\Models\RespostaRelate;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Log;
 
 class RespostaRelateRepository extends BaseRepository
 {
@@ -76,13 +77,17 @@ class RespostaRelateRepository extends BaseRepository
 
     public function storeMany(string $id_relate, array $respostas)
     {
-        $relateId = $this->model->where('id_relate', $id_relate)->get();
-        if (!$relateId) throw new \Illuminate\Database\Eloquent\ModelNotFoundException;
-
+        //$relateId = $this->model->where('id_relate', $id_relate)->get();
+        //if (!$relateId) throw new \Illuminate\Database\Eloquent\ModelNotFoundException;
+        Log::info("id_relate");
+        Log::info($id_relate);
+        //Log::info("relateId");
+        //Log::info([$relateId]);
         foreach ($respostas as $resposta)
         {
             $data = [];
-            $data['descricao'] = $resposta['resposta'];
+            $data['descricao'] = $resposta['descricao'];
+            $data['status'] = $resposta['status'];
             $data['id_pergunta'] = $resposta['id_pergunta'];
             $data['id_user'] = auth()->user()->id;
             $data['id_relate'] = $id_relate;

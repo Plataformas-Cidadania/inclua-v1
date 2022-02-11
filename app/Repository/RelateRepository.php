@@ -8,6 +8,8 @@ use App\Http\Controllers\Api\RespostaController;
 use App\Models\Relate;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class RelateRepository extends BaseRepository
 {
@@ -28,7 +30,10 @@ class RelateRepository extends BaseRepository
 
     public function createRelate(): Model
     {
-        $model = $this->model->create();
+        $data = [
+            "id_user" => auth()->user()->id
+        ];
+        $model = $this->model->create($data);
         return $model->fresh();
     }
 

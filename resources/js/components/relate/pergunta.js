@@ -4,12 +4,6 @@ const Pergunta = () => {
     const [perguntas, setPerguntas] = useState([]);
     const [notify, setNotify] = useState({type:null, text:null, spin:false});
     const [respostas, setRespostas] = useState([]);
-    /*{
-        descricao: '',
-        id_pergunta: 0,
-        id_user: id_user,
-        status: 0,
-    }*/
 
     useEffect(() => {
         listPerguntas();
@@ -36,20 +30,20 @@ const Pergunta = () => {
     const Insert = async () => {
         handleNotify({type: null, text: null, spin: true});
         try {
-            const result = await axios.post('api/resposta_relate', form);
+            //const jsonRespostas = JSON.stringify({resposta: respostas});
+            const jsonRespostas = JSON.stringify(respostas);
+            const result = await axios.post('resposta_relate/insereRespostas', jsonRespostas, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
 
-            handleNotify({type: 'success', text: 'Resposta inserida com sucesso!', spin: false});
-
-            //Limpar form
-            let newForm = {
-                ...form,
-                descricao: "",
+            if(result.data.success){
+                handleNotify({type: 'success', text: 'Resposta inserida com sucesso!', spin: false});
+                return;
             }
-            setForm(newForm);
-            ////
 
-            setTeste(true);
-
+            handleNotify({type: 'danger', text: 'Resposta não foi inserido, tente novamente!', spin: false});
         } catch (error) {
             console.log(error);
             handleNotify({type: 'danger', text: 'Resposta não foi inserido, tente novamente!', spin: false});
@@ -77,7 +71,8 @@ const Pergunta = () => {
         if(!existeResposta){
             newRespostas.push({
                 descricao: value,
-                id_pergunta: idPergunta
+                id_pergunta: idPergunta,
+                status: 0
             });
         }
         setRespostas(newRespostas);

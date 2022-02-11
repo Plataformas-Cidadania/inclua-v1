@@ -400,13 +400,17 @@ Route::group([
         ->name('api.resposta_relate.store');
 
     Route::post('/insereRespostas', [App\Http\Controllers\Api\RespostaRelateController::class, 'insereRespostas'])
-        ->name('api.resposta_relate.insereRespostas');
+        ->name('api.resposta_relate.insereRespostas')->middleware('auth');
 
     Route::put('/{resposta_relate}', [App\Http\Controllers\Api\RespostaRelateController::class, 'update'])
         ->name('api.resposta_relate.update');
 
     Route::delete('/{resposta_relate}',[App\Http\Controllers\Api\RespostaRelateController::class, 'destroy'])
         ->name('api.resposta_relate.destroy');
+});
+
+Route::get('/teste', function(){
+    return 'teste';
 });
 
 Route::group([
