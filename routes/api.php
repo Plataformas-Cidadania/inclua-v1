@@ -409,10 +409,6 @@ Route::group([
         ->name('api.resposta_relate.destroy');
 });
 
-Route::get('/teste', function(){
-    return 'teste';
-});
-
 Route::group([
     'prefix' => 'depoimento',
 ], function () {

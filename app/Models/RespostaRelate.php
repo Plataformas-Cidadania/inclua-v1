@@ -44,7 +44,7 @@ class RespostaRelate extends Model
         'id_relate'
 	];
 
-	protected $with = ['pergunta'];
+	protected $with = ['pergunta', 'relate'];
 	public function pergunta()
 	{
 		return $this->belongsTo(PerguntaRelate::class, 'id_pergunta');
@@ -53,5 +53,10 @@ class RespostaRelate extends Model
 	public function user()
 	{
 		return $this->belongsTo(User::class, 'id_user');
+	}
+
+	public function relate()
+	{
+		return $this->belongsTo(Relate::class, 'id_relate');
 	}
 }

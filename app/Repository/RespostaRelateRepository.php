@@ -34,7 +34,7 @@ class RespostaRelateRepository extends BaseRepository
      */
     public function getAllRespostaRelatePorUser($id_user)
     {
-        $res = RespostaRelate::where('id_user', '=', $id_user)->get();
+        $res = RespostaRelate::where('id_user', '=', $id_user)->orderBy('id_relate')->get();
         if (!$res || $res->isEmpty()) throw new \Illuminate\Database\Eloquent\ModelNotFoundException;
         else return $res;
     }
