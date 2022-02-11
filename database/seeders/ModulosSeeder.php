@@ -177,6 +177,17 @@ class ModulosSeeder extends Seeder
         DB::table('cms.modulos')->insert([
             'imagem' => '',
             'arquivo' => '',
+            'titulo' => 'Meus relatos',
+            'descricao' => 'Digite um texto!',
+            'slug' => 'txt-meu-relate',
+            'status' => 1,
+            'show' => 0,
+            'tipo_id' => 3,
+        ]);
+
+        DB::table('cms.modulos')->insert([
+            'imagem' => '',
+            'arquivo' => '',
             'titulo' => 'Depoimento',
             'descricao' => 'Digite um texto!',
             'slug' => 'txt-depoimento',

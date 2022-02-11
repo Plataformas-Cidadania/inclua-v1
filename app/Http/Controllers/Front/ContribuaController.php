@@ -90,6 +90,18 @@ class ContribuaController extends Controller{
 
     }
 
+    public function meusRelatos(){
+
+        $rota = Route::getCurrentRoute()->uri();
+
+        $modulo = \App\Models\Modulo::where('slug', 'txt-meu-relate')->first();
+
+        return view('contribua.meus-relatos', [
+            'modulo' => $modulo,
+        ]);
+
+    }
+
     public function depoimento(){
 
         $rota = Route::getCurrentRoute()->uri();

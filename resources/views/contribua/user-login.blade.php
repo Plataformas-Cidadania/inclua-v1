@@ -31,6 +31,11 @@
                         <i class="far fa-comment"></i> <span class="float-end d-none d-sm-block ms-2"> Depoimento</span>
                     </a>
                 </li>
+                <li class="btn btn-light">
+                    <a href="meus-relatos">
+                        <i class="fas fa-th-list"></i> <span class="float-end d-none d-sm-block ms-2"> Meus relatos</span>
+                    </a>
+                </li>
                 @endif
 
 
