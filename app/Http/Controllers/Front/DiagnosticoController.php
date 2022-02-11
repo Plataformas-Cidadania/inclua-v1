@@ -18,9 +18,11 @@ class DiagnosticoController extends Controller{
         $rota = Route::getCurrentRoute()->uri();
 
         $modulo = \App\Models\Modulo::first();
+        $text_diagnostico = \App\Models\Text::where('slug', 'diagnostico')->first();
 
         return view('diagnostico.completo', [
             'page' => $modulo,
+            'text_diagnostico' => $text_diagnostico,
         ]);
 
     }
@@ -44,9 +46,12 @@ class DiagnosticoController extends Controller{
         $tipo = $tipo === "completo" ? 1 : ($tipo === "parcial" ? 2 : "");
 
         $modulo = \App\Models\Modulo::first();
+        $text_diagnostico = \App\Models\Text::where('slug', 'pg-diagnostico')->first();
 
         return view('diagnostico.diagnostico-react', [
             'page' => $modulo,
+            'text_diagnostico_titulo' => $text_diagnostico->titulo,
+            'text_diagnostico_descricao' => $text_diagnostico->descricao,
             'tipo' => $tipo
         ]);
 

@@ -1,3 +1,5 @@
+{{--{{$text_concede_direitos = \App\Models\Text::where('slug', 'concede_direitos')->first()}}
+{{$text_termo = \App\Models\Text::where('slug', 'termo')->first()}}--}}
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo"></x-slot>
@@ -26,7 +28,7 @@
 
             <!-- Password -->
             <div class="mt-4">
-                <x-label for="password" :value="__('Senha')" />
+                <x-label for="password" :value="__('Senha mínimo 8 caracteres')" />
                 <br>
 
                 <x-input id="password" class="block mt-1 w-full input100"

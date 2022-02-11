@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class TextsSeeder extends Seeder
+class GeralSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,27 +14,6 @@ class TextsSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('cms.texts')->insert([
-            'imagem' => '',
-            'titulo' => 'Diagnóstico',
-            'descricao' => 'O diagnóstico visa identificar e avaliar riscos de desatenção, tratamento inadequado e exclusão de segmentos específicos do público atendido. Muitas vezes, esses riscos não são suficientemente bem conhecidos.',
-            'slug' => 'diagnostico',
-        ]);
-
-        DB::table('cms.texts')->insert([
-            'imagem' => '',
-            'titulo' => 'Resultado',
-            'descricao' => 'Desarticulações (ou formas específicas de articulação) e disputas interinstitucionais podem repercutir em déficits de cobertura, lacunas de atenção ou repercussões',
-            'slug' => 'resultado',
-        ]);
-
-        DB::table('cms.texts')->insert([
-            'imagem' => '',
-            'titulo' => 'Recursos',
-            'descricao' => 'O diagnóstico visa identificar e avaliar riscos de desatenção, tratamento inadequado e exclusão de segmentos específicos do público atendido. Muitas vezes, esses riscos não são suficientemente bem conhecidos.',
-            'slug' => 'recursos',
-        ]);
-
         DB::table('cms.texts')->insert([
             'imagem' => '',
             'titulo' => 'Diagnóstico',
@@ -55,6 +34,17 @@ class TextsSeeder extends Seeder
             'descricao' => 'Neste espaço, você pode compartilhar sua experiência ao utilizar as ferramentas da Plataforma Inclua com outros gestores, profissionais e trabalhadores do poder público  ou demais  usuários.  Seu relato  pode nos ajudar no aprimoramento  das funcionalidades, na construção de possíveis parcerias, além da disseminação do Projeto Inclua.  Após   o   envio,   seu   relato   será   lido   pela   nossa   equipe   para   possível   publicação. Caso isso venha a acontecer, você autoriza a publicação do seu relato em nosso
 site?',
             'slug' => 'termo',
+        ]);
+
+        DB::table('cms.modulos')->insert([
+            'imagem' => '',
+            'arquivo' => '',
+            'titulo' => 'Meus relatos',
+            'descricao' => 'Digite um texto!',
+            'slug' => 'txt-meu-relate',
+            'status' => 1,
+            'show' => 0,
+            'tipo_id' => 3,
         ]);
 
 
