@@ -20,14 +20,19 @@ const MeusRelatos = props => {
           showRelate = true;
         }
 
+        var dataInput = item.relate.created_at.slice(0, 10);
+        let data = new Date(dataInput);
+        dataFormatada = data.toLocaleDateString('pt-BR', {
+          timeZone: 'UTC'
+        });
         return /*#__PURE__*/React.createElement("div", {
           key: "relate" + key
         }, /*#__PURE__*/React.createElement("p", {
           style: {
-            display: showRelate ? '' : 'none',
-            borderBottom: 'solid 2px #333'
-          }
-        }, item.relate.id_relate, " - ", item.relate.created_at), /*#__PURE__*/React.createElement("div", {
+            display: showRelate ? '' : 'none'
+          },
+          className: "bg-lgt p-3"
+        }, /*#__PURE__*/React.createElement("strong", null, "Relato ", item.relate.id_relate, " - ", dataFormatada)), /*#__PURE__*/React.createElement("div", {
           dangerouslySetInnerHTML: {
             __html: item.pergunta.descricao
           }

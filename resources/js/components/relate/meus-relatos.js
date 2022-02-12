@@ -1,6 +1,5 @@
 const MeusRelatos = (props) => {
 
-
     const {useState, useEffect} = React;
     const [respostas, setRespostas] = useState([]);
 
@@ -22,15 +21,23 @@ const MeusRelatos = (props) => {
                     showRelate = true;
                 }
 
+                var dataInput = item.relate.created_at.slice(0, 10);
+
+                let data = new Date(dataInput);
+                dataFormatada = data.toLocaleDateString('pt-BR', {timeZone: 'UTC'});
+
                 return (
                     <div key={"relate"+key}>
-                        <p style={{display: showRelate ? '' : 'none', borderBottom: 'solid 2px #333'}}>{item.relate.id_relate} - {item.relate.created_at}</p>
+                        <p style={{display: showRelate ? '' : 'none'}} className="bg-lgt p-3" >
+                            <strong>Relato {item.relate.id_relate} - {dataFormatada}</strong>
+                        </p>
                         <div dangerouslySetInnerHTML={{__html: item.pergunta.descricao}}/>
                         <div>{item.descricao}</div>
                         <hr/>
                     </div>
                 );
             });
+
 
             setRespostas(respostas);
 
