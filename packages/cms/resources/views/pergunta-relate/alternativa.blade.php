@@ -22,16 +22,16 @@
                         <thead>
                         <tr>
                             {{--<th>Recurso</th>--}}
-                            <th>Indicador</th>
+                            <th>Alternativa</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr ng-repeat="alternativa in alternativas">
                             {{--<td><% alternativa.recurso.nome %></td>--}}
-                            <td><% alternativa.indicador.titulo %></td>
+                            <td><% alternativa.descricao %></td>
                             <td class="text-right">
                                 <div>
-                                    <a><i data-toggle="modal" data-target="#modalExcluirAlternativa" class="fa fa-remove fa-2x" ng-click="perguntaExcluirAlternativa(alternativa.id_indicador, alternativa.id_recurso, alternativa.indicador.titulo)"></i></a>
+                                    <a><i data-toggle="modal" data-target="#modalExcluirAlternativa" class="fa fa-remove fa-2x" ng-click="perguntaExcluirAlternativa(alternativa.id_alternativa, alternativa.descricao)"></i></a>
                                 </div>
                             </td>
                         </tr>
@@ -56,7 +56,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Excluir Indicador</h4>
+                <h4 class="modal-title">Excluir Alternativa</h4>
             </div>
             <div class="modal-body">
                 <div class="row">
@@ -71,7 +71,7 @@
                 <div class="mensagem-ok text-center text-danger"><% mensagemExcluidoAlternativa %></div>
             </div>
             <div id="opcoesExcluirAlternativa" class="modal-footer" ng-show="!excluidoAlternativa">
-                <button id="btnExcluirAlternativa" type="button" class="btn btn-default" ng-click="excluirAlternativa(idExcluirAlternativaIndicador, idExcluirAlternativaRecurso);">Sim</button>
+                <button id="btnExcluirAlternativa" type="button" class="btn btn-default" ng-click="excluirAlternativa(idExcluirAlternativa);">Sim</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Não</button>
             </div>
             <div id="fecharExcluirAlternativa" class="modal-footer" ng-show="excluidoAlternativa">

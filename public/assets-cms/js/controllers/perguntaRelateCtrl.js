@@ -243,18 +243,17 @@ cmsApp.controller('perguntaRelateCtrl', ['$scope', '$http', 'Upload', '$timeout'
         });
     }
 
-    $scope.perguntaExcluirAlternativa = function (idIndicador, idRecurso, titulo){
-        $scope.idExcluirAlternativaIndicador = idIndicador;
-        $scope.idExcluirAlternativaRecurso = idRecurso;
+    $scope.perguntaExcluirAlternativa = function (idAlternativa,  titulo){
+        $scope.idExcluirAlternativa = idAlternativa;
         $scope.tituloExcluirAlternativa = titulo;
         $scope.excluidoAlternativa = false;
         $scope.mensagemExcluidoAlternativa = "";
     }
 
-    $scope.excluirAlternativa = function(idIndicador, idRecurso){
+    $scope.excluirAlternativa = function(idAlternativa){
         $scope.processandoExcluirAlternativa = true;
         $http({
-            url: 'api/alternativa/'+idIndicador+'/'+idRecurso,
+            url: 'api/alternativa_relate/'+idAlternativa,
             method: 'DELETE'
         }).success(function(data, status, headers, config){
             console.log(data);
