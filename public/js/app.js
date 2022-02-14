@@ -21316,3 +21316,5 @@ function numberDecimalPtBR(number, decimals){
         maximumFractionDigits: decimals
     }).format(number);
 }
+
+

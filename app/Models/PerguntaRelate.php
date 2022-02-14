@@ -29,11 +29,13 @@ class PerguntaRelate extends Model
 	protected $casts = [
 		'id_pergunta' => 'int',
 		'descricao' => 'string',
-		'id_tipo' => 'int'
+		'id_tipo' => 'int',
+		'tipo_resposta' => 'int'
 	];
 
 	protected $fillable = [
-		'descricao'
+		'descricao',
+        'tipo_resposta'
 	];
 
 }
