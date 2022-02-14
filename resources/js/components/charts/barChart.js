@@ -4,7 +4,6 @@ class BarChart extends React.Component {
         console.log(props);
         this.state = {
 
-
             series: props.series,
             options: {
                 colors:['#31A853', '#FBBC09', '#E84335'],
