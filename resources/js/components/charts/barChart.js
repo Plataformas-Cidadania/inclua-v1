@@ -7,7 +7,7 @@ class BarChart extends React.Component {
 
             series: props.series,
             options: {
-                colors:['#E84335', '#FBBC09', '#31A853'],
+                colors:['#31A853', '#FBBC09', '#E84335'],
                 dataLabels: {
                     enabled: false,
                 },
