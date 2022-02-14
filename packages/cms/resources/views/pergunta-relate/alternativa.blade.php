@@ -12,6 +12,12 @@
                     <label for="alternativa">Alternativa</label>
                     <input type="text" name="alternativa" class="form-control width-grande <% validar(alternativa.descricao)%>" ng-model="alternativa.descricao" ng-required="true">
                     <br>
+                    <label for="outros">Outros</label>
+                    <select name="outros" id="outros" class="form-control width-medio <% validar(alternativa.status)%>" ng-model="alternativa.outros" ng-required="true" ng-init="alternativa.outros = 0;">
+                        <option value="0" ng-selected="pergunta.tipo_resposta == 0">Não</option>
+                        <option value="1" ng-selected="pergunta.tipo_resposta == 1">Sim</option>
+                    </select>
+                    <br>
                     <button type="button" class="btn btn-info" id="btnAlternativa" ng-click="inserirAlternativa()">Adicionar</button>
                 </form>
                 <br>

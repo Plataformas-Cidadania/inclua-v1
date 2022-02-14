@@ -10,7 +10,7 @@
 
 
 <label for="tipo_resposta">Tipo de Resposta</label>
-<select name="tipo_resposta" id="tipo_resposta" class="form-control width-medio <% validar(recurso.status)%>" ng-model="pergunta.tipo_resposta" ng-required="true" ng-init="pergunta.tipo_resposta = '';">
+<select name="tipo_resposta" id="tipo_resposta" class="form-control width-medio <% validar(pergunta.tipo_resposta)%>" ng-model="pergunta.tipo_resposta" ng-required="true" ng-init="pergunta.tipo_resposta = '';">
     <option value="" ng-selected="pergunta.tipo_resposta == ''">Selecione</option>
     <option value="1" ng-selected="pergunta.tipo_resposta == 1">Texto</option>
     <option value="2" ng-selected="pergunta.tipo_resposta == 2">Alternativas</option>
