@@ -107,7 +107,7 @@ const Page = () => {
                                                 <div className="row">
                                                     <div className="col-md-8">
                                                         <br/>
-                                                        <p><strong>CONSEQUÊNCIA:</strong> {item.descricao}
+                                                        <p><strong>CONSEQUÊNCIA:</strong> {item.consequencia}
                                                         </p>
                                                         <br/> <br/>
                                                     </div>

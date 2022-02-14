@@ -75,6 +75,7 @@
                             <h3>Inclua</h3>
                             <ul>
                                 <li role="presentation"><a href="diagnostico" >Diagnóstico</a></li>
+                                <li><a href="guias">Guias</a></li>
                                 <li role="presentation"><a href="recursos" >Biblioteca de recursos</a></li>
                                 <li role="presentation"><a href="contribua" >Interaja</a></li>
                                 <br><br>

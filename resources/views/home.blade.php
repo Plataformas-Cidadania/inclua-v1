@@ -150,7 +150,7 @@
     <div class="container">
         <div class="row">
             @foreach($partners as $partner)
-                <div class="col-xs-6 col-sm-4 col-md-2 item-logo">
+                <div class="col-xs-6 col-sm-4 col-md-3 item-logo text-center">
                     @if(empty($partner->imagem))
                     <object data="img/sem-imagem.png" type="image/png" class="img-responsive">
                     @else
@@ -163,6 +163,9 @@
                             <img src="/img/pre-img.gif" data-src="/imagens/parceiros/md-{{$partner->imagem}}" alt="Imagem sobre {{$partner->title}}" title="Imagem sobre {{$partner->title}}" width="100%" class="cliente-list-img-hover lazyload">
                         </picture>
                     </object>
+                    <br>
+                    <br>
+                    <p>{{$partner->titulo}}</p>
                 </div>
             @endforeach
         </div>

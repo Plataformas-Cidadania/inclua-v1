@@ -6,7 +6,7 @@
         <section>
             <div class="row">
                 @foreach($partners as $key => $partner)
-                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-6">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                         <div class="items-img text-center">
                             <a href="{{$partner->url}}" target="_blank" data-toggle="modal" data-target="#myModal{{$key}}">
                                 @if(empty($partner->imagem))
@@ -21,6 +21,8 @@
                                         <img src="img/pre-img.gif" data-src="imagens/parceiros/lg-{{$partner->imagem}}" alt="Imagem sobre {{$partner->titulo}}" title="Imagem sobre {{$partner->titulo}}" width="100%" class="img-responsive lazyload">
                                     </picture>
                                 </object>
+                                        <br><br>
+                                <p>{{$partner->titulo}}</p>
                             </a>
                         </div>
                     </div>

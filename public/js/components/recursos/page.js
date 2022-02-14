@@ -49,16 +49,18 @@ const Page = () => {
     typeTitle: 'nome',
     nameId: 'id' //rotaSelected: 'palavra_chave'
 
-  }, {
-    id: 4,
-    title: "Indicador",
-    txt: 'Busque por indicador',
-    rota: 'api/indicadores/nome/',
-    type: true,
-    typeTitle: 'titulo',
-    nameId: 'id_indicador',
-    rotaSelected: 'indicador'
-  }];
+  }
+  /*{
+      id: 4,
+      title: "Indicador",
+      txt: 'Busque por indicador',
+      rota: 'api/indicadores/nome/',
+      type: true,
+      typeTitle: 'titulo',
+      nameId: 'id_indicador',
+      rotaSelected: 'indicador'
+  },*/
+  ];
   useEffect(() => {
     Recurso();
   }, []);

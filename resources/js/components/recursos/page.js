@@ -53,7 +53,7 @@ const Page = () => {
             nameId: 'id',
             //rotaSelected: 'palavra_chave'
         },
-        {
+        /*{
             id: 4,
             title: "Indicador",
             txt: 'Busque por indicador',
@@ -62,7 +62,7 @@ const Page = () => {
             typeTitle: 'titulo',
             nameId: 'id_indicador',
             rotaSelected: 'indicador'
-        },
+        },*/
     ];
 
     useEffect(() => {

@@ -135,7 +135,7 @@ const Page = () => {
       className: "row"
     }, /*#__PURE__*/React.createElement("div", {
       className: "col-md-8"
-    }, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("strong", null, "CONSEQU\xCANCIA:"), " ", item.descricao), /*#__PURE__*/React.createElement("br", null), " ", /*#__PURE__*/React.createElement("br", null)), /*#__PURE__*/React.createElement("div", {
+    }, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("strong", null, "CONSEQU\xCANCIA:"), " ", item.consequencia), /*#__PURE__*/React.createElement("br", null), " ", /*#__PURE__*/React.createElement("br", null)), /*#__PURE__*/React.createElement("div", {
       className: "col-md-4"
     }, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
       className: bgColor
