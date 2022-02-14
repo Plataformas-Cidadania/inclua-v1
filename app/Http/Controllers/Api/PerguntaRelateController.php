@@ -19,6 +19,7 @@ class PerguntaRelateController extends Controller
     private PerguntaRelateRepository $repo;
     private $rules = [
         'descricao' => 'string|min:1|nullable',
+        'tipo_resposta' => 'int',
     ];
     public function __construct(PerguntaRelateRepository $repo)
     {

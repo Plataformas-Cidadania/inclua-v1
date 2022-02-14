@@ -4,6 +4,10 @@ cmsApp.controller('perguntaRelateCtrl', ['$scope', '$http', 'Upload', '$timeout'
     $scope.pergunta = {
     };
     $scope.perguntas = [];
+    $scope.tiposRespostas= {
+        1: "Texto",
+        2: "Alternativas"
+    };
     $scope.dimensao = null;
     $scope.currentPage = 1;
     $scope.lastPage = 0;
@@ -11,7 +15,7 @@ cmsApp.controller('perguntaRelateCtrl', ['$scope', '$http', 'Upload', '$timeout'
     $scope.maxSize = 5;
     $scope.itensPerPage = 100;
     $scope.dadoPesquisa = '';
-    $scope.campos = "id_pergunta, nome";
+    $scope.campos = "id_pergunta, nome, tipo_resposta";
     $scope.campoPesquisa = "titulo";
     $scope.processandoListagem = false;
     $scope.processandoExcluir = false;
@@ -187,6 +191,91 @@ cmsApp.controller('perguntaRelateCtrl', ['$scope', '$http', 'Upload', '$timeout'
             $scope.mensagemExcluido = "Erro ao tentar excluir!";
         });
     };
+
+
+    //ALTERNATIVAS////////////////////////////////////
+    $scope.alternativa = {};
+    $scope.dimensao = null;
+    $scope.indicador = null;
+    $scope.alternativas = [];
+    $scope.totalAlternativas = 0;
+    $scope.processandoDimensoes = false;
+    $scope.processandoIndicadores = false;
+    $scope.processandoInserirAlternativa = false;
+    $scope.processandoListagemAlternativas = false;
+
+    $scope.modalAlternativa = function (id, titulo){
+        $scope.alternativa.id_pergunta = id;
+        $scope.tituloAlternativa = titulo;
+        $scope.listarAlternativas()
+    }
+
+    $scope.inserirAlternativa = function(){
+        console.log($scope.alternativa);
+        $scope.processandoInserirAlternativa= true;
+        $scope.mensagemInserirAlternativa = "";
+        $http.post("api/alternativa_relate", $scope.alternativa).success(function (data){
+            $scope.listarAlternativas();
+            $scope.mensagemInserirAlternativa =  "Gravado com sucesso!";
+            $scope.processandoInserirAlternativa = false;
+            $scope.alternativa.descricao = "";
+        }).error(function(data){
+            $scope.mensagemInserirAlternativa = "Ocorreu um erro!";
+            $scope.processandoInserirAlternativa = false;
+        });
+    }
+
+    $scope.listarAlternativas = function(){
+        $scope.processandoListagemAlternativas = true;
+        $http({
+            url: 'api/alternativa_relate/perguntaRelate/'+$scope.alternativa.id_pergunta,
+            //url: 'api/alternativa_relate/',
+            method: 'GET',
+            params: {
+
+            }
+        }).success(function(data, status, headers, config){
+            $scope.alternativas = data.data;
+            $scope.totalAlternativas = $scope.alternativas.length;
+            $scope.processandoListagemAlternativas = false;
+        }).error(function(data){
+            $scope.message = "Ocorreu um erro: "+data;
+            $scope.processandoListagemAlternativas = false;
+        });
+    }
+
+    $scope.perguntaExcluirAlternativa = function (idAlternativa,  titulo){
+        $scope.idExcluirAlternativa = idAlternativa;
+        $scope.tituloExcluirAlternativa = titulo;
+        $scope.excluidoAlternativa = false;
+        $scope.mensagemExcluidoAlternativa = "";
+    }
+
+    $scope.excluirAlternativa = function(idAlternativa){
+        $scope.processandoExcluirAlternativa = true;
+        $http({
+            url: 'api/alternativa_relate/'+idAlternativa,
+            method: 'DELETE'
+        }).success(function(data, status, headers, config){
+            console.log(data);
+            if(data.success){
+                $scope.processandoExcluirAlternativa = false;
+                $scope.excluidoAlternativa = true;
+                $scope.mensagemExcluidoAlternativa = data.message;
+                $scope.listarAlternativas();
+                return;
+            }
+            $scope.processandoExcluirAlternativa = false;
+            $scope.excluidoAlternativa = false;
+            $scope.mensagemExcluidoAlternativa = data.message;
+        }).error(function(data){
+            $scope.message = "Ocorreu um erro: "+data;
+            $scope.processandoExcluirAlternativa = false;
+            $scope.mensagemExcluidoAlternativa = "Erro ao tentar excluir!";
+        });
+    };
+
+    ///////////////////////////////////////////////
 
 
 }]);
