@@ -207,6 +207,7 @@ cmsApp.controller('perguntaRelateCtrl', ['$scope', '$http', 'Upload', '$timeout'
     $scope.modalAlternativa = function (id, titulo){
         $scope.alternativa.id_pergunta = id;
         $scope.tituloAlternativa = titulo;
+        $scope.listarAlternativas()
     }
 
     $scope.inserirAlternativa = function(){
@@ -227,7 +228,7 @@ cmsApp.controller('perguntaRelateCtrl', ['$scope', '$http', 'Upload', '$timeout'
     $scope.listarAlternativas = function(){
         $scope.processandoListagemAlternativas = true;
         $http({
-            //url: 'api/alternativa_relate/'+$scope.alternativa.id_recurso,
+            //url: 'api/alternativa_relate/'+$scope.alternativa.id_pergunta,
             url: 'api/alternativa_relate/',
             method: 'GET',
             params: {
