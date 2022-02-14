@@ -218,7 +218,7 @@ cmsApp.controller('perguntaRelateCtrl', ['$scope', '$http', 'Upload', '$timeout'
             $scope.listarAlternativas();
             $scope.mensagemInserirAlternativa =  "Gravado com sucesso!";
             $scope.processandoInserirAlternativa = false;
-            $scope.alternativa = {};
+            $scope.alternativa.descricao = "";
         }).error(function(data){
             $scope.mensagemInserirAlternativa = "Ocorreu um erro!";
             $scope.processandoInserirAlternativa = false;
@@ -228,8 +228,8 @@ cmsApp.controller('perguntaRelateCtrl', ['$scope', '$http', 'Upload', '$timeout'
     $scope.listarAlternativas = function(){
         $scope.processandoListagemAlternativas = true;
         $http({
-            //url: 'api/alternativa_relate/'+$scope.alternativa.id_pergunta,
-            url: 'api/alternativa_relate/',
+            url: 'api/alternativa_relate/perguntaRelate/'+$scope.alternativa.id_pergunta,
+            //url: 'api/alternativa_relate/',
             method: 'GET',
             params: {
 
