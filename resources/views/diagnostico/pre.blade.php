@@ -21,7 +21,7 @@
                                 <a href="guias">
                                     <div class="dorder-container cursor">
                                         <div class="bg-lgt2 p-3">
-                                            <h2 style="margin-top: 15px;">Guia</h2>
+                                            <h2 style="margin-top: 15px;">Guias</h2>
                                             <i class="fas fa-angle-right fa-3x float-end" style="margin-top: -52px;"></i>
                                         </div>
                                     </div>
