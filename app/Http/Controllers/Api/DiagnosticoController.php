@@ -16,7 +16,9 @@ class DiagnosticoController extends Controller
 {
     private DiagnosticoRepository $repo;
     private $rules = [
-        'id_diagnostico' => 'T_STRING'
+        'id_diagnostico' => 'T_STRING',
+        'oferta_publica' => 'string',
+        'grupo_focal' => 'string'
     ];
     public function __construct(DiagnosticoRepository $repo)
     {
@@ -46,6 +48,9 @@ class DiagnosticoController extends Controller
         try {
             //Teste
             $dimensao = Dimensao::find($id_dimensao);
+            $diagnostico = $this->repo->getDiagnostico($id_diagnostico);
+
+
             $indicadores = $dimensao->indicadores;
             $vet_res_indicadores = [];
             $pontuacao_dimensao = 0;
@@ -131,15 +136,18 @@ class DiagnosticoController extends Controller
             $vet_dimensao = [
                 'id_dimensao' => $id_dimensao,
                 'id_diagnostico' => $id_diagnostico,
+                'oferta_publica' => $diagnostico->oferta_publica,
+                'grupo_focal' => $diagnostico->grupo_focal,
                 'titulo' => $dimensao->titulo,
-
                 'risco' => $risco,
                 'pontos' => $pontuacao_dimensao,
                 'indicadores' => $vet_res_indicadores
             ];
             return $vet_dimensao;
         } catch (Exception $exception) {
-            return $this->errorResponse($exception);
+            if ($exception instanceof ModelNotFoundException)
+                return $this->errorResponse('Not found');
+            return $this->errorResponse('Erro inesperado.'.$exception);
         }
     }
 
@@ -158,14 +166,14 @@ class DiagnosticoController extends Controller
     /**
      * Obter especificado pelo id
      *
-     * @param int $id
+     * @param string $id
      *
      * @return JsonResponse
      */
     public function get($id): JsonResponse
     {
         try {
-            $res = $this->repo->findById($id);
+            $res = $this->repo->getDiagnostico($id);
             return $this->successResponse(
                 'Retornado com sucesso',
                 $res
@@ -246,6 +254,8 @@ class DiagnosticoController extends Controller
     {
         return [
             'id_diagnostico' => $model->id_diagnostico,
+            'oferta_publica' => $model->oferta_publica,
+            'grupo_focal' => $model->grupo_focal,
         ];
     }
 
