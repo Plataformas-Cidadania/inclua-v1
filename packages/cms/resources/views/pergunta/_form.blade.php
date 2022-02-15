@@ -33,9 +33,22 @@
     <option value="1" ng-selected="pergunta.inverter == 1">Sim</option>
 </select>
 <br>
-<label for="vl_subPergunta">Valor de ativação de subpergunta</label>
-<input type="number" name="vl_subPergunta" id="vl_subPergunta" class="form-control width-medio <% validar(pergunta.vl_subPergunta)%>" ng-model="pergunta.vl_subPergunta">
+<label for="id_perguntaPai">Pergunta Pai</label>
+<select
+    name="id_perguntaPai"
+    class="form-control width-grande"
+    ng-model="perguntaPai"
+    ng-init="perguntaPai = null"
+    ng-options="option.descricao for option in perguntas track by option.id_pergunta"
+>
+    <option value="" ng-disabled="!!pergunta.id_perguntaPai">Não Possui</option>
+</select>
 <br>
+<div ng-if="!pergunta.id_perguntaPai > 0">
+    <label for="vl_subPergunta">Valor de ativação de subpergunta</label>
+    <input type="number" name="vl_subPergunta" id="vl_subPergunta" class="form-control width-medio <% validar(pergunta.vl_subPergunta)%>" ng-model="pergunta.vl_subPergunta">
+    <br>
+</div>
 <label for="vl_minimo">Valor Mínimo</label>
 <input type="number" name="vl_minimo" class="form-control width-pequeno <% validar(pergunta.vl_minimo)%>" ng-model="pergunta.vl_minimo" ng-required="true">
 <br>

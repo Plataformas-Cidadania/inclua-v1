@@ -3,7 +3,8 @@ cmsApp.controller('alterarPerguntaCtrl', ['$scope', '$http', 'Upload', '$timeout
     $scope.processandoSalvar = false;
     $scope.processandoDetalhar = false;
 
-
+    $scope.perguntas = [];
+    $scope.perguntaPai = null;
     $scope.id_pergunta = 0;
     $scope.dimensoes = [];
     $scope.dimensao = null;
@@ -33,10 +34,29 @@ cmsApp.controller('alterarPerguntaCtrl', ['$scope', '$http', 'Upload', '$timeout
                     $scope.dimensao = item;
                 }
             });
+            $scope.listarPerguntas($scope.pergunta.id_indicador);
             $scope.processandoDetalhar = false;
         }).error(function(data){
             $scope.message = "Ocorreu um erro: "+data;
             $scope.processandoDetalhar = false;
+        });
+    };
+
+    $scope.listarPerguntas = function(id_indicador){
+        $http({
+            url: 'api/pergunta/indicador/'+id_indicador,
+            method: 'GET',
+            params: {}
+        }).success(function(data, status, headers, config){
+            console.log(data.data);
+            $scope.perguntas = data.data;
+            console.log($scope.perguntas);
+            console.log($scope.pergunta.id_perguntaPai);
+            $scope.perguntaPai = $scope.perguntas.find(function(item){
+                return item.id_pergunta === $scope.pergunta.id_perguntaPai;
+            });
+        }).error(function(data){
+            $scope.message = "Ocorreu um erro: "+data;
         });
     };
 
