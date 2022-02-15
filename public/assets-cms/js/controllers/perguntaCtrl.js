@@ -15,6 +15,7 @@ cmsApp.controller('perguntaCtrl', ['$scope', '$http', 'Upload', '$timeout', func
         descricao: null,
     };
     $scope.id_indicador = 0;
+    $scope.perguntaPai = null;
     $scope.perguntas = [];
     $scope.dimensoes = [];
     $scope.dimensao = null;
@@ -88,7 +89,7 @@ cmsApp.controller('perguntaCtrl', ['$scope', '$http', 'Upload', '$timeout', func
             let letras = $scope.perguntas.map(function(item) { return item.letra; });
             console.log(letras);
             letras = letras.filter((item) => {
-                return item !== ".";
+                return item !== "zz" && isNaN(item);
             });
             let letraMaxima = letras.sort().pop();
             console.log(letras);
@@ -142,13 +143,31 @@ cmsApp.controller('perguntaCtrl', ['$scope', '$http', 'Upload', '$timeout', func
         console.log($scope.pergunta);
         $scope.mensagemInserir = "";
 
+        console.log($scope.perguntaPai);
+        if($scope.perguntaPai){
+            $scope.pergunta.id_perguntaPai = $scope.perguntaPai.id_pergunta;
+        }
+
+        //no caso de ser uma subpergunta o campo letra será um número com o próximo número das subperguntas da perguntaPai.
+        console.log($scope.pergunta.id_perguntaPai);
+        if($scope.pergunta.id_perguntaPai > 0){
+            $scope.pergunta.vl_subPergunta = null;
+            const subperguntas = $scope.perguntas.filter(function(item){
+                return item.id_perguntaPai === $scope.pergunta.id_perguntaPai;
+            })
+            const numeros = subperguntas.map(function(item) { return parseInt(item.letra); });
+            const numeroMaximo = numeros.sort().pop();
+            $scope.pergunta.letra = (numeroMaximo+1).toString();
+        }
+
         if($scope.pergunta.tipo == 3){
-            $scope.pergunta.letra = ".";
+            $scope.pergunta.letra = "zz";
         }
 
         if(!$scope.pergunta.letra){
             $scope.pergunta.letra = "a";
         }
+
         console.log($scope.pergunta);
 
         if(file==null && arquivo==null){
@@ -160,6 +179,7 @@ cmsApp.controller('perguntaCtrl', ['$scope', '$http', 'Upload', '$timeout', func
                 $scope.listarPerguntas($scope.id_indicador);
                  //delete $scope.pergunta;//limpa o form
                 $scope.pergunta = {};//limpa o form
+                $scope.perguntaPai = null;//limpa a seleção do select de perguntaPai
                 $scope.mensagemInserir =  "Gravado com sucesso!";
                 $scope.processandoInserir = false;
              }).error(function(data){
