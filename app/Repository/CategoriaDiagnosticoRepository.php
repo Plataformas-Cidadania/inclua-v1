@@ -9,16 +9,16 @@ use Illuminate\Database\Eloquent\Model;
 class CategoriaDiagnosticoRepository extends BaseRepository
 {
     /**
-     * @var Categorizacao
+     * @var CategoriaDiagnostico
      */
     protected $model;
 
     /**
      * IndicadorRepository constructor.
      *
-     * @param Categorizacao $model
+     * @param CategoriaDiagnostico $model
      */
-    public function __construct(Categorizacao $model)
+    public function __construct(CategoriaDiagnostico $model)
     {
         $this->model = $model;
     }
@@ -33,7 +33,7 @@ class CategoriaDiagnosticoRepository extends BaseRepository
 
     public function findByCompositeId(int $firstId,int $secondId): Model
     {
-        $res = Categorizacao::with(['categoria','recurso'])
+        $res = CategoriaDiagnostico::with(['categoria','recurso'])
             ->where('id_categoria', '=', $firstId)
             ->where('id_diagnosticco', '=', $secondId)
             ->first();
@@ -41,7 +41,7 @@ class CategoriaDiagnosticoRepository extends BaseRepository
         else return $res;
     }
 
-    public function getAllByIdDiagnostico(int $id_diagnostico)
+    public function getAllByIdDiagnostico($id_diagnostico)
     {
         $res = CategoriaDiagnostico::where('id_diagnostico', '=', $id_diagnostico)
             ->get();
@@ -57,12 +57,12 @@ class CategoriaDiagnosticoRepository extends BaseRepository
      */
     public function deleteByCompositeId(int $firstId,int $secondId,): Model
     {
-        $res = Categorizacao::where('id_categoria', '=', $firstId)
+        $res = CategoriaDiagnostico::where('id_categoria', '=', $firstId)
             ->where('id_diagnostico', '=', $secondId)
             ->first();
         if (!$res) throw new \Illuminate\Database\Eloquent\ModelNotFoundException;
         else {
-            Categorizacao::where('id_categoria', '=', $firstId)->where('id_recurso', '=', $secondId)->delete();
+            CategoriaDiagnostico::where('id_categoria', '=', $firstId)->where('id_recurso', '=', $secondId)->delete();
             return $res;
         }
     }

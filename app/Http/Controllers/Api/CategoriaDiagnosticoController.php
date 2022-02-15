@@ -17,21 +17,21 @@ class CategoriaDiagnosticoController extends Controller
     private CategoriaDiagnosticoRepository $repo;
     private $rules = [
     'id_categoria' => 'int|min:1',
-    'id_diagnostico' => 'int|min:1',
+    'id_diagnostico' => 'string',
     ];
     public function __construct(CategoriaDiagnosticoRepository $repo)
     {
         $this->repo = $repo;
     }
 
- 
+
     /**
      * Obter especificado pelo id do diagnostico
      * @param int $id_diagnostico
      *
      * @return JsonResponse
      */
-    public function getAllByIdDiagnostico(int $id_diagnostico): JsonResponse
+    public function getAllCategoriaPorDiagnostico($id_diagnostico): JsonResponse
     {
         try {
 

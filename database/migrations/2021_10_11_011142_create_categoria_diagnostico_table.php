@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCategorizacaoTable extends Migration
+class CreateCategoriaDiagnosticoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -19,7 +19,7 @@ class CreateCategorizacaoTable extends Migration
         $table->foreign('id_categoria')->references('id_categoria')
             ->on('avaliacao.categoria')
             ->onDelete('cascade');
-        $table->integer('id_diagnostico');
+        $table->uuid('id_diagnostico');
         $table->foreign('id_diagnostico')->references('id_diagnostico')
             ->on('avaliacao.diagnostico')
             ->onDelete('cascade');
