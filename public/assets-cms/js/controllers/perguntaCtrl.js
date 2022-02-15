@@ -89,7 +89,7 @@ cmsApp.controller('perguntaCtrl', ['$scope', '$http', 'Upload', '$timeout', func
             let letras = $scope.perguntas.map(function(item) { return item.letra; });
             console.log(letras);
             letras = letras.filter((item) => {
-                return item !== "." && isNaN(item);
+                return item !== "zz" && isNaN(item);
             });
             let letraMaxima = letras.sort().pop();
             console.log(letras);
@@ -143,17 +143,29 @@ cmsApp.controller('perguntaCtrl', ['$scope', '$http', 'Upload', '$timeout', func
         console.log($scope.pergunta);
         $scope.mensagemInserir = "";
 
+        console.log($scope.perguntaPai);
+        if($scope.perguntaPai){
+            $scope.pergunta.id_perguntaPai = $scope.perguntaPai.id_pergunta;
+        }
+
+        //no caso de ser uma subpergunta o campo letra será um número com o próximo número das subperguntas da perguntaPai.
+        console.log($scope.pergunta.id_perguntaPai);
+        if($scope.pergunta.id_perguntaPai > 0){
+            $scope.pergunta.vl_subPergunta = null;
+            const subperguntas = $scope.perguntas.filter(function(item){
+                return item.id_perguntaPai === $scope.pergunta.id_perguntaPai;
+            })
+            const numeros = subperguntas.map(function(item) { return parseInt(item.letra); });
+            const numeroMaximo = numeros.sort().pop();
+            $scope.pergunta.letra = (numeroMaximo+1).toString();
+        }
+
         if($scope.pergunta.tipo == 3){
-            $scope.pergunta.letra = ".";
+            $scope.pergunta.letra = "zz";
         }
 
         if(!$scope.pergunta.letra){
             $scope.pergunta.letra = "a";
-        }
-
-        console.log($scope.perguntaPai);
-        if($scope.perguntaPai){
-            $scope.pergunta.id_perguntaPai = $scope.perguntaPai.id_pergunta;
         }
 
         console.log($scope.pergunta);

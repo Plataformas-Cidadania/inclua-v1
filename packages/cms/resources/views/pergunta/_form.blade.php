@@ -44,9 +44,11 @@
     <option value="" ng-disabled="!!pergunta.id_perguntaPai">Não Possui</option>
 </select>
 <br>
-<label for="vl_subPergunta">Valor de ativação de subpergunta</label>
-<input type="number" name="vl_subPergunta" id="vl_subPergunta" class="form-control width-medio <% validar(pergunta.vl_subPergunta)%>" ng-model="pergunta.vl_subPergunta">
-<br>
+<div ng-if="!pergunta.id_perguntaPai > 0">
+    <label for="vl_subPergunta">Valor de ativação de subpergunta</label>
+    <input type="number" name="vl_subPergunta" id="vl_subPergunta" class="form-control width-medio <% validar(pergunta.vl_subPergunta)%>" ng-model="pergunta.vl_subPergunta">
+    <br>
+</div>
 <label for="vl_minimo">Valor Mínimo</label>
 <input type="number" name="vl_minimo" class="form-control width-pequeno <% validar(pergunta.vl_minimo)%>" ng-model="pergunta.vl_minimo" ng-required="true">
 <br>
