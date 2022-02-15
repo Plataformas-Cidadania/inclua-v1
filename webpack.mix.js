@@ -92,6 +92,10 @@ mix.scripts('packages/cms/resources/assets/js/controllers/alterarTipoCtrl.js', '
 mix.scripts('packages/cms/resources/assets/js/controllers/moduloCtrl.js', 'public/assets-cms/js/controllers/moduloCtrl.js');
 mix.scripts('packages/cms/resources/assets/js/controllers/alterarModuloCtrl.js', 'public/assets-cms/js/controllers/alterarModuloCtrl.js');
 
+//Guias
+mix.scripts('packages/cms/resources/assets/js/controllers/guiaCtrl.js', 'public/assets-cms/js/controllers/guiaCtrl.js');
+mix.scripts('packages/cms/resources/assets/js/controllers/alterarGuiaCtrl.js', 'public/assets-cms/js/controllers/alterarGuiaCtrl.js');
+
 //Items Modulos
 mix.scripts('packages/cms/resources/assets/js/controllers/itemCtrl.js', 'public/assets-cms/js/controllers/itemCtrl.js');
 mix.scripts('packages/cms/resources/assets/js/controllers/alterarItemCtrl.js', 'public/assets-cms/js/controllers/alterarItemCtrl.js');

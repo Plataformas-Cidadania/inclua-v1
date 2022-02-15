@@ -93,6 +93,9 @@
                 <li>
                     <a href="cms/parceiros"><i class="fa fa-fw fa-link"></i> Parceiros</a>
                 </li>
+                <li>
+                    <a href="cms/guias"><i class="fa fa-fw fa-link"></i> Guias</a>
+                </li>
                 {{--<li>
                     <a href="cms/apoios"><i class="fa fa-fw fa-anchor"></i> Apoio</a>
                 </li>--}}

@@ -21,6 +21,7 @@ class HomeController extends Controller
         $text1 = \App\Models\Text::where('slug', 'diagnostico')->first();
         $text2 = \App\Models\Text::where('slug', 'resultado')->first();
         $text3 = \App\Models\Text::where('slug', 'recursos')->first();
+        $text4 = \App\Models\Text::where('slug', 'depoimento')->first();
         $partners = \App\Models\Parceiro::orderBy('id')->get();
 
         $depoimentos = DB::table('avaliacao.depoimento')
@@ -38,6 +39,7 @@ class HomeController extends Controller
             'text1' => $text1,
             'text2' => $text2,
             'text3' => $text3,
+            'text4' => $text4,
             'partners' => $partners,
             'depoimentos' => $depoimentos,
         ]);
