@@ -12,8 +12,9 @@ const Header = () => {
                     <div className="col-md-7">
                         <div>
                             <br/><br/>
-                            <h1>{text_diagnostico_titulo}</h1>
-                            <p>{text_diagnostico_descricao}</p>
+                            <h1 dangerouslySetInnerHTML={{__html: text_diagnostico_titulo}}/>
+                            <p dangerouslySetInnerHTML={{__html: text_diagnostico_descricao}}/>
+
                             <br/>
                             <div className="row">
                                 <div className="col-md-6">

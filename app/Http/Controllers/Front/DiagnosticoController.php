@@ -57,6 +57,17 @@ class DiagnosticoController extends Controller{
 
     }
 
+    public function pre(){
+
+        $modulo = \App\Models\Text::where('slug', 'pre-diagnostico')->first();
+
+
+        return view('diagnostico.pre', [
+            'page' => $modulo,
+        ]);
+
+    }
+
     public function testeDimensoes(){
         /*$rows = DB::table('dimensao')->orderBy('id_dimensao')->get();
         $dimensoes = [];

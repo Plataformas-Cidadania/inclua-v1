@@ -7,8 +7,8 @@
 
     <script>
         tipo = "{{$tipo}}";
-        text_diagnostico_titulo = "{{$text_diagnostico_titulo}}";
-        text_diagnostico_descricao = "{{$text_diagnostico_descricao}}";
+        text_diagnostico_titulo = "{!! $text_diagnostico_titulo !!}";
+        text_diagnostico_descricao = "{!! $text_diagnostico_descricao !!}";
     </script>
     <div id="diagnostico">&nbsp;</div>
 

@@ -60,6 +60,7 @@ Route::post('contact', 'App\Http\Controllers\Front\ContactController@send');
 //Route::get('diagnostico', 'App\Http\Controllers\Front\DiagnosticoController@completoReact');
 Route::get('diagnostico', 'App\Http\Controllers\Front\DiagnosticoController@diagnostico');
 Route::get('diagnostico/{tipo}', 'App\Http\Controllers\Front\DiagnosticoController@diagnostico');
+Route::get('/pre-diagnostico', [DiagnosticoController::class , 'pre']);
 Route::get('recursos', 'App\Http\Controllers\Front\RecursoController@listar');
 
 

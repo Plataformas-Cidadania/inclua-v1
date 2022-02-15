@@ -4,34 +4,37 @@
 @section('content')
 
     <div class="p-3">&nbsp;</div>
-    <div id="home">&nbsp;</div>
-    {{--<div class="container">
-        <div id="home">&nbsp;</div>
+    {{--<div id="home">&nbsp;</div>--}}
+    <div class="container">
         <div class="row">
             <div class="col">
-                <div class="dorder-container">
-                    <div class="dorder-container-mai">
-                        <div class="btn-icon">
-                            <img src="img/icon-diagnostico.png" alt="Diagnóstico" title="Diagnóstico" width="100%">
+                <a href="/pre-diagnostico">
+                    <div class="dorder-container">
+                        <div class="dorder-container-mai">
+                            <div class="btn-icon">
+                                <img src="img/icon-diagnostico.png" alt="Diagnóstico" title="Diagnóstico" width="100%">
+                            </div>
+                             <h2 class="btn-icon-h2">Diagnóstico</h2>
+                            <div class="clear-both"></div>
                         </div>
-                         <h2 class="btn-icon-h2">Diagnóstico</h2>
-                        <div class="clear-both"></div>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="col">
-                <div class="dorder-container">
-                    <div class="dorder-container-mai">
-                        <div class="btn-icon">
-                            <img src="img/icon-biblioteca.png" alt="Biblioteca" title="Biblioteca" width="100%">
+                <a href="/recursos">
+                    <div class="dorder-container">
+                        <div class="dorder-container-mai">
+                            <div class="btn-icon">
+                                <img src="img/icon-biblioteca.png" alt="Biblioteca" title="Biblioteca" width="100%">
+                            </div>
+                            <h2 class="btn-icon-h2">Biblioteca</h2>
+                            <div class="clear-both"></div>
                         </div>
-                        <h2 class="btn-icon-h2">Biblioteca</h2>
-                        <div class="clear-both"></div>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
-    </div>--}}
+    </div>
 
     <div class="container-fluid">
         <div class="p-3">&nbsp;</div>

@@ -11,7 +11,15 @@ const Header = () => {
     className: "col-md-2"
   }, "\xA0"), /*#__PURE__*/React.createElement("div", {
     className: "col-md-7"
-  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("h1", null, text_diagnostico_titulo), /*#__PURE__*/React.createElement("p", null, text_diagnostico_descricao), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("h1", {
+    dangerouslySetInnerHTML: {
+      __html: text_diagnostico_titulo
+    }
+  }), /*#__PURE__*/React.createElement("p", {
+    dangerouslySetInnerHTML: {
+      __html: text_diagnostico_descricao
+    }
+  }), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
     className: "row"
   }, /*#__PURE__*/React.createElement("div", {
     className: "col-md-6"
