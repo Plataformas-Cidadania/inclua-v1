@@ -50,6 +50,15 @@ Route::group(['middleware' => 'cms'], function () {
         Route::get('/cms/excluir-modulo/{id}', 'Cms\Controllers\ModuloController@excluir');
         Route::get('/cms/status-modulo/{id}', 'Cms\Controllers\ModuloController@status');
 
+        //GUIAS
+        Route::get('/cms/guias', 'Cms\Controllers\GuiaController@index');
+        Route::get('/cms/listar-guias', 'Cms\Controllers\GuiaController@listar');
+        Route::post('/cms/inserir-guia', 'Cms\Controllers\GuiaController@inserir');
+        Route::get('/cms/guia/{id}', 'Cms\Controllers\GuiaController@detalhar');
+        Route::post('/cms/alterar-guia/{id}', 'Cms\Controllers\GuiaController@alterar');
+        Route::get('/cms/excluir-guia/{id}', 'Cms\Controllers\GuiaController@excluir');
+        Route::get('/cms/status-guia/{id}', 'Cms\Controllers\GuiaController@status');
+
         //TIPOS
         Route::get('/cms/tipos', 'Cms\Controllers\TipoController@index');
         Route::get('/cms/listar-tipos', 'Cms\Controllers\TipoController@listar');

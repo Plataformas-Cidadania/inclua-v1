@@ -19,6 +19,8 @@
     "/assets-cms/js/controllers/alterarTipoCtrl.js": "/assets-cms/js/controllers/alterarTipoCtrl.js",
     "/assets-cms/js/controllers/moduloCtrl.js": "/assets-cms/js/controllers/moduloCtrl.js",
     "/assets-cms/js/controllers/alterarModuloCtrl.js": "/assets-cms/js/controllers/alterarModuloCtrl.js",
+    "/assets-cms/js/controllers/guiaCtrl.js": "/assets-cms/js/controllers/guiaCtrl.js",
+    "/assets-cms/js/controllers/alterarGuiaCtrl.js": "/assets-cms/js/controllers/alterarGuiaCtrl.js",
     "/assets-cms/js/controllers/itemCtrl.js": "/assets-cms/js/controllers/itemCtrl.js",
     "/assets-cms/js/controllers/alterarItemCtrl.js": "/assets-cms/js/controllers/alterarItemCtrl.js",
     "/assets-cms/js/controllers/cmsUserCtrl.js": "/assets-cms/js/controllers/cmsUserCtrl.js",

@@ -82,6 +82,8 @@ Route::get('/depoimento', [ContribuaController::class , 'depoimento']);
 Route::get('/resultado', [ResultadoController::class , 'listar']);
 Route::get('/imprimir', [ResultadoController::class , 'print']);
 
+Route::get('/guias', [GuiaController::class , 'listar']);
+
 
 $routes = [
     ['Page', 'sobres', 'sobre'],
