@@ -56,7 +56,7 @@ class GeralSeeder2 extends Seeder
             'slug' => 'forum',
             'status' => 1,
             'show' => 0,
-            'tipo_id' => 3,
+            'tipo_id' => 0,
         ]);
 
 
