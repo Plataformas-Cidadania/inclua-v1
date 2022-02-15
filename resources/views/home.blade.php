@@ -107,10 +107,42 @@
                 <p>{!! $text3->descricao !!}</p>
             </div>
         </div>
+
     </div>
 
+
     <div class="p-3">&nbsp;</div>
-    <div class="bg-lgt bg-lines">
+
+    <div class="bg-lgt">
+        <div>
+            <div class="row">
+                <div class="col-md-2  bg-lines">
+                    {{--<img src="img/lines.png" alt="" width="100%">--}}
+                </div>
+                <div class="col-md-8">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="pt-5 pb-5">
+                                    <br><br>
+                                    <h2>“{{$text4->titulo}}” </h2>
+                                    <h3>{!! $text4->descricao !!}</h3>
+                                    <br><br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-2">
+                    &nbsp;
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <?php /*?><div class="bg-lgt bg-lines">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -134,6 +166,7 @@
             </div>
         </div>
     </div>
+    <?php */?>
 
 
 
@@ -154,21 +187,23 @@
         <div class="row">
             @foreach($partners as $partner)
                 <div class="col-xs-6 col-sm-4 col-md-3 item-logo text-center">
-                    @if(empty($partner->imagem))
-                    <object data="img/sem-imagem.png" type="image/png" class="img-responsive">
-                    @else
-                    <object data="imagens/parceiros/xs-{{$partner->imagem}}" type="image/png" class="img-responsive">
-                    @endif
-                        <picture>
-                            <source data-src="/imagens/parceiros/md-{{$partner->imagem}}" media="(max-width: 468px)">
-                            <source data-src="/imagens/parceiros/md-{{$partner->imagem}}" media="(max-width: 768px)">
-                            <source data-src="/imagens/parceiros/md-{{$partner->imagem}}" class="img-responsive">
-                            <img src="/img/pre-img.gif" data-src="/imagens/parceiros/md-{{$partner->imagem}}" alt="Imagem sobre {{$partner->title}}" title="Imagem sobre {{$partner->title}}" width="100%" class="cliente-list-img-hover lazyload">
-                        </picture>
-                    </object>
-                    <br>
-                    <br>
-                    <p>{{$partner->titulo}}</p>
+                    <a href={{$partner->url}} target="_blank">
+                        @if(empty($partner->imagem))
+                        <object data="img/sem-imagem.png" type="image/png" class="img-responsive">
+                        @else
+                        <object data="imagens/parceiros/xs-{{$partner->imagem}}" type="image/png" class="img-responsive">
+                        @endif
+                            <picture>
+                                <source data-src="/imagens/parceiros/md-{{$partner->imagem}}" media="(max-width: 468px)">
+                                <source data-src="/imagens/parceiros/md-{{$partner->imagem}}" media="(max-width: 768px)">
+                                <source data-src="/imagens/parceiros/md-{{$partner->imagem}}" class="img-responsive">
+                                <img src="/img/pre-img.gif" data-src="/imagens/parceiros/md-{{$partner->imagem}}" alt="Imagem sobre {{$partner->title}}" title="Imagem sobre {{$partner->title}}" width="100%" class="cliente-list-img-hover lazyload">
+                            </picture>
+                        </object>
+                        <br>
+                        <br>
+                        <p>{{$partner->titulo}}</p>
+                    </a>
                 </div>
             @endforeach
         </div>
