@@ -101,16 +101,16 @@ class DiagnosticoController extends Controller
                     'posPontos'=> $pontuacao_indicador*100/$soma_maximo,
                     'series'=> [
                         [
-                            'name'=> 'Risco baixo',
-                            'data'=> [$percBaixo]
+                            'name'=> 'Risco alto',
+                            'data'=> [$percAlto]
                         ],
                         [
                             'name' => 'Risco moderado',
                             'data'=> [$percMedio]
                         ],
                         [
-                            'name'=> 'Risco alto',
-                            'data'=> [$percAlto]
+                            'name'=> 'Risco baixo',
+                            'data'=> [$percBaixo]
                         ]
                     ],
                     'recursos' => $indicador->recursos,
@@ -126,7 +126,7 @@ class DiagnosticoController extends Controller
                 $risco = 'Risco baixo';
             }
             else {
-                $risco = 'Moderado';
+                $risco = 'Risco moderado';
             }
             $vet_dimensao = [
                 'id_dimensao' => $id_dimensao,
