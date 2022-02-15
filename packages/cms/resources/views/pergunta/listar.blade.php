@@ -85,6 +85,7 @@
                         <tr>
                             <th>Id</th>
                             <th>Letra</th>
+                            <th>Pergunta Pai</th>
                             <th>Descricao</th>
                         </tr>
                         </thead>
@@ -93,6 +94,7 @@
                             <td><% pergunta.id_pergunta %></td>
                            {{-- <td><img ng-show="pergunta.imagem" ng-src="imagens/perguntas/xs-<% pergunta.imagem %>" width="60"></td>--}}
                             <td><% pergunta.letra %></td>
+                            <td><% pergunta.letraPerguntaPai %></td>
                             <td><% pergunta.descricao %></td>
                             <td class="text-right">
                                 <div>

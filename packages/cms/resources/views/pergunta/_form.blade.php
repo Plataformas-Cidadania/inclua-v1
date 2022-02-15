@@ -12,23 +12,26 @@
 <select
     name="tipo"
     id="tipo"
-    class="form-control width-pequeno <% validar(pergunta.tipo)%>"
+    class="form-control width-medio <% validar(pergunta.tipo)%>"
     ng-model="pergunta.tipo"
     ng-required="true"
 >
+    <option value="">Selecione</option>
     <option value="1" ng-selected="pergunta.tipo == 1">Sim/Não</option>
     <option value="2" ng-selected="pergunta.tipo == 2">Nota</option>
     <option value="3" ng-selected="pergunta.tipo == 3">Range (Reflexão-síntese)</option>
 </select>
 <br>
 <label for="nao_se_aplica">Opção de Não se Aplica</label>
-<select name="nao_se_aplica" id="nao_se_aplica" class="form-control width-pequeno <% validar(pergunta.nao_se_aplica)%>" ng-model="pergunta.nao_se_aplica">
+<select name="nao_se_aplica" id="nao_se_aplica" class="form-control width-medio <% validar(pergunta.nao_se_aplica)%>" ng-model="pergunta.nao_se_aplica" placeholder="Selecione">
+    <option value="">Selecione</option>
     <option value="0" ng-selected="pergunta.nao_se_aplica == 0">Não possui essa opção</option>
     <option value="1" ng-selected="pergunta.nao_se_aplica == 1">Possui essa opção</option>
 </select>
 <br>
 <label for="inverter">Inverter Valores</label>
-<select name="inverter" id="inverter" class="form-control width-pequeno <% validar(pergunta.inverter)%>" ng-model="pergunta.inverter">
+<select name="inverter" id="inverter" class="form-control width-medio <% validar(pergunta.inverter)%>" ng-model="pergunta.inverter">
+    <option value="">Selecione</option>
     <option value="0" ng-selected="pergunta.inverter == 0">Não</option>
     <option value="1" ng-selected="pergunta.inverter == 1">Sim</option>
 </select>
@@ -44,14 +47,14 @@
     <option value="" ng-disabled="!!pergunta.id_perguntaPai">Não Possui</option>
 </select>
 <br>
-<div ng-if="!pergunta.id_perguntaPai > 0">
+<div ng-if="!perguntaPai">
     <label for="vl_subPergunta">Valor de ativação de subpergunta</label>
-    <input type="number" name="vl_subPergunta" id="vl_subPergunta" class="form-control width-medio <% validar(pergunta.vl_subPergunta)%>" ng-model="pergunta.vl_subPergunta">
+    <input type="number" name="vl_subPergunta" id="vl_subPergunta" class="form-control width-pequeno <% validar(pergunta.vl_subPergunta)%>" ng-model="pergunta.vl_subPergunta" min="0">
     <br>
 </div>
 <label for="vl_minimo">Valor Mínimo</label>
-<input type="number" name="vl_minimo" class="form-control width-pequeno <% validar(pergunta.vl_minimo)%>" ng-model="pergunta.vl_minimo" ng-required="true">
+<input type="number" name="vl_minimo" class="form-control width-pequeno <% validar(pergunta.vl_minimo)%>" ng-model="pergunta.vl_minimo" ng-required="true" min="0">
 <br>
 <label for="vl_maximo">Valor Máximo</label>
-<input type="number" name="vl_maximo" class="form-control width-pequeno <% validar(pergunta.vl_maximo)%>" ng-model="pergunta.vl_maximo" ng-required="true">
+<input type="number" name="vl_maximo" class="form-control width-pequeno <% validar(pergunta.vl_maximo)%>" ng-model="pergunta.vl_maximo" ng-required="true" min="0">
 <br>
