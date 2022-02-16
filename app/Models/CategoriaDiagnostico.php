@@ -22,13 +22,13 @@ use Illuminate\Database\Eloquent\Model;
 class CategoriaDiagnostico extends Model
 {
     public $incrementing = false;
-    protected $table = 'avaliacao.categoriaDiagnostico';
+    protected $table = 'avaliacao.categoria_diagnostico';
 	public $timestamps = false;
 
 
     protected $casts = [
 		'id_categoria' => 'int',
-		'id_diagnostico' => 'int'
+		'id_diagnostico' => 'string'
 	];
 	protected $fillable = [
 		'id_categoria',
