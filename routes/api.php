@@ -475,3 +475,19 @@ Route::group([
     Route::delete('/{alternativa_relate}',[App\Http\Controllers\Api\AlternativaRelateController::class, 'destroy'])
         ->name('api.alternativa_relate.destroy');
 });
+
+
+Route::group([
+    'prefix' => 'categoria_diagnostico',
+], function () {
+
+    Route::get('/{id_diagnostico}',[App\Http\Controllers\Api\CategoriaDiagnosticoController::class, 'getAllCategoriaPorDiagnostico'])
+        ->name('api.categoria_diagnostico.getAllCategoriaPorDiagnostico');
+
+    Route::post('/', [App\Http\Controllers\Api\CategoriaDiagnosticoController::class, 'store'])
+        ->name('api.categoria_diagnostico.store');
+
+    Route::delete('/{id_categoria}/{id_diagnostico}',[App\Http\Controllers\Api\CategoriaDiagnosticoController::class, 'destroy'])
+        ->name('api.categoria_diagnostico.destroy');
+
+});

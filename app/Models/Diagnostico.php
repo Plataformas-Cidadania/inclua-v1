@@ -24,6 +24,16 @@ class Diagnostico extends Model
 	protected $table = 'avaliacao.diagnostico';
 	protected $primaryKey = 'id_diagnostico';
     protected $with = ['resposta'];
+
+    protected $casts = [
+        'oferta_publica' => 'string',
+        'grupo_focal' => 'string'
+    ];
+
+    protected $fillable = [
+        'oferta_publica',
+        'grupo_focal'
+    ];
 	public function resposta()
 	{
 		return $this->hasMany(Resposta::class, 'id_diagnostico');

@@ -86,6 +86,17 @@
                     </a>
                 </div>
                 <div class="col-md-4">
+                    <a href="forum">
+                        <div class="dorder-container">
+                            <div class="dorder-container-mai p-4 text-center">
+                                <i class="fas fa-bullhorn fa-3x"></i><br><br>
+                                <h2>Fórum</h2>
+                                <p>Acompanhe e participe dos nossos debates</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {{--<div class="col-md-4">
                     <a href="depoimento">
                         <div class="dorder-container">
                             <div class="dorder-container-mai p-4 text-center">
@@ -95,7 +106,7 @@
                             </div>
                         </div>
                     </a>
-                </div>
+                </div>--}}
                 {{--<div class="col-md-3">
                     <div class="dorder-container">
                         <div class="dorder-container-mai p-4 text-center">
