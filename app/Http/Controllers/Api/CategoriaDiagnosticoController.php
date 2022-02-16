@@ -47,6 +47,40 @@ class CategoriaDiagnosticoController extends Controller
         }
     }
 
+
+    /**
+     * Adicionar um novo
+     *
+     * @param Request $request
+     *
+     * @return JsonResponse
+     */
+    public function storeMany(Request $request): JsonResponse
+    {
+        try {
+            $validator = $this->getValidator($request);
+
+            if ($validator->fails()) {
+                return $this->errorResponse($validator->errors()->all());
+            }
+            $id_diagnostico = $request->get('id_diagnostico');
+            $categorias = $request->get('categorias');
+            $categorias = json_decode($categorias);
+
+            $res = $this->repo->storeMany($id_diagnostico,$categorias);
+
+            return $this->successResponse(
+                'Categorias adicionadas',
+                $res
+            );
+        } catch (Exception $exception) {
+            if ($exception instanceof ModelNotFoundException)
+                return $this->errorResponse('id_diagnostico Not found');
+            return $this->errorResponse("erro inesperado ".$exception);
+        }
+    }
+
+
     /**
      * Adicionar um novo
      *
@@ -71,7 +105,9 @@ class CategoriaDiagnosticoController extends Controller
 			    $this->transform($res)
 			);
         } catch (Exception $exception) {
-            return $this->errorResponse('Erro inesperado.'.$exception);
+            if ($exception instanceof ModelNotFoundException)
+                return $this->errorResponse('id_diagnostico Not found');
+            return $this->errorResponse("erro inesperado ".$exception);
         }
     }
 

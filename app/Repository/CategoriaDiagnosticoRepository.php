@@ -3,8 +3,10 @@
 namespace App\Repository;
 
 use App\Models\CategoriaDiagnostico;
+use App\Models\Diagnostico;
 use App\Models\Indicacao;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Log;
 
 class CategoriaDiagnosticoRepository extends BaseRepository
 {
@@ -23,22 +25,20 @@ class CategoriaDiagnosticoRepository extends BaseRepository
         $this->model = $model;
     }
 
-    /**
-     * Encontra um modelo por um ID composto.
-     *
-     * @param int $firstId
-     * @param int $secondId
-     * @return Model
-     */
 
-    public function findByCompositeId(int $firstId,int $secondId): Model
+    public function storeMany(string $id_diagnostico, array $categorias)
     {
-        $res = CategoriaDiagnostico::with(['categoria','recurso'])
-            ->where('id_categoria', '=', $firstId)
-            ->where('id_diagnosticco', '=', $secondId)
-            ->first();
-        if (!$res) throw new \Illuminate\Database\Eloquent\ModelNotFoundException;
-        else return $res;
+        $diagId = Diagnostico::where('id_diagnostico', $id_diagnostico)->get();
+        if ($diagId->isEmpty()) throw new \Illuminate\Database\Eloquent\ModelNotFoundException;
+
+        foreach ($categorias as $categoria)
+        {
+            $data = [];
+            $data['id_categoria'] = $categoria;
+            $data['id_diagnostico'] = $id_diagnostico;
+            $this->createCompositeId($data);
+        }
+        return $id_diagnostico;
     }
 
     public function getAllByIdDiagnostico($id_diagnostico)

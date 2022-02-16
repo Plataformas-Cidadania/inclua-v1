@@ -487,6 +487,10 @@ Route::group([
     Route::post('/', [App\Http\Controllers\Api\CategoriaDiagnosticoController::class, 'store'])
         ->name('api.categoria_diagnostico.store');
 
+    Route::post('/storeMany/', [App\Http\Controllers\Api\CategoriaDiagnosticoController::class, 'storeMany'])
+        ->name('api.categoria_diagnostico.storeMany');
+
+
     Route::delete('/{id_categoria}/{id_diagnostico}',[App\Http\Controllers\Api\CategoriaDiagnosticoController::class, 'destroy'])
         ->name('api.categoria_diagnostico.destroy');
 
