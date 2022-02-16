@@ -48,6 +48,17 @@ class GeralSeeder2 extends Seeder
             'tipo_id' => 3,
         ]);
 
+        DB::table('cms.modulos')->insert([
+            'imagem' => '',
+            'arquivo' => '',
+            'titulo' => 'Fórum',
+            'descricao' => "<<PÁGINA EM CONSTRUÇÃO>>",
+            'slug' => 'forum',
+            'status' => 1,
+            'show' => 0,
+            'tipo_id' => 0,
+        ]);
+
 
     }
 }

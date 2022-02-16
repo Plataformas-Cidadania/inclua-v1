@@ -86,6 +86,11 @@ cmsApp.controller('perguntaCtrl', ['$scope', '$http', 'Upload', '$timeout', func
             console.log(data.data);
             $scope.perguntas = data.data;
             //let letraMaxima = Math.max.apply(Math, $scope.perguntas.map(function(item) { return item.letra; }));
+
+            $scope.perguntas.forEach(function(item){
+                item.letraPerguntaPai = $scope.getLetraPerguntaPai(item.id_perguntaPai);
+            });
+
             let letras = $scope.perguntas.map(function(item) { return item.letra; });
             console.log(letras);
             letras = letras.filter((item) => {
@@ -127,6 +132,16 @@ cmsApp.controller('perguntaCtrl', ['$scope', '$http', 'Upload', '$timeout', func
     $scope.validar = function(){
 
     };
+
+    $scope.getLetraPerguntaPai = function(id_perguntaPai){
+        if(id_perguntaPai > 0){
+            let pergunta = $scope.perguntas.find(function(item){
+                return item.id_perguntaPai = id_perguntaPai;
+            });
+            return pergunta.letra;
+        }
+        return null;
+    }
 
 
     //listarPerguntas();
