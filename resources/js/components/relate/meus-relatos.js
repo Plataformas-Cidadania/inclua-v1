@@ -3,10 +3,11 @@ const MeusRelatos = (props) => {
     const {useState, useEffect} = React;
     const [respostas, setRespostas] = useState([]);
     const [relates, setRelates] = useState([]);
+    const [showRelate, setShowRelate] = useState(0);
 
     useEffect(() => {
         listRelatos();
-    }, []);
+    }, [showRelate]);
 
     const listRelatos = async () => {
         try {
@@ -24,10 +25,14 @@ const MeusRelatos = (props) => {
             dataFormatada = date.toLocaleDateString('pt-BR', {timeZone: 'UTC'});
             relates.push(
                 <div key={"relate"+0}>
-                    <p className="bg-lgt p-3" >
+                    <p className="bg-lgt p-3" onClick={() => {
+                        setShowRelate(showRelate === data[0].relate.id_relate ? 0 : data[0].relate.id_relate)
+                    }} style={{cursor: 'pointer'}}>
                         <strong>Relato {data[0].relate.id_relate} - {dataFormatada}</strong>
                     </p>
-                    {respostas}
+                    <div style={{display: showRelate === data[0].relate.id_relate ? '' : 'none'}}>
+                        {respostas}
+                    </div>
                 </div>
             );
 
@@ -41,10 +46,14 @@ const MeusRelatos = (props) => {
                     respostas = []
                     relates.push(
                         <div key={"relate"+key}>
-                            <p className="bg-lgt p-3" >
+                            <p className="bg-lgt p-3" onClick={() => {
+                                setShowRelate(showRelate === item.relate.id_relate ? 0 : item.relate.id_relate)
+                            }} style={{cursor: 'pointer'}}>
                                 <strong>Relato {item.relate.id_relate} - {dataFormatada}</strong>
                             </p>
-                            {respostas}
+                            <div style={{display: showRelate === item.relate.id_relate ? '' : 'none'}}>
+                                {respostas}
+                            </div>
                         </div>
                     );
                     idRelate = item.relate.id_relate;
@@ -60,7 +69,7 @@ const MeusRelatos = (props) => {
 
             });
 
-            respostas = result.data.data.map((item, key) => {
+            /*respostas = result.data.data.map((item, key) => {
 
                 let showRelate = false;
                 if(item.relate.id_relate !== idRelate){
@@ -83,10 +92,10 @@ const MeusRelatos = (props) => {
                         <hr/>
                     </div>
                 );
-            });
+            });*/
 
 
-            setRespostas(respostas);
+            /*setRespostas(respostas);*/
             setRelates(relates);
 
         } catch (error) {
@@ -96,8 +105,8 @@ const MeusRelatos = (props) => {
 
     return (
         <div>
-            {respostas}
-            <hr/><hr/><hr/><hr/>
+            {/*{respostas}*/}
+            {/*<hr/><hr/><hr/><hr/>*/}
             {relates}
         </div>
     );
