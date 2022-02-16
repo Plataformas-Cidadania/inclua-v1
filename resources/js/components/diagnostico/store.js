@@ -13,6 +13,7 @@ const DiagnosticoProvider = ({children}) => {
     const [dimensoesRespondidas, setDimensoesRespondidas] = useState([]);
     const [respostas, setRespostas] = useState([]);
     const [alertFixed, setAlertFixed] = useState(0);
+    const [diagnostico, setDiagnostico] = useState({ofertaPublica: null, grupos: null})
 
     /*state = {
         tipo: null,
@@ -258,8 +259,8 @@ const DiagnosticoProvider = ({children}) => {
                 //const ids = JSON.parse(result.data.data)
                 //localStorage.setItem('id_diagnostico_completo', ids[1]);
                 localStorage.setItem('id_diagnostico_completo', result.data.data);
-                location.href = 'resultado';
-                //console.log('redirecionamento desativado');
+                //location.href = 'resultado';
+                console.log('redirecionamento desativado');
                 return;
             }
             alert("Não foi possível gravar as respostas");
@@ -347,11 +348,13 @@ const DiagnosticoProvider = ({children}) => {
                 dimensoes,
                 dimensoesRespondidas, setDimensoesRespondidas,
                 indicador, setIndicador,
+                diagnostico,
                 /*verificarResposta,*/
                 setResposta,
                 getResposta,
                 validarRespostas,
                 enviarRespostas,
+                setDiagnostico
                 /*limparTodasRespostas*/
             }}>
                 {children}

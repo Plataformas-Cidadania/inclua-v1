@@ -17,11 +17,15 @@ const DiagnosticoProvider = ({
   const [dimensoesRespondidas, setDimensoesRespondidas] = useState([]);
   const [respostas, setRespostas] = useState([]);
   const [alertFixed, setAlertFixed] = useState(0);
+  const [diagnostico, setDiagnostico] = useState({
+    ofertaPublica: null,
+    grupos: null
+  });
   /*state = {
       tipo: null,
       dimensoes: [],
   }
-    setState({tipo: 1}, function(){
+   setState({tipo: 1}, function(){
       console.log(this.state.tipo);
   })*/
 
@@ -68,7 +72,7 @@ const DiagnosticoProvider = ({
       if(pergunta.length > 0){
           //console.log('resposta: ', pergunta[0].resposta, 'alternativa: ', value, 'marcado: ', pergunta[0].resposta === value);
           //console.log('=====================================================');
-            return pergunta[0].resposta === value;
+           return pergunta[0].resposta === value;
       }
       //console.log('=====================================================');
       return false
@@ -268,9 +272,9 @@ const DiagnosticoProvider = ({
       if (result.data.success) {
         //const ids = JSON.parse(result.data.data)
         //localStorage.setItem('id_diagnostico_completo', ids[1]);
-        localStorage.setItem('id_diagnostico_completo', result.data.data);
-        location.href = 'resultado'; //console.log('redirecionamento desativado');
+        localStorage.setItem('id_diagnostico_completo', result.data.data); //location.href = 'resultado';
 
+        console.log('redirecionamento desativado');
         return;
       }
 
@@ -329,19 +333,19 @@ const DiagnosticoProvider = ({
           }
       });
       setDimensoes(newDimensoes);
-        //Atualiza dimensao atual
+       //Atualiza dimensao atual
       let newDimensao = newDimensoes.find((d) => {
           return d.id_dimensao = dimensao.id_dimensao;
       });
       setDimensao({});
       setDimensao(newDimensao);
-        //Atualiza indicador atual
+       //Atualiza indicador atual
       let newIndicador = newDimensao.indicadores.find((i) => {
           return i.id_indicador = indicador.id_indicador;
       });
       setIndicador({})
       setIndicador(newIndicador);
-        setRespostas([]);
+       setRespostas([]);
       localStorage.removeItem('respostas_diagnostico_completo');
   }*/
 
@@ -369,12 +373,14 @@ const DiagnosticoProvider = ({
       setDimensoesRespondidas,
       indicador,
       setIndicador,
+      diagnostico,
 
       /*verificarResposta,*/
       setResposta,
       getResposta,
       validarRespostas,
-      enviarRespostas
+      enviarRespostas,
+      setDiagnostico
       /*limparTodasRespostas*/
 
     }

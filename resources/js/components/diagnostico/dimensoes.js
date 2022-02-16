@@ -11,6 +11,13 @@ const Dimensoes = () => {
     };
     bgColor = bgColor[context.dimensao.numero];
 
+    const handleDiagnostico = (event) => {
+        let newDiagnostico = {
+            ...context.diagnostico,
+            [event.target.id]: event.target.value
+        }
+        context.setDiagnostico(newDiagnostico);
+    }
 
     return (
         <div>
@@ -20,6 +27,30 @@ const Dimensoes = () => {
                         <br/>
                         <button className="btn btn-lg btn-primary" onClick={() => context.limparTodasRespostas()}>Limpar Todas as Respostas</button>
                     </div>*/}
+                    <div className="col-md-12">
+                        <br/>
+                        <div className="row">
+                            <form>
+                                <div className="col-md-12">
+                                    <label htmlFor="ofertaPublica"><strong>Oferta pública sob foco</strong></label>
+                                    <input
+                                        className="form-control form-g"
+                                        type="text"
+                                        name="ofertaPublica"
+                                        id="ofertaPublica"
+                                        onChange={handleDiagnostico}
+                                        placeholder="ex.: serviço, programa, política, projeto, iniciativa, ação, etc."
+                                    />
+                                </div>
+                                <br/>
+                                <div className="col-md-12">
+                                    <label htmlFor="ofertaPublica"><strong>Qual(is) grupo(s) ou população(ões) específica(s) irá focar?</strong></label>
+                                    <input className="form-control form-g" type="text" name="grupos" id="grupos"  onChange={handleDiagnostico}/>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <br/><br/>
                     <div className="col-md-12 text-center">
                         <div className="text-center nav-icons">
                             {
