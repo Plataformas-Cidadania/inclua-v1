@@ -4,7 +4,9 @@ const Dimensoes = () => {
     useState,
     useEffect
   } = React;
+  const [categorias, setCategorias] = useState([]);
   const [categoriasMarcadas, setCategoriasMarcadas] = useState([]);
+  const [categoriaClicada, setCategoriaClicada] = useState(0);
   let bgColor = {
     1: 'bg-pri',
     2: 'bg-sec',
@@ -14,8 +16,11 @@ const Dimensoes = () => {
   };
   bgColor = bgColor[context.dimensao.numero];
   useEffect(() => {
-    setCategoriasMarcadas(context.categoriasMarcadas);
-  }, [context.categoriasMarcadas]);
+    setCategorias(context.categorias);
+  }, [context.categorias]);
+  useEffect(() => {
+    context.setCategoriasMarcadas(categoriasMarcadas);
+  }, [categoriasMarcadas]);
 
   const handleDiagnostico = event => {
     let newDiagnostico = { ...context.diagnostico,
@@ -24,8 +29,30 @@ const Dimensoes = () => {
     context.setDiagnostico(newDiagnostico);
   };
 
-  const verificarCategoriaMarcada = id_categoria => {
-    return categoriasMarcadas.includes(id_categoria);
+  const marcarDesmarcarCategoria = id_categoria => {
+    //console.log(id_categoria);
+    let newCategorias = categorias;
+    newCategorias.forEach(item => {
+      if (item.id_categoria === id_categoria) {
+        item.marcada = item.marcada === 1 ? 0 : 1;
+        console.log(item, id_categoria);
+      }
+    });
+    setCategorias(newCategorias);
+    setCategoriaClicada(id_categoria); //console.log(newCategorias);
+
+    let newCategoriasMarcadas = categoriasMarcadas;
+
+    if (categoriasMarcadas.includes(id_categoria)) {
+      newCategoriasMarcadas = newCategoriasMarcadas.filter(item => item !== id_categoria);
+      setCategoriasMarcadas(newCategoriasMarcadas);
+      console.log('remove', newCategoriasMarcadas);
+      return;
+    }
+
+    newCategoriasMarcadas.push(id_categoria);
+    setCategoriasMarcadas(newCategoriasMarcadas);
+    console.log('insere', newCategoriasMarcadas);
   };
 
   return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
@@ -54,8 +81,8 @@ const Dimensoes = () => {
   }, /*#__PURE__*/React.createElement("strong", null, "Qual(is) grupo(s) ou popula\xE7\xE3o(\xF5es) espec\xEDfica(s) ir\xE1 focar?")), /*#__PURE__*/React.createElement("input", {
     className: "form-control form-g",
     type: "text",
-    name: "grupos",
-    id: "grupos",
+    name: "grupoFocal",
+    id: "grupoFocal",
     onChange: handleDiagnostico
   }))))), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
     className: "col-md-12"
@@ -64,12 +91,13 @@ const Dimensoes = () => {
       fontSize: "10px"
     }
   }, "(OBS.: Os temas marcados nos ajudar\xE3o a apresentar sugest\xF5es pertinentes de recursos para a interven\xE7\xE3o, caso o diagn\xF3stico resulte em riscos moderados ou altos)"), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("strong", null, "Selecione as categorias")), /*#__PURE__*/React.createElement("br", null), context.categorias ? context.categorias.map((item, key) => {
-    return /*#__PURE__*/React.createElement("button", {
+    return /*#__PURE__*/React.createElement("div", {
       key: "categoria" + key,
-      className: "btn btn-" + (verificarCategoriaMarcada(item.id_categoria) ? "info" : "default"),
-      onClick: () => context.marcarDesmarcarCategoria(item.id_categoria),
+      id: "btnCategoria" + key,
+      className: "btn btn-sm btn-" + (item.marcada === 1 ? "info" : "default"),
+      onClick: () => marcarDesmarcarCategoria(item.id_categoria),
       style: {
-        margin: "4px",
+        margin: "8px",
         border: "solid 1px #ccc"
       }
     }, item.nome);

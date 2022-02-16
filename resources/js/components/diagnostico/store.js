@@ -5,7 +5,7 @@ const DiagnosticoProvider = ({children}) => {
 
     const {useState, useEffect} = React;
 
-    const [tipo, setTipo] = useState(null);
+    const [tipo, setTipo] = useState(2);
     const [dimensoes, setDimensoes] = useState([]);
     const [dimensao, setDimensao] = useState({indicadores:[]});
     //const [indicador, setIndicador] = useState(1);
@@ -13,7 +13,7 @@ const DiagnosticoProvider = ({children}) => {
     const [dimensoesRespondidas, setDimensoesRespondidas] = useState([]);
     const [respostas, setRespostas] = useState([]);
     const [alertFixed, setAlertFixed] = useState(0);
-    const [diagnostico, setDiagnostico] = useState({ofertaPublica: null, grupos: null})
+    const [diagnostico, setDiagnostico] = useState({ofertaPublica: null, grupoFocal: null})
     const [categorias, setCategorias] = useState([]);
     const [categoriasMarcadas, setCategoriasMarcadas] = useState([]);
 
@@ -68,7 +68,12 @@ const DiagnosticoProvider = ({children}) => {
             //const result = await axios.get('json/diagnostico.json');
             const result = await axios.get('api/categoria');
             if(result.data.success){
-                setCategorias(result.data.data)
+                let newCategorias = result.data.data;
+                newCategorias.forEach((item) => {
+                    item.marcada = 0;
+                })
+                setCategorias(newCategorias);
+
                 return;
             }
             console.log("Não foi possível carregar as categorias.");
@@ -77,24 +82,6 @@ const DiagnosticoProvider = ({children}) => {
             console.log("Não foi possível carregar as dimensões!");
             console.log(error);
         }
-    }
-
-    const marcarDesmarcarCategoria = (id_categoria) => {
-        console.log(id_categoria);
-        let newCategoriasMarcadas = categoriasMarcadas;
-        if(verificarCategoriaMarcada(id_categoria)){
-            newCategoriasMarcadas = newCategoriasMarcadas.filter(item => item !== id_categoria)
-            setCategoriasMarcadas(newCategoriasMarcadas);
-            console.log('1', newCategoriasMarcadas);
-            return;
-        }
-        newCategoriasMarcadas.push(id_categoria);
-        setCategoriasMarcadas(newCategoriasMarcadas);
-        console.log('2', newCategoriasMarcadas);
-    }
-
-    const verificarCategoriaMarcada = (id_categoria) => {
-        return categoriasMarcadas.includes(id_categoria);
     }
 
 
@@ -288,7 +275,13 @@ const DiagnosticoProvider = ({children}) => {
         //return;
         try {
             const jsonRespostas = JSON.stringify(respostasApi);
+            /*const jsonDiagnostico = JSON.stringify({
+                diagnostico: diagnostico,
+                respostas: respostasApi,
+                categorias: categoriasMarcadas
+            });*/
             const result = await axios.post('api/resposta/insereRespostas', jsonRespostas, {
+            //const result = await axios.post('api/resposta/insereRespostas', jsonDiagnostico, {
                 headers: {
                     'Content-Type': 'application/json'
                 }
@@ -395,8 +388,7 @@ const DiagnosticoProvider = ({children}) => {
                 validarRespostas,
                 enviarRespostas,
                 setDiagnostico,
-                verificarCategoriaMarcada,
-                marcarDesmarcarCategoria
+                setCategoriasMarcadas
                 /*limparTodasRespostas*/
             }}>
                 {children}

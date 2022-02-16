@@ -16,9 +16,12 @@ const Indicadores = () => {
   });
   useEffect(() => {
     setDimensao(context.dimensao.numero);
-    setIndicador(context.indicador.numero);
-    setTitulo(context.indicador.titulo);
-    setDescricao(context.indicador.descricao);
+
+    if (context.indicador) {
+      setIndicador(context.indicador.numero);
+      setTitulo(context.indicador.titulo);
+      setDescricao(context.indicador.descricao);
+    }
   }, [context.dimensao, context.indicador]);
   let bgColorPx = {
     1: 'bg-pri',
@@ -70,11 +73,11 @@ const Indicadores = () => {
     className: "col-md-12 mt-3"
   }, /*#__PURE__*/React.createElement("h3", null, titulo), /*#__PURE__*/React.createElement("p", null, descricao), /*#__PURE__*/React.createElement("br", null)), /*#__PURE__*/React.createElement("div", {
     className: "col-md-12"
-  }, /*#__PURE__*/React.createElement(Perguntas, {
+  }, context.indicador ? /*#__PURE__*/React.createElement(Perguntas, {
     perguntas: context.indicador.perguntas,
     bgColor: bgColor,
     subperguntas: false
-  })), /*#__PURE__*/React.createElement("div", {
+  }) : null), /*#__PURE__*/React.createElement("div", {
     className: "col-md-12"
   }, /*#__PURE__*/React.createElement("div", {
     className: "row mt-4 mb-4"
