@@ -12,9 +12,11 @@ const Indicadores = () => {
 
     useEffect(() => {
         setDimensao(context.dimensao.numero);
-        setIndicador(context.indicador.numero);
-        setTitulo(context.indicador.titulo);
-        setDescricao(context.indicador.descricao);
+        if(context.indicador){
+            setIndicador(context.indicador.numero);
+            setTitulo(context.indicador.titulo);
+            setDescricao(context.indicador.descricao);
+        }
     }, [context.dimensao, context.indicador]);
 
     let bgColorPx = {
@@ -67,7 +69,12 @@ const Indicadores = () => {
                     <br/>
                 </div>
                 <div className="col-md-12">
-                    <Perguntas perguntas={context.indicador.perguntas} bgColor={bgColor} subperguntas={false}/>
+                    {
+                        context.indicador ? (
+                            <Perguntas perguntas={context.indicador.perguntas} bgColor={bgColor} subperguntas={false}/>
+                        ) : null
+                    }
+
                 </div>
 
                 <div className="col-md-12">

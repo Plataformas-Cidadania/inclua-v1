@@ -5,7 +5,7 @@ const DiagnosticoProvider = ({children}) => {
 
     const {useState, useEffect} = React;
 
-    const [tipo, setTipo] = useState(null);
+    const [tipo, setTipo] = useState(2);
     const [dimensoes, setDimensoes] = useState([]);
     const [dimensao, setDimensao] = useState({indicadores:[]});
     //const [indicador, setIndicador] = useState(1);
@@ -13,6 +13,9 @@ const DiagnosticoProvider = ({children}) => {
     const [dimensoesRespondidas, setDimensoesRespondidas] = useState([]);
     const [respostas, setRespostas] = useState([]);
     const [alertFixed, setAlertFixed] = useState(0);
+    const [diagnostico, setDiagnostico] = useState({ofertaPublica: null, grupoFocal: null})
+    const [categorias, setCategorias] = useState([]);
+    const [categoriasMarcadas, setCategoriasMarcadas] = useState([]);
 
     /*state = {
         tipo: null,
@@ -25,6 +28,7 @@ const DiagnosticoProvider = ({children}) => {
 
     useEffect(() => {
         listDimensoes();
+        listCategorias();
     }, []);
 
     useEffect(() => {
@@ -51,13 +55,35 @@ const DiagnosticoProvider = ({children}) => {
                 setDimensao(dimensoes[0]);//pega a primeira dimensão
                 return;
             }
-            alert("Não foi possível carregar as dimensões.");
+            console.log("Não foi possível carregar as dimensões.");
         } catch (error) {
             //alert("Não foi possível carregar as dimensões!");
             console.log("Não foi possível carregar as dimensões!");
             console.log(error);
         }
     }
+
+    const listCategorias = async () => {
+        try {
+            //const result = await axios.get('json/diagnostico.json');
+            const result = await axios.get('api/categoria');
+            if(result.data.success){
+                let newCategorias = result.data.data;
+                newCategorias.forEach((item) => {
+                    item.marcada = 0;
+                })
+                setCategorias(newCategorias);
+
+                return;
+            }
+            console.log("Não foi possível carregar as categorias.");
+        } catch (error) {
+            //alert("Não foi possível carregar as dimensões!");
+            console.log("Não foi possível carregar as dimensões!");
+            console.log(error);
+        }
+    }
+
 
     /*const verificarResposta = (idPergunta, value) => {
         //console.log('---------------------------------------------------------');
@@ -249,7 +275,13 @@ const DiagnosticoProvider = ({children}) => {
         //return;
         try {
             const jsonRespostas = JSON.stringify(respostasApi);
+            /*const jsonDiagnostico = JSON.stringify({
+                diagnostico: diagnostico,
+                respostas: respostasApi,
+                categorias: categoriasMarcadas
+            });*/
             const result = await axios.post('api/resposta/insereRespostas', jsonRespostas, {
+            //const result = await axios.post('api/resposta/insereRespostas', jsonDiagnostico, {
                 headers: {
                     'Content-Type': 'application/json'
                 }
@@ -258,8 +290,8 @@ const DiagnosticoProvider = ({children}) => {
                 //const ids = JSON.parse(result.data.data)
                 //localStorage.setItem('id_diagnostico_completo', ids[1]);
                 localStorage.setItem('id_diagnostico_completo', result.data.data);
-                location.href = 'resultado';
-                //console.log('redirecionamento desativado');
+                //location.href = 'resultado';
+                console.log('redirecionamento desativado');
                 return;
             }
             alert("Não foi possível gravar as respostas");
@@ -347,11 +379,16 @@ const DiagnosticoProvider = ({children}) => {
                 dimensoes,
                 dimensoesRespondidas, setDimensoesRespondidas,
                 indicador, setIndicador,
+                diagnostico,
+                categorias,
+                categoriasMarcadas,
                 /*verificarResposta,*/
                 setResposta,
                 getResposta,
                 validarRespostas,
                 enviarRespostas,
+                setDiagnostico,
+                setCategoriasMarcadas
                 /*limparTodasRespostas*/
             }}>
                 {children}

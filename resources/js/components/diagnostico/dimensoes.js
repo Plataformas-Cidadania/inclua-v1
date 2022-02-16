@@ -2,6 +2,12 @@ const Dimensoes = () => {
 
     const context = React.useContext(DiagnosticoContext);
 
+    const {useState, useEffect} = React;
+
+    const [categorias, setCategorias] = useState([]);
+    const [categoriasMarcadas, setCategoriasMarcadas] = useState([]);
+    const [categoriaClicada, setCategoriaClicada] = useState(0);
+
     let bgColor = {
         1:'bg-pri',
         2:'bg-sec',
@@ -11,6 +17,47 @@ const Dimensoes = () => {
     };
     bgColor = bgColor[context.dimensao.numero];
 
+    useEffect(() => {
+        setCategorias(context.categorias);
+    },[context.categorias])
+
+    useEffect(() => {
+        context.setCategoriasMarcadas(categoriasMarcadas);
+    },[categoriasMarcadas])
+
+    const handleDiagnostico = (event) => {
+        let newDiagnostico = {
+            ...context.diagnostico,
+            [event.target.id]: event.target.value
+        }
+        context.setDiagnostico(newDiagnostico);
+    }
+
+    const marcarDesmarcarCategoria = (id_categoria) => {
+        //console.log(id_categoria);
+        let newCategorias = categorias;
+        newCategorias.forEach((item) => {
+            if(item.id_categoria === id_categoria){
+                item.marcada = item.marcada === 1 ? 0 : 1;
+                console.log(item, id_categoria);
+            }
+        });
+        setCategorias(newCategorias);
+        setCategoriaClicada(id_categoria);
+        //console.log(newCategorias);
+
+
+        let newCategoriasMarcadas = categoriasMarcadas;
+        if(categoriasMarcadas.includes(id_categoria)){
+            newCategoriasMarcadas = newCategoriasMarcadas.filter(item => item !== id_categoria)
+            setCategoriasMarcadas(newCategoriasMarcadas);
+            console.log('remove', newCategoriasMarcadas);
+            return;
+        }
+        newCategoriasMarcadas.push(id_categoria);
+        setCategoriasMarcadas(newCategoriasMarcadas);
+        console.log('insere', newCategoriasMarcadas);
+    }
 
     return (
         <div>
@@ -20,6 +67,55 @@ const Dimensoes = () => {
                         <br/>
                         <button className="btn btn-lg btn-primary" onClick={() => context.limparTodasRespostas()}>Limpar Todas as Respostas</button>
                     </div>*/}
+                    <div className="col-md-12">
+                        <br/>
+                        <div className="row">
+                            <form>
+                                <div className="col-md-12">
+                                    <label htmlFor="ofertaPublica"><strong>Oferta pública sob foco</strong></label>
+                                    <input
+                                        className="form-control form-g"
+                                        type="text"
+                                        name="ofertaPublica"
+                                        id="ofertaPublica"
+                                        onChange={handleDiagnostico}
+                                        placeholder="ex.: serviço, programa, política, projeto, iniciativa, ação, etc."
+                                    />
+                                </div>
+                                <br/>
+                                <div className="col-md-12">
+                                    <label htmlFor="ofertaPublica"><strong>Qual(is) grupo(s) ou população(ões) específica(s) irá focar?</strong></label>
+                                    <input className="form-control form-g" type="text" name="grupoFocal" id="grupoFocal"  onChange={handleDiagnostico}/>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <br/><br/>
+                    <div className="col-md-12">
+                        <br/>
+                        <div>Assinale as opções abaixo que se relacionam com a oferta pública e/ou o grupo(s) específico(s) em relação aos queis irá conduzir o dianóstico:</div>
+                        <div style={{fontSize: "10px"}}>(OBS.: Os temas marcados nos ajudarão a apresentar sugestões pertinentes de recursos para a intervenção, caso o diagnóstico resulte em riscos moderados ou altos)
+                        </div>
+                        <div><strong>Selecione as categorias</strong></div>
+                        <br/>
+                        {
+                            context.categorias ? (
+                                context.categorias.map((item, key) => {
+                                    return (
+                                        <div
+                                            key={"categoria"+key}
+                                            id={"btnCategoria"+key}
+                                            className={"btn btn-sm btn-"+(item.marcada === 1 ? "info" : "default")}
+                                            onClick={() => marcarDesmarcarCategoria(item.id_categoria)}
+                                            style={{margin: "8px", border: "solid 1px #ccc"}}
+                                        >
+                                            {item.nome}
+                                        </div>
+                                    );
+                                })
+                            ) : null
+                        }
+                    </div>
                     <div className="col-md-12 text-center">
                         <div className="text-center nav-icons">
                             {

@@ -1,0 +1,85 @@
+{
+    "diagnostico": {
+        "ofertaPublica": "teste oferta pública",
+        "grupos": "teste grupos"
+    },
+    "respostas": [
+        {
+            "id_dimensao": 1,
+            "id_indicador": 1,
+            "id_pergunta": 1,
+            "resposta": 1
+        },
+        {
+            "id_dimensao": 1,
+            "id_indicador": 1,
+            "id_pergunta": 2,
+            "resposta": 1
+        },
+        {
+            "id_dimensao": 1,
+            "id_indicador": 1,
+            "id_pergunta": 70,
+            "resposta": 1
+        },
+        {
+            "id_dimensao": 1,
+            "id_indicador": 1,
+            "id_pergunta": 3,
+            "resposta": 1
+        },
+        {
+            "id_dimensao": 1,
+            "id_indicador": 1,
+            "id_pergunta": 4,
+            "resposta": 1
+        },
+        {
+            "id_dimensao": 1,
+            "id_indicador": 1,
+            "id_pergunta": 5,
+            "resposta": 1
+        },
+        {
+            "id_dimensao": 1,
+            "id_indicador": 1,
+            "id_pergunta": 6,
+            "resposta": 1
+        },
+        {
+            "id_dimensao": 1,
+            "id_indicador": 2,
+            "id_pergunta": 7,
+            "resposta": 5
+        },
+        {
+            "id_dimensao": 1,
+            "id_indicador": 2,
+            "id_pergunta": 8,
+            "resposta": 5
+        },
+        {
+            "id_dimensao": 1,
+            "id_indicador": 2,
+            "id_pergunta": 9,
+            "resposta": 5
+        },
+        {
+            "id_dimensao": 1,
+            "id_indicador": 2,
+            "id_pergunta": 10,
+            "resposta": 1
+        },
+        {
+            "id_dimensao": 1,
+            "id_indicador": 2,
+            "id_pergunta": 11,
+            "resposta": 1
+        }
+    ],
+    "categorias": [
+        3,
+        2,
+        1
+    ]
+}
