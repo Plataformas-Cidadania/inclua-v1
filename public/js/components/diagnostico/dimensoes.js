@@ -1,5 +1,10 @@
 const Dimensoes = () => {
   const context = React.useContext(DiagnosticoContext);
+  const {
+    useState,
+    useEffect
+  } = React;
+  const [categoriasMarcadas, setCategoriasMarcadas] = useState([]);
   let bgColor = {
     1: 'bg-pri',
     2: 'bg-sec',
@@ -8,12 +13,19 @@ const Dimensoes = () => {
     5: 'bg-qui'
   };
   bgColor = bgColor[context.dimensao.numero];
+  useEffect(() => {
+    setCategoriasMarcadas(context.categoriasMarcadas);
+  }, [context.categoriasMarcadas]);
 
   const handleDiagnostico = event => {
     let newDiagnostico = { ...context.diagnostico,
       [event.target.id]: event.target.value
     };
     context.setDiagnostico(newDiagnostico);
+  };
+
+  const verificarCategoriaMarcada = id_categoria => {
+    return categoriasMarcadas.includes(id_categoria);
   };
 
   return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
@@ -46,6 +58,22 @@ const Dimensoes = () => {
     id: "grupos",
     onChange: handleDiagnostico
   }))))), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
+    className: "col-md-12"
+  }, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", null, "Assinale as op\xE7\xF5es abaixo que se relacionam com a oferta p\xFAblica e/ou o grupo(s) espec\xEDfico(s) em rela\xE7\xE3o aos queis ir\xE1 conduzir o dian\xF3stico:"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: "10px"
+    }
+  }, "(OBS.: Os temas marcados nos ajudar\xE3o a apresentar sugest\xF5es pertinentes de recursos para a interven\xE7\xE3o, caso o diagn\xF3stico resulte em riscos moderados ou altos)"), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("strong", null, "Selecione as categorias")), /*#__PURE__*/React.createElement("br", null), context.categorias ? context.categorias.map((item, key) => {
+    return /*#__PURE__*/React.createElement("button", {
+      key: "categoria" + key,
+      className: "btn btn-" + (verificarCategoriaMarcada(item.id_categoria) ? "info" : "default"),
+      onClick: () => context.marcarDesmarcarCategoria(item.id_categoria),
+      style: {
+        margin: "4px",
+        border: "solid 1px #ccc"
+      }
+    }, item.nome);
+  }) : null), /*#__PURE__*/React.createElement("div", {
     className: "col-md-12 text-center"
   }, /*#__PURE__*/React.createElement("div", {
     className: "text-center nav-icons"

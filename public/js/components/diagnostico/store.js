@@ -21,6 +21,8 @@ const DiagnosticoProvider = ({
     ofertaPublica: null,
     grupos: null
   });
+  const [categorias, setCategorias] = useState([]);
+  const [categoriasMarcadas, setCategoriasMarcadas] = useState([]);
   /*state = {
       tipo: null,
       dimensoes: [],
@@ -31,6 +33,7 @@ const DiagnosticoProvider = ({
 
   useEffect(() => {
     listDimensoes();
+    listCategorias();
   }, []);
   useEffect(() => {
     setIndicador(dimensao.indicadores[0]);
@@ -56,12 +59,50 @@ const DiagnosticoProvider = ({
         return;
       }
 
-      alert("Não foi possível carregar as dimensões.");
+      console.log("Não foi possível carregar as dimensões.");
     } catch (error) {
       //alert("Não foi possível carregar as dimensões!");
       console.log("Não foi possível carregar as dimensões!");
       console.log(error);
     }
+  };
+
+  const listCategorias = async () => {
+    try {
+      //const result = await axios.get('json/diagnostico.json');
+      const result = await axios.get('api/categoria');
+
+      if (result.data.success) {
+        setCategorias(result.data.data);
+        return;
+      }
+
+      console.log("Não foi possível carregar as categorias.");
+    } catch (error) {
+      //alert("Não foi possível carregar as dimensões!");
+      console.log("Não foi possível carregar as dimensões!");
+      console.log(error);
+    }
+  };
+
+  const marcarDesmarcarCategoria = id_categoria => {
+    console.log(id_categoria);
+    let newCategoriasMarcadas = categoriasMarcadas;
+
+    if (verificarCategoriaMarcada(id_categoria)) {
+      newCategoriasMarcadas = newCategoriasMarcadas.filter(item => item !== id_categoria);
+      setCategoriasMarcadas(newCategoriasMarcadas);
+      console.log('1', newCategoriasMarcadas);
+      return;
+    }
+
+    newCategoriasMarcadas.push(id_categoria);
+    setCategoriasMarcadas(newCategoriasMarcadas);
+    console.log('2', newCategoriasMarcadas);
+  };
+
+  const verificarCategoriaMarcada = id_categoria => {
+    return categoriasMarcadas.includes(id_categoria);
   };
   /*const verificarResposta = (idPergunta, value) => {
       //console.log('---------------------------------------------------------');
@@ -374,13 +415,17 @@ const DiagnosticoProvider = ({
       indicador,
       setIndicador,
       diagnostico,
+      categorias,
+      categoriasMarcadas,
 
       /*verificarResposta,*/
       setResposta,
       getResposta,
       validarRespostas,
       enviarRespostas,
-      setDiagnostico
+      setDiagnostico,
+      verificarCategoriaMarcada,
+      marcarDesmarcarCategoria
       /*limparTodasRespostas*/
 
     }

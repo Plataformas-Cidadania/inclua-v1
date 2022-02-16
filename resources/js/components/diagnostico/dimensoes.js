@@ -2,6 +2,9 @@ const Dimensoes = () => {
 
     const context = React.useContext(DiagnosticoContext);
 
+    const {useState, useEffect} = React;
+
+    const [categoriasMarcadas, setCategoriasMarcadas] = useState([]);
     let bgColor = {
         1:'bg-pri',
         2:'bg-sec',
@@ -11,12 +14,20 @@ const Dimensoes = () => {
     };
     bgColor = bgColor[context.dimensao.numero];
 
+    useEffect(() => {
+        setCategoriasMarcadas(context.categoriasMarcadas);
+    }, [context.categoriasMarcadas])
+
     const handleDiagnostico = (event) => {
         let newDiagnostico = {
             ...context.diagnostico,
             [event.target.id]: event.target.value
         }
         context.setDiagnostico(newDiagnostico);
+    }
+
+    const verificarCategoriaMarcada = (id_categoria) => {
+        return categoriasMarcadas.includes(id_categoria);
     }
 
     return (
@@ -51,6 +62,30 @@ const Dimensoes = () => {
                         </div>
                     </div>
                     <br/><br/>
+                    <div className="col-md-12">
+                        <br/>
+                        <div>Assinale as opções abaixo que se relacionam com a oferta pública e/ou o grupo(s) específico(s) em relação aos queis irá conduzir o dianóstico:</div>
+                        <div style={{fontSize: "10px"}}>(OBS.: Os temas marcados nos ajudarão a apresentar sugestões pertinentes de recursos para a intervenção, caso o diagnóstico resulte em riscos moderados ou altos)
+                        </div>
+                        <div><strong>Selecione as categorias</strong></div>
+                        <br/>
+                        {
+                            context.categorias ? (
+                                context.categorias.map((item, key) => {
+                                    return (
+                                        <button
+                                            key={"categoria"+key}
+                                            className={"btn btn-"+(verificarCategoriaMarcada(item.id_categoria) ? "info" : "default")}
+                                            onClick={() => context.marcarDesmarcarCategoria(item.id_categoria)}
+                                            style={{margin: "4px", border: "solid 1px #ccc"}}
+                                        >
+                                            {item.nome}
+                                        </button>
+                                    );
+                                })
+                            ) : null
+                        }
+                    </div>
                     <div className="col-md-12 text-center">
                         <div className="text-center nav-icons">
                             {
