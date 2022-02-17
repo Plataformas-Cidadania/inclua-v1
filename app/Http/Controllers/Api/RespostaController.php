@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Api\Controller;
 use App\Http\Controllers\Api\DiagnosticoController;
+use App\Models\CategoriaDiagnostico;
+use App\Repository\CategoriaDiagnosticoRepository;
 use App\Repository\DiagnosticoRepository;
 use App\Models\Resposta;
 use App\Repository\RespostaRepository;
@@ -47,10 +49,16 @@ class RespostaController extends Controller
     public function insereRespostas(Request $request): JsonResponse
     {
         $diagRepo = (new DiagnosticoRepository(app('App\Models\Diagnostico')));
+        $catDiagRepo = (new CategoriaDiagnosticoRepository(app('App\Models\CategoriaDiagnostico')));
         try {
             $data = $request->all();
-            $diagnostico_id = (new DiagnosticoController($diagRepo))->store();
-            $res = $this->repo->storeMany($diagnostico_id,$data);
+            $payload= array("oferta_publica"=>$data['diagnostico']['ofertaPublica'],
+                "grupo_focal"=>$data['diagnostico']['grupos']);
+            $diagnostico_id = (new DiagnosticoController($diagRepo))->store($payload);
+            $respostas = $data['respostas'];
+            $categorias = $data['categorias'];
+            (new CategoriaDiagnosticoController($catDiagRepo))->simpleStoreMany($diagnostico_id,$categorias);
+            $res = $this->repo->storeMany($diagnostico_id,$respostas);
             return $this->successResponse(
                 'Respostas adicionadas',
                 $res

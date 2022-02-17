@@ -32,10 +32,10 @@ class DiagnosticoController extends Controller
      *
      * @return String
      */
-    public function store(): String
+    public function store(array $payload): String
     {
         try {
-            $res = $this->repo->createDiagnostico();
+            $res = $this->repo->createDiagnostico($payload);
             return $res->id_diagnostico;
         } catch (Exception $exception) {
             return $this->errorResponse($exception);
@@ -118,7 +118,8 @@ class DiagnosticoController extends Controller
                             'data'=> [$percBaixo]
                         ]
                     ],
-                    'recursos' => $indicador->recursos,
+                    'recursos' => $indicador->recursos->where('id_categoria', '=', '1'),
+                    // FILTAR POR CATEGORIAS
                 ];
                 array_push($vet_res_indicadores, $item);
             }
