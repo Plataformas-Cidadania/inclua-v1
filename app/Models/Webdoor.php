@@ -36,7 +36,8 @@ class Webdoor extends Model
 		'titulo' => 'string',
 		'legenda' => 'string',
 		'posicao' => 'int',
-		'status' => 'int'
+		'status' => 'int',
+		'link_target' => 'int'
 	];
 
 	protected $fillable = [
@@ -47,6 +48,7 @@ class Webdoor extends Model
 		'legenda',
 		'posicao',
 		'status',
+		'link_target',
 	];
 
 	public function cms_user()

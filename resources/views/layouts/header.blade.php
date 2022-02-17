@@ -155,7 +155,7 @@
     @if($rota=='/')
         <div class="owl-carousel owl-theme">
             @foreach($webdoors as $webdoor)
-                <a href="{{$webdoor->link}}">
+                <a href="{{$webdoor->link}}" target={{$webdoor->link_target===0 ? '' : '_blank'}}>
                     <picture>
                         <source class="owl-lazy" media="(min-width: 350px)" data-srcset="imagens/webdoors/lg-{{$webdoor->imagem}}">
                         <source class="owl-lazy" media="(min-width: 650px)" data-srcset="imagens/webdoors/md-{{$webdoor->imagem}}">
