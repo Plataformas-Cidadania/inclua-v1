@@ -65,6 +65,9 @@
     </div>
     <br/>
 
+        @if($rota=="forum")
+            @include('contribua.user-login')
+        @endif
     <br>
     <div class="container">
         <div class="row">
