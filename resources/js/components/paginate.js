@@ -29,7 +29,7 @@ const Paginate = (props) => {
         //console.log('PAGINATE', 'page', page);
         //console.log('PAGINATE', 'total', total);
         //console.log('PAGINATE', 'n_pages', n_pages);
-        let qtdPages = 5;
+        //let qtdPages = 5;
         for (let i=0; i < n_pages; i++){
             let active = page === i ? 'active' : '';
             p[i] = (
@@ -41,7 +41,8 @@ const Paginate = (props) => {
                 </li>);
         }
         if(n_pages <= 10){
-            for (let i=0; i < qtdPages; i++){
+            //for (let i=0; i < qtdPages; i++){
+            for (let i=0; i < n_pages; i++){
                 let active = page === i ? 'active' : '';
                 pages.push(p[i]);
             }
