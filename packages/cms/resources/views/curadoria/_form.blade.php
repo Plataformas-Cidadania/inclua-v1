@@ -1,40 +1,21 @@
-
-<label for="id_tipo_recurso">Tipo</label>
-<select
-    name="id_tipo_recurso"
-    class="form-control width-medio"
-    ng-model="tipo"
-    ng-init="tipo = null"
-    ng-required="true"
-    ng-options="option.nome for option in tipos track by option.id_tipo_recurso"
-    placeholder="Selecione"
->
-    <option value="" ng-disabled="!!recurso.id_tipo_recurso">Selecione</option>
-</select>
-<br>
-
-<label for="id_formato">Formato</label>
-<select
-    name="id_formato"
-    class="form-control width-medio"
-    ng-model="formato"
-    ng-init="formato = null"
-    ng-required="true"
-    ng-options="option.nome for option in formatos track by option.id_formato"
-    placeholder="Selecione"
->
-    <option value="" ng-disabled="!!recurso.id_formato">Selecione</option>
-</select>
-<br>
-
 <label for="nome">Nome</label>
-<input type="text" name="nome" class="form-control width-grande <% validar(recurso.nome)%>" ng-model="recurso.nome" ng-required="true">
+<input type="text" name="nome" class="form-control width-grande <% validar(curadoria.nome)%>" ng-model="curadoria.nome" ng-required="true">
 
-<label for="esfera">Esfera</label>
-<input type="text" name="esfera" class="form-control width-grande <% validar(recurso.esfera)%>" ng-model="recurso.esfera" ng-required="true">
+<label for="mini_biografia">Mini Biografia</label>
+<textarea cols="5" class="form-control width-grande <% validar(curadoria.mini_biografia)%>" ng-model="curadoria.mini_biografia" ng-required="true"></textarea>
 
-<label for="status">Status</label>
-<select name="status" id="status" class="form-control width-pequeno <% validar(recurso.status)%>" ng-model="recurso.status">
-    <option value="1" ng-selected="recurso.status == 1">Ativo</option>
-    <option value="0" ng-selected="recurso.status == 0">Inativo</option>
-</select>
+<label for="tema_recorte">Tema do Recorte</label>
+<input type="text" name="tema_recorte" class="form-control width-grande <% validar(curadoria.tema_recorte)%>" ng-model="curadoria.tema_recorte" ng-required="true">
+
+{!! Form::label('texto', 'Texto *') !!}<br>
+{!! Form::textarea('texto', null, ['class'=>"form-control width-grande <% validar(curadoria.texto) %>", 'ui-tinymce'=>'tinymceOptions', 'ng-model'=>'curadoria.texto', 'init-model'=>'curadoria.texto']) !!}<br>
+
+<label for="data">Data</label>
+<input type="text" name="data" class="form-control width-medio <% validar(curadoria.data)%>" ng-model="curadoria.data" ng-required="true">
+
+<label for="link_curriculo">Data</label>
+<input type="date" name="link_curriculo" class="form-control width-medio <% validar(curadoria.link_curriculo)%>" ng-model="curadoria.link_curriculo" ng-required="true">
+
+<label for="link_video">Data</label>
+<input type="text" name="link_video" class="form-control width-medio <% validar(curadoria.link_video)%>" ng-model="curadoria.link_video" ng-required="true">
+
