@@ -56,10 +56,14 @@ const List = () => {
     scope: "col"
   }, "Formato"), /*#__PURE__*/React.createElement("th", {
     scope: "col"
+  }, "Status"), /*#__PURE__*/React.createElement("th", {
+    scope: "col"
   }, "A\xE7\xF5es"))), /*#__PURE__*/React.createElement("tbody", null, listMap.map((item, key) => {
     return /*#__PURE__*/React.createElement("tr", {
       key: 'table_' + key
     }, /*#__PURE__*/React.createElement("td", null, item.nome), /*#__PURE__*/React.createElement("td", null, item.esfera), /*#__PURE__*/React.createElement("td", null, item.formato_recurso.nome), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", {
+      className: "badge " + (item.status === 0 ? 'bg-warning text-dark' : 'bg-success')
+    }, item.status === 0 ? 'Em analise' : 'Aprovado')), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("div", {
       style: {
         display: item.id_recurso === varTrash ? 'none' : ''
       }
@@ -72,7 +76,10 @@ const List = () => {
       className: "far fa-edit fa-2x"
     })), "\xA0", /*#__PURE__*/React.createElement("span", {
       onClick: () => clickTrash(item.id_recurso),
-      className: "cursor"
+      className: "cursor",
+      style: {
+        display: item.status === 1 ? 'none' : ''
+      }
     }, /*#__PURE__*/React.createElement("i", {
       className: "far fa-trash-alt fa-2x"
     }))), /*#__PURE__*/React.createElement("div", {
