@@ -27,12 +27,11 @@ class DiagnosticoRepository extends BaseRepository
         $this->model = $model;
     }
 
-    public function createDiagnostico(): Model
+    public function createDiagnostico(array $payload): Model
     {
-        $model = $this->model->create();
+        $model = $this->model->create($payload);
         return $model->fresh();
     }
-
     public function getDiagnostico($id) :Model
     {
 

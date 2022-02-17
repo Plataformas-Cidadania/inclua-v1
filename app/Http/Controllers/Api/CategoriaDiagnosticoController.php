@@ -81,6 +81,22 @@ class CategoriaDiagnosticoController extends Controller
     }
 
 
+    public function simpleStoreMany(string $id_diagnostico, array $categorias): JsonResponse
+    {
+        try {
+            $res = $this->repo->storeMany($id_diagnostico,$categorias);
+
+            return $this->successResponse(
+                'Categorias adicionadas',
+                $res
+            );
+        } catch (Exception $exception) {
+            if ($exception instanceof ModelNotFoundException)
+                return $this->errorResponse('id_diagnostico Not found');
+            return $this->errorResponse("erro inesperado ".$exception);
+        }
+    }
+
     /**
      * Adicionar um novo
      *
@@ -110,6 +126,7 @@ class CategoriaDiagnosticoController extends Controller
             return $this->errorResponse("erro inesperado ".$exception);
         }
     }
+
 
     /**
      * Remover da base de dados especificado pelo id
