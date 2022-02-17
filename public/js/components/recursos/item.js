@@ -59,27 +59,34 @@ const Item = props => {
       return /*#__PURE__*/React.createElement("span", {
         key: "autoria" + key
       }, autoria.autor.nome, item.autoria.length !== key + 1 ? ', ' : '');
-    }) : null), /*#__PURE__*/React.createElement("br", null)), item.links !== undefined ? item.links.map((link, key) => {
-      return key === 0 ? /*#__PURE__*/React.createElement("div", {
-        className: "col-6",
-        key: "btn1" + key
+    }) : null), /*#__PURE__*/React.createElement("br", null)), /*#__PURE__*/React.createElement("div", {
+      className: "col-12"
+    }, item.links !== undefined ? item.links.map((link, key) => {
+      return /*#__PURE__*/React.createElement("div", {
+        className: "row"
+      }, /*#__PURE__*/React.createElement("div", {
+        className: "col-6"
       }, /*#__PURE__*/React.createElement("div", {
         className: "dorder-container"
       }, /*#__PURE__*/React.createElement("a", {
         href: link.uri,
         className: "btn btn-theme bg-pri",
-        type: "button"
+        type: "button",
+        target: "_blank"
       }, "Acessar ", /*#__PURE__*/React.createElement("i", {
         className: "fas fa-angle-right"
-      })))) : /*#__PURE__*/React.createElement("div", {
-        className: "col-2 d-flex justify-content-end text-right mt-2",
-        key: "btn2" + key
+      })))), /*#__PURE__*/React.createElement("div", {
+        className: "col-6"
+      }, /*#__PURE__*/React.createElement("div", {
+        className: "dorder-container"
       }, /*#__PURE__*/React.createElement("a", {
         href: link.uri,
+        className: "btn btn-theme bg-pri",
+        type: "button",
         target: "_blank"
-      }, " ", link.idioma, " ", /*#__PURE__*/React.createElement("i", {
+      }, "Detalhar ", /*#__PURE__*/React.createElement("i", {
         className: "fas fa-angle-right"
-      })));
-    }) : null)), /*#__PURE__*/React.createElement("br", null));
+      })))));
+    }) : null))), /*#__PURE__*/React.createElement("br", null));
   }));
 };

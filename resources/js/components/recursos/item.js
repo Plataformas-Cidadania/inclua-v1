@@ -91,7 +91,7 @@ const Item = (props) => {
                                                             </div>
                                                             <div className="col-6">
                                                                 <div className="dorder-container">
-                                                                    <a href={link.uri} className="btn btn-theme bg-pri" type="button" target="_blank">Acessar <i className="fas fa-angle-right"/></a>
+                                                                    <a href={link.uri} className="btn btn-theme bg-pri" type="button" target="_blank">Detalhar <i className="fas fa-angle-right"/></a>
                                                                 </div>
                                                             </div>
                                                         </div>
