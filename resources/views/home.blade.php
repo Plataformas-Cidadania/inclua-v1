@@ -125,7 +125,7 @@
                             <div class="col-md-12">
                                 <div class="pt-5 pb-5">
                                     <br><br>
-                                    <h2>“{{$text4->titulo}}” </h2>
+                                    <h2>{{$text4->titulo}} </h2>
                                     <h3>{!! $text4->descricao !!}</h3>
                                     <br><br>
                                 </div>
