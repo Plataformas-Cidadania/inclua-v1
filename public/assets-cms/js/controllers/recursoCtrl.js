@@ -322,7 +322,7 @@ cmsApp.controller('recursoCtrl', ['$scope', '$http', 'Upload', '$timeout', funct
             $scope.listarIndicacoes();
             $scope.mensagemInserirIndicacao =  "Gravado com sucesso!";
             $scope.processandoInserirIndicacao = false;
-            $scope.indicacao = {};
+            //$scope.indicacao = {};
         }).error(function(data){
             $scope.mensagemInserirIndicacao = "Ocorreu um erro!";
             $scope.processandoInserirIndicacao = false;
