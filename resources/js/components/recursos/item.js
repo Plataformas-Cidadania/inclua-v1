@@ -78,14 +78,37 @@ const Item = (props) => {
                                         <br/>
                                     </div>
 
-                                    {
+                                    <div className="col-12">
+                                        {
+                                            item.links !== undefined ?
+                                                item.links.map((link, key) => {
+                                                    return (
+                                                        <div className="row">
+                                                            <div className="col-6">
+                                                                <div className="dorder-container">
+                                                                    <a href={link.uri} className="btn btn-theme bg-pri" type="button" target="_blank">Acessar <i className="fas fa-angle-right"/></a>
+                                                                </div>
+                                                            </div>
+                                                            <div className="col-6">
+                                                                <div className="dorder-container">
+                                                                    <a href={link.uri} className="btn btn-theme bg-pri" type="button" target="_blank">Detalhar <i className="fas fa-angle-right"/></a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    );
+                                                })
+                                            : null
+                                        }
+                                    </div>
+
+                                    {/*{
                                         item.links !== undefined ?
                                             item.links.map((link, key) => {
                                                 return (
                                                     key===0 ?
                                                         <div className="col-6" key={"btn1"+key}>
                                                             <div className="dorder-container">
-                                                                <a href={link.uri} className="btn btn-theme bg-pri" type="button">Acessar <i className="fas fa-angle-right"/></a>
+                                                                <a href={link.uri} className="btn btn-theme bg-pri" type="button" target="_blank">Acessar <i className="fas fa-angle-right"/></a>
                                                             </div>
                                                         </div>
                                                         :
@@ -94,8 +117,8 @@ const Item = (props) => {
                                                         </div>
                                                 );
                                             })
-                                        : null
-                                    }
+                                            : null
+                                    }*/}
                                 </div>
                             </div>
                             <br/>
