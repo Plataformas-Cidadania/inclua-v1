@@ -27,6 +27,7 @@ const Dimensoes = () => {
       [event.target.id]: event.target.value
     };
     context.setDiagnostico(newDiagnostico);
+    localStorage.setItem('diagnostico', JSON.stringify(newDiagnostico));
   };
 
   const marcarDesmarcarCategoria = id_categoria => {
@@ -46,13 +47,13 @@ const Dimensoes = () => {
     if (categoriasMarcadas.includes(id_categoria)) {
       newCategoriasMarcadas = newCategoriasMarcadas.filter(item => item !== id_categoria);
       setCategoriasMarcadas(newCategoriasMarcadas);
-      console.log('remove', newCategoriasMarcadas);
+      localStorage.setItem('categorias_diagnostico', JSON.stringify(newCategoriasMarcadas));
       return;
     }
 
     newCategoriasMarcadas.push(id_categoria);
     setCategoriasMarcadas(newCategoriasMarcadas);
-    console.log('insere', newCategoriasMarcadas);
+    localStorage.setItem('diagnostico', JSON.stringify(newCategoriasMarcadas));
   };
 
   return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
@@ -81,8 +82,8 @@ const Dimensoes = () => {
   }, /*#__PURE__*/React.createElement("strong", null, "Qual(is) grupo(s) ou popula\xE7\xE3o(\xF5es) espec\xEDfica(s) ir\xE1 focar?")), /*#__PURE__*/React.createElement("input", {
     className: "form-control form-g",
     type: "text",
-    name: "grupoFocal",
-    id: "grupoFocal",
+    name: "grupos",
+    id: "grupos",
     onChange: handleDiagnostico
   }))))), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
     className: "col-md-12"

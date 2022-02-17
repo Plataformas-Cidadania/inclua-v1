@@ -19,7 +19,7 @@ const DiagnosticoProvider = ({
   const [alertFixed, setAlertFixed] = useState(0);
   const [diagnostico, setDiagnostico] = useState({
     ofertaPublica: null,
-    grupoFocal: null
+    grupos: null
   });
   const [categorias, setCategorias] = useState([]);
   const [categoriasMarcadas, setCategoriasMarcadas] = useState([]);
@@ -287,15 +287,14 @@ const DiagnosticoProvider = ({
     //return;
 
     try {
-      const jsonRespostas = JSON.stringify(respostasApi);
-      /*const jsonDiagnostico = JSON.stringify({
-          diagnostico: diagnostico,
-          respostas: respostasApi,
-          categorias: categoriasMarcadas
-      });*/
+      //const jsonRespostas = JSON.stringify(respostasApi);
+      const jsonDiagnostico = JSON.stringify({
+        diagnostico: diagnostico,
+        respostas: respostasApi,
+        categorias: categoriasMarcadas
+      }); //const result = await axios.post('api/resposta/insereRespostas', jsonRespostas, {
 
-      const result = await axios.post('api/resposta/insereRespostas', jsonRespostas, {
-        //const result = await axios.post('api/resposta/insereRespostas', jsonDiagnostico, {
+      const result = await axios.post('api/resposta/insereRespostas', jsonDiagnostico, {
         headers: {
           'Content-Type': 'application/json'
         }

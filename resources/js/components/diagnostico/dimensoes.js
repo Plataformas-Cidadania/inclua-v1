@@ -31,6 +31,7 @@ const Dimensoes = () => {
             [event.target.id]: event.target.value
         }
         context.setDiagnostico(newDiagnostico);
+        localStorage.setItem('diagnostico', JSON.stringify(newDiagnostico));
     }
 
     const marcarDesmarcarCategoria = (id_categoria) => {
@@ -51,12 +52,13 @@ const Dimensoes = () => {
         if(categoriasMarcadas.includes(id_categoria)){
             newCategoriasMarcadas = newCategoriasMarcadas.filter(item => item !== id_categoria)
             setCategoriasMarcadas(newCategoriasMarcadas);
-            console.log('remove', newCategoriasMarcadas);
+            localStorage.setItem('categorias_diagnostico', JSON.stringify(newCategoriasMarcadas));
             return;
         }
         newCategoriasMarcadas.push(id_categoria);
         setCategoriasMarcadas(newCategoriasMarcadas);
-        console.log('insere', newCategoriasMarcadas);
+        localStorage.setItem('diagnostico', JSON.stringify(newCategoriasMarcadas));
+
     }
 
     return (
@@ -85,7 +87,7 @@ const Dimensoes = () => {
                                 <br/>
                                 <div className="col-md-12">
                                     <label htmlFor="ofertaPublica"><strong>Qual(is) grupo(s) ou população(ões) específica(s) irá focar?</strong></label>
-                                    <input className="form-control form-g" type="text" name="grupoFocal" id="grupoFocal"  onChange={handleDiagnostico}/>
+                                    <input className="form-control form-g" type="text" name="grupos" id="grupos"  onChange={handleDiagnostico}/>
                                 </div>
                             </form>
                         </div>
