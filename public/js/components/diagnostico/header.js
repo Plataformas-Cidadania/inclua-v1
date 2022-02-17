@@ -6,6 +6,8 @@ const Header = () => {
     useEffect
   } = React;
   const [textDiagnosticoDescricao, setTextDiagnosticoDescricao] = useState(null);
+  const trocaDeTipoDesativada = true; //Não está sendo mais usada a troca de tipo.
+
   useEffect(() => {
     getTextDiagnostico("pg-diagnostico");
   }, []);
@@ -37,7 +39,7 @@ const Header = () => {
     dangerouslySetInnerHTML: {
       __html: textDiagnosticoDescricao
     }
-  }), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
+  }), trocaDeTipoDesativada ? null : /*#__PURE__*/React.createElement("div", {
     className: "row"
   }, /*#__PURE__*/React.createElement("div", {
     className: "col-md-6"
@@ -97,7 +99,7 @@ const Header = () => {
     style: {
       marginTop: '-52px'
     }
-  }))))), /*#__PURE__*/React.createElement("br", null)), /*#__PURE__*/React.createElement("br", null))), /*#__PURE__*/React.createElement("div", {
+  }))))), /*#__PURE__*/React.createElement("br", null)))), /*#__PURE__*/React.createElement("div", {
     className: "col-md-3"
   }, /*#__PURE__*/React.createElement("img", {
     src: "/img/bg-top.png",
