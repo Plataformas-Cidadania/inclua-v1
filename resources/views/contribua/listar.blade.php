@@ -91,7 +91,7 @@
                             <div class="dorder-container-mai p-4 text-center">
                                 <i class="fas fa-bullhorn fa-3x"></i><br><br>
                                 <h2>Fórum</h2>
-                                <p>Acompanhe e participe dos nossos debates</p>
+                                <p>Acompanhe e participe dos nossos<br> debates</p>
                             </div>
                         </div>
                     </a>
