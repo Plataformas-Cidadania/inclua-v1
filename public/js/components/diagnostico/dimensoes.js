@@ -53,7 +53,7 @@ const Dimensoes = () => {
 
     newCategoriasMarcadas.push(id_categoria);
     setCategoriasMarcadas(newCategoriasMarcadas);
-    localStorage.setItem('diagnostico', JSON.stringify(newCategoriasMarcadas));
+    localStorage.setItem('categorias_diagnostico', JSON.stringify(newCategoriasMarcadas));
   };
 
   return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
