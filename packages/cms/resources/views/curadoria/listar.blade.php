@@ -1,16 +1,16 @@
 @extends('cms::layouts.app')
 
 @section('content')
-    {!! Html::script(config('app.url').'assets-cms/js/controllers/curadoriaCtrl.js') !!}
+    {!! Html::script(config('app.url').'assets-cms/js/controllers/recursoCtrl.js') !!}
 <script>
     $(function () {
         $('[data-toggle="popover"]').popover()
     })
 </script>
-    <div ng-controller="curadoriaCtrl">
+    <div ng-controller="recursoCtrl">
         <div class="box-padrao">
-            <h1><i class="fa fa-curadoria" aria-hidden="true"></i>&nbsp;Curadorias</h1>
-            <button class="btn btn-primary" ng-click="mostrarForm=!mostrarForm" ng-show="!mostrarForm">Novo Curadoria</button>
+            <h1><i class="fa fa-recurso" aria-hidden="true"></i>&nbsp;Recursos</h1>
+            <button class="btn btn-primary" ng-click="mostrarForm=!mostrarForm" ng-show="!mostrarForm">Novo Recurso</button>
             <button class="btn btn-warning" ng-click="mostrarForm=!mostrarForm" ng-show="mostrarForm">Cancelar</button>
             <br><br>
             <div ng-show="mostrarForm">
@@ -40,7 +40,7 @@
 
 
                 {{--<br><br>--}}
-                @include('cms::curadoria._form')
+                @include('cms::recurso._form')
                 <div class="row">
                     <div class="col-md-1 col-lg-1 col-xs-3">
                         <br>
@@ -77,7 +77,7 @@
                         <input class="form-control" type="text" ng-model="dadoPesquisa" placeholder="Faça sua busca"/>
                     </div>
                     <br>
-                    <div><% mensagemCuradoriar %></div>
+                    <div><% mensagemRecursor %></div>
                     <div ng-show="processandoListagem"><i class="fa fa-spinner fa-spin"></i> Processando...</div>
                     <h2 class="tabela_vazia" ng-show="!processandoListagem && totalItens==0">Nenhum registro encontrado!</h2>
                     <table ng-show="totalItens>0" class="table table-striped">
@@ -88,19 +88,19 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr ng-repeat="curadoria in curadorias">
-                            <td><% curadoria.id_curadoria %></td>
-                           {{-- <td><img ng-show="curadoria.imagem" ng-src="imagens/curadorias/xs-<% curadoria.imagem %>" width="60"></td>--}}
-                            <td><% curadoria.nome %></td>
+                        <tr ng-repeat="recurso in recursos">
+                            <td><% recurso.id_recurso %></td>
+                           {{-- <td><img ng-show="recurso.imagem" ng-src="imagens/recursos/xs-<% recurso.imagem %>" width="60"></td>--}}
+                            <td><% recurso.nome %></td>
                             <td class="text-right">
                                 <div>
-                                    {{--<a href="cms/items/<% curadoria.id %>"><i class="fa fa-sitemap fa-2x" title="Itens"></i></a>&nbsp;&nbsp;--}}
-                                    <a href="cms/curadoria/<% curadoria.id_curadoria %>"><i class="fa fa-edit fa-2x" title="Editar"></i></a>&nbsp;&nbsp;{{--<% mensagemStatus %><% idStatus %>--}}
-                                    <a href="cms/links/<% curadoria.id_curadoria %>"><i class="fa fa-link fa-2x" title="Links"></i></a>&nbsp;&nbsp;{{--<% mensagemStatus %><% idStatus %>--}}
-                                    <a  ng-class="<% curadoria.status %> == 1 ? 'color-success' : 'color-success-inactive'"  style="cursor: pointer;"><i class="fa fa-check-circle fa-2x" aria-hidden="true" ng-click="status(curadoria.id_curadoria, curadoria.status);"></i></a>&nbsp;&nbsp;
-                                    <a><i data-toggle="modal" data-target="#modalIndicacao" class="fa fa-tachometer fa-2x" style="cursor:pointer;" ng-click="modalIndicacao(curadoria.id_curadoria, curadoria.nome)"></i></a>
-                                    <a><i data-toggle="modal" data-target="#modalCategorizacao" class="fa fa-cubes fa-2x" style="cursor:pointer;"  ng-click="modalCategorizacao(curadoria.id_curadoria, curadoria.nome)"></i></a>
-                                    <a><i data-toggle="modal" data-target="#modalExcluir" class="fa fa-remove fa-2x" style="cursor:pointer;"  ng-click="perguntaExcluir(curadoria.id_curadoria, curadoria.nome, curadoria.imagem)"></i></a>
+                                    {{--<a href="cms/items/<% recurso.id %>"><i class="fa fa-sitemap fa-2x" title="Itens"></i></a>&nbsp;&nbsp;--}}
+                                    <a href="cms/recurso/<% recurso.id_recurso %>"><i class="fa fa-edit fa-2x" title="Editar"></i></a>&nbsp;&nbsp;{{--<% mensagemStatus %><% idStatus %>--}}
+                                    <a href="cms/links/<% recurso.id_recurso %>"><i class="fa fa-link fa-2x" title="Links"></i></a>&nbsp;&nbsp;{{--<% mensagemStatus %><% idStatus %>--}}
+                                    <a  ng-class="<% recurso.status %> == 1 ? 'color-success' : 'color-success-inactive'"  style="cursor: pointer;"><i class="fa fa-check-circle fa-2x" aria-hidden="true" ng-click="status(recurso.id_recurso, recurso.status);"></i></a>&nbsp;&nbsp;
+                                    <a><i data-toggle="modal" data-target="#modalIndicacao" class="fa fa-tachometer fa-2x" style="cursor:pointer;" ng-click="modalIndicacao(recurso.id_recurso, recurso.nome)"></i></a>
+                                    <a><i data-toggle="modal" data-target="#modalCategorizacao" class="fa fa-cubes fa-2x" style="cursor:pointer;"  ng-click="modalCategorizacao(recurso.id_recurso, recurso.nome)"></i></a>
+                                    <a><i data-toggle="modal" data-target="#modalExcluir" class="fa fa-remove fa-2x" style="cursor:pointer;"  ng-click="perguntaExcluir(recurso.id_recurso, recurso.nome, recurso.imagem)"></i></a>
                                 </div>
                             </td>
                         </tr>
@@ -145,7 +145,7 @@
                     <div class="modal-body">
                         <div class="row">
                             {{--<div class="col-md-3">
-                                <img  ng-src="imagens/curadorias/xs-<% imagemExcluir %>" width="100">
+                                <img  ng-src="imagens/recursos/xs-<% imagemExcluir %>" width="100">
                             </div>--}}
                             <div class="col-md-9">
                                 <p><% tituloExcluir %></p>
@@ -166,7 +166,7 @@
         </div>
         <!-- Fim Modal Excluir-->
 
-        @include("cms::curadoria.indicacao")
-        @include("cms::curadoria.categorizacao")
+        @include("cms::recurso.indicacao")
+        @include("cms::recurso.categorizacao")
     </div>
 @endsection
