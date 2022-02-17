@@ -27,8 +27,8 @@
                     </a>
                 </li>
                 <li class="btn btn-light">
-                    <a href="depoimento">
-                        <i class="far fa-comment"></i> <span class="float-end d-none d-sm-block ms-2"> Depoimento</span>
+                    <a href="forum">
+                        <i class="far fa-comment"></i> <span class="float-end d-none d-sm-block ms-2"> Fórum</span>
                     </a>
                 </li>
                 <li class="btn btn-light">

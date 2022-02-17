@@ -63,6 +63,8 @@ Route::get('diagnostico/{tipo}', 'App\Http\Controllers\Front\DiagnosticoControll
 Route::get('/pre-diagnostico', [DiagnosticoController::class , 'pre']);
 Route::get('recursos', 'App\Http\Controllers\Front\RecursoController@listar');
 
+Route::get('text/{slug}', 'App\Http\Controllers\Front\TextController@getBySlug');
+
 
 /*Route::get('contribua', 'App\Http\Controllers\Front\ContribuaController@listar');
 Route::get('interaja', 'App\Http\Controllers\Front\ContribuaController@interaja');

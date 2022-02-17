@@ -3,6 +3,22 @@
 const Header = () => {
 
     const context = React.useContext(DiagnosticoContext);
+    const {useState, useEffect} = React;
+
+    const [textDiagnosticoDescricao, setTextDiagnosticoDescricao] = useState(null);
+
+    useEffect(() => {
+        getTextDiagnostico("pg-diagnostico");
+    }, [])
+
+    const getTextDiagnostico = async (slug) => {
+        try {
+            const result = await axios.get('text/'+slug);
+            setTextDiagnosticoDescricao(result.data.descricao)
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     return (
         <div className="bg-lgt">
@@ -13,7 +29,7 @@ const Header = () => {
                         <div>
                             <br/><br/>
                             <h1 dangerouslySetInnerHTML={{__html: text_diagnostico_titulo}}/>
-                            <p dangerouslySetInnerHTML={{__html: text_diagnostico_descricao}}/>
+                            <p dangerouslySetInnerHTML={{__html: textDiagnosticoDescricao}}/>
 
                             <br/>
                             <div className="row">

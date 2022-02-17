@@ -74,7 +74,7 @@
                         <div>
                             <h3>Inclua</h3>
                             <ul>
-                                <li role="presentation"><a href="diagnostico" >Diagnóstico</a></li>
+                                <li role="presentation"><a href="pre-diagnostico" >Diagnóstico</a></li>
                                 <li><a href="guias">Guias</a></li>
                                 <li role="presentation"><a href="recursos" >Biblioteca de recursos</a></li>
                                 <li role="presentation"><a href="contribua" >Interaja</a></li>
@@ -90,7 +90,7 @@
                                 <ul>
                                     <li role="presentation"><a href="contato" accesskey="a" @if($rota=='quem') class="contato" @endif>Contato</a></li>
                                     <li role="presentation"><a href="mapa-do-site" >Mapa do site</a></li>
-                                    <li role="presentation"><a href="aacessibilidade" >Acessibilidade</a></li>
+                                    <li role="presentation"><a href="acessibilidade" >Acessibilidade</a></li>
                                     <br><br>
                                 </ul>
                             </div>

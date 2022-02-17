@@ -1,6 +1,24 @@
 //import React from 'react';
 const Header = () => {
   const context = React.useContext(DiagnosticoContext);
+  const {
+    useState,
+    useEffect
+  } = React;
+  const [textDiagnosticoDescricao, setTextDiagnosticoDescricao] = useState(null);
+  useEffect(() => {
+    getTextDiagnostico("pg-diagnostico");
+  }, []);
+
+  const getTextDiagnostico = async slug => {
+    try {
+      const result = await axios.get('text/' + slug);
+      setTextDiagnosticoDescricao(result.data.descricao);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return /*#__PURE__*/React.createElement("div", {
     className: "bg-lgt"
   }, /*#__PURE__*/React.createElement("div", {
@@ -17,7 +35,7 @@ const Header = () => {
     }
   }), /*#__PURE__*/React.createElement("p", {
     dangerouslySetInnerHTML: {
-      __html: text_diagnostico_descricao
+      __html: textDiagnosticoDescricao
     }
   }), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
     className: "row"
