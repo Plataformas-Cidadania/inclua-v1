@@ -6,7 +6,7 @@ const Header = () => {
     const {useState, useEffect} = React;
 
     const [textDiagnosticoDescricao, setTextDiagnosticoDescricao] = useState(null);
-    const trocaDeTipoDesativada = true;//Não está sendo mais usada a troca de tipo.
+    const trocaDeTipoDesativada = false;//Marcar true para ocultar os botões de Completo e Parcial
 
     useEffect(() => {
         getTextDiagnostico("pg-diagnostico");

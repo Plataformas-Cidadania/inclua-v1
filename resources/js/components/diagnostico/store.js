@@ -13,7 +13,7 @@ const DiagnosticoProvider = ({children}) => {
     const [dimensoesRespondidas, setDimensoesRespondidas] = useState([]);
     const [respostas, setRespostas] = useState([]);
     const [alertFixed, setAlertFixed] = useState(0);
-    const [diagnostico, setDiagnostico] = useState({ofertaPublica: null, grupos: null})
+    const [diagnostico, setDiagnostico] = useState({oferta_publica: null, grupo_focal: null, tipo_diagnostico: tipo})
     const [categorias, setCategorias] = useState([]);
     const [categoriasMarcadas, setCategoriasMarcadas] = useState([]);
 
@@ -42,6 +42,13 @@ const DiagnosticoProvider = ({children}) => {
     useEffect(() => {
         console.log(respostas);
     }, [respostas]);
+
+    useEffect(() => {
+        let newDiagnostico = diagnostico;
+        newDiagnostico.tipo_diagnostico = tipo;
+        setDiagnostico(newDiagnostico);
+        console.log('tipo', tipo);
+    }, [tipo]);
 
     const listDimensoes = async () => {
         try {
@@ -275,8 +282,13 @@ const DiagnosticoProvider = ({children}) => {
         //return;
         try {
             //const jsonRespostas = JSON.stringify(respostasApi);
+            //Codigo temporário até a aleraçao do back
+            let tempDiagnostico = diagnostico;
+            tempDiagnostico.ofertaPublica = diagnostico.oferta_publica;
+            tempDiagnostico.grupos = diagnostico.grupo_focal;
+            //
             const jsonDiagnostico = JSON.stringify({
-                diagnostico: diagnostico,
+                diagnostico: tempDiagnostico,
                 respostas: respostasApi,
                 categorias: categoriasMarcadas
             });

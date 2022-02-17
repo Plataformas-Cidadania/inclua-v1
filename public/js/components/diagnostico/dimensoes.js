@@ -67,23 +67,23 @@ const Dimensoes = () => {
   }, /*#__PURE__*/React.createElement("form", null, /*#__PURE__*/React.createElement("div", {
     className: "col-md-12"
   }, /*#__PURE__*/React.createElement("label", {
-    htmlFor: "ofertaPublica"
+    htmlFor: "grupo_focal"
   }, /*#__PURE__*/React.createElement("strong", null, "Oferta p\xFAblica sob foco")), /*#__PURE__*/React.createElement("input", {
     className: "form-control form-g",
     type: "text",
-    name: "ofertaPublica",
-    id: "ofertaPublica",
+    name: "grupo_focal",
+    id: "grupo_focal",
     onChange: handleDiagnostico,
     placeholder: "ex.: servi\xE7o, programa, pol\xEDtica, projeto, iniciativa, a\xE7\xE3o, etc."
   })), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
     className: "col-md-12"
   }, /*#__PURE__*/React.createElement("label", {
-    htmlFor: "ofertaPublica"
+    htmlFor: "grupo_focal"
   }, /*#__PURE__*/React.createElement("strong", null, "Qual(is) grupo(s) ou popula\xE7\xE3o(\xF5es) espec\xEDfica(s) ir\xE1 focar?")), /*#__PURE__*/React.createElement("input", {
     className: "form-control form-g",
     type: "text",
-    name: "grupos",
-    id: "grupos",
+    name: "grupo_focal",
+    id: "grupo_focal",
     onChange: handleDiagnostico
   }))))), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
     className: "col-md-12"

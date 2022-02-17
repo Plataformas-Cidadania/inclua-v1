@@ -74,20 +74,20 @@ const Dimensoes = () => {
                         <div className="row">
                             <form>
                                 <div className="col-md-12">
-                                    <label htmlFor="ofertaPublica"><strong>Oferta pública sob foco</strong></label>
+                                    <label htmlFor="grupo_focal"><strong>Oferta pública sob foco</strong></label>
                                     <input
                                         className="form-control form-g"
                                         type="text"
-                                        name="ofertaPublica"
-                                        id="ofertaPublica"
+                                        name="grupo_focal"
+                                        id="grupo_focal"
                                         onChange={handleDiagnostico}
                                         placeholder="ex.: serviço, programa, política, projeto, iniciativa, ação, etc."
                                     />
                                 </div>
                                 <br/>
                                 <div className="col-md-12">
-                                    <label htmlFor="ofertaPublica"><strong>Qual(is) grupo(s) ou população(ões) específica(s) irá focar?</strong></label>
-                                    <input className="form-control form-g" type="text" name="grupos" id="grupos"  onChange={handleDiagnostico}/>
+                                    <label htmlFor="grupo_focal"><strong>Qual(is) grupo(s) ou população(ões) específica(s) irá focar?</strong></label>
+                                    <input className="form-control form-g" type="text" name="grupo_focal" id="grupo_focal"  onChange={handleDiagnostico}/>
                                 </div>
                             </form>
                         </div>
