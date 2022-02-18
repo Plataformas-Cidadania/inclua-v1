@@ -55,6 +55,7 @@ const List = () => {
                     <th scope="col">Nome</th>
                     <th scope="col">Esfera</th>
                     <th scope="col">Formato</th>
+                    <th scope="col">Status</th>
                     <th scope="col">Ações</th>
                 </tr>
                 </thead>
@@ -65,8 +66,11 @@ const List = () => {
                             <tr key={'table_'+key}>
                                 <td>{item.nome}</td>
                                 <td>{item.esfera}</td>
+                                <td>{item.formato_recurso.nome}</td>
                                 <td>
-                                    {item.formato_recurso.nome}
+                                    <div className={"badge "+(item.status === 0 ? 'bg-warning text-dark': 'bg-success')}>
+                                        {item.status === 0 ? 'Em analise' : 'Aprovado'}
+                                    </div>
                                 </td>
                                 <td>
                                     <div style={{display: item.id_recurso===varTrash ? 'none' : ''}}>
@@ -74,10 +78,11 @@ const List = () => {
                                             <i className="far fa-edit fa-2x" />
                                         </span>
                                          &nbsp;
-                                        <span onClick={() => clickTrash(item.id_recurso)} className="cursor">
+                                        <span onClick={() => clickTrash(item.id_recurso)} className="cursor" style={{display: item.status===1 ? 'none' : ''}}>
                                             <i className="far fa-trash-alt fa-2x"/>
                                         </span>
                                     </div>
+
                                     <div style={{display: item.id_recurso===varTrash ? '' : 'none'}}>
                                         <span className="badge bg-secondary cursor" onClick={() => clickTrash(0)}>Cancelar</span>&nbsp;
                                         <span className="badge bg-danger cursor" onClick={() => clickDell(item.id_recurso)}>Excluir</span>

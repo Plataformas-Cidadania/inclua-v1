@@ -27,12 +27,14 @@ class Diagnostico extends Model
 
     protected $casts = [
         'oferta_publica' => 'string',
-        'grupo_focal' => 'string'
+        'grupo_focal' => 'string',
+        'tipo_diagnostico' => 'int'
     ];
 
     protected $fillable = [
         'oferta_publica',
-        'grupo_focal'
+        'grupo_focal',
+        'tipo_diagnostico'
     ];
 	public function resposta()
 	{
