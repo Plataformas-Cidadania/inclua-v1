@@ -4,6 +4,11 @@ const Item = props => {
     useEffect
   } = React;
   const [formato, setFormato] = useState([]);
+  const [modal, setModal] = useState({
+    id: 0,
+    nome: '111',
+    resumo: '222'
+  });
   const propsData = props.propsData;
   let icon = {
     1: 'far fa-file-pdf',
@@ -16,6 +21,8 @@ const Item = props => {
   useEffect(() => {
     Formato();
   }, []);
+  /*useEffect(() => {
+   }, [modal]);*/
 
   const Formato = async () => {
     try {
@@ -24,6 +31,15 @@ const Item = props => {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const callModal = (id, nome, resumo) => {
+    setModal({
+      id: id,
+      nome: nome,
+      resumo: resumo
+    });
+    $('#exampleModal').modal('show');
   };
 
   return /*#__PURE__*/React.createElement("div", {
@@ -61,7 +77,7 @@ const Item = props => {
       alt: "",
       width: "90%"
     })), /*#__PURE__*/React.createElement("div", {
-      className: "col-4 text-center"
+      className: "col-6 text-center"
     }, /*#__PURE__*/React.createElement("div", {
       className: "bg-lgt2 box-list-formato"
     }, nomeFormato ? nomeFormato.nome : '')), /*#__PURE__*/React.createElement("div", {
@@ -97,14 +113,37 @@ const Item = props => {
     })))), /*#__PURE__*/React.createElement("div", {
       className: "col-6"
     }, /*#__PURE__*/React.createElement("div", {
-      className: "dorder-container"
+      className: "dorder-container",
+      onClick: () => callModal(item.id_recurso, item.nome, item.resumo)
     }, /*#__PURE__*/React.createElement("a", {
-      href: item.links[0].uri,
       className: "btn btn-theme bg-pri",
       type: "button",
       target: "_blank"
     }, "Detalhar ", /*#__PURE__*/React.createElement("i", {
       className: "fas fa-angle-right"
     }))))) : null))), /*#__PURE__*/React.createElement("br", null));
-  }));
+  }), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: "modal fade",
+    id: "exampleModal",
+    tabIndex: "-1",
+    "aria-labelledby": "exampleModalLabel",
+    "aria-hidden": "true"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "modal-dialog"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "modal-content"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "modal-header"
+  }, /*#__PURE__*/React.createElement("h5", {
+    className: "modal-title",
+    id: "exampleModalLabel"
+  }, modal.nome)), /*#__PURE__*/React.createElement("div", {
+    className: "modal-body"
+  }, modal.resumo === null ? "Este conteúdo não está disponível no momento!" : modal.resumo), /*#__PURE__*/React.createElement("div", {
+    className: "modal-footer"
+  }, /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    className: "btn btn-secondary",
+    "data-bs-dismiss": "modal"
+  }, "Close")))))));
 };

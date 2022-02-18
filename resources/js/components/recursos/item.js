@@ -1,6 +1,11 @@
 const Item = (props) => {
     const {useState, useEffect} = React;
     const [formato, setFormato] = useState([]);
+    const [modal, setModal] = useState({
+        id: 0,
+        nome: '111',
+        resumo: '222'
+    });
 
 
     const propsData = props.propsData;
@@ -18,6 +23,10 @@ const Item = (props) => {
         Formato();
     }, []);
 
+    /*useEffect(() => {
+
+    }, [modal]);*/
+
     const Formato = async () => {
         try {
             const result = await axios.get('/api/formatorecurso/', {});
@@ -30,6 +39,20 @@ const Item = (props) => {
         }
     }
 
+
+
+
+    const callModal = (id, nome, resumo) => {
+        setModal(
+            {
+                id: id,
+                nome: nome,
+                resumo: resumo
+            }
+        );
+        $('#exampleModal').modal('show');
+
+    }
 
 
 
@@ -64,7 +87,7 @@ const Item = (props) => {
 
                                 <div className="row">
                                     <div className="col-4"><img src="img/lines.png" alt="" width="90%"/></div>
-                                    <div className="col-4 text-center">
+                                    <div className="col-6 text-center">
                                         <div className="bg-lgt2 box-list-formato">
                                             {nomeFormato ? nomeFormato.nome : ''}
                                             {/*<i className={icon[item.id_formato]+" fa-3x"}/>*/}
@@ -125,8 +148,8 @@ const Item = (props) => {
                                                         </div>
                                                     </div>
                                                     <div className="col-6">
-                                                        <div className="dorder-container">
-                                                            <a href={item.links[0].uri} className="btn btn-theme bg-pri" type="button" target="_blank">Detalhar <i className="fas fa-angle-right"/></a>
+                                                        <div className="dorder-container" onClick={() => callModal(item.id_recurso, item.nome, item.resumo)}>
+                                                            <a  className="btn btn-theme bg-pri" type="button" target="_blank">Detalhar <i className="fas fa-angle-right"/></a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -160,6 +183,28 @@ const Item = (props) => {
                     );
                 })
             }
+
+
+            <div>
+                <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel"
+                     aria-hidden="true">
+                    <div className="modal-dialog">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title" id="exampleModalLabel">{modal.nome}</h5>
+                            </div>
+                            <div className="modal-body">
+                                {modal.resumo===null ? "Este conteúdo não está disponível no momento!" : modal.resumo}
+                            </div>
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
+
     );
 };
