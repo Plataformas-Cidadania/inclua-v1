@@ -201,6 +201,12 @@
     {{--<script src="js/components/forms/compartilhe.js"></script>--}}
 @endif
 
+@if($rota=="curadoria")
+    <script src="js/components/curadoria/page.js"></script>
+    {{--<script src="js/components/recursos/item.js"></script>--}}
+    <script src="js/components/curadoria/index.js"></script>
+@endif
+
 
 
 <script>
