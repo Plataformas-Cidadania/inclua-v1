@@ -85,6 +85,7 @@ Route::get('/resultado', [ResultadoController::class , 'listar']);
 Route::get('/imprimir', [ResultadoController::class , 'print']);
 
 Route::get('/guias', [GuiaController::class , 'listar']);
+Route::get('/curadoria', [CuradoriaController::class , 'listar']);
 
 
 $routes = [

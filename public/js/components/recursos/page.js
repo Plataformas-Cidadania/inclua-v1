@@ -96,6 +96,10 @@ const Page = () => {
   };
 
   const handleSearch = async e => {
+    if (e.target.value === "") {
+      Recurso();
+    }
+
     setSearchBox(true);
     setNEncontado(false);
     const search = e.target.value ? e.target.value : ' ';
