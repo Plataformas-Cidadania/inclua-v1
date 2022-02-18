@@ -58,7 +58,7 @@ const Nota = props => {
     className: "box-items bg-lgt"
   }, /*#__PURE__*/React.createElement("p", {
     className: "mb-3"
-  }, /*#__PURE__*/React.createElement("strong", null, "(", props.id, ")P", context.dimensao.numero, ".", context.indicador.numero, props.letra), " ", props.descricao), /*#__PURE__*/React.createElement("p", null, props.legenda), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("strong", null, "P", context.dimensao.numero, ".", context.indicador.numero, props.letra), " ", props.descricao), /*#__PURE__*/React.createElement("p", null, props.legenda), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
     className: "range-merker",
     style: {
       width: '113%',

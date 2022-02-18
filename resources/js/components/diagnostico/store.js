@@ -190,7 +190,7 @@ const DiagnosticoProvider = ({children}) => {
         }
 
         //DIAGNÓSTICO COMPLETO
-        if(tipo === 1){
+        if(parseInt(tipo) === 1){
             console.log('Validar Diagnóstico Completo');
             dimensoes.forEach((d) => {
                 //if(d.id_dimensao === dimensao.id_dimensao){
@@ -201,11 +201,12 @@ const DiagnosticoProvider = ({children}) => {
                         console.log(d.numero, i.numero, p.id_pergunta, p.letra, p.id_perguntaPai, p.resposta);
                         console.log(p);
                         if(p.resposta === undefined && p.id_perguntaPai === null){
-                            console.log('inválido', p);
+                            console.log('Completo Pergunta não respondida', p);
                             valid = false;
                         }
                         p.perguntas.forEach((sp) => {
                             if(sp.resposta === undefined && p.resposta > 0){
+                                console.log('Completo Subpergunta não respondida', sp);
                                 valid = false;
                             }
                         });
@@ -219,7 +220,7 @@ const DiagnosticoProvider = ({children}) => {
         }
 
         //DIAGNÓSTICO PARCIAL
-        if(tipo === 2){
+        if(parseInt(tipo) === 2){
             console.log('Validar Diagnóstico Parcial');
             let dimensoesComRespostas = getDimensoesComRespostas(respostas);
 
@@ -232,11 +233,12 @@ const DiagnosticoProvider = ({children}) => {
                             console.log(d.numero, i.numero, p.id_pergunta, p.letra, p.id_perguntaPai, p.resposta);
                             console.log(p);
                             if(p.resposta === undefined && p.id_perguntaPai === null){
-                                console.log('inválido', p);
+                                console.log('Completo Pergunta não respondida', p);
                                 valid = false;
                             }
                             p.perguntas.forEach((sp) => {
                                 if(sp.resposta === undefined && p.resposta > 0){
+                                    console.log('Completo Subpergunta não respondida', sp);
                                     valid = false;
                                 }
                             });

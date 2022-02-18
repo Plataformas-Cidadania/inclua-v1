@@ -495,3 +495,23 @@ Route::group([
         ->name('api.categoria_diagnostico.destroy');
 
 });
+
+Route::group([
+    'prefix' => 'curador',
+], function () {
+
+    Route::get('/', [App\Http\Controllers\Api\CuradorController::class, 'getAll'])
+        ->name('api.curador.getAll');
+
+    Route::get('/{curador}',[App\Http\Controllers\Api\CuradorController::class, 'get'])
+        ->name('api.curador.get');
+
+    Route::post('/', [App\Http\Controllers\Api\CuradorController::class, 'store'])
+        ->name('api.curador.store');
+
+    Route::put('/{curador}', [App\Http\Controllers\Api\CuradorController::class, 'update'])
+        ->name('api.curador.update');
+
+    Route::delete('/{curador}',[App\Http\Controllers\Api\CuradorController::class, 'destroy'])
+        ->name('api.curador.destroy');
+});

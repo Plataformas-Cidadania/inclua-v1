@@ -44,7 +44,7 @@ const Range = props => {
     className: "box-items bg-lgt"
   }, /*#__PURE__*/React.createElement("p", {
     className: "mb-3"
-  }, /*#__PURE__*/React.createElement("strong", null, "(", props.id, ")P", context.dimensao.dimensao, ".", context.indicador.indicador, props.letra), " ", props.descricao), /*#__PURE__*/React.createElement("p", null, props.legenda), props.naoSeAplica ? /*#__PURE__*/React.createElement("li", {
+  }, /*#__PURE__*/React.createElement("strong", null, "P", context.dimensao.dimensao, ".", context.indicador.indicador, props.letra), " ", props.descricao), /*#__PURE__*/React.createElement("p", null, props.legenda), props.naoSeAplica ? /*#__PURE__*/React.createElement("li", {
     onClick: () => selectResposta(null)
   }, /*#__PURE__*/React.createElement("div", {
     className: resposta === null ? props.bgColor : ''
