@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Models\Categoria;
 use App\Models\Diagnostico;
 use App\Models\Dimensao;
+use App\Models\Recurso;
 use App\Models\Resposta;
+use App\Repository\CategoriaDiagnosticoRepository;
 use App\Repository\DiagnosticoRepository;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Exception;
 
@@ -49,7 +53,6 @@ class DiagnosticoController extends Controller
             //Teste
             $dimensao = Dimensao::find($id_dimensao);
             $diagnostico = $this->repo->getDiagnostico($id_diagnostico);
-
 
             $indicadores = $dimensao->indicadores;
             $vet_res_indicadores = [];
@@ -95,6 +98,23 @@ class DiagnosticoController extends Controller
                 else {
                     $risco = 'Moderado';
                 }
+
+
+                $catDiagRepo = (new CategoriaDiagnosticoRepository(app('App\Models\CategoriaDiagnostico')));
+                $categorias = (new CategoriaDiagnosticoController($catDiagRepo))->getAllCategoriaPorDiagnostico($id_diagnostico);
+                $arrayCategorias = $categorias->getData()->data;
+                $arrayCategorias = array_column($arrayCategorias, 'id_categoria');
+
+                if(!empty($arrayCategorias)){
+                    $recursosCategoria = Recurso::join('avaliacao.categorizacao','recurso.id_recurso','=','categorizacao.id_recurso')
+                    ->join('avaliacao.indicacao','recurso.id_recurso','=','indicacao.id_recurso')
+                    ->whereIn('id_categoria', $arrayCategorias)
+                    ->where('indicacao.id_indicador','=',$indicador->id_indicador)
+                    ->get();
+                }else{
+                    $recursosCategoria = $indicador->recursos;
+                }
+
                 $item = [
                     'numero'=> $indicador->numero,
                     'titulo'=> $indicador->titulo,
@@ -118,11 +138,18 @@ class DiagnosticoController extends Controller
                             'data'=> [$percBaixo]
                         ]
                     ],
-                    'recursos' => $indicador->recursos->where('id_categoria', '=', '1'),
-                    // FILTAR POR CATEGORIAS
+                    'recursos' => $recursosCategoria,
                 ];
+
+
                 array_push($vet_res_indicadores, $item);
             }
+
+           /* $res = Categoria::findOrFail($id_categoria);
+            $list = [];
+            foreach ($res->categorizacao as $cat){
+                array_push($list,$cat->recurso);
+            }*/
 
             $risco='';
             if ($pontuacao_dimensao <= $dimensao->vl_alto) {

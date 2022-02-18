@@ -43,7 +43,7 @@ class CategoriaDiagnosticoRepository extends BaseRepository
 
     public function getAllByIdDiagnostico($id_diagnostico)
     {
-        $res = CategoriaDiagnostico::where('id_diagnostico', '=', $id_diagnostico)
+        $res = CategoriaDiagnostico::where('id_diagnostico', '=', $id_diagnostico)->select('id_categoria')
             ->get();
         if (!$res) throw new \Illuminate\Database\Eloquent\ModelNotFoundException;
         else return $res;
