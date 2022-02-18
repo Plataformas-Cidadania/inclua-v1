@@ -52,11 +52,17 @@ class RespostaController extends Controller
         $catDiagRepo = (new CategoriaDiagnosticoRepository(app('App\Models\CategoriaDiagnostico')));
         try {
             $data = $request->all();
-            $payload= array("oferta_publica"=>$data['diagnostico']['ofertaPublica'],
-                "grupo_focal"=>$data['diagnostico']['grupos']);
+            $payload= array("oferta_publica"=>$data['diagnostico']['oferta_publica'],
+                "grupo_focal"=>$data['diagnostico']['grupo_focal'],
+                "tipo_diagnostico"=>$data['diagnostico']['tipo_diagnostico']);
             $diagnostico_id = (new DiagnosticoController($diagRepo))->store($payload);
             $respostas = $data['respostas'];
-            $categorias = $data['categorias'];
+
+            if(isset($data['categorias']))
+                $categorias = $data['categorias'];
+            else
+                $categorias = null;
+
             (new CategoriaDiagnosticoController($catDiagRepo))->simpleStoreMany($diagnostico_id,$categorias);
             $res = $this->repo->storeMany($diagnostico_id,$respostas);
             return $this->successResponse(
