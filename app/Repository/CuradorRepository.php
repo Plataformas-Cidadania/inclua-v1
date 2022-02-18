@@ -2,21 +2,21 @@
 
 namespace App\Repository;
 
-use App\Models\Autor;
+use App\Models\Curador;
 
-class AutorRepository extends BaseRepository
+class CuradorRepository extends BaseRepository
 {
     /**
-     * @var Autor
+     * @var Curador
      */
     protected $model;
 
     /**
      * CuradorRepository constructor.
      *
-     * @param Autor $model
+     * @param Curador $model
      */
-    public function __construct(Autor $model)
+    public function __construct(Curador $model)
     {
         $this->model = $model;
     }
