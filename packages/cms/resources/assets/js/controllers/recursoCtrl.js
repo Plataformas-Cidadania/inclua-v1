@@ -322,7 +322,7 @@ cmsApp.controller('recursoCtrl', ['$scope', '$http', 'Upload', '$timeout', funct
             $scope.listarIndicacoes();
             $scope.mensagemInserirIndicacao =  "Gravado com sucesso!";
             $scope.processandoInserirIndicacao = false;
-            $scope.indicacao = {};
+            //$scope.indicacao = {};
         }).error(function(data){
             $scope.mensagemInserirIndicacao = "Ocorreu um erro!";
             $scope.processandoInserirIndicacao = false;
@@ -440,7 +440,7 @@ cmsApp.controller('recursoCtrl', ['$scope', '$http', 'Upload', '$timeout', funct
             $scope.listarCategorizacoes();
             $scope.mensagemInserirCategorizacao =  "Gravado com sucesso!";
             $scope.processandoInserirCategorizacao = false;
-            $scope.categorizacao = {};
+            //$scope.categorizacao = {};
         }).error(function(data){
             $scope.mensagemInserirCategorizacao = "Ocorreu um erro!";
             $scope.processandoInserirCategorizacao = false;

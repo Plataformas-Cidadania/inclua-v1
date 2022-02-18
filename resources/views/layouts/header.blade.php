@@ -132,6 +132,7 @@
                                 <li role="presentation"><a href="" accesskey="h" @if($rota=='/') class="corrente" @endif>Início</a></li>
                                 <li role="presentation"><a href="pre-diagnostico" >Diagnóstico</a></li>
                                 <li role="presentation"><a href="recursos" >Biblioteca</a></li>
+                                <li role="presentation"><a href="curadoria" >Curadoria</a></li>
                                 <li role="presentation"><a href="contribua"  @if($rota=='contribua') class="corrente" @endif>Interaja</a></li>
                                 <li role="presentation"><a href="sobre" accesskey="q" @if($rota=='sobre') class="corrente" @endif>Sobre</a></li>
                                 <li role="presentation"><a href="contato" accesskey="c" @if($rota=='quem') class="contato" @endif>Contato</a></li>
@@ -154,7 +155,7 @@
     @if($rota=='/')
         <div class="owl-carousel owl-theme">
             @foreach($webdoors as $webdoor)
-                <a href="{{$webdoor->link}}">
+                <a href="{{$webdoor->link}}" target={{$webdoor->link_target===0 ? '' : '_blank'}}>
                     <picture>
                         <source class="owl-lazy" media="(min-width: 350px)" data-srcset="imagens/webdoors/lg-{{$webdoor->imagem}}">
                         <source class="owl-lazy" media="(min-width: 650px)" data-srcset="imagens/webdoors/md-{{$webdoor->imagem}}">

@@ -13,6 +13,14 @@
 {!! Form::label('posicao', 'Posição ') !!}<br>
 {!! Form::text('posicao', null, ['class'=>"form-control width-pequeno <% validar(webdoor.posicao) %>", 'ng-model'=>'webdoor.posicao', 'init-model'=>'webdoor.posicao', 'placeholder' => '']) !!}<br>
 
+{!! Form::label('link_target', 'Tipo de link') !!}<br>
+{!! Form::select('link_target',
+        array(
+            '0' => 'Interno',
+            '1' => 'Externo',
+        ),
+null, ['class'=>"form-control width-medio <% validar(webdoor.link_target) %>", 'ng-model'=>'webdoor.link_target', 'init-model'=>'webdoor.link_target', 'placeholder' => 'Sem Tipo']) !!}<br>
+
 
 
 
