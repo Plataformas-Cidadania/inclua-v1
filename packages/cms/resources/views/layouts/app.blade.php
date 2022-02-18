@@ -118,6 +118,9 @@
                     <a href="cms/recursos"><i class="fa fa-fw fa-link"></i> Recursos</a>
                 </li>
                 <li>
+                    <a href="cms/curadores"><i class="fa fa-fw fa-link"></i> Curadores</a>
+                </li>
+                <li>
                     <a href="cms/perguntas-relate"><i class="fa fa-fw fa-link"></i> Perguntas (Relate)</a>
                 </li>
                 <li>

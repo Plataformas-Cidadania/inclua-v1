@@ -179,4 +179,8 @@ mix.scripts('packages/cms/resources/assets/js/controllers/alterarDepoimentoCtrl.
 mix.scripts('packages/cms/resources/assets/js/controllers/curadoriaCtrl.js', 'public/assets-cms/js/controllers/curadoriaCtrl.js');
 mix.scripts('packages/cms/resources/assets/js/controllers/alterarCuradoriaCtrl.js', 'public/assets-cms/js/controllers/alterarCuradoriaCtrl.js');
 
+//Curadores
+mix.scripts('packages/cms/resources/assets/js/controllers/curadorCtrl.js', 'public/assets-cms/js/controllers/curadorCtrl.js');
+mix.scripts('packages/cms/resources/assets/js/controllers/alterarCuradorCtrl.js', 'public/assets-cms/js/controllers/alterarCuradorCtrl.js');
+
 //FIM CMS///////////////////////////////////////////////////////////////////

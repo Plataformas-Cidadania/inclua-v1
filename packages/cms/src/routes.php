@@ -236,6 +236,10 @@ Route::group(['middleware' => 'cms'], function () {
         Route::get('/cms/depoimentos', 'Cms\Controllers\DepoimentoController@index');
         Route::get('/cms/depoimento/{id}', 'Cms\Controllers\DepoimentoController@detalhar');
 
+        //Curador
+        Route::get('/cms/curadores', 'Cms\Controllers\CuradorController@index');
+        Route::get('/cms/curador/{id}', 'Cms\Controllers\CuradorController@detalhar');
+
         ////////////////////////////////////////////////////////////////////////////////////
 
 
