@@ -40,6 +40,19 @@ const Page = () => {
                             curadorias.map((item, key) => {
                                 return (
                                     <div>
+                                        <h2>O diagnóstico visa identificar e avaliar riscos de desatenção</h2>
+                                        <p>O diagnóstico visa identificar e avaliar riscos de desatenção, tratamento inadequado e exclusão de segmentos específicos do público atendido. Muitas vezes, esses riscos não são suficientemente bem conhecidos.</p>
+                                        <div className="row">
+                                            <div className="col-md-3">
+                                                <img src="https://www.influx.com.br/wp-content/uploads/2014/12/business-623x510.jpg" alt="" width="90%"/>
+                                            </div>
+                                            <div className="col-md-9">
+                                                <h2>Fernando lima</h2>
+                                                <p>O diagnóstico visa identificar e avaliar riscos de desatenção, tratamento inadequado e exclusão de segmentos específicos do público atendido. Muitas vezes, esses riscos não são suficientemente bem conhecidos.</p>
+                                            </div>
+
+                                        </div>
+                                        <br/><hr/><br/>
 
                                     </div>
                                 );
