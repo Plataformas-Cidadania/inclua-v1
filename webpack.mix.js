@@ -171,8 +171,12 @@ mix.scripts('packages/cms/resources/assets/js/controllers/alterarPerguntaRelateC
 mix.scripts('packages/cms/resources/assets/js/controllers/respostaRelateCtrl.js', 'public/assets-cms/js/controllers/respostaRelateCtrl.js');
 mix.scripts('packages/cms/resources/assets/js/controllers/alterarRespostaRelateCtrl.js', 'public/assets-cms/js/controllers/alterarRespostaRelateCtrl.js');
 
-//Perguntas Depoimento
+//Depoimento
 mix.scripts('packages/cms/resources/assets/js/controllers/depoimentoCtrl.js', 'public/assets-cms/js/controllers/depoimentoCtrl.js');
 mix.scripts('packages/cms/resources/assets/js/controllers/alterarDepoimentoCtrl.js', 'public/assets-cms/js/controllers/alterarDepoimentoCtrl.js');
+
+//Curadoria
+mix.scripts('packages/cms/resources/assets/js/controllers/curadoriaCtrl.js', 'public/assets-cms/js/controllers/curadoriaCtrl.js');
+mix.scripts('packages/cms/resources/assets/js/controllers/alterarCuradoriaCtrl.js', 'public/assets-cms/js/controllers/alterarCuradoriaCtrl.js');
 
 //FIM CMS///////////////////////////////////////////////////////////////////
