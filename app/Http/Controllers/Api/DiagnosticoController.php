@@ -166,6 +166,7 @@ class DiagnosticoController extends Controller
                 'id_diagnostico' => $id_diagnostico,
                 'oferta_publica' => $diagnostico->oferta_publica,
                 'grupo_focal' => $diagnostico->grupo_focal,
+                'tipo_diagnostico' => $diagnostico->tipo_diagnostico,
                 'titulo' => $dimensao->titulo,
                 'risco' => $risco,
                 'pontos' => $pontuacao_dimensao,
