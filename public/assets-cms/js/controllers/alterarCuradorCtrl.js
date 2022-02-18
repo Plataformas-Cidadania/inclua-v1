@@ -17,10 +17,11 @@ cmsApp.controller('alterarCuradorCtrl', ['$scope', '$http', 'Upload', '$timeout'
     $scope.removerImagem = false;
 
 
+
     $scope.detalhar = function(id){
         $scope.processandoDetalhar = true;
         $http({
-            url: 'api/curadores/'+id,
+            url: 'api/curador/'+id,
             method: 'GET',
             params: {
 
@@ -45,7 +46,7 @@ cmsApp.controller('alterarCuradorCtrl', ['$scope', '$http', 'Upload', '$timeout'
         if(file==null){
 
             $scope.processandoSalvar = true;
-            $http.put("api/curadores/"+$scope.id, $scope.curador).success(function (data){
+            $http.put("api/curador/"+$scope.id, $scope.curador).success(function (data){
                 //console.log(data);
                 $scope.processandoSalvar = false;
                 $scope.mensagemSalvar = data.message;

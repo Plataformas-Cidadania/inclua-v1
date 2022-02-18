@@ -58,7 +58,7 @@ cmsApp.controller('curadorCtrl', ['$scope', '$http', 'Upload', '$timeout', funct
     var listarCuradores = function(){
         $scope.processandoListagem = true;
         $http({
-            url: 'api/curadores',
+            url: 'api/curador',
             method: 'GET',
             params: {
                 page: $scope.currentPage,
@@ -120,7 +120,7 @@ cmsApp.controller('curadorCtrl', ['$scope', '$http', 'Upload', '$timeout', funct
 
         if(file==null && arquivo==null){
             $scope.processandoInserir = true;
-            $http.post("api/curadores", $scope.curador).success(function (data){
+            $http.post("api/curador", $scope.curador).success(function (data){
                  listarCuradores();
                  //delete $scope.curador;//limpa o form
                 $scope.curador = {};//limpa o form
@@ -162,6 +162,8 @@ cmsApp.controller('curadorCtrl', ['$scope', '$http', 'Upload', '$timeout', funct
 
     };
 
+
+
     $scope.limparImagem = function(){
         delete $scope.picFile;
         $scope.form.file.$error.maxSize = false;
@@ -188,7 +190,7 @@ cmsApp.controller('curadorCtrl', ['$scope', '$http', 'Upload', '$timeout', funct
     $scope.excluir = function(id){
         $scope.processandoExcluir = true;
         $http({
-            url: 'api/curadores/'+id,
+            url: 'api/curador/'+id,
             method: 'DELETE'
         }).success(function(data, status, headers, config){
             console.log(data);
