@@ -220,7 +220,7 @@ const DiagnosticoProvider = ({
 
             p.perguntas.forEach(sp => {
               if (sp.resposta === undefined && p.resposta > 0) {
-                console.log('Completo Subpergunta não respondida', p);
+                console.log('Completo Subpergunta não respondida', sp);
                 valid = false;
               }
             });
@@ -251,7 +251,7 @@ const DiagnosticoProvider = ({
 
               p.perguntas.forEach(sp => {
                 if (sp.resposta === undefined && p.resposta > 0) {
-                  console.log('Completo Subpergunta não respondida', p);
+                  console.log('Completo Subpergunta não respondida', sp);
                   valid = false;
                 }
               });
