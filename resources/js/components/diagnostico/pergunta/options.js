@@ -29,7 +29,7 @@ const Options = (props) => {
 
     return (
         <div className="box-items bg-lgt">
-            <p className="mb-3"><strong>({props.id})P{context.dimensao.numero}.{context.indicador.numero}{props.letra}</strong> {props.descricao}</p>
+            <p className="mb-3"><strong>P{context.dimensao.numero}.{context.indicador.numero}{props.letra}</strong> {props.descricao}</p>
             <p>{props.legenda}</p>
             <ul className="radio">
                 {
