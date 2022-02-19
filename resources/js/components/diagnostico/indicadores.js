@@ -11,6 +11,7 @@ const Indicadores = () => {
     const circleOpen = <i className="far fa-circle tx-pri"/>;
 
     useEffect(() => {
+        window.scrollTo(0, 1000);
         setDimensao(context.dimensao.numero);
         if(context.indicador){
             setIndicador(context.indicador.numero);

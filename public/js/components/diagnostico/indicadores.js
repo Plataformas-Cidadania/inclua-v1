@@ -15,6 +15,7 @@ const Indicadores = () => {
     className: "far fa-circle tx-pri"
   });
   useEffect(() => {
+    window.scrollTo(0, 1000);
     setDimensao(context.dimensao.numero);
 
     if (context.indicador) {
