@@ -129,7 +129,7 @@ const Item = props => {
     "aria-labelledby": "exampleModalLabel",
     "aria-hidden": "true"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "modal-dialog"
+    className: "modal-dialog modal-lg"
   }, /*#__PURE__*/React.createElement("div", {
     className: "modal-content"
   }, /*#__PURE__*/React.createElement("div", {
