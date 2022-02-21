@@ -1,5 +1,5 @@
 <!-- Modal Indicação-->
-<div class="modal fade" id="modalcuradoria_recurso" role="dialog">
+<div class="modal fade" id="modalCuradoriaRecurso" role="dialog">
     <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
@@ -9,14 +9,14 @@
             </div>
             <div class="modal-body">
                 <form action="frmcuradoria_recurso">
-                    <label for="categoria">Categoria</label>
+                    <label for="recurso">Recurso</label>
                     <select
-                        name="id_categoria"
+                        name="id_recurso"
                         class="form-control width-grande"
-                        ng-model="categoria"
-                        ng-init="categoria = null"
+                        ng-model="recurso"
+                        ng-init="recurso = null"
                         ng-required="true"
-                        ng-options="option.nome for option in categorias track by option.id_categoria"
+                        ng-options="option.nome for option in recursos track by option.id_recurso"
                         placeholder="Selecione"
                     >
                         <option value="" ng-disabled="!!curadoria_recurso.id_categoria">Selecione</option>

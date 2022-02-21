@@ -68,9 +68,9 @@ cmsApp.controller('curadoriaCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
         }).success(function(data, status, headers, config){
             //console.log(data.data);
             $scope.curadorias = data.data;
-            /*$scope.lastPage = pesquisa ? 1 : data.last_page;
-            $scope.totalItens = pesquisa ? data.data.length : data.total;
-            $scope.primeiroDaPagina = pesquisa ? 1 : data.from;
+            //$scope.lastPage = pesquisa ? 1 : data.last_page;
+            $scope.totalItens = data.data.length;
+            /*$scope.primeiroDaPagina = pesquisa ? 1 : data.from;
             $scope.ultimoDaPagina = pesquisa ? 1 : data.to;*/
             $listar = true;
             console.log($scope.curadorias);
@@ -80,6 +80,7 @@ cmsApp.controller('curadoriaCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
             $scope.processandoListagem = false;
         });
     };
+
 
 
     $scope.ordernarPor = function(ordem){
@@ -225,13 +226,12 @@ cmsApp.controller('curadoriaCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
     $scope.categoria = null;
     $scope.recursoCuradoria = [];
     $scope.totalRecursoCuradoria = 0;
-    $scope.processandoDimensoes = false;
-    $scope.processandoCategorias = false;
+    $scope.processandoRecursos = false;
     $scope.processandoInserircuradoria_recurso = false;
     $scope.processandoListagemRecursoCuradoria = false;
 
     $scope.listarRecursos = function(){
-        $scope.processandoCategorias = true;
+        $scope.processandoRecursos = true;
         $http({
             url: 'api/recurso',
             method: 'GET',
@@ -240,19 +240,19 @@ cmsApp.controller('curadoriaCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
             }
         }).success(function(data, status, headers, config){
             //console.log(data.data);
-            $scope.categorias = data.data;
-            $scope.processandoCategorias = false;
+            $scope.recursos = data.data;
+            $scope.processandoRecursos = false;
         }).error(function(data){
             $scope.message = "Ocorreu um erro: "+data;
-            $scope.processandoCategorias = false;
+            $scope.processandoRecursos = false;
         });
     }
 
-    $scope.getCategoria = function(id_categoria){
-        let categoria = $scope.categorias.find(function(item){
-            return item.id_categoria === id_categoria;
+    $scope.getRecursos = function(id_recurso){
+        let recurso = $scope.recursos.find(function(item){
+            return item.id_recurso === id_recurso;
         });
-        return categoria.nome;
+        return recurso.nome;
     }
 
     $scope.getCuradoria = function(id_curadoria){
@@ -262,10 +262,11 @@ cmsApp.controller('curadoriaCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
         return curadoria.nome;
     }
 
-    $scope.modalcuradoria_recurso = function (id, titulo){
+
+    $scope.modalCuradoriaRecurso = function (id, titulo){
         $scope.curadoria_recurso.id_curadoria = id;
         $scope.titulocuradoria_recurso = titulo;
-        $scope.listarCategorias();
+        $scope.listarRecursos();
         $scope.listarRecursoCuradoria();
     }
 
