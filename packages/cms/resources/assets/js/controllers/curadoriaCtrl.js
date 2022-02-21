@@ -1,21 +1,18 @@
 cmsApp.controller('curadoriaCtrl', ['$scope', '$http', 'Upload', '$timeout', function($scope, $http, Upload, $timeout){
 
-
     $scope.curadoria = {
     };
     $scope.curadorias = [];
-    $scope.tipos = [];
-    $scope.tipo = null;
-    $scope.formatos = [];
-    $scope.formato = null;
+    $scope.curadores = [];
+    $scope.curador = null;
     $scope.currentPage = 1;
     $scope.lastPage = 0;
     $scope.totalItens = 0;
     $scope.maxSize = 5;
     $scope.itensPerPage = 10;
     $scope.dadoPesquisa = '';
-    $scope.campos = "id_curadoria, nome";
-    $scope.campoPesquisa = "titulo";
+    $scope.campos = "id_curadoria, tema_recorte, mes";
+    $scope.campoPesquisa = "tema_recorte";
     $scope.processandoListagem = false;
     $scope.processandoExcluir = false;
     $scope.ordem = "id_curadoria";
@@ -40,34 +37,15 @@ cmsApp.controller('curadoriaCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
         }
     });
 
-    var listarTipos = function(){
-        $scope.processandoListagem = true;
+    $scope.listarCuradores = function(){
         $http({
-            url: 'api/tipo_curadoria',
+            url: 'api/curador',
             method: 'GET',
             params: {
 
             }
         }).success(function(data, status, headers, config){
-            //console.log(data.data);
-            $scope.tipos = data.data;
-        }).error(function(data){
-            $scope.message = "Ocorreu um erro: "+data;
-        });
-    }
-
-
-    var listarFormatos = function(){
-        $scope.processandoListagem = true;
-        $http({
-            url: 'api/formatocuradoria',
-            method: 'GET',
-            params: {
-
-            }
-        }).success(function(data, status, headers, config){
-            //console.log(data.data);
-            $scope.formatos = data.data;
+            $scope.curadores = data.data;
         }).error(function(data){
             $scope.message = "Ocorreu um erro: "+data;
         });
@@ -75,14 +53,8 @@ cmsApp.controller('curadoriaCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
 
     var listarCuradorias = function(){
         $scope.processandoListagem = true;
-        let pesquisa = false;
-        let url = 'api/curadoria/paginado/'+$scope.itensPerPage+'?page='+$scope.currentPage;
-        if($scope.dadoPesquisa){
-            pesquisa = true;
-            url = 'api/busca_curadorias/palavra_chave/'+$scope.dadoPesquisa;
-        }
         $http({
-            url: url,
+            url: 'api/curadoria/',
             method: 'GET',
             params: {
                 /*page: $scope.currentPage,
@@ -96,10 +68,10 @@ cmsApp.controller('curadoriaCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
         }).success(function(data, status, headers, config){
             //console.log(data.data);
             $scope.curadorias = data.data;
-            $scope.lastPage = pesquisa ? 1 : data.last_page;
+            /*$scope.lastPage = pesquisa ? 1 : data.last_page;
             $scope.totalItens = pesquisa ? data.data.length : data.total;
             $scope.primeiroDaPagina = pesquisa ? 1 : data.from;
-            $scope.ultimoDaPagina = pesquisa ? 1 : data.to;
+            $scope.ultimoDaPagina = pesquisa ? 1 : data.to;*/
             $listar = true;
             console.log($scope.curadorias);
             $scope.processandoListagem = false;
@@ -128,8 +100,7 @@ cmsApp.controller('curadoriaCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
 
 
     listarCuradorias();
-    listarTipos();
-    listarFormatos();
+    $scope.listarCuradores();
 
     //INSERIR/////////////////////////////
 
@@ -141,16 +112,7 @@ cmsApp.controller('curadoriaCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
 
         $scope.mensagemInserir = "";
 
-        let date = new Date();
-        $scope.curadoria.ultimo_acesso = date.getFullYear()+"-"+
-            ((date.getMonth()+1).toString().padStart(2, "0"))+"-"+
-            (date.getDate().toString().padStart(2, "0"))+" "+
-            (date.getHours().toString().padStart(2, "0"))+":"+
-            (date.getMinutes().toString().padStart(2, "0"))+":"+
-            (date.getSeconds().toString().padStart(2, "0"));
-
-        $scope.curadoria.id_tipo_curadoria = $scope.tipo.id_tipo_curadoria;
-        $scope.curadoria.id_formato = $scope.formato.id_formato;
+        $scope.curadoria.id_curador = $scope.curador.id_curador;
 
         //console.log($scope.curadoria);
 
@@ -257,15 +219,15 @@ cmsApp.controller('curadoriaCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
         });
     }
 
-    //CATEGORIZAÇÃO////////////////////////////////////
-    $scope.recurso_categoria = {};
+    //Curadoria Recurso////////////////////////////////////
+    $scope.curadoria_recurso = {};
     $scope.dimensao = null;
     $scope.categoria = null;
     $scope.recursoCuradoria = [];
     $scope.totalRecursoCuradoria = 0;
     $scope.processandoDimensoes = false;
     $scope.processandoCategorias = false;
-    $scope.processandoInserirRecurso_categoria = false;
+    $scope.processandoInserircuradoria_recurso = false;
     $scope.processandoListagemRecursoCuradoria = false;
 
     $scope.listarRecursos = function(){
@@ -300,33 +262,33 @@ cmsApp.controller('curadoriaCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
         return curadoria.nome;
     }
 
-    $scope.modalRecurso_categoria = function (id, titulo){
-        $scope.recurso_categoria.id_curadoria = id;
-        $scope.tituloRecurso_categoria = titulo;
+    $scope.modalcuradoria_recurso = function (id, titulo){
+        $scope.curadoria_recurso.id_curadoria = id;
+        $scope.titulocuradoria_recurso = titulo;
         $scope.listarCategorias();
         $scope.listarRecursoCuradoria();
     }
 
-    $scope.inserirRecurso_categoria = function(){
-        console.log($scope.recurso_categoria);
-        $scope.processandoInserirRecurso_categoria= true;
-        $scope.mensagemInserirRecurso_categoria = "";
-        $scope.recurso_categoria.id_categoria = $scope.categoria.id_categoria;
-        $http.post("api/recurso_categoria", $scope.recurso_categoria).success(function (data){
+    $scope.inserircuradoria_recurso = function(){
+        console.log($scope.curadoria_recurso);
+        $scope.processandoInserircuradoria_recurso= true;
+        $scope.mensagemInserircuradoria_recurso = "";
+        $scope.curadoria_recurso.id_categoria = $scope.categoria.id_categoria;
+        $http.post("api/curadoria_recurso", $scope.curadoria_recurso).success(function (data){
             $scope.listarRecursoCuradoria();
-            $scope.mensagemInserirRecurso_categoria =  "Gravado com sucesso!";
-            $scope.processandoInserirRecurso_categoria = false;
-            //$scope.recurso_categoria = {};
+            $scope.mensagemInserircuradoria_recurso =  "Gravado com sucesso!";
+            $scope.processandoInserircuradoria_recurso = false;
+            //$scope.curadoria_recurso = {};
         }).error(function(data){
-            $scope.mensagemInserirRecurso_categoria = "Ocorreu um erro!";
-            $scope.processandoInserirRecurso_categoria = false;
+            $scope.mensagemInserircuradoria_recurso = "Ocorreu um erro!";
+            $scope.processandoInserircuradoria_recurso = false;
         });
     }
 
     $scope.listarRecursoCuradoria = function(){
         $scope.processandoListagemRecursoCuradoria = true;
         $http({
-            url: 'api/recurso_categoria/'+$scope.recurso_categoria.id_curadoria,
+            url: 'api/curadoria_recurso/'+$scope.curadoria_recurso.id_curadoria,
             method: 'GET',
             params: {
 
@@ -341,35 +303,35 @@ cmsApp.controller('curadoriaCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
         });
     }
 
-    $scope.perguntaExcluirRecurso_categoria = function (idCategoria, idCuradoria, titulo){
-        $scope.idExcluirRecurso_categoriaCategoria = idCategoria;
-        $scope.idExcluirRecurso_categoriaCuradoria = idCuradoria;
-        $scope.tituloExcluirRecurso_categoria = titulo;
-        $scope.excluidoRecurso_categoria = false;
-        $scope.mensagemExcluidoRecurso_categoria = "";
+    $scope.perguntaExcluircuradoria_recurso = function (idCategoria, idCuradoria, titulo){
+        $scope.idExcluircuradoria_curadoriaRecurso = idCategoria;
+        $scope.idExcluircuradoria_recursoCuradoria = idCuradoria;
+        $scope.tituloExcluircuradoria_recurso = titulo;
+        $scope.excluidocuradoria_recurso = false;
+        $scope.mensagemExcluidocuradoria_recurso = "";
     }
 
-    $scope.excluirRecurso_categoria = function(idCategoria, idCuradoria){
-        $scope.processandoExcluirRecurso_categoria = true;
+    $scope.excluircuradoria_recurso = function(idCategoria, idCuradoria){
+        $scope.processandoExcluircuradoria_recurso = true;
         $http({
-            url: 'api/recurso_categoria/'+idCategoria+'/'+idCuradoria,
+            url: 'api/curadoria_recurso/'+idCategoria+'/'+idCuradoria,
             method: 'DELETE'
         }).success(function(data, status, headers, config){
             console.log(data);
             if(data.success){
-                $scope.processandoExcluirRecurso_categoria = false;
-                $scope.excluidoRecurso_categoria = true;
-                $scope.mensagemExcluidoRecurso_categoria = data.message;
+                $scope.processandoExcluircuradoria_recurso = false;
+                $scope.excluidocuradoria_recurso = true;
+                $scope.mensagemExcluidocuradoria_recurso = data.message;
                 $scope.listarRecursoCuradoria();
                 return;
             }
-            $scope.processandoExcluirRecurso_categoria = false;
-            $scope.excluidoRecurso_categoria = false;
-            $scope.mensagemExcluidoRecurso_categoria = data.message;
+            $scope.processandoExcluircuradoria_recurso = false;
+            $scope.excluidocuradoria_recurso = false;
+            $scope.mensagemExcluidocuradoria_recurso = data.message;
         }).error(function(data){
             $scope.message = "Ocorreu um erro: "+data;
-            $scope.processandoExcluirRecurso_categoria = false;
-            $scope.mensagemExcluidoRecurso_categoria = "Erro ao tentar excluir!";
+            $scope.processandoExcluircuradoria_recurso = false;
+            $scope.mensagemExcluidocuradoria_recurso = "Erro ao tentar excluir!";
         });
     };
 

@@ -240,6 +240,10 @@ Route::group(['middleware' => 'cms'], function () {
         Route::get('/cms/curadores', 'Cms\Controllers\CuradorController@index');
         Route::get('/cms/curador/{id}', 'Cms\Controllers\CuradorController@detalhar');
 
+        //Curadoria
+        Route::get('/cms/curadorias', 'Cms\Controllers\CuradoriaController@index');
+        Route::get('/cms/curadoria/{id}', 'Cms\Controllers\CuradoriaController@detalhar');
+
         ////////////////////////////////////////////////////////////////////////////////////
 
 
