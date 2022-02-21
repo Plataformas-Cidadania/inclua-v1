@@ -540,6 +540,9 @@ Route::group([
     Route::get('/', [App\Http\Controllers\Api\CuradoriaRecursoController::class, 'getAll'])
         ->name('api.curadoria_recurso.getAll');
 
+    Route::get('/{id_curadoria}', [App\Http\Controllers\Api\CuradoriaRecursoController::class, 'getAllbyIdCuratoria'])
+        ->name('api.curadoria_recurso.getAllbyIdCuratoria');
+
     Route::get('/{id_curadoria}/{id_recurso}',[App\Http\Controllers\Api\CuradoriaRecursoController::class, 'get'])
         ->name('api.curadoria_recurso.get');
 
