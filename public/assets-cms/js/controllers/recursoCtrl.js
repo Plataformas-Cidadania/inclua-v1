@@ -44,7 +44,7 @@ cmsApp.controller('recursoCtrl', ['$scope', '$http', 'Upload', '$timeout', funct
 
 
     var listarTipos = function(){
-        $scope.processandoListagem = true;
+        //$scope.processandoListagem = true;
         $http({
             url: 'api/tipo_recurso',
             method: 'GET',
@@ -61,7 +61,7 @@ cmsApp.controller('recursoCtrl', ['$scope', '$http', 'Upload', '$timeout', funct
 
 
     var listarFormatos = function(){
-        $scope.processandoListagem = true;
+        //$scope.processandoListagem = true;
         $http({
             url: 'api/formatorecurso',
             method: 'GET',

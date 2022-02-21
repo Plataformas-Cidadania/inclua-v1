@@ -10,7 +10,7 @@
     <div ng-controller="curadoriaCtrl">
         <div class="box-padrao">
             <h1><i class="fa fa-curadoria" aria-hidden="true"></i>&nbsp;Curadorias</h1>
-            <button class="btn btn-primary" ng-click="mostrarForm=!mostrarForm" ng-show="!mostrarForm">Novo Curadoria</button>
+            <button class="btn btn-primary" ng-click="mostrarForm=!mostrarForm" ng-show="!mostrarForm">Nova Curadoria</button>
             <button class="btn btn-warning" ng-click="mostrarForm=!mostrarForm" ng-show="mostrarForm">Cancelar</button>
             <br><br>
             <div ng-show="mostrarForm">
@@ -166,7 +166,6 @@
         </div>
         <!-- Fim Modal Excluir-->
 
-        @include("cms::curadoria.indicacao")
-        @include("cms::curadoria.categorizacao")
+        @include("cms::curadoria.curadoria_recurso")
     </div>
 @endsection
