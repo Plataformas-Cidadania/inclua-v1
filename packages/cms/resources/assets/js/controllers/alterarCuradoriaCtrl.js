@@ -4,7 +4,7 @@ cmsApp.controller('alterarCuradoriaCtrl', ['$scope', '$http', 'Upload', '$timeou
     $scope.processandoDetalhar = false;
 
     $scope.id_curadoria = 0;
-    $scope.tipos = [];
+    $scope.curadores = [];
     $scope.formatos = [];
     $scope.tipo = null;
     $scope.formato = null;
@@ -18,41 +18,23 @@ cmsApp.controller('alterarCuradoriaCtrl', ['$scope', '$http', 'Upload', '$timeou
     $scope.removerImagem = false;
 
 
-    $scope.listarTipos = function(){
-        $scope.processandoListagem = true;
+    $scope.listarCuradores = function(){
         $http({
-            url: 'api/tipo_curadoria',
+            url: 'api/curador',
             method: 'GET',
             params: {
 
             }
         }).success(function(data, status, headers, config){
-            //console.log(data.data);
-            $scope.tipos = data.data;
-            $scope.listarFormatos();
-        }).error(function(data){
-            $scope.message = "Ocorreu um erro: "+data;
-        });
-    }
-
-    $scope.listarFormatos = function(){
-        $scope.processandoListagem = true;
-        $http({
-            url: 'api/formatocuradoria',
-            method: 'GET',
-            params: {
-
-            }
-        }).success(function(data, status, headers, config){
-            //console.log(data.data);
-            $scope.formatos = data.data;
+            $scope.curadores = data.data;
             $scope.detalhar($scope.id_curadoria);
         }).error(function(data){
             $scope.message = "Ocorreu um erro: "+data;
         });
     }
 
-    $scope.listarTipos();
+
+    $scope.listarCuradores();
 
     $scope.detalhar = function(id){
         $scope.processandoDetalhar = true;
@@ -66,14 +48,9 @@ cmsApp.controller('alterarCuradoriaCtrl', ['$scope', '$http', 'Upload', '$timeou
             $scope.curadoria = data.data;
             //console.log($scope.curadoria);
             delete $scope.curadoria.ultimo_acesso;
-            $scope.tipos.forEach(function (item){
-                if(item.id_tipo_curadoria === $scope.curadoria.id_tipo_curadoria){
-                    $scope.tipo = item;
-                }
-            });
-            $scope.formatos.forEach(function (item){
-                if(item.id_formato === $scope.curadoria.id_formato){
-                    $scope.formato = item;
+            $scope.curadores.forEach(function (item){
+                if(item.id_curador === $scope.curadoria.id_curador){
+                    $scope.curador = item;
                 }
             });
             $scope.processandoDetalhar = false;
@@ -83,10 +60,12 @@ cmsApp.controller('alterarCuradoriaCtrl', ['$scope', '$http', 'Upload', '$timeou
         });
     };
 
+
+
+
     $scope.alterar = function (file){
 
-        $scope.curadoria.id_tipo_curadoria = $scope.tipo.id_tipo_curadoria;
-        $scope.curadoria.id_formato = $scope.formato.id_formato;
+        $scope.curadoria.id_curador = $scope.curador.id_curador;
 
         if(file==null){
 
