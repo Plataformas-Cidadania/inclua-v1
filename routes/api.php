@@ -515,3 +515,37 @@ Route::group([
     Route::delete('/{curador}',[App\Http\Controllers\Api\CuradorController::class, 'destroy'])
         ->name('api.curador.destroy');
 });
+
+Route::group([
+    'prefix' => 'curadoria',
+], function () {
+
+    Route::get('/', [App\Http\Controllers\Api\CuradoriaController::class, 'getAll'])
+        ->name('api.curadoria.getAll');
+
+    Route::get('/{id_curadoria}',[App\Http\Controllers\Api\CuradoriaController::class, 'get'])
+        ->name('api.curadoria.get');
+
+    Route::post('/', [App\Http\Controllers\Api\CuradoriaController::class, 'store'])
+        ->name('api.curadoria.store');
+
+    Route::delete('/{id_curadoria}',[App\Http\Controllers\Api\CuradoriaController::class, 'destroy'])
+        ->name('api.curadoria.destroy');
+});
+
+Route::group([
+    'prefix' => 'curadoria_recurso',
+], function () {
+
+    Route::get('/', [App\Http\Controllers\Api\CuradoriaRecursoController::class, 'getAll'])
+        ->name('api.curadoria_recurso.getAll');
+
+    Route::get('/{id_curadoria}/{id_recurso}',[App\Http\Controllers\Api\CuradoriaRecursoController::class, 'get'])
+        ->name('api.curadoria_recurso.get');
+
+    Route::post('/', [App\Http\Controllers\Api\CuradoriaRecursoController::class, 'store'])
+        ->name('api.curadoria_recurso.store');
+
+    Route::delete('/{id_curadoria}/{id_recurso}',[App\Http\Controllers\Api\CuradoriaRecursoController::class, 'destroy'])
+        ->name('api.curadoria_recurso.destroy');
+});
