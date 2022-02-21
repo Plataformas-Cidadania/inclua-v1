@@ -287,7 +287,7 @@ cmsApp.controller('curadoriaCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
     }
 
     $scope.listarRecursoCuradoria = function(){
-        $scope.processandoListagemRecursoCuradoria = true;
+        $scope.processandoListagemCuradoriaRecurso = true;
         $http({
             url: 'api/curadoria_recurso/'+$scope.curadoria_recurso.id_curadoria,
             method: 'GET',
@@ -295,27 +295,27 @@ cmsApp.controller('curadoriaCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
 
             }
         }).success(function(data, status, headers, config){
-            $scope.recursoCuradoria = data.data;
-            $scope.totalRecursoCuradoria = $scope.recursoCuradoria.length;
-            $scope.processandoListagemRecursoCuradoria = false;
+            $scope.curadoriaRecurso = data.data;
+            $scope.totalCuradoriaRecurso = $scope.curadoriaRecurso.length;
+            $scope.processandoListagemCuradoriaRecurso = false;
         }).error(function(data){
             $scope.message = "Ocorreu um erro: "+data;
-            $scope.processandoListagemRecursoCuradoria = false;
+            $scope.processandoListagemCuradoriaRecurso = false;
         });
     }
 
-    $scope.perguntaExcluircuradoria_recurso = function (idCategoria, idCuradoria, titulo){
-        $scope.idExcluircuradoria_curadoriaRecurso = idCategoria;
-        $scope.idExcluircuradoria_recursoCuradoria = idCuradoria;
+    $scope.perguntaExcluircuradoria_recurso = function (idCuradoria, idRecurso, titulo){
+        $scope.idExcluirCuradoriaRecursoIdCuradoria = idCuradoria;
+        $scope.idExcluirCuradoriaRecursoidRecurso = idRecurso;
         $scope.tituloExcluircuradoria_recurso = titulo;
         $scope.excluidocuradoria_recurso = false;
         $scope.mensagemExcluidocuradoria_recurso = "";
     }
 
-    $scope.excluircuradoria_recurso = function(idCategoria, idCuradoria){
+    $scope.excluircuradoria_recurso = function(idCuradoria, idRecurso){
         $scope.processandoExcluircuradoria_recurso = true;
         $http({
-            url: 'api/curadoria_recurso/'+idCategoria+'/'+idCuradoria,
+            url: 'api/curadoria_recurso/'+idCuradoria+'/'+idRecurso,
             method: 'DELETE'
         }).success(function(data, status, headers, config){
             console.log(data);
