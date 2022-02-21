@@ -38,7 +38,7 @@
                         <tbody>
                         <tr ng-repeat="curadoria_recurso in curadoriaRecurso">
                             {{--<td><% getRecurso(curadoria_recurso.id_recurso) %></td>--}}
-                            <td><% getCategoria(curadoria_recurso.id_categoria) %></td>
+                            <td><% curadoria_recurso.recurso.nome %></td>
                             <td class="text-right">
                                 <div>
                                     <a><i data-toggle="modal" data-target="#modalExcluircuradoria_recurso" class="fa fa-remove fa-2x" ng-click="perguntaExcluircuradoria_recurso(curadoria_recurso.id_categoria, curadoria_recurso.id_recurso, getCategoria(curadoria_recurso.id_categoria))"></i></a>

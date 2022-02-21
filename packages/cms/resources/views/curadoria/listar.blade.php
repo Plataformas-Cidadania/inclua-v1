@@ -100,7 +100,7 @@
                                     <a href="cms/curadoria/<% curadoria.id_curadoria %>"><i class="fa fa-edit fa-2x" title="Editar"></i></a>&nbsp;&nbsp;{{--<% mensagemStatus %><% idStatus %>--}}
                                     {{--<a  ng-class="<% curadoria.status %> == 1 ? 'color-success' : 'color-success-inactive'"  style="cursor: pointer;"><i class="fa fa-check-circle fa-2x" aria-hidden="true" ng-click="status(curadoria.id_curadoria, curadoria.status);"></i></a>&nbsp;&nbsp;--}}
                                     <a><i data-toggle="modal" data-target="#modalCuradoriaRecurso" class="fa fa-book fa-2x" style="cursor:pointer;" ng-click="modalCuradoriaRecurso(curadoria.id_curadoria, curadoria.nome)"></i></a>
-                                    <a><i data-toggle="modal" data-target="#modalExcluir" class="fa fa-remove fa-2x" style="cursor:pointer;"  ng-click="perguntaExcluir(curadoria.id_curadoria, curadoria.nome, curadoria.imagem)"></i></a>
+                                    <a><i data-toggle="modal" data-target="#modalExcluir" class="fa fa-remove fa-2x" style="cursor:pointer;"  ng-click="perguntaExcluir(curadoria.id_curadoria, curadoria.tema_recorte, curadoria.imagem)"></i></a>
                                 </div>
                             </td>
                         </tr>

@@ -274,7 +274,7 @@ cmsApp.controller('curadoriaCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
         console.log($scope.curadoria_recurso);
         $scope.processandoInserircuradoria_recurso= true;
         $scope.mensagemInserircuradoria_recurso = "";
-        $scope.curadoria_recurso.id_categoria = $scope.categoria.id_categoria;
+        $scope.curadoria_recurso.id_recurso = $scope.recurso.id_recurso;
         $http.post("api/curadoria_recurso", $scope.curadoria_recurso).success(function (data){
             $scope.listarRecursoCuradoria();
             $scope.mensagemInserircuradoria_recurso =  "Gravado com sucesso!";
