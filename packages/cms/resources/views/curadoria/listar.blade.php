@@ -77,29 +77,29 @@
                         <input class="form-control" type="text" ng-model="dadoPesquisa" placeholder="Faça sua busca"/>
                     </div>
                     <br>
-                    <div><% mensagemCuradoriar %></div>
+                    <div><% mensagemCuradoria %></div>
                     <div ng-show="processandoListagem"><i class="fa fa-spinner fa-spin"></i> Processando...</div>
                     <h2 class="tabela_vazia" ng-show="!processandoListagem && totalItens==0">Nenhum registro encontrado!</h2>
                     <table ng-show="totalItens>0" class="table table-striped">
                         <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Nome</th>
+                            <th>Tema do Recorte</th>
+                            <th>Mês</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr ng-repeat="curadoria in curadorias">
                             <td><% curadoria.id_curadoria %></td>
                            {{-- <td><img ng-show="curadoria.imagem" ng-src="imagens/curadorias/xs-<% curadoria.imagem %>" width="60"></td>--}}
-                            <td><% curadoria.nome %></td>
+                            <td><% curadoria.tema_recorte %></td>
+                            <td><% curadoria.mes %></td>
                             <td class="text-right">
                                 <div>
                                     {{--<a href="cms/items/<% curadoria.id %>"><i class="fa fa-sitemap fa-2x" title="Itens"></i></a>&nbsp;&nbsp;--}}
                                     <a href="cms/curadoria/<% curadoria.id_curadoria %>"><i class="fa fa-edit fa-2x" title="Editar"></i></a>&nbsp;&nbsp;{{--<% mensagemStatus %><% idStatus %>--}}
-                                    <a href="cms/links/<% curadoria.id_curadoria %>"><i class="fa fa-link fa-2x" title="Links"></i></a>&nbsp;&nbsp;{{--<% mensagemStatus %><% idStatus %>--}}
-                                    <a  ng-class="<% curadoria.status %> == 1 ? 'color-success' : 'color-success-inactive'"  style="cursor: pointer;"><i class="fa fa-check-circle fa-2x" aria-hidden="true" ng-click="status(curadoria.id_curadoria, curadoria.status);"></i></a>&nbsp;&nbsp;
-                                    <a><i data-toggle="modal" data-target="#modalIndicacao" class="fa fa-tachometer fa-2x" style="cursor:pointer;" ng-click="modalIndicacao(curadoria.id_curadoria, curadoria.nome)"></i></a>
-                                    <a><i data-toggle="modal" data-target="#modalCategorizacao" class="fa fa-cubes fa-2x" style="cursor:pointer;"  ng-click="modalCategorizacao(curadoria.id_curadoria, curadoria.nome)"></i></a>
+                                    {{--<a  ng-class="<% curadoria.status %> == 1 ? 'color-success' : 'color-success-inactive'"  style="cursor: pointer;"><i class="fa fa-check-circle fa-2x" aria-hidden="true" ng-click="status(curadoria.id_curadoria, curadoria.status);"></i></a>&nbsp;&nbsp;--}}
+                                    <a><i data-toggle="modal" data-target="#modalCuradoriaRecurso" class="fa fa-book fa-2x" style="cursor:pointer;" ng-click="modalCuradoriaRecurso(curadoria.id_curadoria, curadoria.nome)"></i></a>
                                     <a><i data-toggle="modal" data-target="#modalExcluir" class="fa fa-remove fa-2x" style="cursor:pointer;"  ng-click="perguntaExcluir(curadoria.id_curadoria, curadoria.nome, curadoria.imagem)"></i></a>
                                 </div>
                             </td>
