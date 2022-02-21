@@ -40,7 +40,7 @@ class CuradoriaRecurso extends Model
 
 	public function curadoria()
 	{
-		return $this->belongsTo(Autor::class, 'id_curadoria');
+		return $this->belongsTo(Curadoria::class, 'id_curadoria');
 	}
 
 	public function recurso()

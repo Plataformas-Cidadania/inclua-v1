@@ -41,7 +41,7 @@ class CuradoriaController extends Controller
         try {
             $validator = $this->getValidator($request);
 
-dd($request);
+
             if ($validator->fails()) {
                 return $this->errorResponse($validator->errors()->all());
             }
@@ -115,7 +115,7 @@ dd($request);
             if ($validator->fails()) {
                 return $this->errorResponse($validator->errors()->all());
             }
-            dd($request);
+
             $data = $this->getData($request);
 
             $res = $this->repo->update($id_curadoria,$data);

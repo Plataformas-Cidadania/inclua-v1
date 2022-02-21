@@ -16,7 +16,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $mes
  * @property string|null $link_video
  *
- * @property Curador $curador
+ * @property Curadoria $curadoria
  *
  * @package App\Models
  */
@@ -24,7 +24,7 @@ class Curadoria extends Model
 {
 	protected $table = 'avaliacao.curadoria';
 	protected $primaryKey = 'id_curadoria';
-	public $incrementing = false;
+	public $incrementing = true;
 	public $timestamps = false;
 
 	protected $casts = [
@@ -43,8 +43,12 @@ class Curadoria extends Model
 		'link_video'
 	];
 
-	protected $with = ['curador'];
+	protected $with = ['curador','curadoria_recurso'];
 
+    public function curadoria_recurso()
+    {
+        return $this->hasMany(CuradoriaRecurso::class, 'id_curadoria');
+    }
 	public function curador()
 	{
 		return $this->belongsTo(Curador::class, 'id_curador');
