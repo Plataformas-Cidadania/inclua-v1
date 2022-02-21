@@ -34,10 +34,10 @@ class CreateCuradoriaRecursosTable extends Migration
      */
     public function down()
     {
-        Schema::table('avaliacao.curadoria_recursos', function (Blueprint $table) {
+        Schema::table('avaliacao.curadoria_recurso', function (Blueprint $table) {
             $table->dropForeign(['id_curadoria']);
             $table->dropForeign(['id_recurso']);
         });
-        Schema::dropIfExists('avaliacao.curadoria_recursos');
+        Schema::dropIfExists('avaliacao.curadoria_recurso');
     }
 }
