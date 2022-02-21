@@ -42,6 +42,31 @@ class CuradoriaRecursoController extends Controller
     }
 
     /**
+     * Mostrar todos pro id_curadoria.
+     *
+     * @param null
+     *
+     * @return JsonResponse
+     */
+
+    public function getAllbyIdCuratoria(int $curadoriaId): JsonResponse
+    {
+        try {
+
+            $res = $this->repo->getRecursoPorCuradoria($curadoriaId);
+            return $this->successResponse(
+                'Curadoria retornadas com sucesso',
+                $res
+            );
+
+        }catch (Exception $exception) {
+            if ($exception instanceof ModelNotFoundException)
+                return $this->errorResponse('Not found');
+            return $this->errorResponse($exception);
+        }
+    }
+
+    /**
      * Adicionar um novo
      *
      * @param Request $request
