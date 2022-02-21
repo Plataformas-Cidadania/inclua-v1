@@ -155,7 +155,7 @@ const DiagnosticoProvider = ({children}) => {
         setRespostas(newRespostas);
 
         //console.log(newRespostas);
-        localStorage.setItem('respostas_diagnostico_completo', JSON.stringify(newRespostas));
+        localStorage.setItem('respostas_diagnostico', JSON.stringify(newRespostas));
         console.log(JSON.stringify(newRespostas));
     }
 
@@ -279,7 +279,7 @@ const DiagnosticoProvider = ({children}) => {
             };
             respostasApi.push(respostaApi);
         });
-        localStorage.setItem('respostas_diagnostico_completo', JSON.stringify(respostas));
+        localStorage.setItem('respostas_diagnostico', JSON.stringify(respostas));
         //console.log(respostas);
         //return;
         try {
@@ -303,7 +303,7 @@ const DiagnosticoProvider = ({children}) => {
             if(result.data.success){
                 //const ids = JSON.parse(result.data.data)
                 //localStorage.setItem('id_diagnostico_completo', ids[1]);
-                localStorage.setItem('id_diagnostico_completo', result.data.data);
+                localStorage.setItem('id_diagnostico', result.data.data);
                 location.href = 'resultado';
                 console.log('redirecionamento desativado');
                 return;
@@ -317,7 +317,7 @@ const DiagnosticoProvider = ({children}) => {
     }
 
     const setRespostasFromStorage = (dimensoes) => {
-        const respostas = JSON.parse(localStorage.getItem('respostas_diagnostico_completo'));
+        const respostas = JSON.parse(localStorage.getItem('respostas_diagnostico'));
         if(!respostas){
             return dimensoes;
         }
@@ -377,7 +377,7 @@ const DiagnosticoProvider = ({children}) => {
         setIndicador(newIndicador);
 
         setRespostas([]);
-        localStorage.removeItem('respostas_diagnostico_completo');
+        localStorage.removeItem('respostas_diagnostico');
     }*/
 
     return (

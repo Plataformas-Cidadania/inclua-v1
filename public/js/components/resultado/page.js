@@ -13,7 +13,7 @@ const Page = () => {
   const Resultado = async () => {
     try {
       //const result = await axios.get('json/resultado.json');
-      const result = await axios.get("api/diagnostico/" + dimensao + "/" + localStorage.getItem('id_diagnostico_completo'));
+      const result = await axios.get("api/diagnostico/" + dimensao + "/" + localStorage.getItem('id_diagnostico'));
       setResultado(result.data);
       console.log('***', Math.round(result.data.indicadores[0].posPontos));
     } catch (error) {

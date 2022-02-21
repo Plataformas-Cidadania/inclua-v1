@@ -3,13 +3,13 @@ const Header = () => {
     const {useState, useEffect} = React;
     const context = React.useContext(HomeContext);
 
-    const [varLocalStorage, setlocalStorage] = useState(localStorage.getItem('id_diagnostico_completo'));
+    const [varLocalStorage, setlocalStorage] = useState(localStorage.getItem('id_diagnostico'));
 
     const ClicklocalStorage = (key) => {
         setlocalStorage();
-        localStorage.removeItem('id_diagnostico_completo')
+        localStorage.removeItem('id_diagnostico')
         localStorage.removeItem('ids_dimensoes')
-        localStorage.removeItem('respostas_diagnostico_completo')
+        localStorage.removeItem('respostas_diagnostico')
     }
 
     return (

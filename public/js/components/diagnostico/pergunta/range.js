@@ -24,7 +24,7 @@ const Range = props => {
     setRange(newRange);
   }, [props.minimo, props.maximo]);
   useEffect(() => {
-    setName(context.dimensao.dimensao + '_' + context.indicador.indicador + '_' + props.letra);
+    setName(context.dimensao.numero + '_' + context.indicador.numero + '_' + props.letra);
   }, [context]);
   useEffect(() => {
     setBgColor(props.bgColor);
@@ -44,7 +44,7 @@ const Range = props => {
     className: "box-items bg-lgt"
   }, /*#__PURE__*/React.createElement("p", {
     className: "mb-3"
-  }, /*#__PURE__*/React.createElement("strong", null, "P", context.dimensao.dimensao, ".", context.indicador.indicador, props.letra), " ", props.descricao), /*#__PURE__*/React.createElement("p", null, props.legenda), props.naoSeAplica ? /*#__PURE__*/React.createElement("li", {
+  }, /*#__PURE__*/React.createElement("strong", null, "P", context.dimensao.numero, ".", context.indicador.numero, " - Reflex\xE3o-s\xEDntese"), " ", props.descricao), /*#__PURE__*/React.createElement("p", null, props.legenda), props.naoSeAplica ? /*#__PURE__*/React.createElement("li", {
     onClick: () => selectResposta(null)
   }, /*#__PURE__*/React.createElement("div", {
     className: resposta === null ? props.bgColor : ''

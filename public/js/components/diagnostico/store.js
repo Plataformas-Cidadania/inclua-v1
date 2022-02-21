@@ -28,7 +28,7 @@ const DiagnosticoProvider = ({
       tipo: null,
       dimensoes: [],
   }
-    setState({tipo: 1}, function(){
+   setState({tipo: 1}, function(){
       console.log(this.state.tipo);
   })*/
 
@@ -104,7 +104,7 @@ const DiagnosticoProvider = ({
       if(pergunta.length > 0){
           //console.log('resposta: ', pergunta[0].resposta, 'alternativa: ', value, 'marcado: ', pergunta[0].resposta === value);
           //console.log('=====================================================');
-            return pergunta[0].resposta === value;
+           return pergunta[0].resposta === value;
       }
       //console.log('=====================================================');
       return false
@@ -167,7 +167,7 @@ const DiagnosticoProvider = ({
 
     setRespostas(newRespostas); //console.log(newRespostas);
 
-    localStorage.setItem('respostas_diagnostico_completo', JSON.stringify(newRespostas));
+    localStorage.setItem('respostas_diagnostico', JSON.stringify(newRespostas));
     console.log(JSON.stringify(newRespostas));
   };
 
@@ -292,7 +292,7 @@ const DiagnosticoProvider = ({
       };
       respostasApi.push(respostaApi);
     });
-    localStorage.setItem('respostas_diagnostico_completo', JSON.stringify(respostas)); //console.log(respostas);
+    localStorage.setItem('respostas_diagnostico', JSON.stringify(respostas)); //console.log(respostas);
     //return;
 
     try {
@@ -317,7 +317,7 @@ const DiagnosticoProvider = ({
       if (result.data.success) {
         //const ids = JSON.parse(result.data.data)
         //localStorage.setItem('id_diagnostico_completo', ids[1]);
-        localStorage.setItem('id_diagnostico_completo', result.data.data);
+        localStorage.setItem('id_diagnostico', result.data.data);
         location.href = 'resultado';
         console.log('redirecionamento desativado');
         return;
@@ -332,7 +332,7 @@ const DiagnosticoProvider = ({
   };
 
   const setRespostasFromStorage = dimensoes => {
-    const respostas = JSON.parse(localStorage.getItem('respostas_diagnostico_completo'));
+    const respostas = JSON.parse(localStorage.getItem('respostas_diagnostico'));
 
     if (!respostas) {
       return dimensoes;
@@ -378,20 +378,20 @@ const DiagnosticoProvider = ({
           }
       });
       setDimensoes(newDimensoes);
-        //Atualiza dimensao atual
+       //Atualiza dimensao atual
       let newDimensao = newDimensoes.find((d) => {
           return d.id_dimensao = dimensao.id_dimensao;
       });
       setDimensao({});
       setDimensao(newDimensao);
-        //Atualiza indicador atual
+       //Atualiza indicador atual
       let newIndicador = newDimensao.indicadores.find((i) => {
           return i.id_indicador = indicador.id_indicador;
       });
       setIndicador({})
       setIndicador(newIndicador);
-        setRespostas([]);
-      localStorage.removeItem('respostas_diagnostico_completo');
+       setRespostas([]);
+      localStorage.removeItem('respostas_diagnostico');
   }*/
 
 

@@ -10,7 +10,7 @@ const Page = () => {
 
   const Resultado = async () => {
     try {
-      const result = await axios.get("api/diagnostico/" + localStorage.getItem('id_diagnostico_completo'));
+      const result = await axios.get("api/diagnostico/" + localStorage.getItem('id_diagnostico'));
       setResultado(result.data);
       setTimeout(showSubmit, 1000);
 
