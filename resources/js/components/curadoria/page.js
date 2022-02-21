@@ -3,32 +3,24 @@ const Page = () => {
     const {useState, useEffect} = React;
     const [curadorias, setCuradorias] = useState([]);
     const [total, setTotal] = useState(0);
-    const [page, setPage] = useState(0);
-    const [searchBox, setSearchBox] = useState(false);
 
 
     useEffect(() => {
         Curadoria();
-    }, [page]);
+    }, []);
 
     const Curadoria = async () => {
         try {
-            const result = await axios.get('api/curador', {
+            const result = await axios.get('api/curadoria', {
 
             });
             setCuradorias(result.data.data);
-            setTotal(result.data.total)
+            setTotal(result.data.data.length);
+
         } catch (error) {
             console.log(error);
         }
     }
-
-
-
-    const clickSearchBox = () => {
-        setSearchBox(false);
-    }
-
 
     return (
         <div className="row">
@@ -39,20 +31,43 @@ const Page = () => {
                         {
                             curadorias.map((item, key) => {
                                 return (
-                                    <div>
-                                        <h2>O diagnóstico visa identificar e avaliar riscos de desatenção</h2>
-                                        <p>O diagnóstico visa identificar e avaliar riscos de desatenção, tratamento inadequado e exclusão de segmentos específicos do público atendido. Muitas vezes, esses riscos não são suficientemente bem conhecidos.</p>
+                                    <div className={"p-4 "+ (key === 0 ? 'bg-lgt' : '')}>
+
                                         <div className="row">
                                             <div className="col-md-3">
-                                                <img src="https://www.influx.com.br/wp-content/uploads/2014/12/business-623x510.jpg" alt="" width="90%"/>
+                                                <img src={item.curador.url_imagem} alt="" width="90%"/>
                                             </div>
                                             <div className="col-md-9">
-                                                <h2>Fernando lima</h2>
-                                                <p>O diagnóstico visa identificar e avaliar riscos de desatenção, tratamento inadequado e exclusão de segmentos específicos do público atendido. Muitas vezes, esses riscos não são suficientemente bem conhecidos.</p>
+                                                <h2>{item.curador.nome}</h2>
+                                                <p>{item.curador.minicv}</p>
+                                                <a href={item.curador.link_curriculo} target="_blank">Mais informações</a>
                                             </div>
-
                                         </div>
-                                        <br/><hr/><br/>
+
+                                        <br/><br/>
+
+                                        <div className="float-end badge bg-light text-dark">novembro</div>
+                                        <h2>{item.tema_recorte}</h2>
+                                        <p>{item.texto}</p>
+
+                                        {
+                                            item.link_video ? (
+                                                <div className="text-center ">
+                                                    {/*{item.link_video.split("=")[1]}
+                                                    <div className="col-md-8 col-md-offset-2">
+                                                        <img src={"http://img.youtube.com/vi/" + item.link_video.split("=")[1] + "/0.jpg"} alt="" width="100%"/>
+                                                    </div>*/}
+
+                                                    <iframe width="780" height="400"
+                                                            src={"https://www.youtube.com/embed/"+item.link_video.split("=")[1]}
+                                                            title="YouTube video player" frameBorder="0"
+                                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                            allowFullScreen /><br/>
+                                                </div>
+                                            ) : null
+                                        }
+
+                                        <br/><hr style={{display: key === 0 ? 'none' : ''}}/><br/>
 
                                     </div>
                                 );

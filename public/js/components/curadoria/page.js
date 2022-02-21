@@ -5,24 +5,18 @@ const Page = () => {
   } = React;
   const [curadorias, setCuradorias] = useState([]);
   const [total, setTotal] = useState(0);
-  const [page, setPage] = useState(0);
-  const [searchBox, setSearchBox] = useState(false);
   useEffect(() => {
     Curadoria();
-  }, [page]);
+  }, []);
 
   const Curadoria = async () => {
     try {
-      const result = await axios.get('api/curador', {});
+      const result = await axios.get('api/curadoria', {});
       setCuradorias(result.data.data);
-      setTotal(result.data.total);
+      setTotal(result.data.data.length);
     } catch (error) {
       console.log(error);
     }
-  };
-
-  const clickSearchBox = () => {
-    setSearchBox(false);
   };
 
   return /*#__PURE__*/React.createElement("div", {
@@ -38,16 +32,37 @@ const Page = () => {
       textAlign: 'right'
     }
   }, total, " curadorias"), curadorias.map((item, key) => {
-    return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h2", null, "O diagn\xF3stico visa identificar e avaliar riscos de desaten\xE7\xE3o"), /*#__PURE__*/React.createElement("p", null, "O diagn\xF3stico visa identificar e avaliar riscos de desaten\xE7\xE3o, tratamento inadequado e exclus\xE3o de segmentos espec\xEDficos do p\xFAblico atendido. Muitas vezes, esses riscos n\xE3o s\xE3o suficientemente bem conhecidos."), /*#__PURE__*/React.createElement("div", {
+    return /*#__PURE__*/React.createElement("div", {
+      className: "p-4 " + (key === 0 ? 'bg-lgt' : '')
+    }, /*#__PURE__*/React.createElement("div", {
       className: "row"
     }, /*#__PURE__*/React.createElement("div", {
       className: "col-md-3"
     }, /*#__PURE__*/React.createElement("img", {
-      src: "https://www.influx.com.br/wp-content/uploads/2014/12/business-623x510.jpg",
+      src: item.curador.url_imagem,
       alt: "",
       width: "90%"
     })), /*#__PURE__*/React.createElement("div", {
       className: "col-md-9"
-    }, /*#__PURE__*/React.createElement("h2", null, "Fernando lima"), /*#__PURE__*/React.createElement("p", null, "O diagn\xF3stico visa identificar e avaliar riscos de desaten\xE7\xE3o, tratamento inadequado e exclus\xE3o de segmentos espec\xEDficos do p\xFAblico atendido. Muitas vezes, esses riscos n\xE3o s\xE3o suficientemente bem conhecidos."))), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("hr", null), /*#__PURE__*/React.createElement("br", null));
+    }, /*#__PURE__*/React.createElement("h2", null, item.curador.nome), /*#__PURE__*/React.createElement("p", null, item.curador.minicv), /*#__PURE__*/React.createElement("a", {
+      href: item.curador.link_curriculo,
+      target: "_blank"
+    }, "Mais informa\xE7\xF5es"))), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
+      className: "float-end badge bg-light text-dark"
+    }, "novembro"), /*#__PURE__*/React.createElement("h2", null, item.tema_recorte), /*#__PURE__*/React.createElement("p", null, item.texto), item.link_video ? /*#__PURE__*/React.createElement("div", {
+      className: "text-center "
+    }, /*#__PURE__*/React.createElement("iframe", {
+      width: "780",
+      height: "400",
+      src: "https://www.youtube.com/embed/" + item.link_video.split("=")[1],
+      title: "YouTube video player",
+      frameBorder: "0",
+      allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture",
+      allowFullScreen: true
+    }), /*#__PURE__*/React.createElement("br", null)) : null, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("hr", {
+      style: {
+        display: key === 0 ? 'none' : ''
+      }
+    }), /*#__PURE__*/React.createElement("br", null));
   })))));
 };
