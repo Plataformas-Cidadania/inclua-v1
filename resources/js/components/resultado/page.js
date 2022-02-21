@@ -3,10 +3,11 @@ const Page = () => {
     const {useState, useEffect} = React;
     const [resultado, setResultado] = useState([]);
     const [groupRecurso, setGroupRecurso] = useState(null);
-    const [dimensao, setDimensao] = useState(1);
+    const [dimensao, setDimensao] = useState(0);
 
     useEffect(() => {
         Resultado();
+        setDimensao(primeiraDimensaoRespondida());
     }, [dimensao]);
 
     const Resultado = async () => {
@@ -18,6 +19,15 @@ const Page = () => {
         } catch (error) {
             console.log(error);
         }
+    }
+
+    const primeiraDimensaoRespondida = () => {
+        const respostas = JSON.parse(localStorage.getItem('respostas_diagnostico'));
+        const dimensoesRespondidas = respostas.map((item) => {
+            return item.id_dimensao;
+        })
+        const idsDimensoesRespondidas = dimensoesRespondidas.filter((value, key) => dimensoesRespondidas.indexOf(key) !== key);
+        return idsDimensoesRespondidas.sort().shift();
     }
 
     const ClickRecurso = (key) => {
