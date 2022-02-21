@@ -7,8 +7,10 @@ const Page = () => {
   const [groupRecurso, setGroupRecurso] = useState(null);
   const [dimensao, setDimensao] = useState(0);
   useEffect(() => {
-    Resultado();
     setDimensao(primeiraDimensaoRespondida());
+  }, []);
+  useEffect(() => {
+    Resultado();
   }, [dimensao]);
 
   const Resultado = async () => {
@@ -83,7 +85,29 @@ const Page = () => {
     alt: "",
     onClick: () => ClickDimensao(5),
     className: "cursor " + (dimensao === 5 ? "nav-icons-select" : "opacity-5")
-  }), /*#__PURE__*/React.createElement("hr", null))))), /*#__PURE__*/React.createElement("div", {
+  }), /*#__PURE__*/React.createElement("hr", null))))), resultado.pontos === 0 ? /*#__PURE__*/React.createElement("div", {
+    className: "row"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "col-md-12"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: bgColor
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "row"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "col-md-2 text-center"
+  }, /*#__PURE__*/React.createElement("img", {
+    src: "img/dimensao" + dimensao + "-g.png",
+    alt: "",
+    width: "100"
+  }), /*#__PURE__*/React.createElement("h2", null, "DIMENS\xC3O ", dimensao)), /*#__PURE__*/React.createElement("div", {
+    className: "col-md-8"
+  }, /*#__PURE__*/React.createElement("h2", {
+    className: "mt-5"
+  }, resultado.titulo, "inclusiva"))))), /*#__PURE__*/React.createElement("div", {
+    className: "col-md-12"
+  }, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("h2", {
+    className: "text-center"
+  }, "A DIMENS\xC3O ", dimensao, " n\xE3o foi respondida neste diagn\xF3stico"))) : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     className: "row"
   }, /*#__PURE__*/React.createElement("div", {
     className: "col-md-12"
@@ -179,5 +203,5 @@ const Page = () => {
     }, /*#__PURE__*/React.createElement("h2", null, "Recursos"), /*#__PURE__*/React.createElement("hr", null), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(Item, {
       propsData: item.recursos
     })))));
-  }) : null)));
+  }) : null))));
 };

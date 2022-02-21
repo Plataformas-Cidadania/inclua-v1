@@ -5,9 +5,13 @@ const Page = () => {
     const [groupRecurso, setGroupRecurso] = useState(null);
     const [dimensao, setDimensao] = useState(0);
 
+
+    useEffect(() => {
+        setDimensao(primeiraDimensaoRespondida());
+    }, [])
+
     useEffect(() => {
         Resultado();
-        setDimensao(primeiraDimensaoRespondida());
     }, [dimensao]);
 
     const Resultado = async () => {
@@ -70,101 +74,131 @@ const Page = () => {
                 </div>
             </div>
 
-            <div className="row">
-                <div className="col-md-12">
-                    <div className={bgColor}>
-                        <div className="row">
-                            <div className="col-md-2 text-center">
-                                <img src={"img/dimensao" + dimensao + "-g.png"} alt="" width="100"/>
-                                <h2>DIMENSÃO {dimensao}</h2>
-                            </div>
-                            <div className="col-md-8">
-                                <h2 className="mt-5">{resultado.titulo}
-                                    inclusiva</h2>
-                                <p className="mb-5">Veja abaixo os resultados por indicador:</p>
-                            </div>
-                            <div className="col-md-2 text-center">
-                                <br/>
-                                <p><strong>{resultado.risco}</strong></p>
-                                <h2 style={{fontSize: '40px'}}>{resultado.pontos}</h2>
-                                <p>pontos</p>
+            {
+                resultado.pontos === 0 ? (
+                    <div className="row">
+                        <div className="col-md-12">
+                            <div className={bgColor}>
+                                <div className="row">
+                                    <div className="col-md-2 text-center">
+                                        <img src={"img/dimensao" + dimensao + "-g.png"} alt="" width="100"/>
+                                        <h2>DIMENSÃO {dimensao}</h2>
+                                    </div>
+                                    <div className="col-md-8">
+                                        <h2 className="mt-5">{resultado.titulo}
+                                            inclusiva</h2>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                        <div className="col-md-12">
+                            <br/>
+                            <br/>
+                            <h2 className="text-center">A DIMENSÃO {dimensao} não foi respondida neste diagnóstico</h2>
+                        </div>
                     </div>
-                </div>
-            </div>
-
-            <div className="container">
-                <div className="row">
-                    <div className="col-md-12">
-                        <a href="/imprimir" target="_blank">
-                            <img src="/img/print.png" alt="" className="float-end m-2 cursor" style={{width: '35px'}}/>
-                        </a>
-                    </div>
-
-                    {
-                        resultado.indicadores ?
-                            resultado.indicadores.map((item, key) => {
-                                return (
-                                <div className="col-md-12" key={'indicadores_'+key}>
-                                    <h2><br/>Indicador {item.numero} - {item.titulo}</h2>
+                ) : (
+                    <>
+                        <div className="row">
+                            <div className="col-md-12">
+                                <div className={bgColor}>
                                     <div className="row">
-                                        <div className="col-md-6">
-                                            <BarChart id={'bar-chart'+key} series={item.series} annotationsX={Math.round(item.posPontos)}/>
+                                        <div className="col-md-2 text-center">
+                                            <img src={"img/dimensao" + dimensao + "-g.png"} alt="" width="100"/>
+                                            <h2>DIMENSÃO {dimensao}</h2>
                                         </div>
-                                        <div className="col-md-6">
-                                            <div className="text-right">
-                                                <div className="row">
-                                                    <div className="col-md-8">
-                                                        <br/>
-                                                        <p><strong>CONSEQUÊNCIA:</strong> {item.consequencia}
-                                                        </p>
-                                                        <br/> <br/>
-                                                    </div>
-                                                    <div className="col-md-4">
-                                                        <br/>
-                                                        <div className={bgColor}>
-                                                            <div className="container-fluid">
+                                        <div className="col-md-8">
+                                            <h2 className="mt-5">{resultado.titulo}
+                                                inclusiva</h2>
+                                            <p className="mb-5">Veja abaixo os resultados por indicador:</p>
+                                        </div>
+                                        <div className="col-md-2 text-center">
+                                            <br/>
+                                            <p><strong>{resultado.risco}</strong></p>
+                                            <h2 style={{fontSize: '40px'}}>{resultado.pontos}</h2>
+                                            <p>pontos</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="container">
+                            <div className="row">
+                                <div className="col-md-12">
+                                    <a href="/imprimir" target="_blank">
+                                        <img src="/img/print.png" alt="" className="float-end m-2 cursor" style={{width: '35px'}}/>
+                                    </a>
+                                </div>
+
+                                {
+                                    resultado.indicadores ?
+                                        resultado.indicadores.map((item, key) => {
+                                            return (
+                                                <div className="col-md-12" key={'indicadores_'+key}>
+                                                    <h2><br/>Indicador {item.numero} - {item.titulo}</h2>
+                                                    <div className="row">
+                                                        <div className="col-md-6">
+                                                            <BarChart id={'bar-chart'+key} series={item.series} annotationsX={Math.round(item.posPontos)}/>
+                                                        </div>
+                                                        <div className="col-md-6">
+                                                            <div className="text-right">
                                                                 <div className="row">
-                                                                    <div className="col-md-12 text-center">
+                                                                    <div className="col-md-8">
                                                                         <br/>
-                                                                        <p><strong>{item.risco}</strong></p>
-                                                                        <h2 style={{fontSize: '40px'}}>{item.pontos}</h2>
-                                                                        <p>pontos</p>
+                                                                        <p><strong>CONSEQUÊNCIA:</strong> {item.consequencia}
+                                                                        </p>
+                                                                        <br/> <br/>
+                                                                    </div>
+                                                                    <div className="col-md-4">
+                                                                        <br/>
+                                                                        <div className={bgColor}>
+                                                                            <div className="container-fluid">
+                                                                                <div className="row">
+                                                                                    <div className="col-md-12 text-center">
+                                                                                        <br/>
+                                                                                        <p><strong>{item.risco}</strong></p>
+                                                                                        <h2 style={{fontSize: '40px'}}>{item.pontos}</h2>
+                                                                                        <p>pontos</p>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
+                                                                <div className="col-md-12 text-right" style={{textAlign: 'right'}}>
+                                                                    <br/>
+                                                                    <p onClick={() => ClickRecurso(key)} className="cursor">Indicações de {item.recursos.length} recursos para intervenção <i className="fas fa-angle-right"/></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div className="col-md-12">
+                                                            <hr/>
+                                                        </div>
+
+
+                                                        <div className="col-md-12" style={{display: groupRecurso===key ? '' : 'none'}}>
+                                                            <h2>Recursos</h2>
+                                                            <hr/>
+                                                            <div>
+                                                                <Item propsData={item.recursos}/>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div className="col-md-12 text-right" style={{textAlign: 'right'}}>
-                                                    <br/>
-                                                    <p onClick={() => ClickRecurso(key)} className="cursor">Indicações de {item.recursos.length} recursos para intervenção <i className="fas fa-angle-right"/></p>
-                                                </div>
-                                            </div>
-                                        </div>
+                                            );
+                                        })
+                                        : null
+                                }
 
-                                        <div className="col-md-12">
-                                            <hr/>
-                                        </div>
+                            </div>
+                        </div>
+                    </>
+                )
+            }
 
 
-                                        <div className="col-md-12" style={{display: groupRecurso===key ? '' : 'none'}}>
-                                            <h2>Recursos</h2>
-                                            <hr/>
-                                            <div>
-                                                <Item propsData={item.recursos}/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                );
-                            })
-                            : null
-                    }
-
-                </div>
-            </div>
         </div>
 
     );
