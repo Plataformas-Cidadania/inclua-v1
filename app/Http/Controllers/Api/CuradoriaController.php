@@ -61,7 +61,7 @@ class CuradoriaController extends Controller
    /**
      * Obter uma curadoria especificada pelo id
      *
-     * @param int $id
+     * @param int $id_curadoria
      *
      * @return JsonResponse
      */
@@ -118,7 +118,7 @@ class CuradoriaController extends Controller
 
             $data = $this->getData($request);
 
-            $res = $this->repo->update($id_curadoria,$data);
+            $res = $this->repo->update($id,$data);
 
             return $this->successResponse(
 			    'Curadoria foi atualizada com sucesso.',

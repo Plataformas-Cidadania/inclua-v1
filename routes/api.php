@@ -523,13 +523,16 @@ Route::group([
     Route::get('/', [App\Http\Controllers\Api\CuradoriaController::class, 'getAll'])
         ->name('api.curadoria.getAll');
 
-    Route::get('/{id_curadoria}',[App\Http\Controllers\Api\CuradoriaController::class, 'get'])
+    Route::get('/{curadoria}',[App\Http\Controllers\Api\CuradoriaController::class, 'get'])
         ->name('api.curadoria.get');
 
     Route::post('/', [App\Http\Controllers\Api\CuradoriaController::class, 'store'])
         ->name('api.curadoria.store');
 
-    Route::delete('/{id_curadoria}',[App\Http\Controllers\Api\CuradoriaController::class, 'destroy'])
+    Route::put('/{curadoria}', [App\Http\Controllers\Api\CuradoriaController::class, 'update'])
+        ->name('api.curadoria.update');
+
+    Route::delete('/{curadoria}',[App\Http\Controllers\Api\CuradoriaController::class, 'destroy'])
         ->name('api.curadoria.destroy');
 });
 
