@@ -47,6 +47,21 @@ class CategoriaDiagnosticoController extends Controller
         }
     }
 
+    public function getAllNomeCategoriaPorDiagnostico($id_diagnostico): JsonResponse
+    {
+        try {
+
+            $res = $this->repo->getAllNomeByIdDiagnostico($id_diagnostico);
+            return $this->successResponse(
+                'Retornado com sucesso',
+                $res
+            );
+        }catch (Exception $exception) {
+            if ($exception instanceof ModelNotFoundException)
+                return $this->errorResponse('Not found');
+            return $this->errorResponse($exception);
+        }
+    }
 
     /**
      * Adicionar um novo
