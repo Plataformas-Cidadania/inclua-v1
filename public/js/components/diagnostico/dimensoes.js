@@ -67,12 +67,12 @@ const Dimensoes = () => {
   }, /*#__PURE__*/React.createElement("form", null, /*#__PURE__*/React.createElement("div", {
     className: "col-md-12"
   }, /*#__PURE__*/React.createElement("label", {
-    htmlFor: "grupo_focal"
+    htmlFor: "oferta_publica"
   }, /*#__PURE__*/React.createElement("strong", null, "Oferta p\xFAblica sob foco")), /*#__PURE__*/React.createElement("input", {
     className: "form-control form-g",
     type: "text",
-    name: "grupo_focal",
-    id: "grupo_focal",
+    name: "oferta_publica",
+    id: "oferta_publica",
     onChange: handleDiagnostico,
     placeholder: "ex.: servi\xE7o, programa, pol\xEDtica, projeto, iniciativa, a\xE7\xE3o, etc."
   })), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {

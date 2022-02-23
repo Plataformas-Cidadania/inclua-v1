@@ -231,7 +231,8 @@ const DiagnosticoProvider = ({
                 newRespostasPendentes.push({
                   dimensao: d.numero,
                   indicador: i.numero,
-                  pergunta: sp.letra
+                  pergunta: p.letra,
+                  subpergunta: sp.letra
                 });
                 valid = false;
               }
@@ -253,10 +254,9 @@ const DiagnosticoProvider = ({
         if (dimensoesComRespostas.includes(d.id_dimensao)) {
           d.indicadores.forEach(i => {
             i.perguntas.forEach(p => {
-              console.log("numero_dimensao", "numero_indicador", "id_pergunta", "letra", "id_perguntaPai", "resposta");
-              console.log(d.numero, i.numero, p.id_pergunta, p.letra, p.id_perguntaPai, p.resposta);
-              console.log(p);
-
+              //console.log("numero_dimensao", "numero_indicador", "id_pergunta", "letra", "id_perguntaPai", "resposta");
+              //console.log(d.numero, i.numero, p.id_pergunta, p.letra, p.id_perguntaPai, p.resposta);
+              //console.log(p);
               if (p.resposta === undefined && p.id_perguntaPai === null) {
                 console.log('Completo Pergunta não respondida', p);
                 newRespostasPendentes.push({
@@ -273,7 +273,8 @@ const DiagnosticoProvider = ({
                   newRespostasPendentes.push({
                     dimensao: d.numero,
                     indicador: i.numero,
-                    pergunta: sp.letra
+                    pergunta: p.letra,
+                    subpergunta: sp.letra
                   });
                   valid = false;
                 }
@@ -431,9 +432,14 @@ const DiagnosticoProvider = ({
     className: "fas fa-times float-end cursor"
   })), /*#__PURE__*/React.createElement("i", {
     className: "fas fa-exclamation-triangle"
-  }), "Perguntas n\xE3o respondidas: ", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), respostasPendentes.map(item => {
+  }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      height: '300px',
+      overflow: 'auto'
+    }
+  }, "Perguntas n\xE3o respondidas: ", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), respostasPendentes.map(item => {
     return /*#__PURE__*/React.createElement("div", null, "Dimens\xE3o ", item.dimensao, " - Indicador: ", item.indicador, " - Pergunta: ", item.pergunta === "zz" ? "Reflexão-síntese" : item.pergunta);
-  })), /*#__PURE__*/React.createElement(DiagnosticoContext.Provider, {
+  }))), /*#__PURE__*/React.createElement(DiagnosticoContext.Provider, {
     value: {
       tipo,
       setTipo,

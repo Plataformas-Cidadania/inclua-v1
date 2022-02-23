@@ -74,12 +74,12 @@ const Dimensoes = () => {
                         <div className="row">
                             <form>
                                 <div className="col-md-12">
-                                    <label htmlFor="grupo_focal"><strong>Oferta pública sob foco</strong></label>
+                                    <label htmlFor="oferta_publica"><strong>Oferta pública sob foco</strong></label>
                                     <input
                                         className="form-control form-g"
                                         type="text"
-                                        name="grupo_focal"
-                                        id="grupo_focal"
+                                        name="oferta_publica"
+                                        id="oferta_publica"
                                         onChange={handleDiagnostico}
                                         placeholder="ex.: serviço, programa, política, projeto, iniciativa, ação, etc."
                                     />
