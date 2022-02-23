@@ -64,7 +64,7 @@ const Page = () => {
         display: key === 0 ? 'none' : ''
       }
     }), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement(Item, {
-      propsData: item.recursos
+      propsData: item.curadoria_recurso
     }));
   })))));
 };
