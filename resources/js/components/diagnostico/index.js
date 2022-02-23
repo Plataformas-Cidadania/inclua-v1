@@ -22,7 +22,7 @@ const Diagnostico = () => {
                 context.tipo ? (
                     <div className="text-center">
                         <button className="btn btn-lg btn-primary" onClick={() => context.enviarRespostas()}>
-                            Enviar Respostas para {parseInt(context.tipo) === 1 ? "Diagnóstico Completo" : "Diagnóstico Parcial"}
+                            Enviar {parseInt(context.tipo) === 1 ? "Diagnóstico Completo" : "Diagnóstico Parcial"}
                         </button>
                     </div>
                 ) : null
