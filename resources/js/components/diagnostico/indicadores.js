@@ -130,9 +130,23 @@ const Indicadores = () => {
                             }
 
 
+                            {
+                                context.dimensao.indicadores.length > indicador ? (
+                                    <div className="d-grid gap-2 d-md-flex justify-content-md-end float-end">
+                                        <div className="dorder-container">
+                                            <button className={"btn btn-theme " + bgColor} type="button"
+                                                    onClick={() => context.setIndicador(context.dimensao.indicadores[indicador])}>
+                                                indicador {dimensao}.{indicador+1} <i className="fas fa-angle-right"/>
+                                            </button>
+                                        </div>
+                                    </div>
+                                ) : null
+                            }
+
 
                             {
-                                context.dimensao.indicadores.length <= indicador ? (
+                                /*context.dimensao.indicadores.length <= indicador ? (*/
+                                indicador > 1 || context.dimensao.indicadores.length <= indicador ? (
                                     <div className="d-grid gap-2 d-md-flex justify-content-md-end float-end">
                                         <div className="dorder-container">
                                             <button className={"btn btn-theme " + bgColor} type="button"
@@ -146,18 +160,7 @@ const Indicadores = () => {
 
 
 
-                            {
-                                context.dimensao.indicadores.length > indicador ? (
-                                    <div className="d-grid gap-2 d-md-flex justify-content-md-end float-end">
-                                        <div className="dorder-container">
-                                            <button className={"btn btn-theme " + bgColor} type="button"
-                                                    onClick={() => context.setIndicador(context.dimensao.indicadores[indicador])}>
-                                                indicador {dimensao}.{indicador+1} <i className="fas fa-angle-right"/>
-                                            </button>
-                                        </div>
-                                    </div>
-                                ) : null
-                            }
+
 
 
 
