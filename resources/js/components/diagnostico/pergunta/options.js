@@ -27,7 +27,7 @@ const Options = (props) => {
 
     return (
         <div className="box-items bg-lgt">
-            <p className="mb-3"><strong>P{context.dimensao.numero}.{context.indicador.numero}{props.letra}</strong> {props.descricao}</p>
+            <p className="mb-3"><strong>P{context.dimensao.numero}.{context.indicador.numero}{props.letraPerguntaPai}{props.letra}</strong> {props.descricao}</p>
             <p>{props.legenda}</p>
             <ul className="radio">
                 {
@@ -47,7 +47,7 @@ const Options = (props) => {
             <div className="clear-both">&nbsp;</div>
             {
                 showSubPerguntas ? (
-                    <Perguntas perguntas={props.perguntas} bgColor={props.bgColor} subperguntas={true}/>
+                    <Perguntas perguntas={props.perguntas} bgColor={props.bgColor} subperguntas={true} letraPerguntaPai={props.letra}/>
                 ) : null
             }
         </div>

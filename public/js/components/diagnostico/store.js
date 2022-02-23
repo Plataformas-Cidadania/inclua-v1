@@ -419,6 +419,34 @@ const DiagnosticoProvider = ({
       localStorage.removeItem('respostas_diagnostico');
   }*/
 
+  /*const setDimensaoIndicador = (numeroDimensao, numeroIndicador) => {
+      setDimensao(dimensoes[numeroDimensao-1]);
+      setIndicador(dimensoes[numeroIndicador].indicadores[numeroIndicador-1]);
+  }*/
+
+
+  const getHmtlRespostasPendentes = () => {
+    let ultimaDimensao = 0;
+    let ultimoIndicador = 0;
+    return respostasPendentes.map(item => {
+      let elementoDimensao = null;
+      let elementoIndicador = null;
+      let trocouIndicador = false;
+
+      if (item.dimensao !== ultimaDimensao) {
+        ultimaDimensao = item.dimensao;
+        elementoDimensao = /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("strong", null, "Dimensao ", item.dimensao));
+      }
+
+      if (item.dimensao + "." + item.indicador !== ultimoIndicador) {
+        ultimoIndicador = item.dimensao + "." + item.indicador;
+        trocouIndicador = true;
+        elementoIndicador = /*#__PURE__*/React.createElement("a", null, /*#__PURE__*/React.createElement("strong", null, /*#__PURE__*/React.createElement("i", null, /*#__PURE__*/React.createElement("br", null), "Indicador ", item.dimensao, ".", item.indicador, ":\xA0\xA0")));
+      }
+
+      return /*#__PURE__*/React.createElement("span", null, elementoDimensao, elementoIndicador, /*#__PURE__*/React.createElement("span", null, trocouIndicador ? null : /*#__PURE__*/React.createElement("span", null, ", "), "P", item.dimensao, ".", item.indicador, item.pergunta === "zz" ? " - Reflexão-síntese" : item.pergunta, item.subpergunta));
+    });
+  };
 
   return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
     className: "alert alert-danger alert-fixed",
@@ -437,9 +465,7 @@ const DiagnosticoProvider = ({
       height: '300px',
       overflow: 'auto'
     }
-  }, "Perguntas n\xE3o respondidas: ", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), respostasPendentes.map(item => {
-    return /*#__PURE__*/React.createElement("div", null, "Dimens\xE3o ", item.dimensao, " - Indicador: ", item.indicador, " - Pergunta: ", item.pergunta === "zz" ? "Reflexão-síntese" : item.pergunta);
-  }))), /*#__PURE__*/React.createElement(DiagnosticoContext.Provider, {
+  }, "Perguntas n\xE3o respondidas:", getHmtlRespostasPendentes())), /*#__PURE__*/React.createElement(DiagnosticoContext.Provider, {
     value: {
       tipo,
       setTipo,

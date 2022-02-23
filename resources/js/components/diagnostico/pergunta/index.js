@@ -17,6 +17,7 @@ const Pergunta = (props) => {
             naoSeAplica={props.naoSeAplica}
             resposta={props.resposta}
             perguntas={props.perguntas}
+            letraPerguntaPai={props.letraPerguntaPai}
         />,
         "2": <Nota
             id={props.id}
@@ -30,6 +31,7 @@ const Pergunta = (props) => {
             naoSeAplica={props.naoSeAplica}
             resposta={props.resposta}
             perguntas={props.perguntas}
+            letraPerguntaPai={props.letraPerguntaPai}
         />,
         "3": <Range
             id={props.id}

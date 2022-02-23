@@ -34,7 +34,8 @@ const Perguntas = props => {
       naoSeAplica: pergunta.nao_se_aplica,
       idPerguntaPai: pergunta.id_perguntaPai,
       resposta: pergunta.resposta,
-      perguntas: pergunta.perguntas
+      perguntas: pergunta.perguntas,
+      letraPerguntaPai: props.letraPerguntaPai
     });
   }));
 };
