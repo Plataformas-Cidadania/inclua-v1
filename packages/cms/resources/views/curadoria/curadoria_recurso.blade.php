@@ -36,12 +36,12 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr ng-repeat="curadoria_recurso in curadoriaRecurso">
+                        <tr ng-repeat="curadoriaRecurso in curadoriasRecursos">
                             {{--<td><% getRecurso(curadoria_recurso.id_recurso) %></td>--}}
-                            <td><% curadoria_recurso.recurso.nome %></td>
+                            <td><% curadoriaRecurso.nome %></td>
                             <td class="text-right">
                                 <div>
-                                    <a><i data-toggle="modal" data-target="#modalExcluircuradoria_recurso" class="fa fa-remove fa-2x" ng-click="perguntaExcluircuradoria_recurso(curadoria_recurso.id_curadoria, curadoria_recurso.id_recurso, curadoria_recurso.recurso.nome)"></i></a>
+                                    <a><i data-toggle="modal" data-target="#modalExcluircuradoria_recurso" class="fa fa-remove fa-2x" ng-click="perguntaExcluircuradoria_recurso(curadoria_recurso.id_curadoria, curadoriaRecurso.id_recurso, curadoriaRecurso.nome)"></i></a>
                                 </div>
                             </td>
                         </tr>

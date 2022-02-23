@@ -286,6 +286,8 @@ cmsApp.controller('curadoriaCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
         });
     }
 
+
+
     $scope.listarRecursoCuradoria = function(){
         $scope.processandoListagemCuradoriaRecurso = true;
         $http({
@@ -295,8 +297,9 @@ cmsApp.controller('curadoriaCtrl', ['$scope', '$http', 'Upload', '$timeout', fun
 
             }
         }).success(function(data, status, headers, config){
-            $scope.curadoriaRecurso = data.data;
-            $scope.totalCuradoriaRecurso = $scope.curadoriaRecurso.length;
+            $scope.curadoriasRecursos = data.data;
+            console.log( $scope.curadoriasRecursos);
+            $scope.totalCuradoriaRecurso = $scope.curadoriasRecursos.length;
             $scope.processandoListagemCuradoriaRecurso = false;
         }).error(function(data){
             $scope.message = "Ocorreu um erro: "+data;
