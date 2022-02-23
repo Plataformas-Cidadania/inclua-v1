@@ -6,8 +6,6 @@ const Options = (props) => {
     const [showSubPerguntas, setShowSubPerguntas] = useState(false);
     const [resposta, setResposta] =useState(props.resposta);
 
-
-
     useEffect(() => {
         console.log('======================',props);
         setShowSubPerguntas(props.resposta === props.maximo);
