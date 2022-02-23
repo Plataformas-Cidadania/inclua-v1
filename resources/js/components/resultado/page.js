@@ -4,6 +4,7 @@ const Page = () => {
     const [resultado, setResultado] = useState([]);
     const [groupRecurso, setGroupRecurso] = useState(null);
     const [dimensao, setDimensao] = useState(0);
+    const [categoriaResultado, setCategoriaResultado] = useState([]);
 
 
     useEffect(() => {
@@ -12,6 +13,7 @@ const Page = () => {
 
     useEffect(() => {
         Resultado();
+        categoriasResultado();
     }, [dimensao]);
 
     const Resultado = async () => {
@@ -20,6 +22,16 @@ const Page = () => {
             const result = await axios.get("api/diagnostico/"+dimensao+"/"+localStorage.getItem('id_diagnostico'));
             setResultado(result.data)
             console.log('***', Math.round(result.data.indicadores[0].posPontos));
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const categoriasResultado = async () => {
+        try {
+            const result = await axios.get("api/categoria_diagnostico/nomes/"+localStorage.getItem('id_diagnostico'));
+            setCategoriaResultado(result.data.data);
+
         } catch (error) {
             console.log(error);
         }
@@ -58,6 +70,61 @@ const Page = () => {
 
     return (
         <div>
+            <div className="container-fluid">
+                <div className="p-3">&nbsp;</div>
+                <div className="dorder-container">
+                    <div className="bg-lgt dorder-container-mai">
+                        <div className="dorder-container-line">
+                            <h1>Diagnóstico {resultado.tipo_diagnostico === 1 ? 'Completo' : 'Parcial'}</h1>
+                            <div className="dorder-container-box bg-lgt"/>
+                        </div>
+                    </div>
+                </div>
+                <div>&nbsp;</div>
+            </div>
+
+            <div className="container-fluid  bg-lgt">
+                <div className="row">
+                    <div className="col-md-2"></div>
+                    <div className="col-md-8">
+                        <div className="container">
+                            <div className="row">
+                                <div className="col-md-12">
+                                    <div className="p-3">
+                                        <p>
+                                            <strong>Oferta pública sob foco</strong><br/>
+                                            {resultado.oferta_publica}
+                                            <br/><br/>
+                                            <strong>Qual(is) grupo(s) ou população(ões) específica(s) irá focar?</strong><br/>
+                                            {resultado.grupo_focal}
+                                            <br/><br/>
+                                            <strong>Categorias</strong><br/>
+                                            <ul style={{padding: '0'}}>
+                                                {
+                                                    categoriaResultado.map((item, key) => {
+                                                        return(
+                                                            <li style={{display: 'inline-block', border: "solid 1px #333333", padding: '5px 10px', margin: '5px', borderRadius: '3px'}} key={key}>
+                                                                {item}
+                                                            </li>
+                                                        )
+                                                    })
+                                                }
+
+                                            </ul>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-md-2">
+                        <img src="/img/bg-top.png" alt="" width="80%" className="float-end"/>
+                    </div>
+                </div>
+            </div>
+
+
+
 
             <div className="container">
                 <div className="row">

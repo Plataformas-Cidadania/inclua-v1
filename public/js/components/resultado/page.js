@@ -6,11 +6,13 @@ const Page = () => {
   const [resultado, setResultado] = useState([]);
   const [groupRecurso, setGroupRecurso] = useState(null);
   const [dimensao, setDimensao] = useState(0);
+  const [categoriaResultado, setCategoriaResultado] = useState([]);
   useEffect(() => {
     setDimensao(primeiraDimensaoRespondida());
   }, []);
   useEffect(() => {
     Resultado();
+    categoriasResultado();
   }, [dimensao]);
 
   const Resultado = async () => {
@@ -19,6 +21,15 @@ const Page = () => {
       const result = await axios.get("api/diagnostico/" + dimensao + "/" + localStorage.getItem('id_diagnostico'));
       setResultado(result.data);
       console.log('***', Math.round(result.data.indicadores[0].posPontos));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const categoriasResultado = async () => {
+    try {
+      const result = await axios.get("api/categoria_diagnostico/nomes/" + localStorage.getItem('id_diagnostico'));
+      setCategoriaResultado(result.data.data);
     } catch (error) {
       console.log(error);
     }
@@ -53,6 +64,56 @@ const Page = () => {
   bgColor = bgColor[dimensao]; //console.log('----', resultado.indicadores);
 
   return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: "container-fluid"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "p-3"
+  }, "\xA0"), /*#__PURE__*/React.createElement("div", {
+    className: "dorder-container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "bg-lgt dorder-container-mai"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "dorder-container-line"
+  }, /*#__PURE__*/React.createElement("h1", null, "Diagn\xF3stico ", resultado.tipo_diagnostico === 1 ? 'Completo' : 'Parcial'), /*#__PURE__*/React.createElement("div", {
+    className: "dorder-container-box bg-lgt"
+  })))), /*#__PURE__*/React.createElement("div", null, "\xA0")), /*#__PURE__*/React.createElement("div", {
+    className: "container-fluid  bg-lgt"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "row"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "col-md-2"
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "col-md-8"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "row"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "col-md-12"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "p-3"
+  }, /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("strong", null, "Oferta p\xFAblica sob foco"), /*#__PURE__*/React.createElement("br", null), resultado.oferta_publica, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("strong", null, "Qual(is) grupo(s) ou popula\xE7\xE3o(\xF5es) espec\xEDfica(s) ir\xE1 focar?"), /*#__PURE__*/React.createElement("br", null), resultado.grupo_focal, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("strong", null, "Categorias"), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("ul", {
+    style: {
+      padding: '0'
+    }
+  }, categoriaResultado.map((item, key) => {
+    return /*#__PURE__*/React.createElement("li", {
+      style: {
+        display: 'inline-block',
+        border: "solid 1px #333333",
+        padding: '5px 10px',
+        margin: '5px',
+        borderRadius: '3px'
+      },
+      key: key
+    }, item);
+  })))))))), /*#__PURE__*/React.createElement("div", {
+    className: "col-md-2"
+  }, /*#__PURE__*/React.createElement("img", {
+    src: "/img/bg-top.png",
+    alt: "",
+    width: "80%",
+    className: "float-end"
+  })))), /*#__PURE__*/React.createElement("div", {
     className: "container"
   }, /*#__PURE__*/React.createElement("div", {
     className: "row"
