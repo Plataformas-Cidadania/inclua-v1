@@ -20,5 +20,12 @@
 
     <div id="resultado" class="mb-4">&nbsp;</div>
 
+    <div class="text-center">
+        <a href="diagnostico" class="btn btn-outline-dark">Voltar para o diagnóstico online</a>
+        <br>
+        <br>
+    </div>
+
+
 @endsection
 
