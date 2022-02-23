@@ -96,7 +96,7 @@ const Page = () => {
         borderRadius: '3px'
       },
       key: key
-    }, item.id_categoria);
+    }, item);
   })))), /*#__PURE__*/React.createElement("div", {
     style: {
       pageBreakAfter: "always"

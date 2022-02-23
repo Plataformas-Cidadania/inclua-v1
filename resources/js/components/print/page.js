@@ -37,9 +37,6 @@ const Page = () => {
         }
     }
 
-
-
-
     let grupo_focal = "";
     let oferta_publica = "";
     let tipo_diagnostico = 0;
@@ -49,10 +46,6 @@ const Page = () => {
         oferta_publica = resultado[0].oferta_publica;
         tipo_diagnostico = resultado[0].tipo_diagnostico;
     }
-
-
-
-
 
     return (
         <>
@@ -85,7 +78,7 @@ const Page = () => {
                                 categoriaResultado.map((item, key) => {
                                     return(
                                         <li style={{display: 'inline-block', border: "solid 1px #333333", padding: '5px 10px', margin: '5px', borderRadius: '3px'}} key={key}>
-                                            {item.id_categoria}
+                                            {item}
                                         </li>
                                     )
                                 })
