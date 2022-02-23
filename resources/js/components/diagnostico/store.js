@@ -16,6 +16,7 @@ const DiagnosticoProvider = ({children}) => {
     const [diagnostico, setDiagnostico] = useState({oferta_publica: null, grupo_focal: null, tipo_diagnostico: tipo})
     const [categorias, setCategorias] = useState([]);
     const [categoriasMarcadas, setCategoriasMarcadas] = useState([]);
+    const [camposPendentesDiagnostico, setCamposPendentesDiagnostico] = useState([]);
     const [respostasPendentes, setRespostasPendentes] = useState([]);
 
     /*state = {
@@ -184,13 +185,27 @@ const DiagnosticoProvider = ({children}) => {
     const validarRespostas = () => {
 
         let newRespostasPendentes = [];
+        let newCamposPendentesDiagnostico = [];
 
         let valid = true;
         console.log(respostas);
 
+        if(!diagnostico.grupo_focal){
+            newCamposPendentesDiagnostico.push('Oferta pública sob foco');
+            valid = false;
+        }
+
+        if(!diagnostico.oferta_publica){
+            newCamposPendentesDiagnostico.push('Qual(is) grupo(s) ou população(ões) específica(s) irá focar?');
+            valid = false;
+        }
+
+        setCamposPendentesDiagnostico(newCamposPendentesDiagnostico);
+
+
         if(respostas.length === 0){
             console.log('Válido:', false);
-            return false;
+            valid = false;
         }
 
         //DIAGNÓSTICO COMPLETO
@@ -409,19 +424,19 @@ const DiagnosticoProvider = ({children}) => {
     const getHmtlRespostasPendentes = () => {
         let ultimaDimensao = 0;
         let ultimoIndicador = 0;
-        return respostasPendentes.map((item) => {
+        return respostasPendentes.map((item, key) => {
             let elementoDimensao = null;
             let elementoIndicador = null;
             let trocouIndicador = false;
             if(item.dimensao !== ultimaDimensao){
                 ultimaDimensao = item.dimensao
-                elementoDimensao = <div><br/><strong>Dimensao {item.dimensao}</strong></div>;
+                elementoDimensao = <div key={"validacao_dimensao"+key}><br/><strong>Dimensao {item.dimensao}</strong></div>;
             }
             if(item.dimensao+"."+item.indicador !== ultimoIndicador){
                 ultimoIndicador = item.dimensao+"."+item.indicador
                 trocouIndicador = true
                 elementoIndicador = (
-                    <a>
+                    <a key={"validacao_indicador"+key}>
                         <strong><i><br/>Indicador {item.dimensao}.{item.indicador}:&nbsp;&nbsp;</i></strong>
                     </a>
                 );
@@ -431,7 +446,7 @@ const DiagnosticoProvider = ({children}) => {
                     {elementoDimensao}
                     {elementoIndicador}
                     {
-                        <span>
+                        <span key={"validacao_pergunta"+key}>
                             {trocouIndicador ? null : (<span>, </span>)}P{item.dimensao}.{item.indicador}{item.pergunta === "zz" ? " - Reflexão-síntese" : item.pergunta}{item.subpergunta}
                         </span>
                     }
@@ -444,9 +459,40 @@ const DiagnosticoProvider = ({children}) => {
         <div>
             <div className="alert alert-danger alert-fixed" role="alert" style={{display: alertFixed ? '' : 'none'}}>
                 <a onClick ={() => setAlertFixed(0)} ><i className="fas fa-times float-end cursor"/></a>
-                <i className="fas fa-exclamation-triangle"/>
-                <div style={{height: '300px', overflow: 'auto'}}>
-                    Perguntas não respondidas:
+                <i className="fas fa-exclamation-triangle"/><br/>
+                <div style={{maxHeight: '300px', overflow: 'auto'}}>
+                    {
+                        camposPendentesDiagnostico.length > 0 ? (
+                            <div>
+                                Informe o{camposPendentesDiagnostico.length > 1 ? "s" : null} campo{camposPendentesDiagnostico.length > 1 ? "s" : null}:&nbsp;
+                                {
+                                    camposPendentesDiagnostico.map((item, key) => {
+                                        return (
+                                            <span key={"validacao-campos"+key}>
+                                                <strong>{item}</strong>{key < camposPendentesDiagnostico.length-1 ? " e " : null}
+                                            </span>
+                                        )
+                                    })
+                                }
+                                <br/><br/>
+                            </div>
+                        ) : null
+                    }
+                    {
+                        respostas.length === 0 ? (
+                            <div>
+                                {
+                                    parseInt(tipo) === 1 ? (
+                                        <span>Nenhuma pergunta foi respondida. No diagnóstico completo você deve responder todas as perguntas.</span>
+                                    ) : (
+                                        <span>Nenhuma pergunta foi respondida. No diagnóstico parcial você deve responder pelo menos uma dimensão.</span>
+                                    )
+                                }
+                            </div>
+                        ) : (
+                            <span>Perguntas não respondidas:</span>
+                        )
+                    }
 
                     {
                         getHmtlRespostasPendentes()
@@ -486,6 +532,7 @@ const DiagnosticoProvider = ({children}) => {
                 validarRespostas,
                 enviarRespostas,
                 respostasPendentes,
+                camposPendentesDiagnostico,
                 setDiagnostico,
                 setCategoriasMarcadas
                 /*limparTodasRespostas*/

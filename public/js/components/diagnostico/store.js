@@ -24,6 +24,7 @@ const DiagnosticoProvider = ({
   });
   const [categorias, setCategorias] = useState([]);
   const [categoriasMarcadas, setCategoriasMarcadas] = useState([]);
+  const [camposPendentesDiagnostico, setCamposPendentesDiagnostico] = useState([]);
   const [respostasPendentes, setRespostasPendentes] = useState([]);
   /*state = {
       tipo: null,
@@ -195,12 +196,25 @@ const DiagnosticoProvider = ({
 
   const validarRespostas = () => {
     let newRespostasPendentes = [];
+    let newCamposPendentesDiagnostico = [];
     let valid = true;
     console.log(respostas);
 
+    if (!diagnostico.grupo_focal) {
+      newCamposPendentesDiagnostico.push('Oferta pública sob foco');
+      valid = false;
+    }
+
+    if (!diagnostico.oferta_publica) {
+      newCamposPendentesDiagnostico.push('Qual(is) grupo(s) ou população(ões) específica(s) irá focar?');
+      valid = false;
+    }
+
+    setCamposPendentesDiagnostico(newCamposPendentesDiagnostico);
+
     if (respostas.length === 0) {
       console.log('Válido:', false);
-      return false;
+      valid = false;
     } //DIAGNÓSTICO COMPLETO
 
 
@@ -428,23 +442,29 @@ const DiagnosticoProvider = ({
   const getHmtlRespostasPendentes = () => {
     let ultimaDimensao = 0;
     let ultimoIndicador = 0;
-    return respostasPendentes.map(item => {
+    return respostasPendentes.map((item, key) => {
       let elementoDimensao = null;
       let elementoIndicador = null;
       let trocouIndicador = false;
 
       if (item.dimensao !== ultimaDimensao) {
         ultimaDimensao = item.dimensao;
-        elementoDimensao = /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("strong", null, "Dimensao ", item.dimensao));
+        elementoDimensao = /*#__PURE__*/React.createElement("div", {
+          key: "validacao_dimensao" + key
+        }, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("strong", null, "Dimensao ", item.dimensao));
       }
 
       if (item.dimensao + "." + item.indicador !== ultimoIndicador) {
         ultimoIndicador = item.dimensao + "." + item.indicador;
         trocouIndicador = true;
-        elementoIndicador = /*#__PURE__*/React.createElement("a", null, /*#__PURE__*/React.createElement("strong", null, /*#__PURE__*/React.createElement("i", null, /*#__PURE__*/React.createElement("br", null), "Indicador ", item.dimensao, ".", item.indicador, ":\xA0\xA0")));
+        elementoIndicador = /*#__PURE__*/React.createElement("a", {
+          key: "validacao_indicador" + key
+        }, /*#__PURE__*/React.createElement("strong", null, /*#__PURE__*/React.createElement("i", null, /*#__PURE__*/React.createElement("br", null), "Indicador ", item.dimensao, ".", item.indicador, ":\xA0\xA0")));
       }
 
-      return /*#__PURE__*/React.createElement("span", null, elementoDimensao, elementoIndicador, /*#__PURE__*/React.createElement("span", null, trocouIndicador ? null : /*#__PURE__*/React.createElement("span", null, ", "), "P", item.dimensao, ".", item.indicador, item.pergunta === "zz" ? " - Reflexão-síntese" : item.pergunta, item.subpergunta));
+      return /*#__PURE__*/React.createElement("span", null, elementoDimensao, elementoIndicador, /*#__PURE__*/React.createElement("span", {
+        key: "validacao_pergunta" + key
+      }, trocouIndicador ? null : /*#__PURE__*/React.createElement("span", null, ", "), "P", item.dimensao, ".", item.indicador, item.pergunta === "zz" ? " - Reflexão-síntese" : item.pergunta, item.subpergunta));
     });
   };
 
@@ -460,12 +480,16 @@ const DiagnosticoProvider = ({
     className: "fas fa-times float-end cursor"
   })), /*#__PURE__*/React.createElement("i", {
     className: "fas fa-exclamation-triangle"
-  }), /*#__PURE__*/React.createElement("div", {
+  }), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
     style: {
-      height: '300px',
+      maxHeight: '300px',
       overflow: 'auto'
     }
-  }, "Perguntas n\xE3o respondidas:", getHmtlRespostasPendentes())), /*#__PURE__*/React.createElement(DiagnosticoContext.Provider, {
+  }, camposPendentesDiagnostico.length > 0 ? /*#__PURE__*/React.createElement("div", null, "Informe o", camposPendentesDiagnostico.length > 1 ? "s" : null, " campo", camposPendentesDiagnostico.length > 1 ? "s" : null, ":\xA0", camposPendentesDiagnostico.map((item, key) => {
+    return /*#__PURE__*/React.createElement("span", {
+      key: "validacao-campos" + key
+    }, /*#__PURE__*/React.createElement("strong", null, item), key < camposPendentesDiagnostico.length - 1 ? " e " : null);
+  }), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null)) : null, respostas.length === 0 ? /*#__PURE__*/React.createElement("div", null, parseInt(tipo) === 1 ? /*#__PURE__*/React.createElement("span", null, "Nenhuma pergunta foi respondida. No diagn\xF3stico completo voc\xEA deve responder todas as perguntas.") : /*#__PURE__*/React.createElement("span", null, "Nenhuma pergunta foi respondida. No diagn\xF3stico parcial voc\xEA deve responder pelo menos uma dimens\xE3o.")) : /*#__PURE__*/React.createElement("span", null, "Perguntas n\xE3o respondidas:"), getHmtlRespostasPendentes())), /*#__PURE__*/React.createElement(DiagnosticoContext.Provider, {
     value: {
       tipo,
       setTipo,
@@ -486,6 +510,7 @@ const DiagnosticoProvider = ({
       validarRespostas,
       enviarRespostas,
       respostasPendentes,
+      camposPendentesDiagnostico,
       setDiagnostico,
       setCategoriasMarcadas
       /*limparTodasRespostas*/
