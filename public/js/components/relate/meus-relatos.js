@@ -73,15 +73,15 @@ const MeusRelatos = props => {
         }), /*#__PURE__*/React.createElement("div", null, item.descricao), /*#__PURE__*/React.createElement("hr", null)));
       });
       /*respostas = result.data.data.map((item, key) => {
-            let showRelate = false;
+           let showRelate = false;
           if(item.relate.id_relate !== idRelate){
               idRelate = item.relate.id_relate;
               showRelate = true;
           }
-            var dataInput = item.relate.created_at.slice(0, 10);
-            let data = new Date(dataInput);
+           var dataInput = item.relate.created_at.slice(0, 10);
+           let data = new Date(dataInput);
           dataFormatada = data.toLocaleDateString('pt-BR', {timeZone: 'UTC'});
-            return (
+           return (
               <div key={"relate"+key}>
                   <p style={{display: showRelate ? '' : 'none'}} className="bg-lgt p-3" >
                       <strong>Relato {item.relate.id_relate} - {dataFormatada}</strong>
