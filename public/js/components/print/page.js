@@ -22,6 +22,7 @@ const Page = () => {
     }
   };
 
+  console.log('---', resultado[0]);
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h1", {
     style: {
       fontFamily: "sora",

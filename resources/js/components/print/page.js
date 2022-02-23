@@ -25,6 +25,8 @@ const Page = () => {
         }
     }
 
+    console.log('---', resultado[0]);
+
 
 
     return (
