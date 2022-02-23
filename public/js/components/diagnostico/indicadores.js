@@ -126,7 +126,7 @@ const Indicadores = () => {
     onClick: () => context.setDimensao(context.dimensoes[dimensao - 2])
   }, "dimens\xE3o ", dimensao - 1, " ", /*#__PURE__*/React.createElement("i", {
     className: "fas fa-angle-left"
-  })))) : null, 'Total: ' + context.dimensao.indicadores.length, " --- ", 'Indicador: ' + context.dimensao.indicadores.length, context.dimensao.indicadores.length <= indicador ? /*#__PURE__*/React.createElement("div", {
+  })))) : null, context.dimensao.indicadores.length <= indicador ? /*#__PURE__*/React.createElement("div", {
     className: "d-grid gap-2 d-md-flex justify-content-md-end float-end"
   }, /*#__PURE__*/React.createElement("div", {
     className: "dorder-container"

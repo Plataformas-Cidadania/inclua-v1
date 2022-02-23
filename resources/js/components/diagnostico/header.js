@@ -13,6 +13,10 @@ const Header = () => {
         getTextDiagnostico("pg-diagnostico");
     }, [])
 
+    useEffect(() => {
+        setRespostasLocalStorage(localStorage.getItem('respostas_diagnostico'));
+    }, [context.respostas])
+
     const ClicklocalStorage = (key) => {
         setlocalStorage();
         localStorage.removeItem('id_diagnostico')
@@ -137,7 +141,7 @@ const Header = () => {
                                     </a>
                                 </div>*/}
 
-                                <div className={"col text-center " + (varLocalStorage || respostasLocalStorage ? '' : 'opacity-5')}>
+                                <div className={"col text-center " + (varLocalStorage || respostasLocalStorage || context.respostas ? '' : 'opacity-5')}>
                                     <div className="btn-icon btn-icon-hover cursor" style={{top: 0}}  onClick={() => ClicklocalStorage()}>
                                         <img src="img/icon-limpar.png" alt="Parcial" title="Parcial" width="75%"/>
                                     </div>

@@ -11,6 +11,9 @@ const Header = () => {
   useEffect(() => {
     getTextDiagnostico("pg-diagnostico");
   }, []);
+  useEffect(() => {
+    setRespostasLocalStorage(localStorage.getItem('respostas_diagnostico'));
+  }, [context.respostas]);
 
   const ClicklocalStorage = key => {
     setlocalStorage();
@@ -172,7 +175,7 @@ const Header = () => {
   })), /*#__PURE__*/React.createElement("p", {
     className: "mt-2"
   }, "Resultado"))), /*#__PURE__*/React.createElement("div", {
-    className: "col text-center " + (varLocalStorage || respostasLocalStorage ? '' : 'opacity-5')
+    className: "col text-center " + (varLocalStorage || respostasLocalStorage || context.respostas ? '' : 'opacity-5')
   }, /*#__PURE__*/React.createElement("div", {
     className: "btn-icon btn-icon-hover cursor",
     style: {

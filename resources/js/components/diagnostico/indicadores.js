@@ -130,7 +130,7 @@ const Indicadores = () => {
                             }
 
 
-                            {'Total: '+context.dimensao.indicadores.length} --- {'Indicador: '+context.dimensao.indicadores.length}
+
                             {
                                 context.dimensao.indicadores.length <= indicador ? (
                                     <div className="d-grid gap-2 d-md-flex justify-content-md-end float-end">
