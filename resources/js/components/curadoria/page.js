@@ -69,6 +69,8 @@ const Page = () => {
 
                                         <br/><hr style={{display: key === 0 ? 'none' : ''}}/><br/>
 
+                                        <Item propsData={item.recursos}/>
+
                                     </div>
                                 );
                             })

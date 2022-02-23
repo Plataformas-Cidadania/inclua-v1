@@ -63,6 +63,8 @@ const Page = () => {
       style: {
         display: key === 0 ? 'none' : ''
       }
-    }), /*#__PURE__*/React.createElement("br", null));
+    }), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement(Item, {
+      propsData: item.recursos
+    }));
   })))));
 };
