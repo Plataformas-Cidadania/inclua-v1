@@ -3,6 +3,7 @@ const Page = () => {
     const {useState, useEffect} = React;
     const [curadorias, setCuradorias] = useState([]);
     const [total, setTotal] = useState(0);
+    const [activeDiv, setActiveDiv] = useState(0);
 
 
     useEffect(() => {
@@ -22,6 +23,10 @@ const Page = () => {
         }
     }
 
+    const clickBox = (id) => {
+        setActiveDiv(id);
+    }
+
     return (
         <div className="row">
             <div className="rol-md-12">
@@ -30,6 +35,13 @@ const Page = () => {
                         <p style={{textAlign: 'right'}}>{total} curadorias</p>
                         {
                             curadorias.map((item, key) => {
+
+                                let recursos = [];
+                                //////////////////
+                                item.curadoria_recurso.map((item2) => {
+                                    recursos.push(item2.recursos);
+                                });
+                                //////////////////
 
                                 return (
                                     <div className={"p-4 "+ (key === 0 ? 'bg-lgt' : '')}>
@@ -70,7 +82,18 @@ const Page = () => {
 
                                         <br/><hr style={{display: key === 0 ? 'none' : ''}}/><br/>
 
-                                        <Item propsData={item.curadoria_recurso}/>
+                                        <div
+                                            className="float-end cursor"
+                                            onClick={() => clickBox(item.id_curadoria)}
+                                            style={{display: item.curadoria_recurso.length === 0 ? 'none' : ''}}
+
+                                        >
+                                            veja os {item.curadoria_recurso.length} recursos <i className="fas fa-angle-right"/>
+                                        </div>
+                                        <br/>
+                                        <div style={{display: activeDiv === item.id_curadoria ? '' : 'none'}}>
+                                            <Item propsData={recursos}/>
+                                        </div>
 
                                         {/*{
                                             item.curadoria_recurso.map((item2, key) => {

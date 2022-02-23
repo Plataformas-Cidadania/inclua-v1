@@ -5,6 +5,7 @@ const Page = () => {
   } = React;
   const [curadorias, setCuradorias] = useState([]);
   const [total, setTotal] = useState(0);
+  const [activeDiv, setActiveDiv] = useState(0);
   useEffect(() => {
     Curadoria();
   }, []);
@@ -17,6 +18,10 @@ const Page = () => {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const clickBox = id => {
+    setActiveDiv(id);
   };
 
   return /*#__PURE__*/React.createElement("div", {
@@ -32,6 +37,12 @@ const Page = () => {
       textAlign: 'right'
     }
   }, total, " curadorias"), curadorias.map((item, key) => {
+    let recursos = []; //////////////////
+
+    item.curadoria_recurso.map(item2 => {
+      recursos.push(item2.recursos);
+    }); //////////////////
+
     return /*#__PURE__*/React.createElement("div", {
       className: "p-4 " + (key === 0 ? 'bg-lgt' : '')
     }, /*#__PURE__*/React.createElement("div", {
@@ -63,8 +74,20 @@ const Page = () => {
       style: {
         display: key === 0 ? 'none' : ''
       }
-    }), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement(Item, {
-      propsData: item.curadoria_recurso
-    }));
+    }), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
+      className: "float-end cursor",
+      onClick: () => clickBox(item.id_curadoria),
+      style: {
+        display: item.curadoria_recurso.length === 0 ? 'none' : ''
+      }
+    }, "veja os ", item.curadoria_recurso.length, " recursos ", /*#__PURE__*/React.createElement("i", {
+      className: "fas fa-angle-right"
+    })), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: activeDiv === item.id_curadoria ? '' : 'none'
+      }
+    }, /*#__PURE__*/React.createElement(Item, {
+      propsData: recursos
+    })));
   })))));
 };
