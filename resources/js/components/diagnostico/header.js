@@ -113,15 +113,28 @@ const Header = () => {
                                     </a>
                                 </div>
                                 <div className={"col text-center " + (varLocalStorage ? '' : 'opacity-5')} >
-                                    <a
-                                        href={(varLocalStorage ? 'resultado' : '#')}
-                                        style={{cursor: (varLocalStorage ? 'pointer' : 'auto')}}
-                                    >
+                                    {
+                                        varLocalStorage ?
+                                            <a href={(varLocalStorage ? 'resultado' : 'diagnostico')} style={{cursor: (varLocalStorage ? 'pointer' : 'auto')}}>
+                                                <div className="btn-icon btn-icon-hover" style={{top: 0}}>
+                                                    <img src="img/icon-analise.png" alt="Resultado" title="Resultado" width="75%"/>
+                                                </div>
+                                                <p className="mt-2">Resultado</p>
+                                            </a>
+                                            :
+                                            <div style={{cursor: (varLocalStorage ? 'pointer' : 'auto')}}>
+                                                <div className="btn-icon btn-icon-hover" style={{top: 0}}>
+                                                    <img src="img/icon-analise.png" alt="Resultado" title="Resultado" width="75%"/>
+                                                </div>
+                                                <p className="mt-2">Resultado</p>
+                                            </div>
+                                    }
+                                    {/*<a href={(varLocalStorage ? 'resultado' : 'diagnostico')} style={{cursor: (varLocalStorage ? 'pointer' : 'auto')}}>
                                         <div className="btn-icon btn-icon-hover" style={{top: 0}}>
                                             <img src="img/icon-analise.png" alt="Resultado" title="Resultado" width="75%"/>
                                         </div>
                                         <p className="mt-2">Resultado</p>
-                                    </a>
+                                    </a>*/}
                                 </div>
                                 {/*<div className="col text-center  opacity-5" >
                                     <div className="btn-icon btn-icon-hover">
