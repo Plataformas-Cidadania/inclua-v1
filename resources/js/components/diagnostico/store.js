@@ -212,7 +212,12 @@ const DiagnosticoProvider = ({children}) => {
                         p.perguntas.forEach((sp) => {
                             if(sp.resposta === undefined && p.resposta > 0){
                                 console.log('Completo Subpergunta não respondida', sp);
-                                newRespostasPendentes.push({dimensao: d.numero, indicador: i.numero, pergunta: sp.letra});
+                                newRespostasPendentes.push({
+                                    dimensao: d.numero,
+                                    indicador: i.numero,
+                                    pergunta: p.letra,
+                                    subpergunta: sp.letra
+                                });
                                 valid = false;
                             }
                         });
@@ -236,9 +241,9 @@ const DiagnosticoProvider = ({children}) => {
                 if(dimensoesComRespostas.includes(d.id_dimensao)){
                     d.indicadores.forEach((i) => {
                         i.perguntas.forEach((p) => {
-                            console.log("numero_dimensao", "numero_indicador", "id_pergunta", "letra", "id_perguntaPai", "resposta");
-                            console.log(d.numero, i.numero, p.id_pergunta, p.letra, p.id_perguntaPai, p.resposta);
-                            console.log(p);
+                            //console.log("numero_dimensao", "numero_indicador", "id_pergunta", "letra", "id_perguntaPai", "resposta");
+                            //console.log(d.numero, i.numero, p.id_pergunta, p.letra, p.id_perguntaPai, p.resposta);
+                            //console.log(p);
                             if(p.resposta === undefined && p.id_perguntaPai === null){
                                 console.log('Completo Pergunta não respondida', p);
                                 newRespostasPendentes.push({dimensao: d.numero, indicador: i.numero, pergunta: p.letra});
@@ -247,7 +252,12 @@ const DiagnosticoProvider = ({children}) => {
                             p.perguntas.forEach((sp) => {
                                 if(sp.resposta === undefined && p.resposta > 0){
                                     console.log('Completo Subpergunta não respondida', sp);
-                                    newRespostasPendentes.push({dimensao: d.numero, indicador: i.numero, pergunta: sp.letra});
+                                    newRespostasPendentes.push({
+                                        dimensao: d.numero,
+                                        indicador: i.numero,
+                                        pergunta: p.letra,
+                                        subpergunta: sp.letra
+                                    });
                                     valid = false;
                                 }
                             });
@@ -395,18 +405,20 @@ const DiagnosticoProvider = ({children}) => {
             <div className="alert alert-danger alert-fixed" role="alert" style={{display: alertFixed ? '' : 'none'}}>
                 <a onClick ={() => setAlertFixed(0)} ><i className="fas fa-times float-end cursor"/></a>
                 <i className="fas fa-exclamation-triangle"/>
-                Perguntas não respondidas: <br/><br/>
-                {
-                    respostasPendentes.map((item) => {
-                        return (
-                            <div>
-                                Dimensão {item.dimensao} -
-                                Indicador: {item.indicador} -
-                                Pergunta: {item.pergunta === "zz" ? "Reflexão-síntese" : item.pergunta}
-                            </div>
-                        );
-                    })
-                }
+                <div style={{height: '300px', overflow: 'auto'}}>
+                    Perguntas não respondidas: <br/><br/>
+                    {
+                        respostasPendentes.map((item) => {
+                            return (
+                                <div>
+                                    Dimensão {item.dimensao} -
+                                    Indicador: {item.indicador} -
+                                    Pergunta: {item.pergunta === "zz" ? "Reflexão-síntese" : item.pergunta}
+                                </div>
+                            );
+                        })
+                    }
+                </div>
             </div>
             <DiagnosticoContext.Provider value={{
                 tipo, setTipo,

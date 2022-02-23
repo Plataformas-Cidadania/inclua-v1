@@ -17,7 +17,7 @@ const Diagnostico = () => {
   }, /*#__PURE__*/React.createElement("button", {
     className: "btn btn-lg btn-primary",
     onClick: () => context.enviarRespostas()
-  }, "Enviar Respostas")) : null, /*#__PURE__*/React.createElement("br", null));
+  }, "Enviar Respostas para ", parseInt(context.tipo) === 1 ? "Diagnóstico Completo" : "Diagnóstico Parcial")) : null, /*#__PURE__*/React.createElement("br", null));
 };
 
 ReactDOM.render( /*#__PURE__*/React.createElement(DiagnosticoProvider, null, /*#__PURE__*/React.createElement(Diagnostico, {
