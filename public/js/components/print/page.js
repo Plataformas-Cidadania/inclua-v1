@@ -4,8 +4,10 @@ const Page = () => {
     useEffect
   } = React;
   const [resultado, setResultado] = useState([]);
+  const [categoriaResultado, setCategoriaResultado] = useState([]);
   useEffect(() => {
     Resultado();
+    categoriasResultado();
   }, []);
 
   const Resultado = async () => {
@@ -21,6 +23,25 @@ const Page = () => {
       console.log(error);
     }
   };
+
+  const categoriasResultado = async () => {
+    try {
+      const result = await axios.get("api/categoria_diagnostico/nomes/" + localStorage.getItem('id_diagnostico'));
+      setCategoriaResultado(result.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  let grupo_focal = "";
+  let oferta_publica = "";
+  let tipo_diagnostico = 0;
+
+  if (resultado[0]) {
+    grupo_focal = resultado[0].grupo_focal;
+    oferta_publica = resultado[0].oferta_publica;
+    tipo_diagnostico = resultado[0].tipo_diagnostico;
+  }
 
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h1", {
     style: {
@@ -49,7 +70,38 @@ const Page = () => {
   }, /*#__PURE__*/React.createElement("img", {
     src: "/img/print.png",
     alt: ""
-  }))), resultado.map((item, key) => {
+  })), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: "Verdana",
+      fontSize: "16px",
+      lineHeight: "25px",
+      width: "800px",
+      margin: "auto"
+    }
+  }, /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("h2", {
+    style: {
+      textAlign: "center"
+    }
+  }, "Diagn\xF3stico ", tipo_diagnostico === 1 ? 'Completo' : 'Parcial'), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("strong", null, "Oferta p\xFAblica sob foco"), /*#__PURE__*/React.createElement("br", null), oferta_publica, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("strong", null, "Qual(is) grupo(s) ou popula\xE7\xE3o(\xF5es) espec\xEDfica(s) ir\xE1 focar?"), /*#__PURE__*/React.createElement("br", null), grupo_focal, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("strong", null, "Oferta p\xFAblica e/ou o grupo(s) espec\xEDfico(s) em rela\xE7\xE3o aos quais ir\xE1 conduzir o dian\xF3stico:"), /*#__PURE__*/React.createElement("ul", {
+    style: {
+      padding: '0'
+    }
+  }, categoriaResultado.map((item, key) => {
+    return /*#__PURE__*/React.createElement("li", {
+      style: {
+        display: 'inline-block',
+        border: "solid 1px #333333",
+        padding: '5px 10px',
+        margin: '5px',
+        borderRadius: '3px'
+      },
+      key: key
+    }, item);
+  })))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      pageBreakAfter: "always"
+    }
+  })), resultado.map((item, key) => {
     return /*#__PURE__*/React.createElement("div", {
       style: {
         fontFamily: "Verdana",
