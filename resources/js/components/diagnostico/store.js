@@ -16,6 +16,7 @@ const DiagnosticoProvider = ({children}) => {
     const [diagnostico, setDiagnostico] = useState({oferta_publica: null, grupo_focal: null, tipo_diagnostico: tipo})
     const [categorias, setCategorias] = useState([]);
     const [categoriasMarcadas, setCategoriasMarcadas] = useState([]);
+    const [respostasPendentes, setRespostasPendentes] = useState([]);
 
     /*state = {
         tipo: null,
@@ -181,6 +182,9 @@ const DiagnosticoProvider = ({children}) => {
     }
 
     const validarRespostas = () => {
+
+        let newRespostasPendentes = [];
+
         let valid = true;
         console.log(respostas);
 
@@ -202,11 +206,13 @@ const DiagnosticoProvider = ({children}) => {
                         console.log(p);
                         if(p.resposta === undefined && p.id_perguntaPai === null){
                             console.log('Completo Pergunta não respondida', p);
+                            newRespostasPendentes.push({dimensao: d.numero, indicador: i.numero, pergunta: p.letra});
                             valid = false;
                         }
                         p.perguntas.forEach((sp) => {
                             if(sp.resposta === undefined && p.resposta > 0){
                                 console.log('Completo Subpergunta não respondida', sp);
+                                newRespostasPendentes.push({dimensao: d.numero, indicador: i.numero, pergunta: sp.letra});
                                 valid = false;
                             }
                         });
@@ -216,6 +222,7 @@ const DiagnosticoProvider = ({children}) => {
                 //}
             });
             console.log('Válido:', valid);
+            setRespostasPendentes(newRespostasPendentes);
             return valid;
         }
 
@@ -234,11 +241,13 @@ const DiagnosticoProvider = ({children}) => {
                             console.log(p);
                             if(p.resposta === undefined && p.id_perguntaPai === null){
                                 console.log('Completo Pergunta não respondida', p);
+                                newRespostasPendentes.push({dimensao: d.numero, indicador: i.numero, pergunta: p.letra});
                                 valid = false;
                             }
                             p.perguntas.forEach((sp) => {
                                 if(sp.resposta === undefined && p.resposta > 0){
                                     console.log('Completo Subpergunta não respondida', sp);
+                                    newRespostasPendentes.push({dimensao: d.numero, indicador: i.numero, pergunta: sp.letra});
                                     valid = false;
                                 }
                             });
@@ -247,6 +256,7 @@ const DiagnosticoProvider = ({children}) => {
                 }
             });
             console.log('Válido:', valid);
+            setRespostasPendentes(newRespostasPendentes);
             return valid;
         }
 
@@ -385,7 +395,18 @@ const DiagnosticoProvider = ({children}) => {
             <div className="alert alert-danger alert-fixed" role="alert" style={{display: alertFixed ? '' : 'none'}}>
                 <a onClick ={() => setAlertFixed(0)} ><i className="fas fa-times float-end cursor"/></a>
                 <i className="fas fa-exclamation-triangle"/>
-                Responda a todas as perguntas
+                Perguntas não respondidas: <br/><br/>
+                {
+                    respostasPendentes.map((item) => {
+                        return (
+                            <div>
+                                Dimensão {item.dimensao} -
+                                Indicador: {item.indicador} -
+                                Pergunta: {item.pergunta === "zz" ? "Reflexão-síntese" : item.pergunta}
+                            </div>
+                        );
+                    })
+                }
             </div>
             <DiagnosticoContext.Provider value={{
                 tipo, setTipo,
@@ -401,6 +422,7 @@ const DiagnosticoProvider = ({children}) => {
                 getResposta,
                 validarRespostas,
                 enviarRespostas,
+                respostasPendentes,
                 setDiagnostico,
                 setCategoriasMarcadas
                 /*limparTodasRespostas*/

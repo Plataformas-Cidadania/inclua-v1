@@ -24,6 +24,7 @@ const DiagnosticoProvider = ({
   });
   const [categorias, setCategorias] = useState([]);
   const [categoriasMarcadas, setCategoriasMarcadas] = useState([]);
+  const [respostasPendentes, setRespostasPendentes] = useState([]);
   /*state = {
       tipo: null,
       dimensoes: [],
@@ -193,6 +194,7 @@ const DiagnosticoProvider = ({
   };
 
   const validarRespostas = () => {
+    let newRespostasPendentes = [];
     let valid = true;
     console.log(respostas);
 
@@ -215,12 +217,22 @@ const DiagnosticoProvider = ({
 
             if (p.resposta === undefined && p.id_perguntaPai === null) {
               console.log('Completo Pergunta não respondida', p);
+              newRespostasPendentes.push({
+                dimensao: d.numero,
+                indicador: i.numero,
+                pergunta: p.letra
+              });
               valid = false;
             }
 
             p.perguntas.forEach(sp => {
               if (sp.resposta === undefined && p.resposta > 0) {
                 console.log('Completo Subpergunta não respondida', sp);
+                newRespostasPendentes.push({
+                  dimensao: d.numero,
+                  indicador: i.numero,
+                  pergunta: sp.letra
+                });
                 valid = false;
               }
             });
@@ -228,6 +240,7 @@ const DiagnosticoProvider = ({
         }); //}
       });
       console.log('Válido:', valid);
+      setRespostasPendentes(newRespostasPendentes);
       return valid;
     } //DIAGNÓSTICO PARCIAL
 
@@ -246,12 +259,22 @@ const DiagnosticoProvider = ({
 
               if (p.resposta === undefined && p.id_perguntaPai === null) {
                 console.log('Completo Pergunta não respondida', p);
+                newRespostasPendentes.push({
+                  dimensao: d.numero,
+                  indicador: i.numero,
+                  pergunta: p.letra
+                });
                 valid = false;
               }
 
               p.perguntas.forEach(sp => {
                 if (sp.resposta === undefined && p.resposta > 0) {
                   console.log('Completo Subpergunta não respondida', sp);
+                  newRespostasPendentes.push({
+                    dimensao: d.numero,
+                    indicador: i.numero,
+                    pergunta: sp.letra
+                  });
                   valid = false;
                 }
               });
@@ -260,6 +283,7 @@ const DiagnosticoProvider = ({
         }
       });
       console.log('Válido:', valid);
+      setRespostasPendentes(newRespostasPendentes);
       return valid;
     }
   };
@@ -407,7 +431,9 @@ const DiagnosticoProvider = ({
     className: "fas fa-times float-end cursor"
   })), /*#__PURE__*/React.createElement("i", {
     className: "fas fa-exclamation-triangle"
-  }), "Responda a todas as perguntas"), /*#__PURE__*/React.createElement(DiagnosticoContext.Provider, {
+  }), "Perguntas n\xE3o respondidas: ", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), respostasPendentes.map(item => {
+    return /*#__PURE__*/React.createElement("div", null, "Dimens\xE3o ", item.dimensao, " - Indicador: ", item.indicador, " - Pergunta: ", item.pergunta === "zz" ? "Reflexão-síntese" : item.pergunta);
+  })), /*#__PURE__*/React.createElement(DiagnosticoContext.Provider, {
     value: {
       tipo,
       setTipo,
@@ -427,6 +453,7 @@ const DiagnosticoProvider = ({
       getResposta,
       validarRespostas,
       enviarRespostas,
+      respostasPendentes,
       setDiagnostico,
       setCategoriasMarcadas
       /*limparTodasRespostas*/
