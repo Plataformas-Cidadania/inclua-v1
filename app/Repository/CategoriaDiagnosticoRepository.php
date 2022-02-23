@@ -48,6 +48,19 @@ class CategoriaDiagnosticoRepository extends BaseRepository
         if (!$res) throw new \Illuminate\Database\Eloquent\ModelNotFoundException;
         else return $res;
     }
+
+    public function getAllNomeByIdDiagnostico($id_diagnostico)
+    {
+        $categDiags = CategoriaDiagnostico::with('categoria')->where('id_diagnostico', '=', $id_diagnostico)->select('id_categoria')
+            ->get();
+        if (!$categDiags) throw new \Illuminate\Database\Eloquent\ModelNotFoundException;
+        $nomeCategoria = [];
+        foreach($categDiags as $categDiag)
+            array_push($nomeCategoria,$categDiag->categoria->nome);
+
+        return $nomeCategoria;
+    }
+
     /**
      * Remove um modelo por um ID composto.
      *

@@ -484,6 +484,9 @@ Route::group([
     Route::get('/{id_diagnostico}',[App\Http\Controllers\Api\CategoriaDiagnosticoController::class, 'getAllCategoriaPorDiagnostico'])
         ->name('api.categoria_diagnostico.getAllCategoriaPorDiagnostico');
 
+    Route::get('nomes/{id_diagnostico}',[App\Http\Controllers\Api\CategoriaDiagnosticoController::class, 'getAllNomeCategoriaPorDiagnostico'])
+        ->name('api.categoria_diagnostico.getAllNomeCategoriaPorDiagnostico');
+
     Route::post('/', [App\Http\Controllers\Api\CategoriaDiagnosticoController::class, 'store'])
         ->name('api.categoria_diagnostico.store');
 
