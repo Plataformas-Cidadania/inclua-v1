@@ -36,14 +36,14 @@ class CuradoriaRecurso extends Model
 	];
 
 //	protected $with = ['autor','recurso'];
-	protected $with = ['recurso'];
+	protected $with = ['recursos'];
 
 	public function curadoria()
 	{
 		return $this->belongsTo(Curadoria::class, 'id_curadoria');
 	}
 
-	public function recurso()
+	public function recursos()
 	{
 		return $this->belongsTo(Recurso::class, 'id_recurso');
 	}

@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Models\CategoriaDiagnostico;
 use App\Models\CuradoriaRecurso;
 use Illuminate\Database\Eloquent\Model;
 
@@ -76,8 +77,11 @@ class CuradoriaRecursoRepository extends BaseRepository
      */
     public function getRecursoPorCuradoria($id_curadoria)
     {
-        $res = $this->model->where('id_curadoria', $id_curadoria)->get();
+        $curadorias = $this->model->where('id_curadoria', $id_curadoria)->get();
+        $recursos = [];
+        foreach($curadorias as $curadoria)
+            array_push($recursos,$curadoria->recursos);
 
-        return $res;
+       return $recursos;
     }
 }
