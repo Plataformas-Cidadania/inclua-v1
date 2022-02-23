@@ -66,7 +66,15 @@ const Page = () => {
         float: "left",
         marginRight: "15px"
       }
-    }), /*#__PURE__*/React.createElement("h2", null, "DIMENS\xC3O ", item.id_dimensao), /*#__PURE__*/React.createElement("h3", null, item.titulo), /*#__PURE__*/React.createElement("h4", null, "Veja abaixo os resultados por indicador:")), /*#__PURE__*/React.createElement("div", {
+    }), /*#__PURE__*/React.createElement("h2", null, "DIMENS\xC3O ", item.id_dimensao), /*#__PURE__*/React.createElement("h3", null, item.titulo), /*#__PURE__*/React.createElement("h4", {
+      style: {
+        display: item.pontos === 0 ? 'none' : ''
+      }
+    }, "Veja abaixo os resultados por indicador:")), /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: item.pontos === 0 ? 'none' : ''
+      }
+    }, /*#__PURE__*/React.createElement("div", {
       style: {
         clear: "both",
         margin: "15px 0"
@@ -183,7 +191,7 @@ const Page = () => {
           }
         }, recurso.tipo_recurso.nome));
       }) : null)));
-    }) : null, /*#__PURE__*/React.createElement("div", {
+    }) : null), /*#__PURE__*/React.createElement("div", {
       style: {
         pageBreakAfter: "always"
       }
