@@ -438,7 +438,7 @@ const DiagnosticoProvider = ({
       overflow: 'auto'
     }
   }, "Perguntas n\xE3o respondidas: ", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), respostasPendentes.map(item => {
-    return /*#__PURE__*/React.createElement("div", null, "Dimens\xE3o ", item.dimensao, " - Indicador: ", item.indicador, " - Pergunta: ", item.pergunta === "zz" ? "Reflexão-síntese" : item.pergunta);
+    return /*#__PURE__*/React.createElement("div", null, "Dimens\xE3o ", item.dimensao, " - Indicador: ", item.indicador, " -", item.subpergunta ? /*#__PURE__*/React.createElement("span", null, "Subpergunta: ", item.subpergunta, " da Pergunta ", item.pergunta) : /*#__PURE__*/React.createElement("span", null, "Pergunta: ", item.pergunta === "zz" ? "Reflexão-síntese" : item.pergunta));
   }))), /*#__PURE__*/React.createElement(DiagnosticoContext.Provider, {
     value: {
       tipo,

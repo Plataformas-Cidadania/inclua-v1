@@ -413,7 +413,13 @@ const DiagnosticoProvider = ({children}) => {
                                 <div>
                                     Dimensão {item.dimensao} -
                                     Indicador: {item.indicador} -
-                                    Pergunta: {item.pergunta === "zz" ? "Reflexão-síntese" : item.pergunta}
+                                    {
+                                        item.subpergunta ? (
+                                            <span>Subpergunta: {item.subpergunta} da Pergunta {item.pergunta}</span>
+                                        ) : (
+                                            <span>Pergunta: {item.pergunta === "zz" ? "Reflexão-síntese" : item.pergunta}</span>
+                                        )
+                                    }
                                 </div>
                             );
                         })
