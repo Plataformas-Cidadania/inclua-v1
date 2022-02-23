@@ -2,10 +2,12 @@ const Page = () => {
 
     const {useState, useEffect} = React;
     const [resultado, setResultado] = useState([]);
+    const [categoriaResultado, setCategoriaResultado] = useState([]);
 
 
     useEffect(() => {
         Resultado();
+        categoriasResultado();
 
     }, []);
 
@@ -17,7 +19,6 @@ const Page = () => {
             setTimeout(showSubmit, 1000)
             function showSubmit() {
                 window.print();
-
             }
 
         } catch (error) {
@@ -25,7 +26,31 @@ const Page = () => {
         }
     }
 
-    console.log('---', resultado[0]);
+
+    const categoriasResultado = async () => {
+        try {
+            const result = await axios.get("api/categoria_diagnostico/nomes/"+localStorage.getItem('id_diagnostico'));
+            setCategoriaResultado(result.data.data);
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+
+
+
+    let grupo_focal = "";
+    let oferta_publica = "";
+    let tipo_diagnostico = 0;
+
+    if(resultado[0]){
+        grupo_focal = resultado[0].grupo_focal;
+        oferta_publica = resultado[0].oferta_publica;
+        tipo_diagnostico = resultado[0].tipo_diagnostico;
+    }
+
+
 
 
 
@@ -40,6 +65,39 @@ const Page = () => {
                 <a onClick={() => window.print()} style={{float: 'right', cursor: 'pointer'}} className="no-print">
                     <img src="/img/print.png" alt=""/>
                 </a>
+
+                <div style={{fontFamily: "Verdana", fontSize: "16px", lineHeight: "25px", width: "800px", margin: "auto"}}>
+                    <p>
+                        <h2 style={{textAlign: "center"}}>Diagnóstico {tipo_diagnostico === 1 ? 'Completo' : 'Parcial'}</h2>
+                        <br/>
+
+
+                        <strong>Oferta pública sob foco</strong><br/>
+                        {oferta_publica}<br/><br/>
+
+                        <strong>Qual(is) grupo(s) ou população(ões) específica(s) irá focar?</strong><br/>
+                        {grupo_focal}<br/><br/>
+
+                        <strong>Oferta pública e/ou o grupo(s) específico(s) em relação aos quais irá conduzir o dianóstico:</strong>
+
+                        <ul style={{padding: '0'}}>
+                            {
+                                categoriaResultado.map((item, key) => {
+                                    return(
+                                        <li style={{display: 'inline-block', border: "solid 1px #333333", padding: '5px 10px', margin: '5px', borderRadius: '3px'}} key={key}>
+                                            {item.id_categoria}
+                                        </li>
+                                    )
+                                })
+                            }
+
+                        </ul>
+
+                    </p>
+
+                </div>
+                <div style={{pageBreakAfter: "always"}}/>
+
             </div>
 
             {
