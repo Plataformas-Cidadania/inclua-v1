@@ -7,6 +7,7 @@ const Header = () => {
 
     const [textDiagnosticoDescricao, setTextDiagnosticoDescricao] = useState(null);
     const [varLocalStorage, setlocalStorage] = useState(localStorage.getItem('id_diagnostico'));
+    const [respostasLocalStorage, setRespostasLocalStorage] = useState(localStorage.getItem('respostas_diagnostico'));
 
     useEffect(() => {
         getTextDiagnostico("pg-diagnostico");
@@ -136,17 +137,17 @@ const Header = () => {
                                     </a>
                                 </div>*/}
 
-                                <div className={"col text-center " + (varLocalStorage ? '' : 'opacity-5')}>
+                                <div className={"col text-center " + (varLocalStorage || respostasLocalStorage ? '' : 'opacity-5')}>
                                     <div className="btn-icon btn-icon-hover cursor" style={{top: 0}}  onClick={() => ClicklocalStorage()}>
                                         <img src="img/icon-limpar.png" alt="Parcial" title="Parcial" width="75%"/>
                                     </div>
                                     <p className="mt-2">Limpar</p>
                                 </div>
 
-                                <div>
+                                {/*<div>
                                     <div className="float-start cursor" style={{position: 'absolute', left: '15px'}}  onClick={() => context.setShowMenuDiagnostico(!context.showMenuDiagnostico)}> <i className="fas fa-angle-left"/> Voltar</div>
                                     <a href="recursos" className="float-end" style={{position: 'absolute', right: '15px'}}>Biblioteca <i className="fas fa-angle-right"/></a>
-                                </div>
+                                </div>*/}
                             </div>
 
 

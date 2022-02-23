@@ -7,6 +7,7 @@ const Header = () => {
   } = React;
   const [textDiagnosticoDescricao, setTextDiagnosticoDescricao] = useState(null);
   const [varLocalStorage, setlocalStorage] = useState(localStorage.getItem('id_diagnostico'));
+  const [respostasLocalStorage, setRespostasLocalStorage] = useState(localStorage.getItem('respostas_diagnostico'));
   useEffect(() => {
     getTextDiagnostico("pg-diagnostico");
   }, []);
@@ -171,7 +172,7 @@ const Header = () => {
   })), /*#__PURE__*/React.createElement("p", {
     className: "mt-2"
   }, "Resultado"))), /*#__PURE__*/React.createElement("div", {
-    className: "col text-center " + (varLocalStorage ? '' : 'opacity-5')
+    className: "col text-center " + (varLocalStorage || respostasLocalStorage ? '' : 'opacity-5')
   }, /*#__PURE__*/React.createElement("div", {
     className: "btn-icon btn-icon-hover cursor",
     style: {
@@ -185,25 +186,7 @@ const Header = () => {
     width: "75%"
   })), /*#__PURE__*/React.createElement("p", {
     className: "mt-2"
-  }, "Limpar")), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-    className: "float-start cursor",
-    style: {
-      position: 'absolute',
-      left: '15px'
-    },
-    onClick: () => context.setShowMenuDiagnostico(!context.showMenuDiagnostico)
-  }, " ", /*#__PURE__*/React.createElement("i", {
-    className: "fas fa-angle-left"
-  }), " Voltar"), /*#__PURE__*/React.createElement("a", {
-    href: "recursos",
-    className: "float-end",
-    style: {
-      position: 'absolute',
-      right: '15px'
-    }
-  }, "Biblioteca ", /*#__PURE__*/React.createElement("i", {
-    className: "fas fa-angle-right"
-  })))))), /*#__PURE__*/React.createElement("div", {
+  }, "Limpar"))))), /*#__PURE__*/React.createElement("div", {
     className: "col-md-3"
   }, /*#__PURE__*/React.createElement("img", {
     src: "/img/bg-top.png",
