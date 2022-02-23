@@ -157,24 +157,8 @@ const Header = () => {
     className: "mt-2"
   }, "Parcial"))), /*#__PURE__*/React.createElement("div", {
     className: "col text-center " + (varLocalStorage ? '' : 'opacity-5')
-  }, varLocalStorage ? /*#__PURE__*/React.createElement("a", {
-    href: varLocalStorage ? 'resultado' : 'diagnostico',
-    style: {
-      cursor: varLocalStorage ? 'pointer' : 'auto'
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "btn-icon btn-icon-hover",
-    style: {
-      top: 0
-    }
-  }, /*#__PURE__*/React.createElement("img", {
-    src: "img/icon-analise.png",
-    alt: "Resultado",
-    title: "Resultado",
-    width: "75%"
-  })), /*#__PURE__*/React.createElement("p", {
-    className: "mt-2"
-  }, "Resultado")) : /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("a", {
+    href: varLocalStorage ? 'resultado' : null,
     style: {
       cursor: varLocalStorage ? 'pointer' : 'auto'
     }
