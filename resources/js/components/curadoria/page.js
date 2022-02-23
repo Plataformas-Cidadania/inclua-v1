@@ -30,6 +30,7 @@ const Page = () => {
                         <p style={{textAlign: 'right'}}>{total} curadorias</p>
                         {
                             curadorias.map((item, key) => {
+
                                 return (
                                     <div className={"p-4 "+ (key === 0 ? 'bg-lgt' : '')}>
 
@@ -68,6 +69,22 @@ const Page = () => {
                                         }
 
                                         <br/><hr style={{display: key === 0 ? 'none' : ''}}/><br/>
+
+                                        <Item propsData={item.curadoria_recurso}/>
+
+                                        {/*{
+                                            item.curadoria_recurso.map((item2, key) => {
+                                                console.log(item2.recurso);
+                                                return(
+                                                    <div key={'item_'+key}>
+                                                        a
+                                                        <Item propsData={item2.recurso}/>
+                                                    </div>
+
+                                                );
+                                            })
+                                        }*/}
+                                        {/*<Item propsData={item.recursos}/>*/}
 
                                     </div>
                                 );
