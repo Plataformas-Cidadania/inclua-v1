@@ -36,6 +36,7 @@ const Perguntas = (props) => {
                                   idPerguntaPai={pergunta.id_perguntaPai}
                                   resposta={pergunta.resposta}
                                   perguntas={pergunta.perguntas}
+                                  letraPerguntaPai={props.letraPerguntaPai}
                         />
                     );
                 })

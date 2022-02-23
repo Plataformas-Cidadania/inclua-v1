@@ -17,7 +17,8 @@ const Pergunta = props => {
       inverter: props.inverter,
       naoSeAplica: props.naoSeAplica,
       resposta: props.resposta,
-      perguntas: props.perguntas
+      perguntas: props.perguntas,
+      letraPerguntaPai: props.letraPerguntaPai
     }),
     "2": /*#__PURE__*/React.createElement(Nota, {
       id: props.id,
@@ -30,7 +31,8 @@ const Pergunta = props => {
       inverter: props.inverter,
       naoSeAplica: props.naoSeAplica,
       resposta: props.resposta,
-      perguntas: props.perguntas
+      perguntas: props.perguntas,
+      letraPerguntaPai: props.letraPerguntaPai
     }),
     "3": /*#__PURE__*/React.createElement(Range, {
       id: props.id,

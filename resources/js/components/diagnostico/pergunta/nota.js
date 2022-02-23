@@ -53,10 +53,8 @@ const Nota = (props) => {
 
     return (
         <div className="box-items bg-lgt">
-            <p className="mb-3"><strong>P{context.dimensao.numero}.{context.indicador.numero}{props.letra}</strong> {props.descricao}</p>
+            <p className="mb-3"><strong>P{context.dimensao.numero}.{context.indicador.numero}{props.letraPerguntaPai}{props.letra}</strong> {props.descricao}</p>
             <p>{props.legenda}</p>
-
-
 
             <div>
                 <br/>
@@ -90,7 +88,7 @@ const Nota = (props) => {
             <div className="clear-both">&nbsp;</div>
             {
                 showSubPerguntas ? (
-                    <Perguntas perguntas={props.perguntas} bgColor={props.bgColor}/>
+                    <Perguntas perguntas={props.perguntas} bgColor={props.bgColor} letraPerguntaPai={props.letra}/>
                 ) : null
             }
         </div>

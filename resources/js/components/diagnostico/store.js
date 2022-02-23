@@ -400,15 +400,60 @@ const DiagnosticoProvider = ({children}) => {
         localStorage.removeItem('respostas_diagnostico');
     }*/
 
+
+    /*const setDimensaoIndicador = (numeroDimensao, numeroIndicador) => {
+        setDimensao(dimensoes[numeroDimensao-1]);
+        setIndicador(dimensoes[numeroIndicador].indicadores[numeroIndicador-1]);
+    }*/
+
+    const getHmtlRespostasPendentes = () => {
+        let ultimaDimensao = 0;
+        let ultimoIndicador = 0;
+        return respostasPendentes.map((item) => {
+            let elementoDimensao = null;
+            let elementoIndicador = null;
+            let trocouIndicador = false;
+            if(item.dimensao !== ultimaDimensao){
+                ultimaDimensao = item.dimensao
+                elementoDimensao = <div><br/><strong>Dimensao {item.dimensao}</strong></div>;
+            }
+            if(item.dimensao+"."+item.indicador !== ultimoIndicador){
+                ultimoIndicador = item.dimensao+"."+item.indicador
+                trocouIndicador = true
+                elementoIndicador = (
+                    <a>
+                        <strong><i><br/>Indicador {item.dimensao}.{item.indicador}:&nbsp;&nbsp;</i></strong>
+                    </a>
+                );
+            }
+            return (
+                <span>
+                    {elementoDimensao}
+                    {elementoIndicador}
+                    {
+                        <span>
+                            {trocouIndicador ? null : (<span>, </span>)}P{item.dimensao}.{item.indicador}{item.pergunta === "zz" ? " - Reflexão-síntese" : item.pergunta}{item.subpergunta}
+                        </span>
+                    }
+                </span>
+            );
+        });
+    }
+
     return (
         <div>
             <div className="alert alert-danger alert-fixed" role="alert" style={{display: alertFixed ? '' : 'none'}}>
                 <a onClick ={() => setAlertFixed(0)} ><i className="fas fa-times float-end cursor"/></a>
                 <i className="fas fa-exclamation-triangle"/>
                 <div style={{height: '300px', overflow: 'auto'}}>
-                    Perguntas não respondidas: <br/><br/>
+                    Perguntas não respondidas:
+
                     {
-                        respostasPendentes.map((item) => {
+                        getHmtlRespostasPendentes()
+                    }
+
+                    {
+                        /*respostasPendentes.map((item) => {
                             return (
                                 <div>
                                     Dimensão {item.dimensao} -
@@ -422,7 +467,7 @@ const DiagnosticoProvider = ({children}) => {
                                     }
                                 </div>
                             );
-                        })
+                        })*/
                     }
                 </div>
             </div>

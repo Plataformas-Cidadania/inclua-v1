@@ -58,7 +58,7 @@ const Nota = props => {
     className: "box-items bg-lgt"
   }, /*#__PURE__*/React.createElement("p", {
     className: "mb-3"
-  }, /*#__PURE__*/React.createElement("strong", null, "P", context.dimensao.numero, ".", context.indicador.numero, props.letra), " ", props.descricao), /*#__PURE__*/React.createElement("p", null, props.legenda), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("strong", null, "P", context.dimensao.numero, ".", context.indicador.numero, props.letraPerguntaPai, props.letra), " ", props.descricao), /*#__PURE__*/React.createElement("p", null, props.legenda), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
     className: "range-merker",
     style: {
       width: '113%',
@@ -88,6 +88,7 @@ const Nota = props => {
     className: "clear-both"
   }, "\xA0"), showSubPerguntas ? /*#__PURE__*/React.createElement(Perguntas, {
     perguntas: props.perguntas,
-    bgColor: props.bgColor
+    bgColor: props.bgColor,
+    letraPerguntaPai: props.letra
   }) : null);
 };
