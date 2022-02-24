@@ -201,12 +201,12 @@ const DiagnosticoProvider = ({
     console.log(respostas);
 
     if (!diagnostico.grupo_focal) {
-      newCamposPendentesDiagnostico.push('Oferta pública sob foco');
+      newCamposPendentesDiagnostico.push('Qual oferta pública será objeto de avaliação? Isto é, que caso concreto de política pública, programa, projeto, ação ou serviço será submetido ao diagnóstico?');
       valid = false;
     }
 
     if (!diagnostico.oferta_publica) {
-      newCamposPendentesDiagnostico.push('Qual(is) grupo(s) ou população(ões) específica(s) irá focar?');
+      newCamposPendentesDiagnostico.push('Qual(is) segmento(s) do público serão tomados como foco de atenção? O diagnóstico deve ter como foco as formas específicas de relação entre a oferta pública identificada no item acima e os o(s) público(s) específico(s) a serem considerados.');
       valid = false;
     }
 
