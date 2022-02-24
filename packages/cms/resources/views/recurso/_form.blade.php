@@ -33,6 +33,9 @@
 <label for="esfera">Esfera</label>
 <input type="text" name="esfera" class="form-control width-grande <% validar(recurso.esfera)%>" ng-model="recurso.esfera" ng-required="true">
 
+{!! Form::label('resumo', 'Resumo ') !!}<br>
+{!! Form::textarea('resumo', null, ['class'=>"form-control width-grande <% validar(recurso.resumo) %>", 'ui-tinymce'=>'tinymceOptions', 'ng-model'=>'recurso.resumo', 'init-model'=>'recurso.resumo']) !!}<br>
+
 <label for="status">Status</label>
 <select name="status" id="status" class="form-control width-pequeno <% validar(recurso.status)%>" ng-model="recurso.status">
     <option value="1" ng-selected="recurso.status == 1">Ativo</option>
