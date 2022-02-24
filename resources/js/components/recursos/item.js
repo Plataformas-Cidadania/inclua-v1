@@ -50,7 +50,8 @@ const Item = (props) => {
                 resumo: resumo
             }
         );
-        $('#exampleModal').modal('show');
+        let modal = '#exampleModal'+ id;
+        $(modal).modal('show');
 
     }
 
@@ -69,7 +70,7 @@ const Item = (props) => {
 
                     //console.log('***link: ', item.links[0].uri);
                     return(
-                        <div className="col-lg-4 col-md-6 col-sm-12 col-xs-12"  key={key}>
+                        <div className="col-lg-4 col-md-6 col-sm-12 col-xs-12"  key={"modal" + key}>
                             <div className="dorder-container">
 
                                 <div className="bg-lgt">
@@ -178,31 +179,36 @@ const Item = (props) => {
                                 </div>
                             </div>
                             <br/>
+                            <div>
+                                <div className="modal fade" id={"exampleModal"+item.id_recurso} tabIndex="-1" aria-labelledby="exampleModalLabel"
+                                     aria-hidden="true">
+                                    <div className="modal-dialog modal-lg">
+                                        <div className="modal-content">
+                                            <div className="modal-header">
+                                                <h5 className="modal-title" id="exampleModalLabel">{modal.nome}</h5>
+                                            </div>
+                                            <div className="modal-body">
+                                                {modal.resumo===null ? "Este conteúdo não está disponível no momento!" : modal.resumo}
+                                            </div>
+                                            <div className="modal-footer">
+                                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
+
+
                     );
+
+
                 })
             }
 
 
-            <div>
-                <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel"
-                     aria-hidden="true">
-                    <div className="modal-dialog modal-lg">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <h5 className="modal-title" id="exampleModalLabel">{modal.nome}</h5>
-                            </div>
-                            <div className="modal-body">
-                                {modal.resumo===null ? "Este conteúdo não está disponível no momento!" : modal.resumo}
-                            </div>
-                            <div className="modal-footer">
-                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
 
         </div>
 
