@@ -85,14 +85,14 @@ const Page = () => {
         display: key === 0 ? 'none' : ''
       }
     }), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
-      className: "float-end cursor",
+      className: " btn btn-primary float-end cursor",
       onClick: () => clickBox(item.id_curadoria),
       style: {
         display: item.curadoria_recurso.length === 0 ? 'none' : ''
       }
     }, "veja os ", item.curadoria_recurso.length, " recursos ", /*#__PURE__*/React.createElement("i", {
       className: "fas fa-angle-right"
-    })), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
+    })), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
       style: {
         display: activeDiv === item.id_curadoria ? '' : 'none'
       }

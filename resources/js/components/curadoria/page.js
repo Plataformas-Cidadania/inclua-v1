@@ -87,14 +87,14 @@ const Page = () => {
                                         <br/><hr style={{display: key === 0 ? 'none' : ''}}/><br/>
 
                                         <div
-                                            className="float-end cursor"
+                                            className=" btn btn-primary float-end cursor"
                                             onClick={() => clickBox(item.id_curadoria)}
                                             style={{display: item.curadoria_recurso.length === 0 ? 'none' : ''}}
 
                                         >
                                             veja os {item.curadoria_recurso.length} recursos <i className="fas fa-angle-right"/>
                                         </div>
-                                        <br/>
+                                        <br/><br/>
                                         <div style={{display: activeDiv === item.id_curadoria ? '' : 'none'}}>
                                             <Item propsData={recursos}/>
                                         </div>

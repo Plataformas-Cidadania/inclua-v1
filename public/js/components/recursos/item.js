@@ -59,14 +59,10 @@ const Item = props => {
     }, /*#__PURE__*/React.createElement("div", {
       className: "bg-lgt"
     }, /*#__PURE__*/React.createElement("div", {
-      className: "bg-lgt2 text-center box-list-cod"
-    }, /*#__PURE__*/React.createElement("h6", {
-      className: "mt-4"
-    }, "C\xF3digo"), /*#__PURE__*/React.createElement("h2", null, item.id_recurso)), /*#__PURE__*/React.createElement("div", {
       className: "p-2 box-list-title"
     }, /*#__PURE__*/React.createElement("p", {
       className: "mt-2"
-    }, item.nome)), /*#__PURE__*/React.createElement("div", {
+    }, /*#__PURE__*/React.createElement("strong", null, item.nome))), /*#__PURE__*/React.createElement("div", {
       className: "clear-both"
     })), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
       className: "row"
@@ -75,12 +71,9 @@ const Item = props => {
     }, /*#__PURE__*/React.createElement("img", {
       src: "img/lines.png",
       alt: "",
-      width: "90%"
+      width: "80%",
+      height: "30"
     })), /*#__PURE__*/React.createElement("div", {
-      className: "col-6 text-center"
-    }, /*#__PURE__*/React.createElement("div", {
-      className: "bg-lgt2 box-list-formato"
-    }, nomeFormato ? nomeFormato.nome : '')), /*#__PURE__*/React.createElement("div", {
       className: "col-2"
     }, "\xA0")), /*#__PURE__*/React.createElement("div", {
       className: "row"
@@ -91,7 +84,7 @@ const Item = props => {
       target: "_blank",
       title: item.links[0].idioma,
       key: "linksIdoma" + key
-    }, item.links[0].idioma) : null), /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("strong", null, "Tipo: "), /*#__PURE__*/React.createElement("span", null, item.tipo_recurso ? item.tipo_recurso.nome : '')), /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("strong", null, "Autoria: "), item.autoria !== undefined ? item.autoria.map((autoria, key) => {
+    }, item.links[0].idioma) : null), /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("strong", null, "Tipo: "), /*#__PURE__*/React.createElement("span", null, item.tipo_recurso ? item.tipo_recurso.nome : '')), /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("strong", null, "Formato: "), /*#__PURE__*/React.createElement("span", null, nomeFormato ? nomeFormato.nome : '')), /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("strong", null, "Autoria: "), item.autoria !== undefined ? item.autoria.map((autoria, key) => {
       return /*#__PURE__*/React.createElement("span", {
         key: "autoria" + key
       }, autoria.autor.nome, item.autoria.length !== key + 1 ? ', ' : '');
