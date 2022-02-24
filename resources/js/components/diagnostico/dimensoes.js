@@ -96,7 +96,7 @@ const Dimensoes = () => {
                     <div className="col-md-12">
                         <br/>
                         <div>Assinale as opções abaixo que se relacionam com a oferta pública e/ou o grupo(s) específico(s) em relação aos queis irá conduzir o dianóstico:</div>
-                        <div style={{fontSize: "10px"}}>(OBS.: Os temas marcados nos ajudarão a apresentar sugestões pertinentes de recursos para a intervenção, caso o diagnóstico resulte em riscos moderados ou altos)
+                        <div>(OBS.: Os temas marcados nos ajudarão a apresentar sugestões pertinentes de recursos para a intervenção)
                         </div>
                         <div><strong>Selecione as categorias</strong></div>
                         <br/>

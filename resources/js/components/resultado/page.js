@@ -152,8 +152,7 @@ const Page = () => {
                                         <h2>DIMENSÃO {dimensao}</h2>
                                     </div>
                                     <div className="col-md-8">
-                                        <h2 className="mt-5">{resultado.titulo}
-                                            inclusiva</h2>
+                                        <h2 className="mt-5">{resultado.titulo}</h2>
                                     </div>
                                 </div>
                             </div>
