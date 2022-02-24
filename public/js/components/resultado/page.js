@@ -242,8 +242,8 @@ const Page = () => {
       className: "col-md-12 text-center"
     }, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("h2", {
       style: {
-        fontSize: '38px',
-        lineHeight: '45px'
+        fontSize: '22px',
+        lineHeight: '30px'
       }
     }, /*#__PURE__*/React.createElement("strong", null, item.risco)))))))), /*#__PURE__*/React.createElement("div", {
       className: "col-md-12 text-right",
