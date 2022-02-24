@@ -485,10 +485,10 @@ const DiagnosticoProvider = ({
       maxHeight: '300px',
       overflow: 'auto'
     }
-  }, camposPendentesDiagnostico.length > 0 ? /*#__PURE__*/React.createElement("div", null, "Informe o", camposPendentesDiagnostico.length > 1 ? "s" : null, " campo", camposPendentesDiagnostico.length > 1 ? "s" : null, ":\xA0", camposPendentesDiagnostico.map((item, key) => {
+  }, camposPendentesDiagnostico.length > 0 ? /*#__PURE__*/React.createElement("div", null, "Informe o", camposPendentesDiagnostico.length > 1 ? "s" : null, " campo", camposPendentesDiagnostico.length > 1 ? "s" : null, ":", /*#__PURE__*/React.createElement("br", null), camposPendentesDiagnostico.map((item, key) => {
     return /*#__PURE__*/React.createElement("span", {
       key: "validacao-campos" + key
-    }, /*#__PURE__*/React.createElement("strong", null, item), key < camposPendentesDiagnostico.length - 1 ? " e " : null);
+    }, /*#__PURE__*/React.createElement("strong", null, item), key < camposPendentesDiagnostico.length - 1 ? /*#__PURE__*/React.createElement("br", null) : null);
   }), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null)) : null, respostas.length === 0 ? /*#__PURE__*/React.createElement("div", null, parseInt(tipo) === 1 ? /*#__PURE__*/React.createElement("span", null, "Nenhuma pergunta foi respondida. No diagn\xF3stico completo voc\xEA deve responder todas as perguntas.") : /*#__PURE__*/React.createElement("span", null, "Nenhuma pergunta foi respondida. No diagn\xF3stico parcial voc\xEA deve responder pelo menos uma dimens\xE3o.")) : /*#__PURE__*/React.createElement("span", null, "Perguntas n\xE3o respondidas:"), getHmtlRespostasPendentes())), /*#__PURE__*/React.createElement(DiagnosticoContext.Provider, {
     value: {
       tipo,

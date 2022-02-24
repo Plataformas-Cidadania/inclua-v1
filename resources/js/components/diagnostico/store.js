@@ -464,12 +464,12 @@ const DiagnosticoProvider = ({children}) => {
                     {
                         camposPendentesDiagnostico.length > 0 ? (
                             <div>
-                                Informe o{camposPendentesDiagnostico.length > 1 ? "s" : null} campo{camposPendentesDiagnostico.length > 1 ? "s" : null}:&nbsp;
+                                Informe o{camposPendentesDiagnostico.length > 1 ? "s" : null} campo{camposPendentesDiagnostico.length > 1 ? "s" : null}:<br/>
                                 {
                                     camposPendentesDiagnostico.map((item, key) => {
                                         return (
                                             <span key={"validacao-campos"+key}>
-                                                <strong>{item}</strong>{key < camposPendentesDiagnostico.length-1 ? " e " : null}
+                                                <strong>{item}</strong>{key < camposPendentesDiagnostico.length-1 ? <br/> : null}
                                             </span>
                                         )
                                     })
