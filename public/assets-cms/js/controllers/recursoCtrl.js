@@ -342,6 +342,7 @@ cmsApp.controller('recursoCtrl', ['$scope', '$http', 'Upload', '$timeout', funct
             $scope.totalIndicacoes = $scope.indicacoes.length;
             $scope.processandoListagemIndicacoes = false;
         }).error(function(data){
+            $scope.indicacoes = [];
             $scope.message = "Ocorreu um erro: "+data;
             $scope.processandoListagemIndicacoes = false;
         });
@@ -460,6 +461,7 @@ cmsApp.controller('recursoCtrl', ['$scope', '$http', 'Upload', '$timeout', funct
             $scope.totalCategorizacoes = $scope.categorizacoes.length;
             $scope.processandoListagemCategorizacoes = false;
         }).error(function(data){
+            $scope.categorizacoes = [];
             $scope.message = "Ocorreu um erro: "+data;
             $scope.processandoListagemCategorizacoes = false;
         });
@@ -580,6 +582,7 @@ cmsApp.controller('recursoCtrl', ['$scope', '$http', 'Upload', '$timeout', funct
             $scope.totalAutorias = $scope.autorias.length;
             $scope.processandoListagemAutorias = false;
         }).error(function(data){
+            $scope.autorias = [];
             $scope.message = "Ocorreu um erro: "+data;
             $scope.processandoListagemAutorias = false;
         });
