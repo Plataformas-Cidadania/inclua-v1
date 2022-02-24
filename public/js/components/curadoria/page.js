@@ -48,6 +48,10 @@ const Page = () => {
     }, /*#__PURE__*/React.createElement("div", {
       className: "row"
     }, /*#__PURE__*/React.createElement("div", {
+      className: "col-md-12"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "float-end badge bg-light text-dark"
+    }, item.curador.mes), /*#__PURE__*/React.createElement("h2", null, item.tema_recorte)), /*#__PURE__*/React.createElement("div", {
       className: "col-md-3"
     }, /*#__PURE__*/React.createElement("img", {
       src: item.curador.url_imagem,
@@ -62,9 +66,7 @@ const Page = () => {
     }), /*#__PURE__*/React.createElement("a", {
       href: item.curador.link_curriculo,
       target: "_blank"
-    }, "Mais informa\xE7\xF5es"))), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
-      className: "float-end badge bg-light text-dark"
-    }, item.curador.mes), /*#__PURE__*/React.createElement("h2", null, item.tema_recorte), /*#__PURE__*/React.createElement("p", {
+    }, "Mais informa\xE7\xF5es"))), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("p", {
       dangerouslySetInnerHTML: {
         __html: item.texto
       }

@@ -223,9 +223,9 @@ const Page = () => {
                                                                                 <div className="row">
                                                                                     <div className="col-md-12 text-center">
                                                                                         <br/>
-                                                                                        <p><strong>{item.risco}</strong></p>
-                                                                                        <h2 style={{fontSize: '40px'}}>{item.pontos}</h2>
-                                                                                        <p>pontos</p>
+                                                                                        <h2 style={{fontSize: '38px', lineHeight: '45px'}}><strong>{item.risco}</strong></h2>
+                                                                                        {/*<h2 style={{fontSize: '40px', lineHeight: '50px'}}>{item.pontos}</h2>
+                                                                                        <p>pontos</p>*/}
                                                                                     </div>
                                                                                 </div>
                                                                             </div>

@@ -47,6 +47,10 @@ const Page = () => {
                                     <div className={"p-4 "+ (key === 0 ? 'bg-lgt' : '')}>
 
                                         <div className="row">
+                                            <div className="col-md-12">
+                                                <div className="float-end badge bg-light text-dark">{item.curador.mes}</div>
+                                                <h2>{item.tema_recorte}</h2>
+                                            </div>
                                             <div className="col-md-3">
                                                 <img src={item.curador.url_imagem} alt="" width="90%"/>
                                             </div>
@@ -60,8 +64,7 @@ const Page = () => {
 
                                         <br/><br/>
 
-                                        <div className="float-end badge bg-light text-dark">{item.curador.mes}</div>
-                                        <h2>{item.tema_recorte}</h2>
+
                                         <p dangerouslySetInnerHTML={{__html: item.texto}}/>
 
                                         {
