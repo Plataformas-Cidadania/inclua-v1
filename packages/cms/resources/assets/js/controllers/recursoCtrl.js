@@ -500,6 +500,123 @@ cmsApp.controller('recursoCtrl', ['$scope', '$http', 'Upload', '$timeout', funct
     ///////////////////////////////////////////////
 
 
+    //AUTORIA////////////////////////////////////
+    $scope.autoria = {};
+    $scope.dimensao = null;
+    $scope.autor = null;
+    $scope.autorias = [];
+    $scope.totalAutorias = 0;
+    $scope.processandoAutores = false;
+    $scope.processandoInserirAutoria = false;
+    $scope.processandoListagemAutorias = false;
 
+    $scope.listarAutores = function(){
+        $scope.processandoAutores = true;
+        $http({
+            url: 'api/autores',
+            method: 'GET',
+            params: {
+
+            }
+        }).success(function(data, status, headers, config){
+            //console.log(data.data);
+            $scope.autores = data.data;
+            $scope.processandoAutores = false;
+        }).error(function(data){
+            $scope.message = "Ocorreu um erro: "+data;
+            $scope.processandoAutores = false;
+        });
+    }
+
+    $scope.getAutor = function(id_autor){
+        let autor = $scope.autores.find(function(item){
+            return item.id_autor === id_autor;
+        });
+        return autor.nome;
+    }
+
+    $scope.getRecurso = function(id_recurso){
+        let recurso = $scope.recursos.find(function(item){
+            return item.id_recurso === id_recurso;
+        });
+        return recurso.nome;
+    }
+
+    $scope.modalAutoria = function (id, titulo){
+        $scope.autoria.id_recurso = id;
+        $scope.tituloAutoria = titulo;
+        $scope.listarAutores();
+        $scope.listarAutorias();
+    }
+
+    $scope.inserirAutoria = function(){
+        console.log($scope.autoria);
+        $scope.processandoInserirAutoria= true;
+        $scope.mensagemInserirAutoria = "";
+        $scope.autoria.id_autor = $scope.autor.id_autor;
+        $http.post("api/autoria", $scope.autoria).success(function (data){
+            $scope.listarAutorias();
+            $scope.mensagemInserirAutoria =  "Gravado com sucesso!";
+            $scope.processandoInserirAutoria = false;
+            //$scope.autoria = {};
+        }).error(function(data){
+            $scope.mensagemInserirAutoria = "Ocorreu um erro!";
+            $scope.processandoInserirAutoria = false;
+        });
+    }
+
+
+
+    $scope.listarAutorias = function(){
+        $scope.processandoListagemAutorias = true;
+        $http({
+            url: 'api/recurso/autores/'+$scope.autoria.id_recurso,
+            method: 'GET',
+            params: {
+
+            }
+        }).success(function(data, status, headers, config){
+            $scope.autorias = data.data;
+            $scope.totalAutorias = $scope.autorias.length;
+            $scope.processandoListagemAutorias = false;
+        }).error(function(data){
+            $scope.message = "Ocorreu um erro: "+data;
+            $scope.processandoListagemAutorias = false;
+        });
+    }
+
+    $scope.perguntaExcluirAutoria = function (idAutor, idRecurso, titulo){
+        $scope.idExcluirAutoriaAutor = idAutor;
+        $scope.idExcluirAutoriaRecurso = idRecurso;
+        $scope.tituloExcluirAutoria = titulo;
+        $scope.excluidoAutoria = false;
+        $scope.mensagemExcluidoAutoria = "";
+    }
+
+    $scope.excluirAutoria = function(idAutor, idRecurso){
+        $scope.processandoExcluirAutoria = true;
+        $http({
+            url: 'api/autoria/'+idAutor+'/'+idRecurso,
+            method: 'DELETE'
+        }).success(function(data, status, headers, config){
+            console.log(data);
+            if(data.success){
+                $scope.processandoExcluirAutoria = false;
+                $scope.excluidoAutoria = true;
+                $scope.mensagemExcluidoAutoria = data.message;
+                $scope.listarAutorias();
+                return;
+            }
+            $scope.processandoExcluirAutoria = false;
+            $scope.excluidoAutoria = false;
+            $scope.mensagemExcluidoAutoria = data.message;
+        }).error(function(data){
+            $scope.message = "Ocorreu um erro: "+data;
+            $scope.processandoExcluirAutoria = false;
+            $scope.mensagemExcluidoAutoria = "Erro ao tentar excluir!";
+        });
+    };
+
+    ///////////////////////////////////////////////
 
 }]);

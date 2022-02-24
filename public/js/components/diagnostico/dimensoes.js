@@ -68,18 +68,18 @@ const Dimensoes = () => {
     className: "col-md-12"
   }, /*#__PURE__*/React.createElement("label", {
     htmlFor: "oferta_publica"
-  }, /*#__PURE__*/React.createElement("strong", null, "Oferta p\xFAblica sob foco")), /*#__PURE__*/React.createElement("input", {
+  }, /*#__PURE__*/React.createElement("strong", null, "Qual oferta p\xFAblica ser\xE1 objeto de avalia\xE7\xE3o? Isto \xE9, que caso concreto de pol\xEDtica p\xFAblica, programa, projeto, a\xE7\xE3o ou servi\xE7o ser\xE1 submetido ao diagn\xF3stico?")), /*#__PURE__*/React.createElement("input", {
     className: "form-control form-g",
     type: "text",
     name: "oferta_publica",
     id: "oferta_publica",
     onChange: handleDiagnostico,
-    placeholder: "ex.: servi\xE7o, programa, pol\xEDtica, projeto, iniciativa, a\xE7\xE3o, etc."
+    placeholder: ""
   })), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
     className: "col-md-12"
   }, /*#__PURE__*/React.createElement("label", {
     htmlFor: "grupo_focal"
-  }, /*#__PURE__*/React.createElement("strong", null, "Qual(is) grupo(s) ou popula\xE7\xE3o(\xF5es) espec\xEDfica(s) ir\xE1 focar?")), /*#__PURE__*/React.createElement("input", {
+  }, /*#__PURE__*/React.createElement("strong", null, "Qual(is) segmento(s) do p\xFAblico ser\xE3o tomados como foco de aten\xE7\xE3o? O diagn\xF3stico deve ter como foco as formas espec\xEDficas de rela\xE7\xE3o entre a oferta p\xFAblica identificada no item acima e os o(s) p\xFAblico(s) espec\xEDfico(s) a serem considerados.")), /*#__PURE__*/React.createElement("input", {
     className: "form-control form-g",
     type: "text",
     name: "grupo_focal",
