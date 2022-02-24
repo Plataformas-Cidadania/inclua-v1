@@ -31,6 +31,7 @@ const Range = props => {
   }, [props.bgColor]);
 
   const handleResposta = e => {
+    console.log(e.target.value);
     context.setResposta(props.id, parseInt(e.target.value));
     setResposta(parseInt(e.target.value));
   };
@@ -38,6 +39,17 @@ const Range = props => {
   const clickResposta = nota => {
     context.setResposta(props.id, nota);
     setResposta(nota);
+  };
+
+  const clickRespostaRange = () => {
+    console.log(resposta);
+
+    if (!resposta) {
+      let nota = props.minimo;
+      console.log(nota);
+      context.setResposta(props.id, nota);
+      setResposta(nota);
+    }
   };
 
   return /*#__PURE__*/React.createElement("div", {
@@ -68,6 +80,7 @@ const Range = props => {
     min: props.minimo,
     max: props.maximo,
     value: resposta ? resposta : 0,
-    onChange: handleResposta
+    onChange: handleResposta,
+    onClick: clickRespostaRange
   })));
 };
