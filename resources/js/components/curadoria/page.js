@@ -52,7 +52,8 @@ const Page = () => {
                                             </div>
                                             <div className="col-md-9">
                                                 <h2>{item.curador.nome}</h2>
-                                                <p>{item.curador.minicv}</p>
+                                                {/*<p>{item.curador.minicv}</p>*/}
+                                                <p dangerouslySetInnerHTML={{__html: item.curador.minicv}}/>
                                                 <a href={item.curador.link_curriculo} target="_blank">Mais informações</a>
                                             </div>
                                         </div>
@@ -61,7 +62,7 @@ const Page = () => {
 
                                         <div className="float-end badge bg-light text-dark">novembro</div>
                                         <h2>{item.tema_recorte}</h2>
-                                        <p>{item.texto}</p>
+                                        <p dangerouslySetInnerHTML={{__html: item.texto}}/>
 
                                         {
                                             item.link_video ? (

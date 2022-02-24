@@ -55,12 +55,20 @@ const Page = () => {
       width: "90%"
     })), /*#__PURE__*/React.createElement("div", {
       className: "col-md-9"
-    }, /*#__PURE__*/React.createElement("h2", null, item.curador.nome), /*#__PURE__*/React.createElement("p", null, item.curador.minicv), /*#__PURE__*/React.createElement("a", {
+    }, /*#__PURE__*/React.createElement("h2", null, item.curador.nome), /*#__PURE__*/React.createElement("p", {
+      dangerouslySetInnerHTML: {
+        __html: item.curador.minicv
+      }
+    }), /*#__PURE__*/React.createElement("a", {
       href: item.curador.link_curriculo,
       target: "_blank"
     }, "Mais informa\xE7\xF5es"))), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
       className: "float-end badge bg-light text-dark"
-    }, "novembro"), /*#__PURE__*/React.createElement("h2", null, item.tema_recorte), /*#__PURE__*/React.createElement("p", null, item.texto), item.link_video ? /*#__PURE__*/React.createElement("div", {
+    }, "novembro"), /*#__PURE__*/React.createElement("h2", null, item.tema_recorte), /*#__PURE__*/React.createElement("p", {
+      dangerouslySetInnerHTML: {
+        __html: item.texto
+      }
+    }), item.link_video ? /*#__PURE__*/React.createElement("div", {
       className: "text-center "
     }, /*#__PURE__*/React.createElement("iframe", {
       width: "780",

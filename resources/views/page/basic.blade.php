@@ -71,23 +71,32 @@
     <br>
     <div class="container">
         <div class="row">
-            @if(count($subMenus)>1)
-            <div class="col-md-3">
-                <ul class="menu-left">
-                    @foreach($subMenus as $menu)
-                        <li class="list-group-item-theme @if($menu->slug==$rota) menu-left-active @endif" >
-                            <a href="{{$menu->slug}}">{{$menu->titulo}}</a>
-                        </li>
-                    @endforeach
+            @if($page->tipo_id == 0  || $page->tipo_id ==  3)
+
+            @else
+                <div class="col-md-3">
+                    <ul class="menu-left">
+                        @foreach($subMenus as $menu)
+                            <li class="list-group-item-theme @if($menu->slug==$rota) menu-left-active @endif" >
+                                <a href="{{$menu->slug}}">{{$menu->titulo}}</a>
+                            </li>
+                        @endforeach
                         @if($page->tipo_id==3)
                             <li class="list-group-item-theme" >
                                 <a href="contato">Fale conosco</a>
                             </li>
                         @endif
-                </ul>
-            </div>
+                    </ul>
+                </div>
             @endif
-            <div @if(count($subMenus)>1) class="col-md-9" @else class="col-md-12" @endif>
+
+            @if($page->tipo_id == 0  || $page->tipo_id ==  3)
+                <div class="col-md-12">
+            @else
+                <div class="col-md-9" >
+            @endif
+
+
                 <article>
                     @if($page->imagem!="")
                     <picture>
