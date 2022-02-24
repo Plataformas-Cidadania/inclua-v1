@@ -41,7 +41,8 @@ class Recurso extends Model
 		'status'=> 'int',
         'id_tipo_recurso' => 'int',
         'id_formato' => 'int',
-        'id_user' => 'int'
+        'id_user' => 'int',
+        'resumo' => 'string'
 	];
 
 	protected $fillable = [
@@ -51,7 +52,8 @@ class Recurso extends Model
 		'status',
         'id_tipo_recurso',
         'id_formato',
-        'id_user'
+        'id_user',
+        'resumo'
 	];
     protected $primaryKey = 'id_recurso';
 //	protected $with = ['tipo_recurso', 'formato_recurso', 'autoria', 'links'];
