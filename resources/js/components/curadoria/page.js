@@ -60,7 +60,7 @@ const Page = () => {
 
                                         <br/><br/>
 
-                                        <div className="float-end badge bg-light text-dark">novembro</div>
+                                        <div className="float-end badge bg-light text-dark">{item.curador.mes}</div>
                                         <h2>{item.tema_recorte}</h2>
                                         <p dangerouslySetInnerHTML={{__html: item.texto}}/>
 

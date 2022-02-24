@@ -64,7 +64,7 @@ const Page = () => {
       target: "_blank"
     }, "Mais informa\xE7\xF5es"))), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
       className: "float-end badge bg-light text-dark"
-    }, "novembro"), /*#__PURE__*/React.createElement("h2", null, item.tema_recorte), /*#__PURE__*/React.createElement("p", {
+    }, item.curador.mes), /*#__PURE__*/React.createElement("h2", null, item.tema_recorte), /*#__PURE__*/React.createElement("p", {
       dangerouslySetInnerHTML: {
         __html: item.texto
       }
