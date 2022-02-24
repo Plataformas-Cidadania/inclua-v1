@@ -16,7 +16,7 @@
 <input type="text" name="tema_recorte" class="form-control width-grande <% validar(curadoria.tema_recorte)%>" ng-model="curadoria.tema_recorte" ng-required="true">
 <br>
 
-{!! Form::label('texto', 'Texto *') !!}<br>
+{!! Form::label('texto', 'Texto ') !!}<br>
 {!! Form::textarea('texto', null, ['class'=>"form-control width-grande <% validar(curadoria.texto) %>", 'ui-tinymce'=>'tinymceOptions', 'ng-model'=>'curadoria.texto', 'init-model'=>'curadoria.texto']) !!}<br>
 
 <label for="data">Mês*</label>
