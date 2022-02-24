@@ -98,7 +98,7 @@ const Page = () => {
                                             <strong>Qual(is) grupo(s) ou população(ões) específica(s) irá focar?</strong><br/>
                                             {resultado.grupo_focal}
                                             <br/><br/>
-                                            <strong>Categorias</strong><br/>
+                                            <strong>Categorias selecionadas</strong><br/>
                                             <ul style={{padding: '0'}}>
                                                 {
                                                     categoriaResultado.map((item, key) => {
