@@ -71,7 +71,7 @@ const Page = () => {
                         <strong>Qual(is) grupo(s) ou população(ões) específica(s) irá focar?</strong><br/>
                         {grupo_focal}<br/><br/>
 
-                        <strong>Oferta pública e/ou o grupo(s) específico(s) em relação aos quais irá conduzir o dianóstico:</strong>
+                        <strong>Categorias selecionadas:</strong>
 
                         <ul style={{padding: '0'}}>
                             {

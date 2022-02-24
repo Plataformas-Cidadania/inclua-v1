@@ -82,7 +82,7 @@ const Page = () => {
     style: {
       textAlign: "center"
     }
-  }, "Diagn\xF3stico ", tipo_diagnostico === 1 ? 'Completo' : 'Parcial'), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("strong", null, "Oferta p\xFAblica sob foco"), /*#__PURE__*/React.createElement("br", null), oferta_publica, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("strong", null, "Qual(is) grupo(s) ou popula\xE7\xE3o(\xF5es) espec\xEDfica(s) ir\xE1 focar?"), /*#__PURE__*/React.createElement("br", null), grupo_focal, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("strong", null, "Oferta p\xFAblica e/ou o grupo(s) espec\xEDfico(s) em rela\xE7\xE3o aos quais ir\xE1 conduzir o dian\xF3stico:"), /*#__PURE__*/React.createElement("ul", {
+  }, "Diagn\xF3stico ", tipo_diagnostico === 1 ? 'Completo' : 'Parcial'), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("strong", null, "Oferta p\xFAblica sob foco"), /*#__PURE__*/React.createElement("br", null), oferta_publica, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("strong", null, "Qual(is) grupo(s) ou popula\xE7\xE3o(\xF5es) espec\xEDfica(s) ir\xE1 focar?"), /*#__PURE__*/React.createElement("br", null), grupo_focal, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("strong", null, "Categorias selecionadas:"), /*#__PURE__*/React.createElement("ul", {
     style: {
       padding: '0'
     }
