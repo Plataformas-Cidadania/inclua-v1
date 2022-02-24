@@ -240,11 +240,12 @@ const Page = () => {
       className: "row"
     }, /*#__PURE__*/React.createElement("div", {
       className: "col-md-12 text-center"
-    }, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("strong", null, item.risco)), /*#__PURE__*/React.createElement("h2", {
+    }, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("h2", {
       style: {
-        fontSize: '40px'
+        fontSize: '38px',
+        lineHeight: '45px'
       }
-    }, item.pontos), /*#__PURE__*/React.createElement("p", null, "pontos"))))))), /*#__PURE__*/React.createElement("div", {
+    }, /*#__PURE__*/React.createElement("strong", null, item.risco)))))))), /*#__PURE__*/React.createElement("div", {
       className: "col-md-12 text-right",
       style: {
         textAlign: 'right'
