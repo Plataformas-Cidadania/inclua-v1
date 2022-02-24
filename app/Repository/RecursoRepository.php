@@ -53,6 +53,7 @@ class RecursoRepository extends BaseRepository
     public function getAllRecursoPorPalavraChave($palavra_chave)
     {
         $first = Recurso::whereRaw("nome ilike '%$palavra_chave%'")->with('autoria')
+         ->orWhereRaw("resumo ilike '%$palavra_chave%'")->with('autoria')
         ->orWhereRaw("esfera ilike '%$palavra_chave%'")->with('autoria')
         ->get();
 

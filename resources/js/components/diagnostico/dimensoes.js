@@ -74,19 +74,19 @@ const Dimensoes = () => {
                         <div className="row">
                             <form>
                                 <div className="col-md-12">
-                                    <label htmlFor="oferta_publica"><strong>Oferta pública sob foco</strong></label>
+                                    <label htmlFor="oferta_publica"><strong>Qual oferta pública será objeto de avaliação? Isto é, que caso concreto de política pública, programa, projeto, ação ou serviço será submetido ao diagnóstico?</strong></label>
                                     <input
                                         className="form-control form-g"
                                         type="text"
                                         name="oferta_publica"
                                         id="oferta_publica"
                                         onChange={handleDiagnostico}
-                                        placeholder="ex.: serviço, programa, política, projeto, iniciativa, ação, etc."
+                                        placeholder=""
                                     />
                                 </div>
                                 <br/>
                                 <div className="col-md-12">
-                                    <label htmlFor="grupo_focal"><strong>Qual(is) grupo(s) ou população(ões) específica(s) irá focar?</strong></label>
+                                    <label htmlFor="grupo_focal"><strong>Qual(is) segmento(s) do público serão tomados como foco de atenção? O diagnóstico deve ter como foco as formas específicas de relação entre a oferta pública identificada no item acima e os o(s) público(s) específico(s) a serem considerados.</strong></label>
                                     <input className="form-control form-g" type="text" name="grupo_focal" id="grupo_focal"  onChange={handleDiagnostico}/>
                                 </div>
                             </form>
@@ -95,7 +95,7 @@ const Dimensoes = () => {
                     <br/><br/>
                     <div className="col-md-12">
                         <br/>
-                        <div>Assinale as opções abaixo que se relacionam com a oferta pública e/ou o grupo(s) específico(s) em relação aos queis irá conduzir o dianóstico:</div>
+                        <div>Assinale as opções abaixo que se relacionam com a oferta pública e/ou o(s) grupo(s) específico(s) em relação aos quais irá conduzir o diagnóstico:</div>
                         <div>(OBS.: Os temas marcados nos ajudarão a apresentar sugestões pertinentes de recursos para a intervenção)
                         </div>
                         <div><strong>Selecione as categorias</strong></div>
