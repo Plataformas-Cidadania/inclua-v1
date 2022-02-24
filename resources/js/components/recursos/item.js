@@ -73,12 +73,12 @@ const Item = (props) => {
                             <div className="dorder-container">
 
                                 <div className="bg-lgt">
-                                    <div className="bg-lgt2 text-center box-list-cod">
+                                    {/*<div className="bg-lgt2 text-center box-list-cod">
                                         <h6 className="mt-4">Código</h6>
                                         <h2>{item.id_recurso}</h2>
-                                    </div>
+                                    </div>*/}
                                     <div className="p-2 box-list-title">
-                                        <p className="mt-2">{item.nome}</p>
+                                        <p className="mt-2"><strong>{item.nome}</strong></p>
                                     </div>
                                     <div className="clear-both"/>
                                 </div>
@@ -86,14 +86,13 @@ const Item = (props) => {
                                 <br/>
 
                                 <div className="row">
-                                    <div className="col-4"><img src="img/lines.png" alt="" width="90%"/></div>
-                                    <div className="col-6 text-center">
+                                    <div className="col-4">
+                                        <img src="img/lines.png" alt="" width="80%" height="30"/></div>
+                                    {/*<div className="col-6 text-center">
                                         <div className="bg-lgt2 box-list-formato">
                                             {nomeFormato ? nomeFormato.nome : ''}
-                                            {/*<i className={icon[item.id_formato]+" fa-3x"}/>*/}
                                         </div>
-
-                                    </div>
+                                    </div>*/}
                                     <div className="col-2">&nbsp;</div>
                                 </div>
                                 <div className="row">
@@ -122,6 +121,7 @@ const Item = (props) => {
                                             }
                                         </p>
                                         <p><strong>Tipo: </strong><span>{(item.tipo_recurso ? item.tipo_recurso.nome : '')}</span></p>
+                                        <p><strong>Formato: </strong><span>{nomeFormato ? nomeFormato.nome : ''}</span></p>
                                         <p>
                                             <strong>Autoria: </strong>
                                             {

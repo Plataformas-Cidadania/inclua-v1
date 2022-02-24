@@ -98,7 +98,7 @@ const Page = () => {
                                             <strong>Qual(is) grupo(s) ou população(ões) específica(s) irá focar?</strong><br/>
                                             {resultado.grupo_focal}
                                             <br/><br/>
-                                            <strong>Categorias</strong><br/>
+                                            <strong>Categorias selecionadas</strong><br/>
                                             <ul style={{padding: '0'}}>
                                                 {
                                                     categoriaResultado.map((item, key) => {
@@ -223,7 +223,7 @@ const Page = () => {
                                                                                 <div className="row">
                                                                                     <div className="col-md-12 text-center">
                                                                                         <br/>
-                                                                                        <h2 style={{fontSize: '38px', lineHeight: '45px'}}><strong>{item.risco}</strong></h2>
+                                                                                        <h2 style={{fontSize: '22px', lineHeight: '30px'}}><strong>{item.risco}</strong></h2>
                                                                                         {/*<h2 style={{fontSize: '40px', lineHeight: '50px'}}>{item.pontos}</h2>
                                                                                         <p>pontos</p>*/}
                                                                                     </div>

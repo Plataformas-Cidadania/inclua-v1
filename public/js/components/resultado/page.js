@@ -91,7 +91,7 @@ const Page = () => {
     className: "col-md-12"
   }, /*#__PURE__*/React.createElement("div", {
     className: "p-3"
-  }, /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("strong", null, "Oferta p\xFAblica sob foco"), /*#__PURE__*/React.createElement("br", null), resultado.oferta_publica, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("strong", null, "Qual(is) grupo(s) ou popula\xE7\xE3o(\xF5es) espec\xEDfica(s) ir\xE1 focar?"), /*#__PURE__*/React.createElement("br", null), resultado.grupo_focal, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("strong", null, "Categorias"), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("ul", {
+  }, /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("strong", null, "Oferta p\xFAblica sob foco"), /*#__PURE__*/React.createElement("br", null), resultado.oferta_publica, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("strong", null, "Qual(is) grupo(s) ou popula\xE7\xE3o(\xF5es) espec\xEDfica(s) ir\xE1 focar?"), /*#__PURE__*/React.createElement("br", null), resultado.grupo_focal, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("strong", null, "Categorias selecionadas"), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("ul", {
     style: {
       padding: '0'
     }
@@ -242,8 +242,8 @@ const Page = () => {
       className: "col-md-12 text-center"
     }, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("h2", {
       style: {
-        fontSize: '38px',
-        lineHeight: '45px'
+        fontSize: '22px',
+        lineHeight: '30px'
       }
     }, /*#__PURE__*/React.createElement("strong", null, item.risco)))))))), /*#__PURE__*/React.createElement("div", {
       className: "col-md-12 text-right",
