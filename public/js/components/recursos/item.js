@@ -39,13 +39,14 @@ const Item = props => {
       nome: nome,
       resumo: resumo
     });
-    let modal = '#exampleModal' + id;
+    let modal = '#exampleModal_' + id + '_' + props.grupo;
     $(modal).modal('show');
   };
 
   return /*#__PURE__*/React.createElement("div", {
     className: "row"
   }, propsData.map((item, key) => {
+    //console.log('--------', item);
     function isCherries(fruit) {
       return fruit.id_formato === item.id_formato;
     }
@@ -63,7 +64,7 @@ const Item = props => {
       className: "p-2 box-list-title"
     }, /*#__PURE__*/React.createElement("p", {
       className: "mt-2"
-    }, /*#__PURE__*/React.createElement("strong", null, item.nome))), /*#__PURE__*/React.createElement("div", {
+    }, /*#__PURE__*/React.createElement("strong", null, item.nome, "-", item.id_recurso))), /*#__PURE__*/React.createElement("div", {
       className: "clear-both"
     })), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
       className: "row"
@@ -117,9 +118,9 @@ const Item = props => {
       className: "fas fa-angle-right"
     }))))) : null))), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
       className: "modal fade",
-      id: "exampleModal" + item.id_recurso,
+      id: "exampleModal_" + item.id_recurso + "_" + props.grupo,
       tabIndex: "-1",
-      "aria-labelledby": "exampleModalLabel",
+      "aria-labelledby": "exampleModalLabel_" + item.id_recurso + "_" + props.grupo,
       "aria-hidden": "true"
     }, /*#__PURE__*/React.createElement("div", {
       className: "modal-dialog modal-lg"
@@ -129,7 +130,7 @@ const Item = props => {
       className: "modal-header"
     }, /*#__PURE__*/React.createElement("h5", {
       className: "modal-title",
-      id: "exampleModalLabel"
+      id: "exampleModalLabel_" + item.id_recurso + "_" + props.grupo
     }, modal.nome)), /*#__PURE__*/React.createElement("div", {
       className: "modal-body"
     }, modal.resumo === null ? "Este conteúdo não está disponível no momento!" : modal.resumo), /*#__PURE__*/React.createElement("div", {

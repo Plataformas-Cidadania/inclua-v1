@@ -97,7 +97,8 @@ const Page = () => {
         display: activeDiv === item.id_curadoria ? '' : 'none'
       }
     }, /*#__PURE__*/React.createElement(Item, {
-      propsData: recursos
+      propsData: recursos,
+      grupo: item.id_curadoria
     })));
   })))));
 };

@@ -220,7 +220,8 @@ const Page = () => {
       textAlign: 'right'
     }
   }, total, " recursos")))), /*#__PURE__*/React.createElement(Item, {
-    propsData: recursos
+    propsData: recursos,
+    grupo: 1
   }), /*#__PURE__*/React.createElement(Paginate, {
     setPage: setPage,
     total: total,

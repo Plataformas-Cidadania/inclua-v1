@@ -263,7 +263,8 @@ const Page = () => {
         display: groupRecurso === key ? '' : 'none'
       }
     }, /*#__PURE__*/React.createElement("h2", null, "Recursos"), /*#__PURE__*/React.createElement("hr", null), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(Item, {
-      propsData: item.recursos
+      propsData: item.recursos,
+      grupo: item.numero
     })))));
   }) : null))));
 };

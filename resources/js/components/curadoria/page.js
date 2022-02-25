@@ -96,7 +96,7 @@ const Page = () => {
                                         </div>
                                         <br/><br/>
                                         <div style={{display: activeDiv === item.id_curadoria ? '' : 'none'}}>
-                                            <Item propsData={recursos}/>
+                                            <Item propsData={recursos}  grupo={item.id_curadoria}/>
                                         </div>
 
                                         {/*{

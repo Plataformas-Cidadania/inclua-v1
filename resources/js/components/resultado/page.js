@@ -248,7 +248,7 @@ const Page = () => {
                                                             <h2>Recursos</h2>
                                                             <hr/>
                                                             <div>
-                                                                <Item propsData={item.recursos}/>
+                                                                <Item propsData={item.recursos}  grupo={item.numero}/>
                                                             </div>
                                                         </div>
                                                     </div>

@@ -1,4 +1,5 @@
 const Item = (props) => {
+
     const {useState, useEffect} = React;
     const [formato, setFormato] = useState([]);
     const [modal, setModal] = useState({
@@ -50,7 +51,7 @@ const Item = (props) => {
                 resumo: resumo
             }
         );
-        let modal = '#exampleModal'+ id;
+        let modal = '#exampleModal_'+ id+'_'+props.grupo;
         $(modal).modal('show');
 
     }
@@ -61,6 +62,8 @@ const Item = (props) => {
         <div className={"row"}>
             {
                 propsData.map((item, key) => {
+
+                    //console.log('--------', item);
 
                     function isCherries(fruit) {
                         return fruit.id_formato === item.id_formato;
@@ -79,7 +82,7 @@ const Item = (props) => {
                                         <h2>{item.id_recurso}</h2>
                                     </div>*/}
                                     <div className="p-2 box-list-title">
-                                        <p className="mt-2"><strong>{item.nome}</strong></p>
+                                        <p className="mt-2"><strong>{item.nome}-{item.id_recurso}</strong></p>
                                     </div>
                                     <div className="clear-both"/>
                                 </div>
@@ -180,12 +183,12 @@ const Item = (props) => {
                             </div>
                             <br/>
                             <div>
-                                <div className="modal fade" id={"exampleModal"+item.id_recurso} tabIndex="-1" aria-labelledby="exampleModalLabel"
+                                <div className="modal fade" id={"exampleModal_"+item.id_recurso+"_"+props.grupo} tabIndex="-1" aria-labelledby={"exampleModalLabel_"+item.id_recurso+"_"+props.grupo}
                                      aria-hidden="true">
                                     <div className="modal-dialog modal-lg">
                                         <div className="modal-content">
                                             <div className="modal-header">
-                                                <h5 className="modal-title" id="exampleModalLabel">{modal.nome}</h5>
+                                                <h5 className="modal-title" id={"exampleModalLabel_"+item.id_recurso+"_"+props.grupo}>{modal.nome}</h5>
                                             </div>
                                             <div className="modal-body">
                                                 {modal.resumo===null ? "Este conteúdo não está disponível no momento!" : modal.resumo}

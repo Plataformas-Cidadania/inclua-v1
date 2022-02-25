@@ -221,7 +221,7 @@ const Page = () => {
                 </div>
             </div>
 
-            <Item propsData={recursos}/>
+            <Item propsData={recursos} grupo={1}/>
 
             <Paginate
                 setPage={setPage}
