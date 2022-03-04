@@ -127,7 +127,7 @@ const Page = () => {
 
                                                     <div>
                                                         <p style={{float: "left"}}>{indicador.risco}</p>
-                                                        <p style={{float: "right"}}>{indicador.pontos} pontos</p>
+                                                        {/*<p style={{float: "right"}}>{indicador.pontos} pontos</p>*/}
                                                         <div style={{float: "both"}}/>
                                                     </div>
                                                     <br/><br/>

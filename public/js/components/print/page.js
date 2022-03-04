@@ -161,11 +161,7 @@ const Page = () => {
         style: {
           float: "left"
         }
-      }, indicador.risco), /*#__PURE__*/React.createElement("p", {
-        style: {
-          float: "right"
-        }
-      }, indicador.pontos, " pontos"), /*#__PURE__*/React.createElement("div", {
+      }, indicador.risco), /*#__PURE__*/React.createElement("div", {
         style: {
           float: "both"
         }
