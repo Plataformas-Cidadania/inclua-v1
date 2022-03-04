@@ -64,7 +64,7 @@ const Item = props => {
       className: "p-2 box-list-title"
     }, /*#__PURE__*/React.createElement("p", {
       className: "mt-2"
-    }, /*#__PURE__*/React.createElement("strong", null, item.nome, "-", item.id_recurso))), /*#__PURE__*/React.createElement("div", {
+    }, /*#__PURE__*/React.createElement("strong", null, item.nome))), /*#__PURE__*/React.createElement("div", {
       className: "clear-both"
     })), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
       className: "row"

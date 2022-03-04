@@ -82,7 +82,7 @@ const Item = (props) => {
                                         <h2>{item.id_recurso}</h2>
                                     </div>*/}
                                     <div className="p-2 box-list-title">
-                                        <p className="mt-2"><strong>{item.nome}-{item.id_recurso}</strong></p>
+                                        <p className="mt-2"><strong>{item.nome}</strong></p>
                                     </div>
                                     <div className="clear-both"/>
                                 </div>
