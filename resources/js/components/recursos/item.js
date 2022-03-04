@@ -191,7 +191,10 @@ const Item = (props) => {
                                                 <h5 className="modal-title" id={"exampleModalLabel_"+item.id_recurso+"_"+props.grupo}>{modal.nome}</h5>
                                             </div>
                                             <div className="modal-body">
-                                                {modal.resumo===null ? "Este conteúdo não está disponível no momento!" : modal.resumo}
+                                                {modal.resumo===null
+                                                    ? "Este conteúdo não está disponível no momento!"
+                                                    : (<p dangerouslySetInnerHTML={{__html: modal.resumo}}/>)
+                                                }
                                             </div>
                                             <div className="modal-footer">
                                                 <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>

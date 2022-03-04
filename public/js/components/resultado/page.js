@@ -186,7 +186,7 @@ const Page = () => {
     className: "col-md-8"
   }, /*#__PURE__*/React.createElement("h2", {
     className: "mt-5"
-  }, resultado.titulo, "inclusiva"), /*#__PURE__*/React.createElement("p", {
+  }, resultado.titulo), /*#__PURE__*/React.createElement("p", {
     className: "mb-5"
   }, "Veja abaixo os resultados por indicador:")), /*#__PURE__*/React.createElement("div", {
     className: "col-md-2 text-center"

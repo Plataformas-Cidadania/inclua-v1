@@ -133,7 +133,11 @@ const Item = props => {
       id: "exampleModalLabel_" + item.id_recurso + "_" + props.grupo
     }, modal.nome)), /*#__PURE__*/React.createElement("div", {
       className: "modal-body"
-    }, modal.resumo === null ? "Este conteúdo não está disponível no momento!" : modal.resumo), /*#__PURE__*/React.createElement("div", {
+    }, modal.resumo === null ? "Este conteúdo não está disponível no momento!" : /*#__PURE__*/React.createElement("p", {
+      dangerouslySetInnerHTML: {
+        __html: modal.resumo
+      }
+    })), /*#__PURE__*/React.createElement("div", {
       className: "modal-footer"
     }, /*#__PURE__*/React.createElement("button", {
       type: "button",
