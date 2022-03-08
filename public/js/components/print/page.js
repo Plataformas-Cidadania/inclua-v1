@@ -174,7 +174,11 @@ const Page = () => {
           clear: "both",
           margin: "15px 0"
         }
-      }, /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("b", null, "CONSEQU\xCANCIA: "), indicador.consequencia)), /*#__PURE__*/React.createElement("table", {
+      }, /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("b", null, "CONSEQU\xCANCIA: "), indicador.consequencia)), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("p", {
+        style: {
+          textAlign: "center"
+        }
+      }, /*#__PURE__*/React.createElement("strong", null, "Indica\xE7\xF5es de recursos para interven\xE7\xE3o"))), /*#__PURE__*/React.createElement("table", {
         className: "table",
         width: "100%",
         style: {

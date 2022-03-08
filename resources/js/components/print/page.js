@@ -139,6 +139,11 @@ const Page = () => {
                                                         </p>
                                                     </div>
 
+                                                    <div>
+                                                        <br/><br/>
+                                                        <p style={{textAlign: "center"}}><strong>Indicações de recursos para intervenção</strong></p>
+                                                    </div>
+
                                                     <table className="table" width="100%" style={{fontSize: "13px"}}>
                                                         <thead>
                                                         <tr style={{textAlign: "left"}}>
