@@ -111,7 +111,7 @@ const Page = () => {
                                 <div style={{clear: "both", margin: "15px 0"}}>
                                     <div style={{float: "both"}}>
                                         <h2 style={{float: "left"}}>{item.risco}</h2>
-                                        <h2 style={{float: "right"}}>{item.pontos} pontos</h2>
+                                        {/*<h2 style={{float: "right"}}>{item.pontos} pontos</h2>*/}
                                         <div style={{float: "both"}}/>
                                     </div>
                                 </div>

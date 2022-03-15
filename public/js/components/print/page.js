@@ -139,11 +139,7 @@ const Page = () => {
       style: {
         float: "left"
       }
-    }, item.risco), /*#__PURE__*/React.createElement("h2", {
-      style: {
-        float: "right"
-      }
-    }, item.pontos, " pontos"), /*#__PURE__*/React.createElement("div", {
+    }, item.risco), /*#__PURE__*/React.createElement("div", {
       style: {
         float: "both"
       }
