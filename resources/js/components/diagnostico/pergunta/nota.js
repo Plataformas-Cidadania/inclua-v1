@@ -58,7 +58,8 @@ const Nota = (props) => {
 
             <div>
                 <br/>
-                <div className="range-merker" style={{width: '113%', marginLeft: '-80px'}}>
+                {/*<div className="range-merker" style={{width: '113%', marginLeft: '-80px'}}>*/}
+                <div className="range-merker">
                     <ul className="radio">
                         {
                             (props.naoSeAplica) ? (
