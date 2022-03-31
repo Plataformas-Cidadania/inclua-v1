@@ -176,7 +176,7 @@
         <div class="dorder-container">
             <div class="bg-lgt dorder-container-mai">
                 <div class="dorder-container-line">
-                    <h2>Parceiros</h2>
+                    <h2>PARCEIROS E PARCEIRAS</h2>
                     <div class="dorder-container-box bg-lgt"></div>
                 </div>
             </div>
