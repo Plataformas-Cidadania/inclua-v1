@@ -68,14 +68,14 @@ class CategoriaDiagnosticoRepository extends BaseRepository
      * @param int $secondId
      * @return Model
      */
-    public function deleteByCompositeId(int $firstId,int $secondId,): Model
+    public function deleteByCompositeId(int $firstId,string $secondId,): Model
     {
         $res = CategoriaDiagnostico::where('id_categoria', '=', $firstId)
             ->where('id_diagnostico', '=', $secondId)
             ->first();
         if (!$res) throw new \Illuminate\Database\Eloquent\ModelNotFoundException;
         else {
-            CategoriaDiagnostico::where('id_categoria', '=', $firstId)->where('id_recurso', '=', $secondId)->delete();
+            CategoriaDiagnostico::where('id_categoria', '=', $firstId)->where('id_diagnostico', '=', $secondId)->delete();
             return $res;
         }
     }
