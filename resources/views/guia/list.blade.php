@@ -28,6 +28,7 @@
                     <div>
                         <br><br>
                         <h1>{{$text->titulo}}</h1>
+                        <p>{!! $text->descricao !!}</p>
                         <br>
 
                     </div>

@@ -118,7 +118,7 @@ const Page = () => {
   }, /*#__PURE__*/React.createElement("div", {
     className: "row"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "col-md-12 text-center"
+    className: "col-md-11 text-center"
   }, /*#__PURE__*/React.createElement("div", {
     className: "text-center nav-icons"
   }, /*#__PURE__*/React.createElement("img", {
@@ -146,7 +146,19 @@ const Page = () => {
     alt: "",
     onClick: () => ClickDimensao(5),
     className: "cursor " + (dimensao === 5 ? "nav-icons-select" : "opacity-5")
-  }), /*#__PURE__*/React.createElement("hr", null))))), resultado.pontos === 0 ? /*#__PURE__*/React.createElement("div", {
+  }), /*#__PURE__*/React.createElement("hr", null))), /*#__PURE__*/React.createElement("div", {
+    className: "col-md-1"
+  }, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("a", {
+    href: "/imprimir",
+    target: "_blank"
+  }, /*#__PURE__*/React.createElement("img", {
+    src: "/img/print.png",
+    alt: "",
+    className: "float-end m-2 cursor",
+    style: {
+      width: '35px'
+    }
+  }))))), resultado.pontos === 0 ? /*#__PURE__*/React.createElement("div", {
     className: "row"
   }, /*#__PURE__*/React.createElement("div", {
     className: "col-md-12"
@@ -186,31 +198,15 @@ const Page = () => {
     className: "col-md-8"
   }, /*#__PURE__*/React.createElement("h2", {
     className: "mt-5"
-  }, resultado.titulo, "inclusiva"), /*#__PURE__*/React.createElement("p", {
+  }, resultado.titulo), /*#__PURE__*/React.createElement("p", {
     className: "mb-5"
   }, "Veja abaixo os resultados por indicador:")), /*#__PURE__*/React.createElement("div", {
     className: "col-md-2 text-center"
-  }, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("strong", null, resultado.risco)), /*#__PURE__*/React.createElement("h2", {
-    style: {
-      fontSize: '40px'
-    }
-  }, resultado.pontos), /*#__PURE__*/React.createElement("p", null, "pontos")))))), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("h2", null, /*#__PURE__*/React.createElement("strong", null, resultado.risco))))))), /*#__PURE__*/React.createElement("div", {
     className: "container"
   }, /*#__PURE__*/React.createElement("div", {
     className: "row"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "col-md-12"
-  }, /*#__PURE__*/React.createElement("a", {
-    href: "/imprimir",
-    target: "_blank"
-  }, /*#__PURE__*/React.createElement("img", {
-    src: "/img/print.png",
-    alt: "",
-    className: "float-end m-2 cursor",
-    style: {
-      width: '35px'
-    }
-  }))), resultado.indicadores ? resultado.indicadores.map((item, key) => {
+  }, resultado.indicadores ? resultado.indicadores.map((item, key) => {
     return /*#__PURE__*/React.createElement("div", {
       className: "col-md-12",
       key: 'indicadores_' + key
@@ -252,7 +248,10 @@ const Page = () => {
       }
     }, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("p", {
       onClick: () => ClickRecurso(key),
-      className: "cursor"
+      className: "cursor",
+      style: {
+        fontSize: '20px'
+      }
     }, "Indica\xE7\xF5es de ", item.recursos.length, " recursos para interven\xE7\xE3o ", /*#__PURE__*/React.createElement("i", {
       className: "fas fa-angle-right"
     }))))), /*#__PURE__*/React.createElement("div", {
@@ -263,7 +262,8 @@ const Page = () => {
         display: groupRecurso === key ? '' : 'none'
       }
     }, /*#__PURE__*/React.createElement("h2", null, "Recursos"), /*#__PURE__*/React.createElement("hr", null), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(Item, {
-      propsData: item.recursos
+      propsData: item.recursos,
+      grupo: item.numero
     })))));
   }) : null))));
 };

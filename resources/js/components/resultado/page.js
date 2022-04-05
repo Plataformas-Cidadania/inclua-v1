@@ -128,7 +128,7 @@ const Page = () => {
 
             <div className="container">
                 <div className="row">
-                    <div className="col-md-12 text-center">
+                    <div className="col-md-11 text-center">
                         <div className="text-center nav-icons">
                             <img src="img/dimensao1.png" alt="" onClick={() => ClickDimensao(1)} className={"cursor " + (dimensao===1 ? "nav-icons-select" : "opacity-5")} />
                             <img src="img/dimensao2.png" alt="" onClick={() => ClickDimensao(2)} className={"cursor " + (dimensao===2 ? "nav-icons-select" : "opacity-5")}/>
@@ -138,6 +138,13 @@ const Page = () => {
                             <hr/>
                         </div>
                     </div>
+                    <div className="col-md-1">
+                        <br/>
+                        <a href="/imprimir" target="_blank">
+                            <img src="/img/print.png" alt="" className="float-end m-2 cursor" style={{width: '35px'}}/>
+                        </a>
+                    </div>
+
                 </div>
             </div>
 
@@ -174,15 +181,14 @@ const Page = () => {
                                             <h2>DIMENSÃO {dimensao}</h2>
                                         </div>
                                         <div className="col-md-8">
-                                            <h2 className="mt-5">{resultado.titulo}
-                                                inclusiva</h2>
+                                            <h2 className="mt-5">{resultado.titulo}</h2>
                                             <p className="mb-5">Veja abaixo os resultados por indicador:</p>
                                         </div>
                                         <div className="col-md-2 text-center">
                                             <br/>
-                                            <p><strong>{resultado.risco}</strong></p>
-                                            <h2 style={{fontSize: '40px'}}>{resultado.pontos}</h2>
-                                            <p>pontos</p>
+                                            <h2><strong>{resultado.risco}</strong></h2>
+                                            {/*<h2 style={{fontSize: '40px'}}>{resultado.pontos}</h2>
+                                            <p>pontos</p>*/}
                                         </div>
                                     </div>
                                 </div>
@@ -191,11 +197,11 @@ const Page = () => {
 
                         <div className="container">
                             <div className="row">
-                                <div className="col-md-12">
+                                {/*<div className="col-md-12">
                                     <a href="/imprimir" target="_blank">
                                         <img src="/img/print.png" alt="" className="float-end m-2 cursor" style={{width: '35px'}}/>
                                     </a>
-                                </div>
+                                </div>*/}
 
                                 {
                                     resultado.indicadores ?
@@ -234,7 +240,7 @@ const Page = () => {
                                                                 </div>
                                                                 <div className="col-md-12 text-right" style={{textAlign: 'right'}}>
                                                                     <br/>
-                                                                    <p onClick={() => ClickRecurso(key)} className="cursor">Indicações de {item.recursos.length} recursos para intervenção <i className="fas fa-angle-right"/></p>
+                                                                    <p onClick={() => ClickRecurso(key)} className="cursor" style={{fontSize: '20px'}}>Indicações de {item.recursos.length} recursos para intervenção <i className="fas fa-angle-right"/></p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -248,7 +254,7 @@ const Page = () => {
                                                             <h2>Recursos</h2>
                                                             <hr/>
                                                             <div>
-                                                                <Item propsData={item.recursos}/>
+                                                                <Item propsData={item.recursos}  grupo={item.numero}/>
                                                             </div>
                                                         </div>
                                                     </div>

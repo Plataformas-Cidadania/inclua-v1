@@ -39,12 +39,14 @@ const Item = props => {
       nome: nome,
       resumo: resumo
     });
-    $('#exampleModal').modal('show');
+    let modal = '#exampleModal_' + id + '_' + props.grupo;
+    $(modal).modal('show');
   };
 
   return /*#__PURE__*/React.createElement("div", {
     className: "row"
   }, propsData.map((item, key) => {
+    //console.log('--------', item);
     function isCherries(fruit) {
       return fruit.id_formato === item.id_formato;
     }
@@ -53,7 +55,7 @@ const Item = props => {
 
     return /*#__PURE__*/React.createElement("div", {
       className: "col-lg-4 col-md-6 col-sm-12 col-xs-12",
-      key: key
+      key: "modal" + key
     }, /*#__PURE__*/React.createElement("div", {
       className: "dorder-container"
     }, /*#__PURE__*/React.createElement("div", {
@@ -114,29 +116,33 @@ const Item = props => {
       target: "_blank"
     }, "Detalhar ", /*#__PURE__*/React.createElement("i", {
       className: "fas fa-angle-right"
-    }))))) : null))), /*#__PURE__*/React.createElement("br", null));
-  }), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-    className: "modal fade",
-    id: "exampleModal",
-    tabIndex: "-1",
-    "aria-labelledby": "exampleModalLabel",
-    "aria-hidden": "true"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "modal-dialog modal-lg"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "modal-content"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "modal-header"
-  }, /*#__PURE__*/React.createElement("h5", {
-    className: "modal-title",
-    id: "exampleModalLabel"
-  }, modal.nome)), /*#__PURE__*/React.createElement("div", {
-    className: "modal-body"
-  }, modal.resumo === null ? "Este conteúdo não está disponível no momento!" : modal.resumo), /*#__PURE__*/React.createElement("div", {
-    className: "modal-footer"
-  }, /*#__PURE__*/React.createElement("button", {
-    type: "button",
-    className: "btn btn-secondary",
-    "data-bs-dismiss": "modal"
-  }, "Close")))))));
+    }))))) : null))), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+      className: "modal fade",
+      id: "exampleModal_" + item.id_recurso + "_" + props.grupo,
+      tabIndex: "-1",
+      "aria-labelledby": "exampleModalLabel_" + item.id_recurso + "_" + props.grupo,
+      "aria-hidden": "true"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "modal-dialog modal-lg"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "modal-content"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "modal-header"
+    }, /*#__PURE__*/React.createElement("h5", {
+      className: "modal-title",
+      id: "exampleModalLabel_" + item.id_recurso + "_" + props.grupo
+    }, modal.nome)), /*#__PURE__*/React.createElement("div", {
+      className: "modal-body"
+    }, modal.resumo === null ? "Este conteúdo não está disponível no momento!" : /*#__PURE__*/React.createElement("p", {
+      dangerouslySetInnerHTML: {
+        __html: modal.resumo
+      }
+    })), /*#__PURE__*/React.createElement("div", {
+      className: "modal-footer"
+    }, /*#__PURE__*/React.createElement("button", {
+      type: "button",
+      className: "btn btn-secondary",
+      "data-bs-dismiss": "modal"
+    }, "Close")))))));
+  }));
 };

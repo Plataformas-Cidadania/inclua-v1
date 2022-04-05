@@ -111,7 +111,7 @@ const Page = () => {
                                 <div style={{clear: "both", margin: "15px 0"}}>
                                     <div style={{float: "both"}}>
                                         <h2 style={{float: "left"}}>{item.risco}</h2>
-                                        <h2 style={{float: "right"}}>{item.pontos} pontos</h2>
+                                        {/*<h2 style={{float: "right"}}>{item.pontos} pontos</h2>*/}
                                         <div style={{float: "both"}}/>
                                     </div>
                                 </div>
@@ -127,7 +127,7 @@ const Page = () => {
 
                                                     <div>
                                                         <p style={{float: "left"}}>{indicador.risco}</p>
-                                                        <p style={{float: "right"}}>{indicador.pontos} pontos</p>
+                                                        {/*<p style={{float: "right"}}>{indicador.pontos} pontos</p>*/}
                                                         <div style={{float: "both"}}/>
                                                     </div>
                                                     <br/><br/>
@@ -137,6 +137,11 @@ const Page = () => {
                                                         <p><b>CONSEQUÊNCIA: </b>
                                                             {indicador.consequencia}
                                                         </p>
+                                                    </div>
+
+                                                    <div>
+                                                        <br/><br/>
+                                                        <p style={{textAlign: "center"}}><strong>Indicações de recursos para intervenção</strong></p>
                                                     </div>
 
                                                     <table className="table" width="100%" style={{fontSize: "13px"}}>

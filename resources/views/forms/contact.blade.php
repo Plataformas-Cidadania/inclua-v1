@@ -37,7 +37,7 @@
             <div class="col-md-7">
                 <div class="row">
                     <div class="col-md-12">
-                        <strong>{{$resp}} Prezado usuário,</strong><br><br>
+                        <strong>{{$resp}} Prezado usuário e prezada usuária,</strong><br><br>
                         <p>{!!$setting->descricao_contato!!}</p>
                     </div>
                     <div class="col-md-12">
