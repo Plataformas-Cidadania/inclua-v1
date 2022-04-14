@@ -75,7 +75,7 @@ class CategoriaDiagnosticoRepository extends BaseRepository
             ->first();
         if (!$res) throw new \Illuminate\Database\Eloquent\ModelNotFoundException;
         else {
-            CategoriaDiagnostico::where('id_categoria', '=', $firstId)->where('id_recurso', '=', $secondId)->delete();
+            CategoriaDiagnostico::where('id_categoria', '=', $firstId)->where('id_diagnostico', '=', $secondId)->delete();
             return $res;
         }
     }
