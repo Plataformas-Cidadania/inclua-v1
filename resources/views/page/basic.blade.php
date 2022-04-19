@@ -11,8 +11,6 @@
 @section('content')
 
 
-
-
     <style>
         .mb-0{
             background-color: #FFFFFF !important;
@@ -31,19 +29,6 @@
         }
     </style>
 
-
-    {{--<div class="container-fluid">
-        <div class="p-3">&nbsp;</div>
-        <div class="dorder-container">
-            <div class="bg-lgt dorder-container-mai">
-                <div class="dorder-container-line">
-                    <h1>{{$page->titulo}}</h1>
-                    <div class="dorder-container-box bg-lgt"></div>
-                </div>
-            </div>
-        </div>
-        <div class="p-3">&nbsp;</div>
-    </div>--}}
 
     <div class="bg-lgt">
         <div class="container-fluid">
@@ -109,6 +94,11 @@
                     @endif
 
                     <p tabindex="0">{!! $page->descricao !!}</p>
+
+                        @if($page->arquivo!="")
+                            <br>
+                            <iframe id="pdf" name="pdf" src="arquivos/modulos/{{$page->arquivo}}" width="100%" height="1000"></iframe>
+                        @endif
                     {{--<p data-message="{!! $page->descricao !!}" tabindex="0">{!! $page->descricao !!}</p>--}}
 
 

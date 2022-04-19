@@ -90,6 +90,7 @@
                                 <h3>Ajuda</h3>
                                 <ul>
                                     <li role="presentation"><a href="contato" accesskey="a" @if($rota=='quem') class="contato" @endif>Contato</a></li>
+                                    <li role="presentation"><a href="manual" >Manual INCLUA</a></li>
                                     <li role="presentation"><a href="mapa-do-site" >Mapa do site</a></li>
                                     <li role="presentation"><a href="acessibilidade" >Acessibilidade</a></li>
                                     <br><br>
