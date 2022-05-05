@@ -227,6 +227,7 @@ Route::group(['middleware' => 'cms'], function () {
 
         //Recurso
         Route::get('/cms/recursos', 'Cms\Controllers\RecursoController@index');
+        Route::get('/cms/recursos/{user_id}', 'Cms\Controllers\RecursoController@index');
         Route::get('/cms/recurso/{id}', 'Cms\Controllers\RecursoController@detalhar');
 
         //Link

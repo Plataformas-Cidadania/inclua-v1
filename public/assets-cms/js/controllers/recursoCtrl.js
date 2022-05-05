@@ -4,6 +4,7 @@ cmsApp.controller('recursoCtrl', ['$scope', '$http', 'Upload', '$timeout', funct
     $scope.recurso = {
     };
     $scope.recursos = [];
+    $scope.user_id = 0;
     $scope.tipos = [];
     $scope.tipo = null;
     $scope.formatos = [];
@@ -37,6 +38,12 @@ cmsApp.controller('recursoCtrl', ['$scope', '$http', 'Upload', '$timeout', funct
             if($scope.dadoPesquisa.length > 2 || $scope.dadoPesquisa.length === 0){
                 listarRecursos();
             }
+        }
+    });
+    $scope.$watch('user_id', function(){
+        console.log('watch user_id', $scope.user_id);
+        if($scope.user_id > 0){            
+            listarRecursos();           
         }
     });
 
@@ -84,6 +91,12 @@ cmsApp.controller('recursoCtrl', ['$scope', '$http', 'Upload', '$timeout', funct
             pesquisa = true;
             url = 'api/busca_recursos/palavra_chave/'+$scope.dadoPesquisa;
         }
+        console.log('user_id', $scope.user_id);
+
+
+        if($scope.user_id > 0){
+            url = 'api/busca_recursos/usuario/'+$scope.user_id;
+        }        
         $http({
             url: url,
             method: 'GET',
@@ -99,6 +112,16 @@ cmsApp.controller('recursoCtrl', ['$scope', '$http', 'Upload', '$timeout', funct
         }).success(function(data, status, headers, config){
             //console.log(data.data);
             $scope.recursos = data.data;
+            if($scope.user_id > 0){                
+                $scope.lastPage = 1;
+                $scope.totalItens = data.data.length;
+                $scope.primeiroDaPagina = 1
+                $scope.ultimoDaPagina = 1;
+                $listar = true;
+                console.log($scope.recursos);
+                $scope.processandoListagem = false;
+                return;
+            }
             $scope.lastPage = pesquisa ? 1 : data.last_page;
             $scope.totalItens = pesquisa ? data.data.length : data.total;
             $scope.primeiroDaPagina = pesquisa ? 1 : data.from;

@@ -7,10 +7,10 @@
         $('[data-toggle="popover"]').popover()
     })
 </script>
-    <div ng-controller="recursoCtrl">
+    <div ng-controller="recursoCtrl" ng-init="user_id={{$user_id}}">
         <div class="box-padrao">
-            <h1><i class="fa fa-recurso" aria-hidden="true"></i>&nbsp;Recursos</h1>
-            <button class="btn btn-primary" ng-click="mostrarForm=!mostrarForm" ng-show="!mostrarForm">Novo Recurso</button>
+            <h1><i class="fa fa-recurso" aria-hidden="true"></i>&nbsp;Recursos {{$usuario}}</h1>
+            <button class="btn btn-primary" ng-click="mostrarForm=!mostrarForm" ng-show="!mostrarForm && user_id == 0">Novo Recurso</button>
             <button class="btn btn-warning" ng-click="mostrarForm=!mostrarForm" ng-show="mostrarForm">Cancelar</button>
             <br><br>
             <div ng-show="mostrarForm">
@@ -72,7 +72,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="box-padrao">
-                    <div class="input-group" ng-hide="false" >
+                    <div class="input-group" ng-show="user_id == 0">
                         <div class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></div>
                         <input class="form-control" type="text" ng-model="dadoPesquisa" placeholder="Faça sua busca"/>
                     </div>

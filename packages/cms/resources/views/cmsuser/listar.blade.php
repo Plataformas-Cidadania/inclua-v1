@@ -9,7 +9,7 @@
 </script>
     <div ng-controller="cmsuserCtrl">
         <div class="box-padrao">
-            <h1><i class="fa fa-fw fa-users"></i>&nbsp;Usuários</h1>
+            <h1><i class="fa fa-fw fa-users"></i>&nbsp;Usuários CMS</h1>
             <button class="btn btn-primary" ng-click="mostrarForm=!mostrarForm" ng-show="!mostrarForm">Novo Usuário</button>
             <button class="btn btn-warning" ng-click="mostrarForm=!mostrarForm" ng-show="mostrarForm">Cancelar</button>
             <br><br>

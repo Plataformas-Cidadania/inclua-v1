@@ -115,10 +115,10 @@
                     <a href="cms/tipos-recursos"><i class="fa fa-fw fa-link"></i> Tipos Recursos</a>
                 </li>
                 <li>
-                    <a href="cms/recursos"><i class="fa fa-fw fa-link"></i> Recursos</a>
+                    <a href="cms/recursos"><i class="fa fa-fw fa-book"></i> Recursos</a>
                 </li>
                 <li>
-                    <a href="cms/curadores"><i class="fa fa-fw fa-link"></i> Curadores</a>
+                    <a href="cms/curadores"><i class="fa fa-fw fa-male"></i> Curadores</a>
                 </li>
                 <li>
                     <a href="cms/curadorias"><i class="fa fa-fw fa-link"></i> Curadorias</a>
