@@ -130,11 +130,13 @@
                     <a href="cms/depoimentos"><i class="fa fa-fw fa-link"></i> Depoimentos</a>
                 </li>
                 <li>
-                    <a href="cms/usuarios"><i class="fa fa-fw fa-users"></i> Usuários</a>
+                    <a href="cms/usuarios-site"><i class="fa fa-fw fa-users"></i> Usuários Site</a>
                 </li>
-
                 <li>
-                    <a href="cms/setting"><i class="fa fa-fw fa-users"></i> Configurações</a>
+                    <a href="cms/usuarios"><i class="fa fa-fw fa-user"></i> Usuários CMS</a>
+                </li>
+                <li>
+                    <a href="cms/setting"><i class="fa fa-fw fa-cog"></i> Configurações</a>
                 </li>
 
 

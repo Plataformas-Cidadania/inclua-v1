@@ -167,7 +167,7 @@ Route::group(['middleware' => 'cms'], function () {
         Route::get('/cms/status-video/{id}', 'Cms\Controllers\VideoController@status');
 
 
-        //User
+        //CmsUser
         Route::get('/cms/usuarios', 'Cms\Controllers\CmsUserController@index');
         Route::get('/cms/listar-cmsusers', 'Cms\Controllers\CmsUserController@listar');
         Route::post('/cms/inserir-cmsuser', 'Cms\Controllers\CmsUserController@inserir');
@@ -176,6 +176,15 @@ Route::group(['middleware' => 'cms'], function () {
         Route::get('/cms/perfil', 'Cms\Controllers\CmsUserController@perfil');
         Route::post('/cms/alterar-perfil', 'Cms\Controllers\CmsUserController@alterarPerfil');
         Route::get('/cms/excluir-cmsuser/{id}', 'Cms\Controllers\CmsUserController@excluir');
+
+
+        //User
+        Route::get('/cms/usuarios-site', 'Cms\Controllers\UserController@index');
+        Route::get('/cms/listar-users', 'Cms\Controllers\UserController@listar');
+        Route::post('/cms/inserir-user', 'Cms\Controllers\UserController@inserir');
+        Route::get('/cms/usuario/{id}', 'Cms\Controllers\UserController@detalhar');
+        Route::post('/cms/alterar-user/{id}', 'Cms\Controllers\UserController@alterar');
+        Route::get('/cms/excluir-cmsuser/{id}', 'Cms\Controllers\UserController@excluir');
 
 
         //TEXTS
