@@ -96,6 +96,7 @@ figcaption{
 #atalhos li, #botoes li{
     display: inline-block;
     margin-right: 5px;
+    float: left;
 }
 .btn-acessibilidade{
     border-radius: 3px;
@@ -441,4 +442,23 @@ figcaption{
     position: fixed;
     margin: 5%;
     width: 90%;
+}
+.top-ipea {
+    width: 180px;
+}
+
+@media  only screen and (max-width : 480px) {
+    .topM{
+        margin-top: 76px;
+        padding-top: 23px;
+    }
+    .celHider{
+        display: none;
+    }
+    .top-ipea{
+        margin-bottom: 15px;
+    }
+    .timeline-ano-2{
+        margin-top: -190px;
+    }
 }

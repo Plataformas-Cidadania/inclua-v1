@@ -75,11 +75,12 @@ const Page = () => {
                                                         <img src={"http://img.youtube.com/vi/" + item.link_video.split("=")[1] + "/0.jpg"} alt="" width="100%"/>
                                                     </div>*/}
 
-                                                    <iframe width="780" height="400"
+                                                    <iframe width="80%" height="400"
                                                             src={"https://www.youtube.com/embed/"+item.link_video.split("=")[1]}
                                                             title="YouTube video player" frameBorder="0"
                                                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                                             allowFullScreen /><br/>
+
                                                 </div>
                                             ) : null
                                         }

@@ -14,8 +14,8 @@
                     <p><a href="/">Home</a></p>
                 </div>
                 <div class="col-3 col-md-3 text-center">
-                    <i class="fa fa-archive" aria-hidden="true"></i>
-                    <p><a href="mapa">Mapa</a></p>
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    <p><a href="pre-diagnostico">Diagnóstico</a></p>
                 </div>
                 <div class="col-3 col-md-3 text-center">
                     <i class="fa fa-paper-plane"></i>
@@ -23,7 +23,7 @@
                 </div>
                 <div class="col-3 col-md-3 text-center">
                     <i class="fa fa-user"></i>
-                    <p><a id="btn-cel-login">Login</a></p>
+                    <p><a href="contribua">Login</a></p>
                 </div>
             </div>
         </div>

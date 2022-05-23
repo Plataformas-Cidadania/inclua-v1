@@ -196,11 +196,15 @@ const Page = () => {
     width: "100"
   }), /*#__PURE__*/React.createElement("h2", null, "DIMENS\xC3O ", dimensao)), /*#__PURE__*/React.createElement("div", {
     className: "col-md-8"
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      padding: '15px'
+    }
   }, /*#__PURE__*/React.createElement("h2", {
     className: "mt-5"
   }, resultado.titulo), /*#__PURE__*/React.createElement("p", {
     className: "mb-5"
-  }, "Veja abaixo os resultados por indicador:")), /*#__PURE__*/React.createElement("div", {
+  }, "Veja abaixo os resultados por indicador:"))), /*#__PURE__*/React.createElement("div", {
     className: "col-md-2 text-center"
   }, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("h2", null, /*#__PURE__*/React.createElement("strong", null, resultado.risco))))))), /*#__PURE__*/React.createElement("div", {
     className: "container"

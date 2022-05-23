@@ -74,7 +74,7 @@ const Page = () => {
                 <div className="p-3">&nbsp;</div>
                 <div className="dorder-container">
                     <div className="bg-lgt dorder-container-mai">
-                        <div className="dorder-container-line">
+                        <div className="dorder-container-line" >
                             <h1>Diagnóstico {resultado.tipo_diagnostico === 1 ? 'Completo' : 'Parcial'}</h1>
                             <div className="dorder-container-box bg-lgt"/>
                         </div>
@@ -181,8 +181,10 @@ const Page = () => {
                                             <h2>DIMENSÃO {dimensao}</h2>
                                         </div>
                                         <div className="col-md-8">
-                                            <h2 className="mt-5">{resultado.titulo}</h2>
-                                            <p className="mb-5">Veja abaixo os resultados por indicador:</p>
+                                            <div style={{padding: '15px'}}>
+                                                <h2 className="mt-5">{resultado.titulo}</h2>
+                                                <p className="mb-5">Veja abaixo os resultados por indicador:</p>
+                                            </div>
                                         </div>
                                         <div className="col-md-2 text-center">
                                             <br/>

@@ -73,7 +73,7 @@ const Page = () => {
     }), item.link_video ? /*#__PURE__*/React.createElement("div", {
       className: "text-center "
     }, /*#__PURE__*/React.createElement("iframe", {
-      width: "780",
+      width: "80%",
       height: "400",
       src: "https://www.youtube.com/embed/" + item.link_video.split("=")[1],
       title: "YouTube video player",
