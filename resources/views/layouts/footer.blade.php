@@ -9,21 +9,29 @@
     <div class="footer-cel d-block d-sm-none">
         <div class="container">
             <div class="row">
-                <div class="col-3 col-md-3 text-center">
+                <div class="col-2 col-md-2 text-center">
                     <i class="fa fa-home" aria-hidden="true"></i>
                     <p><a href="/">Home</a></p>
                 </div>
-                <div class="col-3 col-md-3 text-center">
+                <div class="col-2 col-md-2 text-center">
                     <i class="fa fa-search" aria-hidden="true"></i>
                     <p><a href="pre-diagnostico">Diagnóstico</a></p>
                 </div>
-                <div class="col-3 col-md-3 text-center">
+                <div class="col-2 col-md-2 text-center">
+                    <i class="fas fa-book" aria-hidden="true"></i>
+                    <p><a href="recursos">Biblioteca</a></p>
+                </div>
+                <div class="col-2 col-md-2 text-center">
+                    <i class="fas fa-address-card"></i>
+                    <p><a href="curadoria">Curadoria</a></p>
+                </div>
+                <div class="col-2 col-md-2 text-center">
+                    <i class="fas fa-hands-helping"></i>
+                    <p><a href="contribua">Interaja</a></p>
+                </div>
+                <div class="col-2 col-md-2 text-center">
                     <i class="fa fa-paper-plane"></i>
                     <p><a href="contato">Contato</a></p>
-                </div>
-                <div class="col-3 col-md-3 text-center">
-                    <i class="fa fa-user"></i>
-                    <p><a href="contribua">Login</a></p>
                 </div>
             </div>
         </div>
