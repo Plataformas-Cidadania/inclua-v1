@@ -1,5 +1,5 @@
 cmsApp.controller('moduloCtrl', ['$scope', '$http', 'Upload', '$timeout', function($scope, $http, Upload, $timeout){
-    
+
     $scope.modulos = [];
     $scope.currentPage = 1;
     $scope.lastPage = 0;
@@ -78,7 +78,7 @@ cmsApp.controller('moduloCtrl', ['$scope', '$http', 'Upload', '$timeout', functi
     $scope.validar = function(){
 
     };
-    
+
 
     listarModulos();
 
@@ -197,6 +197,13 @@ cmsApp.controller('moduloCtrl', ['$scope', '$http', 'Upload', '$timeout', functi
             $scope.mensagemStatus = "Erro ao tentar status!";
         });
     };
+
+    $scope.copiarUrlImagem = function (url){
+        console.log(url);
+        navigator.clipboard.writeText(url);
+        alert('url imagem copiada: ' + url);
+    }
+
 
 }]);
 

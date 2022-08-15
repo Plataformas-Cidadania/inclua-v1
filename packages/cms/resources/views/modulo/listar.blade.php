@@ -103,6 +103,7 @@
                             <td><a href="cms/modulo/<% modulo.id %>"><% modulo.titulo %></a></td>
                             <td class="text-right">
                                 <div>
+                                    <a ng-show="modulo.imagem" style="cursor: pointer;" ng-click="copiarUrlImagem('<?php echo env('APP_URL')?>imagens/modulos/lg-'+modulo.imagem);"><i class="fa fa-clipboard fa-2x" title="Copir url imagem"></i></a>&nbsp;&nbsp;
                                     <a href="cms/items/<% modulo.id %>"><i class="fa fa-sitemap fa-2x" title="Itens"></i></a>&nbsp;&nbsp;
                                     <a href="cms/modulo/<% modulo.id %>"><i class="fa fa-edit fa-2x" title="Editar"></i></a>&nbsp;&nbsp;
                                     <a  ng-class="<% modulo.status %> == 1 ? 'color-success' : 'color-success-inactive'"  style="cursor: pointer;"><i class="fa fa-check-circle fa-2x" aria-hidden="true" ng-click="status(modulo.id);"></i></a>
