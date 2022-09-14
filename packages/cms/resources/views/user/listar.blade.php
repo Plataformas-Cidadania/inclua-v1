@@ -58,7 +58,7 @@
         <br>
         <div class="row">
             <div class="col-md-12">
-                <div class="box-padrao">                    
+                <div class="box-padrao">
                     <input class="form-control" type="text" ng-model="dadoPesquisa" placeholder="Faça sua busca"/>
                     <br>
                     <div><% mensagemUserr %></div>
@@ -90,6 +90,7 @@
                                 <div>
                                     <a href="cms/usuario/<% user.id %>"><i class="fa fa-edit fa-2x" title="Editar"></i></a>&nbsp;&nbsp;
                                     <a href="cms/recursos/<% user.id %>"><i class="fa fa-book fa-2x" title="Recursos"></i></a>&nbsp;&nbsp;
+                                    <a href="cms/relates/<% user.id %>"><i class="fa fa-bullhorn fa-2x" title="Relatos"></i></a>&nbsp;&nbsp;
                                     <a><i data-toggle="modal" data-target="#modalExcluir" class="fa fa-remove fa-2x" ng-click="perguntaExcluir(user.id, user.name, user.imagem)"></i></a>
                                 </div>
                             </td>

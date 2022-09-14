@@ -61,5 +61,6 @@
     "/assets-cms/js/controllers/curadoriaCtrl.js": "/assets-cms/js/controllers/curadoriaCtrl.js",
     "/assets-cms/js/controllers/alterarCuradoriaCtrl.js": "/assets-cms/js/controllers/alterarCuradoriaCtrl.js",
     "/assets-cms/js/controllers/curadorCtrl.js": "/assets-cms/js/controllers/curadorCtrl.js",
-    "/assets-cms/js/controllers/alterarCuradorCtrl.js": "/assets-cms/js/controllers/alterarCuradorCtrl.js"
+    "/assets-cms/js/controllers/alterarCuradorCtrl.js": "/assets-cms/js/controllers/alterarCuradorCtrl.js",
+    "/assets-cms/js/controllers/relateUsuarioCtrl.js": "/assets-cms/js/controllers/relateUsuarioCtrl.js"
 }

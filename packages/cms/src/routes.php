@@ -230,6 +230,10 @@ Route::group(['middleware' => 'cms'], function () {
         Route::get('/cms/recursos/{user_id}', 'Cms\Controllers\RecursoController@index');
         Route::get('/cms/recurso/{id}', 'Cms\Controllers\RecursoController@detalhar');
 
+        //RelateUsuario
+        Route::get('/cms/relates/{user_id}', 'Cms\Controllers\RelateController@index');
+        Route::get('/cms/busca_relates/usuario/{user_id}', 'Cms\Controllers\RelateController@buscaPorUsuario');
+
         //Link
         Route::get('/cms/links/{id_recurso}', 'Cms\Controllers\LinkController@index');
         Route::get('/cms/link/{id}', 'Cms\Controllers\LinkController@detalhar');

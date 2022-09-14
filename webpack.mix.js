@@ -187,4 +187,7 @@ mix.scripts('packages/cms/resources/assets/js/controllers/alterarCuradoriaCtrl.j
 mix.scripts('packages/cms/resources/assets/js/controllers/curadorCtrl.js', 'public/assets-cms/js/controllers/curadorCtrl.js');
 mix.scripts('packages/cms/resources/assets/js/controllers/alterarCuradorCtrl.js', 'public/assets-cms/js/controllers/alterarCuradorCtrl.js');
 
+//Relates
+mix.scripts('packages/cms/resources/assets/js/controllers/relateUsuarioCtrl.js', 'public/assets-cms/js/controllers/relateUsuarioCtrl.js');
+
 //FIM CMS///////////////////////////////////////////////////////////////////
