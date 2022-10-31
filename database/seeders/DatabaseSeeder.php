@@ -20,7 +20,11 @@ class DatabaseSeeder extends Seeder
         $this->call(ModulosSeeder::class);
         $this->call(UrlsSeeder::class);
         $this->call(ParceirosSeeder::class);
-        $this->call(APISeeder::class);
         $this->call(PerguntasRelateSeeder::class);
+        $this->call(GeralSeeder::class);
+        $this->call(GeralSeeder2::class);
+        $this->call(GeralSeeder3::class);
+        $this->call(APISeeder::class);
+
     }
 }
