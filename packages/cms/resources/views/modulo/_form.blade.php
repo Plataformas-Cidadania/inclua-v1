@@ -26,3 +26,5 @@ null, ['class'=>"form-control width-medio <% validar(modulo.tipo_id) %>", 'ng-mo
         ),
 null, ['class'=>"form-control width-medio <% validar(modulo.show) %>", 'ng-model'=>'modulo.show', 'init-model'=>'modulo.show', 'placeholder' => 'Sem Tipo']) !!}<br>
 
+{!! Form::label('url', 'URL *') !!}<br>
+{!! Form::text('url', null, ['class'=>"form-control width-medio <% validar(modulo.url) %>", 'ng-model'=>'modulo.url', 'ng-required'=>'true', 'init-model'=>'modulo.url', 'placeholder' => '']) !!}<br>
