@@ -623,6 +623,7 @@
                 padding: 0 40px;
                 background-color: none;
                 grid-area: funciona;
+                margin-top: 10px;
             }
 
             .inclua-recursos-grid {
@@ -927,8 +928,7 @@
             </section>
             <section class="guias">
                 <div class="guias2-container">
-                    <div class="grafico"><img src="img/GRAFICO.png" class="img-fluid"
-                                              alt="Gráfico ilustrativo de resultados">
+                    <div class="grafico"><img src="img/grafico.png" class="img-fluid" alt="Gráfico ilustrativo de resultados">
                     </div>
                 </div>
             </section>
@@ -1098,7 +1098,7 @@
 
 
 
-    <div class="container-fluid">
+    {{--<div class="container-fluid">
         <div class="p-3">&nbsp;</div>
         <div class="dorder-container">
             <div class="bg-lgt dorder-container-mai">
@@ -1109,7 +1109,17 @@
             </div>
         </div>
         <div class="p-3">&nbsp;</div>
-    </div>
+    </div>--}}
+
+    <!--Reuso de código -->
+    <br><br>
+    <section class="funciona">
+        <section class="antes_funciona_quer"></section>
+        <section class="como_funciona">PARCEIROS E PARCEIRAS</section>
+        <section class="depois_funciona"></section>
+    </section>
+    <br><br>
+    <!--Reuso de código - Fim-->
 
 
     <div class="container">

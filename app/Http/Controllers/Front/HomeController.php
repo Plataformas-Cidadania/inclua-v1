@@ -23,7 +23,7 @@ class HomeController extends Controller
         $text3 = \App\Models\Text::where('slug', 'recursos')->first();
         $text4 = \App\Models\Text::where('slug', 'depoimento')->first();
         $partners = \App\Models\Parceiro::orderBy('id')->get();
-        $linksHome = \App\Models\Modulo::where('tipo_id', 8)->get();
+        $linksHome = \App\Models\Modulo::where('tipo_id', 8)->orderBy('id')->get();
 
         $depoimentos = DB::table('avaliacao.depoimento')
             ->select('depoimento.descricao', 'depoimento.icone', 'users.name')
