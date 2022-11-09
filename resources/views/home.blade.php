@@ -5,7 +5,7 @@
 
     <div class="p-3">&nbsp;</div>
     {{--<div id="home">&nbsp;</div>--}}
-    <div class="container">
+    {{--<div class="container">
         <div class="row">
             <div class="col">
                 <a href="/pre-diagnostico">
@@ -34,7 +34,7 @@
                 </a>
             </div>
         </div>
-    </div>
+    </div>--}}
 
     {{--<div class="container-fluid">
         <div class="p-3">&nbsp;</div>
