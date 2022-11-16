@@ -13,11 +13,6 @@
 
 }
 
-* {
-    padding: 0;
-    margin: 0;
-}
-
 .antes_funciona {
     background-color: #abd2cd;
     grid-area: antes;
@@ -327,7 +322,7 @@
     border-width: thin;
 }
 
-a:link,
+/*a:link,
 a:visited {
     background-color: transparent;
     color: white;
@@ -340,7 +335,7 @@ a:visited {
 a:hover,
 a:active {
     background-color: transparent;
-}
+}*/
 
 .biblioteca-container {
     display: flex;
