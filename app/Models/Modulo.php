@@ -39,7 +39,8 @@ class Modulo extends Model
 		'titulo' => 'string',
 		'status' => 'int',
 		'show' => 'int',
-		'tipo_id' => 'int'
+		'tipo_id' => 'int',
+		'url' => 'string'
 	];
 
 	protected $fillable = [
@@ -50,7 +51,8 @@ class Modulo extends Model
 		'slug',
 		'status',
 		'show',
-		'tipo_id'
+		'tipo_id',
+		'url'
 	];
 
 	public function cms_user()

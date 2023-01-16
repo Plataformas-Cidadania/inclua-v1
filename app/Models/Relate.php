@@ -23,9 +23,10 @@ class Relate extends Model
 	protected $table = 'avaliacao.relate';
 	protected $primaryKey = 'id_relate';
     protected $fillable = ['id_user'];
-    /*protected $with = ['resposta'];
-	public function resposta()
+
+    //protected $with = ['resposta_relate'];
+	public function resposta_relate()
 	{
 		return $this->hasMany(RespostaRelate::class, 'id_relate');
-	}*/
+	}
 }

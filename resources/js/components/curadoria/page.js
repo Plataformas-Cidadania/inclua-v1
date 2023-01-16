@@ -100,15 +100,12 @@ const Page = () => {
                                             <Item propsData={recursos}  grupo={item.id_curadoria}/>
                                         </div>
 
-                                        {/*{
-                                            item.curadoria_recurso.map((item2, key) => {
+                                        {/*{ item.curadoria_recurso.map((item2, key) => {
                                                 console.log(item2.recurso);
                                                 return(
                                                     <div key={'item_'+key}>
-                                                        a
                                                         <Item propsData={item2.recurso}/>
                                                     </div>
-
                                                 );
                                             })
                                         }*/}

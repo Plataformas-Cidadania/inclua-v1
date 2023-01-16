@@ -203,8 +203,6 @@ const Page = () => {
                                         }
 
                                     </ul>
-
-
                                 </ul>
                             </div>
                         </div>
