@@ -41,7 +41,10 @@ class RecursoRepository extends BaseRepository
 
     public function getAllPaginado($nr_itens)
     {
-        return Recurso::with('links','autoria')->paginate($nr_itens);
+        return Recurso::with('links','autoria')
+            ->where('status', 1)
+            ->orderBy('id_recurso')
+            ->paginate($nr_itens);
     }
 
     /**
