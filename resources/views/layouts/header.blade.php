@@ -101,6 +101,8 @@
     </div>
 </div>
 
+
+
 <div class="menu-cel hidden-lg hidden-md hidden-sm menu-cel-hide" style="display: none;" id="iniciodomenu">
     <ul>
         <br>
@@ -127,7 +129,7 @@
                     <a class="navbar-brand" href="#">
                         <h2 class="logo">INCLUA</h2>
                     </a>
-                    <div>
+                    {{--<div>
                         <div class="btn-group">
                             <ul id="menu-desk">
                                 <li role="presentation"><a href="" accesskey="h" @if($rota=='/') class="corrente" @endif>Início</a></li>
@@ -139,11 +141,14 @@
                                 <li role="presentation"><a href="contato" accesskey="c" @if($rota=='quem') class="contato" @endif>Contato</a></li>
                             </ul>
                         </div>
-                    </div>
+                    </div>--}}
                 </nav>
             </div>
         </div>
     </div>
+
+
+
 
 <style>
     .btn-login-menu{
@@ -152,7 +157,94 @@
         margin: 0 5px 8px 8px;
     }
 </style>
+    <style>
+        .logo {
+            font-family: "Sora", sans-serif;
+        }
 
+        .navbar-nav2 {
+            display: flex;
+            flex-direction: row;
+            padding-left: 0;
+            margin-bottom: 0;
+            list-style: none;
+        }
+
+        .navbar-nav2 li {
+            display: inline-block;
+            margin-left: 20px;
+        }
+
+        .navbar-nav2 li a{
+            display: inline-block;
+        }
+
+        a.navbar-brand.logo {
+            font-size: 50px;
+            font-weight: 700;
+        }
+
+        a.nav-link {
+            color: black;
+            font-family: "Sora", sans-serif;
+        }
+
+        .nav-link:visited,
+        .nav-link:link {
+            border-bottom: 2px solid transparent;
+        }
+
+
+        .nav-link:hover,
+        .nav-link:active {
+            border-bottom: 2px solid #fbcb4a;
+        }
+
+        .nav-item {
+            margin-left: 0px;
+            padding: 0 20px 0 0;
+        }
+</style>
+
+    <?php
+
+        $urlWp =
+            env('APP_URL') === "https://inclua.ipea.gov.br" ||
+            env('APP_URL') === "http://inclua.ipea.gov.br" ||
+            env('APP_URL') === "http://inclua.ipea.gov.br/" ||
+            env('APP_URL') === "http://inclua.ipea.gov.br/"
+                ? "https://inclua-wp.ipea.gov.br/"
+                : "http://inclua-wp-hom.ipea.gov.br/"
+    ?>
+    <div class="container">
+        <ul class="navbar-nav2">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href={{$urlWp}}>Início</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{$urlWp}}index.php/ilha-de-possibilidades/">Ilha de possibilidades</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://inclua.ipea.gov.br/diagnostico">Diagnóstico</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://inclua.ipea.gov.br/recursos">Biblioteca</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://inclua.ipea.gov.br/curadoria">Curadoria</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://inclua.ipea.gov.br/contribua">Interaja</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://inclua.ipea.gov.br/sobre">Sobre</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://inclua.ipea.gov.br/contato">Contato</a>
+            </li>
+
+        </ul>
+    </div>
     @if($rota=='/')
         <div class="owl-carousel owl-theme">
             @foreach($webdoors as $webdoor)
