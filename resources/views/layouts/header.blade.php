@@ -92,7 +92,6 @@
             <i class="fas fa-times fa-2x btn-cel menu-cel-hide"></i>
         </div>
         <div class="col-8">
-
             <a href="/">
                 <h2 class="logo" style="float: left">INCLUA</h2>
             </a>
@@ -160,6 +159,8 @@
     <style>
         .logo {
             font-family: "Sora", sans-serif;
+            font-size: 50px;
+            font-weight: 700;
         }
 
         .navbar-nav2 {
@@ -184,9 +185,15 @@
             font-weight: 700;
         }
 
+        .nav-link {
+            padding: 0;
+            margin-bottom: 20px;
+        }
+
         a.nav-link {
             color: black;
             font-family: "Sora", sans-serif;
+            font-size: 16px;
         }
 
         .nav-link:visited,
@@ -194,18 +201,23 @@
             border-bottom: 2px solid transparent;
         }
 
-
         .nav-link:hover,
         .nav-link:active {
             border-bottom: 2px solid #fbcb4a;
+            color: #626262;
         }
 
         .nav-item {
             margin-left: 0px;
             padding: 0 20px 0 0;
         }
-</style>
 
+        @media  only screen and (max-width : 575px) {
+            .navbar-nav2 {
+                display: none;
+            }
+        }
+</style>
     <?php
 
         $urlWp =
@@ -225,22 +237,22 @@
                 <a class="nav-link" href="{{$urlWp}}index.php/ilha-de-possibilidades/">Ilha de possibilidades</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="https://inclua.ipea.gov.br/diagnostico">Diagnóstico</a>
+                <a class="nav-link" href="diagnostico">Diagnóstico</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="https://inclua.ipea.gov.br/recursos">Biblioteca</a>
+                <a class="nav-link" href="recursos">Biblioteca</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="https://inclua.ipea.gov.br/curadoria">Curadoria</a>
+                <a class="nav-link" href="curadoria">Curadoria</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="https://inclua.ipea.gov.br/contribua">Interaja</a>
+                <a class="nav-link" href="contribua">Interaja</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="https://inclua.ipea.gov.br/sobre">Sobre</a>
+                <a class="nav-link" href="sobre">Sobre</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="https://inclua.ipea.gov.br/contato">Contato</a>
+                <a class="nav-link" href="contato">Contato</a>
             </li>
 
         </ul>
