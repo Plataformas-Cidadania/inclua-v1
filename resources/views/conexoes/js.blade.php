@@ -205,6 +205,14 @@
     <script src="js/components/curadoria/page.js"></script>
     <script src="js/components/recursos/item.js"></script>
     <script src="js/components/curadoria/index.js"></script>
+    <script src="js/utils.js"></script>
+@endif
+
+@if($rota=="curadoria/{id}")
+    <script src="js/components/curadoria/detalhar/page.js"></script>
+    <script src="js/components/recursos/item.js"></script>
+    <script src="js/components/curadoria/detalhar/index.js"></script>
+    <script src="js/utils.js"></script>
 @endif
 
 

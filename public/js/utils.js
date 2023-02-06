@@ -207,3 +207,14 @@ function objTest(obj) {
     }
     return obj;
 }
+
+function dataExt(str){
+
+    const meses = ["Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"];
+    let data = new Date(str);
+    let dataFormatada = (meses[(data.getMonth())] + " de " + data.getFullYear());
+
+    return dataFormatada;
+}
+
+

@@ -11881,13 +11881,14 @@ time {
 .menu-small {
   margin: 0;
   padding: 0;
-  font-size: 13px;
+  font-size: 16px;
 }
 
 .menu-small li {
   display: inline-block;
   padding: 5px 10px 3px 10px;
   border-bottom: solid 2px #EEEEEE;
+    font-size: 16px;
 }
 
 .menu-small li:hover {

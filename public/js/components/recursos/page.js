@@ -24,15 +24,6 @@ const Page = () => {
   const [nEncontado, setNEncontado] = useState(false);
   const menu = [{
     id: 1,
-    title: "Categoria",
-    txt: 'Busque por categoria',
-    rota: '/api/categoria/nome/',
-    type: true,
-    typeTitle: 'nome',
-    nameId: 'id_categoria',
-    rotaSelected: 'categoria'
-  }, {
-    id: 2,
     title: "Tipo",
     txt: 'Busque por tipo',
     rota: '/api/tipo_recurso/nome/',
@@ -40,6 +31,15 @@ const Page = () => {
     typeTitle: 'nome',
     nameId: 'id_tipo_recurso',
     rotaSelected: 'tipo_recurso'
+  }, {
+    id: 2,
+    title: "Categoria",
+    txt: 'Busque por categoria',
+    rota: '/api/categoria/nome/',
+    type: true,
+    typeTitle: 'nome',
+    nameId: 'id_categoria',
+    rotaSelected: 'categoria'
   }, {
     id: 3,
     title: "Palavra-chave",
@@ -108,7 +108,6 @@ const Page = () => {
       setspinList(true);
 
       try {
-        console.log('spinList', spinList);
         const result = await axios.get(menuItens.rota + search, {});
         setListMenu(result.data.data);
 

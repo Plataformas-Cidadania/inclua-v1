@@ -5,7 +5,6 @@
 @section('image', "/imagens/modulos/lg-".$page->imagem)
 @section('content')
 
-
     <div class="bg-lgt">
         <div class="container-fluid">
             <div class="row">
@@ -27,19 +26,12 @@
     </div>
     <br/>
 
-
-
-
     <div class="container">
         <div class="box-list mt-4 mb-4">
             <div class="row">
-
                 <div id="curadoria">&nbsp;</div>
-
             </div>
         </div>
     </div>
-
-
 
 @endsection

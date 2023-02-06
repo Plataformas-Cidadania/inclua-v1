@@ -24,4 +24,11 @@ class CuradoriaController extends Controller{
         ]);
 
     }
+
+    public function detalhar($id){
+        return view('curadoria.detalhar', [
+            'id' => $id,
+        ]);
+
+    }
 }
