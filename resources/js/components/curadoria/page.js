@@ -5,29 +5,36 @@ const Page = () => {
     const [total, setTotal] = useState(0);
     const [activeDiv, setActiveDiv] = useState(0);
     const [newDatas, setNewDatas] = useState([]);
-
+    const [mesSelected, setMesSelected] = useState('');
+    const [searchData, setSearchData] = useState('');
 
     useEffect(() => {
         Curadoria();
-    }, []);
+    }, [mesSelected, searchData]);
 
     const Curadoria = async () => {
         try {
             const result = await axios.get('api/curadoria', {
 
             });
-            setCuradorias(result.data.data);
-            setTotal(result.data.data.length);
 
+            const filterData = searchData
+                ? result.data.data.filter((obj) => obj.tema_recorte.includes(searchData))
+                : result.data.data.filter((obj) => obj.mes.slice(3).includes(mesSelected))
+
+            setCuradorias(filterData);
+            setTotal(filterData.length);
+
+            ///////////////DATA///////////
             const arrayDatas = []
 
             result.data.data.map((item) => {
-                arrayDatas.push(item.mes)
-
+                arrayDatas.push(item.mes.slice(3))
             })
 
             const datasSemRepeticao = [...new Set(arrayDatas)];
             setNewDatas(datasSemRepeticao.sort())
+            ///////////////////////////////
 
         } catch (error) {
             console.log(error);
@@ -38,6 +45,12 @@ const Page = () => {
         setActiveDiv(id);
     }
 
+    const handleSearch = async(e) => {
+
+        const search = e.target.value ? e.target.value : '';
+
+        setSearchData(search)
+    }
 
     return (
         <div className="row">
@@ -119,12 +132,32 @@ const Page = () => {
                 </div>
             </div>
             <div className="col-md-3">
+                <div className="input-icon">
+                    <input id="ativarBox"
+                           type="text"
+                           className="form-control"
+                           placeholder={'Busca'}
+                           onChange={handleSearch}
+                           autoComplete="off"
+                           //onClick={() => clickSearchBoxOn()}
+                           style={{zIndex: '999'}}
+                    />
+                    <i className="fas fa-search"/>
+
+                </div>
+                <br/>
                 <h2>Arquivo</h2>
                 <ul className="menu-left">
                     {newDatas.map((item, key) => {
                         return (
-                            <li className="list-group-item-theme" key={'datas' + key}>
-                                <a>{dataExt(item)}</a>
+                            <li className="list-group-item-theme cursor" key={'datas' + key} style={{position: 'relative'}}>
+                                <a onClick={() => setMesSelected(item)} style={{backgroundColor: mesSelected === item ? '#A5D0CC' : 'inherit'}}>{dataExt(item)}</a>
+                                {mesSelected === item ?
+                                    <div style={{position: 'relative', right: 0, marginBottom: "30px", marginTop: '-30px', paddingRight: "10px"}} onClick={() => setMesSelected('')}>
+                                        <i className="fas fa-times float-end " />
+                                    </div>
+                                    : null}
+
                             </li>
                         )
                     })}

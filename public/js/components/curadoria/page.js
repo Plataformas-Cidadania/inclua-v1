@@ -7,21 +7,25 @@ const Page = () => {
   const [total, setTotal] = useState(0);
   const [activeDiv, setActiveDiv] = useState(0);
   const [newDatas, setNewDatas] = useState([]);
+  const [mesSelected, setMesSelected] = useState('');
+  const [searchData, setSearchData] = useState('');
   useEffect(() => {
     Curadoria();
-  }, []);
+  }, [mesSelected, searchData]);
 
   const Curadoria = async () => {
     try {
       const result = await axios.get('api/curadoria', {});
-      setCuradorias(result.data.data);
-      setTotal(result.data.data.length);
+      const filterData = searchData ? result.data.data.filter(obj => obj.tema_recorte.includes(searchData)) : result.data.data.filter(obj => obj.mes.slice(3).includes(mesSelected));
+      setCuradorias(filterData);
+      setTotal(filterData.length); ///////////////DATA///////////
+
       const arrayDatas = [];
       result.data.data.map(item => {
-        arrayDatas.push(item.mes);
+        arrayDatas.push(item.mes.slice(3));
       });
       const datasSemRepeticao = [...new Set(arrayDatas)];
-      setNewDatas(datasSemRepeticao.sort());
+      setNewDatas(datasSemRepeticao.sort()); ///////////////////////////////
     } catch (error) {
       console.log(error);
     }
@@ -29,6 +33,11 @@ const Page = () => {
 
   const clickBox = id => {
     setActiveDiv(id);
+  };
+
+  const handleSearch = async e => {
+    const search = e.target.value ? e.target.value : '';
+    setSearchData(search);
   };
 
   return /*#__PURE__*/React.createElement("div", {
@@ -88,12 +97,46 @@ const Page = () => {
     })));
   })))), /*#__PURE__*/React.createElement("div", {
     className: "col-md-3"
-  }, /*#__PURE__*/React.createElement("h2", null, "Arquivo"), /*#__PURE__*/React.createElement("ul", {
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "input-icon"
+  }, /*#__PURE__*/React.createElement("input", {
+    id: "ativarBox",
+    type: "text",
+    className: "form-control",
+    placeholder: 'Busca',
+    onChange: handleSearch,
+    autoComplete: "off" //onClick={() => clickSearchBoxOn()}
+    ,
+    style: {
+      zIndex: '999'
+    }
+  }), /*#__PURE__*/React.createElement("i", {
+    className: "fas fa-search"
+  })), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("h2", null, "Arquivo"), /*#__PURE__*/React.createElement("ul", {
     className: "menu-left"
   }, newDatas.map((item, key) => {
     return /*#__PURE__*/React.createElement("li", {
-      className: "list-group-item-theme",
-      key: 'datas' + key
-    }, /*#__PURE__*/React.createElement("a", null, dataExt(item)));
+      className: "list-group-item-theme cursor",
+      key: 'datas' + key,
+      style: {
+        position: 'relative'
+      }
+    }, /*#__PURE__*/React.createElement("a", {
+      onClick: () => setMesSelected(item),
+      style: {
+        backgroundColor: mesSelected === item ? '#A5D0CC' : 'inherit'
+      }
+    }, dataExt(item)), mesSelected === item ? /*#__PURE__*/React.createElement("div", {
+      style: {
+        position: 'relative',
+        right: 0,
+        marginBottom: "30px",
+        marginTop: '-30px',
+        paddingRight: "10px"
+      },
+      onClick: () => setMesSelected('')
+    }, /*#__PURE__*/React.createElement("i", {
+      className: "fas fa-times float-end "
+    })) : null);
   }))));
 };
