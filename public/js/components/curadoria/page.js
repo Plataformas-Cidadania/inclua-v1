@@ -9,16 +9,24 @@ const Page = () => {
   const [newDatas, setNewDatas] = useState([]);
   const [mesSelected, setMesSelected] = useState('');
   const [searchData, setSearchData] = useState('');
+  const [page, setPage] = useState(0);
   useEffect(() => {
     Curadoria();
   }, [mesSelected, searchData]);
+  useEffect(() => {
+    Curadoria();
+  }, [page]);
 
   const Curadoria = async () => {
     try {
-      const result = await axios.get('api/curadoria', {});
-      const filterData = searchData ? result.data.data.filter(obj => obj.tema_recorte.includes(searchData)) : result.data.data.filter(obj => obj.mes.slice(3).includes(mesSelected));
+      const result = await axios.get('api/curadoria/paginado', {
+        params: {
+          page: page + 1
+        }
+      });
+      const filterData = searchData ? result.data.data.data.filter(obj => obj.tema_recorte.includes(searchData)) : result.data.data.data.filter(obj => obj.mes.slice(3).includes(mesSelected));
       setCuradorias(filterData);
-      setTotal(filterData.length); ///////////////DATA///////////
+      setTotal(result.data.data.total); ///////////////DATA///////////
 
       const arrayDatas = [];
       result.data.data.map(item => {
@@ -95,16 +103,16 @@ const Page = () => {
         display: key === 0 ? 'none' : ''
       }
     })));
-  }))), /*#__PURE__*/React.createElement(Paginate, {
-    setPage: 2,
-    total: curadorias?.length,
-    page: 1,
-    perPage: 2
-    /*setPage={setPage}
-    total={total}
-    page={page}
-    perPage={perPage}*/
-
+  }))), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement(Paginate
+  /*setPage={2}
+  total={curadorias?.length}
+  page={1}
+  perPage={2}*/
+  , {
+    setPage: setPage,
+    total: total,
+    page: page,
+    perPage: 10
   })), /*#__PURE__*/React.createElement("div", {
     className: "col-md-3"
   }, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("h2", null, "Arquivo"), /*#__PURE__*/React.createElement("ul", {

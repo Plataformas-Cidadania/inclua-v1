@@ -28,4 +28,14 @@ class CuradoriaRepository extends BaseRepository
         return $this->model->with($relations)->orderByDesc('id_curadoria')->get($columns);
     }
 
+    public function allPaginado(array $columns = ['*'], array $relations = [])
+    {
+        return $this->model->with($relations)
+            ->orderByDesc('id_curadoria')
+            ->paginate(
+                10,
+                $columns
+            );
+    }
+
 }

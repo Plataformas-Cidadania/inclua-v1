@@ -97,6 +97,14 @@ class CuradoriaController extends Controller
             $res
         );
     }
+    public function getAllPaginado(): JsonResponse
+    {
+        $res = $this->repo->allPaginado();
+        return $this->successResponse(
+            'Curadorias retornadas com sucesso',
+            $res
+        );
+    }
 
     /**
      * Atualizar um autor especificado pelo id

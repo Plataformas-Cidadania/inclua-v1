@@ -526,6 +526,9 @@ Route::group([
     Route::get('/', [App\Http\Controllers\Api\CuradoriaController::class, 'getAll'])
         ->name('api.curadoria.getAll');
 
+    Route::get('/paginado', [App\Http\Controllers\Api\CuradoriaController::class, 'getAllPaginado'])
+        ->name('api.curadoria.getAllPaginado');
+
     Route::get('/{curadoria}',[App\Http\Controllers\Api\CuradoriaController::class, 'get'])
         ->name('api.curadoria.get');
 
