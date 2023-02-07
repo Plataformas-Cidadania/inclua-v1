@@ -95,24 +95,19 @@ const Page = () => {
         display: key === 0 ? 'none' : ''
       }
     })));
-  })))), /*#__PURE__*/React.createElement("div", {
+  }))), /*#__PURE__*/React.createElement(Paginate, {
+    setPage: 2,
+    total: curadorias?.length,
+    page: 1,
+    perPage: 2
+    /*setPage={setPage}
+    total={total}
+    page={page}
+    perPage={perPage}*/
+
+  })), /*#__PURE__*/React.createElement("div", {
     className: "col-md-3"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "input-icon"
-  }, /*#__PURE__*/React.createElement("input", {
-    id: "ativarBox",
-    type: "text",
-    className: "form-control",
-    placeholder: 'Busca',
-    onChange: handleSearch,
-    autoComplete: "off" //onClick={() => clickSearchBoxOn()}
-    ,
-    style: {
-      zIndex: '999'
-    }
-  }), /*#__PURE__*/React.createElement("i", {
-    className: "fas fa-search"
-  })), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("h2", null, "Arquivo"), /*#__PURE__*/React.createElement("ul", {
+  }, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("h2", null, "Arquivo"), /*#__PURE__*/React.createElement("ul", {
     className: "menu-left"
   }, newDatas.map((item, key) => {
     return /*#__PURE__*/React.createElement("li", {

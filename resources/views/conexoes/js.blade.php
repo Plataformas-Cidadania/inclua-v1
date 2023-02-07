@@ -202,6 +202,7 @@
 @endif
 
 @if($rota=="curadoria")
+    <script src="js/components/paginate.js"></script>
     <script src="js/components/curadoria/page.js"></script>
     <script src="js/components/recursos/item.js"></script>
     <script src="js/components/curadoria/index.js"></script>

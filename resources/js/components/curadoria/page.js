@@ -130,9 +130,19 @@ const Page = () => {
                         }
                     </div>
                 </div>
+                <Paginate
+                    setPage={2}
+                    total={curadorias?.length}
+                    page={1}
+                    perPage={2}
+                    /*setPage={setPage}
+                    total={total}
+                    page={page}
+                    perPage={perPage}*/
+                />
             </div>
             <div className="col-md-3">
-                <div className="input-icon">
+                {/*<div className="input-icon">
                     <input id="ativarBox"
                            type="text"
                            className="form-control"
@@ -143,8 +153,7 @@ const Page = () => {
                            style={{zIndex: '999'}}
                     />
                     <i className="fas fa-search"/>
-
-                </div>
+                </div>*/}
                 <br/>
                 <h2>Arquivo</h2>
                 <ul className="menu-left">
