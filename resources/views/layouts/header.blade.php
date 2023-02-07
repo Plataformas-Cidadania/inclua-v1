@@ -26,10 +26,10 @@
             </div>
             <div class="col text-right top-icons">
                 <ul id="botoes" >
-                    <li class="bg-pri box-font-size rounded-circle cursor"><a id="aumenta_fonte" {{--onClick="fonte('a');"--}}>A+</a></li>
+                    {{--<li class="bg-pri box-font-size rounded-circle cursor"><a id="aumenta_fonte" >A+</a></li>
                     <li class="bg-sec box-font-size rounded-circle cursor"><a id="reset_fonte">A&nbsp;</a></li>
                     <li class="bg-ter box-font-size rounded-circle cursor"><a id="reduz_fonte">A-</a></li>
-                    <li><a class="btn-constrat cursor"><i class="fas fa-adjust fa-2x" style="vertical-align: middle;"></i> {{--Alto contraste--}}</a></li>
+                    <li><a class="btn-constrat cursor"><i class="fas fa-adjust fa-2x" style="vertical-align: middle;"></i> </a></li>--}}
                     <li><a href="acessibilidade"><i class="fas fa-universal-access fa-2x" style="vertical-align: middle;"></i> <!--Acessibilidade--></a></li>
                 </ul>
             </div>
@@ -100,13 +100,31 @@
     </div>
 </div>
 
+<?php
 
+$urlWp =
+    env('APP_URL') === "https://inclua.ipea.gov.br" ||
+    env('APP_URL') === "http://inclua.ipea.gov.br" ||
+    env('APP_URL') === "http://inclua.ipea.gov.br/" ||
+    env('APP_URL') === "http://inclua.ipea.gov.br/"
+        ? "https://inclua-wp.ipea.gov.br/"
+        : "http://inclua-wp-hom.ipea.gov.br/"
+?>
 
 <div class="menu-cel hidden-lg hidden-md hidden-sm menu-cel-hide" style="display: none;" id="iniciodomenu">
     <ul>
         <br>
-        <li role="presentation"><a href="" accesskey="h" @if($rota=='/') class="corrente" @endif>Início</a></li>
+        {{--<li role="presentation"><a href="" accesskey="h" @if($rota=='/') class="corrente" @endif>Início</a></li>
         <li role="presentation"><a href="pre-diagnostico" >Diagnóstico</a></li>
+        <li role="presentation"><a href="recursos" >Biblioteca</a></li>
+        <li role="presentation"><a href="curadoria" >Curadoria</a></li>
+        <li role="presentation"><a href="contribua"  @if($rota=='contribua') class="corrente" @endif>Interaja</a></li>
+        <li role="presentation"><a href="sobre" accesskey="q" @if($rota=='sobre') class="corrente" @endif>Sobre</a></li>
+        <li role="presentation"><a href="contato" accesskey="c" @if($rota=='quem') class="contato" @endif>Contato</a></li>--}}
+
+        <li role="presentation"><a href={{$urlWp}} accesskey="h" @if($rota=='/') class="corrente" @endif>Início</a></li>
+        <li role="presentation"><a href="{{$urlWp}}index.php/ilha-de-possibilidades/" >Ilha de possibilidades</a></li>
+        <li role="presentation"><a href="diagnostico" >Diagnóstico</a></li>
         <li role="presentation"><a href="recursos" >Biblioteca</a></li>
         <li role="presentation"><a href="curadoria" >Curadoria</a></li>
         <li role="presentation"><a href="contribua"  @if($rota=='contribua') class="corrente" @endif>Interaja</a></li>
@@ -218,16 +236,7 @@
             }
         }
 </style>
-    <?php
 
-        $urlWp =
-            env('APP_URL') === "https://inclua.ipea.gov.br" ||
-            env('APP_URL') === "http://inclua.ipea.gov.br" ||
-            env('APP_URL') === "http://inclua.ipea.gov.br/" ||
-            env('APP_URL') === "http://inclua.ipea.gov.br/"
-                ? "https://inclua-wp.ipea.gov.br/"
-                : "http://inclua-wp-hom.ipea.gov.br/"
-    ?>
     <div class="container">
         <ul class="navbar-nav2">
             <li class="nav-item">
