@@ -2,9 +2,10 @@ const PageDetalhar = () => {
 
     const {useState, useEffect} = React;
     const [curadorias, setCuradorias] = useState([]);
+    const [title, setTitle] = useState('');
+    const [ultimo, setUltimo] = useState([]);
 
     const [activeDiv, setActiveDiv] = useState(0);
-
 
     useEffect(() => {
         CuradoriaDetalhar();
@@ -13,12 +14,22 @@ const PageDetalhar = () => {
     const CuradoriaDetalhar = async () => {
         try {
             const result = await axios.get('api/curadoria', {
-
             });
-
             const filterData =  result.data.data.filter((obj) => obj.id_curadoria === curadoria_id)
-            setCuradorias(filterData);
 
+            const ultimasCuradorias = []
+            const filterDataUltimos =  result.data.data.filter((obj) => obj.id_curadoria !== curadoria_id)
+
+            filterDataUltimos.map((item, key) => {
+                if(key < 4){
+                    ultimasCuradorias.push(item)
+                }
+
+            })
+            setUltimo(ultimasCuradorias)
+
+            setCuradorias(filterData);
+            setTitle(filterData[0]?.tema_recorte)
 
         } catch (error) {
             console.log(error);
@@ -38,8 +49,7 @@ const PageDetalhar = () => {
                         <div className="col-md-7">
                             <div>
                                 <br/><br/>
-                                <h1>Curadoria</h1>
-                                {/*<p>www</p>*/}
+                                <h1>{title}</h1>
                                 <br/>
                             </div>
                         </div>
@@ -55,7 +65,6 @@ const PageDetalhar = () => {
                     <div className="col-md-9">
                         <div className="row">
                             <div className="col-md-12">
-
                                 {
                                     curadorias.map((item, key) => {
 
@@ -67,8 +76,7 @@ const PageDetalhar = () => {
                                         //////////////////
 
                                         return (
-                                            <>
-                                                <br/>
+                                            <div  key={'curadoria'+key}>
                                                 <div className={"p-4 "+ (key === 0 ? 'bg-lgt' : '')}>
 
                                                     <div className="row">
@@ -77,13 +85,14 @@ const PageDetalhar = () => {
                                                         </div>
                                                         <div className="col-md-12">
                                                             <div>{item.mes}</div>
-                                                            <h2>{item.tema_recorte}</h2>
+                                                           {/* <h2>{item.tema_recorte}</h2>*/}
                                                         </div>
 
                                                         <div className="col-md-12">
                                                             <h3><strong>{item.curador.nome}</strong></h3>
-                                                            {/*<p dangerouslySetInnerHTML={{__html: item.curador.minicv}}/>
-                                                    <a href={item.curador.link_curriculo} target="_blank">Mais informações</a>*/}
+                                                            <p dangerouslySetInnerHTML={{__html: item.curador.minicv}}/>
+                                                            <a href={item.curador.link_curriculo} target="_blank">Mais informações</a>
+                                                            <br/><hr/>
                                                         </div>
                                                     </div>
 
@@ -111,7 +120,7 @@ const PageDetalhar = () => {
                                                     <Item propsData={recursos}  grupo={item.id_curadoria}/>
                                                 </div>
                                                 <br/>
-                                            </>
+                                            </div>
 
                                         );
                                     })
@@ -121,6 +130,20 @@ const PageDetalhar = () => {
                     </div>
                     <div className="col-md-3">
                         <h2>Arquivo</h2>
+                        <div>
+                            {ultimo?.map((item, key) => {
+                                      return (
+                                          <a href={"curadoria/"+item.id_curadoria} key={'ultimo'+key}>
+                                              <div className="">
+                                                  {item.tema_recorte}
+                                            {/*      <p>saiba mais</p>*/}
+                                                  <hr/>
+                                              </div>
+                                          </a>
+
+                                      )
+                                    })}
+                        </div>
                     </div>
                 </div>
             </div>

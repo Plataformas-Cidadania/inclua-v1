@@ -12,6 +12,7 @@ const Page = () => {
 
     useEffect(() => {
         Curadoria();
+        CuradoriaMeses();
     }, [mesSelected, searchData]);
 
     useEffect(() => {
@@ -32,6 +33,28 @@ const Page = () => {
 
             setCuradorias(filterData);
             setTotal(result.data.data.total);
+
+            ///////////////DATA///////////
+            /*const arrayDatas = []
+
+            result.data.data.map((item) => {
+                arrayDatas.push(item.mes.slice(3))
+            })
+
+            const datasSemRepeticao = [...new Set(arrayDatas)];
+            setNewDatas(datasSemRepeticao.sort())*/
+            ///////////////////////////////
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const CuradoriaMeses = async () => {
+        try {
+            const result = await axios.get('api/curadoria', {
+
+            });
 
             ///////////////DATA///////////
             const arrayDatas = []
@@ -76,7 +99,7 @@ const Page = () => {
                                 //////////////////
 
                                 return (
-                                    <a href={"curadoria/"+item.id_curadoria}>
+                                    <a href={"curadoria/"+item.id_curadoria}  key={'curadoria'+key}>
                                         <div className={"p-4 "+ (key === 0 ? 'bg-lgt' : '')}>
 
                                             <div className="row">

@@ -12,6 +12,7 @@ const Page = () => {
   const [page, setPage] = useState(0);
   useEffect(() => {
     Curadoria();
+    CuradoriaMeses();
   }, [mesSelected, searchData]);
   useEffect(() => {
     Curadoria();
@@ -27,6 +28,22 @@ const Page = () => {
       const filterData = searchData ? result.data.data.data.filter(obj => obj.tema_recorte.includes(searchData)) : result.data.data.data.filter(obj => obj.mes.slice(3).includes(mesSelected));
       setCuradorias(filterData);
       setTotal(result.data.data.total); ///////////////DATA///////////
+
+      /*const arrayDatas = []
+       result.data.data.map((item) => {
+          arrayDatas.push(item.mes.slice(3))
+      })
+       const datasSemRepeticao = [...new Set(arrayDatas)];
+      setNewDatas(datasSemRepeticao.sort())*/
+      ///////////////////////////////
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const CuradoriaMeses = async () => {
+    try {
+      const result = await axios.get('api/curadoria', {}); ///////////////DATA///////////
 
       const arrayDatas = [];
       result.data.data.map(item => {
@@ -68,7 +85,8 @@ const Page = () => {
     }); //////////////////
 
     return /*#__PURE__*/React.createElement("a", {
-      href: "curadoria/" + item.id_curadoria
+      href: "curadoria/" + item.id_curadoria,
+      key: 'curadoria' + key
     }, /*#__PURE__*/React.createElement("div", {
       className: "p-4 " + (key === 0 ? 'bg-lgt' : '')
     }, /*#__PURE__*/React.createElement("div", {

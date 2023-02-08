@@ -102,15 +102,15 @@
 
 <?php
 
-$urlWp =
+/*$urlWp =
     env('APP_URL') === "https://inclua.ipea.gov.br" ||
     env('APP_URL') === "http://inclua.ipea.gov.br" ||
-    env('APP_URL') === "http://inclua.ipea.gov.br/" ||
+    env('APP_URL') === "https://inclua.ipea.gov.br/" ||
     env('APP_URL') === "http://inclua.ipea.gov.br/"
         ? "https://inclua-wp.ipea.gov.br/"
-        : "http://inclua-wp-hom.ipea.gov.br/"
+        : "http://inclua-wp-hom.ipea.gov.br/"*/
+$urlWp =  env('APP_URL_WP')
 ?>
-
 <div class="menu-cel hidden-lg hidden-md hidden-sm menu-cel-hide" style="display: none;" id="iniciodomenu">
     <ul>
         <br>

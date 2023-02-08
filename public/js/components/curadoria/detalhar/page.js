@@ -4,6 +4,8 @@ const PageDetalhar = () => {
     useEffect
   } = React;
   const [curadorias, setCuradorias] = useState([]);
+  const [title, setTitle] = useState('');
+  const [ultimo, setUltimo] = useState([]);
   const [activeDiv, setActiveDiv] = useState(0);
   useEffect(() => {
     CuradoriaDetalhar();
@@ -13,7 +15,16 @@ const PageDetalhar = () => {
     try {
       const result = await axios.get('api/curadoria', {});
       const filterData = result.data.data.filter(obj => obj.id_curadoria === curadoria_id);
+      const ultimasCuradorias = [];
+      const filterDataUltimos = result.data.data.filter(obj => obj.id_curadoria !== curadoria_id);
+      filterDataUltimos.map((item, key) => {
+        if (key < 4) {
+          ultimasCuradorias.push(item);
+        }
+      });
+      setUltimo(ultimasCuradorias);
       setCuradorias(filterData);
+      setTitle(filterData[0]?.tema_recorte);
     } catch (error) {
       console.log(error);
     }
@@ -33,7 +44,7 @@ const PageDetalhar = () => {
     className: "col-md-2"
   }, "\xA0"), /*#__PURE__*/React.createElement("div", {
     className: "col-md-7"
-  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("h1", null, "Curadoria"), /*#__PURE__*/React.createElement("br", null))), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("h1", null, title), /*#__PURE__*/React.createElement("br", null))), /*#__PURE__*/React.createElement("div", {
     className: "col-md-3"
   }, /*#__PURE__*/React.createElement("img", {
     src: "/img/bg-top.png",
@@ -57,7 +68,9 @@ const PageDetalhar = () => {
       recursos.push(item2.recursos);
     }); //////////////////
 
-    return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
+    return /*#__PURE__*/React.createElement("div", {
+      key: 'curadoria' + key
+    }, /*#__PURE__*/React.createElement("div", {
       className: "p-4 " + (key === 0 ? 'bg-lgt' : '')
     }, /*#__PURE__*/React.createElement("div", {
       className: "row"
@@ -72,9 +85,16 @@ const PageDetalhar = () => {
       }
     })), /*#__PURE__*/React.createElement("div", {
       className: "col-md-12"
-    }, /*#__PURE__*/React.createElement("div", null, item.mes), /*#__PURE__*/React.createElement("h2", null, item.tema_recorte)), /*#__PURE__*/React.createElement("div", {
+    }, /*#__PURE__*/React.createElement("div", null, item.mes)), /*#__PURE__*/React.createElement("div", {
       className: "col-md-12"
-    }, /*#__PURE__*/React.createElement("h3", null, /*#__PURE__*/React.createElement("strong", null, item.curador.nome)))), /*#__PURE__*/React.createElement("p", {
+    }, /*#__PURE__*/React.createElement("h3", null, /*#__PURE__*/React.createElement("strong", null, item.curador.nome)), /*#__PURE__*/React.createElement("p", {
+      dangerouslySetInnerHTML: {
+        __html: item.curador.minicv
+      }
+    }), /*#__PURE__*/React.createElement("a", {
+      href: item.curador.link_curriculo,
+      target: "_blank"
+    }, "Mais informa\xE7\xF5es"), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("hr", null))), /*#__PURE__*/React.createElement("p", {
       dangerouslySetInnerHTML: {
         __html: item.texto
       }
@@ -100,5 +120,12 @@ const PageDetalhar = () => {
     })), /*#__PURE__*/React.createElement("br", null));
   })))), /*#__PURE__*/React.createElement("div", {
     className: "col-md-3"
-  }, /*#__PURE__*/React.createElement("h2", null, "Arquivo")))));
+  }, /*#__PURE__*/React.createElement("h2", null, "Arquivo"), /*#__PURE__*/React.createElement("div", null, ultimo?.map((item, key) => {
+    return /*#__PURE__*/React.createElement("a", {
+      href: "curadoria/" + item.id_curadoria,
+      key: 'ultimo' + key
+    }, /*#__PURE__*/React.createElement("div", {
+      className: ""
+    }, item.tema_recorte, /*#__PURE__*/React.createElement("hr", null)));
+  }))))));
 };
