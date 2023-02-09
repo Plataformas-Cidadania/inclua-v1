@@ -78,6 +78,7 @@ const Page = () => {
       textAlign: 'right'
     }
   }, total, " curadorias"), curadorias.map((item, key) => {
+    console.log(item.curador.url_imagem);
     let recursos = []; //////////////////
 
     item.curadoria_recurso.map(item2 => {
