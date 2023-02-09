@@ -64,7 +64,7 @@ class RecursoRepository extends BaseRepository
             ->join('avaliacao.autor', 'autor.id_autor', '=', 'autoria.id_autor')
             ->select('avaliacao.recurso.*')
             ->where('autor.nome', 'ilike', "%$palavra_chave%")->with('autoria')->get()
-            ->union($first);
+            ->union($first)->unique('id_recurso');
         if (!$res || $res->isEmpty()) throw new \Illuminate\Database\Eloquent\ModelNotFoundException;
         else return $res;
     }
