@@ -124,8 +124,6 @@ const PageDetalhar = () => {
     return /*#__PURE__*/React.createElement("a", {
       href: "curadoria/" + item.id_curadoria,
       key: 'ultimo' + key
-    }, /*#__PURE__*/React.createElement("div", {
-      className: ""
-    }, item.tema_recorte, /*#__PURE__*/React.createElement("hr", null)));
+    }, /*#__PURE__*/React.createElement("div", null, item.tema_recorte, /*#__PURE__*/React.createElement("hr", null)));
   }))))));
 };

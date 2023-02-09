@@ -109,8 +109,6 @@ const PageDetalhar = () => {
                                                     ) : null}
 
                                                     <hr style={{display: key === 0 ? 'none' : ''}}/>
-
-
                                                     <br/><br/>
 
                                                 </div>
@@ -133,7 +131,7 @@ const PageDetalhar = () => {
                             {ultimo?.map((item, key) => {
                                       return (
                                           <a href={"curadoria/"+item.id_curadoria} key={'ultimo'+key}>
-                                              <div className="">
+                                              <div >
                                                   {item.tema_recorte}
                                             {/*      <p>saiba mais</p>*/}
                                                   <hr/>
