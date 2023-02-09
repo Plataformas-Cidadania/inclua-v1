@@ -118,7 +118,8 @@ const Page = () => {
                                                 </div>
                                             </div>
 
-                                            <p dangerouslySetInnerHTML={{__html: item?.texto?.slice(0, 400) + " ..."}} />
+                                            {item?.texto ? <p dangerouslySetInnerHTML={{__html: item?.texto?.slice(0, 400) + " ..."}} /> : null}
+
 
                                             {/*{item.link_video ? (
                                                 <div className="text-center ">

@@ -104,11 +104,11 @@ const Page = () => {
       className: "col-md-12"
     }, /*#__PURE__*/React.createElement("div", null, item.mes), /*#__PURE__*/React.createElement("h2", null, item.tema_recorte)), /*#__PURE__*/React.createElement("div", {
       className: "col-md-12"
-    }, /*#__PURE__*/React.createElement("h3", null, /*#__PURE__*/React.createElement("strong", null, item.curador.nome)))), /*#__PURE__*/React.createElement("p", {
+    }, /*#__PURE__*/React.createElement("h3", null, /*#__PURE__*/React.createElement("strong", null, item.curador.nome)))), item?.texto ? /*#__PURE__*/React.createElement("p", {
       dangerouslySetInnerHTML: {
         __html: item?.texto?.slice(0, 400) + " ..."
       }
-    }), /*#__PURE__*/React.createElement("div", {
+    }) : null, /*#__PURE__*/React.createElement("div", {
       className: "dorder-container"
     }, /*#__PURE__*/React.createElement("a", {
       href: "curadoria/" + item.id_curadoria,
