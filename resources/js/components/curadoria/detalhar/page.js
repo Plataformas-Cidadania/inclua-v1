@@ -24,7 +24,6 @@ const PageDetalhar = () => {
                 if(key < 4){
                     ultimasCuradorias.push(item)
                 }
-
             })
             setUltimo(ultimasCuradorias)
 
