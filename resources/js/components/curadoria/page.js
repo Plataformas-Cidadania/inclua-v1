@@ -92,7 +92,6 @@ const Page = () => {
                         {
                             curadorias.map((item, key) => {
 
-                                console.log(item.curador.url_imagem)
                                 let recursos = [];
                                 //////////////////
                                 item.curadoria_recurso.map((item2) => {
