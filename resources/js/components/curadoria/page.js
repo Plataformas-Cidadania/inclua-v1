@@ -29,7 +29,7 @@ const Page = () => {
 
             const filterData = searchData
                 ? result.data.data.data.filter((obj) => obj.tema_recorte.includes(searchData))
-                : result.data.data.data.filter((obj) => obj.mes.slice(3).includes(mesSelected))
+                : result.data.data.data.filter((obj) => obj?.mes?.slice(3).includes(mesSelected))
 
             setCuradorias(filterData);
             setTotal(result.data.data.total);
@@ -60,7 +60,7 @@ const Page = () => {
             const arrayDatas = []
 
             result.data.data.map((item) => {
-                arrayDatas.push(item.mes.slice(3))
+                arrayDatas.push(item?.mes?.slice(3))
             })
 
             const datasSemRepeticao = [...new Set(arrayDatas)];
@@ -118,7 +118,7 @@ const Page = () => {
                                                 </div>
                                             </div>
 
-                                            <p dangerouslySetInnerHTML={{__html: item.texto.slice(0, 400) + " ..."}} />
+                                            <p dangerouslySetInnerHTML={{__html: item?.texto?.slice(0, 400) + " ..."}} />
 
                                             {/*{item.link_video ? (
                                                 <div className="text-center ">

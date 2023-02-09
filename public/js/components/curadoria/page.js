@@ -25,7 +25,7 @@ const Page = () => {
           page: page + 1
         }
       });
-      const filterData = searchData ? result.data.data.data.filter(obj => obj.tema_recorte.includes(searchData)) : result.data.data.data.filter(obj => obj.mes.slice(3).includes(mesSelected));
+      const filterData = searchData ? result.data.data.data.filter(obj => obj.tema_recorte.includes(searchData)) : result.data.data.data.filter(obj => obj?.mes?.slice(3).includes(mesSelected));
       setCuradorias(filterData);
       setTotal(result.data.data.total); ///////////////DATA///////////
 
@@ -47,7 +47,7 @@ const Page = () => {
 
       const arrayDatas = [];
       result.data.data.map(item => {
-        arrayDatas.push(item.mes.slice(3));
+        arrayDatas.push(item?.mes?.slice(3));
       });
       const datasSemRepeticao = [...new Set(arrayDatas)];
       setNewDatas(datasSemRepeticao.sort()); ///////////////////////////////
@@ -106,7 +106,7 @@ const Page = () => {
       className: "col-md-12"
     }, /*#__PURE__*/React.createElement("h3", null, /*#__PURE__*/React.createElement("strong", null, item.curador.nome)))), /*#__PURE__*/React.createElement("p", {
       dangerouslySetInnerHTML: {
-        __html: item.texto.slice(0, 400) + " ..."
+        __html: item?.texto?.slice(0, 400) + " ..."
       }
     }), /*#__PURE__*/React.createElement("div", {
       className: "dorder-container"
