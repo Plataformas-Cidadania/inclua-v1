@@ -5,7 +5,9 @@
         </li>
     </ul>
 </div>--}}
-
+<?php
+$urlWp =  env('APP_URL_WP')
+?>
 <div class="progress">
     <div  id="progress" class="progress-bar bg-success" role="progressbar"  aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
@@ -92,7 +94,7 @@
             <i class="fas fa-times fa-2x btn-cel menu-cel-hide"></i>
         </div>
         <div class="col-8">
-            <a href="/">
+            <a href={{$urlWp}}>
                 <h2 class="logo" style="float: left">INCLUA</h2>
             </a>
         </div>
@@ -100,17 +102,7 @@
     </div>
 </div>
 
-<?php
 
-/*$urlWp =
-    env('APP_URL') === "https://inclua.ipea.gov.br" ||
-    env('APP_URL') === "http://inclua.ipea.gov.br" ||
-    env('APP_URL') === "https://inclua.ipea.gov.br/" ||
-    env('APP_URL') === "http://inclua.ipea.gov.br/"
-        ? "https://inclua-wp.ipea.gov.br/"
-        : "http://inclua-wp-hom.ipea.gov.br/"*/
-$urlWp =  env('APP_URL_WP')
-?>
 <div class="menu-cel hidden-lg hidden-md hidden-sm menu-cel-hide" style="display: none;" id="iniciodomenu">
     <ul>
         <br>
@@ -122,7 +114,7 @@ $urlWp =  env('APP_URL_WP')
         <li role="presentation"><a href="sobre" accesskey="q" @if($rota=='sobre') class="corrente" @endif>Sobre</a></li>
         <li role="presentation"><a href="contato" accesskey="c" @if($rota=='quem') class="contato" @endif>Contato</a></li>--}}
 
-        <li role="presentation"><a href={{$urlWp}} accesskey="h" @if($rota=='http://inclua.ipea.gov.br') class="corrente" @endif>Início</a></li>
+        <li role="presentation"><a href={{$urlWp}} accesskey="h" @if($rota=='/') class="corrente" @endif>Início</a></li>
         <li role="presentation"><a href="{{$urlWp}}index.php/ilha-de-possibilidades/" >Ilha de possibilidades</a></li>
         {{--<li role="presentation"><a href="diagnostico" >Diagnóstico</a></li>--}}
         <li role="presentation"><a href="pre-diagnostico" >Diagnóstico</a></li>
@@ -144,7 +136,7 @@ $urlWp =  env('APP_URL_WP')
         <div class="row">
             <div class="col-md-12">
                 <nav class="navbar navbar-light">
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" href="{{$urlWp}}">
                         <h2 class="logo">INCLUA</h2>
                     </a>
                     {{--<div>
