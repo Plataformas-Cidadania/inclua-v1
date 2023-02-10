@@ -122,9 +122,10 @@ $urlWp =  env('APP_URL_WP')
         <li role="presentation"><a href="sobre" accesskey="q" @if($rota=='sobre') class="corrente" @endif>Sobre</a></li>
         <li role="presentation"><a href="contato" accesskey="c" @if($rota=='quem') class="contato" @endif>Contato</a></li>--}}
 
-        <li role="presentation"><a href={{$urlWp}} accesskey="h" @if($rota=='/') class="corrente" @endif>Início</a></li>
+        <li role="presentation"><a href={{$urlWp}} accesskey="h" @if($rota=='http://inclua.ipea.gov.br') class="corrente" @endif>Início</a></li>
         <li role="presentation"><a href="{{$urlWp}}index.php/ilha-de-possibilidades/" >Ilha de possibilidades</a></li>
-        <li role="presentation"><a href="diagnostico" >Diagnóstico</a></li>
+        {{--<li role="presentation"><a href="diagnostico" >Diagnóstico</a></li>--}}
+        <li role="presentation"><a href="pre-diagnostico" >Diagnóstico</a></li>
         <li role="presentation"><a href="recursos" >Biblioteca</a></li>
         <li role="presentation"><a href="curadoria" >Curadoria</a></li>
         <li role="presentation"><a href="contribua"  @if($rota=='contribua') class="corrente" @endif>Interaja</a></li>
@@ -246,7 +247,8 @@ $urlWp =  env('APP_URL_WP')
                 <a class="nav-link" href="{{$urlWp}}index.php/ilha-de-possibilidades/">Ilha de possibilidades</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="diagnostico">Diagnóstico</a>
+                {{--<a class="nav-link" href="diagnostico">Diagnóstico</a>--}}
+                <a class="nav-link" href="pre-diagnostico">Diagnóstico</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="recursos">Biblioteca</a>
