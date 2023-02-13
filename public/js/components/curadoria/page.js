@@ -92,9 +92,11 @@ const Page = () => {
   };
 
   const setHandleFilterCurador = id => {
+    console.log('id', id);
     setFilterCurador(id);
   };
 
+  console.log('filterCurador', filterCurador);
   return /*#__PURE__*/React.createElement("div", {
     className: "row"
   }, /*#__PURE__*/React.createElement("div", {
@@ -168,16 +170,23 @@ const Page = () => {
       className: "menu-curadoria cursor",
       key: 'curador' + key,
       style: {
-        backgroundColor: filterCurador === item.id_curador ? '#A5D0CC' : 'inherit'
-      },
-      onClick: () => setHandleFilterCurador(item.id_curador)
-    }, item.nome, filterCurador === item.id_curador ? /*#__PURE__*/React.createElement("div", {
+        backgroundColor: filterCurador === item.id_curador ? '#A5D0CC' : 'inherit',
+        position: 'relative'
+      }
+    }, /*#__PURE__*/React.createElement("p", {
+      onClick: () => setHandleFilterCurador(item.id_curador),
       style: {
-        position: 'relative',
+        display: 'block',
+        margin: 0
+      }
+    }, item.nome), filterCurador === item.id_curador ? /*#__PURE__*/React.createElement("div", {
+      style: {
+        position: 'absolute',
         right: 0,
         marginBottom: "18px",
         marginTop: '-18px',
-        paddingRight: "10px"
+        paddingRight: "10px",
+        zIndex: 9999999999
       },
       onClick: () => setHandleFilterCurador(0)
     }, /*#__PURE__*/React.createElement("i", {

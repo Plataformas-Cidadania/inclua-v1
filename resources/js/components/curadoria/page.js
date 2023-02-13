@@ -114,9 +114,11 @@ const Page = () => {
     }
 
     const setHandleFilterCurador = (id) => {
-
+        console.log('id', id)
         setFilterCurador(id)
     }
+
+    console.log('filterCurador', filterCurador)
 
     return (
         <div className="row">
@@ -225,17 +227,17 @@ const Page = () => {
                 </div>*/}
                 <br/>
                 <h2>Curadores</h2>
-
+                {/*<div onClick={() => setHandleFilterCurador(0)} className="text-right">remover filtro <i className="fas fa-times float-end " /></div>*/}
                 {curadores?.map((item, key) => {
                     return (
                         <div
                             className="menu-curadoria cursor"
                             key={'curador' + key}
-                            style={{backgroundColor: filterCurador === item.id_curador ? '#A5D0CC' : 'inherit'}}
-                            onClick={() => setHandleFilterCurador(item.id_curador)}>
-                            {item.nome}
+                            style={{backgroundColor: filterCurador === item.id_curador ? '#A5D0CC' : 'inherit', position: 'relative'}}
+                            >
+                            <p onClick={() => setHandleFilterCurador(item.id_curador)} style={{display: 'block', margin: 0}}>{item.nome}</p>
                             {filterCurador === item.id_curador ?
-                                <div style={{position: 'relative', right: 0, marginBottom: "18px", marginTop: '-18px', paddingRight: "10px"}} onClick={() => setHandleFilterCurador(0)}>
+                                <div style={{position: 'absolute', right: 0, marginBottom: "18px", marginTop: '-18px', paddingRight: "10px", zIndex: 9999999999}}  onClick={() => setHandleFilterCurador(0)}>
                                     <i className="fas fa-times float-end " />
                                 </div>
                                 : null}
