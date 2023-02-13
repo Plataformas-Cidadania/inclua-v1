@@ -12550,6 +12550,20 @@ figcaption {
     margin-top: -190px;
   }
 }
+.img-format {
+  height: 500px;
+  overflow: hidden;
+  width: 100%;
+}
+.img-format img {
+  position: relative;
+}
+
+.menu-curadoria {
+  padding: 5px;
+  border-bottom: solid 1px #CCCCCC;
+}
+
 /*/////////*/
 /*.thumbs {
     width: 100%;

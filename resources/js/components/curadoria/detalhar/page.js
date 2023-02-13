@@ -79,7 +79,7 @@ const PageDetalhar = () => {
                                                 <div className={"p-4 "+ (key === 0 ? 'bg-lgt' : '')}>
 
                                                     <div className="row">
-                                                        <div className="col-md-12">
+                                                        <div className="col-md-12 img-format" style={{height: '600px'}}>
                                                             <img src={item.curador.url_imagem} alt="" width="100%" style={{marginBottom: '20px'}}/>
                                                         </div>
                                                         <div className="col-md-12">

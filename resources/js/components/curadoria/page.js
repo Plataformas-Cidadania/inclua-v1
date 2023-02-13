@@ -2,6 +2,7 @@ const Page = () => {
 
     const {useState, useEffect} = React;
     const [curadorias, setCuradorias] = useState([]);
+    const [curadores, setCuradores] = useState([]);
     const [total, setTotal] = useState(0);
     const [activeDiv, setActiveDiv] = useState(0);
     const [newDatas, setNewDatas] = useState([]);
@@ -10,14 +11,17 @@ const Page = () => {
     const [page, setPage] = useState(0);
 
 
-    useEffect(() => {
+    const [filterCurador, setFilterCurador] = useState(0);
+
+    /*useEffect(() => {
         Curadoria();
         CuradoriaMeses();
-    }, [mesSelected, searchData]);
+    }, [mesSelected, searchData]);*/
 
     useEffect(() => {
         Curadoria();
-    }, [page]);
+    }, [page, filterCurador]);
+
 
     const Curadoria = async () => {
         try {
@@ -27,12 +31,23 @@ const Page = () => {
                 }
             });
 
-            const filterData = searchData
+            /*const filterData = searchData
                 ? result.data.data.data.filter((obj) => obj.tema_recorte.includes(searchData))
-                : result.data.data.data.filter((obj) => obj?.mes?.slice(3).includes(mesSelected))
+                : result.data.data.data.filter((obj) => obj?.mes?.slice(3).includes(mesSelected))*/
+
+/*
+            const filterData = filterCurador === 0
+                ? result.data.data.data.filter((obj) => obj.id_curador.includes(filterCurador))
+                : result.data.data.data*/
+
+            const filterData = []
+
+
+           /* console.log(filterData)*/
 
             setCuradorias(filterData);
             setTotal(result.data.data.total);
+            curadorData(result.data.data)
 
             ///////////////DATA///////////
             /*const arrayDatas = []
@@ -44,6 +59,21 @@ const Page = () => {
             const datasSemRepeticao = [...new Set(arrayDatas)];
             setNewDatas(datasSemRepeticao.sort())*/
             ///////////////////////////////
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const curadorData = async (dataCuradorias) => {
+
+        try {
+            const result = await axios.get('api/curador', {
+            });
+
+            const filterData = filterCurador === 0 ? dataCuradorias.data : dataCuradorias.data.filter((obj) => obj.id_curador === filterCurador)
+            setCuradorias(filterData);
+            setCuradores(result?.data?.data)
 
         } catch (error) {
             console.log(error);
@@ -83,6 +113,11 @@ const Page = () => {
         setSearchData(search)
     }
 
+    const setHandleFilterCurador = (id) => {
+
+        setFilterCurador(id)
+    }
+
     return (
         <div className="row">
             <div className="col-md-9">
@@ -104,7 +139,7 @@ const Page = () => {
                                         <div className={"p-4 "+ (key === 0 ? 'bg-lgt' : '')}>
 
                                             <div className="row">
-                                                <div className="col-md-12">
+                                                <div className="col-md-12 img-format">
                                                     <img src={item.curador.url_imagem} alt="" width="100%" style={{marginBottom: '20px'}}/>
                                                 </div>
                                                 <div className="col-md-12">
@@ -189,7 +224,26 @@ const Page = () => {
                     <i className="fas fa-search"/>
                 </div>*/}
                 <br/>
-                <h2>Arquivo</h2>
+                <h2>Curadores</h2>
+
+                {curadores?.map((item, key) => {
+                    return (
+                        <div
+                            className="menu-curadoria cursor"
+                            key={'curador' + key}
+                            style={{backgroundColor: filterCurador === item.id_curador ? '#A5D0CC' : 'inherit'}}
+                            onClick={() => setHandleFilterCurador(item.id_curador)}>
+                            {item.nome}
+                            {filterCurador === item.id_curador ?
+                                <div style={{position: 'relative', right: 0, marginBottom: "18px", marginTop: '-18px', paddingRight: "10px"}} onClick={() => setHandleFilterCurador(0)}>
+                                    <i className="fas fa-times float-end " />
+                                </div>
+                                : null}
+                        </div>
+                    )
+                })}
+
+                {/*<h2>Arquivo</h2>
                 <ul className="menu-left">
                     {newDatas.map((item, key) => {
                         return (
@@ -204,7 +258,7 @@ const Page = () => {
                             </li>
                         )
                     })}
-                </ul>
+                </ul>*/}
 
             </div>
         </div>

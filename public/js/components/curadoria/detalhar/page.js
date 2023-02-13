@@ -75,7 +75,10 @@ const PageDetalhar = () => {
     }, /*#__PURE__*/React.createElement("div", {
       className: "row"
     }, /*#__PURE__*/React.createElement("div", {
-      className: "col-md-12"
+      className: "col-md-12 img-format",
+      style: {
+        height: '600px'
+      }
     }, /*#__PURE__*/React.createElement("img", {
       src: item.curador.url_imagem,
       alt: "",
