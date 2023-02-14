@@ -24,7 +24,6 @@ const PageDetalhar = () => {
                 if(key < 4){
                     ultimasCuradorias.push(item)
                 }
-
             })
             setUltimo(ultimasCuradorias)
 
@@ -80,7 +79,7 @@ const PageDetalhar = () => {
                                                 <div className={"p-4 "+ (key === 0 ? 'bg-lgt' : '')}>
 
                                                     <div className="row">
-                                                        <div className="col-md-12">
+                                                        <div className="col-md-12 img-format" style={{height: '600px'}}>
                                                             <img src={item.curador.url_imagem} alt="" width="100%" style={{marginBottom: '20px'}}/>
                                                         </div>
                                                         <div className="col-md-12">
@@ -110,8 +109,6 @@ const PageDetalhar = () => {
                                                     ) : null}
 
                                                     <hr style={{display: key === 0 ? 'none' : ''}}/>
-
-
                                                     <br/><br/>
 
                                                 </div>
@@ -134,7 +131,7 @@ const PageDetalhar = () => {
                             {ultimo?.map((item, key) => {
                                       return (
                                           <a href={"curadoria/"+item.id_curadoria} key={'ultimo'+key}>
-                                              <div className="">
+                                              <div >
                                                   {item.tema_recorte}
                                             {/*      <p>saiba mais</p>*/}
                                                   <hr/>

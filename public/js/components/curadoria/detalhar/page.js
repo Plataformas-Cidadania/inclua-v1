@@ -75,7 +75,10 @@ const PageDetalhar = () => {
     }, /*#__PURE__*/React.createElement("div", {
       className: "row"
     }, /*#__PURE__*/React.createElement("div", {
-      className: "col-md-12"
+      className: "col-md-12 img-format",
+      style: {
+        height: '600px'
+      }
     }, /*#__PURE__*/React.createElement("img", {
       src: item.curador.url_imagem,
       alt: "",
@@ -124,8 +127,6 @@ const PageDetalhar = () => {
     return /*#__PURE__*/React.createElement("a", {
       href: "curadoria/" + item.id_curadoria,
       key: 'ultimo' + key
-    }, /*#__PURE__*/React.createElement("div", {
-      className: ""
-    }, item.tema_recorte, /*#__PURE__*/React.createElement("hr", null)));
+    }, /*#__PURE__*/React.createElement("div", null, item.tema_recorte, /*#__PURE__*/React.createElement("hr", null)));
   }))))));
 };

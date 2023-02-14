@@ -408,12 +408,15 @@ label, input, .btn-number {
 }
 
 .btn-theme{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-transform: uppercase;
     border: 0;
     border-radius: 0;
     font-size: 16px;
     font-weight: bold;
-    padding: 7px 32px;
+    padding: 7px;
     transition: 0.5s ease-in;
 }
 .btn-theme:hover{
@@ -421,11 +424,8 @@ label, input, .btn-number {
     transition: 0.5s ease-in;
 }
 .btn-theme svg{
-    float: right;
-    right: -15px;
-    position: relative;
+    margin-left: 5px;
     font-size: 19px;
-    top: 3px;
 }
 
 input{

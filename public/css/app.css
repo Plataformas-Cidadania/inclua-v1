@@ -11881,14 +11881,13 @@ time {
 .menu-small {
   margin: 0;
   padding: 0;
-  font-size: 16px;
+  font-size: 13px;
 }
 
 .menu-small li {
   display: inline-block;
   padding: 5px 10px 3px 10px;
   border-bottom: solid 2px #EEEEEE;
-    font-size: 16px;
 }
 
 .menu-small li:hover {
@@ -12551,6 +12550,20 @@ figcaption {
     margin-top: -190px;
   }
 }
+.img-format {
+  height: 500px;
+  overflow: hidden;
+  width: 100%;
+}
+.img-format img {
+  position: relative;
+}
+
+.menu-curadoria {
+  padding: 5px;
+  border-bottom: solid 1px #CCCCCC;
+}
+
 /*/////////*/
 /*.thumbs {
     width: 100%;
@@ -13187,12 +13200,15 @@ label, input, .btn-number {
 }
 
 .btn-theme {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-transform: uppercase;
   border: 0;
   border-radius: 0;
   font-size: 16px;
   font-weight: bold;
-  padding: 7px 32px;
+  padding: 7px;
   transition: 0.5s ease-in;
 }
 
@@ -13202,11 +13218,8 @@ label, input, .btn-number {
 }
 
 .btn-theme svg {
-  float: right;
-  right: -15px;
-  position: relative;
+  margin-left: 5px;
   font-size: 19px;
-  top: 3px;
 }
 
 input {

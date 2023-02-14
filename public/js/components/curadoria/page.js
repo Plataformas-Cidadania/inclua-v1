@@ -4,19 +4,22 @@ const Page = () => {
     useEffect
   } = React;
   const [curadorias, setCuradorias] = useState([]);
+  const [curadores, setCuradores] = useState([]);
   const [total, setTotal] = useState(0);
   const [activeDiv, setActiveDiv] = useState(0);
   const [newDatas, setNewDatas] = useState([]);
   const [mesSelected, setMesSelected] = useState('');
   const [searchData, setSearchData] = useState('');
   const [page, setPage] = useState(0);
+  const [filterCurador, setFilterCurador] = useState(0);
+  /*useEffect(() => {
+      Curadoria();
+      CuradoriaMeses();
+  }, [mesSelected, searchData]);*/
+
   useEffect(() => {
     Curadoria();
-    CuradoriaMeses();
-  }, [mesSelected, searchData]);
-  useEffect(() => {
-    Curadoria();
-  }, [page]);
+  }, [page, filterCurador]);
 
   const Curadoria = async () => {
     try {
@@ -25,9 +28,21 @@ const Page = () => {
           page: page + 1
         }
       });
-      const filterData = searchData ? result.data.data.data.filter(obj => obj.tema_recorte.includes(searchData)) : result.data.data.data.filter(obj => obj.mes.slice(3).includes(mesSelected));
+      /*const filterData = searchData
+          ? result.data.data.data.filter((obj) => obj.tema_recorte.includes(searchData))
+          : result.data.data.data.filter((obj) => obj?.mes?.slice(3).includes(mesSelected))*/
+
+      /*
+                  const filterData = filterCurador === 0
+                      ? result.data.data.data.filter((obj) => obj.id_curador.includes(filterCurador))
+                      : result.data.data.data*/
+
+      const filterData = [];
+      /* console.log(filterData)*/
+
       setCuradorias(filterData);
-      setTotal(result.data.data.total); ///////////////DATA///////////
+      setTotal(result.data.data.total);
+      curadorData(result.data.data); ///////////////DATA///////////
 
       /*const arrayDatas = []
        result.data.data.map((item) => {
@@ -41,13 +56,24 @@ const Page = () => {
     }
   };
 
+  const curadorData = async dataCuradorias => {
+    try {
+      const result = await axios.get('api/curador', {});
+      const filterData = filterCurador === 0 ? dataCuradorias.data : dataCuradorias.data.filter(obj => obj.id_curador === filterCurador);
+      setCuradorias(filterData);
+      setCuradores(result?.data?.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const CuradoriaMeses = async () => {
     try {
       const result = await axios.get('api/curadoria', {}); ///////////////DATA///////////
 
       const arrayDatas = [];
       result.data.data.map(item => {
-        arrayDatas.push(item.mes.slice(3));
+        arrayDatas.push(item?.mes?.slice(3));
       });
       const datasSemRepeticao = [...new Set(arrayDatas)];
       setNewDatas(datasSemRepeticao.sort()); ///////////////////////////////
@@ -65,6 +91,12 @@ const Page = () => {
     setSearchData(search);
   };
 
+  const setHandleFilterCurador = id => {
+    console.log('id', id);
+    setFilterCurador(id);
+  };
+
+  console.log('filterCurador', filterCurador);
   return /*#__PURE__*/React.createElement("div", {
     className: "row"
   }, /*#__PURE__*/React.createElement("div", {
@@ -92,7 +124,7 @@ const Page = () => {
     }, /*#__PURE__*/React.createElement("div", {
       className: "row"
     }, /*#__PURE__*/React.createElement("div", {
-      className: "col-md-12"
+      className: "col-md-12 img-format"
     }, /*#__PURE__*/React.createElement("img", {
       src: item.curador.url_imagem,
       alt: "",
@@ -104,11 +136,11 @@ const Page = () => {
       className: "col-md-12"
     }, /*#__PURE__*/React.createElement("div", null, item.mes), /*#__PURE__*/React.createElement("h2", null, item.tema_recorte)), /*#__PURE__*/React.createElement("div", {
       className: "col-md-12"
-    }, /*#__PURE__*/React.createElement("h3", null, /*#__PURE__*/React.createElement("strong", null, item.curador.nome)))), /*#__PURE__*/React.createElement("p", {
+    }, /*#__PURE__*/React.createElement("h3", null, /*#__PURE__*/React.createElement("strong", null, item.curador.nome)))), item?.texto ? /*#__PURE__*/React.createElement("p", {
       dangerouslySetInnerHTML: {
-        __html: item.texto.slice(0, 400) + " ..."
+        __html: item?.texto?.slice(0, 400) + " ..."
       }
-    }), /*#__PURE__*/React.createElement("div", {
+    }) : null, /*#__PURE__*/React.createElement("div", {
       className: "dorder-container"
     }, /*#__PURE__*/React.createElement("a", {
       href: "curadoria/" + item.id_curadoria,
@@ -133,31 +165,32 @@ const Page = () => {
     perPage: 10
   })), /*#__PURE__*/React.createElement("div", {
     className: "col-md-3"
-  }, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("h2", null, "Arquivo"), /*#__PURE__*/React.createElement("ul", {
-    className: "menu-left"
-  }, newDatas.map((item, key) => {
-    return /*#__PURE__*/React.createElement("li", {
-      className: "list-group-item-theme cursor",
-      key: 'datas' + key,
+  }, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("h2", null, "Curadores"), curadores?.map((item, key) => {
+    return /*#__PURE__*/React.createElement("div", {
+      className: "menu-curadoria cursor",
+      key: 'curador' + key,
       style: {
+        backgroundColor: filterCurador === item.id_curador ? '#A5D0CC' : 'inherit',
         position: 'relative'
       }
-    }, /*#__PURE__*/React.createElement("a", {
-      onClick: () => setMesSelected(item),
+    }, /*#__PURE__*/React.createElement("p", {
+      onClick: () => setHandleFilterCurador(item.id_curador),
       style: {
-        backgroundColor: mesSelected === item ? '#A5D0CC' : 'inherit'
+        display: 'block',
+        margin: 0
       }
-    }, dataExt(item)), mesSelected === item ? /*#__PURE__*/React.createElement("div", {
+    }, item.nome), filterCurador === item.id_curador ? /*#__PURE__*/React.createElement("div", {
       style: {
-        position: 'relative',
+        position: 'absolute',
         right: 0,
-        marginBottom: "30px",
-        marginTop: '-30px',
-        paddingRight: "10px"
+        marginBottom: "18px",
+        marginTop: '-18px',
+        paddingRight: "10px",
+        zIndex: 9999999999
       },
-      onClick: () => setMesSelected('')
+      onClick: () => setHandleFilterCurador(0)
     }, /*#__PURE__*/React.createElement("i", {
       className: "fas fa-times float-end "
     })) : null);
-  }))));
+  })));
 };

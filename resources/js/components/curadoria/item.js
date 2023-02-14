@@ -141,7 +141,7 @@ const Item = (props) => {
                                     <div className="col-12">
                                         {
                                             item.links[0] !== undefined ?
-                                                <div className="row">
+                                                <div className="row" >
                                                     <div className="col-6">
                                                         <div className="dorder-container">
                                                             <a href={item.links[0].uri} className="btn btn-theme bg-pri" type="button" target="_blank">Acessar <i className="fas fa-angle-right"/></a>
