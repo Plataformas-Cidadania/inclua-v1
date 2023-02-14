@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Models\Categoria;
 use App\Models\Indicador;
+use Illuminate\Database\Eloquent\Collection;
 
 class CategoriaRepository extends BaseRepository
 {
@@ -34,6 +35,11 @@ class CategoriaRepository extends BaseRepository
         if (!$res || $res->isEmpty()) throw new \Illuminate\Database\Eloquent\ModelNotFoundException;
         else return $res;
         return $res;
+    }
+
+    public function all(array $columns = ['*'], array $relations = []): Collection
+    {
+        return $this->model->with($relations)->orderByRaw("lower(trim(nome))")->get($columns);
     }
 
 }

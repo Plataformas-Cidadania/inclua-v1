@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Models\FormatoRecurso;
+use Illuminate\Database\Eloquent\Collection;
 
 class FormatoRecursoRepository extends BaseRepository
 {
@@ -19,5 +20,10 @@ class FormatoRecursoRepository extends BaseRepository
     public function __construct(FormatoRecurso $model)
     {
         $this->model = $model;
+    }
+
+    public function all(array $columns = ['*'], array $relations = []): Collection
+    {
+        return $this->model->with($relations)->orderByRaw("lower(trim(nome))")->get($columns);
     }
 }

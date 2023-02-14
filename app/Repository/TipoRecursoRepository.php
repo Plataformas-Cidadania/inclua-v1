@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Models\Indicador;
 use App\Models\TipoRecurso;
+use Illuminate\Database\Eloquent\Collection;
 
 class TipoRecursoRepository extends BaseRepository
 {
@@ -34,5 +35,10 @@ class TipoRecursoRepository extends BaseRepository
 
         if (!$res || $res->isEmpty()) throw new \Illuminate\Database\Eloquent\ModelNotFoundException;
         else return $res;
+    }
+
+    public function all(array $columns = ['*'], array $relations = []): Collection
+    {
+        return $this->model->with($relations)->orderByRaw("lower(trim(nome))")->get($columns);
     }
 }
