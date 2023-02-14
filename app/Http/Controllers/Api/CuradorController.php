@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Api\Controller;
+use App\Models\CategoriaDiagnostico;
 use App\Models\Curador;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\Eloquent\RelationNotFoundException;
@@ -38,6 +39,12 @@ class CuradorController extends Controller
     public function getAll(): JsonResponse
     {
         $reses = $this->repo->all();
+        $ids_curadoria = array();
+
+        foreach ($reses as $curador){
+            $ids_curadoria = $curador->curadoria()->selectRaw('id_curadoria')->pluck('id_curadoria')->toArray();
+            $curador['id_curadoria'] = $ids_curadoria;
+        }
         return $this->successResponse(
             'Curadores retornados com sucesso',
             $reses
