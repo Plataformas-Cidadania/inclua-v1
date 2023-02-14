@@ -171,7 +171,7 @@ Route::group(['middleware' => 'cms'], function () {
         Route::get('/cms/usuarios', 'Cms\Controllers\CmsUserController@index');
         Route::get('/cms/listar-cmsusers', 'Cms\Controllers\CmsUserController@listar');
         Route::post('/cms/inserir-cmsuser', 'Cms\Controllers\CmsUserController@inserir');
-        Route::get('/cms/usuario/{id}', 'Cms\Controllers\CmsUserController@detalhar');
+        Route::get('/cms/usuario-cmsuser/{id}', 'Cms\Controllers\CmsUserController@detalhar');
         Route::post('/cms/alterar-cmsuser/{id}', 'Cms\Controllers\CmsUserController@alterar');
         Route::get('/cms/perfil', 'Cms\Controllers\CmsUserController@perfil');
         Route::post('/cms/alterar-perfil', 'Cms\Controllers\CmsUserController@alterarPerfil');
@@ -184,7 +184,7 @@ Route::group(['middleware' => 'cms'], function () {
         Route::post('/cms/inserir-user', 'Cms\Controllers\UserController@inserir');
         Route::get('/cms/usuario/{id}', 'Cms\Controllers\UserController@detalhar');
         Route::post('/cms/alterar-user/{id}', 'Cms\Controllers\UserController@alterar');
-        Route::get('/cms/excluir-cmsuser/{id}', 'Cms\Controllers\UserController@excluir');
+        Route::get('/cms/excluir/{id}', 'Cms\Controllers\UserController@excluir');
 
 
         //TEXTS

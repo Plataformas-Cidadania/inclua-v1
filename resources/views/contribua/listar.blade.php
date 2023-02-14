@@ -139,7 +139,17 @@
     @endif
 
 
+<style>
+    .navbar-nav2 li {
 
+        margin-left: inherit !important;
+    }
+
+    .nav-item {
+        margin-left: 0px;
+        padding: 0 8px 0 0 !important;
+    }
+</style>
 
 
 

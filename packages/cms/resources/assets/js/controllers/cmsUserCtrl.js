@@ -1,5 +1,5 @@
 cmsApp.controller('cmsuserCtrl', ['$scope', '$http', 'Upload', '$timeout', function($scope, $http, Upload, $timeout){
-    
+
 
     $scope.cmsusers = [];
     $scope.currentPage = 1;
@@ -61,7 +61,7 @@ cmsApp.controller('cmsuserCtrl', ['$scope', '$http', 'Upload', '$timeout', funct
         });
     };
 
-    
+
     $scope.ordernarPor = function(ordem){
         $scope.ordem = ordem;
         //console.log($scope.ordem);
@@ -77,7 +77,7 @@ cmsApp.controller('cmsuserCtrl', ['$scope', '$http', 'Upload', '$timeout', funct
     $scope.validar = function(){
 
     };
-    
+
 
     listarCmsusers();
 
@@ -175,3 +175,4 @@ cmsApp.controller('cmsuserCtrl', ['$scope', '$http', 'Upload', '$timeout', funct
 
 
 }]);
+cms_users

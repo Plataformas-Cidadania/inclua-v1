@@ -88,7 +88,7 @@
                             <td><% cmsuser.email %></td>
                             <td class="text-right">
                                 <div>
-                                    <a href="cms/usuario/<% cmsuser.id %>"><i class="fa fa-edit fa-2x" title="Editar"></i></a>&nbsp;&nbsp;
+                                    <a href="cms/usuario-cmsuser/<% cmsuser.id %>"><i class="fa fa-edit fa-2x" title="Editar"></i></a>&nbsp;&nbsp;
                                     <a><i data-toggle="modal" data-target="#modalExcluir" class="fa fa-remove fa-2x" ng-click="perguntaExcluir(cmsuser.id, cmsuser.name, cmsuser.imagem)"></i></a>
                                 </div>
                             </td>
