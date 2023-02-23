@@ -9,7 +9,7 @@ const Item = props => {
     nome: '111',
     resumo: '222'
   });
-  const propsData = props.propsData;
+  const propsData = props?.propsData;
   let icon = {
     1: 'far fa-file-pdf',
     2: 'far fa-file-word',
@@ -45,8 +45,7 @@ const Item = props => {
 
   return /*#__PURE__*/React.createElement("div", {
     className: "row"
-  }, propsData.map((item, key) => {
-    //console.log('--------', item);
+  }, Array.isArray(propsData) ? propsData.map((item, key) => {
     function isCherries(fruit) {
       return fruit.id_formato === item.id_formato;
     }
@@ -144,5 +143,5 @@ const Item = props => {
       className: "btn btn-secondary",
       "data-bs-dismiss": "modal"
     }, "Close")))))));
-  }));
+  }) : null);
 };

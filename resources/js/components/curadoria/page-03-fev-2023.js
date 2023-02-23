@@ -44,7 +44,7 @@ const Page03Fev2023 = () => {
                                 //////////////////
 
                                 return (
-                                    <div className={"p-4 "+ (key === 0 ? 'bg-lgt' : '')}>
+                                    <div className={"p-4 "+ (key === 0 ? 'bg-lgt' : '')} key={'curadorias' + key}>
 
                                         <div className="row">
                                             <div className="col-md-12">

@@ -9,14 +9,26 @@ const Page = () => {
   const [perPage, setPerpage] = useState(12);
   const [menuItens, setSearch] = useState({
     id: 1,
-    title: "Categoria",
-    txt: 'Busque por categoria',
-    rota: '/api/categoria/nome/',
-    type: true,
+    title: "Palavra-chave",
+    txt: 'Busque por palavra-chave',
+    rota: 'api/busca_recursos/palavra_chave/',
+    type: false,
     typeTitle: 'nome',
     nameId: 'id_categoria',
     rotaSelected: 'categoria'
   });
+  /*const [menuItens, setSearch] = useState(
+      {
+          id: 1,
+          title: "Categoria",
+          txt: 'Busque por categoria',
+          rota: '/api/categoria/nome/',
+          type: true,
+          typeTitle: 'nome',
+          nameId: 'id_categoria',
+          rotaSelected: 'categoria'
+      });*/
+
   const [menuLi, setMenuLi] = useState(1);
   const [listMenu, setListMenu] = useState([]);
   const [spinList, setspinList] = useState(false);
@@ -24,6 +36,15 @@ const Page = () => {
   const [nEncontado, setNEncontado] = useState(false);
   const menu = [{
     id: 1,
+    title: "Palavra-chave",
+    txt: 'Busque por palavra-chave',
+    rota: 'api/busca_recursos/palavra_chave/',
+    type: false,
+    typeTitle: 'nome',
+    nameId: 'id_categoria',
+    rotaSelected: 'categoria'
+  }, {
+    id: 2,
     title: "Tipo",
     txt: 'Busque por tipo',
     rota: '/api/tipo_recurso/nome/',
@@ -32,7 +53,7 @@ const Page = () => {
     nameId: 'id_tipo_recurso',
     rotaSelected: 'tipo_recurso'
   }, {
-    id: 2,
+    id: 3,
     title: "Categoria",
     txt: 'Busque por categoria',
     rota: '/api/categoria/nome/',
@@ -40,15 +61,6 @@ const Page = () => {
     typeTitle: 'nome',
     nameId: 'id_categoria',
     rotaSelected: 'categoria'
-  }, {
-    id: 3,
-    title: "Palavra-chave",
-    txt: 'Busque por palavra-chave',
-    rota: 'api/busca_recursos/palavra_chave/',
-    type: false,
-    typeTitle: 'nome',
-    nameId: 'id' //rotaSelected: 'palavra_chave'
-
   }
   /*{
       id: 4,
@@ -104,16 +116,16 @@ const Page = () => {
     setNEncontado(false);
     const search = e.target.value ? e.target.value : ' ';
 
-    if (search.length > 2) {
+    if (search.length > 3) {
       setspinList(true);
 
       try {
         const result = await axios.get(menuItens.rota + search, {});
-        setListMenu(result.data.data);
+        setListMenu(result?.data?.data);
 
         if (!menuItens.type) {
-          setRecursos(result.data.data);
-          setTotal(result.data.data.length);
+          setRecursos(result?.data?.data);
+          setTotal(result?.data?.data?.length);
         }
 
         setspinList(false);
@@ -198,13 +210,15 @@ const Page = () => {
     className: "fas fa-circle-notch fa-spin"
   })), /*#__PURE__*/React.createElement("ul", {
     className: "list-search"
-  }, listMenu.map((item, key) => {
-    return /*#__PURE__*/React.createElement("li", {
-      className: "cursor ",
-      key: 'list_' + key,
-      onClick: () => ClickSearch(item)
-    }, item[menuItens.typeTitle]);
-  }))))), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
+  }, Array.isArray(listMenu) ? listMenu.map(item => {
+    listMenu?.map((item, key) => {
+      return /*#__PURE__*/React.createElement("li", {
+        className: "cursor ",
+        key: 'listItem_' + key,
+        onClick: () => ClickSearch(item)
+      }, item[menuItens.typeTitle]);
+    });
+  }) : null)))), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
     className: "container-search-click cursor",
     style: {
       display: searchBox ? '' : 'none'

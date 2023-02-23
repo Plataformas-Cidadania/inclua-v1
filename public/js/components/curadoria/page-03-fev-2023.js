@@ -44,7 +44,8 @@ const Page03Fev2023 = () => {
     }); //////////////////
 
     return /*#__PURE__*/React.createElement("div", {
-      className: "p-4 " + (key === 0 ? 'bg-lgt' : '')
+      className: "p-4 " + (key === 0 ? 'bg-lgt' : ''),
+      key: 'curadorias' + key
     }, /*#__PURE__*/React.createElement("div", {
       className: "row"
     }, /*#__PURE__*/React.createElement("div", {

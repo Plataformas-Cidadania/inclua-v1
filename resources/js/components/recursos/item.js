@@ -9,7 +9,7 @@ const Item = (props) => {
     });
 
 
-    const propsData = props.propsData;
+    const propsData = props?.propsData;
 
     let icon = {
         1:'far fa-file-pdf',
@@ -60,51 +60,48 @@ const Item = (props) => {
 
     return (
         <div className={"row"}>
-            {
-                propsData.map((item, key) => {
 
-                    //console.log('--------', item);
-
-                    function isCherries(fruit) {
-                        return fruit.id_formato === item.id_formato;
-                    }
-                    let nomeFormato = formato.find(isCherries);
+            {Array.isArray(propsData) ? propsData.map((item, key) => {
+                function isCherries(fruit) {
+                    return fruit.id_formato === item.id_formato;
+                }
+                let nomeFormato = formato.find(isCherries);
 
 
-                    //console.log('***link: ', item.links[0].uri);
-                    return(
-                        <div className="col-lg-4 col-md-6 col-sm-12 col-xs-12"  key={"modal" + key}>
-                            <div className="dorder-container">
+                //console.log('***link: ', item.links[0].uri);
+                return(
+                    <div className="col-lg-4 col-md-6 col-sm-12 col-xs-12"  key={"modal" + key}>
+                        <div className="dorder-container">
 
-                                <div className="bg-lgt">
-                                    {/*<div className="bg-lgt2 text-center box-list-cod">
+                            <div className="bg-lgt">
+                                {/*<div className="bg-lgt2 text-center box-list-cod">
                                         <h6 className="mt-4">Código</h6>
                                         <h2>{item.id_recurso}</h2>
                                     </div>*/}
-                                    <div className="p-2 box-list-title">
-                                        <p className="mt-2"><strong>{item.nome}</strong></p>
-                                    </div>
-                                    <div className="clear-both"/>
+                                <div className="p-2 box-list-title">
+                                    <p className="mt-2"><strong>{item.nome}</strong></p>
                                 </div>
+                                <div className="clear-both"/>
+                            </div>
 
-                                <br/>
+                            <br/>
 
-                                <div className="row">
-                                    <div className="col-4">
-                                        <img src="img/lines.png" alt="" width="80%" height="30"/></div>
-                                    {/*<div className="col-6 text-center">
+                            <div className="row">
+                                <div className="col-4">
+                                    <img src="img/lines.png" alt="" width="80%" height="30"/></div>
+                                {/*<div className="col-6 text-center">
                                         <div className="bg-lgt2 box-list-formato">
                                             {nomeFormato ? nomeFormato.nome : ''}
                                         </div>
                                     </div>*/}
-                                    <div className="col-2">&nbsp;</div>
-                                </div>
-                                <div className="row">
-                                    <div className="col-12 box-list-p">
-                                        <br/>
-                                        <p><strong>Esfera: </strong><span>{item.esfera}</span></p>
-                                        <p><strong>Idioma: </strong>
-                                            {/*{
+                                <div className="col-2">&nbsp;</div>
+                            </div>
+                            <div className="row">
+                                <div className="col-12 box-list-p">
+                                    <br/>
+                                    <p><strong>Esfera: </strong><span>{item.esfera}</span></p>
+                                    <p><strong>Idioma: </strong>
+                                        {/*{
                                                 item.links !== undefined ?
                                                     item.links.map((link, key) => {
                                                         return (
@@ -116,52 +113,52 @@ const Item = (props) => {
                                                     })
                                                     : null
                                             }*/}
-                                            {
-                                                item.links[0] !== undefined ?
-                                                    <a href="" target="_blank" title={item.links[0].idioma} key={"linksIdoma"+key}>
-                                                        {item.links[0].idioma}
-                                                    </a>
-                                                    : null
-                                            }
-                                        </p>
-                                        <p><strong>Tipo: </strong><span>{(item.tipo_recurso ? item.tipo_recurso.nome : '')}</span></p>
-                                        <p><strong>Formato: </strong><span>{nomeFormato ? nomeFormato.nome : ''}</span></p>
-                                        <p>
-                                            <strong>Autoria: </strong>
-                                            {
-                                                item.autoria !== undefined ? item.autoria.map((autoria, key) => {
-                                                    return (
-                                                        <span key={"autoria"+key}>
-                                                            {autoria.autor.nome}
-                                                            {item.autoria.length !== key+1 ? ', ' : ''}
-                                                        </span>
-                                                    );
-                                                }) : null
-                                            }
-                                        </p>
-                                        <br/>
-                                    </div>
-
-                                    <div className="col-12">
                                         {
                                             item.links[0] !== undefined ?
-                                                <div className="row">
-                                                    <div className="col-6">
-                                                        <div className="dorder-container">
-                                                            <a href={item.links[0].uri} className="btn btn-theme bg-pri" type="button" target="_blank">Acessar <i className="fas fa-angle-right"/></a>
-                                                        </div>
-                                                    </div>
-                                                    <div className="col-6">
-                                                        <div className="dorder-container" onClick={() => callModal(item.id_recurso, item.nome, item.resumo)}>
-                                                            <a  className="btn btn-theme bg-pri" type="button" target="_blank">Detalhar <i className="fas fa-angle-right"/></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                <a href="" target="_blank" title={item.links[0].idioma} key={"linksIdoma"+key}>
+                                                    {item.links[0].idioma}
+                                                </a>
                                                 : null
                                         }
-                                    </div>
+                                    </p>
+                                    <p><strong>Tipo: </strong><span>{(item.tipo_recurso ? item.tipo_recurso.nome : '')}</span></p>
+                                    <p><strong>Formato: </strong><span>{nomeFormato ? nomeFormato.nome : ''}</span></p>
+                                    <p>
+                                        <strong>Autoria: </strong>
+                                        {
+                                            item.autoria !== undefined ? item.autoria.map((autoria, key) => {
+                                                return (
+                                                    <span key={"autoria"+key}>
+                                                            {autoria.autor.nome}
+                                                        {item.autoria.length !== key+1 ? ', ' : ''}
+                                                        </span>
+                                                );
+                                            }) : null
+                                        }
+                                    </p>
+                                    <br/>
+                                </div>
 
-                                    {/*{
+                                <div className="col-12">
+                                    {
+                                        item.links[0] !== undefined ?
+                                            <div className="row">
+                                                <div className="col-6">
+                                                    <div className="dorder-container">
+                                                        <a href={item.links[0].uri} className="btn btn-theme bg-pri" type="button" target="_blank">Acessar <i className="fas fa-angle-right"/></a>
+                                                    </div>
+                                                </div>
+                                                <div className="col-6">
+                                                    <div className="dorder-container" onClick={() => callModal(item.id_recurso, item.nome, item.resumo)}>
+                                                        <a  className="btn btn-theme bg-pri" type="button" target="_blank">Detalhar <i className="fas fa-angle-right"/></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            : null
+                                    }
+                                </div>
+
+                                {/*{
                                         item.links !== undefined ?
                                             item.links.map((link, key) => {
                                                 return (
@@ -179,39 +176,36 @@ const Item = (props) => {
                                             })
                                             : null
                                     }*/}
-                                </div>
                             </div>
-                            <br/>
-                            <div>
-                                <div className="modal fade" id={"exampleModal_"+item.id_recurso+"_"+props.grupo} tabIndex="-1" aria-labelledby={"exampleModalLabel_"+item.id_recurso+"_"+props.grupo}
-                                     aria-hidden="true">
-                                    <div className="modal-dialog modal-lg">
-                                        <div className="modal-content">
-                                            <div className="modal-header">
-                                                <h5 className="modal-title" id={"exampleModalLabel_"+item.id_recurso+"_"+props.grupo}>{modal.nome}</h5>
-                                            </div>
-                                            <div className="modal-body">
-                                                {modal.resumo===null
-                                                    ? "Este conteúdo não está disponível no momento!"
-                                                    : (<p dangerouslySetInnerHTML={{__html: modal.resumo}}/>)
-                                                }
-                                            </div>
-                                            <div className="modal-footer">
-                                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            </div>
+                        </div>
+                        <br/>
+                        <div>
+                            <div className="modal fade" id={"exampleModal_"+item.id_recurso+"_"+props.grupo} tabIndex="-1" aria-labelledby={"exampleModalLabel_"+item.id_recurso+"_"+props.grupo}
+                                 aria-hidden="true">
+                                <div className="modal-dialog modal-lg">
+                                    <div className="modal-content">
+                                        <div className="modal-header">
+                                            <h5 className="modal-title" id={"exampleModalLabel_"+item.id_recurso+"_"+props.grupo}>{modal.nome}</h5>
+                                        </div>
+                                        <div className="modal-body">
+                                            {modal.resumo===null
+                                                ? "Este conteúdo não está disponível no momento!"
+                                                : (<p dangerouslySetInnerHTML={{__html: modal.resumo}}/>)
+                                            }
+                                        </div>
+                                        <div className="modal-footer">
+                                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
 
 
 
-                    );
-
-
-                })
-            }
+                );
+            }) : null}
 
 
 

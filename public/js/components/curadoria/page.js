@@ -179,7 +179,7 @@ const Page = () => {
         display: 'block',
         margin: 0
       }
-    }, item.nome), filterCurador === item.id_curador ? /*#__PURE__*/React.createElement("div", {
+    }, "#", item.id_curadoria[0], " - ", item.nome), filterCurador === item.id_curador ? /*#__PURE__*/React.createElement("div", {
       style: {
         position: 'absolute',
         right: 0,

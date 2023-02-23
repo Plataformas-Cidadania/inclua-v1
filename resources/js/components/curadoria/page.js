@@ -235,7 +235,7 @@ const Page = () => {
                             key={'curador' + key}
                             style={{backgroundColor: filterCurador === item.id_curador ? '#A5D0CC' : 'inherit', position: 'relative'}}
                             >
-                            <p onClick={() => setHandleFilterCurador(item.id_curador)} style={{display: 'block', margin: 0}}>{item.nome}</p>
+                            <p onClick={() => setHandleFilterCurador(item.id_curador)} style={{display: 'block', margin: 0}}>#{item.id_curadoria[0]} - {item.nome}</p>
                             {filterCurador === item.id_curador ?
                                 <div style={{position: 'absolute', right: 0, marginBottom: "18px", marginTop: '-18px', paddingRight: "10px", zIndex: 9999999999}}  onClick={() => setHandleFilterCurador(0)}>
                                     <i className="fas fa-times float-end " />
