@@ -204,13 +204,12 @@ const Page = () => {
                                     </div>
 
                                     <ul className="list-search">
-                                        {Array.isArray(listMenu) ? listMenu.map(item => {
-                                            listMenu?.map((item, key) => {
+                                        {listMenu?.map((item, key) => {
                                                 return (<li className={"cursor "} key={'listItem_'+key}
                                                             onClick={() => ClickSearch(item)}
                                                 >{item[menuItens.typeTitle]}</li>);
                                             })
-                                        }) : null}
+                                        }
 
                                     </ul>
                                 </ul>

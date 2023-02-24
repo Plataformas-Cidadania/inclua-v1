@@ -210,15 +210,13 @@ const Page = () => {
     className: "fas fa-circle-notch fa-spin"
   })), /*#__PURE__*/React.createElement("ul", {
     className: "list-search"
-  }, Array.isArray(listMenu) ? listMenu.map(item => {
-    listMenu?.map((item, key) => {
-      return /*#__PURE__*/React.createElement("li", {
-        className: "cursor ",
-        key: 'listItem_' + key,
-        onClick: () => ClickSearch(item)
-      }, item[menuItens.typeTitle]);
-    });
-  }) : null)))), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
+  }, listMenu?.map((item, key) => {
+    return /*#__PURE__*/React.createElement("li", {
+      className: "cursor ",
+      key: 'listItem_' + key,
+      onClick: () => ClickSearch(item)
+    }, item[menuItens.typeTitle]);
+  }))))), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
     className: "container-search-click cursor",
     style: {
       display: searchBox ? '' : 'none'
