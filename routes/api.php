@@ -214,8 +214,23 @@ Route::group([
     Route::get('/palavra_chave/{palavra_chave}',[App\Http\Controllers\Api\RecursoController::class, 'getAllRecursoPorPalavraChave'])
         ->name('api.busca_recurso.getAllRecursoPorPalavraChave');
 
+    Route::get('/cms/palavra_chave/{palavra_chave}',[App\Http\Controllers\Api\RecursoController::class, 'getAllRecursoPorPalavraChave'])
+        ->name('api.busca_recurso.getAllRecursoPorPalavraChave');
+
     Route::get('/usuario/{id_user}',[App\Http\Controllers\Api\RecursoController::class, 'getAllRecursoPorIdUsuario'])
         ->name('api.recurso.getAllRecursoPorIdUsuario');
+
+});
+
+Route::group([
+    'prefix' => 'cms',
+], function () {
+
+    Route::get('/busca_recursos/palavra_chave/{palavra_chave}',[App\Http\Controllers\Api\RecursoController::class, 'getAllRecursoPorPalavraChaveCMS'])
+        ->name('api.busca_recurso.getAllRecursoPorPalavraChave');
+
+    Route::get('/recurso/paginado/{nr_itens}', [App\Http\Controllers\Api\RecursoController::class, 'getAllPaginadoCMS'])
+        ->name('api.recurso.getAllPaginadoCMS');
 
 });
 

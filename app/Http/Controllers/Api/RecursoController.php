@@ -111,6 +111,21 @@ class RecursoController extends Controller
         }
     }
 
+    public function getAllRecursoPorPalavraChaveCMS($palavra_chave)
+    {
+        try {
+            $res = $this->repo->getAllRecursoPorPalavraChaveCMS($palavra_chave);
+            return $this->successResponse(
+                'Retornado com sucesso',
+                $res
+            );
+        }catch (Exception $exception) {
+            if ($exception instanceof ModelNotFoundException)
+                return $this->errorResponse('Not found');
+            return $this->errorResponse('Erro inesperado.'.$exception);
+        }
+    }
+
 
 
 
@@ -127,6 +142,16 @@ class RecursoController extends Controller
     {
         try {
             return response()->json($this->repo->getAllPaginado($nr_itens), Response::HTTP_OK);
+        }
+        catch (\Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
+    public function getAllPaginadoCMS($nr_itens)
+    {
+        try {
+            return response()->json($this->repo->getAllPaginadoCMS($nr_itens), Response::HTTP_OK);
         }
         catch (\Exception $e) {
             return $e->getMessage();
