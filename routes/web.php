@@ -89,6 +89,9 @@ Route::get('/curadoria', [CuradoriaController::class , 'listar']);
 Route::get('/curadoria/{id}', [CuradoriaController::class , 'detalhar']);
 
 
+Route::get('/treinamento', [CuradoriaController::class , 'treinamento']);
+
+
 $routes = [
     ['Page', 'sobres', 'sobre'],
     ['Video', 'videos', 'video'],

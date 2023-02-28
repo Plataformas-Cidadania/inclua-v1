@@ -122,7 +122,8 @@ const Page = () => {
 
     return (
         <div className="row">
-            <div className="col-md-9">
+            <div className="col-md-2"></div>
+            <div className="col-md-8">
                 <div className="row">
                     <div className="col-md-12">
                         <p style={{textAlign: 'right'}}>{total} curadorias</p>
@@ -144,8 +145,8 @@ const Page = () => {
                                                 <div className="col-md-12 img-format">
                                                     <img src={item.curador.url_imagem} alt="" width="100%" style={{marginBottom: '20px'}}/>
                                                 </div>
-                                                <div className="col-md-12">
-                                                    <div>{item.mes}</div>
+                                                <div className="col-md-12 mt-2">
+                                                    {/*<div>{item.mes}</div>*/}
                                                     <h2>{item.tema_recorte}</h2>
                                                 </div>
 
@@ -212,7 +213,7 @@ const Page = () => {
                     perPage={10}
                 />
             </div>
-            <div className="col-md-3">
+            <div className="col-md-2">
                 {/*<div className="input-icon">
                     <input id="ativarBox"
                            type="text"
@@ -226,9 +227,9 @@ const Page = () => {
                     <i className="fas fa-search"/>
                 </div>*/}
                 <br/>
-                <h2>Curadores</h2>
+                {/*<h2>Curadores</h2>*/}
                 {/*<div onClick={() => setHandleFilterCurador(0)} className="text-right">remover filtro <i className="fas fa-times float-end " /></div>*/}
-                {curadores?.map((item, key) => {
+                {/*{curadores?.map((item, key) => {
                     return (
                         <div
                             className="menu-curadoria cursor"
@@ -243,7 +244,7 @@ const Page = () => {
                                 : null}
                         </div>
                     )
-                })}
+                })}*/}
 
                 {/*<h2>Arquivo</h2>
                 <ul className="menu-left">

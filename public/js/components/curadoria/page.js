@@ -100,7 +100,9 @@ const Page = () => {
   return /*#__PURE__*/React.createElement("div", {
     className: "row"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "col-md-9"
+    className: "col-md-2"
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "col-md-8"
   }, /*#__PURE__*/React.createElement("div", {
     className: "row"
   }, /*#__PURE__*/React.createElement("div", {
@@ -133,8 +135,8 @@ const Page = () => {
         marginBottom: '20px'
       }
     })), /*#__PURE__*/React.createElement("div", {
-      className: "col-md-12"
-    }, /*#__PURE__*/React.createElement("div", null, item.mes), /*#__PURE__*/React.createElement("h2", null, item.tema_recorte)), /*#__PURE__*/React.createElement("div", {
+      className: "col-md-12 mt-2"
+    }, /*#__PURE__*/React.createElement("h2", null, item.tema_recorte)), /*#__PURE__*/React.createElement("div", {
       className: "col-md-12"
     }, /*#__PURE__*/React.createElement("h3", null, /*#__PURE__*/React.createElement("strong", null, item.curador.nome)))), item?.texto ? /*#__PURE__*/React.createElement("p", {
       dangerouslySetInnerHTML: {
@@ -164,33 +166,6 @@ const Page = () => {
     page: page,
     perPage: 10
   })), /*#__PURE__*/React.createElement("div", {
-    className: "col-md-3"
-  }, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("h2", null, "Curadores"), curadores?.map((item, key) => {
-    return /*#__PURE__*/React.createElement("div", {
-      className: "menu-curadoria cursor",
-      key: 'curador' + key,
-      style: {
-        backgroundColor: filterCurador === item.id_curador ? '#A5D0CC' : 'inherit',
-        position: 'relative'
-      }
-    }, /*#__PURE__*/React.createElement("p", {
-      onClick: () => setHandleFilterCurador(item.id_curador),
-      style: {
-        display: 'block',
-        margin: 0
-      }
-    }, "#", item.id_curadoria[0], " - ", item.nome), filterCurador === item.id_curador ? /*#__PURE__*/React.createElement("div", {
-      style: {
-        position: 'absolute',
-        right: 0,
-        marginBottom: "18px",
-        marginTop: '-18px',
-        paddingRight: "10px",
-        zIndex: 9999999999
-      },
-      onClick: () => setHandleFilterCurador(0)
-    }, /*#__PURE__*/React.createElement("i", {
-      className: "fas fa-times float-end "
-    })) : null);
-  })));
+    className: "col-md-2"
+  }, /*#__PURE__*/React.createElement("br", null)));
 };

@@ -31,4 +31,16 @@ class CuradoriaController extends Controller{
         ]);
 
     }
+
+    public function treinamento(){
+
+        $modulo = \App\Models\Text::where('slug', 'curadoria')->first();
+
+        //return  $modulo;
+
+        return view('curadoria.treinamento', [
+            'page' => $modulo,
+        ]);
+
+    }
 }
