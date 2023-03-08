@@ -69,15 +69,16 @@ class RecursoRepository extends BaseRepository
         ->orderBy('id_recurso')
         ->get();
 
-        $res = Recurso::join('avaliacao.autoria', 'recurso.id_recurso', '=', 'autoria.id_recurso')
+        /*$res = Recurso::join('avaliacao.autoria', 'recurso.id_recurso', '=', 'autoria.id_recurso')
             ->join('avaliacao.autor', 'autor.id_autor', '=', 'autoria.id_autor')
             ->select('avaliacao.recurso.*')
             ->where('autor.nome', 'ilike', "%$palavra_chave%")->with('autoria')
             ->where('status', 1)
             ->get()
-            ->union($first)->unique('id_recurso');
-        if (!$res || $res->isEmpty()) throw new \Illuminate\Database\Eloquent\ModelNotFoundException;
-        else return $res;
+            ->union($first)->unique('id_recurso');*/
+
+        if (!$first || $first->isEmpty()) throw new \Illuminate\Database\Eloquent\ModelNotFoundException;
+        else return $first;
     }
 
     public function getAllRecursoPorPalavraChaveCMS($palavra_chave)

@@ -126,7 +126,7 @@ const Page = () => {
 
         const search = e.target.value ? e.target.value : ' ';
 
-        if(search.length > 3) {
+        if(search.length >= 3) {
 
             setspinList(true);
 
