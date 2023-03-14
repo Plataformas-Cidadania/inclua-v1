@@ -96,7 +96,6 @@ const Page = () => {
     setFilterCurador(id);
   };
 
-  console.log('filterCurador', filterCurador);
   return /*#__PURE__*/React.createElement("div", {
     className: "row"
   }, /*#__PURE__*/React.createElement("div", {
@@ -166,7 +165,6 @@ const Page = () => {
   })), /*#__PURE__*/React.createElement("div", {
     className: "col-md-3"
   }, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("h2", null, "Curadorias"), curadorias?.map((item, key) => {
-    console.log('......', item);
     return /*#__PURE__*/React.createElement("div", {
       className: "menu-curadoria cursor",
       key: 'curador' + key,

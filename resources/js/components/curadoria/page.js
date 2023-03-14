@@ -118,7 +118,6 @@ const Page = () => {
         setFilterCurador(id)
     }
 
-    console.log('filterCurador', filterCurador)
 
     return (
         <div className="row">
@@ -229,7 +228,6 @@ const Page = () => {
                 <h2>Curadorias</h2>
                 {/*<div onClick={() => setHandleFilterCurador(0)} className="text-right">remover filtro <i className="fas fa-times float-end " /></div>*/}
                 {curadorias?.map((item, key) => {
-                    console.log('......', item)
                     return (
                         <div
                             className="menu-curadoria cursor"
