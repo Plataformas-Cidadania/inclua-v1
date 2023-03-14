@@ -22,7 +22,7 @@ const ItemDetalhar = props => {
     Formato();
   }, []);
   /*useEffect(() => {
-   }, [modal]);*/
+    }, [modal]);*/
 
   const Formato = async () => {
     try {

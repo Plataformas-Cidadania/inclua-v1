@@ -22,7 +22,7 @@ const Item = props => {
     Formato();
   }, []);
   /*useEffect(() => {
-   }, [modal]);*/
+    }, [modal]);*/
 
   const Formato = async () => {
     try {

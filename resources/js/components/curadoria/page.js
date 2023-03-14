@@ -122,8 +122,7 @@ const Page = () => {
 
     return (
         <div className="row">
-            <div className="col-md-2"></div>
-            <div className="col-md-8">
+            <div className="col-md-9">
                 <div className="row">
                     <div className="col-md-12">
                         <p style={{textAlign: 'right'}}>{total} curadorias</p>
@@ -213,7 +212,7 @@ const Page = () => {
                     perPage={10}
                 />
             </div>
-            <div className="col-md-2">
+            <div className="col-md-3">
                 {/*<div className="input-icon">
                     <input id="ativarBox"
                            type="text"
@@ -227,9 +226,27 @@ const Page = () => {
                     <i className="fas fa-search"/>
                 </div>*/}
                 <br/>
-                {/*<h2>Curadores</h2>*/}
+                <h2>Curadorias</h2>
                 {/*<div onClick={() => setHandleFilterCurador(0)} className="text-right">remover filtro <i className="fas fa-times float-end " /></div>*/}
+                {curadorias?.map((item, key) => {
+                    console.log('......', item)
+                    return (
+                        <div
+                            className="menu-curadoria cursor"
+                            key={'curador' + key}
+                            style={{backgroundColor: filterCurador === item.id_curadoria ? '#A5D0CC' : 'inherit', position: 'relative'}}
+                            >
+                            <p onClick={() => setHandleFilterCurador(item.id_curadoria)} style={{display: 'block', margin: 0}}>{item.tema_recorte}</p>
+                            {filterCurador === item.id_curadoria ?
+                                <div style={{position: 'absolute', right: 0, marginBottom: "18px", marginTop: '-18px', paddingRight: "10px", zIndex: 9999999999}}  onClick={() => setHandleFilterCurador(0)}>
+                                    <i className="fas fa-times float-end " />
+                                </div>
+                                : null}
+                        </div>
+                    )
+                })}
                 {/*{curadores?.map((item, key) => {
+                    console.log('......', item)
                     return (
                         <div
                             className="menu-curadoria cursor"

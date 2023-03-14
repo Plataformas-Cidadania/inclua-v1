@@ -100,9 +100,7 @@ const Page = () => {
   return /*#__PURE__*/React.createElement("div", {
     className: "row"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "col-md-2"
-  }), /*#__PURE__*/React.createElement("div", {
-    className: "col-md-8"
+    className: "col-md-9"
   }, /*#__PURE__*/React.createElement("div", {
     className: "row"
   }, /*#__PURE__*/React.createElement("div", {
@@ -166,6 +164,34 @@ const Page = () => {
     page: page,
     perPage: 10
   })), /*#__PURE__*/React.createElement("div", {
-    className: "col-md-2"
-  }, /*#__PURE__*/React.createElement("br", null)));
+    className: "col-md-3"
+  }, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("h2", null, "Curadorias"), curadorias?.map((item, key) => {
+    console.log('......', item);
+    return /*#__PURE__*/React.createElement("div", {
+      className: "menu-curadoria cursor",
+      key: 'curador' + key,
+      style: {
+        backgroundColor: filterCurador === item.id_curadoria ? '#A5D0CC' : 'inherit',
+        position: 'relative'
+      }
+    }, /*#__PURE__*/React.createElement("p", {
+      onClick: () => setHandleFilterCurador(item.id_curadoria),
+      style: {
+        display: 'block',
+        margin: 0
+      }
+    }, item.tema_recorte), filterCurador === item.id_curadoria ? /*#__PURE__*/React.createElement("div", {
+      style: {
+        position: 'absolute',
+        right: 0,
+        marginBottom: "18px",
+        marginTop: '-18px',
+        paddingRight: "10px",
+        zIndex: 9999999999
+      },
+      onClick: () => setHandleFilterCurador(0)
+    }, /*#__PURE__*/React.createElement("i", {
+      className: "fas fa-times float-end "
+    })) : null);
+  })));
 };
