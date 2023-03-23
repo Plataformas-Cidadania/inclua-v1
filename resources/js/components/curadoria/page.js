@@ -140,9 +140,6 @@ const Page = () => {
                                         <div className={"p-4 "+ (key === 0 ? 'bg-lgt' : '')}>
 
                                             <div className="row">
-                                                <div className="col-md-12 img-format">
-                                                    <img src={item.curador.url_imagem} alt="" width="100%" style={{marginBottom: '20px'}}/>
-                                                </div>
                                                 <div className="col-md-12 mt-2">
                                                     {/*<div>{item.mes}</div>*/}
                                                     <h2>{item.tema_recorte}</h2>
@@ -152,6 +149,9 @@ const Page = () => {
                                                     <h3><strong>{item.curador.nome}</strong></h3>
                                                     {/*<p dangerouslySetInnerHTML={{__html: item.curador.minicv}}/>
                                                     <a href={item.curador.link_curriculo} target="_blank">Mais informações</a>*/}
+                                                </div>
+                                                <div className="col-md-12 img-format">
+                                                    <img src={item.curador.url_imagem} alt="" width="100%" style={{marginBottom: '20px'}}/>
                                                 </div>
                                             </div>
 
@@ -170,7 +170,7 @@ const Page = () => {
                                             ) : null}*/}
 
                                             <div className="dorder-container">
-                                                <a href={"curadoria/" + item.id_curadoria} className="btn btn-theme bg-pri" type="button" >Continue lendo <i className="fas fa-angle-right"/></a>
+                                                <a href={"curadoria/" + item.id_curadoria} className="btn btn-theme bg-pri" type="button" style={{textTransform: 'capitalize'}} >Acesse <i className="fas fa-angle-right"/></a>
                                             </div>
 
 

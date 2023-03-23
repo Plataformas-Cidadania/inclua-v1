@@ -123,6 +123,10 @@ const Page = () => {
     }, /*#__PURE__*/React.createElement("div", {
       className: "row"
     }, /*#__PURE__*/React.createElement("div", {
+      className: "col-md-12 mt-2"
+    }, /*#__PURE__*/React.createElement("h2", null, item.tema_recorte)), /*#__PURE__*/React.createElement("div", {
+      className: "col-md-12"
+    }, /*#__PURE__*/React.createElement("h3", null, /*#__PURE__*/React.createElement("strong", null, item.curador.nome))), /*#__PURE__*/React.createElement("div", {
       className: "col-md-12 img-format"
     }, /*#__PURE__*/React.createElement("img", {
       src: item.curador.url_imagem,
@@ -131,11 +135,7 @@ const Page = () => {
       style: {
         marginBottom: '20px'
       }
-    })), /*#__PURE__*/React.createElement("div", {
-      className: "col-md-12 mt-2"
-    }, /*#__PURE__*/React.createElement("h2", null, item.tema_recorte)), /*#__PURE__*/React.createElement("div", {
-      className: "col-md-12"
-    }, /*#__PURE__*/React.createElement("h3", null, /*#__PURE__*/React.createElement("strong", null, item.curador.nome)))), item?.texto ? /*#__PURE__*/React.createElement("p", {
+    }))), item?.texto ? /*#__PURE__*/React.createElement("p", {
       dangerouslySetInnerHTML: {
         __html: item?.texto?.slice(0, 400) + " ..."
       }
@@ -144,8 +144,11 @@ const Page = () => {
     }, /*#__PURE__*/React.createElement("a", {
       href: "curadoria/" + item.id_curadoria,
       className: "btn btn-theme bg-pri",
-      type: "button"
-    }, "Continue lendo ", /*#__PURE__*/React.createElement("i", {
+      type: "button",
+      style: {
+        textTransform: 'capitalize'
+      }
+    }, "Acesse ", /*#__PURE__*/React.createElement("i", {
       className: "fas fa-angle-right"
     }))), /*#__PURE__*/React.createElement("hr", {
       style: {
